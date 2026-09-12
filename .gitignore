@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+*.egg-info/
+*.so
+*.o
+*.cubin
+*.pt
+*.npz
+artifacts/
+build/
+dist/

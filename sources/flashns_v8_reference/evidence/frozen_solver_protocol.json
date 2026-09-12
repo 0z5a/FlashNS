@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "problem": "Kovasznay steady Navier-Stokes, viscosity 0.07",
+  "interior_count": 2048,
+  "edge_count": 128,
+  "validation_count": 8192,
+  "data_seed": 642701,
+  "thresholds": {
+    "pde_rms": 0.02,
+    "boundary_uv_rms": 0.01,
+    "outflow_p_rms": 0.01,
+    "relative_l2_u": 0.01,
+    "relative_l2_v": 0.02,
+    "relative_l2_p": 0.02
+  },
+  "acceptance": "all six metrics pass on fixed jet validation and an additional independent scalar-AD point set; finite values required",
+  "adam_steps": 4000,
+  "adam_learning_rate": 0.001,
+  "adam_decay_every": 1000,
+  "adam_decay_factor": 0.5,
+  "adam_check_every": 100,
+  "adam_betas": [
+    0.9,
+    0.999
+  ],
+  "adam_epsilon": 1e-08,
+  "lbfgs_max_blocks": 500,
+  "lbfgs_max_iter_per_block": 20,
+  "lbfgs_max_eval_per_block": 25,
+  "lbfgs_history_size": 50,
+  "lbfgs_line_search": "strong_wolfe",
+  "lbfgs_lr": 1.0,
+  "lbfgs_tolerance_grad": 1e-12,
+  "lbfgs_tolerance_change": 1e-15,
+  "stop_check": "before training, every 100 Adam updates, then after each block of at most 20 L-BFGS iterations",
+  "formal_initialization_seeds": [
+    75101,
+    75102,
+    75103
+  ],
+  "pilot_initialization_seed": 361901,
+  "cache_policy": "mandatory preflight populates dependency/compiler caches; each solve gets new parameters, optimizer state and CUDA graphs; setup is reported and included in total",
+  "precision": "FP64 throughout; TF32 disabled",
+  "timing": "optimization wall includes loss/gradient, optimizer, line searches, synchronization, all stop checks and final independent acceptance; per-run setup and common data preparation are separately reported and included in total"
+}
