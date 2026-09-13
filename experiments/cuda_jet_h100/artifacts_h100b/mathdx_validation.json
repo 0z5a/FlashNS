@@ -1,0 +1,1194 @@
+{
+  "timestamp_utc": "2026-09-09T05:29:13.478958+00:00",
+  "source_hashes": {
+    "experiments/cuda_jet/input/generate_jet_header.py": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+    "experiments/cuda_jet/input/jet_reference.py": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+    "experiments/cuda_jet_h100/baseline_plus.py": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51",
+    "experiments/cuda_jet_h100/benchmark.py": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+    "experiments/cuda_jet_h100/blaslt.cu": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+    "experiments/cuda_jet_h100/blaslt.py": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de",
+    "experiments/cuda_jet_h100/build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+    "experiments/cuda_jet_h100/build_blaslt.py": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+    "experiments/cuda_jet_h100/build_mathdx.py": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c",
+    "experiments/cuda_jet_h100/check_mathdx.py": "8337902dba9892e571f5dd37dbf2fcfcc90fdf868705a48666f98ebfeabb2d58",
+    "experiments/cuda_jet_h100/check_sanitizers.py": "336a2f7f00ab50bfd80a3d7ab3991490c32b8089563538cb572fc60b44a5bd77",
+    "experiments/cuda_jet_h100/common.py": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+    "experiments/cuda_jet_h100/euler_ab.py": "ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9",
+    "experiments/cuda_jet_h100/generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+    "experiments/cuda_jet_h100/gpu.py": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+    "experiments/cuda_jet_h100/graph_experiment.py": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+    "experiments/cuda_jet_h100/mathdx.cu": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567",
+    "experiments/cuda_jet_h100/mathdx.py": "bbaee62d7f0ee316e130fdb6fb59703dedcdb9e944a868c640a1aef886690f20",
+    "experiments/cuda_jet_h100/mathdx_benchmark.py": "8f760f43421606f7bd501675a7b914dd8ad05646aa5a47f85c79d9ee98b80296",
+    "experiments/cuda_jet_h100/mathdx_smoke.cu": "ad103bd115c8117e2d50bf9af98544e5f9bf75951d4bfe2b2008ce74e3d3aeb4",
+    "experiments/cuda_jet_h100/prepare_mathdx.py": "951d4b82db6655bfc4ed557219e0f250dc486dc3f54268912150c4e3b2c16195",
+    "experiments/cuda_jet_h100/profile_costs.py": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+    "experiments/cuda_jet_h100/sanitizer_smoke.cu": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+    "experiments/cuda_jet_h100/scientific_backends.py": "bd439b4de736cdc6f0734061f21ae362b5b2f610e093240d27cdba5bca16447a",
+    "experiments/cuda_jet_h100/scientific_benchmark.py": "95f6053a241658ba5c07314b8e0b110f4d89e28a9531db16669eb9de6d0769a0",
+    "experiments/cuda_jet_h100/stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+    "experiments/cuda_jet_h100/stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+    "experiments/cuda_jet_h100/stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+    "experiments/cuda_jet_h100/validate.py": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+    "src/flashns/distributed_contract.py": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+    "src/flashns/jet_spec.py": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+    "src/flashns/jet_stable.py": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407"
+  },
+  "mathdx": {
+    "build": {
+      "timestamp_utc": "2026-09-09T05:26:40.121381+00:00",
+      "command": [
+        "/root/flashns-h100b-20260909/third_party/mathdx_h100/cuda-13.0.2/bin/nvcc",
+        "-O3",
+        "-std=c++17",
+        "--expt-relaxed-constexpr",
+        "-arch=sm_90",
+        "--cubin",
+        "-lineinfo",
+        "--ptxas-options=-v",
+        "-DCUBLASDX_NO_FATBIN_AVAILABLE",
+        "-DCUBLASDX_CUTLASS_VERSION=40502",
+        "-I/root/flashns-h100b-20260909/third_party/mathdx_h100/sdk/nvidia-mathdx-26.06.1-cuda13/nvidia/mathdx/26.06/include",
+        "-I/root/flashns-h100b-20260909/third_party/mathdx_h100/sdk/nvidia-mathdx-26.06.1-cuda13/nvidia/mathdx/26.06/external/cutlass/include",
+        "/root/flashns-h100b-20260909/experiments/cuda_jet_h100/mathdx.cu",
+        "-o",
+        "/root/flashns-h100b-20260909/experiments/cuda_jet_h100/artifacts/mathdx.cubin"
+      ],
+      "seconds": 49.304418904997874,
+      "returncode": 0,
+      "path": "mathdx.cubin",
+      "sha256": "7d57e8b9a5d355a6feb34e4fcd1f5bb1a0284923b384197a5c8b961d803c022c",
+      "fast_math": false,
+      "accumulation": "native FP64",
+      "cutlass": [
+        4,
+        5,
+        2
+      ],
+      "mathdx_dependencies": {
+        "cuda_manifest": "https://developer.download.nvidia.com/compute/cuda/redist/redistrib_13.0.2.json",
+        "cuda_version": "13.0.2",
+        "toolkit": "/root/flashns-h100b-20260909/third_party/mathdx_h100/cuda-13.0.2",
+        "sdk_root": "/root/flashns-h100b-20260909/third_party/mathdx_h100/sdk",
+        "archives": [
+          {
+            "url": "https://developer.download.nvidia.com/compute/cuda/redist/redistrib_13.0.2.json",
+            "file": "redistrib_13.0.2.json",
+            "sha256": "fce66717a81c510ffeb89ecc3e79849ab34af3b80139f750876d9033e31d71c2",
+            "bytes": 47788
+          },
+          {
+            "component": "cuda_nvcc",
+            "version": "13.0.88",
+            "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/linux-x86_64/cuda_nvcc-linux-x86_64-13.0.88-archive.tar.xz",
+            "file": "cuda_nvcc-linux-x86_64-13.0.88-archive.tar.xz",
+            "sha256": "48e35be3cfbf4b4fbc16828eaec8a7048ee789403049dc409f7b643d6259cf7a",
+            "bytes": 26657716
+          },
+          {
+            "component": "libnvvm",
+            "version": "13.0.88",
+            "url": "https://developer.download.nvidia.com/compute/cuda/redist/libnvvm/linux-x86_64/libnvvm-linux-x86_64-13.0.88-archive.tar.xz",
+            "file": "libnvvm-linux-x86_64-13.0.88-archive.tar.xz",
+            "sha256": "17ef1665b63670887eeba7d908da5669fa8c66bb73b5b4c1367f49929c086353",
+            "bytes": 43645408
+          },
+          {
+            "component": "cuda_crt",
+            "version": "13.0.88",
+            "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_crt/linux-x86_64/cuda_crt-linux-x86_64-13.0.88-archive.tar.xz",
+            "file": "cuda_crt-linux-x86_64-13.0.88-archive.tar.xz",
+            "sha256": "5a3279a049ffc1cdb951c44cb95206acfdde9e9ae5e87825fc18d7e4a6878bb0",
+            "bytes": 79800
+          },
+          {
+            "component": "cuda_cudart",
+            "version": "13.0.96",
+            "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_cudart/linux-x86_64/cuda_cudart-linux-x86_64-13.0.96-archive.tar.xz",
+            "file": "cuda_cudart-linux-x86_64-13.0.96-archive.tar.xz",
+            "sha256": "25b8071951baba827be1580b841d363464f6ee6c39f48d33a81646f90cc95ed1",
+            "bytes": 1487960
+          },
+          {
+            "component": "cuda_cccl",
+            "version": "13.0.85",
+            "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_cccl/linux-x86_64/cuda_cccl-linux-x86_64-13.0.85-archive.tar.xz",
+            "file": "cuda_cccl-linux-x86_64-13.0.85-archive.tar.xz",
+            "sha256": "ed845eae8c1767706b6ee91e40c608a03f6f633551a849b63f7346d32d73ee60",
+            "bytes": 991284
+          },
+          {
+            "component": "cuda_culibos",
+            "version": "13.0.85",
+            "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_culibos/linux-x86_64/cuda_culibos-linux-x86_64-13.0.85-archive.tar.xz",
+            "file": "cuda_culibos-linux-x86_64-13.0.85-archive.tar.xz",
+            "sha256": "98fca11f9ab89be61385a67eee686c1ebf76fad9c7269d0cf9090edfcdb8a8ac",
+            "bytes": 21412
+          },
+          {
+            "component": "MathDx",
+            "version": "26.06.1",
+            "url": "https://developer.nvidia.com/downloads/compute/cublasdx/redist/cublasdx/cuda13/nvidia-mathdx-26.06.1-cuda13.tar.gz",
+            "file": "nvidia-mathdx-26.06.1-cuda13.tar.gz",
+            "sha256": "59a9233db34b75568acbcc5284e6cefe6fad5577ee644f85044971d62eeea353",
+            "bytes": 37377287
+          }
+        ],
+        "system_toolkit_or_driver_modified": false
+      },
+      "cublasdx_version_header": "// Copyright (c) 2023-2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n//\n// NVIDIA CORPORATION and its licensors retain all intellectual property\n// and proprietary rights in and to this software, related documentation\n// and any modifications thereto.  Any use, reproduction, disclosure or\n// distribution of this software and related documentation without an express\n// license agreement from NVIDIA CORPORATION is strictly prohibited.\n\n#ifndef CUBLASDX_VERSION_HPP\n#define CUBLASDX_VERSION_HPP\n\n/// \\def CUBLASDX_VERSION\n/// \\brief CUBLASDX library version\n///\n///\n/// @note\n/// CUBLASDX_VERSION / 10000 - major version <br/>\n/// CUBLASDX_VERSION / 100 % 100 - minor version <br/>\n/// CUBLASDX_VERSION % 100 - patch level <br/>\n#define CUBLASDX_VERSION 701\n\n#ifndef DOXYGEN_SHOULD_SKIP_THIS\n\n#define CUBLASDX_VERSION_MAJOR 0\n#define CUBLASDX_VERSION_MINOR 7\n#define CUBLASDX_VERSION_PATCH 1\n\n#endif // DOXYGEN_SHOULD_SKIP_THIS\n\n/// \\def CUBLASDX_CUTLASS_VERSION\n/// \\brief Version of the CUTLASS library that cuBLASDx was built against\n///\n/// Encoded as major * 10000 + minor * 100 + patch.\n/// When using a custom CUTLASS, define this macro before including any\n/// cuBLASDx header so that the library selects the correct code-path\n/// for the CUTLASS API in use.\n#ifndef CUBLASDX_CUTLASS_VERSION\n#define CUBLASDX_CUTLASS_VERSION 40502\n#endif\n\n#endif // CUBLASDX_VERSION_HPP\n",
+      "source_hashes": {
+        "build_mathdx.py": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c",
+        "mathdx.cu": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567"
+      },
+      "loading": "CUDA driver API; no CUDA 13 runtime linked into the Torch CUDA 12.8 process"
+    },
+    "configurations": {
+      "32_32_2": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 9216
+      },
+      "32_32_3": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 9728
+      },
+      "32_32_32": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 24576
+      },
+      "32_3_32": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 9728
+      },
+      "32_64_2": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 17920
+      },
+      "32_64_3": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 18688
+      },
+      "32_64_64": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 65536
+      },
+      "32_3_64": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 18688
+      },
+      "64_32_2": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 17920
+      },
+      "64_32_3": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 18688
+      },
+      "64_32_32": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 40960
+      },
+      "64_3_32": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 18688
+      },
+      "64_64_2": {
+        "block": [
+          128,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 34816
+      },
+      "64_64_3": {
+        "block": [
+          128,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 35840
+      },
+      "64_64_64": {
+        "block": [
+          128,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 98304
+      },
+      "64_3_64": {
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "dynamic_shared_bytes": 35840
+      }
+    },
+    "coverage": "native FP64 forward/dgrad shapes at C=32/64, K=2/3/32/64; wgrad and other shapes use Torch",
+    "lifetime": "cubin retained for this CUDA context; keep this object alive with captured graphs",
+    "selection": "two explicit M tiles 32 and 64; finite adapter comparison, not globally tuned MathDx performance"
+  },
+  "native_build": {
+    "timestamp_utc": "2026-09-09T05:25:48.924323+00:00",
+    "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+    "capability": [
+      9,
+      0
+    ],
+    "fast_math": false,
+    "libraries": {
+      "stable": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "/root/flashns-h100b-20260909/experiments/cuda_jet_h100/stable_kernels.cu",
+          "-o",
+          "/root/flashns-h100b-20260909/experiments/cuda_jet_h100/artifacts/libstable.so"
+        ],
+        "seconds": 2.2158800450270064,
+        "returncode": 0,
+        "path": "libstable.so",
+        "sha256": "c15c224a45f7546078f59febd08cecbc51424477f62343cd563eb0858c7b29b2"
+      },
+      "dgrad_n64": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "-I/root/flashns-h100b-20260909/third_party/cutlass/include",
+          "/root/flashns-h100b-20260909/experiments/cuda_jet_h100/stable_dgrad.cu",
+          "-o",
+          "/root/flashns-h100b-20260909/experiments/cuda_jet_h100/artifacts/libdgrad_n64.so"
+        ],
+        "seconds": 11.022461288026534,
+        "returncode": 0,
+        "path": "libdgrad_n64.so",
+        "sha256": "f1b5c5fa4430cb38a27c1d735a78ec065535168f104b6b717874e7ead16be6e7"
+      },
+      "dgrad_n32": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "-I/root/flashns-h100b-20260909/third_party/cutlass/include",
+          "-DFLASHNS_TILE_N=32",
+          "/root/flashns-h100b-20260909/experiments/cuda_jet_h100/stable_dgrad.cu",
+          "-o",
+          "/root/flashns-h100b-20260909/experiments/cuda_jet_h100/artifacts/libdgrad_n32.so"
+        ],
+        "seconds": 12.074144045996945,
+        "returncode": 0,
+        "path": "libdgrad_n32.so",
+        "sha256": "5eb6012fba8447c32a3df0f7e078bfeb6be595e731b2d64badf1f1e58e0b3bea"
+      }
+    },
+    "source_hashes": {
+      "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+      "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+      "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+      "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+      "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+    }
+  },
+  "telemetry_before": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,clocks.sm,clocks.mem,temperature.gpu,power.draw,utilization.gpu,memory.used",
+      "--format=csv"
+    ],
+    "returncode": 0,
+    "output": "index, uuid, clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], utilization.gpu [%], memory.used [MiB]\n0, GPU-75655542-902a-e1a0-4829-5772a3bec9ee, 1980 MHz, 2619 MHz, 34, 82.34 W, 0 %, 533 MiB\n"
+  },
+  "scope": "same FP64 stable full-jet semantics; explicit MathDx tiles 32 and 64; all global wgrad reductions remain Torch",
+  "toolchain_scope": "MathDx 0.7.1 requires isolated CUDA 13; Torch/Lt/native originals remain CUDA 12.8; this is not a compiler-only ablation",
+  "includes_optimizer": false,
+  "includes_validation_in_timing": false,
+  "includes_plan_search_or_capture_in_timing": false,
+  "validation": {
+    "passed": true,
+    "matrices": [
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 32,
+        "k": 2,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 32,
+        "k": 2,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 32,
+        "k": 3,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 32,
+        "k": 3,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 32,
+        "k": 32,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 32,
+        "k": 32,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 3,
+        "k": 32,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 3,
+        "k": 32,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 64,
+        "k": 2,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 64,
+        "k": 2,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 64,
+        "k": 3,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 64,
+        "k": 3,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 64,
+        "k": 64,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 64,
+        "k": 64,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 3,
+        "k": 64,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 32,
+        "m": 137,
+        "n": 3,
+        "k": 64,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 7.105427357601002e-15,
+        "max_tolerance_ratio": 0.0008691007370524009,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 32,
+        "k": 2,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 32,
+        "k": 2,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 32,
+        "k": 3,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 32,
+        "k": 3,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 32,
+        "k": 32,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 32,
+        "k": 32,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 3,
+        "k": 32,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 3,
+        "k": 32,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 64,
+        "k": 2,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 64,
+        "k": 2,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 64,
+        "k": 3,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 64,
+        "k": 3,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 64,
+        "k": 64,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 64,
+        "k": 64,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 3,
+        "k": 64,
+        "transpose_b": false,
+        "producer_consumer_streams": true,
+        "max_abs": 0.0,
+        "max_tolerance_ratio": 0.0,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      },
+      {
+        "tile_m": 64,
+        "m": 137,
+        "n": 3,
+        "k": 64,
+        "transpose_b": true,
+        "producer_consumer_streams": true,
+        "max_abs": 1.0658141036401503e-14,
+        "max_tolerance_ratio": 0.0007152670084603554,
+        "atol": 2e-12,
+        "rtol": 2e-11,
+        "passed": true
+      }
+    ],
+    "full_gradient": [
+      {
+        "tile_m": 32,
+        "loss": {
+          "max_abs": 1.1102230246251565e-16,
+          "max_tolerance_ratio": 2.0138652472875546e-05,
+          "atol": 2e-12,
+          "rtol": 2e-11,
+          "passed": true
+        },
+        "parameter_gradient": {
+          "max_abs": 1.6653345369377348e-16,
+          "max_tolerance_ratio": 3.215445899922902e-05,
+          "atol": 2e-12,
+          "rtol": 2e-11,
+          "passed": true
+        }
+      },
+      {
+        "tile_m": 64,
+        "loss": {
+          "max_abs": 1.1102230246251565e-16,
+          "max_tolerance_ratio": 2.0138652472875546e-05,
+          "atol": 2e-12,
+          "rtol": 2e-11,
+          "passed": true
+        },
+        "parameter_gradient": {
+          "max_abs": 1.6653345369377348e-16,
+          "max_tolerance_ratio": 3.215445899922902e-05,
+          "atol": 2e-12,
+          "rtol": 2e-11,
+          "passed": true
+        }
+      }
+    ],
+    "tail_networks": [
+      {
+        "tile_m": 32,
+        "bias_shift": 20.0,
+        "loss": {
+          "max_tolerance_ratio": 0.0,
+          "relative_tolerance": 1e-10,
+          "ulp_allowance": 8,
+          "passed": true
+        },
+        "gradients": [
+          {
+            "max_tolerance_ratio": 0.00014568659834768082,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.002026980335112438,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.0002766046718667153,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 1.4253265479959155e-06,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "tile_m": 32,
+        "bias_shift": -20.0,
+        "loss": {
+          "max_tolerance_ratio": 0.0,
+          "relative_tolerance": 1e-10,
+          "ulp_allowance": 8,
+          "passed": true
+        },
+        "gradients": [
+          {
+            "max_tolerance_ratio": 7.291324440720224e-05,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.00020233764821876723,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.00029682545203439485,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.0,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "tile_m": 64,
+        "bias_shift": 20.0,
+        "loss": {
+          "max_tolerance_ratio": 0.0,
+          "relative_tolerance": 1e-10,
+          "ulp_allowance": 8,
+          "passed": true
+        },
+        "gradients": [
+          {
+            "max_tolerance_ratio": 0.00014568659834768082,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.002026980335112438,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.0002766046718667153,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 1.4253265479959155e-06,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "tile_m": 64,
+        "bias_shift": -20.0,
+        "loss": {
+          "max_tolerance_ratio": 0.0,
+          "relative_tolerance": 1e-10,
+          "ulp_allowance": 8,
+          "passed": true
+        },
+        "gradients": [
+          {
+            "max_tolerance_ratio": 7.291324440720224e-05,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.00020233764821876723,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.00029682545203439485,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          },
+          {
+            "max_tolerance_ratio": 0.0,
+            "relative_tolerance": 1e-10,
+            "ulp_allowance": 8,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "changed_inputs_and_four_SGD_updates": [
+      {
+        "tile_m": 32,
+        "checks": [
+          {
+            "iteration": 0,
+            "loss": {
+              "max_abs": 8.326672684688674e-17,
+              "max_tolerance_ratio": 1.5097218534458922e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 1.6653345369377348e-16,
+              "max_tolerance_ratio": 2.7561405907450642e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameters": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 4.993818057135925e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 1,
+            "loss": {
+              "max_abs": 8.326672684688674e-17,
+              "max_tolerance_ratio": 1.5445875128435415e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 1.942890293094024e-16,
+              "max_tolerance_ratio": 3.280776518991518e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameters": {
+              "max_abs": 1.3877787807814457e-17,
+              "max_tolerance_ratio": 3.665346641253723e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 2,
+            "loss": {
+              "max_abs": 5.551115123125783e-17,
+              "max_tolerance_ratio": 1.0531061634330658e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 1.3877787807814457e-16,
+              "max_tolerance_ratio": 2.7704613051680385e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameters": {
+              "max_abs": 6.938893903907228e-18,
+              "max_tolerance_ratio": 2.4061060688155573e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 3,
+            "loss": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 5.383054997408709e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.7755575615628914e-16,
+              "max_tolerance_ratio": 3.173197611559993e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameters": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 4.133216363416551e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          }
+        ]
+      },
+      {
+        "tile_m": 64,
+        "checks": [
+          {
+            "iteration": 0,
+            "loss": {
+              "max_abs": 8.326672684688674e-17,
+              "max_tolerance_ratio": 1.5097218534458922e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.220446049250313e-16,
+              "max_tolerance_ratio": 2.5050319356067902e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameters": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 4.993818057135925e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 1,
+            "loss": {
+              "max_abs": 8.326672684688674e-17,
+              "max_tolerance_ratio": 1.5445875128435415e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 1.942890293094024e-16,
+              "max_tolerance_ratio": 3.280776518991518e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameters": {
+              "max_abs": 1.3877787807814457e-17,
+              "max_tolerance_ratio": 3.665346641253723e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 2,
+            "loss": {
+              "max_abs": 5.551115123125783e-17,
+              "max_tolerance_ratio": 1.0531061634330658e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 1.3877787807814457e-16,
+              "max_tolerance_ratio": 2.7704613051680385e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameters": {
+              "max_abs": 6.938893903907228e-18,
+              "max_tolerance_ratio": 2.4061060688155573e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 3,
+            "loss": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 5.383054997408709e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.7755575615628914e-16,
+              "max_tolerance_ratio": 3.173197611559993e-05,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameters": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 4.133216363416551e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "local": [],
+  "complete_gradient": [],
+  "telemetry_after": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,clocks.sm,clocks.mem,temperature.gpu,power.draw,utilization.gpu,memory.used",
+      "--format=csv"
+    ],
+    "returncode": 0,
+    "output": "index, uuid, clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], utilization.gpu [%], memory.used [MiB]\n0, GPU-75655542-902a-e1a0-4829-5772a3bec9ee, 1980 MHz, 2619 MHz, 34, 119.92 W, 13 %, 995 MiB\n"
+  },
+  "passed": true
+}

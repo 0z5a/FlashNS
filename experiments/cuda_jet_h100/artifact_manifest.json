@@ -1,0 +1,694 @@
+{
+  "created_utc": "2026-09-09T06:17:45.359403+00:00",
+  "scope": "H100 experiment source, original frozen Euler input and downloaded results; excludes downloadable official spline cache and third-party runtime/toolchain caches; missing H100 A Lt binary is not replaced with H100 B binary",
+  "files": {
+    ".gitignore": {
+      "bytes": 1199,
+      "sha256": "4015b8d078f7fb043101cf1f287fd8d7f2de00f811cb7150b0ba961074e5806f"
+    },
+    "README.md": {
+      "bytes": 9130,
+      "sha256": "69d04258261d2dd5a067e26fe26c301642daeff9a25bcd7f23512c0fb23dcc14"
+    },
+    "adapters/boussinesq.json": {
+      "bytes": 2167,
+      "sha256": "6abdffd452543ffca96e9130de483276669f0992ef5bc0aba9d904cf0e329a82"
+    },
+    "adapters/openai_ns_formal.json": {
+      "bytes": 504,
+      "sha256": "12f3dc7d76ea4e1e7f29ea3a5362f0e0c5bf5d975ac65338e81d5ff282f45328"
+    },
+    "adapters/pinn_jet_local.json": {
+      "bytes": 1257,
+      "sha256": "b3a3d9e5df433f4a16413d786427982504866af34b846eafe01e582033864f05"
+    },
+    "artifacts/euler_points.npz": {
+      "bytes": 56202,
+      "sha256": "1a2f0605d288ba048700284e5e468aecaa547cd50f19820f76bee5172d9b9236"
+    },
+    "artifacts/gpu/euler_points_4m.npz": {
+      "bytes": 53840600,
+      "sha256": "06db9c7cc805e947897a071d1e669fa7d8e4e5bcf7358cd87f0b03ee64246d15"
+    },
+    "artifacts/h100b/build.log": {
+      "bytes": 159,
+      "sha256": "22e5d61a3b3931cc12a4ff5429d0ea6f6c9029252150a17eac2dfd8f61ac1465"
+    },
+    "artifacts/h100b/build_blaslt.log": {
+      "bytes": 1079,
+      "sha256": "286077b5aeee935d64d4c6ced8c66a706607ce2ca3956f41b3ad692e06471471"
+    },
+    "artifacts/h100b/build_mathdx.log": {
+      "bytes": 49,
+      "sha256": "aac31eb8c185cd50686ec879d08afdfb0dab48eef63bc01594a93ae329bc735d"
+    },
+    "artifacts/h100b/check_mathdx.log": {
+      "bytes": 462,
+      "sha256": "f95ef68a8003ab32b1f7231a3112a28c578e1f3fd50bda33afab6342f655111f"
+    },
+    "artifacts/h100b/check_sanitizers.log": {
+      "bytes": 485,
+      "sha256": "bdf613e05398c3c3111da8ab217444a210a2cc7ba94af11c288148decce986de"
+    },
+    "artifacts/h100b/cutlass_clone.log": {
+      "bytes": 1417,
+      "sha256": "48a9573476d6ac7a3d04a1e607c4702e4262b6bf39a8c89305fa5080e2d6ca33"
+    },
+    "artifacts/h100b/environment.json": {
+      "bytes": 16619,
+      "sha256": "a620c86183c95cb28589797fb40eab1ef1797214e5936b73081fa13295a03a0f"
+    },
+    "artifacts/h100b/install_cpu.log": {
+      "bytes": 2320,
+      "sha256": "975ce276305790f4a784732a27b76d49434123c443c3ef8ce4b2f41ec3219add"
+    },
+    "artifacts/h100b/mathdx_benchmark.log": {
+      "bytes": 6778,
+      "sha256": "bf03b160636df683a2e41713fd66d3433890a72c3b8686d2b22b0c80764b68e8"
+    },
+    "artifacts/h100b/mathdx_benchmark_first.log": {
+      "bytes": 6774,
+      "sha256": "58ccb4471a8a6b1e5ba144acd53dab3a95d2c6940c50f2403fe7aa4714c26220"
+    },
+    "artifacts/h100b/mathdx_first_run_note.json": {
+      "bytes": 304,
+      "sha256": "378a3b4c990622b9aa4eb7e422ebec2885c4b951c45598eccbe952a630b816e0"
+    },
+    "artifacts/h100b/mathdx_validation.log": {
+      "bytes": 25,
+      "sha256": "db92e0095d2c4a549b6b1b41640aff394443886351eb57aa028ddb290dd82928"
+    },
+    "artifacts/h100b/preflight.log": {
+      "bytes": 79,
+      "sha256": "cd177acdac9d9bb5f223f3d1b745a48783f4bf14b369c7aac04d3224bf2bc0c3"
+    },
+    "artifacts/h100b/prepare_mathdx.log": {
+      "bytes": 3218,
+      "sha256": "db3ed846c9a268f3422dca99d218006897a3802c950b99de8cb6c0a63181e2a1"
+    },
+    "artifacts/h100b/pytest.log": {
+      "bytes": 99,
+      "sha256": "cabe8855eb60bed9652b33609e50994542d542058228fbd85fa5e515f62367e9"
+    },
+    "artifacts/h100b/source_fetch.log": {
+      "bytes": 1163,
+      "sha256": "0e45b6decb74a383ff6a48eb75cd9cf54880009555d980ae8454f8b59ccd8b72"
+    },
+    "artifacts/h100b/validation.log": {
+      "bytes": 88,
+      "sha256": "8f5166940625303b2d238200986185bf4e999a13b6830cbcd4e4dfb1a0b4e82b"
+    },
+    "artifacts/h100nvl/cpu_max.txt": {
+      "bytes": 15,
+      "sha256": "3e59688cfdc7f4deb18b96c187c54db804bed64be9119f8f8afabe1248dc0513"
+    },
+    "artifacts/h100nvl/environment.json": {
+      "bytes": 16912,
+      "sha256": "31e2ab34e38175ba84ec7490d20e57b2fe46ac9b8961d97a95d3e4692d1e8b33"
+    },
+    "artifacts/h100nvl/euler_ab_4m.json": {
+      "bytes": 30674,
+      "sha256": "c123768cf0ebfe98e23e7b36fbc66b67d756ac3255e7f9aa57cae40d77bbdc3e"
+    },
+    "artifacts/h100nvl/euler_ab_4m.log": {
+      "bytes": 1805,
+      "sha256": "beb58b62720f4694c7041c31b65022af5e1c1f70048aafa22f54141d26c523b6"
+    },
+    "artifacts/h100nvl/euler_ab_smoke.json": {
+      "bytes": 20441,
+      "sha256": "d6218be6a6cfba15051e045e898eecd94d3e49d0f74eef1701efc3b71c87e7e3"
+    },
+    "artifacts/h100nvl/euler_ab_smoke.log": {
+      "bytes": 1008,
+      "sha256": "a9ec7af72d4d7e9e4e74e2ecf492d1457e7b7921e97080ff2d50b7ffe4c885a5"
+    },
+    "artifacts/h100nvl/euler_precision.json": {
+      "bytes": 33918,
+      "sha256": "7bc2e18e97e40002ca879bd0695778d3ebf0d159a0a21b90a4a33de5af1016f5"
+    },
+    "artifacts/h100nvl/euler_precision.log": {
+      "bytes": 501,
+      "sha256": "8b71ce2965de7c053b2ff40aa92ae7b0001e858fe7691555f95004e412259dbe"
+    },
+    "artifacts/h100nvl/install_science.log": {
+      "bytes": 2293,
+      "sha256": "48204460b39471ee97f6c1b5b7da578748a8532f8fe2252bf47373a9273c37ec"
+    },
+    "artifacts/h100nvl/install_torch.log": {
+      "bytes": 12322,
+      "sha256": "b520de293fa4f922fd9fdee895868549f95b7b00c6e33d5a54955de56c889ac3"
+    },
+    "artifacts/h100nvl/preflight.log": {
+      "bytes": 81,
+      "sha256": "a3d9ca555d0eb5c0ccc5425f84bb6fe3787b0dbd0b4b369a259d5c9992111dba"
+    },
+    "artifacts/h100nvl/requirements_actual.txt": {
+      "bytes": 807,
+      "sha256": "34f7433ecfa4e51bc167da1522066f4b057cba18181ccf9982ca5d244497dd09"
+    },
+    "artifacts/h100nvl/source_fetch.log": {
+      "bytes": 1163,
+      "sha256": "0e45b6decb74a383ff6a48eb75cd9cf54880009555d980ae8454f8b59ccd8b72"
+    },
+    "cases/affine.json": {
+      "bytes": 2171,
+      "sha256": "d0d61636aa36d64a10ff21767c27c3bb71118c68d1cfb81f3e6d6941224fe4b0"
+    },
+    "cases/euler.json": {
+      "bytes": 1068,
+      "sha256": "744b882e7a4b00943ed93bff9742c205c48a7f4ae75433cc11da226830842500"
+    },
+    "docs/cuda-h100-results.md": {
+      "bytes": 20210,
+      "sha256": "ddd24fb3fbaca86abf4c74990d1d2969a475861535bb03c72da3bead8a41fe19"
+    },
+    "experiments/cuda_jet/input/check_header.py": {
+      "bytes": 2431,
+      "sha256": "c0e418bcc22d57c2e1ec8297f9450e01d4baad3a85b480c4655a9a79eb58ec00"
+    },
+    "experiments/cuda_jet/input/generate_jet_header.py": {
+      "bytes": 3652,
+      "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1"
+    },
+    "experiments/cuda_jet/input/jet_reference.py": {
+      "bytes": 10681,
+      "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90"
+    },
+    "experiments/cuda_jet_h100/README.md": {
+      "bytes": 7491,
+      "sha256": "46fb2e8359a8fd8f47252a0238950248e7a02c127a9aa64acb0de4d7a7571f53"
+    },
+    "experiments/cuda_jet_h100/artifact_audit.json": {
+      "bytes": 183426,
+      "sha256": "ebdf27fdb63f24ec6b35d6e0b293163083f0aab6de237a7a366b2c9a309e054a"
+    },
+    "experiments/cuda_jet_h100/artifacts/baseline_plus.json": {
+      "bytes": 813716,
+      "sha256": "3f311d449fcbf2146f7f37f0fc7ba8d77c6c7cb209f6819862c8a064e71e313a"
+    },
+    "experiments/cuda_jet_h100/artifacts/baseline_plus_smoke.json": {
+      "bytes": 180728,
+      "sha256": "206f2e741ef16b7b312980d40fc3e307c7b5a929287e9c74019bda92cbcaab75"
+    },
+    "experiments/cuda_jet_h100/artifacts/build.json": {
+      "bytes": 2719,
+      "sha256": "a0ec404ea58992ae675b29749d1f5fd75ecab3b1c0e2ea2f11d70d92bf21d238"
+    },
+    "experiments/cuda_jet_h100/artifacts/build_blaslt.json": {
+      "bytes": 1164,
+      "sha256": "2668632f9e9754eaaa9b3d1935a5437db4c7e5a5cc5d7de5f19871609ed5d446"
+    },
+    "experiments/cuda_jet_h100/artifacts/build_dgrad_n32.log": {
+      "bytes": 4614,
+      "sha256": "46bb1d4725697215726b853a4a36887ad6fd266666e9b7e383f4270769d320ab"
+    },
+    "experiments/cuda_jet_h100/artifacts/build_dgrad_n64.log": {
+      "bytes": 4629,
+      "sha256": "6130a4eb79c836bd9ed88949c9bd3c006bdb27a07a74227dbaba9f2a12f8085e"
+    },
+    "experiments/cuda_jet_h100/artifacts/build_mathdx_first.json": {
+      "bytes": 6237,
+      "sha256": "172a0df93a8da3a23db8d16975714d62215a8e345064efcfa71af35674c3f015"
+    },
+    "experiments/cuda_jet_h100/artifacts/build_stable.log": {
+      "bytes": 2684,
+      "sha256": "c481480d24a9e940d551dd0e461313c399b48e2dbf8cc698baf628434abab0f7"
+    },
+    "experiments/cuda_jet_h100/artifacts/environment.json": {
+      "bytes": 16794,
+      "sha256": "e210b2994c14cdbbe4bed002e10e7ecbfbacef36ddbaecf212b2303539558cca"
+    },
+    "experiments/cuda_jet_h100/artifacts/graph_experiment.json": {
+      "bytes": 192681,
+      "sha256": "73c146ecb82b372f8ca9a5e4b69fc6633ab57ae1006c9473e2f2c6fdfee86b0a"
+    },
+    "experiments/cuda_jet_h100/artifacts/hardware_profile.json": {
+      "bytes": 369,
+      "sha256": "9fc43b1fdcf8b441a4aba43321e82923e7706ef3456710e689fcc099900b8eaa"
+    },
+    "experiments/cuda_jet_h100/artifacts/initcheck.log": {
+      "bytes": 161,
+      "sha256": "cc2d115960046db90d08b39f6bf9801af8da1120f8d2e675bb904b40a6150126"
+    },
+    "experiments/cuda_jet_h100/artifacts/libdgrad_n32.so": {
+      "bytes": 1505376,
+      "sha256": "902350ab6ed9404defc69b09c59089c1987817130fee75a4eb404f3f2b576bf2"
+    },
+    "experiments/cuda_jet_h100/artifacts/libdgrad_n64.so": {
+      "bytes": 1456232,
+      "sha256": "1dd0c74715f17326f9ac68a943d849f8eceaa717d0d6d107e335e2363af20732"
+    },
+    "experiments/cuda_jet_h100/artifacts/libstable.so": {
+      "bytes": 1195808,
+      "sha256": "38643c4fb0294c4413b41c3d2b9a1bb66f28cb7c27892fb97c012a1ecffe2be5"
+    },
+    "experiments/cuda_jet_h100/artifacts/local_benchmark_gpu0.json": {
+      "bytes": 614594,
+      "sha256": "8f82a32c18fe83f6f7469c8bde5b81d4d678c4a11213797ef6d67c057422585e"
+    },
+    "experiments/cuda_jet_h100/artifacts/mathdx_dependencies.json": {
+      "bytes": 3288,
+      "sha256": "a9b798cceaea5f39bd1268a0bf68d33cfdddab6dfc009243199c7e2baee0fed1"
+    },
+    "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz": {
+      "bytes": 148205,
+      "sha256": "228b65ef6409c1f97e7681707a6868378c905fdebee0f46b77d26da5e07ae3b6"
+    },
+    "experiments/cuda_jet_h100/artifacts/memcheck.log": {
+      "bytes": 161,
+      "sha256": "cc2d115960046db90d08b39f6bf9801af8da1120f8d2e675bb904b40a6150126"
+    },
+    "experiments/cuda_jet_h100/artifacts/ncu.log": {
+      "bytes": 504,
+      "sha256": "f3c18ed695a7df09918009c575194c1dcb0405dadd337e60eb5fb0d3adb94f47"
+    },
+    "experiments/cuda_jet_h100/artifacts/profile_costs.json": {
+      "bytes": 60425,
+      "sha256": "c612a967a68c005e96b7efc01dac1a78ee72f81166dd49a39be13f264a5deb64"
+    },
+    "experiments/cuda_jet_h100/artifacts/racecheck.log": {
+      "bytes": 199,
+      "sha256": "55fb6f9fc4a2889d3e886dcfa5e5b43f7cf38ab9bde358e0842e408f42ae6402"
+    },
+    "experiments/cuda_jet_h100/artifacts/sanitizer_smoke": {
+      "bytes": 1026264,
+      "sha256": "af7bea03586c8f850782627584aea9eb46156f8f5ec9db4ff34b5833cb305179"
+    },
+    "experiments/cuda_jet_h100/artifacts/sanitizers.json": {
+      "bytes": 5773,
+      "sha256": "2d4903d6f70c5429c06a26214652016856a95a7a9a02a544277183339a0d6ea0"
+    },
+    "experiments/cuda_jet_h100/artifacts/scientific_benchmark.json": {
+      "bytes": 1076642,
+      "sha256": "05b92a5587993ffa835a0e43cf9c26bb5a36964bdacc7ac1048d34185e53e3fe"
+    },
+    "experiments/cuda_jet_h100/artifacts/scientific_validation_v2.json": {
+      "bytes": 552612,
+      "sha256": "c59e76bcfb110b54f4b5baab0cd1eb56e8337352ca6f26221046523a0a00b746"
+    },
+    "experiments/cuda_jet_h100/artifacts/smoke_build.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "experiments/cuda_jet_h100/artifacts/smoke_gpu0.log": {
+      "bytes": 99,
+      "sha256": "38a38eb62521a133e9399f2ecf9c4dd684562122bfff6b1e1f039f95b81891dc"
+    },
+    "experiments/cuda_jet_h100/artifacts/source_versions/2f75bb957c5735457d8fa7edff0fb2a60076051a55e083d0bd4c914da60569e6-build_mathdx.py": {
+      "bytes": 2591,
+      "sha256": "2f75bb957c5735457d8fa7edff0fb2a60076051a55e083d0bd4c914da60569e6"
+    },
+    "experiments/cuda_jet_h100/artifacts/source_versions/c9b7e65fea31b4061072c90a2d1166d182c78530d595ad853e216773242f3295-scientific_benchmark.py": {
+      "bytes": 13102,
+      "sha256": "c9b7e65fea31b4061072c90a2d1166d182c78530d595ad853e216773242f3295"
+    },
+    "experiments/cuda_jet_h100/artifacts/source_versions/ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9-euler_ab.py": {
+      "bytes": 8989,
+      "sha256": "ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9"
+    },
+    "experiments/cuda_jet_h100/artifacts/source_versions/reconstruction.json": {
+      "bytes": 1236,
+      "sha256": "cdb69e148c97868ac2307988961398cc0a722691e56c78f900a3ef638a779479"
+    },
+    "experiments/cuda_jet_h100/artifacts/synccheck.log": {
+      "bytes": 161,
+      "sha256": "cc2d115960046db90d08b39f6bf9801af8da1120f8d2e675bb904b40a6150126"
+    },
+    "experiments/cuda_jet_h100/artifacts/validation_gpu0.json": {
+      "bytes": 268655,
+      "sha256": "e5d91925d5351e0c77cfcadedfea45125b5259e6e10b5e59fa9ea43ec01c4afb"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/build.json": {
+      "bytes": 2730,
+      "sha256": "e40545574bb9d3291d9a83c378ee31dfb07378c23d5ad0952c341a076ea9fa67"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/build_blaslt.json": {
+      "bytes": 1165,
+      "sha256": "8f52ab613caf14123f51a3ace8afcf91cff174923b98b09b07c5c628fd2e65b5"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/build_blaslt.log": {
+      "bytes": 694,
+      "sha256": "c452d5004c98865ed4978e00c64448750ea3e7bb1e0c780d67e77854e421749d"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/build_dgrad_n32.log": {
+      "bytes": 4614,
+      "sha256": "597bfd7fcc9a698dfd7b47b350fdd7407ca83965dc37535dfef1b70b34137e54"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/build_dgrad_n64.log": {
+      "bytes": 4630,
+      "sha256": "31201d01d7e7a8a9e6efd235156cc49ab643d5b87677f6a127222f5c0145445a"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/build_mathdx.json": {
+      "bytes": 6276,
+      "sha256": "3963017b4dc6fd90bf581a8d1facc3c02eb684fda1ba63462b885517002aacea"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/build_mathdx.log": {
+      "bytes": 4457,
+      "sha256": "338970446c6fa1651c1cb34b1a0a8bf28fef4dbcb054dc3a51ca1c2ade37ae3c"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/build_stable.log": {
+      "bytes": 2686,
+      "sha256": "624649d7c041e779a83deb150e489bf4fd8dbfc148e957e41910338e895f3af1"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/hardware_profile.json": {
+      "bytes": 371,
+      "sha256": "9b78b909744ede3b8b4c4fe90249f5a27c8b975cacfe90bcce24a33667569727"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/initcheck.log": {
+      "bytes": 161,
+      "sha256": "cc2d115960046db90d08b39f6bf9801af8da1120f8d2e675bb904b40a6150126"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/libblaslt.so": {
+      "bytes": 1000912,
+      "sha256": "6002350cd99f3dd4d56286fcb9d583ff51a1a6d1ad47a233576ea0fde41d1793"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/libdgrad_n32.so": {
+      "bytes": 1505376,
+      "sha256": "5eb6012fba8447c32a3df0f7e078bfeb6be595e731b2d64badf1f1e58e0b3bea"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/libdgrad_n64.so": {
+      "bytes": 1456232,
+      "sha256": "f1b5c5fa4430cb38a27c1d735a78ec065535168f104b6b717874e7ead16be6e7"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/libstable.so": {
+      "bytes": 1195808,
+      "sha256": "c15c224a45f7546078f59febd08cecbc51424477f62343cd563eb0858c7b29b2"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx.cubin": {
+      "bytes": 1025552,
+      "sha256": "7d57e8b9a5d355a6feb34e4fcd1f5bb1a0284923b384197a5c8b961d803c022c"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_benchmark.json": {
+      "bytes": 2102794,
+      "sha256": "01c384a6a858cd4fe1b845ac7b979c12eb77a83a70d6a4ea979b1360db4f35ae"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_benchmark_first.json": {
+      "bytes": 2102820,
+      "sha256": "6f1a614d48ee398a7584ea1722909ef96adb9680979933b175392241a1fbb1e0"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_dependencies.json": {
+      "bytes": 3290,
+      "sha256": "5939063be0bfd473105f8a18c3c20a34fee4f6db9fedb3fd2c0613431ae2c0d3"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_initcheck.log": {
+      "bytes": 168,
+      "sha256": "e5ea1506fcb0d10e56cc647ae97ecf3ca1b465d3117619d1279749901f68c2e0"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_memcheck.log": {
+      "bytes": 168,
+      "sha256": "e5ea1506fcb0d10e56cc647ae97ecf3ca1b465d3117619d1279749901f68c2e0"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_racecheck.log": {
+      "bytes": 206,
+      "sha256": "5d405db07d2049f3de9656d5ef450a2ad588b885a260b989c1c16b12a48b505a"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_sanitizers.json": {
+      "bytes": 9389,
+      "sha256": "746ddf2fbd6879d696ea903c13410267f541163bd21d4be29956ab7ee647736c"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_smoke": {
+      "bytes": 1007384,
+      "sha256": "cfc5c0ff76c4633907fd221d388b52737191a7608c516c0dcf97e91a59152711"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_smoke_build.log": {
+      "bytes": 187,
+      "sha256": "4a9039e3453232c01f7268ec2cf78f30738e225eb22be0155616a8713600c863"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_standalone.log": {
+      "bytes": 106,
+      "sha256": "c0e75b640eee0ef26925cd2e708d59f94d3a105dd846a2b57710fe3ef948160a"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_synccheck.log": {
+      "bytes": 168,
+      "sha256": "e5ea1506fcb0d10e56cc647ae97ecf3ca1b465d3117619d1279749901f68c2e0"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_validation.json": {
+      "bytes": 38109,
+      "sha256": "db7e289fbc99a7f8f70c20432d921c3375b0d3441643c1b79c1d3626945435cc"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/memcheck.log": {
+      "bytes": 161,
+      "sha256": "cc2d115960046db90d08b39f6bf9801af8da1120f8d2e675bb904b40a6150126"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/ncu.log": {
+      "bytes": 505,
+      "sha256": "1abfae6216dc2d8e5d3e9ada09c4e9615e7917dab118598b40d2915e502b66ea"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/racecheck.log": {
+      "bytes": 199,
+      "sha256": "55fb6f9fc4a2889d3e886dcfa5e5b43f7cf38ab9bde358e0842e408f42ae6402"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/sanitizer_smoke": {
+      "bytes": 1026264,
+      "sha256": "b5c5c70c9fbeb05bcd4dd67de21c4a962399af7fbc325d70a38e3288790aca39"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/sanitizers.json": {
+      "bytes": 5796,
+      "sha256": "ddbd339bbd43d11712ccd599f1fdbf0f5842d1e9889f635594e9c33245d28635"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/smoke_build.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/smoke_gpu0.log": {
+      "bytes": 99,
+      "sha256": "38a38eb62521a133e9399f2ecf9c4dd684562122bfff6b1e1f039f95b81891dc"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/synccheck.log": {
+      "bytes": 161,
+      "sha256": "cc2d115960046db90d08b39f6bf9801af8da1120f8d2e675bb904b40a6150126"
+    },
+    "experiments/cuda_jet_h100/artifacts_h100b/validation_gpu0.json": {
+      "bytes": 270419,
+      "sha256": "f5287e478b4eeec61a73a9043110878226da036e7d452eabb1a4b60746cc64d7"
+    },
+    "experiments/cuda_jet_h100/audit_artifacts.py": {
+      "bytes": 5599,
+      "sha256": "bb86dee4959824f90a9055eaa2c070c0159facdcbbdb869859851e65588a00b6"
+    },
+    "experiments/cuda_jet_h100/baseline_plus.py": {
+      "bytes": 11284,
+      "sha256": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51"
+    },
+    "experiments/cuda_jet_h100/benchmark.py": {
+      "bytes": 7526,
+      "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867"
+    },
+    "experiments/cuda_jet_h100/blaslt.cu": {
+      "bytes": 5523,
+      "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4"
+    },
+    "experiments/cuda_jet_h100/blaslt.py": {
+      "bytes": 11176,
+      "sha256": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de"
+    },
+    "experiments/cuda_jet_h100/build.py": {
+      "bytes": 2914,
+      "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f"
+    },
+    "experiments/cuda_jet_h100/build_blaslt.py": {
+      "bytes": 1844,
+      "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589"
+    },
+    "experiments/cuda_jet_h100/build_mathdx.py": {
+      "bytes": 2627,
+      "sha256": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c"
+    },
+    "experiments/cuda_jet_h100/check_mathdx.py": {
+      "bytes": 2213,
+      "sha256": "8337902dba9892e571f5dd37dbf2fcfcc90fdf868705a48666f98ebfeabb2d58"
+    },
+    "experiments/cuda_jet_h100/check_sanitizers.py": {
+      "bytes": 3340,
+      "sha256": "336a2f7f00ab50bfd80a3d7ab3991490c32b8089563538cb572fc60b44a5bd77"
+    },
+    "experiments/cuda_jet_h100/common.py": {
+      "bytes": 8176,
+      "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6"
+    },
+    "experiments/cuda_jet_h100/euler_ab.py": {
+      "bytes": 9202,
+      "sha256": "09d9ba2654910e0c1af611394953cb2604f5443e3afed28a9d9a010f8c8d10e1"
+    },
+    "experiments/cuda_jet_h100/generate_stable_header.py": {
+      "bytes": 1557,
+      "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903"
+    },
+    "experiments/cuda_jet_h100/gpu.py": {
+      "bytes": 6118,
+      "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46"
+    },
+    "experiments/cuda_jet_h100/graph_experiment.py": {
+      "bytes": 7397,
+      "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea"
+    },
+    "experiments/cuda_jet_h100/mathdx.cu": {
+      "bytes": 2954,
+      "sha256": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567"
+    },
+    "experiments/cuda_jet_h100/mathdx.py": {
+      "bytes": 6097,
+      "sha256": "bbaee62d7f0ee316e130fdb6fb59703dedcdb9e944a868c640a1aef886690f20"
+    },
+    "experiments/cuda_jet_h100/mathdx_benchmark.py": {
+      "bytes": 13295,
+      "sha256": "8f760f43421606f7bd501675a7b914dd8ad05646aa5a47f85c79d9ee98b80296"
+    },
+    "experiments/cuda_jet_h100/mathdx_smoke.cu": {
+      "bytes": 4180,
+      "sha256": "ad103bd115c8117e2d50bf9af98544e5f9bf75951d4bfe2b2008ce74e3d3aeb4"
+    },
+    "experiments/cuda_jet_h100/prepare_mathdx.py": {
+      "bytes": 3412,
+      "sha256": "951d4b82db6655bfc4ed557219e0f250dc486dc3f54268912150c4e3b2c16195"
+    },
+    "experiments/cuda_jet_h100/profile_costs.py": {
+      "bytes": 2534,
+      "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e"
+    },
+    "experiments/cuda_jet_h100/requirements-h100-libs.txt": {
+      "bytes": 3359,
+      "sha256": "77dba62b2e4124720b69c2f4ccf4659ed10fe77850fed10ca45814065558ec5e"
+    },
+    "experiments/cuda_jet_h100/run_status.json": {
+      "bytes": 3007,
+      "sha256": "6f586fc1754f2799ba2b01f43c2113e2f57e1153eceee8f87680f94d4a7a2f3d"
+    },
+    "experiments/cuda_jet_h100/sanitizer_smoke.cu": {
+      "bytes": 7092,
+      "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876"
+    },
+    "experiments/cuda_jet_h100/scientific_backends.py": {
+      "bytes": 10759,
+      "sha256": "bd439b4de736cdc6f0734061f21ae362b5b2f610e093240d27cdba5bca16447a"
+    },
+    "experiments/cuda_jet_h100/scientific_benchmark.py": {
+      "bytes": 13478,
+      "sha256": "95f6053a241658ba5c07314b8e0b110f4d89e28a9531db16669eb9de6d0769a0"
+    },
+    "experiments/cuda_jet_h100/stable_dgrad.cu": {
+      "bytes": 7601,
+      "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+    },
+    "experiments/cuda_jet_h100/stable_jet.cuh": {
+      "bytes": 7441,
+      "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123"
+    },
+    "experiments/cuda_jet_h100/stable_kernels.cu": {
+      "bytes": 6539,
+      "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575"
+    },
+    "experiments/cuda_jet_h100/validate.py": {
+      "bytes": 10847,
+      "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673"
+    },
+    "pyproject.toml": {
+      "bytes": 606,
+      "sha256": "0d4fba11f6fcc647b09b5d2a8ac5b44ecb9fce4285ede55ba6086e7e73e9a956"
+    },
+    "scripts/diagnose_compile.py": {
+      "bytes": 3861,
+      "sha256": "f61881a7c317d5134dc5c3e6760fbd2f285350730a48cc2326ca55fa5dfd07d3"
+    },
+    "scripts/doctor.py": {
+      "bytes": 4534,
+      "sha256": "644cb0c896dc463fae29606c192f19a5f7e9d83e80cb401ba57b56cdeea5b448"
+    },
+    "scripts/preflight_multigpu.py": {
+      "bytes": 5308,
+      "sha256": "0edc1a5c2880a59c96dd4a26bb343a9d1b55f049a709707e53e0f5722043eb9d"
+    },
+    "scripts/profile_euler.py": {
+      "bytes": 5447,
+      "sha256": "18ce85fe027273ca6e6385876e56f152afd6c1d97eeb6faa996c1002194a0307"
+    },
+    "sources/registry.json": {
+      "bytes": 3924,
+      "sha256": "69cbcab6afa2775777a395a3bbf064c79d38f0ed4454fcb55b26982d5bc9c60d"
+    },
+    "src/flashns/__init__.py": {
+      "bytes": 100,
+      "sha256": "30a814dbede825388cfa02aa2220d57986d5629e2298923f156dc1f0254a5d18"
+    },
+    "src/flashns/affine.py": {
+      "bytes": 8969,
+      "sha256": "6134cd6ebd0c047ca5392a2008768ebf5b97eda4f085f2d42d71fc1284970c84"
+    },
+    "src/flashns/cli.py": {
+      "bytes": 4995,
+      "sha256": "182de99bab17437637935198f88fd46c2d2cb11698d1e4046d0bcab34a98ecb8"
+    },
+    "src/flashns/diagnostics.py": {
+      "bytes": 5625,
+      "sha256": "9a75a660d0fea02eb6e37916c9e8b8d47d47df1b64c1991f0360ab47a12c1af8"
+    },
+    "src/flashns/distributed_contract.py": {
+      "bytes": 997,
+      "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751"
+    },
+    "src/flashns/euler.py": {
+      "bytes": 23158,
+      "sha256": "4fc7a38f745a3240093415328ed33cb452933280ba07ec4762eade95e3396585"
+    },
+    "src/flashns/jet_spec.py": {
+      "bytes": 4330,
+      "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85"
+    },
+    "src/flashns/jet_stable.py": {
+      "bytes": 3153,
+      "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407"
+    },
+    "src/flashns/provenance.py": {
+      "bytes": 5113,
+      "sha256": "14acb0719a68979b307903d05c19b1cd8c5926129d470b0cb573e796a2320209"
+    },
+    "src/flashns/reference.py": {
+      "bytes": 4533,
+      "sha256": "1e7ab5a46e86bb1c6b89a8a4aeafc462eb07b0a14e68dc37ae1728b067bf05fc"
+    },
+    "src/flashns/spline_reference.py": {
+      "bytes": 3726,
+      "sha256": "2e99a6b0eb2afa1bc049502e208fdb650ccb0eec9951164026d86b9f3ba4dedc"
+    },
+    "src/flashns/symbolic.py": {
+      "bytes": 2274,
+      "sha256": "5d8f369928afbd2a9241ae03ca312b367cc3826a209c0556d15d765a2281f4ac"
+    },
+    "src/flashns/torch_spline.py": {
+      "bytes": 6492,
+      "sha256": "6135dfbb0b4db0b5ce586cb4a7c246e31193d9ea5339dcaf276bea74f972ab92"
+    },
+    "src/flashns/validation.py": {
+      "bytes": 6141,
+      "sha256": "9d58d43a8b23c9bdb0b0a20bcb49c4be32b935b6bd76b92733a862de2a83b00e"
+    },
+    "tests/test_affine.py": {
+      "bytes": 7540,
+      "sha256": "9cdaac6a2926a038b8d1c221e927656db7e4cb0aa51939892ab7785f064949ac"
+    },
+    "tests/test_distributed_contract.py": {
+      "bytes": 1556,
+      "sha256": "819a82dfc61236cf98806e34b7957daeeb795a96c14b53e61beada2602f3f827"
+    },
+    "tests/test_euler.py": {
+      "bytes": 5501,
+      "sha256": "e0ba00e15206d6d4eedf903eb5ec8150ec124d177ebf601e0c769e9a83bef914"
+    },
+    "tests/test_jet_spec.py": {
+      "bytes": 1544,
+      "sha256": "ff73455886b7884be55e40c0e2185f8184b7168dfa03363ba8e637c51557b8a7"
+    },
+    "tests/test_jet_stable.py": {
+      "bytes": 1499,
+      "sha256": "635456343af6d2970fc0dbcad3dd8da241359fbcf6906a887b135f7a0231e171"
+    },
+    "tests/test_provenance.py": {
+      "bytes": 846,
+      "sha256": "08780141c4778254f4ae1beb55aa0bc77f094c3aea881a5091e156b99bc80a1e"
+    },
+    "uv.lock": {
+      "bytes": 147675,
+      "sha256": "fa90a06dae080835f785721f1f0a2bee836f58c74a9fd902e3389c762e161267"
+    }
+  }
+}

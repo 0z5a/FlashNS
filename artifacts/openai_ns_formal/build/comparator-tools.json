@@ -1,0 +1,109 @@
+{
+  "timestamp_utc": "2026-09-09T06:57:54.656321+00:00",
+  "uid": 65534,
+  "script_sha256": "9e6b54da0754b459ee70e0f41543387e78977955a552ec5d41e8e22c7065f8b4",
+  "completed": true,
+  "commands": [
+    {
+      "command": [
+        "/workspace/flashns-formal-20260909/downloads/rustup-init",
+        "-y",
+        "--no-modify-path",
+        "--profile",
+        "minimal",
+        "--default-toolchain",
+        "stable"
+      ],
+      "cwd": "/workspace/flashns-formal-20260909"
+    },
+    {
+      "command": [
+        "git",
+        "clone",
+        "--no-checkout",
+        "https://github.com/Zouuup/landrun.git",
+        "/workspace/flashns-formal-20260909/tools/landrun"
+      ],
+      "cwd": "/workspace/flashns-formal-20260909"
+    },
+    {
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
+      ],
+      "cwd": "/workspace/flashns-formal-20260909/tools/landrun"
+    },
+    {
+      "command": [
+        "git",
+        "clone",
+        "--no-checkout",
+        "https://github.com/ammkrn/nanoda_lib.git",
+        "/workspace/flashns-formal-20260909/tools/nanoda"
+      ],
+      "cwd": "/workspace/flashns-formal-20260909"
+    },
+    {
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "05055695879dfebb6628a67da88ceca6cd6b0421"
+      ],
+      "cwd": "/workspace/flashns-formal-20260909/tools/nanoda"
+    },
+    {
+      "command": [
+        "go",
+        "build",
+        "-o",
+        "landrun",
+        "cmd/landrun/main.go"
+      ],
+      "cwd": "/workspace/flashns-formal-20260909/tools/landrun"
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--release",
+        "--locked"
+      ],
+      "cwd": "/workspace/flashns-formal-20260909/tools/nanoda"
+    }
+  ],
+  "downloads": [
+    {
+      "url": "https://go.dev/dl/go1.27.1.linux-amd64.tar.gz",
+      "sha256": "63d339f0da5ab53635a56f2490a7984dfe12dfcff22ad749f63edaf590168445",
+      "file": "go1.27.1.linux-amd64.tar.gz"
+    },
+    {
+      "url": "https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init",
+      "sha256": "dda7234360b7f578ca8b0ddcb80145646fa61a67c1720a5abc7051b35c9fcb71",
+      "file": "rustup-init"
+    }
+  ],
+  "repositories": {
+    "landrun": {
+      "url": "https://github.com/Zouuup/landrun.git",
+      "revision": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
+    },
+    "nanoda": {
+      "url": "https://github.com/ammkrn/nanoda_lib.git",
+      "revision": "05055695879dfebb6628a67da88ceca6cd6b0421"
+    }
+  },
+  "binaries": {
+    "landrun": "e688e064c32055ca12d6e1f371bc341c3ada4c1c028610742983d6a75512e064",
+    "nanoda_bin": "ede4cd7d89491c8e745553c7c490add377cd8f25f9fb01f3292028ca7f430c99"
+  },
+  "versions": {
+    "go": "go version go1.27.1 linux/amd64",
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+  },
+  "finished_utc": "2026-09-09T06:58:28.280333+00:00"
+}

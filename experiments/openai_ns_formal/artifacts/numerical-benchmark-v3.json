@@ -1,0 +1,1881 @@
+{
+  "timestamp_utc": "2026-09-09T08:51:09.882565+00:00",
+  "contract": {
+    "workload_source_id": "openai_ns_formal",
+    "object": "local_projected_complex_wave_amplitude",
+    "repository_commit": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+    "paper_sha256": "0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f",
+    "paper_equations": [
+      "7.3",
+      "7.4",
+      "7.5",
+      "7.6",
+      "7.13"
+    ],
+    "lean_file": "NavierStokes/TangentProjection.lean",
+    "lean_definitions": [
+      "tangentProj",
+      "projectedRhs",
+      "pressureCoefficient"
+    ],
+    "lean_theorems": [
+      "normal_projectedRhs",
+      "pressure_cancellation",
+      "tangency_preserved",
+      "complex_pressure_sign"
+    ],
+    "numbering_note": "Pinned Lean comments refer to older equation (27), Lemma 8.4; algebra matches this PDF's (7.13).",
+    "precision": "float64, complex128 represented by real and imaginary lanes",
+    "epsilon_values": [
+      0.00390625,
+      0.000244140625,
+      1.52587890625e-05,
+      5.960464477539063e-08,
+      2.3283064365386963e-10
+    ],
+    "local_parameters": "F in [0.5,2], a in [2.25,5], b in [-2,2], R in [0.5,2]; g=F*(-a,b), u*=1, Ls in {16,32,64,128}; F_Z=G_Z=0",
+    "discrete_frequency": "k=ceil(epsilon^-1/2); k*p nearest nonzero integer, exact tie chooses larger integer, zero tie chooses +1",
+    "scope_limit": "Synthetic finite local coefficients satisfying the displayed local algebra and positive lambda0; not a numerical realization of Theorem 4.6 profiles, q*, all cutoffs, all correction stages, or global blowup.",
+    "operator_tolerance": {
+      "atol": 1e-11,
+      "rtol": 5e-13
+    },
+    "trajectory_tolerance": {
+      "atol": 3e-09,
+      "rtol": 3e-08
+    }
+  },
+  "source_hashes": {
+    "experiments/openai_ns_formal/numerical_run.py": "580d73d338b78e4fa2ef313909d30f3340ff1e5c332c9a811dbe8b9fde8942d3",
+    "experiments/openai_ns_formal/projected_amplitude.py": "bbed8d8f60e0022c01b7261df33231bf3caf5fe856eb718f0e15d933417f6b86",
+    "sources/openai_ns_formal/repository/NavierStokes/TangentProjection.lean": "bb1bf09359e60eb7f429333e4874fdc3c61c76985361062c3ba827826a67b9e6"
+  },
+  "torch": "2.11.0+cu128",
+  "numpy": "2.5.3",
+  "environment": {
+    "NUMPY_MADVISE_HUGEPAGE": "0",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "device": "NVIDIA H100 NVL",
+  "hardware": "NVIDIA H100 NVL, GPU-83b4118c-a437-c4e5-e929-805a26db958f, 400.00 W, 570.211.01",
+  "timing_contract": {
+    "repeats": 15,
+    "batches": [
+      65536,
+      1048576
+    ],
+    "order": "seeded random interleaving",
+    "resident_gpu": "CUDA event intervals; device inputs resident; output validation excluded",
+    "transfer_inclusive": "wall clock from pageable CPU input through H2D, compute, D2H, synchronization",
+    "cpu": "NumPy allocation and arithmetic on fixed CPU input; no mpmath or SciPy reference work",
+    "cpu_tiled": "the same NumPy formula in blocks of 65536 with full output allocation and assembly included",
+    "speedup_baseline": "the faster of untiled and tiled NumPy in each paired repetition"
+  },
+  "benchmarks": [
+    {
+      "case": {
+        "batch": 65536,
+        "seed": 78003,
+        "input_sha256": "66d94808ebb2e7954d1045365cd9f46bfcf4fc63e262bb091f0f5e5461203f92",
+        "angular_integer_sha256": "e44f14d1ae1e7fc11e33e27454df3fb399b553b5165e50f87fabfe2f936a36d9",
+        "minimum_normal_squared": 0.16257436516147658,
+        "minimum_lambda0": 0.38740950349124237,
+        "nonzero_angular_frequency": true
+      },
+      "preparation_seconds": 0.04961291793733835,
+      "runs": [
+        {
+          "repeat": 0,
+          "order": [
+            "gpu_compiled_with_transfers",
+            "gpu_eager_resident",
+            "cpu_numpy",
+            "gpu_compiled_resident",
+            "cpu_numpy_tiled"
+          ],
+          "gpu_compiled_with_transfers": 0.0013107771519571543,
+          "process_cpu_seconds": {
+            "gpu_compiled_with_transfers": {
+              "user": 0.0012700000000003264,
+              "system": 9.899999999996023e-05
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008770000000000167,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.014812999999999743,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0007289999999997576,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015181000000000111,
+              "system": 0.0
+            }
+          },
+          "gpu_eager_resident": 0.00041363200545310974,
+          "cpu_numpy": 0.014806794933974743,
+          "gpu_compiled_resident": 0.0002568640112876892,
+          "cpu_numpy_tiled": 0.015175712062045932
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "cpu_numpy",
+            "gpu_eager_resident",
+            "gpu_compiled_with_transfers",
+            "gpu_compiled_resident",
+            "cpu_numpy_tiled"
+          ],
+          "cpu_numpy": 0.014523649821057916,
+          "process_cpu_seconds": {
+            "cpu_numpy": {
+              "user": 0.014527999999999874,
+              "system": 0.0
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008949999999998681,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.001634999999999831,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.000676000000000343,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015031000000000017,
+              "system": 2.9000000000056758e-05
+            }
+          },
+          "gpu_eager_resident": 0.00043142399191856384,
+          "gpu_compiled_with_transfers": 0.001589758088812232,
+          "gpu_compiled_resident": 0.00023260800540447234,
+          "cpu_numpy_tiled": 0.01504892809316516
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "gpu_compiled_resident",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers",
+            "cpu_numpy"
+          ],
+          "gpu_compiled_resident": 0.00025116801261901853,
+          "process_cpu_seconds": {
+            "gpu_compiled_resident": {
+              "user": 0.0005769999999998277,
+              "system": 0.00014799999999992597
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008300000000001084,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015150999999999915,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.0012959999999999638,
+              "system": 0.00010300000000007525
+            },
+            "cpu_numpy": {
+              "user": 0.014510999999999719,
+              "system": 0.00012999999999996348
+            }
+          },
+          "gpu_eager_resident": 0.0004026240110397339,
+          "cpu_numpy_tiled": 0.015145336976274848,
+          "gpu_compiled_with_transfers": 0.0013549698051065207,
+          "cpu_numpy": 0.014635975006967783
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "gpu_eager_resident",
+            "gpu_compiled_resident",
+            "gpu_compiled_with_transfers",
+            "cpu_numpy",
+            "cpu_numpy_tiled"
+          ],
+          "gpu_eager_resident": 0.0003943679928779602,
+          "process_cpu_seconds": {
+            "gpu_eager_resident": {
+              "user": 0.0008360000000000589,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0006909999999997751,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.0013679999999998138,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.014486999999999917,
+              "system": 0.00018300000000004424
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015404999999999891,
+              "system": 0.0
+            }
+          },
+          "gpu_compiled_resident": 0.00023849600553512573,
+          "gpu_compiled_with_transfers": 0.0013252580538392067,
+          "cpu_numpy": 0.014665114926174283,
+          "cpu_numpy_tiled": 0.01537814806215465
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "gpu_eager_resident",
+            "cpu_numpy",
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers",
+            "gpu_compiled_resident"
+          ],
+          "gpu_eager_resident": 0.00045430400967597963,
+          "process_cpu_seconds": {
+            "gpu_eager_resident": {
+              "user": 0.0009329999999998506,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.01470500000000019,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.014530000000000154,
+              "system": 0.00019299999999999873
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.001427000000000067,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0006570000000003517,
+              "system": 0.0
+            }
+          },
+          "cpu_numpy": 0.014700823929160833,
+          "cpu_numpy_tiled": 0.01471681916154921,
+          "gpu_compiled_with_transfers": 0.0013828531373292208,
+          "gpu_compiled_resident": 0.0002120960056781769
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "gpu_compiled_resident",
+            "cpu_numpy_tiled",
+            "gpu_eager_resident",
+            "cpu_numpy",
+            "gpu_compiled_with_transfers"
+          ],
+          "gpu_compiled_resident": 0.00018143999576568603,
+          "process_cpu_seconds": {
+            "gpu_compiled_resident": {
+              "user": 0.0006059999999998844,
+              "system": 4.999999999921734e-06
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015120999999999718,
+              "system": 1.8999999999991246e-05
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008469999999998201,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.01546599999999998,
+              "system": 7.000000000090267e-06
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.0014150000000001661,
+              "system": 0.00013699999999994272
+            }
+          },
+          "cpu_numpy_tiled": 0.015134662855416536,
+          "gpu_eager_resident": 0.00040089601278305053,
+          "cpu_numpy": 0.015440366929396987,
+          "gpu_compiled_with_transfers": 0.0014888141304254532
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers",
+            "cpu_numpy",
+            "gpu_compiled_resident"
+          ],
+          "gpu_eager_resident": 0.0004431680142879486,
+          "process_cpu_seconds": {
+            "gpu_eager_resident": {
+              "user": 0.0008970000000001477,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015433999999999948,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.001414999999999722,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.014669999999999739,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0007340000000000124,
+              "system": 0.0
+            }
+          },
+          "cpu_numpy_tiled": 0.015429012011736631,
+          "gpu_compiled_with_transfers": 0.001367046032100916,
+          "cpu_numpy": 0.014664398040622473,
+          "gpu_compiled_resident": 0.00025676798820495605
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "cpu_numpy",
+            "gpu_eager_resident",
+            "gpu_compiled_resident",
+            "gpu_compiled_with_transfers",
+            "cpu_numpy_tiled"
+          ],
+          "cpu_numpy": 0.01490132580511272,
+          "process_cpu_seconds": {
+            "cpu_numpy": {
+              "user": 0.014907000000000004,
+              "system": 0.0
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008829999999999671,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0007010000000002847,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.001366999999999674,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.014988999999999919,
+              "system": 0.0
+            }
+          },
+          "gpu_eager_resident": 0.0004234560132026672,
+          "gpu_compiled_resident": 0.0002480960041284561,
+          "gpu_compiled_with_transfers": 0.001331430859863758,
+          "cpu_numpy_tiled": 0.014957282925024629
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "gpu_compiled_with_transfers",
+            "gpu_eager_resident",
+            "gpu_compiled_resident",
+            "cpu_numpy_tiled",
+            "cpu_numpy"
+          ],
+          "gpu_compiled_with_transfers": 0.0013285139575600624,
+          "process_cpu_seconds": {
+            "gpu_compiled_with_transfers": {
+              "user": 0.001374999999999904,
+              "system": 0.0
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008449999999999847,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0004980000000003315,
+              "system": 0.00015700000000007375
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015178999999999832,
+              "system": 7.100000000004325e-05
+            },
+            "cpu_numpy": {
+              "user": 0.01471,
+              "system": 0.0
+            }
+          },
+          "gpu_eager_resident": 0.0004093439877033234,
+          "gpu_compiled_resident": 0.0002192640006542206,
+          "cpu_numpy_tiled": 0.015245320973917842,
+          "cpu_numpy": 0.014703599968925118
+        },
+        {
+          "repeat": 9,
+          "order": [
+            "cpu_numpy",
+            "gpu_compiled_resident",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers"
+          ],
+          "cpu_numpy": 0.014489879831671715,
+          "process_cpu_seconds": {
+            "cpu_numpy": {
+              "user": 0.014494999999999703,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0005779999999999674,
+              "system": 0.00017899999999992922
+            },
+            "gpu_eager_resident": {
+              "user": 0.0009460000000003355,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015209000000000472,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.0013889999999996405,
+              "system": 0.0
+            }
+          },
+          "gpu_compiled_resident": 0.00026124799251556397,
+          "gpu_eager_resident": 0.0004918720126152039,
+          "cpu_numpy_tiled": 0.015203393064439297,
+          "gpu_compiled_with_transfers": 0.0013424509670585394
+        },
+        {
+          "repeat": 10,
+          "order": [
+            "gpu_compiled_with_transfers",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "cpu_numpy",
+            "gpu_compiled_resident"
+          ],
+          "gpu_compiled_with_transfers": 0.0012662301305681467,
+          "process_cpu_seconds": {
+            "gpu_compiled_with_transfers": {
+              "user": 0.0013139999999998153,
+              "system": 1.3000000000040757e-05
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008520000000000749,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015219000000000094,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.014715999999999951,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0008619999999996963,
+              "system": 0.0
+            }
+          },
+          "gpu_eager_resident": 0.00041411200165748595,
+          "cpu_numpy_tiled": 0.01521194796077907,
+          "cpu_numpy": 0.014709085924550891,
+          "gpu_compiled_resident": 0.00031894400715827944
+        },
+        {
+          "repeat": 11,
+          "order": [
+            "gpu_compiled_resident",
+            "gpu_eager_resident",
+            "cpu_numpy",
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers"
+          ],
+          "gpu_compiled_resident": 0.0002490240037441254,
+          "process_cpu_seconds": {
+            "gpu_compiled_resident": {
+              "user": 0.0007109999999999062,
+              "system": 0.0
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008919999999998929,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.015433999999999948,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015209000000000028,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.001346999999999987,
+              "system": 0.00010399999999999299
+            }
+          },
+          "gpu_eager_resident": 0.0004551680088043213,
+          "cpu_numpy": 0.015426788944751024,
+          "cpu_numpy_tiled": 0.015197481028735638,
+          "gpu_compiled_with_transfers": 0.0013988048303872347
+        },
+        {
+          "repeat": 12,
+          "order": [
+            "gpu_compiled_resident",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers",
+            "cpu_numpy"
+          ],
+          "gpu_compiled_resident": 0.00022867199778556823,
+          "process_cpu_seconds": {
+            "gpu_compiled_resident": {
+              "user": 0.0006849999999998246,
+              "system": 0.0
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008669999999999511,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.015117999999999743,
+              "system": 2.2999999999995246e-05
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.0013919999999996158,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.014656000000000002,
+              "system": 1.0000000000287557e-06
+            }
+          },
+          "gpu_eager_resident": 0.0004245760142803192,
+          "cpu_numpy_tiled": 0.01513458788394928,
+          "gpu_compiled_with_transfers": 0.0013440309558063745,
+          "cpu_numpy": 0.014647936914116144
+        },
+        {
+          "repeat": 13,
+          "order": [
+            "gpu_compiled_resident",
+            "gpu_eager_resident",
+            "cpu_numpy",
+            "gpu_compiled_with_transfers",
+            "cpu_numpy_tiled"
+          ],
+          "gpu_compiled_resident": 0.00024297599494457246,
+          "process_cpu_seconds": {
+            "gpu_compiled_resident": {
+              "user": 0.0007100000000002105,
+              "system": 0.0
+            },
+            "gpu_eager_resident": {
+              "user": 0.0008780000000001564,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.014793000000000056,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.0013799999999997148,
+              "system": 0.0
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.014944999999999986,
+              "system": 0.0
+            }
+          },
+          "gpu_eager_resident": 0.00044252800941467285,
+          "cpu_numpy": 0.014786965912207961,
+          "gpu_compiled_with_transfers": 0.0013353230897337198,
+          "cpu_numpy_tiled": 0.014940096996724606
+        },
+        {
+          "repeat": 14,
+          "order": [
+            "cpu_numpy_tiled",
+            "gpu_eager_resident",
+            "gpu_compiled_with_transfers",
+            "gpu_compiled_resident",
+            "cpu_numpy"
+          ],
+          "cpu_numpy_tiled": 0.014638427877798676,
+          "process_cpu_seconds": {
+            "cpu_numpy_tiled": {
+              "user": 0.014660999999999813,
+              "system": 5.999999999950489e-06
+            },
+            "gpu_eager_resident": {
+              "user": 0.0009169999999998346,
+              "system": 0.0
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.0013849999999999696,
+              "system": 0.0
+            },
+            "gpu_compiled_resident": {
+              "user": 0.0006530000000002367,
+              "system": 0.0
+            },
+            "cpu_numpy": {
+              "user": 0.014940000000000175,
+              "system": 0.0
+            }
+          },
+          "gpu_eager_resident": 0.0004493120014667511,
+          "gpu_compiled_with_transfers": 0.001348357181996107,
+          "gpu_compiled_resident": 0.00020895999670028685,
+          "cpu_numpy": 0.014929860131815076
+        }
+      ],
+      "completed": true,
+      "reference_seconds": 0.015208018012344837,
+      "validation": {
+        "compiled": {
+          "max_abs": 7.275957614183426e-12,
+          "max_tolerance_ratio": 0.0006879396023423434,
+          "atol": 1e-11,
+          "rtol": 5e-13,
+          "passed": true
+        },
+        "eager": {
+          "max_abs": 2.842170943040401e-14,
+          "max_tolerance_ratio": 0.000372134098402905,
+          "atol": 1e-11,
+          "rtol": 5e-13,
+          "passed": true
+        },
+        "cpu_tiled": {
+          "max_abs": 0.0,
+          "max_tolerance_ratio": 0.0,
+          "atol": 1e-11,
+          "rtol": 5e-13,
+          "passed": true
+        }
+      },
+      "seconds": {
+        "cpu_numpy_tiled": 0.015145336976274848,
+        "gpu_eager_resident": 0.0004245760142803192,
+        "gpu_compiled_with_transfers": 0.0013440309558063745,
+        "gpu_compiled_resident": 0.00024297599494457246,
+        "cpu_numpy": 0.014703599968925118
+      },
+      "paired_best_cpu_speedups": {
+        "gpu_eager_resident": 34.500151731240024,
+        "gpu_compiled_with_transfers": 10.864618636274283,
+        "gpu_compiled_resident": 61.02817720476135
+      }
+    },
+    {
+      "case": {
+        "batch": 1048576,
+        "seed": 78003,
+        "input_sha256": "d2265cea923f5d8df510dab14ce597fd4a0fd3d24cb40a04f757caf292fb2021",
+        "angular_integer_sha256": "3103b6cf3e6661b959a3b00861e3abd6104c4bc619d014a8c6738929cbb5e632",
+        "minimum_normal_squared": 0.1441272852741561,
+        "minimum_lambda0": 0.35745864156212975,
+        "nonzero_angular_frequency": true
+      },
+      "preparation_seconds": 0.9116750601679087,
+      "runs": [
+        {
+          "repeat": 0,
+          "order": [
+            "gpu_compiled_resident",
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers",
+            "cpu_numpy",
+            "gpu_eager_resident"
+          ],
+          "gpu_compiled_resident": 0.0005158720016479493,
+          "process_cpu_seconds": {
+            "gpu_compiled_resident": {
+              "user": 0.008954000000000129,
+              "system": 0.020942999999999934
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.2555639999999997,
+              "system": 0.02299400000000018
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.02643500000000021,
+              "system": 0.02377600000000024
+            },
+            "cpu_numpy": {
+              "user": 0.35721999999999987,
+              "system": 0.1520300000000001
+            },
+            "gpu_eager_resident": {
+              "user": 0.009134999999999671,
+              "system": 0.023013999999999868
+            }
+          },
+          "cpu_numpy_tiled": 0.2784949040506035,
+          "gpu_compiled_with_transfers": 0.05012755608186126,
+          "cpu_numpy": 0.5091068251058459,
+          "gpu_eager_resident": 0.0012783039808273316
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "gpu_compiled_with_transfers",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "cpu_numpy",
+            "gpu_compiled_resident"
+          ],
+          "gpu_compiled_with_transfers": 0.048850469989702106,
+          "process_cpu_seconds": {
+            "gpu_compiled_with_transfers": {
+              "user": 0.027954000000000256,
+              "system": 0.020963000000000065
+            },
+            "gpu_eager_resident": {
+              "user": 0.00910599999999917,
+              "system": 0.023007999999999917
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.25137500000000035,
+              "system": 0.028874999999999762
+            },
+            "cpu_numpy": {
+              "user": 0.34156100000000045,
+              "system": 0.16918900000000026
+            },
+            "gpu_compiled_resident": {
+              "user": 0.011267000000000138,
+              "system": 0.02009099999999986
+            }
+          },
+          "gpu_eager_resident": 0.0012664639949798585,
+          "cpu_numpy_tiled": 0.28026266884990036,
+          "cpu_numpy": 0.5106419550720602,
+          "gpu_compiled_resident": 0.0004895679950714111
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "cpu_numpy_tiled",
+            "gpu_eager_resident",
+            "cpu_numpy",
+            "gpu_compiled_resident",
+            "gpu_compiled_with_transfers"
+          ],
+          "cpu_numpy_tiled": 0.28204071312211454,
+          "process_cpu_seconds": {
+            "cpu_numpy_tiled": {
+              "user": 0.25498200000000004,
+              "system": 0.027122999999999564
+            },
+            "gpu_eager_resident": {
+              "user": 0.011552000000000007,
+              "system": 0.0207799999999998
+            },
+            "cpu_numpy": {
+              "user": 0.3688609999999999,
+              "system": 0.14297000000000004
+            },
+            "gpu_compiled_resident": {
+              "user": 0.008369999999999322,
+              "system": 0.02314000000000016
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.024804999999999744,
+              "system": 0.02389100000000033
+            }
+          },
+          "gpu_eager_resident": 0.0012660800218582153,
+          "cpu_numpy": 0.5118003610987216,
+          "gpu_compiled_resident": 0.0004887039959430695,
+          "gpu_compiled_with_transfers": 0.04862507386133075
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "gpu_compiled_with_transfers",
+            "cpu_numpy",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "gpu_compiled_resident"
+          ],
+          "gpu_compiled_with_transfers": 0.048567269928753376,
+          "process_cpu_seconds": {
+            "gpu_compiled_with_transfers": {
+              "user": 0.03076699999999999,
+              "system": 0.01788500000000015
+            },
+            "cpu_numpy": {
+              "user": 0.35926599999999986,
+              "system": 0.15315600000000007
+            },
+            "gpu_eager_resident": {
+              "user": 0.009237999999999857,
+              "system": 0.023090000000000277
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.2591990000000006,
+              "system": 0.021234999999999893
+            },
+            "gpu_compiled_resident": {
+              "user": 0.004916999999999838,
+              "system": 0.02692899999999998
+            }
+          },
+          "cpu_numpy": 0.5124273709952831,
+          "gpu_eager_resident": 0.0012762880325317384,
+          "cpu_numpy_tiled": 0.28037611092440784,
+          "gpu_compiled_resident": 0.0004926399886608124
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers",
+            "gpu_compiled_resident",
+            "cpu_numpy",
+            "gpu_eager_resident"
+          ],
+          "cpu_numpy_tiled": 0.27940125088207424,
+          "process_cpu_seconds": {
+            "cpu_numpy_tiled": {
+              "user": 0.25619800000000037,
+              "system": 0.02322900000000061
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.023941999999999908,
+              "system": 0.024954000000000143
+            },
+            "gpu_compiled_resident": {
+              "user": 0.005774999999999864,
+              "system": 0.02585700000000024
+            },
+            "cpu_numpy": {
+              "user": 0.3589450000000003,
+              "system": 0.15449900000000039
+            },
+            "gpu_eager_resident": {
+              "user": 0.007160999999999973,
+              "system": 0.02505500000000005
+            }
+          },
+          "gpu_compiled_with_transfers": 0.04879360715858638,
+          "gpu_compiled_resident": 0.0004835839867591858,
+          "cpu_numpy": 0.5132958830799907,
+          "gpu_eager_resident": 0.0012669119834899903
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "cpu_numpy",
+            "gpu_compiled_with_transfers",
+            "gpu_compiled_resident",
+            "cpu_numpy_tiled",
+            "gpu_eager_resident"
+          ],
+          "cpu_numpy": 0.513010571943596,
+          "process_cpu_seconds": {
+            "cpu_numpy": {
+              "user": 0.34903899999999943,
+              "system": 0.16404300000000038
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.02491900000000058,
+              "system": 0.02394499999999944
+            },
+            "gpu_compiled_resident": {
+              "user": 0.008752000000001203,
+              "system": 0.022846000000000366
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.26864699999999964,
+              "system": 0.025949999999999918
+            },
+            "gpu_eager_resident": {
+              "user": 0.009852999999999668,
+              "system": 0.02490000000000059
+            }
+          },
+          "gpu_compiled_with_transfers": 0.04879686888307333,
+          "gpu_compiled_resident": 0.0004870719909667969,
+          "cpu_numpy_tiled": 0.29450812190771103,
+          "gpu_eager_resident": 0.0012766400575637818
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers",
+            "cpu_numpy",
+            "gpu_compiled_resident",
+            "gpu_eager_resident"
+          ],
+          "cpu_numpy_tiled": 0.2944944321643561,
+          "process_cpu_seconds": {
+            "cpu_numpy_tiled": {
+              "user": 0.27158000000000015,
+              "system": 0.02291299999999996
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.029023000000000465,
+              "system": 0.020007000000000552
+            },
+            "cpu_numpy": {
+              "user": 0.3553859999999993,
+              "system": 0.1652369999999994
+            },
+            "gpu_compiled_resident": {
+              "user": 0.014010000000000744,
+              "system": 0.01799400000000073
+            },
+            "gpu_eager_resident": {
+              "user": 0.010882999999999754,
+              "system": 0.021917999999999438
+            }
+          },
+          "gpu_compiled_with_transfers": 0.048925144830718637,
+          "cpu_numpy": 0.5204436639323831,
+          "gpu_compiled_resident": 0.0004921920001506806,
+          "gpu_eager_resident": 0.0012557439804077148
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "gpu_compiled_with_transfers",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "cpu_numpy",
+            "gpu_compiled_resident"
+          ],
+          "gpu_compiled_with_transfers": 0.04873663489706814,
+          "process_cpu_seconds": {
+            "gpu_compiled_with_transfers": {
+              "user": 0.023900000000001143,
+              "system": 0.024931999999999732
+            },
+            "gpu_eager_resident": {
+              "user": 0.01005699999999976,
+              "system": 0.023013000000000616
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.2558100000000003,
+              "system": 0.026017999999999653
+            },
+            "cpu_numpy": {
+              "user": 0.37471999999999994,
+              "system": 0.1439149999999998
+            },
+            "gpu_compiled_resident": {
+              "user": 0.011015999999999693,
+              "system": 0.020992999999999817
+            }
+          },
+          "gpu_eager_resident": 0.00126528000831604,
+          "cpu_numpy_tiled": 0.28187855100259185,
+          "cpu_numpy": 0.5185231240466237,
+          "gpu_compiled_resident": 0.0004952960014343262
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "gpu_compiled_resident",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "cpu_numpy",
+            "gpu_compiled_with_transfers"
+          ],
+          "gpu_compiled_resident": 0.0004784959852695465,
+          "process_cpu_seconds": {
+            "gpu_compiled_resident": {
+              "user": 0.006933000000000078,
+              "system": 0.024937999999999683
+            },
+            "gpu_eager_resident": {
+              "user": 0.006935999999999609,
+              "system": 0.025939000000000156
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.25421799999999983,
+              "system": 0.028254999999999697
+            },
+            "cpu_numpy": {
+              "user": 0.3491040000000005,
+              "system": 0.16809399999999997
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.027136000000000493,
+              "system": 0.022071999999999647
+            }
+          },
+          "gpu_eager_resident": 0.0012602880001068115,
+          "cpu_numpy_tiled": 0.2823824849911034,
+          "cpu_numpy": 0.5171311590820551,
+          "gpu_compiled_with_transfers": 0.049103891011327505
+        },
+        {
+          "repeat": 9,
+          "order": [
+            "gpu_compiled_with_transfers",
+            "gpu_compiled_resident",
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "cpu_numpy"
+          ],
+          "gpu_compiled_with_transfers": 0.04891789401881397,
+          "process_cpu_seconds": {
+            "gpu_compiled_with_transfers": {
+              "user": 0.028385999999999356,
+              "system": 0.020639000000000074
+            },
+            "gpu_compiled_resident": {
+              "user": 0.004763999999999768,
+              "system": 0.027835000000000498
+            },
+            "gpu_eager_resident": {
+              "user": 0.009120000000001127,
+              "system": 0.024051000000000045
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.2574959999999997,
+              "system": 0.02783300000000022
+            },
+            "cpu_numpy": {
+              "user": 0.37288799999999966,
+              "system": 0.14701200000000014
+            }
+          },
+          "gpu_compiled_resident": 0.0004921599924564362,
+          "gpu_eager_resident": 0.0012525440454483033,
+          "cpu_numpy_tiled": 0.28522481210529804,
+          "cpu_numpy": 0.5197445100639015
+        },
+        {
+          "repeat": 10,
+          "order": [
+            "gpu_eager_resident",
+            "cpu_numpy_tiled",
+            "cpu_numpy",
+            "gpu_compiled_resident",
+            "gpu_compiled_with_transfers"
+          ],
+          "gpu_eager_resident": 0.0012640960216522216,
+          "process_cpu_seconds": {
+            "gpu_eager_resident": {
+              "user": 0.008057000000000869,
+              "system": 0.025013000000000396
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.26173799999999936,
+              "system": 0.020982999999999308
+            },
+            "cpu_numpy": {
+              "user": 0.35543299999999967,
+              "system": 0.1637120000000003
+            },
+            "gpu_compiled_resident": {
+              "user": 0.011238999999999777,
+              "system": 0.021126999999999896
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.02518599999999971,
+              "system": 0.024102000000000956
+            }
+          },
+          "cpu_numpy_tiled": 0.28263637493364513,
+          "cpu_numpy": 0.5190181059297174,
+          "gpu_compiled_resident": 0.00049167999625206,
+          "gpu_compiled_with_transfers": 0.049215734004974365
+        },
+        {
+          "repeat": 11,
+          "order": [
+            "cpu_numpy_tiled",
+            "gpu_compiled_resident",
+            "cpu_numpy",
+            "gpu_eager_resident",
+            "gpu_compiled_with_transfers"
+          ],
+          "cpu_numpy_tiled": 0.28298006602562964,
+          "process_cpu_seconds": {
+            "cpu_numpy_tiled": {
+              "user": 0.2593149999999991,
+              "system": 0.023726999999999165
+            },
+            "gpu_compiled_resident": {
+              "user": 0.00724499999999928,
+              "system": 0.025125000000000952
+            },
+            "cpu_numpy": {
+              "user": 0.3400800000000004,
+              "system": 0.1814700000000009
+            },
+            "gpu_eager_resident": {
+              "user": 0.012037000000001186,
+              "system": 0.021008000000000138
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.02394599999999869,
+              "system": 0.025955000000001505
+            }
+          },
+          "gpu_compiled_resident": 0.00048208001255989076,
+          "cpu_numpy": 0.5214967378415167,
+          "gpu_eager_resident": 0.0012663040161132813,
+          "gpu_compiled_with_transfers": 0.049838251899927855
+        },
+        {
+          "repeat": 12,
+          "order": [
+            "gpu_compiled_with_transfers",
+            "gpu_compiled_resident",
+            "cpu_numpy_tiled",
+            "cpu_numpy",
+            "gpu_eager_resident"
+          ],
+          "gpu_compiled_with_transfers": 0.04924890189431608,
+          "process_cpu_seconds": {
+            "gpu_compiled_with_transfers": {
+              "user": 0.022223999999999577,
+              "system": 0.02712300000000134
+            },
+            "gpu_compiled_resident": {
+              "user": 0.006699000000001121,
+              "system": 0.025790000000000646
+            },
+            "cpu_numpy_tiled": {
+              "user": 0.25642099999999957,
+              "system": 0.026396999999999338
+            },
+            "cpu_numpy": {
+              "user": 0.34358100000000036,
+              "system": 0.1777759999999997
+            },
+            "gpu_eager_resident": {
+              "user": 0.0066379999999988115,
+              "system": 0.02675200000000011
+            }
+          },
+          "gpu_compiled_resident": 0.0004931840002536773,
+          "cpu_numpy_tiled": 0.2827601858880371,
+          "cpu_numpy": 0.5212221639230847,
+          "gpu_eager_resident": 0.0012794560194015502
+        },
+        {
+          "repeat": 13,
+          "order": [
+            "cpu_numpy_tiled",
+            "gpu_compiled_with_transfers",
+            "gpu_compiled_resident",
+            "cpu_numpy",
+            "gpu_eager_resident"
+          ],
+          "cpu_numpy_tiled": 0.2822928768582642,
+          "process_cpu_seconds": {
+            "cpu_numpy_tiled": {
+              "user": 0.25753500000000074,
+              "system": 0.02484799999999865
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.024388000000000076,
+              "system": 0.025231999999999033
+            },
+            "gpu_compiled_resident": {
+              "user": 0.00749500000000225,
+              "system": 0.025291000000001063
+            },
+            "cpu_numpy": {
+              "user": 0.36482799999999926,
+              "system": 0.15496100000000013
+            },
+            "gpu_eager_resident": {
+              "user": 0.00651900000000083,
+              "system": 0.027306000000001163
+            }
+          },
+          "gpu_compiled_with_transfers": 0.04951684991829097,
+          "gpu_compiled_resident": 0.00048159998655319215,
+          "cpu_numpy": 0.5196520469617099,
+          "gpu_eager_resident": 0.001263200044631958
+        },
+        {
+          "repeat": 14,
+          "order": [
+            "cpu_numpy_tiled",
+            "cpu_numpy",
+            "gpu_compiled_resident",
+            "gpu_eager_resident",
+            "gpu_compiled_with_transfers"
+          ],
+          "cpu_numpy_tiled": 0.2828458920121193,
+          "process_cpu_seconds": {
+            "cpu_numpy_tiled": {
+              "user": 0.2568039999999989,
+              "system": 0.02599900000000055
+            },
+            "cpu_numpy": {
+              "user": 0.34797900000000226,
+              "system": 0.17202800000000096
+            },
+            "gpu_compiled_resident": {
+              "user": 0.006351999999999691,
+              "system": 0.026201999999999614
+            },
+            "gpu_eager_resident": {
+              "user": 0.008031000000002564,
+              "system": 0.025002000000000635
+            },
+            "gpu_compiled_with_transfers": {
+              "user": 0.027703000000002476,
+              "system": 0.02180699999999902
+            }
+          },
+          "cpu_numpy": 0.5199092770926654,
+          "gpu_compiled_resident": 0.0005999360084533691,
+          "gpu_eager_resident": 0.0012600640058517457,
+          "gpu_compiled_with_transfers": 0.04943835502490401
+        }
+      ],
+      "completed": true,
+      "reference_seconds": 0.4090347341261804,
+      "validation": {
+        "compiled": {
+          "max_abs": 1.4551915228366852e-11,
+          "max_tolerance_ratio": 0.0009591023564891652,
+          "atol": 1e-11,
+          "rtol": 5e-13,
+          "passed": true
+        },
+        "eager": {
+          "max_abs": 5.684341886080802e-14,
+          "max_tolerance_ratio": 0.0003719550907400308,
+          "atol": 1e-11,
+          "rtol": 5e-13,
+          "passed": true
+        },
+        "cpu_tiled": {
+          "max_abs": 0.0,
+          "max_tolerance_ratio": 0.0,
+          "atol": 1e-11,
+          "rtol": 5e-13,
+          "passed": true
+        }
+      },
+      "seconds": {
+        "cpu_numpy_tiled": 0.2823824849911034,
+        "cpu_numpy": 0.5185231240466237,
+        "gpu_compiled_resident": 0.00049167999625206,
+        "gpu_eager_resident": 0.0012660800218582153,
+        "gpu_compiled_with_transfers": 0.048925144830718637
+      },
+      "paired_best_cpu_speedups": {
+        "gpu_compiled_resident": 577.1197196328435,
+        "gpu_eager_resident": 223.46929522832275,
+        "gpu_compiled_with_transfers": 5.742805235924721
+      }
+    }
+  ],
+  "passed": true,
+  "compile_and_first_call_seconds": 1.9717877060174942,
+  "validation": {
+    "case": {
+      "batch": 4096,
+      "seed": 730613,
+      "input_sha256": "9486f7508f15d239c7e1fdc61c3ece0621768a8a8a25a74850cc58f0129a4e51",
+      "angular_integer_sha256": "9d3f35f634990f4d53142be5b035b25378eb22e97b31d48552ea2aa8ad8f848f",
+      "minimum_normal_squared": 0.19803061682971515,
+      "minimum_lambda0": 0.4436186122741568,
+      "nonzero_angular_frequency": true
+    },
+    "independent_100_vs_120_digits": {
+      "max_abs": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "atol": 1e-25,
+      "rtol": 1e-25,
+      "passed": true
+    },
+    "numpy_vs_saddle": {
+      "max_abs": 2.2737367544323206e-13,
+      "max_tolerance_ratio": 0.00032859369692327936,
+      "atol": 1e-11,
+      "rtol": 5e-13,
+      "passed": true
+    },
+    "gpu_eager": {
+      "max_abs": 7.105427357601002e-15,
+      "max_tolerance_ratio": 0.00022563501020839727,
+      "atol": 1e-11,
+      "rtol": 5e-13,
+      "passed": true
+    },
+    "gpu_compiled": {
+      "max_abs": 1.8189894035458565e-12,
+      "max_tolerance_ratio": 0.0005458749326243485,
+      "atol": 1e-11,
+      "rtol": 5e-13,
+      "passed": true
+    },
+    "derivatives": [
+      {
+        "label": 0,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 2.220446049250313e-16,
+            "max_tolerance_ratio": 5.594094858722615e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 2.1218488270057967e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 3.0357660829594124e-18,
+            "max_tolerance_ratio": 3.034316454420089e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 1,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 1.3877787807814457e-17,
+            "max_tolerance_ratio": 1.2271165515661807e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 1.3010426069826053e-18,
+            "max_tolerance_ratio": 1.2940753840349244e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.6263032587282567e-19,
+            "max_tolerance_ratio": 1.6251096133428084e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 2,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 6.938893903907228e-18,
+            "max_tolerance_ratio": 6.31012412342487e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 1.6263032587282567e-19,
+            "max_tolerance_ratio": 1.6258959086670891e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 5.082197683525802e-21,
+            "max_tolerance_ratio": 5.082133716378001e-11,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 3,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 1.3877787807814457e-17,
+            "max_tolerance_ratio": 1.2425547245167406e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 5.421010862427522e-20,
+            "max_tolerance_ratio": 5.416377458725284e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 8.900463391070578e-22,
+            "max_tolerance_ratio": 8.900462955165065e-12,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 4,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 6.617444900424221e-23,
+            "max_tolerance_ratio": 6.617443937823894e-13,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 8.271806125530277e-25,
+            "max_tolerance_ratio": 8.271806062754124e-15,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.6263032587282567e-19,
+            "max_tolerance_ratio": 1.6252929462682292e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 5,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 2.184271004552316e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 3.469446951953614e-18,
+            "max_tolerance_ratio": 3.432827973103554e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 8.673617379884035e-19,
+            "max_tolerance_ratio": 8.638205232519814e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 6,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 1.3877787807814457e-17,
+            "max_tolerance_ratio": 1.284295113811209e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 2.981555974335137e-19,
+            "max_tolerance_ratio": 2.9805459870893782e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.0164395367051604e-20,
+            "max_tolerance_ratio": 1.0164012365645904e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 7,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 1.734723475976807e-18,
+            "max_tolerance_ratio": 1.704697881422782e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 6.776263578034403e-21,
+            "max_tolerance_ratio": 6.775675299158097e-11,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 5.293955920339377e-23,
+            "max_tolerance_ratio": 5.293954616918936e-13,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 8,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 2.220446049250313e-16,
+            "max_tolerance_ratio": 4.736527082336723e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 5.204170427930421e-18,
+            "max_tolerance_ratio": 5.104631953981554e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.734723475976807e-18,
+            "max_tolerance_ratio": 1.7271955480708178e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 9,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 6.938893903907228e-18,
+            "max_tolerance_ratio": 6.298695680167932e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 4.336808689942018e-19,
+            "max_tolerance_ratio": 4.310138195783863e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 2.710505431213761e-20,
+            "max_tolerance_ratio": 2.7101056674206523e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 10,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 4.440892098500626e-16,
+            "max_tolerance_ratio": 6.712073534978143e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 1.3877787807814457e-17,
+            "max_tolerance_ratio": 1.2264446080765129e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 8.555032767268433e-20,
+            "max_tolerance_ratio": 8.554904486873834e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 11,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 1.8605752212673283e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 1.734723475976807e-18,
+            "max_tolerance_ratio": 1.7057960807782913e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.9058241313221758e-20,
+            "max_tolerance_ratio": 1.9058156591675227e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "trajectories": [
+      {
+        "label": 0,
+        "initial_tangent": true,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 6.784850459240488e-14,
+          "max_tolerance_ratio": 1.5682774292877854e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 9.818534874028728e-16,
+          "max_tolerance_ratio": 3.272844958009576e-06,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 5945,
+        "radau_nfev": 9495
+      },
+      {
+        "label": 1,
+        "initial_tangent": false,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 2.035704937952687e-11,
+          "max_tolerance_ratio": 3.475024209216121e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 4.973799150320701e-14,
+          "max_tolerance_ratio": 0.00016579330501069003,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 1535,
+        "radau_nfev": 10135
+      },
+      {
+        "label": 2,
+        "initial_tangent": true,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 9.135874279309064e-10,
+          "max_tolerance_ratio": 3.341625939143761e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 1.2050804798491299e-11,
+          "max_tolerance_ratio": 0.04016934932830433,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 1307,
+        "radau_nfev": 18683
+      },
+      {
+        "label": 3,
+        "initial_tangent": false,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 2.697286838326818e-13,
+          "max_tolerance_ratio": 2.9869480729205038e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 3.2075037070811163e-15,
+          "max_tolerance_ratio": 5.415153875007429e-06,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 2717,
+        "radau_nfev": 11662
+      },
+      {
+        "label": 4,
+        "initial_tangent": true,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 1.0515893711371405e-13,
+          "max_tolerance_ratio": 2.5928353617207408e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 2.740863092043355e-16,
+          "max_tolerance_ratio": 9.136210306811184e-07,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 6725,
+        "radau_nfev": 8187
+      },
+      {
+        "label": 5,
+        "initial_tangent": false,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 1.5907275496829243e-12,
+          "max_tolerance_ratio": 3.3607941463230995e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 1.4706007136870702e-13,
+          "max_tolerance_ratio": 0.00048610099686990807,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 1634,
+        "radau_nfev": 12864
+      },
+      {
+        "label": 6,
+        "initial_tangent": true,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 6.784830475226045e-10,
+          "max_tolerance_ratio": 0.00014394244389913694,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 1.6257217794191092e-11,
+          "max_tolerance_ratio": 0.054190725980636976,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 1289,
+        "radau_nfev": 16661
+      },
+      {
+        "label": 7,
+        "initial_tangent": false,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 2.2909452113140105e-13,
+          "max_tolerance_ratio": 3.093856902466359e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 4.623038063478191e-15,
+          "max_tolerance_ratio": 9.301722764270708e-06,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 3317,
+        "radau_nfev": 11941
+      }
+    ],
+    "nondefault_stream": {
+      "max_abs": 1.8189894035458565e-12,
+      "max_tolerance_ratio": 0.0005458749326243485,
+      "atol": 1e-11,
+      "rtol": 5e-13,
+      "passed": true
+    },
+    "passed": true
+  },
+  "reused_validation": {
+    "path": "/root/flashns-hopper-20260909/experiments/openai_ns_formal/artifacts/numerical-validation.json",
+    "sha256": "c7338cbacd94c771546f99839dc9ca419ad9edcfe1cb33c81c79b23d40c76ff2",
+    "numerical_validation_source_hashes": {
+      "experiments/openai_ns_formal/numerical_run.py": "72f9d1db8dd51ce626fb5ea82ef09e083a82a97d1d30ebd858da3f4e32ccd460",
+      "experiments/openai_ns_formal/projected_amplitude.py": "bbed8d8f60e0022c01b7261df33231bf3caf5fe856eb718f0e15d933417f6b86",
+      "sources/openai_ns_formal/repository/NavierStokes/TangentProjection.lean": "bb1bf09359e60eb7f429333e4874fdc3c61c76985361062c3ba827826a67b9e6"
+    }
+  },
+  "finished_utc": "2026-09-09T08:51:37.599898+00:00"
+}

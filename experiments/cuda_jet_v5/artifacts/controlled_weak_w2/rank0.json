@@ -1,0 +1,1765 @@
+{
+  "timestamp_utc": "2026-09-09T02:26:40.185565+00:00",
+  "source_hashes": {
+    "experiments/cuda_jet/input/generate_jet_header.py": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+    "experiments/cuda_jet/input/jet_reference.py": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+    "experiments/cuda_jet_v5/benchmark.py": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+    "experiments/cuda_jet_v5/build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+    "experiments/cuda_jet_v5/check_sanitizers.py": "fc9710daaa54309a89158baa215b25342befecb303631d104fe671174f1ca3eb",
+    "experiments/cuda_jet_v5/common.py": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+    "experiments/cuda_jet_v5/distributed.py": "459d5f73226fe96bf43fad3a8b906a5ec193d96f7c364edc775e2ec534311859",
+    "experiments/cuda_jet_v5/generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+    "experiments/cuda_jet_v5/gpu.py": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+    "experiments/cuda_jet_v5/independent_throughput.py": "1eb7f70c3469b73931d9b70fdf9a344c65f5540c0559c1c44dc1bf5d5425ed30",
+    "experiments/cuda_jet_v5/recheck_small.py": "1554bfc5ceb65e770926e0506695f07cc6a51f65502dd8931869fcc4a17652b9",
+    "experiments/cuda_jet_v5/sanitizer_smoke.cu": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+    "experiments/cuda_jet_v5/stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+    "experiments/cuda_jet_v5/stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+    "experiments/cuda_jet_v5/stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+    "experiments/cuda_jet_v5/validate.py": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+    "src/flashns/distributed_contract.py": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+    "src/flashns/jet_spec.py": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+    "src/flashns/jet_stable.py": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407"
+  },
+  "build": {
+    "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+    "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+    "capability": [
+      8,
+      6
+    ],
+    "fast_math": false,
+    "libraries": {
+      "stable": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_86",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+          "-o",
+          "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+        ],
+        "seconds": 2.2977711400017142,
+        "returncode": 0,
+        "path": "libstable.so",
+        "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+      },
+      "dgrad_n64": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_86",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+          "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+          "-o",
+          "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+        ],
+        "seconds": 10.217335309978807,
+        "returncode": 0,
+        "path": "libdgrad_n64.so",
+        "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+      },
+      "dgrad_n32": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_86",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+          "-DFLASHNS_TILE_N=32",
+          "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+          "-o",
+          "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+        ],
+        "seconds": 10.602232295001158,
+        "returncode": 0,
+        "path": "libdgrad_n32.so",
+        "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+      }
+    },
+    "source_hashes": {
+      "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+      "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+      "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+      "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+      "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+    }
+  },
+  "world_size": 2,
+  "global_case": {
+    "global_batch": 8192,
+    "widths": [
+      2,
+      64,
+      64,
+      3
+    ],
+    "seed": 7510,
+    "weighted": false,
+    "coordinate_scale": 0.4,
+    "global_points_sha256": "e999b17d0ba487b3f654b2e655773f0ac493ee26534b0d36919cafaab64698ae",
+    "global_weights_sha256": "1370a56876f8d1c937a9943bbdaf2deffe1c7250001d4b75835aa16f8fa8f1e9",
+    "global_denominator": 8192.0,
+    "parameter_init_sha256": "1f071e1d778cd9699689be861c88b1737afab29a893444465e19950eb32fda48",
+    "precision_policy": "stable_aux_a1",
+    "workload_source_id": "pinn_jet_local"
+  },
+  "warmup": 5,
+  "repeats": 20,
+  "paired_max_rank_wall_ms": [
+    {
+      "B1_grad": 25.28779298882,
+      "F3_grad": 25.25276498636231,
+      "B1_sgd": 24.97316198423505,
+      "F3_sgd": 22.161019005579874
+    },
+    {
+      "B1_grad": 25.726679974468425,
+      "F3_grad": 24.549922003643587,
+      "B1_sgd": 26.41326902084984,
+      "F3_sgd": 24.25669998046942
+    },
+    {
+      "B1_grad": 25.749929016456008,
+      "F3_grad": 25.567302014678717,
+      "B1_sgd": 26.877163007156923,
+      "F3_sgd": 25.42604398331605
+    },
+    {
+      "B1_grad": 23.771056992700323,
+      "F3_grad": 26.548197987722233,
+      "B1_sgd": 25.82560500013642,
+      "F3_sgd": 27.061776985647157
+    },
+    {
+      "B1_grad": 25.011884019477293,
+      "F3_grad": 25.655589008238167,
+      "B1_sgd": 23.222055984660983,
+      "F3_sgd": 21.998987009283155
+    },
+    {
+      "B1_grad": 24.054867011727765,
+      "F3_grad": 19.396227988181636,
+      "B1_sgd": 18.205594999017194,
+      "F3_sgd": 22.372601000824943
+    },
+    {
+      "B1_grad": 24.85757801332511,
+      "F3_grad": 25.238230999093503,
+      "B1_sgd": 23.439993005013093,
+      "F3_sgd": 23.364672000752762
+    },
+    {
+      "B1_grad": 21.19994498207234,
+      "F3_grad": 21.87734202016145,
+      "B1_sgd": 25.881331996060908,
+      "F3_sgd": 24.375302979024127
+    },
+    {
+      "B1_grad": 24.932575994171202,
+      "F3_grad": 25.855926010990515,
+      "B1_sgd": 25.74897598242387,
+      "F3_sgd": 25.771269982215017
+    },
+    {
+      "B1_grad": 22.544003993971273,
+      "F3_grad": 21.06274402467534,
+      "B1_sgd": 22.853848000522703,
+      "F3_sgd": 22.847013984574005
+    },
+    {
+      "B1_grad": 23.99214098113589,
+      "F3_grad": 25.757672992767766,
+      "B1_sgd": 26.119871996343136,
+      "F3_sgd": 23.39084100094624
+    },
+    {
+      "B1_grad": 21.823388000484556,
+      "F3_grad": 25.51227400545031,
+      "B1_sgd": 25.26298799784854,
+      "F3_sgd": 25.736666982993484
+    },
+    {
+      "B1_grad": 22.737302992027253,
+      "F3_grad": 18.915843014838174,
+      "B1_sgd": 22.85229801782407,
+      "F3_sgd": 24.769771000137553
+    },
+    {
+      "B1_grad": 23.75785500044003,
+      "F3_grad": 22.88603098713793,
+      "B1_sgd": 24.71945100114681,
+      "F3_sgd": 26.97247502510436
+    },
+    {
+      "B1_grad": 25.739216012880206,
+      "F3_grad": 25.566783995600417,
+      "B1_sgd": 24.80839900090359,
+      "F3_sgd": 23.81952598807402
+    },
+    {
+      "B1_grad": 23.15825500409119,
+      "F3_grad": 24.083561002044007,
+      "B1_sgd": 25.99768599611707,
+      "F3_sgd": 23.081046005245298
+    },
+    {
+      "B1_grad": 25.986064021708444,
+      "F3_grad": 24.83074599877,
+      "B1_sgd": 26.382539013866335,
+      "F3_sgd": 22.44130300823599
+    },
+    {
+      "B1_grad": 23.250313999596983,
+      "F3_grad": 24.34468100545928,
+      "B1_sgd": 24.344948993530124,
+      "F3_sgd": 23.658051999518648
+    },
+    {
+      "B1_grad": 22.909138002432883,
+      "F3_grad": 22.74504501838237,
+      "B1_sgd": 21.041694999439642,
+      "F3_sgd": 19.8831669986248
+    },
+    {
+      "B1_grad": 19.931959017412737,
+      "F3_grad": 21.992613998008892,
+      "B1_sgd": 24.930238025262952,
+      "F3_sgd": 23.818824003683403
+    }
+  ],
+  "median_max_rank_wall_ms": {
+    "B1_grad": 23.881598986918107,
+    "F3_grad": 24.690334001206793,
+    "B1_sgd": 24.951700004749,
+    "F3_sgd": 23.738438001601025
+  },
+  "by_rank": [
+    {
+      "rank": 0,
+      "gpu_uuid": "b0dd3c99-e896-4231-e044-feb228d8312b",
+      "observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 25.28779298882,
+            "local_compute_and_pack_ms": 24.3521639786195,
+            "finite_status_collective_ms": 0.5883499979972839,
+            "gradient_and_loss_collective_ms": 0.3228510031476617,
+            "optimizer_ms": 0.024428009055554867
+          },
+          "F3_grad": {
+            "wall_ms": 25.249213009374216,
+            "local_compute_and_pack_ms": 24.530727008823305,
+            "finite_status_collective_ms": 0.462131982203573,
+            "gradient_and_loss_collective_ms": 0.23827500990591943,
+            "optimizer_ms": 0.01807900844141841
+          },
+          "B1_sgd": {
+            "wall_ms": 24.97316198423505,
+            "local_compute_and_pack_ms": 23.741757991956547,
+            "finite_status_collective_ms": 0.5974700034130365,
+            "gradient_and_loss_collective_ms": 0.3078019944950938,
+            "optimizer_ms": 0.3261319943703711
+          },
+          "F3_sgd": {
+            "wall_ms": 22.161019005579874,
+            "local_compute_and_pack_ms": 20.911655999952927,
+            "finite_status_collective_ms": 0.5966370226815343,
+            "gradient_and_loss_collective_ms": 0.32564098364673555,
+            "optimizer_ms": 0.32708499929867685
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 25.726679974468425,
+            "local_compute_and_pack_ms": 24.79041100014001,
+            "finite_status_collective_ms": 0.5854699993506074,
+            "gradient_and_loss_collective_ms": 0.32696599373593926,
+            "optimizer_ms": 0.023832981241866946
+          },
+          "F3_sgd": {
+            "wall_ms": 24.25669998046942,
+            "local_compute_and_pack_ms": 23.175174981588498,
+            "finite_status_collective_ms": 0.5275440053083003,
+            "gradient_and_loss_collective_ms": 0.2687270171009004,
+            "optimizer_ms": 0.2852539764717221
+          },
+          "B1_sgd": {
+            "wall_ms": 26.41326902084984,
+            "local_compute_and_pack_ms": 25.16725700115785,
+            "finite_status_collective_ms": 0.5745369999203831,
+            "gradient_and_loss_collective_ms": 0.34565202076919377,
+            "optimizer_ms": 0.32582299900241196
+          },
+          "F3_grad": {
+            "wall_ms": 24.549922003643587,
+            "local_compute_and_pack_ms": 23.666648979997262,
+            "finite_status_collective_ms": 0.5706890078727156,
+            "gradient_and_loss_collective_ms": 0.2899320097640157,
+            "optimizer_ms": 0.022652006009593606
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 26.877163007156923,
+            "local_compute_and_pack_ms": 25.640710024163127,
+            "finite_status_collective_ms": 0.5982639850117266,
+            "gradient_and_loss_collective_ms": 0.3113049897365272,
+            "optimizer_ms": 0.32688400824554265
+          },
+          "F3_sgd": {
+            "wall_ms": 25.42604398331605,
+            "local_compute_and_pack_ms": 24.172303004888818,
+            "finite_status_collective_ms": 0.6012039957568049,
+            "gradient_and_loss_collective_ms": 0.32583597931079566,
+            "optimizer_ms": 0.3267010033596307
+          },
+          "B1_grad": {
+            "wall_ms": 25.749929016456008,
+            "local_compute_and_pack_ms": 24.941459007095546,
+            "finite_status_collective_ms": 0.518777989782393,
+            "gradient_and_loss_collective_ms": 0.26969300233758986,
+            "optimizer_ms": 0.01999901724047959
+          },
+          "F3_grad": {
+            "wall_ms": 25.567302014678717,
+            "local_compute_and_pack_ms": 24.61374198901467,
+            "finite_status_collective_ms": 0.5841700185555965,
+            "gradient_and_loss_collective_ms": 0.3449119976721704,
+            "optimizer_ms": 0.024478009436279535
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 25.82560500013642,
+            "local_compute_and_pack_ms": 24.68031700118445,
+            "finite_status_collective_ms": 0.528384989593178,
+            "gradient_and_loss_collective_ms": 0.3136390005238354,
+            "optimizer_ms": 0.3032640088349581
+          },
+          "F3_grad": {
+            "wall_ms": 26.548197987722233,
+            "local_compute_and_pack_ms": 25.60077898669988,
+            "finite_status_collective_ms": 0.5961760180070996,
+            "gradient_and_loss_collective_ms": 0.3264659899286926,
+            "optimizer_ms": 0.02477699308656156
+          },
+          "B1_grad": {
+            "wall_ms": 23.771056992700323,
+            "local_compute_and_pack_ms": 22.90254199760966,
+            "finite_status_collective_ms": 0.5433949991129339,
+            "gradient_and_loss_collective_ms": 0.3025239857379347,
+            "optimizer_ms": 0.02259601023979485
+          },
+          "F3_sgd": {
+            "wall_ms": 27.061776985647157,
+            "local_compute_and_pack_ms": 25.8213089837227,
+            "finite_status_collective_ms": 0.5825410189572722,
+            "gradient_and_loss_collective_ms": 0.3303089761175215,
+            "optimizer_ms": 0.32761800684966147
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 25.011884019477293,
+            "local_compute_and_pack_ms": 24.07348301494494,
+            "finite_status_collective_ms": 0.6041019805707037,
+            "gradient_and_loss_collective_ms": 0.309648021357134,
+            "optimizer_ms": 0.02465100260451436
+          },
+          "F3_grad": {
+            "wall_ms": 25.64488400821574,
+            "local_compute_and_pack_ms": 25.00464499462396,
+            "finite_status_collective_ms": 0.39905100129544735,
+            "gradient_and_loss_collective_ms": 0.22545401589013636,
+            "optimizer_ms": 0.015733996406197548
+          },
+          "B1_sgd": {
+            "wall_ms": 23.222055984660983,
+            "local_compute_and_pack_ms": 22.312460001558065,
+            "finite_status_collective_ms": 0.3909739898517728,
+            "gradient_and_loss_collective_ms": 0.23127099848352373,
+            "optimizer_ms": 0.28735099476762116
+          },
+          "F3_sgd": {
+            "wall_ms": 21.998987009283155,
+            "local_compute_and_pack_ms": 20.773736003320664,
+            "finite_status_collective_ms": 0.576922990148887,
+            "gradient_and_loss_collective_ms": 0.321753992466256,
+            "optimizer_ms": 0.326574023347348
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 24.036032002186403,
+            "local_compute_and_pack_ms": 23.473756009479985,
+            "finite_status_collective_ms": 0.35034099710173905,
+            "gradient_and_loss_collective_ms": 0.19810901721939445,
+            "optimizer_ms": 0.013825978385284543
+          },
+          "F3_sgd": {
+            "wall_ms": 22.372601000824943,
+            "local_compute_and_pack_ms": 21.657682984368876,
+            "finite_status_collective_ms": 0.3506840148475021,
+            "gradient_and_loss_collective_ms": 0.17661097808741033,
+            "optimizer_ms": 0.18762302352115512
+          },
+          "B1_sgd": {
+            "wall_ms": 18.205594999017194,
+            "local_compute_and_pack_ms": 16.950543998973444,
+            "finite_status_collective_ms": 0.59104198589921,
+            "gradient_and_loss_collective_ms": 0.3367300087120384,
+            "optimizer_ms": 0.32727900543250144
+          },
+          "F3_grad": {
+            "wall_ms": 19.38389998394996,
+            "local_compute_and_pack_ms": 18.74154998222366,
+            "finite_status_collective_ms": 0.4324229958001524,
+            "gradient_and_loss_collective_ms": 0.1947730197571218,
+            "optimizer_ms": 0.015153986169025302
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 23.439993005013093,
+            "local_compute_and_pack_ms": 22.267207998083904,
+            "finite_status_collective_ms": 0.5435770144686103,
+            "gradient_and_loss_collective_ms": 0.3013669920619577,
+            "optimizer_ms": 0.32784100039862096
+          },
+          "F3_sgd": {
+            "wall_ms": 23.364672000752762,
+            "local_compute_and_pack_ms": 22.131200006697327,
+            "finite_status_collective_ms": 0.5953950167167932,
+            "gradient_and_loss_collective_ms": 0.3107579832430929,
+            "optimizer_ms": 0.327318994095549
+          },
+          "B1_grad": {
+            "wall_ms": 24.85757801332511,
+            "local_compute_and_pack_ms": 24.044096004217863,
+            "finite_status_collective_ms": 0.508355995407328,
+            "gradient_and_loss_collective_ms": 0.28490700060501695,
+            "optimizer_ms": 0.02021901309490204
+          },
+          "F3_grad": {
+            "wall_ms": 25.238230999093503,
+            "local_compute_and_pack_ms": 24.306075007189065,
+            "finite_status_collective_ms": 0.5961350107099861,
+            "gradient_and_loss_collective_ms": 0.3123079950455576,
+            "optimizer_ms": 0.023712986148893833
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 25.881331996060908,
+            "local_compute_and_pack_ms": 24.79603499523364,
+            "finite_status_collective_ms": 0.5180619773454964,
+            "gradient_and_loss_collective_ms": 0.2851900062523782,
+            "optimizer_ms": 0.2820450172293931
+          },
+          "F3_grad": {
+            "wall_ms": 21.87734202016145,
+            "local_compute_and_pack_ms": 20.94684701296501,
+            "finite_status_collective_ms": 0.5985620082356036,
+            "gradient_and_loss_collective_ms": 0.30773799517191947,
+            "optimizer_ms": 0.024195003788918257
+          },
+          "B1_grad": {
+            "wall_ms": 21.19994498207234,
+            "local_compute_and_pack_ms": 20.246339990990236,
+            "finite_status_collective_ms": 0.5821860104333609,
+            "gradient_and_loss_collective_ms": 0.34696198417805135,
+            "optimizer_ms": 0.024456996470689774
+          },
+          "F3_sgd": {
+            "wall_ms": 24.375302979024127,
+            "local_compute_and_pack_ms": 23.11839399044402,
+            "finite_status_collective_ms": 0.6170599954202771,
+            "gradient_and_loss_collective_ms": 0.3125469957012683,
+            "optimizer_ms": 0.32730199745856225
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 24.932575994171202,
+            "local_compute_and_pack_ms": 23.949836002429947,
+            "finite_status_collective_ms": 0.593995995586738,
+            "gradient_and_loss_collective_ms": 0.36449599429033697,
+            "optimizer_ms": 0.02424800186417997
+          },
+          "F3_grad": {
+            "wall_ms": 25.855926010990515,
+            "local_compute_and_pack_ms": 24.982364004245028,
+            "finite_status_collective_ms": 0.5479009996633977,
+            "gradient_and_loss_collective_ms": 0.3035260015167296,
+            "optimizer_ms": 0.02213500556536019
+          },
+          "B1_sgd": {
+            "wall_ms": 25.74897598242387,
+            "local_compute_and_pack_ms": 24.49118098593317,
+            "finite_status_collective_ms": 0.5871900066267699,
+            "gradient_and_loss_collective_ms": 0.3275210037827492,
+            "optimizer_ms": 0.34308398608118296
+          },
+          "F3_sgd": {
+            "wall_ms": 25.771269982215017,
+            "local_compute_and_pack_ms": 24.532670999178663,
+            "finite_status_collective_ms": 0.5868839798495173,
+            "gradient_and_loss_collective_ms": 0.324970023939386,
+            "optimizer_ms": 0.32674497924745083
+          }
+        },
+        {
+          "repeat": 9,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 22.544003993971273,
+            "local_compute_and_pack_ms": 21.587785973679274,
+            "finite_status_collective_ms": 0.5881420220248401,
+            "gradient_and_loss_collective_ms": 0.34423498436808586,
+            "optimizer_ms": 0.023841013899073005
+          },
+          "F3_sgd": {
+            "wall_ms": 22.847013984574005,
+            "local_compute_and_pack_ms": 21.702823985833675,
+            "finite_status_collective_ms": 0.5131729994900525,
+            "gradient_and_loss_collective_ms": 0.26888801949098706,
+            "optimizer_ms": 0.3621289797592908
+          },
+          "B1_sgd": {
+            "wall_ms": 22.853848000522703,
+            "local_compute_and_pack_ms": 21.86965601867996,
+            "finite_status_collective_ms": 0.46698597725480795,
+            "gradient_and_loss_collective_ms": 0.2679470053408295,
+            "optimizer_ms": 0.24925899924710393
+          },
+          "F3_grad": {
+            "wall_ms": 21.06274402467534,
+            "local_compute_and_pack_ms": 20.13700600946322,
+            "finite_status_collective_ms": 0.5921199917793274,
+            "gradient_and_loss_collective_ms": 0.3094400162808597,
+            "optimizer_ms": 0.024178007151931524
+          }
+        },
+        {
+          "repeat": 10,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 26.119871996343136,
+            "local_compute_and_pack_ms": 25.24865500163287,
+            "finite_status_collective_ms": 0.4032709985040128,
+            "gradient_and_loss_collective_ms": 0.22648301091976464,
+            "optimizer_ms": 0.24146298528648913
+          },
+          "F3_sgd": {
+            "wall_ms": 23.39084100094624,
+            "local_compute_and_pack_ms": 22.574811009690166,
+            "finite_status_collective_ms": 0.4006809904240072,
+            "gradient_and_loss_collective_ms": 0.20407402189448476,
+            "optimizer_ms": 0.21127497893758118
+          },
+          "B1_grad": {
+            "wall_ms": 23.99214098113589,
+            "local_compute_and_pack_ms": 23.02977498038672,
+            "finite_status_collective_ms": 0.5994340172037482,
+            "gradient_and_loss_collective_ms": 0.33845999860204756,
+            "optimizer_ms": 0.02447198494337499
+          },
+          "F3_grad": {
+            "wall_ms": 25.757672992767766,
+            "local_compute_and_pack_ms": 24.942221003584564,
+            "finite_status_collective_ms": 0.524456991115585,
+            "gradient_and_loss_collective_ms": 0.2701430057641119,
+            "optimizer_ms": 0.02085199230350554
+          }
+        },
+        {
+          "repeat": 11,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 25.26298799784854,
+            "local_compute_and_pack_ms": 23.989612993318588,
+            "finite_status_collective_ms": 0.6003690068610013,
+            "gradient_and_loss_collective_ms": 0.34474499989300966,
+            "optimizer_ms": 0.3282609977759421
+          },
+          "F3_grad": {
+            "wall_ms": 25.51227400545031,
+            "local_compute_and_pack_ms": 24.702810012968257,
+            "finite_status_collective_ms": 0.5057670059613883,
+            "gradient_and_loss_collective_ms": 0.2823909744620323,
+            "optimizer_ms": 0.021306012058630586
+          },
+          "B1_grad": {
+            "wall_ms": 21.823388000484556,
+            "local_compute_and_pack_ms": 20.864977006567642,
+            "finite_status_collective_ms": 0.5913409986533225,
+            "gradient_and_loss_collective_ms": 0.34095501177944243,
+            "optimizer_ms": 0.02611498348414898
+          },
+          "F3_sgd": {
+            "wall_ms": 25.736666982993484,
+            "local_compute_and_pack_ms": 24.925012985477224,
+            "finite_status_collective_ms": 0.38555500213988125,
+            "gradient_and_loss_collective_ms": 0.21414400544017553,
+            "optimizer_ms": 0.21195498993620276
+          }
+        },
+        {
+          "repeat": 12,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 22.737302992027253,
+            "local_compute_and_pack_ms": 22.142689995234832,
+            "finite_status_collective_ms": 0.38206399767659605,
+            "gradient_and_loss_collective_ms": 0.19808299839496613,
+            "optimizer_ms": 0.014466000720858574
+          },
+          "F3_grad": {
+            "wall_ms": 18.915843014838174,
+            "local_compute_and_pack_ms": 17.983237019507214,
+            "finite_status_collective_ms": 0.5968689802102745,
+            "gradient_and_loss_collective_ms": 0.3115030121989548,
+            "optimizer_ms": 0.02423400292173028
+          },
+          "B1_sgd": {
+            "wall_ms": 22.85229801782407,
+            "local_compute_and_pack_ms": 21.85763101442717,
+            "finite_status_collective_ms": 0.5210129893384874,
+            "gradient_and_loss_collective_ms": 0.23846601834520698,
+            "optimizer_ms": 0.23518799571320415
+          },
+          "F3_sgd": {
+            "wall_ms": 24.769771000137553,
+            "local_compute_and_pack_ms": 23.527090990683064,
+            "finite_status_collective_ms": 0.5773589946329594,
+            "gradient_and_loss_collective_ms": 0.33825001446530223,
+            "optimizer_ms": 0.32707100035622716
+          }
+        },
+        {
+          "repeat": 13,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 23.75785500044003,
+            "local_compute_and_pack_ms": 22.874727001180872,
+            "finite_status_collective_ms": 0.5417319771368057,
+            "gradient_and_loss_collective_ms": 0.3194140153937042,
+            "optimizer_ms": 0.02198200672864914
+          },
+          "F3_sgd": {
+            "wall_ms": 26.97247502510436,
+            "local_compute_and_pack_ms": 25.728983018780127,
+            "finite_status_collective_ms": 0.5900289979763329,
+            "gradient_and_loss_collective_ms": 0.32748200464993715,
+            "optimizer_ms": 0.32598100369796157
+          },
+          "B1_sgd": {
+            "wall_ms": 24.71945100114681,
+            "local_compute_and_pack_ms": 23.46912500797771,
+            "finite_status_collective_ms": 0.5974599916953593,
+            "gradient_and_loss_collective_ms": 0.32750898390077055,
+            "optimizer_ms": 0.3253570175729692
+          },
+          "F3_grad": {
+            "wall_ms": 22.88603098713793,
+            "local_compute_and_pack_ms": 21.95664300234057,
+            "finite_status_collective_ms": 0.5848649889230728,
+            "gradient_and_loss_collective_ms": 0.32118099625222385,
+            "optimizer_ms": 0.02334199962206185
+          }
+        },
+        {
+          "repeat": 14,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 24.80839900090359,
+            "local_compute_and_pack_ms": 23.832147009670734,
+            "finite_status_collective_ms": 0.438782008131966,
+            "gradient_and_loss_collective_ms": 0.2690390101633966,
+            "optimizer_ms": 0.2684309729374945
+          },
+          "F3_sgd": {
+            "wall_ms": 23.81952598807402,
+            "local_compute_and_pack_ms": 22.573203983483836,
+            "finite_status_collective_ms": 0.5785940156783909,
+            "gradient_and_loss_collective_ms": 0.3234009782318026,
+            "optimizer_ms": 0.34432701067999005
+          },
+          "B1_grad": {
+            "wall_ms": 25.739216012880206,
+            "local_compute_and_pack_ms": 24.906858016038314,
+            "finite_status_collective_ms": 0.49518098239786923,
+            "gradient_and_loss_collective_ms": 0.31627900898456573,
+            "optimizer_ms": 0.020898005459457636
+          },
+          "F3_grad": {
+            "wall_ms": 25.566783995600417,
+            "local_compute_and_pack_ms": 24.62779698544182,
+            "finite_status_collective_ms": 0.587235001148656,
+            "gradient_and_loss_collective_ms": 0.3276570059824735,
+            "optimizer_ms": 0.02409500302746892
+          }
+        },
+        {
+          "repeat": 15,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 25.99768599611707,
+            "local_compute_and_pack_ms": 24.827618995914236,
+            "finite_status_collective_ms": 0.538062013220042,
+            "gradient_and_loss_collective_ms": 0.32933399779722095,
+            "optimizer_ms": 0.30267098918557167
+          },
+          "F3_grad": {
+            "wall_ms": 24.083561002044007,
+            "local_compute_and_pack_ms": 23.149501997977495,
+            "finite_status_collective_ms": 0.5859519878868014,
+            "gradient_and_loss_collective_ms": 0.3234530158806592,
+            "optimizer_ms": 0.024654000299051404
+          },
+          "B1_grad": {
+            "wall_ms": 23.140635021263734,
+            "local_compute_and_pack_ms": 22.47770200483501,
+            "finite_status_collective_ms": 0.4071040020789951,
+            "gradient_and_loss_collective_ms": 0.23998500546440482,
+            "optimizer_ms": 0.015844008885324
+          },
+          "F3_sgd": {
+            "wall_ms": 23.081046005245298,
+            "local_compute_and_pack_ms": 22.116428008303046,
+            "finite_status_collective_ms": 0.41018801857717335,
+            "gradient_and_loss_collective_ms": 0.25090298731811345,
+            "optimizer_ms": 0.3035269910469651
+          }
+        },
+        {
+          "repeat": 16,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 25.986064021708444,
+            "local_compute_and_pack_ms": 25.03329102182761,
+            "finite_status_collective_ms": 0.5825409898534417,
+            "gradient_and_loss_collective_ms": 0.34683800186030567,
+            "optimizer_ms": 0.023394008167088032
+          },
+          "F3_grad": {
+            "wall_ms": 24.83074599877,
+            "local_compute_and_pack_ms": 23.901098989881575,
+            "finite_status_collective_ms": 0.5971099890302867,
+            "gradient_and_loss_collective_ms": 0.3079280140809715,
+            "optimizer_ms": 0.024609005777165294
+          },
+          "B1_sgd": {
+            "wall_ms": 26.382539013866335,
+            "local_compute_and_pack_ms": 25.529097008984536,
+            "finite_status_collective_ms": 0.40677498327568173,
+            "gradient_and_loss_collective_ms": 0.22448701201938093,
+            "optimizer_ms": 0.22218000958673656
+          },
+          "F3_sgd": {
+            "wall_ms": 22.44130300823599,
+            "local_compute_and_pack_ms": 21.63047599606216,
+            "finite_status_collective_ms": 0.3756140067707747,
+            "gradient_and_loss_collective_ms": 0.2126969920936972,
+            "optimizer_ms": 0.22251601330935955
+          }
+        },
+        {
+          "repeat": 17,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 23.250313999596983,
+            "local_compute_and_pack_ms": 22.301788005279377,
+            "finite_status_collective_ms": 0.5981400026939809,
+            "gradient_and_loss_collective_ms": 0.3258580109104514,
+            "optimizer_ms": 0.024527980713173747
+          },
+          "F3_sgd": {
+            "wall_ms": 23.658051999518648,
+            "local_compute_and_pack_ms": 22.4243109987583,
+            "finite_status_collective_ms": 0.5866329884156585,
+            "gradient_and_loss_collective_ms": 0.32532899058423936,
+            "optimizer_ms": 0.3217790217604488
+          },
+          "B1_sgd": {
+            "wall_ms": 24.344948993530124,
+            "local_compute_and_pack_ms": 23.219505994347855,
+            "finite_status_collective_ms": 0.5481050175148994,
+            "gradient_and_loss_collective_ms": 0.2981300058308989,
+            "optimizer_ms": 0.2792079758364707
+          },
+          "F3_grad": {
+            "wall_ms": 24.34468100545928,
+            "local_compute_and_pack_ms": 23.475980997318402,
+            "finite_status_collective_ms": 0.5581710138358176,
+            "gradient_and_loss_collective_ms": 0.28747599571943283,
+            "optimizer_ms": 0.023052998585626483
+          }
+        },
+        {
+          "repeat": 18,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 21.041694999439642,
+            "local_compute_and_pack_ms": 19.764516007853672,
+            "finite_status_collective_ms": 0.5933149950578809,
+            "gradient_and_loss_collective_ms": 0.32897901837714016,
+            "optimizer_ms": 0.3548849781509489
+          },
+          "F3_sgd": {
+            "wall_ms": 19.8831669986248,
+            "local_compute_and_pack_ms": 19.059993006521836,
+            "finite_status_collective_ms": 0.4098080098628998,
+            "gradient_and_loss_collective_ms": 0.20773400319740176,
+            "optimizer_ms": 0.20563197904266417
+          },
+          "B1_grad": {
+            "wall_ms": 22.909138002432883,
+            "local_compute_and_pack_ms": 22.12642799713649,
+            "finite_status_collective_ms": 0.4907429974991828,
+            "gradient_and_loss_collective_ms": 0.27204700745642185,
+            "optimizer_ms": 0.019920000340789557
+          },
+          "F3_grad": {
+            "wall_ms": 22.74504501838237,
+            "local_compute_and_pack_ms": 21.81570400716737,
+            "finite_status_collective_ms": 0.582040986046195,
+            "gradient_and_loss_collective_ms": 0.32316401484422386,
+            "optimizer_ms": 0.024136010324582458
+          }
+        },
+        {
+          "repeat": 19,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 24.930238025262952,
+            "local_compute_and_pack_ms": 24.126807024003938,
+            "finite_status_collective_ms": 0.39615598507225513,
+            "gradient_and_loss_collective_ms": 0.20447999122552574,
+            "optimizer_ms": 0.20279502496123314
+          },
+          "F3_grad": {
+            "wall_ms": 21.992613998008892,
+            "local_compute_and_pack_ms": 21.401707985205576,
+            "finite_status_collective_ms": 0.3822619910351932,
+            "gradient_and_loss_collective_ms": 0.19385002087801695,
+            "optimizer_ms": 0.014794000890105963
+          },
+          "B1_grad": {
+            "wall_ms": 19.931959017412737,
+            "local_compute_and_pack_ms": 18.99252101429738,
+            "finite_status_collective_ms": 0.5889949970878661,
+            "gradient_and_loss_collective_ms": 0.3261640085838735,
+            "optimizer_ms": 0.02427899744361639
+          },
+          "F3_sgd": {
+            "wall_ms": 23.818824003683403,
+            "local_compute_and_pack_ms": 22.935104003408924,
+            "finite_status_collective_ms": 0.42328599374741316,
+            "gradient_and_loss_collective_ms": 0.22548800916410983,
+            "optimizer_ms": 0.2349459973629564
+          }
+        }
+      ]
+    },
+    {
+      "rank": 1,
+      "gpu_uuid": "05f77118-4e18-dea2-78fc-d40ad5397445",
+      "observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 25.253585015889257,
+            "local_compute_and_pack_ms": 12.33003701781854,
+            "finite_status_collective_ms": 12.591740989591926,
+            "gradient_and_loss_collective_ms": 0.3219660138711333,
+            "optimizer_ms": 0.009840994607657194
+          },
+          "F3_grad": {
+            "wall_ms": 25.25276498636231,
+            "local_compute_and_pack_ms": 12.12920100078918,
+            "finite_status_collective_ms": 12.87680197856389,
+            "gradient_and_loss_collective_ms": 0.23699901066720486,
+            "optimizer_ms": 0.009762996342033148
+          },
+          "B1_sgd": {
+            "wall_ms": 24.746698996750638,
+            "local_compute_and_pack_ms": 12.343081994913518,
+            "finite_status_collective_ms": 11.952853994444013,
+            "gradient_and_loss_collective_ms": 0.31100501655600965,
+            "optimizer_ms": 0.13975799083709717
+          },
+          "F3_sgd": {
+            "wall_ms": 21.9553749775514,
+            "local_compute_and_pack_ms": 12.153749994467944,
+            "finite_status_collective_ms": 9.338150994153693,
+            "gradient_and_loss_collective_ms": 0.31547300750389695,
+            "optimizer_ms": 0.14800098142586648
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 25.70259297499433,
+            "local_compute_and_pack_ms": 12.371113989502192,
+            "finite_status_collective_ms": 12.981506006326526,
+            "gradient_and_loss_collective_ms": 0.3402929869480431,
+            "optimizer_ms": 0.009679992217570543
+          },
+          "F3_sgd": {
+            "wall_ms": 24.100994021864608,
+            "local_compute_and_pack_ms": 12.20481502241455,
+            "finite_status_collective_ms": 11.485128983622417,
+            "gradient_and_loss_collective_ms": 0.2728560066316277,
+            "optimizer_ms": 0.1381940091960132
+          },
+          "B1_sgd": {
+            "wall_ms": 26.195744023425505,
+            "local_compute_and_pack_ms": 12.322365015279502,
+            "finite_status_collective_ms": 13.393302011536434,
+            "gradient_and_loss_collective_ms": 0.34104197402484715,
+            "optimizer_ms": 0.13903502258472145
+          },
+          "F3_grad": {
+            "wall_ms": 24.53004100243561,
+            "local_compute_and_pack_ms": 12.276526016648859,
+            "finite_status_collective_ms": 11.951255990425125,
+            "gradient_and_loss_collective_ms": 0.29235900728963315,
+            "optimizer_ms": 0.009899988071992993
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 26.67326101800427,
+            "local_compute_and_pack_ms": 12.374173995340243,
+            "finite_status_collective_ms": 13.825115020154044,
+            "gradient_and_loss_collective_ms": 0.33618800807744265,
+            "optimizer_ms": 0.13778399443253875
+          },
+          "F3_sgd": {
+            "wall_ms": 25.223963020835072,
+            "local_compute_and_pack_ms": 12.18004900147207,
+            "finite_status_collective_ms": 12.5631200207863,
+            "gradient_and_loss_collective_ms": 0.32981298863887787,
+            "optimizer_ms": 0.15098100993782282
+          },
+          "B1_grad": {
+            "wall_ms": 25.74071500566788,
+            "local_compute_and_pack_ms": 12.387071998091415,
+            "finite_status_collective_ms": 13.063307997072116,
+            "gradient_and_loss_collective_ms": 0.2803750103339553,
+            "optimizer_ms": 0.009960000170394778
+          },
+          "F3_grad": {
+            "wall_ms": 25.52040698355995,
+            "local_compute_and_pack_ms": 12.171562004368752,
+            "finite_status_collective_ms": 12.996615987503901,
+            "gradient_and_loss_collective_ms": 0.3419129934627563,
+            "optimizer_ms": 0.010315998224541545
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 25.653326010797173,
+            "local_compute_and_pack_ms": 12.34800199745223,
+            "finite_status_collective_ms": 12.852110987296328,
+            "gradient_and_loss_collective_ms": 0.30067600891925395,
+            "optimizer_ms": 0.15253701712936163
+          },
+          "F3_grad": {
+            "wall_ms": 26.51211799820885,
+            "local_compute_and_pack_ms": 12.16956099960953,
+            "finite_status_collective_ms": 13.9912549930159,
+            "gradient_and_loss_collective_ms": 0.34090402186848223,
+            "optimizer_ms": 0.010397983714938164
+          },
+          "B1_grad": {
+            "wall_ms": 23.74837701790966,
+            "local_compute_and_pack_ms": 12.33364301151596,
+            "finite_status_collective_ms": 11.089078994700685,
+            "gradient_and_loss_collective_ms": 0.3156640159431845,
+            "optimizer_ms": 0.0099909957498312
+          },
+          "F3_sgd": {
+            "wall_ms": 26.852321025216952,
+            "local_compute_and_pack_ms": 12.278303009225056,
+            "finite_status_collective_ms": 14.105070004006848,
+            "gradient_and_loss_collective_ms": 0.32614899100735784,
+            "optimizer_ms": 0.14279902097769082
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 24.986533011542633,
+            "local_compute_and_pack_ms": 12.360093009192497,
+            "finite_status_collective_ms": 12.306541000725701,
+            "gradient_and_loss_collective_ms": 0.3100440080743283,
+            "optimizer_ms": 0.009854993550106883
+          },
+          "F3_grad": {
+            "wall_ms": 25.655589008238167,
+            "local_compute_and_pack_ms": 12.156559008872136,
+            "finite_status_collective_ms": 13.26201600022614,
+            "gradient_and_loss_collective_ms": 0.22726398310624063,
+            "optimizer_ms": 0.009750016033649445
+          },
+          "B1_sgd": {
+            "wall_ms": 23.051452997606248,
+            "local_compute_and_pack_ms": 12.32449899544008,
+            "finite_status_collective_ms": 10.351283999625593,
+            "gradient_and_loss_collective_ms": 0.23586198221892118,
+            "optimizer_ms": 0.1398080203216523
+          },
+          "F3_sgd": {
+            "wall_ms": 21.782027004519477,
+            "local_compute_and_pack_ms": 12.148369016358629,
+            "finite_status_collective_ms": 9.172338002827018,
+            "gradient_and_loss_collective_ms": 0.322835985571146,
+            "optimizer_ms": 0.1384839997626841
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 24.054867011727765,
+            "local_compute_and_pack_ms": 12.354737002169713,
+            "finite_status_collective_ms": 11.48990899673663,
+            "gradient_and_loss_collective_ms": 0.20054398919455707,
+            "optimizer_ms": 0.009677023626863956
+          },
+          "F3_sgd": {
+            "wall_ms": 22.305561025859788,
+            "local_compute_and_pack_ms": 12.166202010121197,
+            "finite_status_collective_ms": 9.819725004490465,
+            "gradient_and_loss_collective_ms": 0.1807509979698807,
+            "optimizer_ms": 0.13888301327824593
+          },
+          "B1_sgd": {
+            "wall_ms": 17.953606002265587,
+            "local_compute_and_pack_ms": 12.31934898532927,
+            "finite_status_collective_ms": 5.158765008673072,
+            "gradient_and_loss_collective_ms": 0.3375830128788948,
+            "optimizer_ms": 0.13790899538435042
+          },
+          "F3_grad": {
+            "wall_ms": 19.396227988181636,
+            "local_compute_and_pack_ms": 12.175413983641192,
+            "finite_status_collective_ms": 7.011779001913965,
+            "gradient_and_loss_collective_ms": 0.1995020138565451,
+            "optimizer_ms": 0.009532988769933581
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 23.198046983452514,
+            "local_compute_and_pack_ms": 12.336401996435598,
+            "finite_status_collective_ms": 10.427742992760614,
+            "gradient_and_loss_collective_ms": 0.2962249855045229,
+            "optimizer_ms": 0.1376770087517798
+          },
+          "F3_sgd": {
+            "wall_ms": 23.156448994996026,
+            "local_compute_and_pack_ms": 12.162308994447812,
+            "finite_status_collective_ms": 10.54694299818948,
+            "gradient_and_loss_collective_ms": 0.30855301884002984,
+            "optimizer_ms": 0.13864398351870477
+          },
+          "B1_grad": {
+            "wall_ms": 24.850117013556883,
+            "local_compute_and_pack_ms": 12.330835015745834,
+            "finite_status_collective_ms": 12.218809977639467,
+            "gradient_and_loss_collective_ms": 0.2906779991462827,
+            "optimizer_ms": 0.009794021025300026
+          },
+          "F3_grad": {
+            "wall_ms": 25.18845899612643,
+            "local_compute_and_pack_ms": 12.152968003647402,
+            "finite_status_collective_ms": 12.710415001492947,
+            "gradient_and_loss_collective_ms": 0.3156409948132932,
+            "optimizer_ms": 0.009434996172785759
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 25.728003005497158,
+            "local_compute_and_pack_ms": 12.341010995442048,
+            "finite_status_collective_ms": 12.950479023857042,
+            "gradient_and_loss_collective_ms": 0.2975229872390628,
+            "optimizer_ms": 0.13898999895900488
+          },
+          "F3_grad": {
+            "wall_ms": 21.83433499885723,
+            "local_compute_and_pack_ms": 12.13459501741454,
+            "finite_status_collective_ms": 9.367425984237343,
+            "gradient_and_loss_collective_ms": 0.3227179986424744,
+            "optimizer_ms": 0.00959599856287241
+          },
+          "B1_grad": {
+            "wall_ms": 21.18011101265438,
+            "local_compute_and_pack_ms": 12.340083019807935,
+            "finite_status_collective_ms": 8.476486982544884,
+            "gradient_and_loss_collective_ms": 0.35342801129445434,
+            "optimizer_ms": 0.010112999007105827
+          },
+          "F3_sgd": {
+            "wall_ms": 24.164321017451584,
+            "local_compute_and_pack_ms": 12.166419008281082,
+            "finite_status_collective_ms": 11.532731004990637,
+            "gradient_and_loss_collective_ms": 0.32686899066902697,
+            "optimizer_ms": 0.13830201351083815
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 24.886386992875487,
+            "local_compute_and_pack_ms": 12.334893981460482,
+            "finite_status_collective_ms": 12.185630010208115,
+            "gradient_and_loss_collective_ms": 0.355644995579496,
+            "optimizer_ms": 0.010218005627393723
+          },
+          "F3_grad": {
+            "wall_ms": 25.831563980318606,
+            "local_compute_and_pack_ms": 12.190898996777833,
+            "finite_status_collective_ms": 13.308402005350217,
+            "gradient_and_loss_collective_ms": 0.3223409876227379,
+            "optimizer_ms": 0.009921990567818284
+          },
+          "B1_sgd": {
+            "wall_ms": 25.52734498749487,
+            "local_compute_and_pack_ms": 12.346540985163301,
+            "finite_status_collective_ms": 12.70301901968196,
+            "gradient_and_loss_collective_ms": 0.3275719936937094,
+            "optimizer_ms": 0.15021298895590007
+          },
+          "F3_sgd": {
+            "wall_ms": 25.565797986928374,
+            "local_compute_and_pack_ms": 12.163148989202455,
+            "finite_status_collective_ms": 12.946211994858459,
+            "gradient_and_loss_collective_ms": 0.30935800168663263,
+            "optimizer_ms": 0.14707900118082762
+          }
+        },
+        {
+          "repeat": 9,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 22.51355699263513,
+            "local_compute_and_pack_ms": 12.319541012402624,
+            "finite_status_collective_ms": 9.842365980148315,
+            "gradient_and_loss_collective_ms": 0.3415480023249984,
+            "optimizer_ms": 0.010101997759193182
+          },
+          "F3_sgd": {
+            "wall_ms": 22.630377003224567,
+            "local_compute_and_pack_ms": 12.186484003905207,
+            "finite_status_collective_ms": 10.025327996117994,
+            "gradient_and_loss_collective_ms": 0.2677529992070049,
+            "optimizer_ms": 0.15081200399436057
+          },
+          "B1_sgd": {
+            "wall_ms": 22.711818979587406,
+            "local_compute_and_pack_ms": 12.35401799203828,
+            "finite_status_collective_ms": 9.948368009645492,
+            "gradient_and_loss_collective_ms": 0.27054199017584324,
+            "optimizer_ms": 0.13889098772779107
+          },
+          "F3_grad": {
+            "wall_ms": 21.009338001022115,
+            "local_compute_and_pack_ms": 12.172415998065844,
+            "finite_status_collective_ms": 8.517112990375608,
+            "gradient_and_loss_collective_ms": 0.3097669978160411,
+            "optimizer_ms": 0.010042014764621854
+          }
+        },
+        {
+          "repeat": 10,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 26.027159008663148,
+            "local_compute_and_pack_ms": 12.35684601124376,
+            "finite_status_collective_ms": 13.310120004462078,
+            "gradient_and_loss_collective_ms": 0.22102901129983366,
+            "optimizer_ms": 0.13916398165747523
+          },
+          "F3_sgd": {
+            "wall_ms": 23.30386600806378,
+            "local_compute_and_pack_ms": 12.15466600842774,
+            "finite_status_collective_ms": 10.794501984491944,
+            "gradient_and_loss_collective_ms": 0.21621101768687367,
+            "optimizer_ms": 0.13848699745722115
+          },
+          "B1_grad": {
+            "wall_ms": 23.924445995362476,
+            "local_compute_and_pack_ms": 12.445970001863316,
+            "finite_status_collective_ms": 11.119312985101715,
+            "gradient_and_loss_collective_ms": 0.34963100915774703,
+            "optimizer_ms": 0.009531999239698052
+          },
+          "F3_grad": {
+            "wall_ms": 25.74076401651837,
+            "local_compute_and_pack_ms": 12.160669022705406,
+            "finite_status_collective_ms": 13.275388977490366,
+            "gradient_and_loss_collective_ms": 0.2951820206362754,
+            "optimizer_ms": 0.00952399568632245
+          }
+        },
+        {
+          "repeat": 11,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 25.03441699082032,
+            "local_compute_and_pack_ms": 12.364435999188572,
+            "finite_status_collective_ms": 12.195566989248618,
+            "gradient_and_loss_collective_ms": 0.33501500729471445,
+            "optimizer_ms": 0.13939899508841336
+          },
+          "F3_grad": {
+            "wall_ms": 25.501877011265606,
+            "local_compute_and_pack_ms": 12.155449017882347,
+            "finite_status_collective_ms": 13.0510609888006,
+            "gradient_and_loss_collective_ms": 0.28495799051597714,
+            "optimizer_ms": 0.010409014066681266
+          },
+          "B1_grad": {
+            "wall_ms": 21.774699009256437,
+            "local_compute_and_pack_ms": 12.44434600812383,
+            "finite_status_collective_ms": 8.978333993582055,
+            "gradient_and_loss_collective_ms": 0.34131499705836177,
+            "optimizer_ms": 0.010704010492190719
+          },
+          "F3_sgd": {
+            "wall_ms": 25.67790399189107,
+            "local_compute_and_pack_ms": 12.169917987193912,
+            "finite_status_collective_ms": 13.152583996998146,
+            "gradient_and_loss_collective_ms": 0.21539200679399073,
+            "optimizer_ms": 0.14001000090502203
+          }
+        },
+        {
+          "repeat": 12,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 22.719973989296705,
+            "local_compute_and_pack_ms": 12.427624984411523,
+            "finite_status_collective_ms": 10.076416016090661,
+            "gradient_and_loss_collective_ms": 0.2060229890048504,
+            "optimizer_ms": 0.00990999978967011
+          },
+          "F3_grad": {
+            "wall_ms": 18.85131301241927,
+            "local_compute_and_pack_ms": 12.176412012195215,
+            "finite_status_collective_ms": 6.336894992273301,
+            "gradient_and_loss_collective_ms": 0.328369002090767,
+            "optimizer_ms": 0.009637005859985948
+          },
+          "B1_sgd": {
+            "wall_ms": 22.761136991903186,
+            "local_compute_and_pack_ms": 12.496349983848631,
+            "finite_status_collective_ms": 9.892522997688502,
+            "gradient_and_loss_collective_ms": 0.23442402016371489,
+            "optimizer_ms": 0.1378399902023375
+          },
+          "F3_sgd": {
+            "wall_ms": 24.535540986107662,
+            "local_compute_and_pack_ms": 12.188879976747558,
+            "finite_status_collective_ms": 11.866554006701335,
+            "gradient_and_loss_collective_ms": 0.3416940162423998,
+            "optimizer_ms": 0.13841298641636968
+          }
+        },
+        {
+          "repeat": 13,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 23.738504998618737,
+            "local_compute_and_pack_ms": 12.323997012572363,
+            "finite_status_collective_ms": 11.089898005593568,
+            "gradient_and_loss_collective_ms": 0.31492699054069817,
+            "optimizer_ms": 0.009682989912107587
+          },
+          "F3_sgd": {
+            "wall_ms": 26.758502004668117,
+            "local_compute_and_pack_ms": 12.197614996694028,
+            "finite_status_collective_ms": 14.094893995206803,
+            "gradient_and_loss_collective_ms": 0.32640600693412125,
+            "optimizer_ms": 0.13958700583316386
+          },
+          "B1_sgd": {
+            "wall_ms": 24.52178200474009,
+            "local_compute_and_pack_ms": 12.350222998065874,
+            "finite_status_collective_ms": 11.6891429934185,
+            "gradient_and_loss_collective_ms": 0.3447640046942979,
+            "optimizer_ms": 0.13765200856141746
+          },
+          "F3_grad": {
+            "wall_ms": 22.85880799172446,
+            "local_compute_and_pack_ms": 12.165293010184541,
+            "finite_status_collective_ms": 10.36275498336181,
+            "gradient_and_loss_collective_ms": 0.32051600283011794,
+            "optimizer_ms": 0.010243995347991586
+          }
+        },
+        {
+          "repeat": 14,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 24.689888989087194,
+            "local_compute_and_pack_ms": 12.361055996734649,
+            "finite_status_collective_ms": 11.916684015886858,
+            "gradient_and_loss_collective_ms": 0.2620569721329957,
+            "optimizer_ms": 0.15009200433269143
+          },
+          "F3_sgd": {
+            "wall_ms": 23.587024013977498,
+            "local_compute_and_pack_ms": 12.172549002571031,
+            "finite_status_collective_ms": 10.941251006443053,
+            "gradient_and_loss_collective_ms": 0.32325598294846714,
+            "optimizer_ms": 0.14996802201494575
+          },
+          "B1_grad": {
+            "wall_ms": 25.726276013301685,
+            "local_compute_and_pack_ms": 12.342361005721614,
+            "finite_status_collective_ms": 13.065172010101378,
+            "gradient_and_loss_collective_ms": 0.3089829988311976,
+            "optimizer_ms": 0.009759998647496104
+          },
+          "F3_grad": {
+            "wall_ms": 25.513828004477546,
+            "local_compute_and_pack_ms": 12.170950998552144,
+            "finite_status_collective_ms": 12.997929006814957,
+            "gradient_and_loss_collective_ms": 0.33452099887654185,
+            "optimizer_ms": 0.010427000233903527
+          }
+        },
+        {
+          "repeat": 15,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 25.816370005486533,
+            "local_compute_and_pack_ms": 12.347595999017358,
+            "finite_status_collective_ms": 13.002352003240958,
+            "gradient_and_loss_collective_ms": 0.32800098415464163,
+            "optimizer_ms": 0.13842101907357574
+          },
+          "F3_grad": {
+            "wall_ms": 24.054373003309593,
+            "local_compute_and_pack_ms": 12.168678018497303,
+            "finite_status_collective_ms": 11.548310983926058,
+            "gradient_and_loss_collective_ms": 0.32757699955254793,
+            "optimizer_ms": 0.00980700133368373
+          },
+          "B1_grad": {
+            "wall_ms": 23.15825500409119,
+            "local_compute_and_pack_ms": 12.384764006128535,
+            "finite_status_collective_ms": 10.51650897716172,
+            "gradient_and_loss_collective_ms": 0.24704501265659928,
+            "optimizer_ms": 0.009937008144333959
+          },
+          "F3_sgd": {
+            "wall_ms": 22.868567000841722,
+            "local_compute_and_pack_ms": 12.172204995295033,
+            "finite_status_collective_ms": 10.321812005713582,
+            "gradient_and_loss_collective_ms": 0.23479998344555497,
+            "optimizer_ms": 0.13975001638755202
+          }
+        },
+        {
+          "repeat": 16,
+          "order": [
+            "B1_grad",
+            "F3_grad",
+            "B1_sgd",
+            "F3_sgd"
+          ],
+          "B1_grad": {
+            "wall_ms": 25.949718983611092,
+            "local_compute_and_pack_ms": 12.344963004579768,
+            "finite_status_collective_ms": 13.255400990601629,
+            "gradient_and_loss_collective_ms": 0.3396139945834875,
+            "optimizer_ms": 0.009740993846207857
+          },
+          "F3_grad": {
+            "wall_ms": 24.808456015307456,
+            "local_compute_and_pack_ms": 12.178495002444834,
+            "finite_status_collective_ms": 12.310968013480306,
+            "gradient_and_loss_collective_ms": 0.3093630075454712,
+            "optimizer_ms": 0.009629991836845875
+          },
+          "B1_sgd": {
+            "wall_ms": 26.310654007829726,
+            "local_compute_and_pack_ms": 12.360216001980007,
+            "finite_status_collective_ms": 13.594432995887473,
+            "gradient_and_loss_collective_ms": 0.21737400675192475,
+            "optimizer_ms": 0.13863100321032107
+          },
+          "F3_sgd": {
+            "wall_ms": 22.351127001456916,
+            "local_compute_and_pack_ms": 12.173630006145686,
+            "finite_status_collective_ms": 9.817205980652943,
+            "gradient_and_loss_collective_ms": 0.21370500326156616,
+            "optimizer_ms": 0.146586011396721
+          }
+        },
+        {
+          "repeat": 17,
+          "order": [
+            "B1_grad",
+            "F3_sgd",
+            "B1_sgd",
+            "F3_grad"
+          ],
+          "B1_grad": {
+            "wall_ms": 23.183002980658785,
+            "local_compute_and_pack_ms": 12.3359739955049,
+            "finite_status_collective_ms": 10.51702699624002,
+            "gradient_and_loss_collective_ms": 0.3202809893991798,
+            "optimizer_ms": 0.009720999514684081
+          },
+          "F3_sgd": {
+            "wall_ms": 23.45864599919878,
+            "local_compute_and_pack_ms": 12.187056010589004,
+            "finite_status_collective_ms": 10.807513986947015,
+            "gradient_and_loss_collective_ms": 0.32376800663769245,
+            "optimizer_ms": 0.14030799502506852
+          },
+          "B1_sgd": {
+            "wall_ms": 24.195548001443967,
+            "local_compute_and_pack_ms": 12.35330500639975,
+            "finite_status_collective_ms": 11.411888990551233,
+            "gradient_and_loss_collective_ms": 0.2921679988503456,
+            "optimizer_ms": 0.1381860056426376
+          },
+          "F3_grad": {
+            "wall_ms": 24.294617003761232,
+            "local_compute_and_pack_ms": 12.193864007713273,
+            "finite_status_collective_ms": 11.799544998211786,
+            "gradient_and_loss_collective_ms": 0.29130198527127504,
+            "optimizer_ms": 0.009906012564897537
+          }
+        },
+        {
+          "repeat": 18,
+          "order": [
+            "B1_sgd",
+            "F3_sgd",
+            "B1_grad",
+            "F3_grad"
+          ],
+          "B1_sgd": {
+            "wall_ms": 20.810676011024043,
+            "local_compute_and_pack_ms": 12.35229300800711,
+            "finite_status_collective_ms": 7.983125979080796,
+            "gradient_and_loss_collective_ms": 0.3383970179129392,
+            "optimizer_ms": 0.13686000602319837
+          },
+          "F3_sgd": {
+            "wall_ms": 19.83089098939672,
+            "local_compute_and_pack_ms": 12.163756997324526,
+            "finite_status_collective_ms": 7.33240699628368,
+            "gradient_and_loss_collective_ms": 0.18575199646875262,
+            "optimizer_ms": 0.148974999319762
+          },
+          "B1_grad": {
+            "wall_ms": 22.862554993480444,
+            "local_compute_and_pack_ms": 12.351790996035561,
+            "finite_status_collective_ms": 10.22157198167406,
+            "gradient_and_loss_collective_ms": 0.2797430206555873,
+            "optimizer_ms": 0.009448995115235448
+          },
+          "F3_grad": {
+            "wall_ms": 22.691617981763557,
+            "local_compute_and_pack_ms": 12.173206981969997,
+            "finite_status_collective_ms": 10.182778991293162,
+            "gradient_and_loss_collective_ms": 0.32592201023362577,
+            "optimizer_ms": 0.009709998266771436
+          }
+        },
+        {
+          "repeat": 19,
+          "order": [
+            "B1_sgd",
+            "F3_grad",
+            "B1_grad",
+            "F3_sgd"
+          ],
+          "B1_sgd": {
+            "wall_ms": 24.87892800127156,
+            "local_compute_and_pack_ms": 12.403864006046206,
+            "finite_status_collective_ms": 12.14001898188144,
+            "gradient_and_loss_collective_ms": 0.1977170177269727,
+            "optimizer_ms": 0.13732799561694264
+          },
+          "F3_grad": {
+            "wall_ms": 21.969516994431615,
+            "local_compute_and_pack_ms": 12.194932001875713,
+            "finite_status_collective_ms": 9.575061005307361,
+            "gradient_and_loss_collective_ms": 0.1898449845612049,
+            "optimizer_ms": 0.009679002687335014
+          },
+          "B1_grad": {
+            "wall_ms": 19.8588710045442,
+            "local_compute_and_pack_ms": 12.365428992779925,
+            "finite_status_collective_ms": 7.1633860061410815,
+            "gradient_and_loss_collective_ms": 0.32020200160332024,
+            "optimizer_ms": 0.009854004019871354
+          },
+          "F3_sgd": {
+            "wall_ms": 23.73272299882956,
+            "local_compute_and_pack_ms": 12.192092020995915,
+            "finite_status_collective_ms": 11.177759995916858,
+            "gradient_and_loss_collective_ms": 0.22510398412123322,
+            "optimizer_ms": 0.13776699779555202
+          }
+        }
+      ]
+    }
+  ],
+  "optimizer_final_state_checks": {
+    "B1_sgd": {
+      "max_abs": 2.7755575615628914e-17,
+      "max_tolerance_ratio": 6.077387366286636e-06,
+      "atol": 2e-12,
+      "rtol": 2e-11,
+      "passed": true
+    },
+    "F3_sgd": {
+      "max_abs": 2.7755575615628914e-17,
+      "max_tolerance_ratio": 6.077387366286636e-06,
+      "atol": 2e-12,
+      "rtol": 2e-11,
+      "passed": true
+    }
+  },
+  "passed": true
+}

@@ -1,0 +1,69 @@
+{
+  "scope": "Historical FP64 observations; no GPU rerun. Solve ratios are ratios of three accepted-run medians after the documented budget extension.",
+  "original_converged": 17,
+  "final_converged": 24,
+  "complete_solve_h100_nvl": {
+    "B1": {
+      "median_accepted_run_seconds": 22.527761470992118,
+      "ratio_of_medians_over_hopper_tma": 1.014497948942342,
+      "all_attempts_process_seconds": 101.01245733699761
+    },
+    "cuBLASLt": {
+      "median_accepted_run_seconds": 22.722830425947905,
+      "ratio_of_medians_over_hopper_tma": 1.023282534794771,
+      "all_attempts_process_seconds": 102.24089777190238
+    },
+    "F": {
+      "median_accepted_run_seconds": 22.42663338314742,
+      "ratio_of_medians_over_hopper_tma": 1.0099438241203524,
+      "all_attempts_process_seconds": 100.09399298671633
+    },
+    "HopperTMA": {
+      "median_accepted_run_seconds": 22.20582258887589,
+      "ratio_of_medians_over_hopper_tma": 1.0,
+      "all_attempts_process_seconds": 100.16812544781715
+    },
+    "TorchJetCompiled": {
+      "median_accepted_run_seconds": 25.941473643062636,
+      "ratio_of_medians_over_hopper_tma": 1.168228447256808,
+      "all_attempts_process_seconds": 118.64653089107014
+    },
+    "CuEquivariance": {
+      "median_accepted_run_seconds": 25.793689514743164,
+      "ratio_of_medians_over_hopper_tma": 1.161573250056705,
+      "all_attempts_process_seconds": 111.37695726379752
+    },
+    "TorchNestedAD": {
+      "median_accepted_run_seconds": 96.65986630111001,
+      "ratio_of_medians_over_hopper_tma": 4.3529063566207284,
+      "all_attempts_process_seconds": 293.7746875518933
+    },
+    "PhysicsNeMo": {
+      "median_accepted_run_seconds": 118.78979656891897,
+      "ratio_of_medians_over_hopper_tma": 5.3494886799837476,
+      "all_attempts_process_seconds": 474.23180523794144
+    }
+  },
+  "complete_gradient_h100_16384_points": {
+    "Torch_jet_compiled": {
+      "baseline_median_ms": 2.466613292694092,
+      "flashns_f_median_ms": 1.8322559992472331,
+      "median_paired_ratio": 1.3481252006300426
+    },
+    "cuEquivariance": {
+      "baseline_median_ms": 2.192767937978109,
+      "flashns_f_median_ms": 1.8322559992472331,
+      "median_paired_ratio": 1.197193454916118
+    }
+  },
+  "complete_gradient_separate_h100_mathdx_65536_points": {
+    "baseline_median_ms": 5.588179016113282,
+    "flashns_f_plus_median_ms": 4.282233428955078,
+    "median_paired_ratio": 1.3052269060577337
+  },
+  "source_sha256": {
+    "artifacts/hopper_followup/solver-summary.json": "96f8c6d69a05f7ba5d96c392ac857de91737dad96776dff1af5d013b40aba0aa",
+    "experiments/cuda_jet_h100/artifacts/scientific_benchmark.json": "05b92a5587993ffa835a0e43cf9c26bb5a36964bdacc7ac1048d34185e53e3fe",
+    "experiments/cuda_jet_h100/artifacts_h100b/mathdx_benchmark.json": "01c384a6a858cd4fe1b845ac7b979c12eb77a83a70d6a4ea979b1360db4f35ae"
+  }
+}

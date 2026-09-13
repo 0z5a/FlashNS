@@ -1,0 +1,5423 @@
+{
+  "timestamp_utc": "2026-09-09T03:56:59.805768+00:00",
+  "source_hashes": {
+    "experiments/cuda_jet/input/generate_jet_header.py": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+    "experiments/cuda_jet/input/jet_reference.py": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+    "experiments/cuda_jet_h100/benchmark.py": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+    "experiments/cuda_jet_h100/build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+    "experiments/cuda_jet_h100/check_sanitizers.py": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+    "experiments/cuda_jet_h100/common.py": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+    "experiments/cuda_jet_h100/generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+    "experiments/cuda_jet_h100/gpu.py": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+    "experiments/cuda_jet_h100/graph_experiment.py": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+    "experiments/cuda_jet_h100/profile_costs.py": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+    "experiments/cuda_jet_h100/sanitizer_smoke.cu": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+    "experiments/cuda_jet_h100/stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+    "experiments/cuda_jet_h100/stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+    "experiments/cuda_jet_h100/stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+    "experiments/cuda_jet_h100/validate.py": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+    "src/flashns/distributed_contract.py": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+    "src/flashns/jet_spec.py": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+    "src/flashns/jet_stable.py": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407"
+  },
+  "build": {
+    "timestamp_utc": "2026-09-09T03:26:39.275247+00:00",
+    "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+    "capability": [
+      9,
+      0
+    ],
+    "fast_math": false,
+    "libraries": {
+      "stable": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/stable_kernels.cu",
+          "-o",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/libstable.so"
+        ],
+        "seconds": 1.2072619009995833,
+        "returncode": 0,
+        "path": "libstable.so",
+        "sha256": "38643c4fb0294c4413b41c3d2b9a1bb66f28cb7c27892fb97c012a1ecffe2be5"
+      },
+      "dgrad_n64": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "-I/root/flashns-h100-20260909/third_party/cutlass/include",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/stable_dgrad.cu",
+          "-o",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/libdgrad_n64.so"
+        ],
+        "seconds": 8.58454268600326,
+        "returncode": 0,
+        "path": "libdgrad_n64.so",
+        "sha256": "1dd0c74715f17326f9ac68a943d849f8eceaa717d0d6d107e335e2363af20732"
+      },
+      "dgrad_n32": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "-I/root/flashns-h100-20260909/third_party/cutlass/include",
+          "-DFLASHNS_TILE_N=32",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/stable_dgrad.cu",
+          "-o",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/libdgrad_n32.so"
+        ],
+        "seconds": 9.243504532030784,
+        "returncode": 0,
+        "path": "libdgrad_n32.so",
+        "sha256": "902350ab6ed9404defc69b09c59089c1987817130fee75a4eb404f3f2b576bf2"
+      }
+    },
+    "source_hashes": {
+      "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+      "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+      "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+      "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+      "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+    }
+  },
+  "telemetry_before": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,clocks.sm,clocks.mem,temperature.gpu,power.draw,utilization.gpu,memory.used",
+      "--format=csv"
+    ],
+    "returncode": 0,
+    "output": "index, uuid, clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], utilization.gpu [%], memory.used [MiB]\n0, GPU-234a091d-e544-81aa-a6c8-44b77efbff23, 1980 MHz, 2619 MHz, 29, 78.34 W, 0 %, 527 MiB\n"
+  },
+  "numerical_updates": {
+    "reference": "independent nested stable AD at each changed input/parameter state",
+    "cases": [
+      {
+        "backend": "B1",
+        "checks": [
+          {
+            "iteration": 0,
+            "loss": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 1.3877787807814457e-17,
+              "max_tolerance_ratio": 5.130456768945931e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 1,
+            "loss": {
+              "max_abs": 3.469446951953614e-18,
+              "max_tolerance_ratio": 1.4709067665942476e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.690638451783367e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 5.421010862427522e-20,
+              "max_tolerance_ratio": 2.6998637771006154e-08,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 2,
+            "loss": {
+              "max_abs": 6.938893903907228e-18,
+              "max_tolerance_ratio": 2.9422873785315495e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 9.256444464635992e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 3,
+            "loss": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.662119429997654e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          }
+        ],
+        "input_and_parameter_changes_checked": true
+      },
+      {
+        "backend": "U",
+        "checks": [
+          {
+            "iteration": 0,
+            "loss": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.0232130755984585e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 1,
+            "loss": {
+              "max_abs": 3.469446951953614e-18,
+              "max_tolerance_ratio": 1.4709067665942476e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.690638451783367e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 2,
+            "loss": {
+              "max_abs": 6.938893903907228e-18,
+              "max_tolerance_ratio": 2.9422873785315495e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 9.256444464635992e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 3,
+            "loss": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.662119429997654e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          }
+        ],
+        "input_and_parameter_changes_checked": true
+      },
+      {
+        "backend": "F",
+        "checks": [
+          {
+            "iteration": 0,
+            "loss": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.0232130755984585e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 1,
+            "loss": {
+              "max_abs": 3.469446951953614e-18,
+              "max_tolerance_ratio": 1.4709067665942476e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.690638451783367e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 2,
+            "loss": {
+              "max_abs": 6.938893903907228e-18,
+              "max_tolerance_ratio": 2.9422873785315495e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 9.256444464635992e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 3,
+            "loss": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.662119429997654e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          }
+        ],
+        "input_and_parameter_changes_checked": true
+      },
+      {
+        "backend": "F3",
+        "checks": [
+          {
+            "iteration": 0,
+            "loss": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.0232130755984585e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 1,
+            "loss": {
+              "max_abs": 3.469446951953614e-18,
+              "max_tolerance_ratio": 1.4709067665942476e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.690638451783367e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 2,
+            "loss": {
+              "max_abs": 6.938893903907228e-18,
+              "max_tolerance_ratio": 2.9422873785315495e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.7755575615628914e-17,
+              "max_tolerance_ratio": 9.256444464635992e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          },
+          {
+            "iteration": 3,
+            "loss": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "parameter_gradient": {
+              "max_abs": 2.0816681711721685e-17,
+              "max_tolerance_ratio": 7.662119429997654e-06,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            },
+            "updated_parameters": {
+              "max_abs": 0.0,
+              "max_tolerance_ratio": 0.0,
+              "atol": 2e-12,
+              "rtol": 2e-11,
+              "passed": true
+            }
+          }
+        ],
+        "input_and_parameter_changes_checked": true
+      }
+    ],
+    "passed": true
+  },
+  "includes_optimizer_in_timing": false,
+  "includes_independent_validation_in_timing": false,
+  "includes_graph_capture_in_timing": false,
+  "graph_pool_sharing": false,
+  "cases": [
+    {
+      "case": {
+        "global_batch": 4096,
+        "widths": [
+          2,
+          64,
+          64,
+          3
+        ],
+        "seed": 7510,
+        "weighted": false,
+        "coordinate_scale": 0.4,
+        "global_points_sha256": "556f206cf4b281337818a571c1467e55c99ba49efad8f1ba802c125d6ecd452c",
+        "global_weights_sha256": "9ad28ff0dbb91703f930756f2c9d0f2a9f7655d6e0efeb120b4c23f9321bdaa7",
+        "global_denominator": 4096.0,
+        "parameter_init_sha256": "b8815a0572826264352517cf61ba472e82ff48062be9e837fc30b2d3d61d8523",
+        "precision_policy": "stable_aux_a1",
+        "workload_source_id": "pinn_jet_local"
+      },
+      "correctness": {
+        "B1": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "U": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "F": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "F3": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 7.776044319241812e-06,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        }
+      },
+      "captures": {
+        "B1": {
+          "seconds": 0.009219103027135134,
+          "allocated_delta_bytes": 38400,
+          "reserved_delta_bytes": -4194304,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "U": {
+          "seconds": 0.009341178985778242,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "F": {
+          "seconds": 0.008748363994527608,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "F3": {
+          "seconds": 0.009994994034059346,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        }
+      },
+      "inner": 5,
+      "paired_observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 6.844371032714844,
+            "synchronized_wall_ms": 6.8509278004057705,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2304384231567382,
+            "synchronized_wall_ms": 1.2356175924651325,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.8879234313964846,
+            "synchronized_wall_ms": 6.892575393430889,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2327424049377442,
+            "synchronized_wall_ms": 1.2371812015771866,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.707263946533203,
+            "synchronized_wall_ms": 6.711953191552311,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2058048248291016,
+            "synchronized_wall_ms": 1.2107145972549915,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.194834899902344,
+            "synchronized_wall_ms": 7.199390791356564,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2064576148986816,
+            "synchronized_wall_ms": 1.2111325981095433,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 6.5497276306152346,
+            "synchronized_wall_ms": 6.5545628080144525,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2096063613891601,
+            "synchronized_wall_ms": 1.214344403706491,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.982867431640625,
+            "synchronized_wall_ms": 6.991071009542793,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2052736282348633,
+            "synchronized_wall_ms": 1.210089202504605,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.222777557373047,
+            "synchronized_wall_ms": 7.2273819940164685,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.233017635345459,
+            "synchronized_wall_ms": 1.2374826008453965,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.270598602294922,
+            "synchronized_wall_ms": 7.275124592706561,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2306367874145507,
+            "synchronized_wall_ms": 1.2350748060271144,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 6.9616447448730465,
+            "synchronized_wall_ms": 6.9667964009568095,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.23187198638916,
+            "synchronized_wall_ms": 1.2363173998892307,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.502201843261719,
+            "synchronized_wall_ms": 7.506851595826447,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2073599815368652,
+            "synchronized_wall_ms": 1.2120435945689678,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.663468933105468,
+            "synchronized_wall_ms": 6.66857099859044,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2078783988952637,
+            "synchronized_wall_ms": 1.2134480057284236,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.673343658447266,
+            "synchronized_wall_ms": 6.679604598321021,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2325247764587401,
+            "synchronized_wall_ms": 1.2394793913699687,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 7.385164642333985,
+            "synchronized_wall_ms": 7.3899204027839005,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2316927909851074,
+            "synchronized_wall_ms": 1.2360387947410345,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.7422332763671875,
+            "synchronized_wall_ms": 6.747069605626166,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.206886386871338,
+            "synchronized_wall_ms": 1.2115351972170174,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.964934539794922,
+            "synchronized_wall_ms": 6.969763396773487,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2078911781311035,
+            "synchronized_wall_ms": 1.2125103967264295,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.999846649169922,
+            "synchronized_wall_ms": 7.00597440591082,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2350399971008301,
+            "synchronized_wall_ms": 1.2426438042894006,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 6.906944274902344,
+            "synchronized_wall_ms": 6.911827600561082,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.206054401397705,
+            "synchronized_wall_ms": 1.2105558067560196,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.02965087890625,
+            "synchronized_wall_ms": 7.035121798980981,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2066047668457032,
+            "synchronized_wall_ms": 1.2112536001950502,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.8345085144042965,
+            "synchronized_wall_ms": 6.839507597032934,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2307071685791016,
+            "synchronized_wall_ms": 1.2353854021057487,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.086815643310547,
+            "synchronized_wall_ms": 7.091549993492663,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.232038402557373,
+            "synchronized_wall_ms": 1.2365830014459789,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 6.74176025390625,
+            "synchronized_wall_ms": 6.746800406835973,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2332927703857421,
+            "synchronized_wall_ms": 1.2398955994285643,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.621990203857422,
+            "synchronized_wall_ms": 6.626826408319175,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2326975822448731,
+            "synchronized_wall_ms": 1.2379187974147499,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.747833251953125,
+            "synchronized_wall_ms": 6.752486596815288,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2066047668457032,
+            "synchronized_wall_ms": 1.2112382100895047,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 9.310649871826172,
+            "synchronized_wall_ms": 9.317226405255497,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2075648307800293,
+            "synchronized_wall_ms": 1.2128465925343335,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 6.706604766845703,
+            "synchronized_wall_ms": 6.7115768091753125,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2070528030395509,
+            "synchronized_wall_ms": 1.2117448030039668,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.776153564453125,
+            "synchronized_wall_ms": 6.7810712032951415,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2302528381347657,
+            "synchronized_wall_ms": 1.2351367971859872,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.389017486572266,
+            "synchronized_wall_ms": 7.394787005614489,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.232703971862793,
+            "synchronized_wall_ms": 1.238660397939384,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 8.468345642089844,
+            "synchronized_wall_ms": 8.473164995666593,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.207705593109131,
+            "synchronized_wall_ms": 1.212444994598627,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 7.334726715087891,
+            "synchronized_wall_ms": 7.339441403746605,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2064319610595704,
+            "synchronized_wall_ms": 1.212084002327174,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.8428291320800785,
+            "synchronized_wall_ms": 6.8479490000754595,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2323648452758789,
+            "synchronized_wall_ms": 1.2370037962682545,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.246956634521484,
+            "synchronized_wall_ms": 7.252013403922319,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2308223724365235,
+            "synchronized_wall_ms": 1.2354111997410655,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.088915252685547,
+            "synchronized_wall_ms": 7.093749404884875,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2076992034912108,
+            "synchronized_wall_ms": 1.2131465948186815,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 7.22371826171875,
+            "synchronized_wall_ms": 7.228746195323765,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2318016052246095,
+            "synchronized_wall_ms": 1.2366526061668992,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.99090576171875,
+            "synchronized_wall_ms": 6.997914600651711,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.232639980316162,
+            "synchronized_wall_ms": 1.2374407961033285,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.58453140258789,
+            "synchronized_wall_ms": 6.589895591605455,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2052736282348633,
+            "synchronized_wall_ms": 1.2099648010917008,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.690700531005859,
+            "synchronized_wall_ms": 6.695214391220361,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2068032264709472,
+            "synchronized_wall_ms": 1.211472402792424,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 9,
+          "order": [
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 7.144429016113281,
+            "synchronized_wall_ms": 7.149074610788375,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2058496475219727,
+            "synchronized_wall_ms": 1.2111587915569544,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.560749053955078,
+            "synchronized_wall_ms": 6.565570400562137,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2068415641784669,
+            "synchronized_wall_ms": 1.2116379919461906,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.382758331298828,
+            "synchronized_wall_ms": 7.3875607922673225,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2333760261535645,
+            "synchronized_wall_ms": 1.23798520071432,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.21032943725586,
+            "synchronized_wall_ms": 7.214975997339934,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2301888465881348,
+            "synchronized_wall_ms": 1.2359576066955924,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 10,
+          "order": [
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 7.05370864868164,
+            "synchronized_wall_ms": 7.058485609013587,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2315711975097656,
+            "synchronized_wall_ms": 1.2362909968942404,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.660044860839844,
+            "synchronized_wall_ms": 6.665506190620363,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.20829439163208,
+            "synchronized_wall_ms": 1.2142669991590083,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.827942657470703,
+            "synchronized_wall_ms": 6.832646403927356,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.207526397705078,
+            "synchronized_wall_ms": 1.2122137937694788,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.694905853271484,
+            "synchronized_wall_ms": 6.699548603501171,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2302911758422852,
+            "synchronized_wall_ms": 1.2349294032901525,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 11,
+          "order": [
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 7.268761444091797,
+            "synchronized_wall_ms": 7.273466000333428,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2300543785095215,
+            "synchronized_wall_ms": 1.2350155971944332,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.686521911621094,
+            "synchronized_wall_ms": 7.691199390683323,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2069439888000488,
+            "synchronized_wall_ms": 1.2116039986722171,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.332966613769531,
+            "synchronized_wall_ms": 7.339349004905671,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.209823989868164,
+            "synchronized_wall_ms": 1.2178758042864501,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.870988464355468,
+            "synchronized_wall_ms": 6.8761279922910035,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2324095726013184,
+            "synchronized_wall_ms": 1.2371556018479168,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 12,
+          "order": [
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 6.911065673828125,
+            "synchronized_wall_ms": 6.915883196052164,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.205510425567627,
+            "synchronized_wall_ms": 1.210102008190006,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.597158050537109,
+            "synchronized_wall_ms": 7.601921400055289,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.2076288223266602,
+            "synchronized_wall_ms": 1.2129789916798472,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.864864349365234,
+            "synchronized_wall_ms": 6.8720816052518785,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2299519538879395,
+            "synchronized_wall_ms": 1.234732591547072,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.437216186523438,
+            "synchronized_wall_ms": 7.442031602840871,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2339200019836425,
+            "synchronized_wall_ms": 1.238917000591755,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 13,
+          "order": [
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 6.968556976318359,
+            "synchronized_wall_ms": 6.973921798635274,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2318400382995605,
+            "synchronized_wall_ms": 1.2364193913526833,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.662668609619141,
+            "synchronized_wall_ms": 6.667352200020105,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2304448127746581,
+            "synchronized_wall_ms": 1.2351843994110823,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.888166046142578,
+            "synchronized_wall_ms": 6.892966409213841,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.207532787322998,
+            "synchronized_wall_ms": 1.2125895940698683,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.815430450439453,
+            "synchronized_wall_ms": 6.820664601400495,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2072383880615234,
+            "synchronized_wall_ms": 1.2123028049245477,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        },
+        {
+          "repeat": 14,
+          "order": [
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 8.062207794189453,
+            "synchronized_wall_ms": 8.066917792893946,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.207436752319336,
+            "synchronized_wall_ms": 1.2122796033509076,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.001222229003906,
+            "synchronized_wall_ms": 7.006221800111234,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.2302271842956543,
+            "synchronized_wall_ms": 1.2357325991615653,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.795916748046875,
+            "synchronized_wall_ms": 6.800600397400558,
+            "additional_peak_bytes": 110763520,
+            "peak_allocated_bytes": 446999040,
+            "peak_reserved_bytes": 977272832
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.2324095726013184,
+            "synchronized_wall_ms": 1.2371291988529265,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.1599678039550785,
+            "synchronized_wall_ms": 7.1648358018137515,
+            "additional_peak_bytes": 89792000,
+            "peak_allocated_bytes": 426027520,
+            "peak_reserved_bytes": 977272832
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.2078847885131836,
+            "synchronized_wall_ms": 1.212610793299973,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 336235520,
+            "peak_reserved_bytes": 977272832
+          }
+        }
+      ],
+      "medians": {
+        "B1_eager": {
+          "cuda_event_ms": 6.844371032714844,
+          "synchronized_wall_ms": 6.8509278004057705,
+          "additional_peak_bytes": 110763520,
+          "peak_allocated_bytes": 446999040,
+          "peak_reserved_bytes": 977272832
+        },
+        "B1_replay": {
+          "cuda_event_ms": 1.2304448127746581,
+          "synchronized_wall_ms": 1.2354111997410655,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 336235520,
+          "peak_reserved_bytes": 977272832
+        },
+        "U_eager": {
+          "cuda_event_ms": 7.086815643310547,
+          "synchronized_wall_ms": 7.091549993492663,
+          "additional_peak_bytes": 110763520,
+          "peak_allocated_bytes": 446999040,
+          "peak_reserved_bytes": 977272832
+        },
+        "U_replay": {
+          "cuda_event_ms": 1.232639980316162,
+          "synchronized_wall_ms": 1.2371812015771866,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 336235520,
+          "peak_reserved_bytes": 977272832
+        },
+        "F_eager": {
+          "cuda_event_ms": 6.911065673828125,
+          "synchronized_wall_ms": 6.915883196052164,
+          "additional_peak_bytes": 89792000,
+          "peak_allocated_bytes": 426027520,
+          "peak_reserved_bytes": 977272832
+        },
+        "F_replay": {
+          "cuda_event_ms": 1.2072383880615234,
+          "synchronized_wall_ms": 1.212084002327174,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 336235520,
+          "peak_reserved_bytes": 977272832
+        },
+        "F3_eager": {
+          "cuda_event_ms": 6.982867431640625,
+          "synchronized_wall_ms": 6.991071009542793,
+          "additional_peak_bytes": 110763520,
+          "peak_allocated_bytes": 446999040,
+          "peak_reserved_bytes": 977272832
+        },
+        "F3_replay": {
+          "cuda_event_ms": 1.2070528030395509,
+          "synchronized_wall_ms": 1.2117448030039668,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 336235520,
+          "peak_reserved_bytes": 977272832
+        }
+      },
+      "paired_speedup_medians": {
+        "B1_eager_over_replay": 5.56254657194087,
+        "U_eager_over_replay": 5.7521061264001725,
+        "F_eager_over_replay": 5.732895815126591,
+        "F3_eager_over_replay": 5.772842847503895,
+        "B1_over_F_eager": 0.9895126183714474,
+        "B1_over_F_replay": 1.0202169804549373,
+        "U_over_F_eager": 1.0260421050538657,
+        "U_over_F_replay": 1.0214955215489587,
+        "B1_over_F3_eager": 0.9722401058226784,
+        "B1_over_F3_replay": 1.0192203978457226
+      }
+    },
+    {
+      "case": {
+        "global_batch": 16384,
+        "widths": [
+          2,
+          64,
+          64,
+          3
+        ],
+        "seed": 7510,
+        "weighted": false,
+        "coordinate_scale": 0.4,
+        "global_points_sha256": "c88b267bbf00af01556d584b3e30fbb1127a20a6d99e864e074a7709e467b4cc",
+        "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+        "global_denominator": 16384.0,
+        "parameter_init_sha256": "1f071e1d778cd9699689be861c88b1737afab29a893444465e19950eb32fda48",
+        "precision_policy": "stable_aux_a1",
+        "workload_source_id": "pinn_jet_local"
+      },
+      "correctness": {
+        "B1": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "U": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "F": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "F3": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 8.47744139441243e-06,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        }
+      },
+      "captures": {
+        "B1": {
+          "seconds": 0.008793223998509347,
+          "allocated_delta_bytes": 38400,
+          "reserved_delta_bytes": 2097152,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "U": {
+          "seconds": 0.008341971959453076,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "F": {
+          "seconds": 0.007939054979942739,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "F3": {
+          "seconds": 0.008655326964799315,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        }
+      },
+      "inner": 5,
+      "paired_observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 7.395423889160156,
+            "synchronized_wall_ms": 7.401907409075648,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9485055923461914,
+            "synchronized_wall_ms": 1.9535121973603964,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.0171455383300785,
+            "synchronized_wall_ms": 7.022705604322255,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9428735733032227,
+            "synchronized_wall_ms": 1.9477415946312249,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.785382080078125,
+            "synchronized_wall_ms": 6.78993760375306,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.82043514251709,
+            "synchronized_wall_ms": 1.8257546005770564,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.889158630371094,
+            "synchronized_wall_ms": 6.893779605161399,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8732671737670898,
+            "synchronized_wall_ms": 1.8780919956043363,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 6.821920013427734,
+            "synchronized_wall_ms": 6.826893193647265,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8728384017944335,
+            "synchronized_wall_ms": 1.8780605983920395,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.711949157714844,
+            "synchronized_wall_ms": 6.716533598955721,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8249088287353517,
+            "synchronized_wall_ms": 1.8296988098882139,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.66588134765625,
+            "synchronized_wall_ms": 6.670980993658304,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9431167602539063,
+            "synchronized_wall_ms": 1.9478459958918393,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.543449401855469,
+            "synchronized_wall_ms": 7.54801140865311,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9533632278442383,
+            "synchronized_wall_ms": 1.958089997060597,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 6.749440002441406,
+            "synchronized_wall_ms": 6.754976394586265,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9436351776123046,
+            "synchronized_wall_ms": 1.9493203959427774,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.040025329589843,
+            "synchronized_wall_ms": 7.0447364007122815,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.828019142150879,
+            "synchronized_wall_ms": 1.8328096019104123,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.175199890136719,
+            "synchronized_wall_ms": 7.180003798566759,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8756032943725587,
+            "synchronized_wall_ms": 1.880699209868908,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.264249420166015,
+            "synchronized_wall_ms": 7.26990100229159,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.94836483001709,
+            "synchronized_wall_ms": 1.953187002800405,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 6.857708740234375,
+            "synchronized_wall_ms": 6.862650602124631,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9495424270629882,
+            "synchronized_wall_ms": 1.9542178022675216,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.627065277099609,
+            "synchronized_wall_ms": 7.6314623933285475,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.874687957763672,
+            "synchronized_wall_ms": 1.8791710026562214,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.0090179443359375,
+            "synchronized_wall_ms": 7.013619190547615,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.826348876953125,
+            "synchronized_wall_ms": 1.8313821987248957,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.394195556640625,
+            "synchronized_wall_ms": 7.4006323935464025,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9450944900512694,
+            "synchronized_wall_ms": 1.952739607077092,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 7.1853187561035154,
+            "synchronized_wall_ms": 7.190069195348769,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8230976104736327,
+            "synchronized_wall_ms": 1.8278438015840948,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.1685951232910154,
+            "synchronized_wall_ms": 7.173370406962931,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.872217559814453,
+            "synchronized_wall_ms": 1.8776523997075856,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.0914558410644535,
+            "synchronized_wall_ms": 7.096311007626355,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9496383666992188,
+            "synchronized_wall_ms": 1.9547746051102877,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.887974548339844,
+            "synchronized_wall_ms": 6.892630993388593,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9432575225830078,
+            "synchronized_wall_ms": 1.9479423994198442,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 6.943936157226562,
+            "synchronized_wall_ms": 6.948546203784645,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9419008255004884,
+            "synchronized_wall_ms": 1.9465995952486992,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.98950424194336,
+            "synchronized_wall_ms": 6.9966226001270115,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9517887115478516,
+            "synchronized_wall_ms": 1.9601018051616848,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.712640380859375,
+            "synchronized_wall_ms": 7.717313000466675,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8747903823852539,
+            "synchronized_wall_ms": 1.879637606907636,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.011027526855469,
+            "synchronized_wall_ms": 7.015845796559006,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8267520904541015,
+            "synchronized_wall_ms": 1.8319385941140354,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 7.191180419921875,
+            "synchronized_wall_ms": 7.196795393247157,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8741439819335937,
+            "synchronized_wall_ms": 1.8790082074701786,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.641426849365234,
+            "synchronized_wall_ms": 7.6460572076030076,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.945734405517578,
+            "synchronized_wall_ms": 1.9505187985487282,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.670130920410156,
+            "synchronized_wall_ms": 6.674739602021873,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9419071197509765,
+            "synchronized_wall_ms": 1.9463247968815267,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.9801277160644535,
+            "synchronized_wall_ms": 6.987153401132673,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8254911422729492,
+            "synchronized_wall_ms": 1.8333543906919658,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 7.315634918212891,
+            "synchronized_wall_ms": 7.322781393304467,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8317312240600585,
+            "synchronized_wall_ms": 1.839926396496594,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 8.74593276977539,
+            "synchronized_wall_ms": 8.750471007078886,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9428096771240235,
+            "synchronized_wall_ms": 1.9477836089208722,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.05296630859375,
+            "synchronized_wall_ms": 7.058238203171641,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9514751434326172,
+            "synchronized_wall_ms": 1.9567088107578456,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.893682861328125,
+            "synchronized_wall_ms": 6.898166600149125,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.873753547668457,
+            "synchronized_wall_ms": 1.8787520006299019,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 6.857190704345703,
+            "synchronized_wall_ms": 6.862527597695589,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9471744537353515,
+            "synchronized_wall_ms": 1.952201605308801,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.875430297851563,
+            "synchronized_wall_ms": 6.880086800083518,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9433280944824218,
+            "synchronized_wall_ms": 1.9481537980027497,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.814752197265625,
+            "synchronized_wall_ms": 6.819875398650765,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.824300765991211,
+            "synchronized_wall_ms": 1.829580997582525,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.159180450439453,
+            "synchronized_wall_ms": 7.164248998742551,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8749311447143555,
+            "synchronized_wall_ms": 1.8802343984134495,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 9,
+          "order": [
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 7.481222534179688,
+            "synchronized_wall_ms": 7.486034603789449,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8752128601074218,
+            "synchronized_wall_ms": 1.8800802063196898,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.1830909729003904,
+            "synchronized_wall_ms": 7.187918398994952,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8277952194213867,
+            "synchronized_wall_ms": 1.832575595472008,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.802137756347657,
+            "synchronized_wall_ms": 6.806664203759283,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9463167190551758,
+            "synchronized_wall_ms": 1.9521231995895505,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.46319351196289,
+            "synchronized_wall_ms": 7.470580202061683,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9512128829956055,
+            "synchronized_wall_ms": 1.9590053940191865,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 10,
+          "order": [
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 6.729017639160157,
+            "synchronized_wall_ms": 6.734024593606591,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9441856384277343,
+            "synchronized_wall_ms": 1.9492125953547657,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.981433868408203,
+            "synchronized_wall_ms": 6.9860479910857975,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8259712219238282,
+            "synchronized_wall_ms": 1.8307409947738051,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.738432312011719,
+            "synchronized_wall_ms": 6.743378203827888,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8709760665893556,
+            "synchronized_wall_ms": 1.8766449997201562,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.642323303222656,
+            "synchronized_wall_ms": 6.6472439910285175,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9476160049438476,
+            "synchronized_wall_ms": 1.953221601434052,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 11,
+          "order": [
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 7.123391723632812,
+            "synchronized_wall_ms": 7.128101401031017,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.946598434448242,
+            "synchronized_wall_ms": 1.9512964063324034,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.43407974243164,
+            "synchronized_wall_ms": 7.4394898023456335,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.873664093017578,
+            "synchronized_wall_ms": 1.878476794809103,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.699065399169922,
+            "synchronized_wall_ms": 6.703657598700374,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.823641586303711,
+            "synchronized_wall_ms": 1.8283521989360452,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.944493103027344,
+            "synchronized_wall_ms": 6.949152203742415,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.943699264526367,
+            "synchronized_wall_ms": 1.9489877973683178,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 12,
+          "order": [
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 6.805644989013672,
+            "synchronized_wall_ms": 6.810594606213272,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.825209617614746,
+            "synchronized_wall_ms": 1.8298330018296838,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.941190338134765,
+            "synchronized_wall_ms": 6.945921399164945,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.873311996459961,
+            "synchronized_wall_ms": 1.8782581901177764,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.171212768554687,
+            "synchronized_wall_ms": 7.1759618003852665,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9489408493041993,
+            "synchronized_wall_ms": 1.9540912006050348,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.288428497314453,
+            "synchronized_wall_ms": 7.295227597933263,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9445951461791993,
+            "synchronized_wall_ms": 1.9515304011292756,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 13,
+          "order": [
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 6.861158752441407,
+            "synchronized_wall_ms": 6.865653803106397,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.9447935104370118,
+            "synchronized_wall_ms": 1.9496685941703618,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 8.293049621582032,
+            "synchronized_wall_ms": 8.298158599063754,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9499839782714843,
+            "synchronized_wall_ms": 1.9554875907488167,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.996915435791015,
+            "synchronized_wall_ms": 7.001650996971875,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.8733695983886718,
+            "synchronized_wall_ms": 1.8780443933792412,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.502591705322265,
+            "synchronized_wall_ms": 7.507162401452661,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8264640808105468,
+            "synchronized_wall_ms": 1.8324907985515893,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        },
+        {
+          "repeat": 14,
+          "order": [
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 6.533106994628906,
+            "synchronized_wall_ms": 6.538215605542064,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F3_replay": {
+            "cuda_event_ms": 1.875014305114746,
+            "synchronized_wall_ms": 1.8795952084474266,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.901983642578125,
+            "synchronized_wall_ms": 6.906429398804903,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "B1_replay": {
+            "cuda_event_ms": 1.9505792617797852,
+            "synchronized_wall_ms": 1.9566152011975646,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.927584075927735,
+            "synchronized_wall_ms": 6.933585996739566,
+            "additional_peak_bytes": 442834432,
+            "peak_allocated_bytes": 914467328,
+            "peak_reserved_bytes": 2728394752
+          },
+          "U_replay": {
+            "cuda_event_ms": 1.942291259765625,
+            "synchronized_wall_ms": 1.948961999733001,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.677638244628906,
+            "synchronized_wall_ms": 6.682383397128433,
+            "additional_peak_bytes": 358948352,
+            "peak_allocated_bytes": 830581248,
+            "peak_reserved_bytes": 2728394752
+          },
+          "F_replay": {
+            "cuda_event_ms": 1.8218175888061523,
+            "synchronized_wall_ms": 1.8265738035552204,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 471632896,
+            "peak_reserved_bytes": 2728394752
+          }
+        }
+      ],
+      "medians": {
+        "B1_eager": {
+          "cuda_event_ms": 7.171212768554687,
+          "synchronized_wall_ms": 7.1759618003852665,
+          "additional_peak_bytes": 442834432,
+          "peak_allocated_bytes": 914467328,
+          "peak_reserved_bytes": 2728394752
+        },
+        "B1_replay": {
+          "cuda_event_ms": 1.9495424270629882,
+          "synchronized_wall_ms": 1.9542178022675216,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 471632896,
+          "peak_reserved_bytes": 2728394752
+        },
+        "U_eager": {
+          "cuda_event_ms": 6.98950424194336,
+          "synchronized_wall_ms": 6.9966226001270115,
+          "additional_peak_bytes": 442834432,
+          "peak_allocated_bytes": 914467328,
+          "peak_reserved_bytes": 2728394752
+        },
+        "U_replay": {
+          "cuda_event_ms": 1.9433280944824218,
+          "synchronized_wall_ms": 1.948961999733001,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 471632896,
+          "peak_reserved_bytes": 2728394752
+        },
+        "F_eager": {
+          "cuda_event_ms": 6.943936157226562,
+          "synchronized_wall_ms": 6.948546203784645,
+          "additional_peak_bytes": 358948352,
+          "peak_allocated_bytes": 830581248,
+          "peak_reserved_bytes": 2728394752
+        },
+        "F_replay": {
+          "cuda_event_ms": 1.8254911422729492,
+          "synchronized_wall_ms": 1.8307409947738051,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 471632896,
+          "peak_reserved_bytes": 2728394752
+        },
+        "F3_eager": {
+          "cuda_event_ms": 7.011027526855469,
+          "synchronized_wall_ms": 7.015845796559006,
+          "additional_peak_bytes": 442834432,
+          "peak_allocated_bytes": 914467328,
+          "peak_reserved_bytes": 2728394752
+        },
+        "F3_replay": {
+          "cuda_event_ms": 1.873753547668457,
+          "synchronized_wall_ms": 1.8787520006299019,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 471632896,
+          "peak_reserved_bytes": 2728394752
+        }
+      },
+      "paired_speedup_medians": {
+        "B1_eager_over_replay": 3.679543569069793,
+        "U_eager_over_replay": 3.599310608533238,
+        "F_eager_over_replay": 3.80124713884981,
+        "F3_eager_over_replay": 3.7396327572021653,
+        "B1_over_F_eager": 1.0318498982714932,
+        "B1_over_F_replay": 1.0675226974350487,
+        "U_over_F_eager": 1.0089039335297159,
+        "U_over_F_replay": 1.0648439706890735,
+        "B1_over_F3_eager": 1.0331387585146863,
+        "B1_over_F3_replay": 1.0403717335858393
+      }
+    },
+    {
+      "case": {
+        "global_batch": 65536,
+        "widths": [
+          2,
+          64,
+          64,
+          3
+        ],
+        "seed": 7510,
+        "weighted": false,
+        "coordinate_scale": 0.4,
+        "global_points_sha256": "41d4798b11305412367a919d6c8963c61ff7dd759bdb9b3195653ba2802d3c6d",
+        "global_weights_sha256": "9d37a9102309aaf8f63604ea476de369133bb330f923899712311b89b10bf715",
+        "global_denominator": 65536.0,
+        "parameter_init_sha256": "3d761e21a17a3c00f628f80b26907918e0cbb2b67c454d719a37eab29be1d8f5",
+        "precision_policy": "stable_aux_a1",
+        "workload_source_id": "pinn_jet_local"
+      },
+      "correctness": {
+        "B1": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "U": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "F": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "F3": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 7.549832191129784e-06,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        }
+      },
+      "captures": {
+        "B1": {
+          "seconds": 0.014154992997646332,
+          "allocated_delta_bytes": 38400,
+          "reserved_delta_bytes": 2097152,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "U": {
+          "seconds": 0.014672438963316381,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "F": {
+          "seconds": 0.013275312958285213,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "F3": {
+          "seconds": 0.014618526038248092,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        }
+      },
+      "inner": 5,
+      "paired_observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 7.955340576171875,
+            "synchronized_wall_ms": 7.962926989421248,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.766937637329102,
+            "synchronized_wall_ms": 4.771890200208873,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.384595489501953,
+            "synchronized_wall_ms": 7.390069600660354,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.737900924682617,
+            "synchronized_wall_ms": 4.742691607680172,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.422380828857422,
+            "synchronized_wall_ms": 7.4271854013204575,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.291718292236328,
+            "synchronized_wall_ms": 4.296504403464496,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.899737548828125,
+            "synchronized_wall_ms": 6.904636207036674,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.491814422607422,
+            "synchronized_wall_ms": 4.496790806297213,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 6.79815673828125,
+            "synchronized_wall_ms": 6.803241395391524,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.491212844848633,
+            "synchronized_wall_ms": 4.496057401411235,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.990214538574219,
+            "synchronized_wall_ms": 6.99503980576992,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.291142272949219,
+            "synchronized_wall_ms": 4.295844596344978,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.006489562988281,
+            "synchronized_wall_ms": 7.011639990378171,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.737196731567383,
+            "synchronized_wall_ms": 4.742143198382109,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.233952331542969,
+            "synchronized_wall_ms": 7.238890591543168,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.758047866821289,
+            "synchronized_wall_ms": 4.762813600245863,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 6.9486335754394535,
+            "synchronized_wall_ms": 6.9534853915683925,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.737587356567383,
+            "synchronized_wall_ms": 4.742863599676639,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.908992004394531,
+            "synchronized_wall_ms": 7.914176001213491,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.293664169311524,
+            "synchronized_wall_ms": 4.298477398697287,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.402655792236328,
+            "synchronized_wall_ms": 7.408076210413128,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.493721771240234,
+            "synchronized_wall_ms": 4.498583800159395,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.79354248046875,
+            "synchronized_wall_ms": 7.798694400116801,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.758124923706054,
+            "synchronized_wall_ms": 4.762922006193548,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 7.4142204284667965,
+            "synchronized_wall_ms": 7.418978796340525,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.758297729492187,
+            "synchronized_wall_ms": 4.763683199416846,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.772895812988281,
+            "synchronized_wall_ms": 6.777679396327585,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.501286315917969,
+            "synchronized_wall_ms": 4.50616100570187,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.267628479003906,
+            "synchronized_wall_ms": 7.272735796868801,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.28656005859375,
+            "synchronized_wall_ms": 4.291512002237141,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.8037055969238285,
+            "synchronized_wall_ms": 7.809310604352504,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.736492919921875,
+            "synchronized_wall_ms": 4.742699000053108,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 7.680703735351562,
+            "synchronized_wall_ms": 7.685963006224483,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.2842559814453125,
+            "synchronized_wall_ms": 4.2893342091701925,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 8.12020492553711,
+            "synchronized_wall_ms": 8.128372195642442,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.503961563110352,
+            "synchronized_wall_ms": 4.511873796582222,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.410208129882813,
+            "synchronized_wall_ms": 7.415610004682094,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.755686569213867,
+            "synchronized_wall_ms": 4.761830403003842,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.199890899658203,
+            "synchronized_wall_ms": 7.204999192617834,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.732070541381836,
+            "synchronized_wall_ms": 4.737090400885791,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 6.7643585205078125,
+            "synchronized_wall_ms": 6.769644597079605,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.730393600463867,
+            "synchronized_wall_ms": 4.735093796625733,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.681753540039063,
+            "synchronized_wall_ms": 7.686482998542488,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.761248016357422,
+            "synchronized_wall_ms": 4.766438400838524,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.389676666259765,
+            "synchronized_wall_ms": 7.395388197619468,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.493203353881836,
+            "synchronized_wall_ms": 4.498962790239602,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.627347564697265,
+            "synchronized_wall_ms": 7.632182200904936,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.295264053344726,
+            "synchronized_wall_ms": 4.300116002559662,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 6.627232360839844,
+            "synchronized_wall_ms": 6.632903404533863,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.489030456542968,
+            "synchronized_wall_ms": 4.493962205015123,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.094700622558594,
+            "synchronized_wall_ms": 7.099663396365941,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.763040161132812,
+            "synchronized_wall_ms": 4.767991206608713,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 6.7659454345703125,
+            "synchronized_wall_ms": 6.770979205612093,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.7391807556152346,
+            "synchronized_wall_ms": 4.744177800603211,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.849088287353515,
+            "synchronized_wall_ms": 6.854408793151379,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.295097732543946,
+            "synchronized_wall_ms": 4.300039797089994,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 6.754982757568359,
+            "synchronized_wall_ms": 6.760468403808773,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.286387252807617,
+            "synchronized_wall_ms": 4.291414003819227,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 6.713721466064453,
+            "synchronized_wall_ms": 6.7186394007876515,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.734592056274414,
+            "synchronized_wall_ms": 4.73984619602561,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.325920104980469,
+            "synchronized_wall_ms": 7.330857403576374,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.7612159729003904,
+            "synchronized_wall_ms": 4.766008607111871,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.888134765625,
+            "synchronized_wall_ms": 7.892893592361361,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.495923233032227,
+            "synchronized_wall_ms": 4.500727995764464,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 7.033299255371094,
+            "synchronized_wall_ms": 7.038791803643107,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.759500885009766,
+            "synchronized_wall_ms": 4.764261795207858,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.2235267639160154,
+            "synchronized_wall_ms": 7.229107606690377,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.7401985168457035,
+            "synchronized_wall_ms": 4.7462487942539155,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.102611541748047,
+            "synchronized_wall_ms": 7.10749999852851,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.289132690429687,
+            "synchronized_wall_ms": 4.294587404001504,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.979641723632812,
+            "synchronized_wall_ms": 6.985159404575825,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.494784164428711,
+            "synchronized_wall_ms": 4.501268395688385,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 9,
+          "order": [
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 6.901459503173828,
+            "synchronized_wall_ms": 6.906569597776979,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.4886528015136715,
+            "synchronized_wall_ms": 4.493539803661406,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.960825347900391,
+            "synchronized_wall_ms": 6.966018199454993,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.296108627319336,
+            "synchronized_wall_ms": 4.302159999497235,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.516864013671875,
+            "synchronized_wall_ms": 7.522012805566192,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.730297470092774,
+            "synchronized_wall_ms": 4.7350578010082245,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.224601745605469,
+            "synchronized_wall_ms": 7.229987194295973,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.761759948730469,
+            "synchronized_wall_ms": 4.767280805390328,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 10,
+          "order": [
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 7.286431884765625,
+            "synchronized_wall_ms": 7.292853796388954,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.741196823120117,
+            "synchronized_wall_ms": 4.747680597938597,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.5103614807128904,
+            "synchronized_wall_ms": 7.518174999859184,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.292998504638672,
+            "synchronized_wall_ms": 4.303735203575343,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 8.206304168701172,
+            "synchronized_wall_ms": 8.211828395724297,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.485721588134766,
+            "synchronized_wall_ms": 4.491876601241529,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.814189147949219,
+            "synchronized_wall_ms": 6.81922520743683,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.761126327514648,
+            "synchronized_wall_ms": 4.76602460257709,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 11,
+          "order": [
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 7.9608001708984375,
+            "synchronized_wall_ms": 7.965719408821315,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.7691200256347654,
+            "synchronized_wall_ms": 4.774119600187987,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.200358581542969,
+            "synchronized_wall_ms": 7.206336606759578,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.494483184814453,
+            "synchronized_wall_ms": 4.499437194317579,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.204057312011718,
+            "synchronized_wall_ms": 7.209015602711588,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.29365119934082,
+            "synchronized_wall_ms": 4.298442194703966,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.132640075683594,
+            "synchronized_wall_ms": 7.137471996247768,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.735712051391602,
+            "synchronized_wall_ms": 4.74042120622471,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 12,
+          "order": [
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 7.166515350341797,
+            "synchronized_wall_ms": 7.172678597271442,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.291724777221679,
+            "synchronized_wall_ms": 4.296750796493143,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 7.168966674804688,
+            "synchronized_wall_ms": 7.1752203977666795,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.497900772094726,
+            "synchronized_wall_ms": 4.504427406936884,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.281779479980469,
+            "synchronized_wall_ms": 7.28646139614284,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.761471939086914,
+            "synchronized_wall_ms": 4.76652760989964,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.2539009094238285,
+            "synchronized_wall_ms": 7.2593068005517125,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.736473464965821,
+            "synchronized_wall_ms": 4.741607792675495,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 13,
+          "order": [
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 7.407263946533203,
+            "synchronized_wall_ms": 7.41228919941932,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.734982299804687,
+            "synchronized_wall_ms": 4.744789202231914,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 8.433721923828125,
+            "synchronized_wall_ms": 8.443130808882415,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.789920043945313,
+            "synchronized_wall_ms": 4.798880801536143,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 7.185606384277344,
+            "synchronized_wall_ms": 7.190582994371653,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.501593780517578,
+            "synchronized_wall_ms": 4.506694001611322,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_eager": {
+            "cuda_event_ms": 6.928275299072266,
+            "synchronized_wall_ms": 6.933783192653209,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.301510238647461,
+            "synchronized_wall_ms": 4.307699401397258,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        },
+        {
+          "repeat": 14,
+          "order": [
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 6.8176513671875,
+            "synchronized_wall_ms": 6.823031592648476,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F3_replay": {
+            "cuda_event_ms": 4.487615966796875,
+            "synchronized_wall_ms": 4.493110801558942,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_eager": {
+            "cuda_event_ms": 6.890758514404297,
+            "synchronized_wall_ms": 6.8957006093114614,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "B1_replay": {
+            "cuda_event_ms": 4.760729598999023,
+            "synchronized_wall_ms": 4.765657999087125,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_eager": {
+            "cuda_event_ms": 7.23675537109375,
+            "synchronized_wall_ms": 7.2417923947796226,
+            "additional_peak_bytes": 1772166656,
+            "peak_allocated_bytes": 2382735872,
+            "peak_reserved_bytes": 9233760256
+          },
+          "U_replay": {
+            "cuda_event_ms": 4.742636871337891,
+            "synchronized_wall_ms": 4.747664206661284,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_eager": {
+            "cuda_event_ms": 7.272614288330078,
+            "synchronized_wall_ms": 7.278295606374741,
+            "additional_peak_bytes": 1436622336,
+            "peak_allocated_bytes": 2047191552,
+            "peak_reserved_bytes": 9233760256
+          },
+          "F_replay": {
+            "cuda_event_ms": 4.294527816772461,
+            "synchronized_wall_ms": 4.302137799095362,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 610569216,
+            "peak_reserved_bytes": 9233760256
+          }
+        }
+      ],
+      "medians": {
+        "B1_eager": {
+          "cuda_event_ms": 7.185606384277344,
+          "synchronized_wall_ms": 7.190582994371653,
+          "additional_peak_bytes": 1772166656,
+          "peak_allocated_bytes": 2382735872,
+          "peak_reserved_bytes": 9233760256
+        },
+        "B1_replay": {
+          "cuda_event_ms": 4.7612159729003904,
+          "synchronized_wall_ms": 4.76602460257709,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 610569216,
+          "peak_reserved_bytes": 9233760256
+        },
+        "U_eager": {
+          "cuda_event_ms": 7.2539009094238285,
+          "synchronized_wall_ms": 7.2593068005517125,
+          "additional_peak_bytes": 1772166656,
+          "peak_allocated_bytes": 2382735872,
+          "peak_reserved_bytes": 9233760256
+        },
+        "U_replay": {
+          "cuda_event_ms": 4.736492919921875,
+          "synchronized_wall_ms": 4.742691607680172,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 610569216,
+          "peak_reserved_bytes": 9233760256
+        },
+        "F_eager": {
+          "cuda_event_ms": 7.272614288330078,
+          "synchronized_wall_ms": 7.278295606374741,
+          "additional_peak_bytes": 1436622336,
+          "peak_allocated_bytes": 2047191552,
+          "peak_reserved_bytes": 9233760256
+        },
+        "F_replay": {
+          "cuda_event_ms": 4.292998504638672,
+          "synchronized_wall_ms": 4.298442194703966,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 610569216,
+          "peak_reserved_bytes": 9233760256
+        },
+        "F3_eager": {
+          "cuda_event_ms": 6.990214538574219,
+          "synchronized_wall_ms": 6.99503980576992,
+          "additional_peak_bytes": 1772166656,
+          "peak_allocated_bytes": 2382735872,
+          "peak_reserved_bytes": 9233760256
+        },
+        "F3_replay": {
+          "cuda_event_ms": 4.493721771240234,
+          "synchronized_wall_ms": 4.498962790239602,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 610569216,
+          "peak_reserved_bytes": 9233760256
+        }
+      },
+      "paired_speedup_medians": {
+        "B1_eager_over_replay": 1.50015163475647,
+        "U_eager_over_replay": 1.5314982682957297,
+        "F_eager_over_replay": 1.6934607478676873,
+        "F3_eager_over_replay": 1.5564202321410598,
+        "B1_over_F_eager": 0.985402751215119,
+        "B1_over_F_replay": 1.109454167321823,
+        "U_over_F_eager": 0.9950693222801781,
+        "U_over_F_replay": 1.1039477207339479,
+        "B1_over_F3_eager": 1.0076877200668624,
+        "B1_over_F3_replay": 1.0596555823016585
+      }
+    },
+    {
+      "case": {
+        "global_batch": 262144,
+        "widths": [
+          2,
+          64,
+          64,
+          3
+        ],
+        "seed": 7510,
+        "weighted": false,
+        "coordinate_scale": 0.4,
+        "global_points_sha256": "a2a47243c73910027a52403bdd3b6574da55315c7e9b9c2dd97444a31d9b6a84",
+        "global_weights_sha256": "4c012217046a021d620e330fd73a73a869613a80d1eef2e13e3b55d715e0dda6",
+        "global_denominator": 262144.0,
+        "parameter_init_sha256": "241e81d432aab3e82de57ecf03f09dd9796c1b24607598804f39c12f1d155f4b",
+        "precision_policy": "stable_aux_a1",
+        "workload_source_id": "pinn_jet_local"
+      },
+      "correctness": {
+        "B1": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "U": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "F": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        },
+        "F3": {
+          "loss": {
+            "max_abs": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          },
+          "parameter_gradient": {
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 7.910573230436031e-06,
+            "atol": 2e-12,
+            "rtol": 2e-11,
+            "passed": true
+          }
+        }
+      },
+      "captures": {
+        "B1": {
+          "seconds": 0.02132479305146262,
+          "allocated_delta_bytes": 38400,
+          "reserved_delta_bytes": 2097152,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "U": {
+          "seconds": 0.01942993694683537,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "F": {
+          "seconds": 0.01911971002118662,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        },
+        "F3": {
+          "seconds": 0.021471803018357605,
+          "allocated_delta_bytes": 37376,
+          "reserved_delta_bytes": 0,
+          "scope": "capture-only delta; excludes preexisting static inputs, warmup cache and other live graphs"
+        }
+      },
+      "inner": 5,
+      "paired_observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 19.932550048828126,
+            "synchronized_wall_ms": 19.940407597459853,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.02263641357422,
+            "synchronized_wall_ms": 19.02850039768964,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.86170196533203,
+            "synchronized_wall_ms": 19.86781320301816,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.947468566894532,
+            "synchronized_wall_ms": 18.95308420062065,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.089689636230467,
+            "synchronized_wall_ms": 18.09548119781539,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.171359252929687,
+            "synchronized_wall_ms": 17.17715059639886,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.885343933105467,
+            "synchronized_wall_ms": 18.891199806239456,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.95150146484375,
+            "synchronized_wall_ms": 17.957054602447897,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 19.93726043701172,
+            "synchronized_wall_ms": 19.94299900252372,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.948728942871092,
+            "synchronized_wall_ms": 17.955414997413754,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.876876831054688,
+            "synchronized_wall_ms": 18.883262400049716,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.17296600341797,
+            "synchronized_wall_ms": 17.17787920497358,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.086457824707033,
+            "synchronized_wall_ms": 18.091538199223578,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.94832000732422,
+            "synchronized_wall_ms": 18.953099206555635,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.859373474121092,
+            "synchronized_wall_ms": 19.864244398195297,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.032447814941406,
+            "synchronized_wall_ms": 19.039407593663782,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 19.864537048339844,
+            "synchronized_wall_ms": 19.87148819025606,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.948223876953126,
+            "synchronized_wall_ms": 18.954382999800146,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.086778259277345,
+            "synchronized_wall_ms": 18.092555599287152,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.167129516601562,
+            "synchronized_wall_ms": 17.17254100367427,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.885382080078124,
+            "synchronized_wall_ms": 18.891396594699472,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.942886352539062,
+            "synchronized_wall_ms": 17.949046194553375,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.936909484863282,
+            "synchronized_wall_ms": 19.943175790831447,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.02515869140625,
+            "synchronized_wall_ms": 19.030880997888744,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 19.861158752441405,
+            "synchronized_wall_ms": 19.86682181013748,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.02759704589844,
+            "synchronized_wall_ms": 19.033317000139505,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.941567993164064,
+            "synchronized_wall_ms": 19.947554206009954,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.9534912109375,
+            "synchronized_wall_ms": 17.9593127919361,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.894117736816405,
+            "synchronized_wall_ms": 18.9002463943325,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.1732666015625,
+            "synchronized_wall_ms": 17.178713402245194,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.08341827392578,
+            "synchronized_wall_ms": 18.08872299734503,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.951986694335936,
+            "synchronized_wall_ms": 18.9576965989545,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 18.09270324707031,
+            "synchronized_wall_ms": 18.09865098912269,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.175450134277344,
+            "synchronized_wall_ms": 17.18128341017291,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.895277404785155,
+            "synchronized_wall_ms": 18.90094600385055,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.953817749023436,
+            "synchronized_wall_ms": 17.95970640378073,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.947366333007814,
+            "synchronized_wall_ms": 19.953445193823427,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.029945373535156,
+            "synchronized_wall_ms": 19.03558160411194,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.868479919433593,
+            "synchronized_wall_ms": 19.87453680485487,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.94963836669922,
+            "synchronized_wall_ms": 18.95506220171228,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 18.097792053222655,
+            "synchronized_wall_ms": 18.10312959132716,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.945523071289063,
+            "synchronized_wall_ms": 18.95084719872102,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.868447875976564,
+            "synchronized_wall_ms": 19.87412500893697,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.032147216796876,
+            "synchronized_wall_ms": 19.038009201176465,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.933932495117187,
+            "synchronized_wall_ms": 19.939692795742303,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.94885711669922,
+            "synchronized_wall_ms": 17.96090480638668,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.911967468261718,
+            "synchronized_wall_ms": 18.92021599924192,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.17876434326172,
+            "synchronized_wall_ms": 17.1845076023601,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 18.88917694091797,
+            "synchronized_wall_ms": 18.895472399890423,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.949459838867188,
+            "synchronized_wall_ms": 17.954764398746192,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.939117431640625,
+            "synchronized_wall_ms": 19.94469299679622,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.02521667480469,
+            "synchronized_wall_ms": 19.03072779532522,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.86170196533203,
+            "synchronized_wall_ms": 19.86787220230326,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.954969787597655,
+            "synchronized_wall_ms": 18.960267200600356,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.08985595703125,
+            "synchronized_wall_ms": 18.09590100310743,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.17125701904297,
+            "synchronized_wall_ms": 17.17653360683471,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 18.896620178222655,
+            "synchronized_wall_ms": 18.902966601308435,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.179763793945312,
+            "synchronized_wall_ms": 17.185145802795887,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.094163513183595,
+            "synchronized_wall_ms": 18.10027180472389,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.950764465332032,
+            "synchronized_wall_ms": 18.956714204978198,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.856346130371094,
+            "synchronized_wall_ms": 19.861786800902337,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.030546569824217,
+            "synchronized_wall_ms": 19.035918603185564,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.933209228515626,
+            "synchronized_wall_ms": 19.938485394231975,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.953555297851562,
+            "synchronized_wall_ms": 17.959265608806163,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 19.945703125,
+            "synchronized_wall_ms": 19.95216200593859,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.03303680419922,
+            "synchronized_wall_ms": 19.039449200499803,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.8627197265625,
+            "synchronized_wall_ms": 19.868629798293114,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.945062255859376,
+            "synchronized_wall_ms": 18.95059859380126,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.098054504394533,
+            "synchronized_wall_ms": 18.10386519646272,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.179423522949218,
+            "synchronized_wall_ms": 17.185127804987133,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.901753234863282,
+            "synchronized_wall_ms": 18.907641398254782,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.950706481933594,
+            "synchronized_wall_ms": 17.957162600941956,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 9,
+          "order": [
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay"
+          ],
+          "B1_eager": {
+            "cuda_event_ms": 19.95445098876953,
+            "synchronized_wall_ms": 19.96031680610031,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.952281188964843,
+            "synchronized_wall_ms": 17.95776200015098,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.956761169433594,
+            "synchronized_wall_ms": 18.96223380463198,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.178822326660157,
+            "synchronized_wall_ms": 17.184428207110614,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.09913024902344,
+            "synchronized_wall_ms": 18.104760604910553,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.95150146484375,
+            "synchronized_wall_ms": 18.957110797055066,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.86805114746094,
+            "synchronized_wall_ms": 19.873557798564434,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.03383026123047,
+            "synchronized_wall_ms": 19.039193610660732,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 10,
+          "order": [
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 19.87274932861328,
+            "synchronized_wall_ms": 19.879355398006737,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.9513916015625,
+            "synchronized_wall_ms": 18.956961994990706,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.103974914550783,
+            "synchronized_wall_ms": 18.10940420255065,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.182464599609375,
+            "synchronized_wall_ms": 17.187972203828394,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.875039672851564,
+            "synchronized_wall_ms": 18.881042406428605,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.9542724609375,
+            "synchronized_wall_ms": 17.960775597020984,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.941407775878908,
+            "synchronized_wall_ms": 19.947043398860842,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.02929229736328,
+            "synchronized_wall_ms": 19.03505299706012,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 11,
+          "order": [
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay",
+            "F_eager",
+            "U_replay"
+          ],
+          "U_eager": {
+            "cuda_event_ms": 19.863539123535155,
+            "synchronized_wall_ms": 19.869410002138466,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.021830749511718,
+            "synchronized_wall_ms": 19.02727239066735,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.946905517578124,
+            "synchronized_wall_ms": 19.953163200989366,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.954054260253905,
+            "synchronized_wall_ms": 17.96011320548132,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.892140197753907,
+            "synchronized_wall_ms": 18.897637201007456,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.183865356445313,
+            "synchronized_wall_ms": 17.189275997225195,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.10515899658203,
+            "synchronized_wall_ms": 18.110869207885116,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.950592041015625,
+            "synchronized_wall_ms": 18.956089997664094,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 12,
+          "order": [
+            "F_eager",
+            "F_replay",
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 18.095423889160156,
+            "synchronized_wall_ms": 18.10166360810399,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.1826171875,
+            "synchronized_wall_ms": 17.187992006074637,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.890296936035156,
+            "synchronized_wall_ms": 18.89776960015297,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.942585754394532,
+            "synchronized_wall_ms": 17.947987199295312,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.940602111816407,
+            "synchronized_wall_ms": 19.94600979378447,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.03101501464844,
+            "synchronized_wall_ms": 19.03645460261032,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.876031494140626,
+            "synchronized_wall_ms": 19.88202080829069,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.95313262939453,
+            "synchronized_wall_ms": 18.964697991032153,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 13,
+          "order": [
+            "F_eager",
+            "U_replay",
+            "U_eager",
+            "B1_replay",
+            "B1_eager",
+            "F3_replay",
+            "F3_eager",
+            "F_replay"
+          ],
+          "F_eager": {
+            "cuda_event_ms": 18.126425170898436,
+            "synchronized_wall_ms": 18.136213207617402,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.958560180664062,
+            "synchronized_wall_ms": 18.96422280697152,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.893927001953124,
+            "synchronized_wall_ms": 19.90142260910943,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.028959655761717,
+            "synchronized_wall_ms": 19.035649008583277,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.95581512451172,
+            "synchronized_wall_ms": 19.961667200550437,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.94981689453125,
+            "synchronized_wall_ms": 17.955479002557695,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_eager": {
+            "cuda_event_ms": 18.89366455078125,
+            "synchronized_wall_ms": 18.899714399594814,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.178080749511718,
+            "synchronized_wall_ms": 17.18499300768599,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        },
+        {
+          "repeat": 14,
+          "order": [
+            "F3_eager",
+            "F3_replay",
+            "B1_eager",
+            "B1_replay",
+            "U_eager",
+            "U_replay",
+            "F_eager",
+            "F_replay"
+          ],
+          "F3_eager": {
+            "cuda_event_ms": 18.899264526367187,
+            "synchronized_wall_ms": 18.905638402793556,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F3_replay": {
+            "cuda_event_ms": 17.95137939453125,
+            "synchronized_wall_ms": 17.956854600925,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_eager": {
+            "cuda_event_ms": 19.95494384765625,
+            "synchronized_wall_ms": 19.960839196573943,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "B1_replay": {
+            "cuda_event_ms": 19.040690612792968,
+            "synchronized_wall_ms": 19.04611319769174,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_eager": {
+            "cuda_event_ms": 19.923207092285157,
+            "synchronized_wall_ms": 19.929075392428786,
+            "additional_peak_bytes": 7084252672,
+            "peak_allocated_bytes": 7847913984,
+            "peak_reserved_bytes": 34871443456
+          },
+          "U_replay": {
+            "cuda_event_ms": 18.959628295898437,
+            "synchronized_wall_ms": 18.96498060086742,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_eager": {
+            "cuda_event_ms": 18.110316467285156,
+            "synchronized_wall_ms": 18.1160134030506,
+            "additional_peak_bytes": 5742075392,
+            "peak_allocated_bytes": 6505736704,
+            "peak_reserved_bytes": 34871443456
+          },
+          "F_replay": {
+            "cuda_event_ms": 17.176205444335938,
+            "synchronized_wall_ms": 17.182217596564442,
+            "additional_peak_bytes": 0,
+            "peak_allocated_bytes": 763661312,
+            "peak_reserved_bytes": 34871443456
+          }
+        }
+      ],
+      "medians": {
+        "B1_eager": {
+          "cuda_event_ms": 19.941407775878908,
+          "synchronized_wall_ms": 19.947043398860842,
+          "additional_peak_bytes": 7084252672,
+          "peak_allocated_bytes": 7847913984,
+          "peak_reserved_bytes": 34871443456
+        },
+        "B1_replay": {
+          "cuda_event_ms": 19.029945373535156,
+          "synchronized_wall_ms": 19.035649008583277,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 763661312,
+          "peak_reserved_bytes": 34871443456
+        },
+        "U_eager": {
+          "cuda_event_ms": 19.864537048339844,
+          "synchronized_wall_ms": 19.87148819025606,
+          "additional_peak_bytes": 7084252672,
+          "peak_allocated_bytes": 7847913984,
+          "peak_reserved_bytes": 34871443456
+        },
+        "U_replay": {
+          "cuda_event_ms": 18.950764465332032,
+          "synchronized_wall_ms": 18.956714204978198,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 763661312,
+          "peak_reserved_bytes": 34871443456
+        },
+        "F_eager": {
+          "cuda_event_ms": 18.095423889160156,
+          "synchronized_wall_ms": 18.10166360810399,
+          "additional_peak_bytes": 5742075392,
+          "peak_allocated_bytes": 6505736704,
+          "peak_reserved_bytes": 34871443456
+        },
+        "F_replay": {
+          "cuda_event_ms": 17.178080749511718,
+          "synchronized_wall_ms": 17.184428207110614,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 763661312,
+          "peak_reserved_bytes": 34871443456
+        },
+        "F3_eager": {
+          "cuda_event_ms": 18.89366455078125,
+          "synchronized_wall_ms": 18.899714399594814,
+          "additional_peak_bytes": 7084252672,
+          "peak_allocated_bytes": 7847913984,
+          "peak_reserved_bytes": 34871443456
+        },
+        "F3_replay": {
+          "cuda_event_ms": 17.95137939453125,
+          "synchronized_wall_ms": 17.957162600941956,
+          "additional_peak_bytes": 0,
+          "peak_allocated_bytes": 763661312,
+          "peak_reserved_bytes": 34871443456
+        }
+      },
+      "paired_speedup_medians": {
+        "B1_eager_over_replay": 1.0479516921124967,
+        "U_eager_over_replay": 1.048362905932147,
+        "F_eager_over_replay": 1.0534963128773598,
+        "F3_eager_over_replay": 1.0525275426161127,
+        "B1_over_F_eager": 1.101969328486501,
+        "B1_over_F_replay": 1.107897292291202,
+        "U_over_F_eager": 1.0979469384670302,
+        "U_over_F_replay": 1.1032979175830213,
+        "B1_over_F3_eager": 1.055600247012406,
+        "B1_over_F3_replay": 1.0601199871603844
+      }
+    }
+  ],
+  "telemetry_after": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,clocks.sm,clocks.mem,temperature.gpu,power.draw,utilization.gpu,memory.used",
+      "--format=csv"
+    ],
+    "returncode": 0,
+    "output": "index, uuid, clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], utilization.gpu [%], memory.used [MiB]\n0, GPU-234a091d-e544-81aa-a6c8-44b77efbff23, 1980 MHz, 2619 MHz, 40, 469.86 W, 100 %, 1529 MiB\n"
+  },
+  "passed": true
+}

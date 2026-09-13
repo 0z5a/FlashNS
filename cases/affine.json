@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "problem": "Boussinesq local affine-wave residual increments",
+  "units": "dimensionless",
+  "normalization": "no amplitude rescaling; state=(zeta1,zeta2,Theta,Omega)",
+  "acceptance": {
+    "trajectory": {"norm": "max over stored times and four components of abs(fp64-reference)/(1+abs(reference))", "tolerance": 2e-10},
+    "reference_refinement": {"norm": "max abs(RK4_64-RK4_128)/(1+abs(RK4_128)) at stored times", "tolerance": 1e-11},
+    "field": {"norm": "max abs(fp64-mpmath_diff)/(1+abs(mpmath_diff)) over all listed points, fields and derivatives", "tolerance": 2e-10},
+    "residual": {"norm": "max abs(increment)/(1+sum(abs(PDE terms))) over listed points", "tolerance": 1e-12},
+    "rounding": "FP64 round-to-nearest; 80-decimal-digit mpmath reference on exactly converted FP64 inputs; no outward rounding; no continuous certificate"
+  },
+  "trajectories": [
+    {"name": "frozen_growth", "D": [[0,0],[0,0]], "G": [0,-4], "y0": [0.6,0.8,-0.25,-1], "lambda": 8, "times": [0,0.125,0.25,0.375,0.5,0.625,0.75,0.875,1]},
+    {"name": "mixed_affine", "D": [[0.2,-0.3],[0.4,-0.2]], "G": [0.3,-1.2], "y0": [1,0.5,0.2,-0.4], "lambda": 7, "times": [0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4]}
+  ],
+  "fields": [
+    {"name":"sine", "y":[0.6,0.8,-0.25,-1], "lambda":8, "coefficients":[1], "points":[[0,0],[0.125,-0.25],[-0.5,0.3]]},
+    {"name":"nonsinusoidal", "y":[1,0.5,0.2,-0.4], "lambda":7, "coefficients":[1,-0.125,0.0625], "points":[[0,0],[0.2,-0.3],[0.01,0.04]]},
+    {"name":"high_frequency", "y":[0.6,0.8,1e-8,0.3], "lambda":1e8, "coefficients":[1], "points":[[0,0],[0.00001,-0.00003],[0.00002,0.00001]]},
+    {"name":"small_phase_gradient", "y":[1e-12,2e-12,1e-10,2e-11], "lambda":1e12, "coefficients":[1], "points":[[0.1,0.2],[-0.2,0.3]]},
+    {"name":"zero_amplitude", "y":[0.6,0.8,0,0], "lambda":8, "coefficients":[1], "points":[[0,0],[0.125,-0.25]]},
+    {"name":"tiny_amplitude", "y":[0.6,0.8,1e-120,-1e-100], "lambda":8, "coefficients":[1], "points":[[0.125,-0.25]]},
+    {"name":"dynamic_range", "expected_outcome":"precision_rejected", "y":[0.6,0.8,1e-60,1e60], "lambda":100, "coefficients":[1], "points":[[0.01,-0.02]]}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-09-09T07:41:21.092527+00:00",
+  "formal_report": "/workspace/flashns-comparator-20260909/logs/comparator-euler.json",
+  "formal_phase_completed_before_timing": false,
+  "command": [
+    "/root/flashns-euler-44408-20260909/.venv/bin/python",
+    "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/run_benchmark.py",
+    "--build",
+    "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1",
+    "--output",
+    "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1/benchmark.json"
+  ],
+  "script_sha256": "d3b63d652dd555287f60a83f7bc2c60e78caace016ab9d5d530656d7d71eec77",
+  "paused": true,
+  "process_group": 55161,
+  "process_command": "lake env /workspace/flashns-formal-20260909/repository/.lake/packages/Comparator/.lake/build/bin/comparator ComparatorChallenges/Euler.json ",
+  "pause_started_utc": "2026-09-09T07:41:21.392737+00:00",
+  "returncode": 0,
+  "pause_seconds": 59.47644606605172,
+  "resumed_utc": "2026-09-09T07:42:20.569151+00:00",
+  "finished_utc": "2026-09-09T07:42:20.569189+00:00"
+}

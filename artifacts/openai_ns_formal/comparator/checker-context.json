@@ -1,0 +1,18 @@
+{
+  "uid": 65533,
+  "landlock_abi": 4,
+  "kernel": "6.8.0-90-generic",
+  "af_unix_guard": "unix_guard.py; socket and socketpair denied with EAFNOSUPPORT; exec inheritance self-tested",
+  "official_landrun_best_effort": true,
+  "landrun_best_effort_origin": "Pinned Comparator Main.lean buildLandrunArgs, unchanged",
+  "wrapper_scope": "Pass LEAN_NUM_THREADS=16 through Landrun; no sandbox option removed or weakened",
+  "wrapper_sha256": "3f70c4a670df2c1996aeff23a314eb5bb39d18f54980c9cd373d4d740d1154e6",
+  "guard_sha256": "aaa4bb477158d2655d399f288ec451f4640a19227ac82c6541dcaa083ea46ab3",
+  "fresh_checkouts": [
+    "repository",
+    "repository-euler"
+  ],
+  "project_build_cache_copied": false,
+  "mathlib_and_locked_package_cache_copied": true,
+  "no_source_patches": true
+}

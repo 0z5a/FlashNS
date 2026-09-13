@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source": "sources/registry.json: euler_code",
+  "equation": "3D incompressible Euler, axisymmetric traveling self-similar profile equations",
+  "viscosity": 0,
+  "forcing": "unforced profile equations in the source artifact",
+  "representation": "three frozen degree-9 tensor product B-splines, FP64",
+  "coordinates": "R=sinh(xR), Z=sinh(xZ)",
+  "normalization": "unmodified source lambda=0.5 and C_raw=10.237270294850788",
+  "sample_plan": {
+    "seed": 23,
+    "generator": "NumPy PCG64",
+    "points_per_domain": 1024,
+    "domains": {
+      "full_computational_box": "xR uniform [0,30), xZ uniform [-30,30)",
+      "physical_box_radius3": "R uniform [0,3), Z uniform [-3,3), then asinh; a box, not a ball",
+      "axis": "xR=0, xZ uniform [-30,30)",
+      "far_field": "xR uniform [10,30); xZ half in [-30,-10), half in [10,30)"
+    }
+  },
+  "claim": "sampled numerical residuals and backend agreement only",
+  "trusted_checker": "no rigorous checker in this archive; independent SciPy derivative baseline is a numerical comparison"
+}

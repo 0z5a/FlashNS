@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "workload_source_id": "pinn_jet_local",
+  "kind": "synthetic_local_numerical_benchmark",
+  "implementation": "experiments/cuda_jet_v5/common.py",
+  "jet_dimensions": [2, 3],
+  "spatial_order": 3,
+  "full_jet_coefficients": {"2": 10, "3": 20},
+  "coefficient_convention": "normalized Taylor, D^alpha / alpha!",
+  "layout": "B,Q,C",
+  "precision_policy": "FP64 stable_aux_a1; fast math disabled",
+  "network_objective": {
+    "dimension": 2,
+    "default_widths": [2, 64, 64, 3],
+    "outputs": ["u", "v", "p"],
+    "activation": "tanh",
+    "viscosity": 0.07,
+    "spatial_residual_gradient_weight": 0.2,
+    "point_loss": "0.5*(ru^2+rv^2+div^2+0.2*(|grad ru|^2+|grad rv|^2+|grad div|^2))",
+    "global_loss": "sum_i quadrature_i * point_loss_i / sum_i quadrature_i",
+    "gradient_reduction": "SUM_after_global_normalization",
+    "regularization": "optional L2; added once on rank 0",
+    "optimizer_validation": "fixed-step SGD, learning rate 0.001"
+  },
+  "parameter_derivative_order": 1,
+  "hvp_supported": false,
+  "scientific_convergence_tested": false,
+  "openai_proof_replayed": false,
+  "relationship_to_official_sources": "Independent workload; no official Euler or OpenAI construction is evaluated by these timings."
+}

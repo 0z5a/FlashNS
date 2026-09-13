@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "workload_source_id": "openai_ns_formal",
+  "status": "formal_replay_and_finite_local_adapter",
+  "source_registry": "sources/openai_ns_formal/registry.json",
+  "repository": "https://github.com/openai/NavierStokesAndEuler",
+  "commit": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "lean_toolchain": "leanprover/lean4:v4.34.0-rc2",
+  "cpu_build_status": "passed",
+  "comparator_status": "passed",
+  "local_numerical_reference": {
+    "object": "local_projected_complex_wave_amplitude",
+    "implementation": "experiments/openai_ns_formal/projected_amplitude.py",
+    "paper_equations": [
+      "7.3",
+      "7.4",
+      "7.5",
+      "7.6",
+      "7.13"
+    ],
+    "lean_file": "NavierStokes/TangentProjection.lean",
+    "independent_reference": "100/120 digit 4x4 saddle-system solve, plus Radau trajectory integration and exact tangency-defect decay",
+    "validation_status": "passed",
+    "validation_report": "experiments/openai_ns_formal/artifacts/numerical-validation.json",
+    "scope": "Finite local coefficient samples; not the global profile/cutoff/correction construction."
+  },
+  "cuda_entry": "experiments/openai_ns_formal/numerical_run.py",
+  "openai_proof_replayed": true,
+  "proof_replay_scope": "Four declarations in the two unchanged official Comparator challenges, accepted by both configured kernels; no claim of an independent mathematical reconstruction of the full paper.",
+  "gpu_benchmark_status": "passed",
+  "gpu_benchmark_report": "experiments/openai_ns_formal/artifacts/numerical-benchmark-v3.json"
+}

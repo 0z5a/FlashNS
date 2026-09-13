@@ -1,0 +1,2428 @@
+{
+  "timestamp_utc": "2026-09-09T02:26:52.462110+00:00",
+  "source_hashes": {
+    "experiments/cuda_jet/input/generate_jet_header.py": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+    "experiments/cuda_jet/input/jet_reference.py": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+    "experiments/cuda_jet_v5/benchmark.py": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+    "experiments/cuda_jet_v5/build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+    "experiments/cuda_jet_v5/check_sanitizers.py": "fc9710daaa54309a89158baa215b25342befecb303631d104fe671174f1ca3eb",
+    "experiments/cuda_jet_v5/common.py": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+    "experiments/cuda_jet_v5/distributed.py": "459d5f73226fe96bf43fad3a8b906a5ec193d96f7c364edc775e2ec534311859",
+    "experiments/cuda_jet_v5/generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+    "experiments/cuda_jet_v5/gpu.py": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+    "experiments/cuda_jet_v5/independent_throughput.py": "1eb7f70c3469b73931d9b70fdf9a344c65f5540c0559c1c44dc1bf5d5425ed30",
+    "experiments/cuda_jet_v5/recheck_small.py": "1554bfc5ceb65e770926e0506695f07cc6a51f65502dd8931869fcc4a17652b9",
+    "experiments/cuda_jet_v5/sanitizer_smoke.cu": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+    "experiments/cuda_jet_v5/stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+    "experiments/cuda_jet_v5/stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+    "experiments/cuda_jet_v5/stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+    "experiments/cuda_jet_v5/validate.py": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+    "src/flashns/distributed_contract.py": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+    "src/flashns/jet_spec.py": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+    "src/flashns/jet_stable.py": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407"
+  },
+  "fixed_jobs": 4,
+  "points_per_job": 16384,
+  "includes_optimizer": false,
+  "timing_scope": "persistent workers; wall includes parent dispatch, four complete independent gradients, CUDA synchronize and response IPC; excludes process startup, case creation, warmup and correctness checks",
+  "worlds": [
+    {
+      "world_size": 1,
+      "startup_warmup_validation_seconds": 3.3745692009979393,
+      "workers": [
+        {
+          "kind": "ready",
+          "rank": 0,
+          "gpu_uuid": "b0dd3c99-e896-4231-e044-feb228d8312b",
+          "jobs": [
+            {
+              "job_id": 0,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7510,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "c88b267bbf00af01556d584b3e30fbb1127a20a6d99e864e074a7709e467b4cc",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "1f071e1d778cd9699689be861c88b1737afab29a893444465e19950eb32fda48",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            },
+            {
+              "job_id": 1,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7517,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "fa769743cdeaafa0a18d1377f89b7f2ed3c3fc3fddb6216ec2c530a5f95fcdc4",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "fcf8a6a9836dc30fa0e4dc8d6c4ec1c5139631523ded819a16807099164d0f55",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            },
+            {
+              "job_id": 2,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7524,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "1434c6dc083f004f0b6eb4f42c65830cd453688d623828d2fdcdbc9a87563267",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "9d34fdb86d90f55c7a044e04003082bd6855feb2ef5790156e8eba5522eb3752",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            },
+            {
+              "job_id": 3,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7531,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "b032781f30b9b485d97090762d1db04f0594eec00c2c5d3a84fbc99c6af5e5b2",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "ba36b7fecf35ca51b14076597c430c090d55f612bff2db981f4e6db4d19fec03",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            }
+          ],
+          "checks": [
+            {
+              "job_id": 0,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 2.7755575615628914e-17,
+                "max_tolerance_ratio": 7.392573387899897e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            },
+            {
+              "job_id": 1,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 2.0816681711721685e-17,
+                "max_tolerance_ratio": 7.4660378705096535e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            },
+            {
+              "job_id": 2,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 1.3877787807814457e-17,
+                "max_tolerance_ratio": 4.544913463211415e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            },
+            {
+              "job_id": 3,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 1.3877787807814457e-17,
+                "max_tolerance_ratio": 5.220659379527453e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            }
+          ],
+          "build": {
+            "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+            "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+            "capability": [
+              8,
+              6
+            ],
+            "fast_math": false,
+            "libraries": {
+              "stable": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+                ],
+                "seconds": 2.2977711400017142,
+                "returncode": 0,
+                "path": "libstable.so",
+                "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+              },
+              "dgrad_n64": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+                ],
+                "seconds": 10.217335309978807,
+                "returncode": 0,
+                "path": "libdgrad_n64.so",
+                "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+              },
+              "dgrad_n32": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "-DFLASHNS_TILE_N=32",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+                ],
+                "seconds": 10.602232295001158,
+                "returncode": 0,
+                "path": "libdgrad_n32.so",
+                "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+              }
+            },
+            "source_hashes": {
+              "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+              "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+              "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+              "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+              "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+            }
+          }
+        }
+      ],
+      "observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 112.62439101119526,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 111.862335994374
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 109.41845100023784,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 109.08420698251575
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 109.46152699762024,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 109.08030200516805
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 112.23439199966379,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 111.80401899036951
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 112.13261002558284,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 111.80581801454537
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 109.30892400210723,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 109.05967699363828
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 109.36163002043031,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 109.09082100261003
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 112.27506402065046,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 111.88228501123376
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 112.18766501406208,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 111.82741401717067
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 109.43051302456297,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 109.085997013608
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 109.51327698421665,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 109.09398199873976
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 112.33122600242496,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 111.94132300443016
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 112.15396400075406,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 111.81269999360666
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 111.161483975593,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 110.66312200273387
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 113.1656370125711,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 112.79455700423568
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 116.89424398355186,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 116.5357340069022
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 112.18985301093198,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 111.8375709920656
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 109.3876340019051,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 109.07124599907547
+              }
+            ]
+          }
+        }
+      ],
+      "median_four_job_wall_ms": {
+        "B1": 112.23439199966379,
+        "F3": 109.43051302456297
+      }
+    },
+    {
+      "world_size": 2,
+      "startup_warmup_validation_seconds": 3.0697512330079917,
+      "workers": [
+        {
+          "kind": "ready",
+          "rank": 0,
+          "gpu_uuid": "b0dd3c99-e896-4231-e044-feb228d8312b",
+          "jobs": [
+            {
+              "job_id": 0,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7510,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "c88b267bbf00af01556d584b3e30fbb1127a20a6d99e864e074a7709e467b4cc",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "1f071e1d778cd9699689be861c88b1737afab29a893444465e19950eb32fda48",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            },
+            {
+              "job_id": 2,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7524,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "1434c6dc083f004f0b6eb4f42c65830cd453688d623828d2fdcdbc9a87563267",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "9d34fdb86d90f55c7a044e04003082bd6855feb2ef5790156e8eba5522eb3752",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            }
+          ],
+          "checks": [
+            {
+              "job_id": 0,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 2.7755575615628914e-17,
+                "max_tolerance_ratio": 7.392573387899897e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            },
+            {
+              "job_id": 2,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 1.3877787807814457e-17,
+                "max_tolerance_ratio": 4.544913463211415e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            }
+          ],
+          "build": {
+            "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+            "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+            "capability": [
+              8,
+              6
+            ],
+            "fast_math": false,
+            "libraries": {
+              "stable": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+                ],
+                "seconds": 2.2977711400017142,
+                "returncode": 0,
+                "path": "libstable.so",
+                "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+              },
+              "dgrad_n64": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+                ],
+                "seconds": 10.217335309978807,
+                "returncode": 0,
+                "path": "libdgrad_n64.so",
+                "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+              },
+              "dgrad_n32": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "-DFLASHNS_TILE_N=32",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+                ],
+                "seconds": 10.602232295001158,
+                "returncode": 0,
+                "path": "libdgrad_n32.so",
+                "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+              }
+            },
+            "source_hashes": {
+              "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+              "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+              "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+              "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+              "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+            }
+          }
+        },
+        {
+          "kind": "ready",
+          "rank": 1,
+          "gpu_uuid": "05f77118-4e18-dea2-78fc-d40ad5397445",
+          "jobs": [
+            {
+              "job_id": 1,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7517,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "fa769743cdeaafa0a18d1377f89b7f2ed3c3fc3fddb6216ec2c530a5f95fcdc4",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "fcf8a6a9836dc30fa0e4dc8d6c4ec1c5139631523ded819a16807099164d0f55",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            },
+            {
+              "job_id": 3,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7531,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "b032781f30b9b485d97090762d1db04f0594eec00c2c5d3a84fbc99c6af5e5b2",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "ba36b7fecf35ca51b14076597c430c090d55f612bff2db981f4e6db4d19fec03",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            }
+          ],
+          "checks": [
+            {
+              "job_id": 1,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 2.0816681711721685e-17,
+                "max_tolerance_ratio": 7.4660378705096535e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            },
+            {
+              "job_id": 3,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 1.3877787807814457e-17,
+                "max_tolerance_ratio": 5.220659379527453e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            }
+          ],
+          "build": {
+            "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+            "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+            "capability": [
+              8,
+              6
+            ],
+            "fast_math": false,
+            "libraries": {
+              "stable": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+                ],
+                "seconds": 2.2977711400017142,
+                "returncode": 0,
+                "path": "libstable.so",
+                "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+              },
+              "dgrad_n64": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+                ],
+                "seconds": 10.217335309978807,
+                "returncode": 0,
+                "path": "libdgrad_n64.so",
+                "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+              },
+              "dgrad_n32": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "-DFLASHNS_TILE_N=32",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+                ],
+                "seconds": 10.602232295001158,
+                "returncode": 0,
+                "path": "libdgrad_n32.so",
+                "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+              }
+            },
+            "source_hashes": {
+              "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+              "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+              "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+              "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+              "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+            }
+          }
+        }
+      ],
+      "observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 57.79392598196864,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 56.07864700141363
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.485897017410025
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 55.82291600876488,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.676580999512225
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.25751199456863
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 55.78960099956021,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.633387975627556
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.245782976271585
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 57.36474398872815,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 56.23400301556103
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.809856003383175
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 57.13975298567675,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 56.011256005149335
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.58911800128408
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 55.744095996487886,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.63871598476544
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.21703799604438
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 55.74045598041266,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.61098300293088
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.23473801440559
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 57.09149001631886,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 55.984925013035536
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.574408983578905
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 57.09404099616222,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 55.983880010899156
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.57243198947981
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 55.77516101766378,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.628370999125764
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.244377988856286
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 55.7284289970994,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.60957100149244
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.20517600234598
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 57.08701099501923,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 55.9738629963249
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.56956401071511
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 57.087282999418676,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 55.985097016673535
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.57193000661209
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 55.753327993443236,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.63888999656774
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.20378198707476
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 55.58624700643122,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.66169002465904
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.212231003679335
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 57.100553007330745,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 56.008696992648765
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.6014880023431
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 57.05496697919443,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 56.03469998459332
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 56.55254400335252
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 55.745357007253915,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 54.95749300462194
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 55.21414300892502
+              }
+            ]
+          }
+        }
+      ],
+      "median_four_job_wall_ms": {
+        "B1": 57.09404099616222,
+        "F3": 55.745357007253915
+      }
+    },
+    {
+      "world_size": 4,
+      "startup_warmup_validation_seconds": 3.228504368016729,
+      "workers": [
+        {
+          "kind": "ready",
+          "rank": 0,
+          "gpu_uuid": "b0dd3c99-e896-4231-e044-feb228d8312b",
+          "jobs": [
+            {
+              "job_id": 0,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7510,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "c88b267bbf00af01556d584b3e30fbb1127a20a6d99e864e074a7709e467b4cc",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "1f071e1d778cd9699689be861c88b1737afab29a893444465e19950eb32fda48",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            }
+          ],
+          "checks": [
+            {
+              "job_id": 0,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 2.7755575615628914e-17,
+                "max_tolerance_ratio": 7.392573387899897e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            }
+          ],
+          "build": {
+            "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+            "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+            "capability": [
+              8,
+              6
+            ],
+            "fast_math": false,
+            "libraries": {
+              "stable": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+                ],
+                "seconds": 2.2977711400017142,
+                "returncode": 0,
+                "path": "libstable.so",
+                "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+              },
+              "dgrad_n64": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+                ],
+                "seconds": 10.217335309978807,
+                "returncode": 0,
+                "path": "libdgrad_n64.so",
+                "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+              },
+              "dgrad_n32": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "-DFLASHNS_TILE_N=32",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+                ],
+                "seconds": 10.602232295001158,
+                "returncode": 0,
+                "path": "libdgrad_n32.so",
+                "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+              }
+            },
+            "source_hashes": {
+              "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+              "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+              "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+              "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+              "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+            }
+          }
+        },
+        {
+          "kind": "ready",
+          "rank": 1,
+          "gpu_uuid": "05f77118-4e18-dea2-78fc-d40ad5397445",
+          "jobs": [
+            {
+              "job_id": 1,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7517,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "fa769743cdeaafa0a18d1377f89b7f2ed3c3fc3fddb6216ec2c530a5f95fcdc4",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "fcf8a6a9836dc30fa0e4dc8d6c4ec1c5139631523ded819a16807099164d0f55",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            }
+          ],
+          "checks": [
+            {
+              "job_id": 1,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 2.0816681711721685e-17,
+                "max_tolerance_ratio": 7.4660378705096535e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            }
+          ],
+          "build": {
+            "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+            "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+            "capability": [
+              8,
+              6
+            ],
+            "fast_math": false,
+            "libraries": {
+              "stable": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+                ],
+                "seconds": 2.2977711400017142,
+                "returncode": 0,
+                "path": "libstable.so",
+                "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+              },
+              "dgrad_n64": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+                ],
+                "seconds": 10.217335309978807,
+                "returncode": 0,
+                "path": "libdgrad_n64.so",
+                "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+              },
+              "dgrad_n32": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "-DFLASHNS_TILE_N=32",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+                ],
+                "seconds": 10.602232295001158,
+                "returncode": 0,
+                "path": "libdgrad_n32.so",
+                "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+              }
+            },
+            "source_hashes": {
+              "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+              "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+              "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+              "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+              "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+            }
+          }
+        },
+        {
+          "kind": "ready",
+          "rank": 2,
+          "gpu_uuid": "70480540-f4f9-6c7a-23f4-790c840194f7",
+          "jobs": [
+            {
+              "job_id": 2,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7524,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "1434c6dc083f004f0b6eb4f42c65830cd453688d623828d2fdcdbc9a87563267",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "9d34fdb86d90f55c7a044e04003082bd6855feb2ef5790156e8eba5522eb3752",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            }
+          ],
+          "checks": [
+            {
+              "job_id": 2,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 1.3877787807814457e-17,
+                "max_tolerance_ratio": 4.544913463211415e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            }
+          ],
+          "build": {
+            "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+            "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+            "capability": [
+              8,
+              6
+            ],
+            "fast_math": false,
+            "libraries": {
+              "stable": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+                ],
+                "seconds": 2.2977711400017142,
+                "returncode": 0,
+                "path": "libstable.so",
+                "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+              },
+              "dgrad_n64": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+                ],
+                "seconds": 10.217335309978807,
+                "returncode": 0,
+                "path": "libdgrad_n64.so",
+                "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+              },
+              "dgrad_n32": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "-DFLASHNS_TILE_N=32",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+                ],
+                "seconds": 10.602232295001158,
+                "returncode": 0,
+                "path": "libdgrad_n32.so",
+                "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+              }
+            },
+            "source_hashes": {
+              "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+              "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+              "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+              "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+              "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+            }
+          }
+        },
+        {
+          "kind": "ready",
+          "rank": 3,
+          "gpu_uuid": "dfbcbbb7-c51d-27d8-7da4-85959913a7ea",
+          "jobs": [
+            {
+              "job_id": 3,
+              "case": {
+                "global_batch": 16384,
+                "widths": [
+                  2,
+                  64,
+                  64,
+                  3
+                ],
+                "seed": 7531,
+                "weighted": false,
+                "coordinate_scale": 0.4,
+                "global_points_sha256": "b032781f30b9b485d97090762d1db04f0594eec00c2c5d3a84fbc99c6af5e5b2",
+                "global_weights_sha256": "b8e5b5bca31feee11d66ce1a5f53d537f8876bb153fbc01e25435322282d7d36",
+                "global_denominator": 16384.0,
+                "parameter_init_sha256": "ba36b7fecf35ca51b14076597c430c090d55f612bff2db981f4e6db4d19fec03",
+                "precision_policy": "stable_aux_a1",
+                "workload_source_id": "pinn_jet_local",
+                "point_id_range": [
+                  0,
+                  16384
+                ],
+                "local_batch": 16384
+              }
+            }
+          ],
+          "checks": [
+            {
+              "job_id": 3,
+              "loss": {
+                "max_abs": 0.0,
+                "max_tolerance_ratio": 0.0,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              },
+              "gradient": {
+                "max_abs": 1.3877787807814457e-17,
+                "max_tolerance_ratio": 5.220659379527453e-06,
+                "atol": 2e-12,
+                "rtol": 2e-11,
+                "passed": true
+              }
+            }
+          ],
+          "build": {
+            "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+            "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+            "capability": [
+              8,
+              6
+            ],
+            "fast_math": false,
+            "libraries": {
+              "stable": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+                ],
+                "seconds": 2.2977711400017142,
+                "returncode": 0,
+                "path": "libstable.so",
+                "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+              },
+              "dgrad_n64": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+                ],
+                "seconds": 10.217335309978807,
+                "returncode": 0,
+                "path": "libdgrad_n64.so",
+                "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+              },
+              "dgrad_n32": {
+                "command": [
+                  "nvcc",
+                  "-O3",
+                  "-std=c++17",
+                  "-arch=sm_86",
+                  "--expt-relaxed-constexpr",
+                  "-shared",
+                  "-Xcompiler=-fPIC",
+                  "-lineinfo",
+                  "--ptxas-options=-v",
+                  "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+                  "-DFLASHNS_TILE_N=32",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+                  "-o",
+                  "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+                ],
+                "seconds": 10.602232295001158,
+                "returncode": 0,
+                "path": "libdgrad_n32.so",
+                "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+              }
+            },
+            "source_hashes": {
+              "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+              "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+              "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+              "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+              "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+            }
+          }
+        }
+      ],
+      "observations": [
+        {
+          "repeat": 0,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 38.06302000884898,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 36.785962991416454
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 28.42108201002702
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 29.246594000142068
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 29.098500992404297
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 35.66201200010255,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 31.49465800379403
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 34.8845369881019
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.23035798408091
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 27.36429698416032
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 1,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 33.37622102117166,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 30.76066801440902
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 32.798714004457
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.204850019188598
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 27.338535990566015
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 37.30237000854686,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 36.504412011709064
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 31.82750300038606
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 27.88602898363024
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 28.067181003279984
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 37.80532398377545,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 30.6807610031683
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 37.029633997008204
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 27.882116002729163
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 27.993915980914608
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 36.0436879855115,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 30.96212400123477
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 35.33249397878535
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.228788996580988
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 27.401794999605045
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 36.67040800792165,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 35.832102003041655
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 31.815896014450118
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.211876993533224
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 27.352727978723124
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 37.85561502445489,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 31.712247000541538
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 37.07711602328345
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 27.88555499864742
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 28.05598999839276
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 4,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 37.196581019088626,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 28.306607011472806
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 36.57395098707639
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 27.939619991229847
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 35.47002098639496
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 35.82143600215204,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 33.349470992106944
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 34.91814000881277
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.201300021260977
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 34.46066100150347
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 5,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 33.5967389983125,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 32.640296005411074
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 27.852473984239623
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.22580701811239
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 33.10521200182848
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 34.35209899907932,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 28.2604829990305
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 28.44010101398453
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 27.893872000277042
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 33.8529740110971
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 6,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 33.253863017307594,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 28.263703017728403
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 28.417511988664046
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 27.889212011359632
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 32.76827099034563
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 33.71862802305259,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 28.48637997522019
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 27.74280699668452
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.197549992706627
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 32.990064995829016
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 7,
+          "order": [
+            "F3",
+            "B1"
+          ],
+          "F3": {
+            "four_job_wall_ms": 28.363092977087945,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 27.58920399355702
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 27.763507008785382
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.208103972952813
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 27.362054999684915
+              }
+            ]
+          },
+          "B1": {
+            "four_job_wall_ms": 32.029725989559665,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 31.4424560056068
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 28.40693699545227
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 27.841086994158104
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 27.967061003437266
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 8,
+          "order": [
+            "B1",
+            "F3"
+          ],
+          "B1": {
+            "four_job_wall_ms": 32.269725983496755,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "B1",
+                "compute_ms": 31.538390001514927
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "B1",
+                "compute_ms": 28.513171011582017
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "B1",
+                "compute_ms": 27.89405599469319
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "B1",
+                "compute_ms": 27.932710014283657
+              }
+            ]
+          },
+          "F3": {
+            "four_job_wall_ms": 32.34793699812144,
+            "workers": [
+              {
+                "kind": "result",
+                "rank": 0,
+                "backend": "F3",
+                "compute_ms": 31.486303982092068
+              },
+              {
+                "kind": "result",
+                "rank": 1,
+                "backend": "F3",
+                "compute_ms": 31.558311020489782
+              },
+              {
+                "kind": "result",
+                "rank": 2,
+                "backend": "F3",
+                "compute_ms": 27.21134401508607
+              },
+              {
+                "kind": "result",
+                "rank": 3,
+                "backend": "F3",
+                "compute_ms": 27.267114986898378
+              }
+            ]
+          }
+        }
+      ],
+      "median_four_job_wall_ms": {
+        "B1": 37.196581019088626,
+        "F3": 33.71862802305259
+      }
+    }
+  ],
+  "passed": true
+}

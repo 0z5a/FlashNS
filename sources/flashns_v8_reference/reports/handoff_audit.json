@@ -1,0 +1,108 @@
+{
+  "scope": "recomputation of historical uploaded JSON, not independent GPU measurement",
+  "final_combinations": 24,
+  "final_converged": 24,
+  "initial_converged": 17,
+  "actual_attempts": 31,
+  "all_attempts_process_wall_s": 1401.5454544881359,
+  "max_summary_ratio_discrepancy": 0,
+  "statistics": {
+    "cuBLASLt": {
+      "total_wall_median_s": 22.722830425947905,
+      "optimization_wall_median_s": 21.811741584911942,
+      "paired_total_over_tma_median": 1.023282534794771,
+      "paired_total_over_tma_by_seed": {
+        "75101": 1.023282534794771,
+        "75102": 0.9912978607193451,
+        "75103": 1.098957063036339
+      }
+    },
+    "TorchJetCompiled": {
+      "total_wall_median_s": 25.941473643062636,
+      "optimization_wall_median_s": 21.471770656993613,
+      "paired_total_over_tma_median": 1.168228447256808,
+      "paired_total_over_tma_by_seed": {
+        "75101": 1.168228447256808,
+        "75102": 1.108730693317826,
+        "75103": 1.2633911881686088
+      }
+    },
+    "PhysicsNeMo": {
+      "total_wall_median_s": 118.78979656891897,
+      "optimization_wall_median_s": 117.54113079491071,
+      "paired_total_over_tma_median": 5.278977824408787,
+      "paired_total_over_tma_by_seed": {
+        "75101": 5.3494886799837476,
+        "75102": 4.6809341203485255,
+        "75103": 5.278977824408787
+      }
+    },
+    "TorchNestedAD": {
+      "total_wall_median_s": 96.65986630111001,
+      "optimization_wall_median_s": 95.76606748206541,
+      "paired_total_over_tma_median": 4.3529063566207284,
+      "paired_total_over_tma_by_seed": {
+        "75101": 4.3529063566207284,
+        "75102": 3.9388130723163886,
+        "75103": 4.4404348339191415
+      }
+    },
+    "F": {
+      "total_wall_median_s": 22.42663338314742,
+      "optimization_wall_median_s": 21.86741438903846,
+      "paired_total_over_tma_median": 1.0099438241203524,
+      "paired_total_over_tma_by_seed": {
+        "75101": 1.0099438241203524,
+        "75102": 0.9912740170052992,
+        "75103": 1.0188655196284169
+      }
+    },
+    "B1": {
+      "total_wall_median_s": 22.527761470992118,
+      "optimization_wall_median_s": 21.847939969971776,
+      "paired_total_over_tma_median": 1.014497948942342,
+      "paired_total_over_tma_by_seed": {
+        "75101": 1.014497948942342,
+        "75102": 0.9768163023064252,
+        "75103": 1.074301184798455
+      }
+    },
+    "HopperTMA": {
+      "total_wall_median_s": 22.20582258887589,
+      "optimization_wall_median_s": 21.647114916006103,
+      "paired_total_over_tma_median": 1.0,
+      "paired_total_over_tma_by_seed": {
+        "75101": 1.0,
+        "75102": 1.0,
+        "75103": 1.0
+      }
+    },
+    "CuEquivariance": {
+      "total_wall_median_s": 25.793689514743164,
+      "optimization_wall_median_s": 22.341913347830996,
+      "paired_total_over_tma_median": 1.11709070746718,
+      "paired_total_over_tma_by_seed": {
+        "75101": 1.161573250056705,
+        "75102": 1.11709070746718,
+        "75103": 1.0375847221946566
+      }
+    }
+  },
+  "source_sha256": {
+    "00_README_FOR_GPT_PRO.md": "013b3bb103c5ccd7415e88d8ae8fd27a4988313806ef5d023a30fab01fcf4fb5",
+    "01_ITERATION_RFC_V7_ZH.md": "0fa68dfc166ae790106a82b68abf4350a0edaf27805e72d68640148506f38103",
+    "02_KEY_RESULTS.json": "ee80b97c1aa1dbda28810a92426258efb4eb8fb71a224c21a4a950443ea6cf7f",
+    "flashns/docs/pinn-solver-results.md": "21c0e93d06880b7b6382f67aadb6b8e35928f10020590c435b228a26365939df",
+    "flashns/docs/cuda-hopper-results.md": "6ea2fe897f64115dcfdbc7ea016ca3b200c05cb7c99afcac2716c4c8348ca331",
+    "flashns/docs/openai-ns-formal-results.md": "1337663a8cf7b1e8afa7d639170046489b5999841548804b2cb5a3d096b0144c",
+    "flashns/experiments/pinn_solver/problem.py": "ddddf911d4c0028d828339ff578b96c24ee919bb2d5768f3cc4d221cd20e462a",
+    "flashns/experiments/pinn_solver/backends.py": "f2fc752cf08289f63b045eec1d254f0b662818ced84c8459a5bdba2e4c1f1de2",
+    "flashns/experiments/cuda_jet_h100/common.py": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+    "flashns/experiments/cuda_jet_h100/stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+    "flashns/src/flashns/jet_stable.py": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+    "flashns/experiments/pinn_solver/artifacts/extension1/protocol.json": "defd2bdf4ded10e2c912232c147a79b79649acb96cf9368504a4ef8dc24459da",
+    "flashns/experiments/pinn_solver/artifacts/extension1/suite.json": "258deb13004e855f01b7ded107f261670a9fa42593d07f293db1b11d4f2fd3ea"
+  },
+  "new_gpu_measurement": false,
+  "new_lean_replay": false
+}

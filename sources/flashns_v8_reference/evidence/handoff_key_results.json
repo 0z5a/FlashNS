@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "status": "derived from measured evidence; no new benchmark run",
+  "solver_source": "flashns/experiments/pinn_solver/artifacts/extension1/suite.json",
+  "solver_reference": "HopperTMA",
+  "ratio_definition": "median over identical seeds of baseline total_wall_seconds / HopperTMA total_wall_seconds",
+  "paired_baselines": {
+    "B1": {
+      "median_total_seconds": 22.527761470992118,
+      "median_optimization_seconds": 21.847939969971776,
+      "median_process_seconds": 24.315877825021744,
+      "paired_speedup_median": 1.014497948942342,
+      "time_saved_percent": 1.4290762201596086,
+      "per_seed": [
+        {
+          "seed": 75101,
+          "speedup": 1.014497948942342,
+          "converged": true
+        },
+        {
+          "seed": 75102,
+          "speedup": 0.9768163023064252,
+          "converged": true
+        },
+        {
+          "seed": 75103,
+          "speedup": 1.074301184798455,
+          "converged": true
+        }
+      ]
+    },
+    "CuEquivariance": {
+      "median_total_seconds": 25.793689514743164,
+      "median_optimization_seconds": 22.341913347830996,
+      "median_process_seconds": 27.859592011896893,
+      "paired_speedup_median": 1.11709070746718,
+      "time_saved_percent": 10.481754676185972,
+      "per_seed": [
+        {
+          "seed": 75101,
+          "speedup": 1.161573250056705,
+          "converged": true
+        },
+        {
+          "seed": 75102,
+          "speedup": 1.11709070746718,
+          "converged": true
+        },
+        {
+          "seed": 75103,
+          "speedup": 1.0375847221946566,
+          "converged": true
+        }
+      ]
+    },
+    "F": {
+      "median_total_seconds": 22.42663338314742,
+      "median_optimization_seconds": 21.86741438903846,
+      "median_process_seconds": 24.218956956872717,
+      "paired_speedup_median": 1.0099438241203524,
+      "time_saved_percent": 0.9845918043029145,
+      "per_seed": [
+        {
+          "seed": 75101,
+          "speedup": 1.0099438241203524,
+          "converged": true
+        },
+        {
+          "seed": 75102,
+          "speedup": 0.9912740170052992,
+          "converged": true
+        },
+        {
+          "seed": 75103,
+          "speedup": 1.0188655196284169,
+          "converged": true
+        }
+      ]
+    },
+    "HopperTMA": {
+      "median_total_seconds": 22.20582258887589,
+      "median_optimization_seconds": 21.647114916006103,
+      "median_process_seconds": 23.991077384911478,
+      "paired_speedup_median": 1.0,
+      "time_saved_percent": 0.0,
+      "per_seed": [
+        {
+          "seed": 75101,
+          "speedup": 1.0,
+          "converged": true
+        },
+        {
+          "seed": 75102,
+          "speedup": 1.0,
+          "converged": true
+        },
+        {
+          "seed": 75103,
+          "speedup": 1.0,
+          "converged": true
+        }
+      ]
+    },
+    "PhysicsNeMo": {
+      "median_total_seconds": 118.78979656891897,
+      "median_optimization_seconds": 117.54113079491071,
+      "median_process_seconds": 120.7864225639496,
+      "paired_speedup_median": 5.278977824408787,
+      "time_saved_percent": 81.05693880023081,
+      "per_seed": [
+        {
+          "seed": 75101,
+          "speedup": 5.3494886799837476,
+          "converged": true
+        },
+        {
+          "seed": 75102,
+          "speedup": 4.6809341203485255,
+          "converged": true
+        },
+        {
+          "seed": 75103,
+          "speedup": 5.278977824408787,
+          "converged": true
+        }
+      ]
+    },
+    "TorchJetCompiled": {
+      "median_total_seconds": 25.941473643062636,
+      "median_optimization_seconds": 21.471770656993613,
+      "median_process_seconds": 28.357867968035862,
+      "paired_speedup_median": 1.168228447256808,
+      "time_saved_percent": 14.400303951837168,
+      "per_seed": [
+        {
+          "seed": 75101,
+          "speedup": 1.168228447256808,
+          "converged": true
+        },
+        {
+          "seed": 75102,
+          "speedup": 1.108730693317826,
+          "converged": true
+        },
+        {
+          "seed": 75103,
+          "speedup": 1.2633911881686088,
+          "converged": true
+        }
+      ]
+    },
+    "TorchNestedAD": {
+      "median_total_seconds": 96.65986630111001,
+      "median_optimization_seconds": 95.76606748206541,
+      "median_process_seconds": 98.47019282099791,
+      "paired_speedup_median": 4.3529063566207284,
+      "time_saved_percent": 77.02684326119238,
+      "per_seed": [
+        {
+          "seed": 75101,
+          "speedup": 4.3529063566207284,
+          "converged": true
+        },
+        {
+          "seed": 75102,
+          "speedup": 3.9388130723163886,
+          "converged": true
+        },
+        {
+          "seed": 75103,
+          "speedup": 4.4404348339191415,
+          "converged": true
+        }
+      ]
+    },
+    "cuBLASLt": {
+      "median_total_seconds": 22.722830425947905,
+      "median_optimization_seconds": 21.811741584911942,
+      "median_process_seconds": 24.509157235966995,
+      "paired_speedup_median": 1.023282534794771,
+      "time_saved_percent": 2.275279212054615,
+      "per_seed": [
+        {
+          "seed": 75101,
+          "speedup": 1.023282534794771,
+          "converged": true
+        },
+        {
+          "seed": 75102,
+          "speedup": 0.9912978607193451,
+          "converged": true
+        },
+        {
+          "seed": 75103,
+          "speedup": 1.098957063036339,
+          "converged": true
+        }
+      ]
+    }
+  },
+  "iteration_status": "v7 proposed; not executed",
+  "complete_gradient_source": "flashns/experiments/cuda_jet_hopper/artifacts/grid1/benchmark.json",
+  "complete_gradient": [
+    {
+      "batch": 4096,
+      "B1_over_TMA_paired_median": 1.0225656758741115,
+      "original_F_over_TMA_paired_median": 1.001367985483598
+    },
+    {
+      "batch": 16384,
+      "B1_over_TMA_paired_median": 1.0620226025857906,
+      "original_F_over_TMA_paired_median": 1.002347499367267
+    },
+    {
+      "batch": 65536,
+      "B1_over_TMA_paired_median": 1.093770578292858,
+      "original_F_over_TMA_paired_median": 1.0028485305333672
+    }
+  ]
+}

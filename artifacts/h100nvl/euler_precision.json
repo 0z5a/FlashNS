@@ -1,0 +1,1035 @@
+{
+  "schema_version": 1,
+  "adapter": "euler_spline_precision_diagnostic",
+  "metadata": {
+    "timestamp_utc": "2026-09-09T06:12:13.279246+00:00",
+    "python": "3.12.14 (main, Sep  2 2026, 23:27:36) [GCC 15.3.0]",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.39",
+    "dependencies": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "sympy": "1.14.0",
+      "mpmath": "1.3.0"
+    },
+    "input_and_code_hashes": {
+      "src/flashns/__init__.py": "30a814dbede825388cfa02aa2220d57986d5629e2298923f156dc1f0254a5d18",
+      "src/flashns/affine.py": "6134cd6ebd0c047ca5392a2008768ebf5b97eda4f085f2d42d71fc1284970c84",
+      "src/flashns/cli.py": "182de99bab17437637935198f88fd46c2d2cb11698d1e4046d0bcab34a98ecb8",
+      "src/flashns/diagnostics.py": "9a75a660d0fea02eb6e37916c9e8b8d47d47df1b64c1991f0360ab47a12c1af8",
+      "src/flashns/distributed_contract.py": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+      "src/flashns/euler.py": "4fc7a38f745a3240093415328ed33cb452933280ba07ec4762eade95e3396585",
+      "src/flashns/jet_spec.py": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+      "src/flashns/jet_stable.py": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+      "src/flashns/provenance.py": "14acb0719a68979b307903d05c19b1cd8c5926129d470b0cb573e796a2320209",
+      "src/flashns/reference.py": "1e7ab5a46e86bb1c6b89a8a4aeafc462eb07b0a14e68dc37ae1728b067bf05fc",
+      "src/flashns/spline_reference.py": "2e99a6b0eb2afa1bc049502e208fdb650ccb0eec9951164026d86b9f3ba4dedc",
+      "src/flashns/symbolic.py": "5d8f369928afbd2a9241ae03ca312b367cc3826a209c0556d15d765a2281f4ac",
+      "src/flashns/torch_spline.py": "6135dfbb0b4db0b5ce586cb4a7c246e31193d9ea5339dcaf276bea74f972ab92",
+      "src/flashns/validation.py": "9d58d43a8b23c9bdb0b0a20bcb49c4be32b935b6bd76b92733a862de2a83b00e",
+      "pyproject.toml": "0d4fba11f6fcc647b09b5d2a8ac5b44ecb9fce4285ede55ba6086e7e73e9a956",
+      "uv.lock": "fa90a06dae080835f785721f1f0a2bee836f58c74a9fd902e3389c762e161267",
+      "scripts/doctor.py": "644cb0c896dc463fae29606c192f19a5f7e9d83e80cb401ba57b56cdeea5b448",
+      "scripts/preflight_multigpu.py": "0edc1a5c2880a59c96dd4a26bb343a9d1b55f049a709707e53e0f5722043eb9d",
+      "scripts/profile_euler.py": "18ce85fe027273ca6e6385876e56f152afd6c1d97eeb6faa996c1002194a0307",
+      "sources/registry.json": "69cbcab6afa2775777a395a3bbf064c79d38f0ed4454fcb55b26982d5bc9c60d"
+    },
+    "code_fingerprint": "82ddfe17e524902def2e856e1c8beecd114ef7ed14601f2b1b4bd847d9ec1f5c"
+  },
+  "sources": {
+    "euler_code": {
+      "sha256": "a238bc3662ec86ee61f7b904d365255d061b07dd9f1aa12a2a728af5959265ad",
+      "bytes": 284850126
+    },
+    "euler_Omega": {
+      "sha256": "e556a9432e07bd8ec1c3b106ab60a1ee2fcbd44c1ab629bccb237c0f34e3a041",
+      "bytes": 122412654
+    },
+    "euler_Psi": {
+      "sha256": "72a3147ee028ce91d544692b37da55e6ecfc7de0f6148437e8f9be515d06b1b7",
+      "bytes": 465849710
+    },
+    "euler_U": {
+      "sha256": "6f0f0e31be8efb509d700bff20288bbdcfa914483191c44ca72b33bc1499b86c",
+      "bytes": 121229936
+    },
+    "euler_meta": {
+      "sha256": "44f27313fb368f741304d07bfda29aa37a134357dd7dcdf5cd34ebf062f8194a",
+      "bytes": 66
+    }
+  },
+  "points_sha256": "37da39e4420c53c1070e7ebedfab89f1326e95e77dcf1996e3c1253d209300af",
+  "checked_points": 20,
+  "selection": "worst direct-vs-upstream disagreements per domain, first two points per domain, four axis probes",
+  "rows": [
+    {
+      "domain": "full_computational_box",
+      "index_in_frozen_domain": 0,
+      "point": [
+        20.817992419720927,
+        -14.278637614436436
+      ],
+      "reference_residuals_decimal": [
+        "-0.000005926264543703567396789001539363385772579",
+        "-0.00000003660979547969982082176086438713792447064",
+        "-0.00000006780665541797142113708790424783504876301"
+      ],
+      "reference_80_vs_100_scaled_delta": 2.2136420258663905e-87,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -5.926264543703567e-06,
+            -3.660979547969975e-08,
+            -6.780665541797146e-08
+          ],
+          "max_abs_error": 5.111743234779409e-22,
+          "max_tolerance_ratio": 2.5558564707081233e-13,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -5.926264543703544e-06,
+            -3.6609795479700426e-08,
+            -6.780665541797142e-08
+          ],
+          "max_abs_error": 2.338106389934405e-20,
+          "max_tolerance_ratio": 1.1690462668897611e-11,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            -5.926264543703568e-06,
+            -3.660979547969986e-08,
+            -6.780665541797144e-08
+          ],
+          "max_abs_error": 3.358586237763594e-22,
+          "max_tolerance_ratio": 1.6792831670055056e-13,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "full_computational_box",
+      "index_in_frozen_domain": 1,
+      "point": [
+        19.243746626346915,
+        -25.77362063923487
+      ],
+      "reference_residuals_decimal": [
+        "0.00000673014928084150855740977228343053833568",
+        "0.000004052084451486301458562280573327299033287",
+        "0.000002935169925683158196705612325615595857168"
+      ],
+      "reference_80_vs_100_scaled_delta": 3.3580531367761054e-86,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            6.73014928084151e-06,
+            4.052084451486303e-06,
+            2.935169925683157e-06
+          ],
+          "max_abs_error": 1.4952695341093897e-21,
+          "max_tolerance_ratio": 7.476317375877555e-13,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            6.7301492808415046e-06,
+            4.052084451486312e-06,
+            2.935169925683158e-06
+          ],
+          "max_abs_error": 1.0812631953906693e-20,
+          "max_tolerance_ratio": 5.4062940701932045e-12,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            6.730149280841511e-06,
+            4.052084451486302e-06,
+            2.9351699256831583e-06
+          ],
+          "max_abs_error": 2.779248195118034e-21,
+          "max_tolerance_ratio": 1.3896147452443386e-12,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "full_computational_box",
+      "index_in_frozen_domain": 332,
+      "point": [
+        0.42434993120199493,
+        16.482662705114134
+      ],
+      "reference_residuals_decimal": [
+        "-0.000001632969313933047854457780631197123124806",
+        "0.000002028858115674180029249566225014952727968",
+        "0.0000124765977156917909565414234052474988436"
+      ],
+      "reference_80_vs_100_scaled_delta": 6.069347742119207e-76,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -1.6329693139330587e-06,
+            2.028858115674182e-06,
+            1.2476462768189062e-05
+          ],
+          "max_abs_error": 1.3494750272945587e-10,
+          "max_tolerance_ratio": 0.06747290953237899,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -1.6329693139330469e-06,
+            2.028858115674188e-06,
+            1.2478903463979454e-05
+          ],
+          "max_abs_error": 2.305748287663345e-09,
+          "max_tolerance_ratio": 1.1528597600642234,
+          "tolerance_met": false
+        },
+        "local_coefficients": {
+          "residuals": [
+            -1.6329693139330485e-06,
+            2.028858115674179e-06,
+            1.2476597715691782e-05
+          ],
+          "max_abs_error": 9.432216646274617e-21,
+          "max_tolerance_ratio": 4.716049482885103e-12,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "full_computational_box",
+      "index_in_frozen_domain": 781,
+      "point": [
+        0.6138447164768024,
+        14.63653909559204
+      ],
+      "reference_residuals_decimal": [
+        "-0.000007809116763643948537873463709930259909046",
+        "0.000008037355561254991471799039026146316751014",
+        "-0.000003242589452421516864558472438268977535013"
+      ],
+      "reference_80_vs_100_scaled_delta": 1.3592448477999025e-76,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -7.809116763643794e-06,
+            8.037355561254992e-06,
+            -3.2425743658588306e-06
+          ],
+          "max_abs_error": 1.50865626862744e-11,
+          "max_tolerance_ratio": 0.007543256883451993,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -7.80911676364103e-06,
+            8.037355561254978e-06,
+            -3.239805300169036e-06
+          ],
+          "max_abs_error": 2.784152252480804e-09,
+          "max_tolerance_ratio": 1.3920716123236747,
+          "tolerance_met": false
+        },
+        "local_coefficients": {
+          "residuals": [
+            -7.809116763644012e-06,
+            8.037355561254989e-06,
+            -3.242589452421513e-06
+          ],
+          "max_abs_error": 6.357531089104091e-20,
+          "max_tolerance_ratio": 3.1787407213945907e-11,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "physical_box_radius3",
+      "index_in_frozen_domain": 0,
+      "point": [
+        1.208228715541439,
+        1.4561838307802035
+      ],
+      "reference_residuals_decimal": [
+        "-0.00002003706482944962739474835597209801389119",
+        "0.000003382039846683759683755151077571899280191",
+        "-0.000004076935524960838440891743651673090326892"
+      ],
+      "reference_80_vs_100_scaled_delta": 1.8041428343968046e-76,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -2.003706202824418e-05,
+            3.3820399553260647e-06,
+            -4.076951786837705e-06
+          ],
+          "max_abs_error": 1.62618768664588e-11,
+          "max_tolerance_ratio": 0.008130905284052796,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -2.0037059551114567e-05,
+            3.3820399704064495e-06,
+            -4.076782411932707e-06
+          ],
+          "max_abs_error": 1.531130281311631e-10,
+          "max_tolerance_ratio": 0.07655620195088216,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            -2.0037064829558915e-05,
+            3.38203984668467e-06,
+            -4.076935524889808e-06
+          ],
+          "max_abs_error": 1.0928748543260827e-16,
+          "max_tolerance_ratio": 5.464264783802695e-08,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "physical_box_radius3",
+      "index_in_frozen_domain": 1,
+      "point": [
+        1.514515059831967,
+        1.7528445905009367
+      ],
+      "reference_residuals_decimal": [
+        "-0.00001865485512714166185472406189862351247736",
+        "0.000006358871639796087144499589065343463012213",
+        "-0.000004143671697361055122301560569660973962734"
+      ],
+      "reference_80_vs_100_scaled_delta": 2.9719697170059424e-76,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -1.8654857544930792e-05,
+            6.358871599416809e-06,
+            -4.143654083800757e-06
+          ],
+          "max_abs_error": 1.7613560297902966e-11,
+          "max_tolerance_ratio": 0.008806743656697046,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -1.8654855688637895e-05,
+            6.358871633295904e-06,
+            -4.143509981939021e-06
+          ],
+          "max_abs_error": 1.6171542203449541e-10,
+          "max_tolerance_ratio": 0.08085737597082737,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            -1.8654855127309133e-05,
+            6.358871639796076e-06,
+            -4.1436716975704665e-06
+          ],
+          "max_abs_error": 2.094113582963899e-16,
+          "max_tolerance_ratio": 1.0470524528403349e-07,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "physical_box_radius3",
+      "index_in_frozen_domain": 419,
+      "point": [
+        0.00020810183141550624,
+        -0.7921627766897732
+      ],
+      "reference_residuals_decimal": [
+        "-0.00000001276960873406290422934901931727740886061",
+        "0.0000001367549339643969695185638413884080110266",
+        "-0.0000004265806607837269324844099558340644848263"
+      ],
+      "reference_80_vs_100_scaled_delta": 2.921211757618008e-74,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -1.2815313255032379e-08,
+            1.3675750620834037e-07,
+            -4.2776081075809056e-07
+          ],
+          "max_abs_error": 1.1801499743636248e-09,
+          "max_tolerance_ratio": 0.5900747354673418,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -1.3379100494148588e-08,
+            1.367552169284636e-07,
+            -3.87230221033665e-07
+          ],
+          "max_abs_error": 3.935043975006191e-08,
+          "max_tolerance_ratio": 19.67521148196624,
+          "tolerance_met": false
+        },
+        "local_coefficients": {
+          "residuals": [
+            -1.276961114626829e-08,
+            1.3675493398812577e-07,
+            -4.265806604780188e-07
+          ],
+          "max_abs_error": 2.412205385074058e-15,
+          "max_tolerance_ratio": 1.2061026771355696e-06,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "physical_box_radius3",
+      "index_in_frozen_domain": 688,
+      "point": [
+        0.0009321930202520465,
+        -0.7304465248541782
+      ],
+      "reference_residuals_decimal": [
+        "0.0000002200849490699885701414901028516614677432",
+        "0.0000001771251468247616862995991997869304408559",
+        "-0.0000005270968925832396264285425483355657650958"
+      ],
+      "reference_80_vs_100_scaled_delta": 1.945827790282903e-75,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            2.200260311724378e-07,
+            1.7712530309133e-07,
+            -5.248847108213234e-07
+          ],
+          "max_abs_error": 2.212181761916182e-09,
+          "max_tolerance_ratio": 1.106090297941332,
+          "tolerance_met": false
+        },
+        "upstream_torch": {
+          "residuals": [
+            2.2013996670011693e-07,
+            1.7714950989455858e-07,
+            -5.135994733203764e-07
+          ],
+          "max_abs_error": 1.3497419262863245e-08,
+          "max_tolerance_ratio": 6.748706074209621,
+          "tolerance_met": false
+        },
+        "local_coefficients": {
+          "residuals": [
+            2.2008494227065967e-07,
+            1.771251471605062e-07,
+            -5.270968934512196e-07
+          ],
+          "max_abs_error": 6.799328903167393e-15,
+          "max_tolerance_ratio": 3.3996637033688832e-06,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "axis",
+      "index_in_frozen_domain": 0,
+      "point": [
+        0.0,
+        -19.938602171758113
+      ],
+      "reference_residuals_decimal": [
+        "0.000002607867145161678918847356272075679868516",
+        "0.000008660728747533037661397123764818709354282",
+        "0.0000108835308020437310830499485625841187126"
+      ],
+      "reference_80_vs_100_scaled_delta": 1.0572072596140863e-76,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            2.6078671451616793e-06,
+            8.66072874753304e-06,
+            1.0883572909240364e-05
+          ],
+          "max_abs_error": 4.210719663246728e-11,
+          "max_tolerance_ratio": 0.021053369181241666,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            2.607867145161682e-06,
+            8.66072874753304e-06,
+            1.0883290404506473e-05
+          ],
+          "max_abs_error": 2.4039753725792565e-10,
+          "max_tolerance_ratio": 0.12019746045619963,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            2.6078671451616776e-06,
+            8.660728747533034e-06,
+            1.0883530802043728e-05
+          ],
+          "max_abs_error": 3.9264713928471874e-21,
+          "max_tolerance_ratio": 1.963218693519017e-12,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "axis",
+      "index_in_frozen_domain": 1,
+      "point": [
+        0.0,
+        14.775555287351725
+      ],
+      "reference_residuals_decimal": [
+        "0.000008907319103373188457901293991789851266579",
+        "-0.0000005451459100671511280379349508787491431363",
+        "0.00003403463319546942021762662437936760937903"
+      ],
+      "reference_80_vs_100_scaled_delta": 7.206799383819987e-75,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            8.907319103373245e-06,
+            -5.451459100671508e-07,
+            3.4034597184508834e-05
+          ],
+          "max_abs_error": 3.601096058618715e-11,
+          "max_tolerance_ratio": 0.01800486750403234,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            8.907319103372974e-06,
+            -5.451459100671518e-07,
+            3.4033011119760756e-05
+          ],
+          "max_abs_error": 1.6220757086640528e-09,
+          "max_tolerance_ratio": 0.8110102518955853,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            8.907319103373082e-06,
+            -5.45145910067151e-07,
+            3.4034633195469425e-05
+          ],
+          "max_abs_error": 1.0624676750490395e-19,
+          "max_tolerance_ratio": 5.3122910569735826e-11,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "axis",
+      "index_in_frozen_domain": 351,
+      "point": [
+        0.0,
+        9.249353450979985
+      ],
+      "reference_residuals_decimal": [
+        "-0.00009571826568444944370254006168788442344178",
+        "0.00008357206949347659646977689759411948915918",
+        "-0.00002940550045941222105765807347010218524184"
+      ],
+      "reference_80_vs_100_scaled_delta": 4.550007964305428e-75,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -9.571826569182429e-05,
+            8.357206949338031e-05,
+            -2.940693237248442e-05
+          ],
+          "max_abs_error": 1.4319130722001996e-09,
+          "max_tolerance_ratio": 0.7159354836589061,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -9.571826573251396e-05,
+            8.357206949386256e-05,
+            -2.9386681844638428e-05
+          ],
+          "max_abs_error": 1.8818614773792848e-08,
+          "max_tolerance_ratio": 9.409030709639568,
+          "tolerance_met": false
+        },
+        "local_coefficients": {
+          "residuals": [
+            -9.571826568571806e-05,
+            8.357206949350174e-05,
+            -2.940550045942424e-05
+          ],
+          "max_abs_error": 1.2686187828808255e-15,
+          "max_tolerance_ratio": 6.342486822565345e-07,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "axis",
+      "index_in_frozen_domain": 973,
+      "point": [
+        0.0,
+        11.716835611671033
+      ],
+      "reference_residuals_decimal": [
+        "0.000003321525414952952787376650075415466726615",
+        "-0.00001156304525626748767748881301013287255427",
+        "0.00005026346021971541870943963148173818052166"
+      ],
+      "reference_80_vs_100_scaled_delta": 7.874476776363243e-75,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            3.3215254149460117e-06,
+            -1.1563045256267544e-05,
+            5.0260553278302896e-05
+          ],
+          "max_abs_error": 2.9069414125226057e-09,
+          "max_tolerance_ratio": 1.4533976534661643,
+          "tolerance_met": false
+        },
+        "upstream_torch": {
+          "residuals": [
+            3.3215254149813567e-06,
+            -1.1563045256263261e-05,
+            5.028511053848278e-05
+          ],
+          "max_abs_error": 2.1650318767364444e-08,
+          "max_tolerance_ratio": 10.824615301061643,
+          "tolerance_met": false
+        },
+        "local_coefficients": {
+          "residuals": [
+            3.321525414981167e-06,
+            -1.1563045256267381e-05,
+            5.026346021971544e-05
+          ],
+          "max_abs_error": 2.8214131868819875e-17,
+          "max_tolerance_ratio": 1.4107019077587541e-08,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "far_field",
+      "index_in_frozen_domain": 0,
+      "point": [
+        13.496527422523595,
+        -17.053485831806793
+      ],
+      "reference_residuals_decimal": [
+        "-0.000006912559149232740292405573548069758436857",
+        "0.000001358237283878282062625807486283194293112",
+        "0.0000005004506106391931652261666722213163375672"
+      ],
+      "reference_80_vs_100_scaled_delta": 4.852530607607015e-87,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -6.912559149232756e-06,
+            1.3582372838782813e-06,
+            5.004506106391933e-07
+          ],
+          "max_abs_error": 1.5510785230169202e-20,
+          "max_tolerance_ratio": 7.755339005845e-12,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -6.912559149232647e-06,
+            1.3582372838782844e-06,
+            5.004506106391933e-07
+          ],
+          "max_abs_error": 9.290943201838124e-20,
+          "max_tolerance_ratio": 4.64543948904382e-11,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            -6.91255914923274e-06,
+            1.3582372838782821e-06,
+            5.004506106391931e-07
+          ],
+          "max_abs_error": 5.828407676625032e-22,
+          "max_tolerance_ratio": 2.9141836938453604e-13,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "far_field",
+      "index_in_frozen_domain": 1,
+      "point": [
+        10.448138960686997,
+        -18.958351458084998
+      ],
+      "reference_residuals_decimal": [
+        "0.000002449444663863178946208554591438418553684",
+        "-0.000001226255074157305356609425187026380330256",
+        "-0.00000129225826906283844573998918149290229847"
+      ],
+      "reference_80_vs_100_scaled_delta": 2.8956900514048385e-85,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            2.4494446638631805e-06,
+            -1.2262550741573024e-06,
+            -1.2922582690628793e-06
+          ],
+          "max_abs_error": 4.08594944132638e-20,
+          "max_tolerance_ratio": 2.042972080615625e-11,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            2.4494446638631707e-06,
+            -1.2262550741573028e-06,
+            -1.2922582690628535e-06
+          ],
+          "max_abs_error": 1.5024989522007637e-20,
+          "max_tolerance_ratio": 7.512485052932887e-12,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            2.4494446638631784e-06,
+            -1.226255074157305e-06,
+            -1.292258269062838e-06
+          ],
+          "max_abs_error": 5.754922220006099e-22,
+          "max_tolerance_ratio": 2.877454061838552e-13,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "far_field",
+      "index_in_frozen_domain": 607,
+      "point": [
+        10.033930896040156,
+        10.629533314201424
+      ],
+      "reference_residuals_decimal": [
+        "0.000005210757938530894220869011136782770410244",
+        "0.0000001033405542259774013846981533064667661255",
+        "0.0000002244502594921949261385007567467287663026"
+      ],
+      "reference_80_vs_100_scaled_delta": 1.3286161702120457e-83,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            5.2107579385309e-06,
+            1.0334055422598072e-07,
+            2.244502594933331e-07
+          ],
+          "max_abs_error": 1.138173272312333e-18,
+          "max_tolerance_ratio": 5.69086508424552e-10,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            5.210757938530837e-06,
+            1.0334055422597988e-07,
+            2.2445025946918014e-07
+          ],
+          "max_abs_error": 2.301478593018683e-17,
+          "max_tolerance_ratio": 1.1507390382256657e-08,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            5.210757938530894e-06,
+            1.0334055422597733e-07,
+            2.2445025949219538e-07
+          ],
+          "max_abs_error": 4.492054721976091e-22,
+          "max_tolerance_ratio": 2.246026856866735e-13,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "far_field",
+      "index_in_frozen_domain": 800,
+      "point": [
+        12.788005751120291,
+        10.120161402094537
+      ],
+      "reference_residuals_decimal": [
+        "-0.000009587705493678814799184633842970854763168",
+        "0.000005577190111935393197196596923171190012106",
+        "0.00000320074358213274159265011302167107790972"
+      ],
+      "reference_80_vs_100_scaled_delta": 3.2831849911111763e-84,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -9.58770549367881e-06,
+            5.57719011193539e-06,
+            3.200743582131302e-06
+          ],
+          "max_abs_error": 1.439597793348038e-18,
+          "max_tolerance_ratio": 7.197965927896942e-10,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -9.587705493678847e-06,
+            5.577190111935368e-06,
+            3.2007435821453886e-06
+          ],
+          "max_abs_error": 1.2646983635964604e-17,
+          "max_tolerance_ratio": 6.323471578171231e-09,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            -9.58770549367881e-06,
+            5.577190111935393e-06,
+            3.2007435821327424e-06
+          ],
+          "max_abs_error": 5.097880435411189e-21,
+          "max_tolerance_ratio": 2.548915779451773e-12,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "axis_probes",
+      "index_in_frozen_domain": null,
+      "point": [
+        0.0,
+        0.0
+      ],
+      "reference_residuals_decimal": [
+        "-0.0000003365203521149937428278819133995556509504",
+        "0.0000005325171247584711150366055983384780075365",
+        "0.0000003490245847205742484346946438188098704333"
+      ],
+      "reference_80_vs_100_scaled_delta": 6.89196487195639e-76,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -3.364920360127144e-07,
+            5.325229462393999e-07,
+            3.472665833737995e-07
+          ],
+          "max_abs_error": 1.7580013467747396e-09,
+          "max_tolerance_ratio": 0.8790003665946318,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -3.3606651328454973e-07,
+            5.324743461154746e-07,
+            3.5273355633407e-07
+          ],
+          "max_abs_error": 3.708971613495749e-09,
+          "max_tolerance_ratio": 1.8544851594869618,
+          "tolerance_met": false
+        },
+        "local_coefficients": {
+          "residuals": [
+            -3.365203582461618e-07,
+            5.325171247294591e-07,
+            3.4902458427343895e-07
+          ],
+          "max_abs_error": 6.131168034232597e-15,
+          "max_tolerance_ratio": 3.0655829854852325e-06,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "axis_probes",
+      "index_in_frozen_domain": null,
+      "point": [
+        0.0,
+        0.1
+      ],
+      "reference_residuals_decimal": [
+        "-0.0000002172073592762241010421895918278776450173",
+        "0.0000005080577261426545450914732031020941806351",
+        "0.0000003023853953638163317616836465162818173608"
+      ],
+      "reference_80_vs_100_scaled_delta": 1.970267735824967e-75,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -2.171425350638856e-07,
+            5.080598790008217e-07,
+            3.0157598578252993e-07
+          ],
+          "max_abs_error": 8.094095812864008e-10,
+          "max_tolerance_ratio": 0.4047046682664192,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -2.1704416752754696e-07,
+            5.080775444810115e-07,
+            3.0347655303059875e-07
+          ],
+          "max_abs_error": 1.0911576667824206e-09,
+          "max_tolerance_ratio": 0.5455786684161889,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            -2.1720735077224163e-07,
+            5.080577258897989e-07,
+            3.023853952364877e-07
+          ],
+          "max_abs_error": 8.503982475805842e-15,
+          "max_tolerance_ratio": 4.251990314339333e-06,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "axis_probes",
+      "index_in_frozen_domain": null,
+      "point": [
+        1e-10,
+        0.1
+      ],
+      "reference_residuals_decimal": [
+        "-0.0000002172073592757587940508994334991177315344",
+        "0.000000508057726142558814962443258403447000321",
+        "0.000000302385395331463675249973576153166455757"
+      ],
+      "reference_80_vs_100_scaled_delta": 1.3407329094008103e-76,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -2.1721590570678018e-07,
+            5.080563524884063e-07,
+            3.0215082410053494e-07
+          ],
+          "max_abs_error": 2.3457123092873885e-10,
+          "max_tolerance_ratio": 0.11728557999892293,
+          "tolerance_met": true
+        },
+        "upstream_torch": {
+          "residuals": [
+            -2.1689218243636788e-07,
+            5.080985402416971e-07,
+            3.043781876325394e-07
+          ],
+          "max_abs_error": 1.9927923010757186e-09,
+          "max_tolerance_ratio": 0.9963958492423064,
+          "tolerance_met": true
+        },
+        "local_coefficients": {
+          "residuals": [
+            -2.1720735077224163e-07,
+            5.080577260008212e-07,
+            3.0238539520835266e-07
+          ],
+          "max_abs_error": 8.503517168814551e-15,
+          "max_tolerance_ratio": 4.251757660894222e-06,
+          "tolerance_met": true
+        }
+      }
+    },
+    {
+      "domain": "axis_probes",
+      "index_in_frozen_domain": null,
+      "point": [
+        1e-07,
+        0.1
+      ],
+      "reference_residuals_decimal": [
+        "-0.0000002172073588108471633414920420143906543221",
+        "0.0000005080577260466625828512575558996899434987",
+        "0.0001158009677380543086766215024868287851461"
+      ],
+      "reference_80_vs_100_scaled_delta": 2.480247368642196e-72,
+      "reference_precision_stable": true,
+      "engines": {
+        "scipy_direct": {
+          "residuals": [
+            -2.1725112020476445e-07,
+            5.080509757338092e-07,
+            0.00018921482638297057
+          ],
+          "max_abs_error": 7.341385864491626e-05,
+          "max_tolerance_ratio": 36702.67911669784,
+          "tolerance_met": false
+        },
+        "upstream_torch": {
+          "residuals": [
+            -2.1806804539892255e-07,
+            5.079971369670311e-07,
+            -0.00018573727173898537
+          ],
+          "max_abs_error": 0.00030153823947703966,
+          "max_tolerance_ratio": 150751.66255010842,
+          "tolerance_met": false
+        },
+        "local_coefficients": {
+          "residuals": [
+            -2.1720734366681427e-07,
+            5.080577260563324e-07,
+            0.00011580096770218926
+          ],
+          "max_abs_error": 3.586504459984288e-14,
+          "max_tolerance_ratio": 1.793044593692997e-05,
+          "tolerance_met": true
+        }
+      }
+    }
+  ],
+  "summary": {
+    "scipy_direct": {
+      "max_abs_error": 7.341385864491626e-05,
+      "failed_points": 3
+    },
+    "upstream_torch": {
+      "max_abs_error": 0.00030153823947703966,
+      "failed_points": 8
+    },
+    "local_coefficients": {
+      "max_abs_error": 3.586504459984288e-14,
+      "failed_points": 0
+    }
+  },
+  "acceptance": {
+    "scope": "local coefficient FP64 residuals at listed diagnostic points only",
+    "norm": "max abs(fp64-mpmath100)/(atol+rtol*abs(mpmath100)) <= 1; reference80/reference100 scaled difference <= 1e-30",
+    "atol": 2e-09,
+    "rtol": 2e-09,
+    "units": "dimensionless residuals",
+    "criteria_met": true
+  },
+  "timing_seconds": {
+    "total_measured_workflow": 14.066165174124762
+  },
+  "status": {
+    "continuous_certificate": "not_run",
+    "gpu_benchmark": "not_run",
+    "proof_replay": "not_run"
+  }
+}

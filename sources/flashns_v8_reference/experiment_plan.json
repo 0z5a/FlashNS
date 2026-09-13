@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "planned; not executed on GPU in this package",
+  "primary_workload": "pinn_kovasznay_solver",
+  "frozen_contract": "evidence/frozen_solver_protocol.json",
+  "primary_precision": "FP64 stable_aux_a1; no fast-math substitution",
+  "pilot_seeds": [
+    361901,
+    361902
+  ],
+  "proposed_formal_seeds": [
+    75201,
+    75202,
+    75203,
+    75204,
+    75205,
+    75206,
+    75207,
+    75208,
+    75209,
+    75210
+  ],
+  "seed_status": "to freeze before formal performance observations; old 75101-75103 are regressions",
+  "ablations": {
+    "layout": [
+      "dense_all_q10",
+      "split_q10_q0",
+      "compact_q10_q0"
+    ],
+    "seed": [
+      "original_leaf_autograd",
+      "matched_compiled_or_explicit"
+    ],
+    "backend_followup": [
+      "library",
+      "existing_F",
+      "existing_TMA"
+    ],
+    "rule": "layout/seed first with fixed backend, then backend comparisons on matching layouts"
+  },
+  "kernel_cases": {
+    "interior_counts": [
+      1,
+      17,
+      2048,
+      4096,
+      16384
+    ],
+    "boundary_fractions": [
+      0,
+      0.05,
+      0.2,
+      0.5,
+      0.8
+    ],
+    "channels": [
+      7,
+      32,
+      64,
+      128
+    ],
+    "jet_dimensions": [
+      2,
+      3
+    ],
+    "all_cartesian_product_required": false,
+    "three_dimensional_scope": "generic jet/adjoint correctness; not automatic support of 2D residual or unsteady solver"
+  },
+  "required_metrics": [
+    "same_seed_total_wall",
+    "optimization_wall",
+    "process_wall",
+    "setup_and_graph_capture",
+    "loss_gradient_evaluations",
+    "optimizer_updates",
+    "six_acceptance_metrics",
+    "converged",
+    "all_failed_attempts",
+    "peak_allocated_reserved_and_workspace",
+    "actual_or_null_hardware_counters",
+    "source_and_binary_hash",
+    "precision_policy",
+    "global_weights_hash"
+  ],
+  "openai_workload": {
+    "source": "paper equations 7.13 and 7.17-7.18",
+    "geometry_groups": "must truly share A0,d; source and frequency policies recorded",
+    "modes": [
+      1,
+      4,
+      16,
+      64
+    ],
+    "sources_per_geometry": [
+      1,
+      8
+    ],
+    "baseline": "independent matched-tolerance local trajectory integration",
+    "candidate": "local V1 and damping reuse; per-source Duhamel retained",
+    "forbidden_shortcut": "multiply entire forced m=1 solution by a final damping factor",
+    "new_gpu_implementation": false
+  },
+  "promotion_rule": "correctness and fixed precision first; full-solve effect with failures included; no promised speedup",
+  "claimed_io_optimality": false
+}

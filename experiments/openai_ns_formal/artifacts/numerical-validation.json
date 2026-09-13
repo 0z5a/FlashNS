@@ -1,0 +1,650 @@
+{
+  "timestamp_utc": "2026-09-09T07:36:24.387508+00:00",
+  "contract": {
+    "workload_source_id": "openai_ns_formal",
+    "object": "local_projected_complex_wave_amplitude",
+    "repository_commit": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+    "paper_sha256": "0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f",
+    "paper_equations": [
+      "7.3",
+      "7.4",
+      "7.5",
+      "7.6",
+      "7.13"
+    ],
+    "lean_file": "NavierStokes/TangentProjection.lean",
+    "lean_definitions": [
+      "tangentProj",
+      "projectedRhs",
+      "pressureCoefficient"
+    ],
+    "lean_theorems": [
+      "normal_projectedRhs",
+      "pressure_cancellation",
+      "tangency_preserved",
+      "complex_pressure_sign"
+    ],
+    "numbering_note": "Pinned Lean comments refer to older equation (27), Lemma 8.4; algebra matches this PDF's (7.13).",
+    "precision": "float64, complex128 represented by real and imaginary lanes",
+    "epsilon_values": [
+      0.00390625,
+      0.000244140625,
+      1.52587890625e-05,
+      5.960464477539063e-08,
+      2.3283064365386963e-10
+    ],
+    "local_parameters": "F in [0.5,2], a in [2.25,5], b in [-2,2], R in [0.5,2]; g=F*(-a,b), u*=1, Ls in {16,32,64,128}; F_Z=G_Z=0",
+    "discrete_frequency": "k=ceil(epsilon^-1/2); k*p nearest nonzero integer, exact tie chooses larger integer, zero tie chooses +1",
+    "scope_limit": "Synthetic finite local coefficients satisfying the displayed local algebra and positive lambda0; not a numerical realization of Theorem 4.6 profiles, q*, all cutoffs, all correction stages, or global blowup.",
+    "operator_tolerance": {
+      "atol": 1e-11,
+      "rtol": 5e-13
+    },
+    "trajectory_tolerance": {
+      "atol": 3e-09,
+      "rtol": 3e-08
+    }
+  },
+  "source_hashes": {
+    "experiments/openai_ns_formal/numerical_run.py": "72f9d1db8dd51ce626fb5ea82ef09e083a82a97d1d30ebd858da3f4e32ccd460",
+    "experiments/openai_ns_formal/projected_amplitude.py": "bbed8d8f60e0022c01b7261df33231bf3caf5fe856eb718f0e15d933417f6b86",
+    "sources/openai_ns_formal/repository/NavierStokes/TangentProjection.lean": "bb1bf09359e60eb7f429333e4874fdc3c61c76985361062c3ba827826a67b9e6"
+  },
+  "torch": "2.11.0+cu128",
+  "numpy": "2.5.3",
+  "device": "NVIDIA H100 NVL",
+  "hardware": "NVIDIA H100 NVL, GPU-83b4118c-a437-c4e5-e929-805a26db958f, 400.00 W, 570.211.01",
+  "timing_contract": {
+    "repeats": 15,
+    "batches": [
+      65536,
+      1048576
+    ],
+    "order": "seeded random interleaving",
+    "resident_gpu": "CUDA event intervals; device inputs resident; output validation excluded",
+    "transfer_inclusive": "wall clock from pageable CPU input through H2D, compute, D2H, synchronization",
+    "cpu": "NumPy allocation and arithmetic on fixed CPU input; no mpmath or SciPy reference work"
+  },
+  "passed": true,
+  "compile_and_first_call_seconds": 4.0650327280163765,
+  "validation": {
+    "case": {
+      "batch": 4096,
+      "seed": 730613,
+      "input_sha256": "9486f7508f15d239c7e1fdc61c3ece0621768a8a8a25a74850cc58f0129a4e51",
+      "angular_integer_sha256": "9d3f35f634990f4d53142be5b035b25378eb22e97b31d48552ea2aa8ad8f848f",
+      "minimum_normal_squared": 0.19803061682971515,
+      "minimum_lambda0": 0.4436186122741568,
+      "nonzero_angular_frequency": true
+    },
+    "independent_100_vs_120_digits": {
+      "max_abs": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "atol": 1e-25,
+      "rtol": 1e-25,
+      "passed": true
+    },
+    "numpy_vs_saddle": {
+      "max_abs": 2.2737367544323206e-13,
+      "max_tolerance_ratio": 0.00032859369692327936,
+      "atol": 1e-11,
+      "rtol": 5e-13,
+      "passed": true
+    },
+    "gpu_eager": {
+      "max_abs": 7.105427357601002e-15,
+      "max_tolerance_ratio": 0.00022563501020839727,
+      "atol": 1e-11,
+      "rtol": 5e-13,
+      "passed": true
+    },
+    "gpu_compiled": {
+      "max_abs": 1.8189894035458565e-12,
+      "max_tolerance_ratio": 0.0005458749326243485,
+      "atol": 1e-11,
+      "rtol": 5e-13,
+      "passed": true
+    },
+    "derivatives": [
+      {
+        "label": 0,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 2.220446049250313e-16,
+            "max_tolerance_ratio": 5.594094858722615e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 2.1218488270057967e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 3.0357660829594124e-18,
+            "max_tolerance_ratio": 3.034316454420089e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 1,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 1.3877787807814457e-17,
+            "max_tolerance_ratio": 1.2271165515661807e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 1.3010426069826053e-18,
+            "max_tolerance_ratio": 1.2940753840349244e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.6263032587282567e-19,
+            "max_tolerance_ratio": 1.6251096133428084e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 2,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 6.938893903907228e-18,
+            "max_tolerance_ratio": 6.31012412342487e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 1.6263032587282567e-19,
+            "max_tolerance_ratio": 1.6258959086670891e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 5.082197683525802e-21,
+            "max_tolerance_ratio": 5.082133716378001e-11,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 3,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 1.3877787807814457e-17,
+            "max_tolerance_ratio": 1.2425547245167406e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 5.421010862427522e-20,
+            "max_tolerance_ratio": 5.416377458725284e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 8.900463391070578e-22,
+            "max_tolerance_ratio": 8.900462955165065e-12,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 4,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 6.617444900424221e-23,
+            "max_tolerance_ratio": 6.617443937823894e-13,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 8.271806125530277e-25,
+            "max_tolerance_ratio": 8.271806062754124e-15,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.6263032587282567e-19,
+            "max_tolerance_ratio": 1.6252929462682292e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 5,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 2.184271004552316e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 3.469446951953614e-18,
+            "max_tolerance_ratio": 3.432827973103554e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 8.673617379884035e-19,
+            "max_tolerance_ratio": 8.638205232519814e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 6,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 1.3877787807814457e-17,
+            "max_tolerance_ratio": 1.284295113811209e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 2.981555974335137e-19,
+            "max_tolerance_ratio": 2.9805459870893782e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.0164395367051604e-20,
+            "max_tolerance_ratio": 1.0164012365645904e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 7,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 1.734723475976807e-18,
+            "max_tolerance_ratio": 1.704697881422782e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 6.776263578034403e-21,
+            "max_tolerance_ratio": 6.775675299158097e-11,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 5.293955920339377e-23,
+            "max_tolerance_ratio": 5.293954616918936e-13,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 8,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 2.220446049250313e-16,
+            "max_tolerance_ratio": 4.736527082336723e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 5.204170427930421e-18,
+            "max_tolerance_ratio": 5.104631953981554e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.734723475976807e-18,
+            "max_tolerance_ratio": 1.7271955480708178e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 9,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 6.938893903907228e-18,
+            "max_tolerance_ratio": 6.298695680167932e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 4.336808689942018e-19,
+            "max_tolerance_ratio": 4.310138195783863e-09,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 2.710505431213761e-20,
+            "max_tolerance_ratio": 2.7101056674206523e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 10,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 4.440892098500626e-16,
+            "max_tolerance_ratio": 6.712073534978143e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 1.3877787807814457e-17,
+            "max_tolerance_ratio": 1.2264446080765129e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 8.555032767268433e-20,
+            "max_tolerance_ratio": 8.554904486873834e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      },
+      {
+        "label": 11,
+        "partial_derivative": "pulse coordinate, fixed complex amplitude/source and discrete frequencies",
+        "checks": [
+          {
+            "order": 1,
+            "max_abs": 2.7755575615628914e-17,
+            "max_tolerance_ratio": 1.8605752212673283e-07,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 2,
+            "max_abs": 1.734723475976807e-18,
+            "max_tolerance_ratio": 1.7057960807782913e-08,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          },
+          {
+            "order": 3,
+            "max_abs": 1.9058241313221758e-20,
+            "max_tolerance_ratio": 1.9058156591675227e-10,
+            "atol": 1e-10,
+            "rtol": 2e-10,
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "trajectories": [
+      {
+        "label": 0,
+        "initial_tangent": true,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 6.784850459240488e-14,
+          "max_tolerance_ratio": 1.5682774292877854e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 9.818534874028728e-16,
+          "max_tolerance_ratio": 3.272844958009576e-06,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 5945,
+        "radau_nfev": 9495
+      },
+      {
+        "label": 1,
+        "initial_tangent": false,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 2.035704937952687e-11,
+          "max_tolerance_ratio": 3.475024209216121e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 4.973799150320701e-14,
+          "max_tolerance_ratio": 0.00016579330501069003,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 1535,
+        "radau_nfev": 10135
+      },
+      {
+        "label": 2,
+        "initial_tangent": true,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 9.135874279309064e-10,
+          "max_tolerance_ratio": 3.341625939143761e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 1.2050804798491299e-11,
+          "max_tolerance_ratio": 0.04016934932830433,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 1307,
+        "radau_nfev": 18683
+      },
+      {
+        "label": 3,
+        "initial_tangent": false,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 2.697286838326818e-13,
+          "max_tolerance_ratio": 2.9869480729205038e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 3.2075037070811163e-15,
+          "max_tolerance_ratio": 5.415153875007429e-06,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 2717,
+        "radau_nfev": 11662
+      },
+      {
+        "label": 4,
+        "initial_tangent": true,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 1.0515893711371405e-13,
+          "max_tolerance_ratio": 2.5928353617207408e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 2.740863092043355e-16,
+          "max_tolerance_ratio": 9.136210306811184e-07,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 6725,
+        "radau_nfev": 8187
+      },
+      {
+        "label": 5,
+        "initial_tangent": false,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 1.5907275496829243e-12,
+          "max_tolerance_ratio": 3.3607941463230995e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 1.4706007136870702e-13,
+          "max_tolerance_ratio": 0.00048610099686990807,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 1634,
+        "radau_nfev": 12864
+      },
+      {
+        "label": 6,
+        "initial_tangent": true,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 6.784830475226045e-10,
+          "max_tolerance_ratio": 0.00014394244389913694,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 1.6257217794191092e-11,
+          "max_tolerance_ratio": 0.054190725980636976,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 1289,
+        "radau_nfev": 16661
+      },
+      {
+        "label": 7,
+        "initial_tangent": false,
+        "duration": 8.0,
+        "agreement": {
+          "max_abs": 2.2909452113140105e-13,
+          "max_tolerance_ratio": 3.093856902466359e-05,
+          "atol": 3e-09,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "defect_decay": {
+          "max_abs": 4.623038063478191e-15,
+          "max_tolerance_ratio": 9.301722764270708e-06,
+          "atol": 3e-10,
+          "rtol": 3e-08,
+          "passed": true
+        },
+        "dop853_nfev": 3317,
+        "radau_nfev": 11941
+      }
+    ],
+    "nondefault_stream": {
+      "max_abs": 1.8189894035458565e-12,
+      "max_tolerance_ratio": 0.0005458749326243485,
+      "atol": 1e-11,
+      "rtol": 5e-13,
+      "passed": true
+    },
+    "passed": true
+  },
+  "finished_utc": "2026-09-09T07:36:35.876343+00:00"
+}

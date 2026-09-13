@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "target": "HOST C++ only; CUDA build/stream/barrier validation pending",
+  "platform": "macOS-26.6.1-arm64-arm-64bit",
+  "cases": 27,
+  "max_error_over_tolerance": 9.773985753882853e-06,
+  "header_sha256": "d515c2c3ceebf301770cebe588ac06cdde8fbe24d5b8910ffe1c8566705bc7f9",
+  "compiler_command": [
+    "/usr/bin/g++",
+    "-std=c++17",
+    "-O2",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-shared",
+    "-fPIC",
+    "/var/folders/12/3pb2615n5wddcr6spjcz8_pw0000gn/T/flashns-v8-host-lnuy35pm/check.cpp",
+    "-o",
+    "/var/folders/12/3pb2615n5wddcr6spjcz8_pw0000gn/T/flashns-v8-host-lnuy35pm/host_math.so"
+  ],
+  "compiler_output": ""
+}

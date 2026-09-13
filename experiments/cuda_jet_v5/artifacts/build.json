@@ -1,0 +1,81 @@
+{
+  "timestamp_utc": "2026-09-09T01:38:04.684181+00:00",
+  "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+  "capability": [
+    8,
+    6
+  ],
+  "fast_math": false,
+  "libraries": {
+    "stable": {
+      "command": [
+        "nvcc",
+        "-O3",
+        "-std=c++17",
+        "-arch=sm_86",
+        "--expt-relaxed-constexpr",
+        "-shared",
+        "-Xcompiler=-fPIC",
+        "-lineinfo",
+        "--ptxas-options=-v",
+        "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_kernels.cu",
+        "-o",
+        "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libstable.so"
+      ],
+      "seconds": 2.2977711400017142,
+      "returncode": 0,
+      "path": "libstable.so",
+      "sha256": "530368e9df0f55554aa06a57399b8a48517e937d6007ac2c41c984f91e75dc56"
+    },
+    "dgrad_n64": {
+      "command": [
+        "nvcc",
+        "-O3",
+        "-std=c++17",
+        "-arch=sm_86",
+        "--expt-relaxed-constexpr",
+        "-shared",
+        "-Xcompiler=-fPIC",
+        "-lineinfo",
+        "--ptxas-options=-v",
+        "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+        "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+        "-o",
+        "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n64.so"
+      ],
+      "seconds": 10.217335309978807,
+      "returncode": 0,
+      "path": "libdgrad_n64.so",
+      "sha256": "484d7e584ba88af1707c4df512c6cafc0411be1e19c446ad9e0011072979271a"
+    },
+    "dgrad_n32": {
+      "command": [
+        "nvcc",
+        "-O3",
+        "-std=c++17",
+        "-arch=sm_86",
+        "--expt-relaxed-constexpr",
+        "-shared",
+        "-Xcompiler=-fPIC",
+        "-lineinfo",
+        "--ptxas-options=-v",
+        "-I/root/flashns-v5-20260909/third_party/cutlass/include",
+        "-DFLASHNS_TILE_N=32",
+        "/root/flashns-v5-20260909/experiments/cuda_jet_v5/stable_dgrad.cu",
+        "-o",
+        "/root/flashns-v5-20260909/experiments/cuda_jet_v5/artifacts/libdgrad_n32.so"
+      ],
+      "seconds": 10.602232295001158,
+      "returncode": 0,
+      "path": "libdgrad_n32.so",
+      "sha256": "2e3b9cc692067aac820149432f91f0b8b016655f13f39654c42e2975860a671c"
+    }
+  },
+  "source_hashes": {
+    "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+    "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+    "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+    "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+    "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+  }
+}

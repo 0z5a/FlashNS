@@ -1,0 +1,4 @@
+==PROF== Connected to process 5676 (/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts/sanitizer_smoke)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+{"passed":true,"numeric_cases":4,"repeated_launches_per_case":3,"guards_and_invalid_inputs":true}
+==PROF== Disconnected from process 5676

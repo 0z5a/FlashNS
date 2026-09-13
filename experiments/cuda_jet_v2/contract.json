@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "milestone": "v0.2 experimental dgrad + jet VJP",
+  "input_documents": "docs/input-v2/",
+  "cutlass": {
+    "repository": "https://github.com/NVIDIA/cutlass",
+    "tag": "v4.7.1",
+    "commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+    "scope": "C++ headers; no CuTe DSL or MathDx environment installation"
+  },
+  "operation": "Dprev = tanh_jet_vjp(Hprev, reshape(D_l, B*Q, Cout) @ W_l)",
+  "dtypes": {"input": "float64", "weights": "float64", "accumulator": "float64", "output": "float64"},
+  "layout": "D_l[B,Q,Cout], W_l[Cout,Cin], Hprev/Dprev[B,Q,Cin]; contiguous row-major",
+  "supported_bases": ["full_taylor_2d3", "full_taylor_3d3"],
+  "numerical_policy": "fixed H-only ordinary FP64 tanh derivative reconstruction, identical to v0.1 GPU baseline; saturation-tail failures remain unsupported",
+  "aliasing": "output has distinct storage; no input-output overlap",
+  "workspace": "CTA shared memory only; no global workspace or partial wgrad",
+  "split_k": false,
+  "consumers": "retain Dprev for its next dgrad and its independent wgrad; both read after producer on the supplied stream",
+  "baselines": [
+    "B0 independent nested AD on small networks",
+    "B1 packed PyTorch library GEMM plus existing native jet VJP",
+    "Ablation: same CUTLASS mainloop with materialized barH plus native VJP"
+  ],
+  "acceptance": {
+    "scope": "finite, frozen nonsaturated inputs and listed layouts; residual-gradient loss and all first parameter gradients",
+    "elementwise_atol": 2e-12,
+    "elementwise_rtol": 2e-11,
+    "nonfinite": "reject",
+    "saturation_diagnostics": "preserve v0.1 high-precision failures; no new tail-accuracy claim"
+  },
+  "unsupported_operations": ["double_backward", "parameter_hvp", "c13", "nonlinear_coordinate_map", "nonlocal_loss", "split_k_before_vjp"],
+  "performance": "same GPU, same inputs, alternating execution order; compilation and sanitizer overhead separate; fallback remains library GEMM + native VJP"
+}

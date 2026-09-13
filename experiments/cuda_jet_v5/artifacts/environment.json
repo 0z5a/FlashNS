@@ -1,0 +1,434 @@
+{
+  "timestamp_utc": "2026-09-09T01:24:14.863439+00:00",
+  "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+  "python": "3.12.14 (main, Sep  2 2026, 23:27:36) [GCC 15.3.0]",
+  "python_executable": "/venv/main/bin/python",
+  "scope": "read-only inventory; actual native build/run and sanitizer results are separate",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3",
+    "scipy": null,
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0",
+    "pytest": null,
+    "nvidia-cublas-cu12": "12.8.4.1",
+    "nvidia-cuda-runtime-cu12": "12.8.90",
+    "ninja": null,
+    "setuptools": "81.0.0",
+    "wheel": "0.48.0",
+    "packaging": "26.3"
+  },
+  "commands": {
+    "gpu_driver": {
+      "available": true,
+      "path": "/usr/bin/nvidia-smi",
+      "returncode": 0,
+      "stdout": "name, driver_version, compute_cap, mig.mode.current, memory.total [MiB]\nNVIDIA RTX A4000, 595.84, 8.6, [N/A], 16376 MiB\nNVIDIA RTX A4000, 595.84, 8.6, [N/A], 16376 MiB\nNVIDIA RTX A4000, 595.84, 8.6, [N/A], 16376 MiB\nNVIDIA RTX A4000, 595.84, 8.6, [N/A], 16376 MiB\n",
+      "stderr": ""
+    },
+    "nvcc": {
+      "available": true,
+      "path": "/usr/local/cuda/bin/nvcc",
+      "returncode": 0,
+      "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0\n",
+      "stderr": ""
+    },
+    "host_cxx": {
+      "available": true,
+      "path": "/usr/bin/c++",
+      "returncode": 0,
+      "stdout": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stderr": ""
+    },
+    "compute_sanitizer": {
+      "available": true,
+      "path": "/usr/local/cuda/bin/compute-sanitizer",
+      "returncode": 0,
+      "stdout": "NVIDIA (R) Compute Sanitizer\nCopyright (c) 2020-2025 NVIDIA Corporation\nVersion 2025.1.0.0 (build 35583870) (public-release)\n",
+      "stderr": ""
+    },
+    "nsight_compute": {
+      "available": true,
+      "path": "/usr/local/cuda/bin/ncu",
+      "returncode": 0,
+      "stdout": "NVIDIA (R) Nsight Compute Command Line Profiler\nCopyright (c) 2018-2025 NVIDIA Corporation\nVersion 2025.1.1.0 (build 35528883) (public-release)\n",
+      "stderr": ""
+    },
+    "nsight_systems": {
+      "available": false
+    },
+    "gpu_uuid": {
+      "available": true,
+      "path": "/usr/bin/nvidia-smi",
+      "returncode": 0,
+      "stdout": "index, name, uuid, pci.bus_id, driver_version, memory.total [MiB]\n0, NVIDIA RTX A4000, GPU-b0dd3c99-e896-4231-e044-feb228d8312b, 00000000:19:00.0, 595.84, 16376 MiB\n1, NVIDIA RTX A4000, GPU-05f77118-4e18-dea2-78fc-d40ad5397445, 00000000:1B:00.0, 595.84, 16376 MiB\n2, NVIDIA RTX A4000, GPU-70480540-f4f9-6c7a-23f4-790c840194f7, 00000000:1C:00.0, 595.84, 16376 MiB\n3, NVIDIA RTX A4000, GPU-dfbcbbb7-c51d-27d8-7da4-85959913a7ea, 00000000:67:00.0, 595.84, 16376 MiB\n",
+      "stderr": ""
+    },
+    "topology": {
+      "available": true,
+      "path": "/usr/bin/nvidia-smi",
+      "returncode": 0,
+      "stdout": "\t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tPIX\tPIX\tNODE\t0-31\t0\t\tN/A\nGPU1\tPIX\t X \tPIX\tNODE\t0-31\t0\t\tN/A\nGPU2\tPIX\tPIX\t X \tNODE\t0-31\t0\t\tN/A\nGPU3\tNODE\tNODE\tNODE\t X \t0-31\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n",
+      "stderr": ""
+    },
+    "p2p_read": {
+      "available": true,
+      "path": "/usr/bin/nvidia-smi",
+      "returncode": 0,
+      "stdout": " \t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\t\u001b[0m\n GPU0\tX\tOK\tOK\tOK\t\n GPU1\tOK\tX\tOK\tOK\t\n GPU2\tOK\tOK\tX\tOK\t\n GPU3\tOK\tOK\tOK\tX\t\n\nLegend:\n\n  X    = Self\n  OK   = Status Ok\n  CNS  = Chipset not supported\n  GNS  = GPU not supported\n  TNS  = Topology not supported\n  NS   = Not supported\n  U    = Unknown\n",
+      "stderr": ""
+    },
+    "p2p_write": {
+      "available": true,
+      "path": "/usr/bin/nvidia-smi",
+      "returncode": 0,
+      "stdout": " \t\u001b[4mGPU0\tGPU1\tGPU2\tGPU3\t\u001b[0m\n GPU0\tX\tOK\tOK\tOK\t\n GPU1\tOK\tX\tOK\tOK\t\n GPU2\tOK\tOK\tX\tOK\t\n GPU3\tOK\tOK\tOK\tX\t\n\nLegend:\n\n  X    = Self\n  OK   = Status Ok\n  CNS  = Chipset not supported\n  GNS  = GPU not supported\n  TNS  = Topology not supported\n  NS   = Not supported\n  U    = Unknown\n",
+      "stderr": ""
+    },
+    "gpu_metrics": {
+      "available": true,
+      "path": "/usr/bin/nvidia-smi",
+      "returncode": 0,
+      "stdout": "index, temperature.gpu, clocks.current.sm [MHz], clocks.current.memory [MHz], power.draw [W], power.limit [W], pcie.link.gen.current, pcie.link.width.current, utilization.gpu [%], memory.used [MiB]\n0, 48, 210 MHz, 405 MHz, 14.60 W, 140.00 W, 1, 8, 0 %, 4 MiB\n1, 57, 210 MHz, 405 MHz, 16.55 W, 140.00 W, 1, 8, 0 %, 4 MiB\n2, 53, 210 MHz, 405 MHz, 14.24 W, 140.00 W, 1, 8, 0 %, 4 MiB\n3, 58, 210 MHz, 405 MHz, 16.11 W, 140.00 W, 1, 8, 0 %, 4 MiB\n",
+      "stderr": ""
+    },
+    "cpu": {
+      "available": true,
+      "path": "/usr/bin/lscpu",
+      "returncode": 0,
+      "stdout": "{\n   \"lscpu\": [\n      {\n         \"field\": \"Architecture:\",\n         \"data\": \"x86_64\"\n      },{\n         \"field\": \"CPU op-mode(s):\",\n         \"data\": \"32-bit, 64-bit\"\n      },{\n         \"field\": \"Address sizes:\",\n         \"data\": \"46 bits physical, 48 bits virtual\"\n      },{\n         \"field\": \"Byte Order:\",\n         \"data\": \"Little Endian\"\n      },{\n         \"field\": \"CPU(s):\",\n         \"data\": \"32\"\n      },{\n         \"field\": \"On-line CPU(s) list:\",\n         \"data\": \"0-31\"\n      },{\n         \"field\": \"Vendor ID:\",\n         \"data\": \"GenuineIntel\"\n      },{\n         \"field\": \"Model name:\",\n         \"data\": \"Intel(R) Core(TM) i9-9960X CPU @ 3.10GHz\"\n      },{\n         \"field\": \"CPU family:\",\n         \"data\": \"6\"\n      },{\n         \"field\": \"Model:\",\n         \"data\": \"85\"\n      },{\n         \"field\": \"Thread(s) per core:\",\n         \"data\": \"2\"\n      },{\n         \"field\": \"Core(s) per socket:\",\n         \"data\": \"16\"\n      },{\n         \"field\": \"Socket(s):\",\n         \"data\": \"1\"\n      },{\n         \"field\": \"Stepping:\",\n         \"data\": \"4\"\n      },{\n         \"field\": \"CPU(s) scaling MHz:\",\n         \"data\": \"40%\"\n      },{\n         \"field\": \"CPU max MHz:\",\n         \"data\": \"3100.0000\"\n      },{\n         \"field\": \"CPU min MHz:\",\n         \"data\": \"1200.0000\"\n      },{\n         \"field\": \"BogoMIPS:\",\n         \"data\": \"6199.99\"\n      },{\n         \"field\": \"Flags:\",\n         \"data\": \"fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 pti ssbd mba ibrs ibpb stibp tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req vnmi md_clear flush_l1d arch_capabilities ibpb_exit_to_user\"\n      },{\n         \"field\": \"Virtualization:\",\n         \"data\": \"VT-x\"\n      },{\n         \"field\": \"L1d cache:\",\n         \"data\": \"512 KiB (16 instances)\"\n      },{\n         \"field\": \"L1i cache:\",\n         \"data\": \"512 KiB (16 instances)\"\n      },{\n         \"field\": \"L2 cache:\",\n         \"data\": \"16 MiB (16 instances)\"\n      },{\n         \"field\": \"L3 cache:\",\n         \"data\": \"22 MiB (1 instance)\"\n      },{\n         \"field\": \"NUMA node(s):\",\n         \"data\": \"1\"\n      },{\n         \"field\": \"NUMA node0 CPU(s):\",\n         \"data\": \"0-31\"\n      },{\n         \"field\": \"Vulnerability Gather data sampling:\",\n         \"data\": \"Mitigation; Microcode\"\n      },{\n         \"field\": \"Vulnerability Indirect target selection:\",\n         \"data\": \"Not affected\"\n      },{\n         \"field\": \"Vulnerability Itlb multihit:\",\n         \"data\": \"KVM: Mitigation: VMX disabled\"\n      },{\n         \"field\": \"Vulnerability L1tf:\",\n         \"data\": \"Mitigation; PTE Inversion; VMX conditional cache flushes, SMT vulnerable\"\n      },{\n         \"field\": \"Vulnerability Mds:\",\n         \"data\": \"Mitigation; Clear CPU buffers; SMT vulnerable\"\n      },{\n         \"field\": \"Vulnerability Meltdown:\",\n         \"data\": \"Mitigation; PTI\"\n      },{\n         \"field\": \"Vulnerability Mmio stale data:\",\n         \"data\": \"Mitigation; Clear CPU buffers; SMT vulnerable\"\n      },{\n         \"field\": \"Vulnerability Reg file data sampling:\",\n         \"data\": \"Not affected\"\n      },{\n         \"field\": \"Vulnerability Retbleed:\",\n         \"data\": \"Mitigation; IBRS\"\n      },{\n         \"field\": \"Vulnerability Spec rstack overflow:\",\n         \"data\": \"Not affected\"\n      },{\n         \"field\": \"Vulnerability Spec store bypass:\",\n         \"data\": \"Mitigation; Speculative Store Bypass disabled via prctl\"\n      },{\n         \"field\": \"Vulnerability Spectre v1:\",\n         \"data\": \"Mitigation; usercopy/swapgs barriers and __user pointer sanitization\"\n      },{\n         \"field\": \"Vulnerability Spectre v2:\",\n         \"data\": \"Mitigation; IBRS; IBPB conditional; STIBP conditional; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\"\n      },{\n         \"field\": \"Vulnerability Srbds:\",\n         \"data\": \"Not affected\"\n      },{\n         \"field\": \"Vulnerability Tsa:\",\n         \"data\": \"Not affected\"\n      },{\n         \"field\": \"Vulnerability Tsx async abort:\",\n         \"data\": \"Mitigation; Clear CPU buffers; SMT vulnerable\"\n      },{\n         \"field\": \"Vulnerability Vmscape:\",\n         \"data\": \"Mitigation; IBPB before exit to userspace\"\n      }\n   ]\n}\n",
+      "stderr": ""
+    },
+    "pip_check": {
+      "available": true,
+      "path": "/venv/main/bin/python",
+      "returncode": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": ""
+    }
+  },
+  "torch": {
+    "version": "2.11.0+cu128",
+    "cuda_build": "12.8",
+    "cxx11_abi": true,
+    "cuda_available": true,
+    "matmul_tensor_dtype": "float64 for all experiment paths",
+    "devices": [
+      {
+        "name": "NVIDIA RTX A4000",
+        "compute_capability": [
+          8,
+          6
+        ],
+        "memory_bytes": 16752181248
+      },
+      {
+        "name": "NVIDIA RTX A4000",
+        "compute_capability": [
+          8,
+          6
+        ],
+        "memory_bytes": 16752181248
+      },
+      {
+        "name": "NVIDIA RTX A4000",
+        "compute_capability": [
+          8,
+          6
+        ],
+        "memory_bytes": 16752181248
+      },
+      {
+        "name": "NVIDIA RTX A4000",
+        "compute_capability": [
+          8,
+          6
+        ],
+        "memory_bytes": 16752181248
+      }
+    ]
+  },
+  "torch_resolved_cuda_libraries": {
+    "available": true,
+    "path": "/usr/bin/ldd",
+    "returncode": 0,
+    "stdout": "\tlinux-vdso.so.1 (0x00007ffef17a4000)\n\tlibtorch_nvshmem.so => /venv/main/lib/python3.12/site-packages/torch/lib/libtorch_nvshmem.so (0x00007b70c1aab000)\n\tlibc10_cuda.so => /venv/main/lib/python3.12/site-packages/torch/lib/libc10_cuda.so (0x00007b70c1a12000)\n\tlibcudart.so.12 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cuda_runtime/lib/libcudart.so.12 (0x00007b70c1600000)\n\tlibcusparse.so.12 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cusparse/lib/libcusparse.so.12 (0x00007b70aa000000)\n\tlibcufft.so.11 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cufft/lib/libcufft.so.11 (0x00007b7098c00000)\n\tlibcufile.so.0 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cufile/lib/libcufile.so.0 (0x00007b7098903000)\n\tlibcusparseLt.so.0 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cusparselt/lib/libcusparseLt.so.0 (0x00007b707d793000)\n\tlibnccl.so.2 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/nccl/lib/libnccl.so.2 (0x00007b7066e00000)\n\tlibcurand.so.10 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/curand/lib/libcurand.so.10 (0x00007b705e200000)\n\tlibcublas.so.12 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cublas/lib/libcublas.so.12 (0x00007b7057000000)\n\tlibcublasLt.so.12 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cublas/lib/libcublasLt.so.12 (0x00007b7024c00000)\n\tlibcudnn.so.9 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cudnn/lib/libcudnn.so.9 (0x00007b7024800000)\n\tlibrt.so.1 => /usr/lib/x86_64-linux-gnu/librt.so.1 (0x00007b70c19fd000)\n\tlibdl.so.2 => /usr/lib/x86_64-linux-gnu/libdl.so.2 (0x00007b70c19f8000)\n\tlibpthread.so.0 => /usr/lib/x86_64-linux-gnu/libpthread.so.0 (0x00007b70c19f3000)\n\tlibc10.so => /venv/main/lib/python3.12/site-packages/torch/lib/libc10.so (0x00007b70c18c7000)\n\tlibtorch_cpu.so => /venv/main/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so (0x00007b700f16d000)\n\tlibm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x00007b70c1517000)\n\tlibstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007b700eeef000)\n\tlibgcc_s.so.1 => /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007b70c14e9000)\n\tlibc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x00007b700ecdd000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007b70f7c0b000)\n\tlibnvshmem_host.so.3 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/nvshmem/lib/libnvshmem_host.so.3 (0x00007b7005200000)\n\tlibgomp.so.1 => /venv/main/lib/python3.12/site-packages/torch/lib/libgomp.so.1 (0x00007b7004e00000)\n\tlibnvJitLink.so.12 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cusparse/lib/../../nvjitlink/lib/libnvJitLink.so.12 (0x00007b6fff318000)\n\tlibcupti.so.12 => /venv/main/lib/python3.12/site-packages/torch/lib/../../nvidia/cuda_cupti/lib/libcupti.so.12 (0x00007b6ffebaa000)\n\tlibutil.so.1 => /usr/lib/x86_64-linux-gnu/libutil.so.1 (0x00007b70c18be000)\n",
+    "stderr": ""
+  },
+  "cutlass": {
+    "available": false
+  },
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "distributed": {
+    "available": true,
+    "nccl_available": true,
+    "nccl_version": [
+      2,
+      28,
+      9
+    ]
+  },
+  "p2p_capability": [
+    [
+      null,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      null,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      null,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      null
+    ]
+  ],
+  "fp64_smoke": [
+    {
+      "device": 0,
+      "max_abs": 0.0,
+      "passed": true
+    },
+    {
+      "device": 1,
+      "max_abs": 0.0,
+      "passed": true
+    },
+    {
+      "device": 2,
+      "max_abs": 0.0,
+      "passed": true
+    },
+    {
+      "device": 3,
+      "max_abs": 0.0,
+      "passed": true
+    }
+  ],
+  "loaded_cuda_libraries": [
+    "/usr/lib/x86_64-linux-gnu/libcuda.so.595.84",
+    "/venv/main/lib/python3.12/site-packages/nvidia/cublas/lib/libcublas.so.12",
+    "/venv/main/lib/python3.12/site-packages/nvidia/cublas/lib/libcublasLt.so.12",
+    "/venv/main/lib/python3.12/site-packages/nvidia/cuda_runtime/lib/libcudart.so.12",
+    "/venv/main/lib/python3.12/site-packages/nvidia/nccl/lib/libnccl.so.2"
+  ],
+  "copy_smoke": {
+    "method": "Torch CUDA copy_ and destination synchronize; actual transport not inferred from capability alone",
+    "ordered_pairs": [
+      {
+        "source": 0,
+        "target": 1,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011852175986859947,
+          0.011841636995086446,
+          0.011848363996250555,
+          0.011846965993754566,
+          0.011849175993120298
+        ],
+        "median_GB_per_second": 5.66397723949372,
+        "passed": true
+      },
+      {
+        "source": 0,
+        "target": 2,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011851772025693208,
+          0.01184832100989297,
+          0.01183999699424021,
+          0.011861371982377023,
+          0.01186004001647234
+        ],
+        "median_GB_per_second": 5.662348537798069,
+        "passed": true
+      },
+      {
+        "source": 0,
+        "target": 3,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011855701974127442,
+          0.011845771980006248,
+          0.01184324998757802,
+          0.011844233988085762,
+          0.011849642993183807
+        ],
+        "median_GB_per_second": 5.6652165948550195,
+        "passed": true
+      },
+      {
+        "source": 1,
+        "target": 0,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011848296999232844,
+          0.01183736600796692,
+          0.011842359002912417,
+          0.011842409003293142,
+          0.01183725000009872
+        ],
+        "median_GB_per_second": 5.6668493146927705,
+        "passed": true
+      },
+      {
+        "source": 1,
+        "target": 2,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011913407011888921,
+          0.011881672980962321,
+          0.011850138020236045,
+          0.011845782020827755,
+          0.011842434003483504
+        ],
+        "median_GB_per_second": 5.663129314224076,
+        "passed": true
+      },
+      {
+        "source": 1,
+        "target": 3,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.01185392399202101,
+          0.01184977701632306,
+          0.011848370981169865,
+          0.011843145010061562,
+          0.01184341701446101
+        ],
+        "median_GB_per_second": 5.663973900433519,
+        "passed": true
+      },
+      {
+        "source": 2,
+        "target": 0,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.01184437598567456,
+          0.011836601013783365,
+          0.011842528998386115,
+          0.011842412000987679,
+          0.011842539999634027
+        ],
+        "median_GB_per_second": 5.666767968999317,
+        "passed": true
+      },
+      {
+        "source": 2,
+        "target": 1,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011845069006085396,
+          0.011843861982924864,
+          0.011842428997624665,
+          0.011844533000839874,
+          0.01184521199320443
+        ],
+        "median_GB_per_second": 5.665809196127989,
+        "passed": true
+      },
+      {
+        "source": 2,
+        "target": 3,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011856893979711458,
+          0.011845778004499152,
+          0.011843747983220965,
+          0.01184701401507482,
+          0.011844337976071984
+        ],
+        "median_GB_per_second": 5.665213713654885,
+        "passed": true
+      },
+      {
+        "source": 3,
+        "target": 0,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.01184967701556161,
+          0.01184402301441878,
+          0.011848205991555005,
+          0.011842028994578868,
+          0.011841744009871036
+        ],
+        "median_GB_per_second": 5.666053157639293,
+        "passed": true
+      },
+      {
+        "source": 3,
+        "target": 1,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011850747017888352,
+          0.011850117996800691,
+          0.01184510299935937,
+          0.011842531996080652,
+          0.011843103013234213
+        ],
+        "median_GB_per_second": 5.665536551571525,
+        "passed": true
+      },
+      {
+        "source": 3,
+        "target": 2,
+        "bytes": 67108864,
+        "wall_seconds": [
+          0.011851253017084673,
+          0.011843757994938642,
+          0.011843123007565737,
+          0.011841708997962996,
+          0.011842192005133256
+        ],
+        "median_GB_per_second": 5.666483743952408,
+        "passed": true
+      }
+    ]
+  },
+  "script_sha256": "eed3d64b884ee547a0ddf4d23fdaf68da6e64b27dfc3b0c3777910ce9628efe6",
+  "passed": true
+}

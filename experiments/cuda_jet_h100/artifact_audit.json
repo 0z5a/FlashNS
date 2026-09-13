@@ -1,0 +1,4202 @@
+{
+  "timestamp_utc": "2026-09-09T06:15:18.318223+00:00",
+  "scope": "recorded measurement source bytes and declared pinned source artifacts; does not claim all runtime wheels or remote-only failed-run artifacts were downloaded; canonical Euler point hash is checked by the measurement script",
+  "reports": [
+    {
+      "report": "artifacts/h100nvl/euler_ab_smoke.json",
+      "sha256": "d6218be6a6cfba15051e045e898eecd94d3e49d0f74eef1701efc3b71c87e7e3",
+      "source_references": [
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/__init__.py",
+          "sha256": "30a814dbede825388cfa02aa2220d57986d5629e2298923f156dc1f0254a5d18",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/__init__.py",
+            "src/flashns/__init__.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/affine.py",
+          "sha256": "6134cd6ebd0c047ca5392a2008768ebf5b97eda4f085f2d42d71fc1284970c84",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/affine.py",
+            "src/flashns/affine.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/cli.py",
+          "sha256": "182de99bab17437637935198f88fd46c2d2cb11698d1e4046d0bcab34a98ecb8",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/cli.py",
+            "src/flashns/cli.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/diagnostics.py",
+          "sha256": "9a75a660d0fea02eb6e37916c9e8b8d47d47df1b64c1991f0360ab47a12c1af8",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/diagnostics.py",
+            "src/flashns/diagnostics.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/euler.py",
+          "sha256": "4fc7a38f745a3240093415328ed33cb452933280ba07ec4762eade95e3396585",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/euler.py",
+            "src/flashns/euler.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/provenance.py",
+          "sha256": "14acb0719a68979b307903d05c19b1cd8c5926129d470b0cb573e796a2320209",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/provenance.py",
+            "src/flashns/provenance.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/reference.py",
+          "sha256": "1e7ab5a46e86bb1c6b89a8a4aeafc462eb07b0a14e68dc37ae1728b067bf05fc",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/reference.py",
+            "src/flashns/reference.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/spline_reference.py",
+          "sha256": "2e99a6b0eb2afa1bc049502e208fdb650ccb0eec9951164026d86b9f3ba4dedc",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/spline_reference.py",
+            "src/flashns/spline_reference.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/symbolic.py",
+          "sha256": "5d8f369928afbd2a9241ae03ca312b367cc3826a209c0556d15d765a2281f4ac",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/symbolic.py",
+            "src/flashns/symbolic.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/torch_spline.py",
+          "sha256": "6135dfbb0b4db0b5ce586cb4a7c246e31193d9ea5339dcaf276bea74f972ab92",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/torch_spline.py",
+            "src/flashns/torch_spline.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/validation.py",
+          "sha256": "9d58d43a8b23c9bdb0b0a20bcb49c4be32b935b6bd76b92733a862de2a83b00e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/validation.py",
+            "src/flashns/validation.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "pyproject.toml",
+          "sha256": "0d4fba11f6fcc647b09b5d2a8ac5b44ecb9fce4285ede55ba6086e7e73e9a956",
+          "resolved_locations": [
+            "pyproject.toml"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "uv.lock",
+          "sha256": "fa90a06dae080835f785721f1f0a2bee836f58c74a9fd902e3389c762e161267",
+          "resolved_locations": [
+            "uv.lock"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/doctor.py",
+          "sha256": "644cb0c896dc463fae29606c192f19a5f7e9d83e80cb401ba57b56cdeea5b448",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:scripts/doctor.py",
+            "scripts/doctor.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/preflight_multigpu.py",
+          "sha256": "0edc1a5c2880a59c96dd4a26bb343a9d1b55f049a709707e53e0f5722043eb9d",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:scripts/preflight_multigpu.py",
+            "scripts/preflight_multigpu.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/profile_euler.py",
+          "sha256": "18ce85fe027273ca6e6385876e56f152afd6c1d97eeb6faa996c1002194a0307",
+          "resolved_locations": [
+            "scripts/profile_euler.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "sources/registry.json",
+          "sha256": "69cbcab6afa2775777a395a3bbf064c79d38f0ed4454fcb55b26982d5bc9c60d",
+          "resolved_locations": [
+            "sources/registry.json"
+          ]
+        },
+        {
+          "field": "/script_sha256",
+          "source": "entry_point_script",
+          "sha256": "09d9ba2654910e0c1af611394953cb2604f5443e3afed28a9d9a010f8c8d10e1",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/euler_ab.py"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_paper",
+          "sha256": "f0164c40fad09a646412acec95f7908ea6b2fd61d16b809954a4048665fb5f78",
+          "resolved_locations": [
+            "sources/euler.pdf"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_code",
+          "sha256": "a238bc3662ec86ee61f7b904d365255d061b07dd9f1aa12a2a728af5959265ad",
+          "resolved_locations": [
+            "sources/euler_code.zip"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_Omega",
+          "sha256": "e556a9432e07bd8ec1c3b106ab60a1ee2fcbd44c1ab629bccb237c0f34e3a041",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/Omega.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_Psi",
+          "sha256": "72a3147ee028ce91d544692b37da55e6ecfc7de0f6148437e8f9be515d06b1b7",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/Psi.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_U",
+          "sha256": "6f0f0e31be8efb509d700bff20288bbdcfa914483191c44ca72b33bc1499b86c",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/U.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_meta",
+          "sha256": "44f27313fb368f741304d07bfda29aa37a134357dd7dcdf5cd34ebf062f8194a",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/meta.json"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "artifacts/h100nvl/euler_ab_4m.json",
+      "sha256": "c123768cf0ebfe98e23e7b36fbc66b67d756ac3255e7f9aa57cae40d77bbdc3e",
+      "source_references": [
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/__init__.py",
+          "sha256": "30a814dbede825388cfa02aa2220d57986d5629e2298923f156dc1f0254a5d18",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/__init__.py",
+            "src/flashns/__init__.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/affine.py",
+          "sha256": "6134cd6ebd0c047ca5392a2008768ebf5b97eda4f085f2d42d71fc1284970c84",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/affine.py",
+            "src/flashns/affine.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/cli.py",
+          "sha256": "182de99bab17437637935198f88fd46c2d2cb11698d1e4046d0bcab34a98ecb8",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/cli.py",
+            "src/flashns/cli.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/diagnostics.py",
+          "sha256": "9a75a660d0fea02eb6e37916c9e8b8d47d47df1b64c1991f0360ab47a12c1af8",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/diagnostics.py",
+            "src/flashns/diagnostics.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/euler.py",
+          "sha256": "4fc7a38f745a3240093415328ed33cb452933280ba07ec4762eade95e3396585",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/euler.py",
+            "src/flashns/euler.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/provenance.py",
+          "sha256": "14acb0719a68979b307903d05c19b1cd8c5926129d470b0cb573e796a2320209",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/provenance.py",
+            "src/flashns/provenance.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/reference.py",
+          "sha256": "1e7ab5a46e86bb1c6b89a8a4aeafc462eb07b0a14e68dc37ae1728b067bf05fc",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/reference.py",
+            "src/flashns/reference.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/spline_reference.py",
+          "sha256": "2e99a6b0eb2afa1bc049502e208fdb650ccb0eec9951164026d86b9f3ba4dedc",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/spline_reference.py",
+            "src/flashns/spline_reference.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/symbolic.py",
+          "sha256": "5d8f369928afbd2a9241ae03ca312b367cc3826a209c0556d15d765a2281f4ac",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/symbolic.py",
+            "src/flashns/symbolic.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/torch_spline.py",
+          "sha256": "6135dfbb0b4db0b5ce586cb4a7c246e31193d9ea5339dcaf276bea74f972ab92",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/torch_spline.py",
+            "src/flashns/torch_spline.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/validation.py",
+          "sha256": "9d58d43a8b23c9bdb0b0a20bcb49c4be32b935b6bd76b92733a862de2a83b00e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/validation.py",
+            "src/flashns/validation.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "pyproject.toml",
+          "sha256": "0d4fba11f6fcc647b09b5d2a8ac5b44ecb9fce4285ede55ba6086e7e73e9a956",
+          "resolved_locations": [
+            "pyproject.toml"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "uv.lock",
+          "sha256": "fa90a06dae080835f785721f1f0a2bee836f58c74a9fd902e3389c762e161267",
+          "resolved_locations": [
+            "uv.lock"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/doctor.py",
+          "sha256": "644cb0c896dc463fae29606c192f19a5f7e9d83e80cb401ba57b56cdeea5b448",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:scripts/doctor.py",
+            "scripts/doctor.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/preflight_multigpu.py",
+          "sha256": "0edc1a5c2880a59c96dd4a26bb343a9d1b55f049a709707e53e0f5722043eb9d",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:scripts/preflight_multigpu.py",
+            "scripts/preflight_multigpu.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/profile_euler.py",
+          "sha256": "18ce85fe027273ca6e6385876e56f152afd6c1d97eeb6faa996c1002194a0307",
+          "resolved_locations": [
+            "scripts/profile_euler.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "sources/registry.json",
+          "sha256": "69cbcab6afa2775777a395a3bbf064c79d38f0ed4454fcb55b26982d5bc9c60d",
+          "resolved_locations": [
+            "sources/registry.json"
+          ]
+        },
+        {
+          "field": "/script_sha256",
+          "source": "entry_point_script",
+          "sha256": "09d9ba2654910e0c1af611394953cb2604f5443e3afed28a9d9a010f8c8d10e1",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/euler_ab.py"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_paper",
+          "sha256": "f0164c40fad09a646412acec95f7908ea6b2fd61d16b809954a4048665fb5f78",
+          "resolved_locations": [
+            "sources/euler.pdf"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_code",
+          "sha256": "a238bc3662ec86ee61f7b904d365255d061b07dd9f1aa12a2a728af5959265ad",
+          "resolved_locations": [
+            "sources/euler_code.zip"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_Omega",
+          "sha256": "e556a9432e07bd8ec1c3b106ab60a1ee2fcbd44c1ab629bccb237c0f34e3a041",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/Omega.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_Psi",
+          "sha256": "72a3147ee028ce91d544692b37da55e6ecfc7de0f6148437e8f9be515d06b1b7",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/Psi.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_U",
+          "sha256": "6f0f0e31be8efb509d700bff20288bbdcfa914483191c44ca72b33bc1499b86c",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/U.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_meta",
+          "sha256": "44f27313fb368f741304d07bfda29aa37a134357dd7dcdf5cd34ebf062f8194a",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/meta.json"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "artifacts/h100nvl/euler_precision.json",
+      "sha256": "7bc2e18e97e40002ca879bd0695778d3ebf0d159a0a21b90a4a33de5af1016f5",
+      "source_references": [
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/__init__.py",
+          "sha256": "30a814dbede825388cfa02aa2220d57986d5629e2298923f156dc1f0254a5d18",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/__init__.py",
+            "src/flashns/__init__.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/affine.py",
+          "sha256": "6134cd6ebd0c047ca5392a2008768ebf5b97eda4f085f2d42d71fc1284970c84",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/affine.py",
+            "src/flashns/affine.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/cli.py",
+          "sha256": "182de99bab17437637935198f88fd46c2d2cb11698d1e4046d0bcab34a98ecb8",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/cli.py",
+            "src/flashns/cli.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/diagnostics.py",
+          "sha256": "9a75a660d0fea02eb6e37916c9e8b8d47d47df1b64c1991f0360ab47a12c1af8",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/diagnostics.py",
+            "src/flashns/diagnostics.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/euler.py",
+          "sha256": "4fc7a38f745a3240093415328ed33cb452933280ba07ec4762eade95e3396585",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/euler.py",
+            "src/flashns/euler.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/provenance.py",
+          "sha256": "14acb0719a68979b307903d05c19b1cd8c5926129d470b0cb573e796a2320209",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/provenance.py",
+            "src/flashns/provenance.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/reference.py",
+          "sha256": "1e7ab5a46e86bb1c6b89a8a4aeafc462eb07b0a14e68dc37ae1728b067bf05fc",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/reference.py",
+            "src/flashns/reference.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/spline_reference.py",
+          "sha256": "2e99a6b0eb2afa1bc049502e208fdb650ccb0eec9951164026d86b9f3ba4dedc",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/spline_reference.py",
+            "src/flashns/spline_reference.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/symbolic.py",
+          "sha256": "5d8f369928afbd2a9241ae03ca312b367cc3826a209c0556d15d765a2281f4ac",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/symbolic.py",
+            "src/flashns/symbolic.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/torch_spline.py",
+          "sha256": "6135dfbb0b4db0b5ce586cb4a7c246e31193d9ea5339dcaf276bea74f972ab92",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/torch_spline.py",
+            "src/flashns/torch_spline.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "src/flashns/validation.py",
+          "sha256": "9d58d43a8b23c9bdb0b0a20bcb49c4be32b935b6bd76b92733a862de2a83b00e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/validation.py",
+            "src/flashns/validation.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "pyproject.toml",
+          "sha256": "0d4fba11f6fcc647b09b5d2a8ac5b44ecb9fce4285ede55ba6086e7e73e9a956",
+          "resolved_locations": [
+            "pyproject.toml"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "uv.lock",
+          "sha256": "fa90a06dae080835f785721f1f0a2bee836f58c74a9fd902e3389c762e161267",
+          "resolved_locations": [
+            "uv.lock"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/doctor.py",
+          "sha256": "644cb0c896dc463fae29606c192f19a5f7e9d83e80cb401ba57b56cdeea5b448",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:scripts/doctor.py",
+            "scripts/doctor.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/preflight_multigpu.py",
+          "sha256": "0edc1a5c2880a59c96dd4a26bb343a9d1b55f049a709707e53e0f5722043eb9d",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:scripts/preflight_multigpu.py",
+            "scripts/preflight_multigpu.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "scripts/profile_euler.py",
+          "sha256": "18ce85fe027273ca6e6385876e56f152afd6c1d97eeb6faa996c1002194a0307",
+          "resolved_locations": [
+            "scripts/profile_euler.py"
+          ]
+        },
+        {
+          "field": "/metadata/input_and_code_hashes",
+          "source": "sources/registry.json",
+          "sha256": "69cbcab6afa2775777a395a3bbf064c79d38f0ed4454fcb55b26982d5bc9c60d",
+          "resolved_locations": [
+            "sources/registry.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_code",
+          "sha256": "a238bc3662ec86ee61f7b904d365255d061b07dd9f1aa12a2a728af5959265ad",
+          "resolved_locations": [
+            "sources/euler_code.zip"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_Omega",
+          "sha256": "e556a9432e07bd8ec1c3b106ab60a1ee2fcbd44c1ab629bccb237c0f34e3a041",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/Omega.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_Psi",
+          "sha256": "72a3147ee028ce91d544692b37da55e6ecfc7de0f6148437e8f9be515d06b1b7",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/Psi.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_U",
+          "sha256": "6f0f0e31be8efb509d700bff20288bbdcfa914483191c44ca72b33bc1499b86c",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/U.json"
+          ]
+        },
+        {
+          "field": "/sources",
+          "source": "euler_meta",
+          "sha256": "44f27313fb368f741304d07bfda29aa37a134357dd7dcdf5cd34ebf062f8194a",
+          "resolved_locations": [
+            "sources/vendor/eulerRepo/splines/meta.json"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/validation_gpu0.json",
+      "sha256": "e5d91925d5351e0c77cfcadedfea45125b5259e6e10b5e59fa9ea43ec01c4afb",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/sanitizers.json",
+      "sha256": "2d4903d6f70c5429c06a26214652016856a95a7a9a02a544277183339a0d6ea0",
+      "source_references": [
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "sanitizer_smoke",
+          "sha256": "af7bea03586c8f850782627584aea9eb46156f8f5ec9db4ff34b5833cb305179",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/sanitizer_smoke"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/profile_costs.json",
+      "sha256": "c612a967a68c005e96b7efc01dac1a78ee72f81166dd49a39be13f264a5deb64",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/local_benchmark_gpu0.json",
+      "sha256": "8f82a32c18fe83f6f7469c8bde5b81d4d678c4a11213797ef6d67c057422585e",
+      "source_references": [
+        {
+          "field": "/build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/graph_experiment.json",
+      "sha256": "73c146ecb82b372f8ca9a5e4b69fc6633ab57ae1006c9473e2f2c6fdfee86b0a",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/graph_experiment.py",
+          "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/graph_experiment.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/baseline_plus_smoke.json",
+      "sha256": "206f2e741ef16b7b312980d40fc3e307c7b5a929287e9c74019bda92cbcaab75",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/baseline_plus.py",
+          "sha256": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/baseline_plus.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.py",
+          "sha256": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/graph_experiment.py",
+          "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/graph_experiment.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/validation/planning/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/validation/planning/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/baseline_plus.json",
+      "sha256": "3f311d449fcbf2146f7f37f0fc7ba8d77c6c7cb209f6819862c8a064e71e313a",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/baseline_plus.py",
+          "sha256": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/baseline_plus.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.py",
+          "sha256": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/graph_experiment.py",
+          "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/graph_experiment.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/validation/planning/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/validation/planning/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/cases/0/planning/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/cases/0/planning/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/cases/1/planning/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/cases/1/planning/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/cases/2/planning/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/cases/2/planning/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/cases/3/planning/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/cases/3/planning/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/scientific_validation_v2.json",
+      "sha256": "c59e76bcfb110b54f4b5baab0cd1eb56e8337352ca6f26221046523a0a00b746",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/baseline_plus.py",
+          "sha256": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/baseline_plus.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.py",
+          "sha256": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/graph_experiment.py",
+          "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/graph_experiment.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/prepare_mathdx.py",
+          "sha256": "951d4b82db6655bfc4ed557219e0f250dc486dc3f54268912150c4e3b2c16195",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/prepare_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_backends.py",
+          "sha256": "bd439b4de736cdc6f0734061f21ae362b5b2f610e093240d27cdba5bca16447a",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_backends.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_benchmark.py",
+          "sha256": "c9b7e65fea31b4061072c90a2d1166d182c78530d595ad853e216773242f3295",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/source_versions/c9b7e65fea31b4061072c90a2d1166d182c78530d595ad853e216773242f3295-scientific_benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts/scientific_benchmark.json",
+      "sha256": "05b92a5587993ffa835a0e43cf9c26bb5a36964bdacc7ac1048d34185e53e3fe",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/baseline_plus.py",
+          "sha256": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/baseline_plus.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.py",
+          "sha256": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_mathdx.py",
+          "sha256": "2f75bb957c5735457d8fa7edff0fb2a60076051a55e083d0bd4c914da60569e6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/source_versions/2f75bb957c5735457d8fa7edff0fb2a60076051a55e083d0bd4c914da60569e6-build_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/euler_ab.py",
+          "sha256": "ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/source_versions/ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9-euler_ab.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/graph_experiment.py",
+          "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/graph_experiment.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx.cu",
+          "sha256": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/prepare_mathdx.py",
+          "sha256": "951d4b82db6655bfc4ed557219e0f250dc486dc3f54268912150c4e3b2c16195",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/prepare_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_backends.py",
+          "sha256": "bd439b4de736cdc6f0734061f21ae362b5b2f610e093240d27cdba5bca16447a",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_backends.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_benchmark.py",
+          "sha256": "95f6053a241658ba5c07314b8e0b110f4d89e28a9531db16669eb9de6d0769a0",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts_h100b/validation_gpu0.json",
+      "sha256": "f5287e478b4eeec61a73a9043110878226da036e7d452eabb1a4b60746cc64d7",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/baseline_plus.py",
+          "sha256": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/baseline_plus.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.py",
+          "sha256": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_mathdx.py",
+          "sha256": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_mathdx.py",
+          "sha256": "8337902dba9892e571f5dd37dbf2fcfcc90fdf868705a48666f98ebfeabb2d58",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/check_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "336a2f7f00ab50bfd80a3d7ab3991490c32b8089563538cb572fc60b44a5bd77",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/euler_ab.py",
+          "sha256": "ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/source_versions/ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9-euler_ab.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/graph_experiment.py",
+          "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/graph_experiment.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx.cu",
+          "sha256": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx.py",
+          "sha256": "bbaee62d7f0ee316e130fdb6fb59703dedcdb9e944a868c640a1aef886690f20",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx_benchmark.py",
+          "sha256": "8f760f43421606f7bd501675a7b914dd8ad05646aa5a47f85c79d9ee98b80296",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx_benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx_smoke.cu",
+          "sha256": "ad103bd115c8117e2d50bf9af98544e5f9bf75951d4bfe2b2008ce74e3d3aeb4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/prepare_mathdx.py",
+          "sha256": "951d4b82db6655bfc4ed557219e0f250dc486dc3f54268912150c4e3b2c16195",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/prepare_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_backends.py",
+          "sha256": "bd439b4de736cdc6f0734061f21ae362b5b2f610e093240d27cdba5bca16447a",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_backends.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_benchmark.py",
+          "sha256": "95f6053a241658ba5c07314b8e0b110f4d89e28a9531db16669eb9de6d0769a0",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts_h100b/sanitizers.json",
+      "sha256": "ddbd339bbd43d11712ccd599f1fdbf0f5842d1e9889f635594e9c33245d28635",
+      "source_references": [
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "check_sanitizers.py",
+          "sha256": "336a2f7f00ab50bfd80a3d7ab3991490c32b8089563538cb572fc60b44a5bd77",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "sanitizer_smoke",
+          "sha256": "b5c5c70c9fbeb05bcd4dd67de21c4a962399af7fbc325d70a38e3288790aca39",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts_h100b/sanitizer_smoke"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts_h100b/mathdx_validation.json",
+      "sha256": "db7e289fbc99a7f8f70c20432d921c3375b0d3441643c1b79c1d3626945435cc",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/baseline_plus.py",
+          "sha256": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/baseline_plus.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.py",
+          "sha256": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_mathdx.py",
+          "sha256": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_mathdx.py",
+          "sha256": "8337902dba9892e571f5dd37dbf2fcfcc90fdf868705a48666f98ebfeabb2d58",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/check_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "336a2f7f00ab50bfd80a3d7ab3991490c32b8089563538cb572fc60b44a5bd77",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/euler_ab.py",
+          "sha256": "ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/source_versions/ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9-euler_ab.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/graph_experiment.py",
+          "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/graph_experiment.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx.cu",
+          "sha256": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx.py",
+          "sha256": "bbaee62d7f0ee316e130fdb6fb59703dedcdb9e944a868c640a1aef886690f20",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx_benchmark.py",
+          "sha256": "8f760f43421606f7bd501675a7b914dd8ad05646aa5a47f85c79d9ee98b80296",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx_benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx_smoke.cu",
+          "sha256": "ad103bd115c8117e2d50bf9af98544e5f9bf75951d4bfe2b2008ce74e3d3aeb4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/prepare_mathdx.py",
+          "sha256": "951d4b82db6655bfc4ed557219e0f250dc486dc3f54268912150c4e3b2c16195",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/prepare_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_backends.py",
+          "sha256": "bd439b4de736cdc6f0734061f21ae362b5b2f610e093240d27cdba5bca16447a",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_backends.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_benchmark.py",
+          "sha256": "95f6053a241658ba5c07314b8e0b110f4d89e28a9531db16669eb9de6d0769a0",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/mathdx/build/source_hashes",
+          "source": "build_mathdx.py",
+          "sha256": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_mathdx.py"
+          ]
+        },
+        {
+          "field": "/mathdx/build/source_hashes",
+          "source": "mathdx.cu",
+          "sha256": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.cu"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts_h100b/mathdx_benchmark.json",
+      "sha256": "01c384a6a858cd4fe1b845ac7b979c12eb77a83a70d6a4ea979b1360db4f35ae",
+      "source_references": [
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/generate_jet_header.py",
+          "sha256": "eaa9ffd78597d7d361ba5f0430d3ecd4f649ec7af579f477bb1c43efbee8a2c1",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/generate_jet_header.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/generate_jet_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet/input/jet_reference.py",
+          "sha256": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+          "resolved_locations": [
+            "experiments/cuda_jet/input/jet_reference.py",
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet/input/jet_reference.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/baseline_plus.py",
+          "sha256": "5d5b88f85d912195f22bf39c3e7933ad4e58cf455b5bca85550d39ca64d7cc51",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/baseline_plus.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/benchmark.py",
+          "sha256": "db213a235c3d9f34257524dca46e4b782968a461149b8b2e769011435a426867",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/benchmark.py",
+            "experiments/cuda_jet_h100/benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/blaslt.py",
+          "sha256": "e5608f82ea297cd53213fd59776781c8285ff1b8738a1763b2e442846ff990de",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/build_mathdx.py",
+          "sha256": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_mathdx.py",
+          "sha256": "8337902dba9892e571f5dd37dbf2fcfcc90fdf868705a48666f98ebfeabb2d58",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/check_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/check_sanitizers.py",
+          "sha256": "336a2f7f00ab50bfd80a3d7ab3991490c32b8089563538cb572fc60b44a5bd77",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/check_sanitizers.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/common.py",
+          "sha256": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/common.py",
+            "experiments/cuda_jet_h100/common.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/euler_ab.py",
+          "sha256": "ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/source_versions/ca103abc398cc9ad02425faf36fad31c6fe642efd605b2ddf47d6cda596fb6a9-euler_ab.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/gpu.py",
+          "sha256": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/gpu.py",
+            "experiments/cuda_jet_h100/gpu.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/graph_experiment.py",
+          "sha256": "0512fee0a306926ba12c2f78b8dc576f5e5ce01b9132f9573a8afc22a35d26ea",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/graph_experiment.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx.cu",
+          "sha256": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx.py",
+          "sha256": "bbaee62d7f0ee316e130fdb6fb59703dedcdb9e944a868c640a1aef886690f20",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx_benchmark.py",
+          "sha256": "8f760f43421606f7bd501675a7b914dd8ad05646aa5a47f85c79d9ee98b80296",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx_benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/mathdx_smoke.cu",
+          "sha256": "ad103bd115c8117e2d50bf9af98544e5f9bf75951d4bfe2b2008ce74e3d3aeb4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/prepare_mathdx.py",
+          "sha256": "951d4b82db6655bfc4ed557219e0f250dc486dc3f54268912150c4e3b2c16195",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/prepare_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/profile_costs.py",
+          "sha256": "7db1aa3a01738a4d0b481d0e32ad3794e33f7102762877ec8a405489b8e4432e",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/profile_costs.py",
+            "experiments/cuda_jet_h100/profile_costs.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/sanitizer_smoke.cu",
+          "sha256": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/sanitizer_smoke.cu",
+            "experiments/cuda_jet_h100/sanitizer_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_backends.py",
+          "sha256": "bd439b4de736cdc6f0734061f21ae362b5b2f610e093240d27cdba5bca16447a",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_backends.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/scientific_benchmark.py",
+          "sha256": "95f6053a241658ba5c07314b8e0b110f4d89e28a9531db16669eb9de6d0769a0",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/scientific_benchmark.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "experiments/cuda_jet_h100/validate.py",
+          "sha256": "edd56e10d88174ceec843704c348556b7faf20b06f4dacfa1360c3da32232673",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/validate.py",
+            "experiments/cuda_jet_h100/validate.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/distributed_contract.py",
+          "sha256": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/distributed_contract.py",
+            "src/flashns/distributed_contract.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_spec.py",
+          "sha256": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_spec.py",
+            "src/flashns/jet_spec.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "src/flashns/jet_stable.py",
+          "sha256": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:src/flashns/jet_stable.py",
+            "src/flashns/jet_stable.py"
+          ]
+        },
+        {
+          "field": "/mathdx/build/source_hashes",
+          "source": "build_mathdx.py",
+          "sha256": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_mathdx.py"
+          ]
+        },
+        {
+          "field": "/mathdx/build/source_hashes",
+          "source": "mathdx.cu",
+          "sha256": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.cu"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "build.py",
+          "sha256": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/build.py",
+            "experiments/cuda_jet_h100/build.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "generate_stable_header.py",
+          "sha256": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/generate_stable_header.py",
+            "experiments/cuda_jet_h100/generate_stable_header.py"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_jet.cuh",
+          "sha256": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_jet.cuh",
+            "experiments/cuda_jet_h100/stable_jet.cuh"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_kernels.cu",
+          "sha256": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_kernels.cu",
+            "experiments/cuda_jet_h100/stable_kernels.cu"
+          ]
+        },
+        {
+          "field": "/native_build/source_hashes",
+          "source": "stable_dgrad.cu",
+          "sha256": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts/measured_h0_sources.tar.gz:experiments/cuda_jet_h100/stable_dgrad.cu",
+            "experiments/cuda_jet_h100/stable_dgrad.cu"
+          ]
+        },
+        {
+          "field": "/local/0/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/0/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/1/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/1/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/2/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/2/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/3/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/3/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/4/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/4/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/5/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/5/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/6/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/6/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/7/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/7/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/8/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/8/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/9/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/9/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/10/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/10/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/11/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/11/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/12/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/12/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/13/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/13/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/14/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/14/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/local/15/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/local/15/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/complete_gradient/0/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/complete_gradient/0/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/complete_gradient/1/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/complete_gradient/1/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/complete_gradient/2/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/complete_gradient/2/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        },
+        {
+          "field": "/complete_gradient/3/baseline_plans/build/source_hashes",
+          "source": "build_blaslt.py",
+          "sha256": "d8b22886991b43ee72820dec3d3a8b8fdf20c09a732b07db9a23624b648a0589",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_blaslt.py"
+          ]
+        },
+        {
+          "field": "/complete_gradient/3/baseline_plans/build/source_hashes",
+          "source": "blaslt.cu",
+          "sha256": "15bcebe291627976daed63ea3bb6af200fd6f5fbfcf99450f6eae875b8c6abd4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/blaslt.cu"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    },
+    {
+      "report": "experiments/cuda_jet_h100/artifacts_h100b/mathdx_sanitizers.json",
+      "sha256": "746ddf2fbd6879d696ea903c13410267f541163bd21d4be29956ab7ee647736c",
+      "source_references": [
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "build_mathdx.py",
+          "sha256": "fc6eb21a2e87e173b8748b8b5251348130ef2d1019cc14b463ef1059b360218c",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/build_mathdx.py"
+          ]
+        },
+        {
+          "field": "/tested_build/source_hashes",
+          "source": "mathdx.cu",
+          "sha256": "7b04f178494830d8c1a5547666f7b78d6a9129d61b436ab2f31c5f0dcf299567",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "check_mathdx.py",
+          "sha256": "8337902dba9892e571f5dd37dbf2fcfcc90fdf868705a48666f98ebfeabb2d58",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/check_mathdx.py"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "mathdx_smoke.cu",
+          "sha256": "ad103bd115c8117e2d50bf9af98544e5f9bf75951d4bfe2b2008ce74e3d3aeb4",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/mathdx_smoke.cu"
+          ]
+        },
+        {
+          "field": "/source_hashes",
+          "source": "mathdx_smoke",
+          "sha256": "cfc5c0ff76c4633907fd221d388b52737191a7608c516c0dcf97e91a59152711",
+          "resolved_locations": [
+            "experiments/cuda_jet_h100/artifacts_h100b/mathdx_smoke"
+          ]
+        }
+      ],
+      "all_source_references_resolved": true
+    }
+  ],
+  "unresolved": [],
+  "all_measured_source_references_resolved": true
+}

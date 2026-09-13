@@ -12,3 +12,16 @@ __pycache__/
 artifacts/
 build/
 dist/
+third_party/
+.deps/
+.libdeps/
+tmp/
+sources/*.pdf
+sources/*.zip
+sources/*.html
+sources/*.part
+sources/vendor/
+sources/h100_library_wheels/
+sources/openai_ns_formal/repository/
+*.ncu-rep
+*.prof

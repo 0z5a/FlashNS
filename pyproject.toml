@@ -5,9 +5,16 @@ build-backend = "hatchling.build"
 [project]
 name = "flashns"
 version = "0.1.0"
-description = "FP64 Taylor jets and explicit-gradient Navier-Stokes PINN experiments"
+description = "FP64 Taylor-jet PINN kernels with explicit gradients and reproducible PyTorch, PhysicsNeMo, cuEquivariance and MathDx comparisons"
 requires-python = ">=3.11"
 dependencies = ["numpy>=2,<3", "scipy>=1.14,<2", "sympy>=1.13,<2", "mpmath>=1.3,<2", "torch>=2.8,<3"]
+
+[project.optional-dependencies]
+# Compatibility with the historical Euler runner; torch is already required.
+euler = []
+
+[project.scripts]
+flashns = "flashns.cli:main"
 
 [dependency-groups]
 dev = ["pytest>=8,<10"]

@@ -1,0 +1,1319 @@
+{
+  "timestamp_utc": "2026-09-09T08:39:23.520549+00:00",
+  "original_suite": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/suite.json",
+  "original_suite_sha256": "1a2be2ee29d4b25fa9b0fdf127c252330ceffc03149d1a541b20c72d37244d30",
+  "original_protocol_sha256": "5966156260b9a18b74423923f2bbec61942a074e6e81f551a3ad6194fb7c6e6f",
+  "protocol_sha256": "defd2bdf4ded10e2c912232c147a79b79649acb96cf9368504a4ef8dc24459da",
+  "extension_source_sha256": "11c668ff9c1750048999957ab9f0e192c53bbe0af04901630c208e1f370c9d02",
+  "only_protocol_change": {
+    "lbfgs_max_blocks": [
+      200,
+      500
+    ]
+  },
+  "policy": "Uniform larger available cap for all backends/seeds; previously converged runs retain their stopping points; all original nonconverged runs restart from the same initialization under the supplementary cap. No threshold, optimizer, data, network or check-frequency changes. Original capped failures remain in the original suite.",
+  "timing_policy": "effective time-to-acceptance is the full converged attempt; additionally report actual sum of all attempt process wall times. This is a supplementary extension, not a replacement of the original fixed-budget experiment.",
+  "environment": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONPATH": "/root/flashns-hopper-20260909/.libdeps:/root/flashns-hopper-20260909/src"
+  },
+  "runs": [
+    {
+      "seed": 75101,
+      "backend": "cuBLASLt",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/01-75101-cuBLASLt.json",
+      "original_output_sha256": "febf649ff8f6e48cde6d52b862e1fe53ddb7039ec3d29fb330f0fac01409b8fa",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "cuBLASLt",
+        "converged": true,
+        "setup_seconds": 0.430631787981838,
+        "optimization_wall_seconds": 21.811741584911942,
+        "setup_plus_optimization_seconds": 22.24237337289378,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3560,
+        "loss_gradient_evaluations": 7967,
+        "metrics": {
+          "pde_rms": 0.011548278565434758,
+          "boundary_uv_rms": 0.008325390112827579,
+          "outflow_p_rms": 0.0016508321302029275,
+          "relative_l2_u": 0.009603185914654607,
+          "relative_l2_v": 0.019901384426355404,
+          "relative_l2_p": 0.009890155788123864
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011541181925392772,
+          "boundary_uv_rms": 0.008325390112827579,
+          "outflow_p_rms": 0.0016508321302029275,
+          "relative_l2_u": 0.00960188202851462,
+          "relative_l2_v": 0.01990002893949707,
+          "relative_l2_p": 0.009913221862828695
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "941c1f0c7fe33eb35be56a2af8ab0058be1f84394f6a61017c14d9d3f9839e87",
+        "total_wall_seconds": 22.722830425947905
+      },
+      "process_wall_seconds": 24.509157235966995,
+      "all_attempts_process_wall_seconds": 24.509157235966995,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/01-75101-cuBLASLt.json",
+      "output_sha256": "febf649ff8f6e48cde6d52b862e1fe53ddb7039ec3d29fb330f0fac01409b8fa",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75101,
+      "backend": "TorchJetCompiled",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/02-75101-TorchJetCompiled.json",
+      "original_output_sha256": "b7fccc28bd923ccd9b2ae1417da49e8cae1fe049c1b4838289d1721228033f6f",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "TorchJetCompiled",
+        "converged": true,
+        "setup_seconds": 4.051487908931449,
+        "optimization_wall_seconds": 21.471770656993613,
+        "setup_plus_optimization_seconds": 25.52325856592506,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3340,
+        "loss_gradient_evaluations": 7731,
+        "metrics": {
+          "pde_rms": 0.012099995869718052,
+          "boundary_uv_rms": 0.008397116337519984,
+          "outflow_p_rms": 0.0022834983915812853,
+          "relative_l2_u": 0.00898502195562392,
+          "relative_l2_v": 0.019980982942039784,
+          "relative_l2_p": 0.009375410859309366
+        },
+        "independent_metrics": {
+          "pde_rms": 0.012097643056487624,
+          "boundary_uv_rms": 0.008397116337519984,
+          "outflow_p_rms": 0.0022834983915812853,
+          "relative_l2_u": 0.008984086058843497,
+          "relative_l2_v": 0.019979999500552147,
+          "relative_l2_p": 0.009400633026061537
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "8b2dec7f4f37ad5e851507230632e166ea49efd66721a631b60fc8b7e047e5bc",
+        "total_wall_seconds": 25.941473643062636
+      },
+      "process_wall_seconds": 28.357867968035862,
+      "all_attempts_process_wall_seconds": 28.357867968035862,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/02-75101-TorchJetCompiled.json",
+      "output_sha256": "b7fccc28bd923ccd9b2ae1417da49e8cae1fe049c1b4838289d1721228033f6f",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75101,
+      "backend": "PhysicsNeMo",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/03-75101-PhysicsNeMo.json",
+      "original_output_sha256": "a1a347589fc9ff87cd8605d37f42d84814a3c4fc8f64e8c6d74203ff30da7523",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "PhysicsNeMo",
+        "converged": true,
+        "setup_seconds": 0.7795630290638655,
+        "optimization_wall_seconds": 117.54113079491071,
+        "setup_plus_optimization_seconds": 118.32069382397458,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3800,
+        "loss_gradient_evaluations": 8260,
+        "metrics": {
+          "pde_rms": 0.011609856128262323,
+          "boundary_uv_rms": 0.008425732730496216,
+          "outflow_p_rms": 0.0018734982053391172,
+          "relative_l2_u": 0.009193747209625878,
+          "relative_l2_v": 0.01992820150984568,
+          "relative_l2_p": 0.009756218099356439
+        },
+        "independent_metrics": {
+          "pde_rms": 0.01160562554924808,
+          "boundary_uv_rms": 0.008425732730496216,
+          "outflow_p_rms": 0.0018734982053391172,
+          "relative_l2_u": 0.009192853555885791,
+          "relative_l2_v": 0.019926490244009807,
+          "relative_l2_p": 0.00978216761957627
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "f2406b7d07ff887658c149d64d39f56705f9d72435fa3dda468899078ff178e5",
+        "total_wall_seconds": 118.78979656891897
+      },
+      "process_wall_seconds": 120.7864225639496,
+      "all_attempts_process_wall_seconds": 120.7864225639496,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/03-75101-PhysicsNeMo.json",
+      "output_sha256": "a1a347589fc9ff87cd8605d37f42d84814a3c4fc8f64e8c6d74203ff30da7523",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75101,
+      "backend": "TorchNestedAD",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/04-75101-TorchNestedAD.json",
+      "original_output_sha256": "21074b8e990124ce1f053af66f92778e8570929695a3959b6d9bb6bac798830c",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "TorchNestedAD",
+        "converged": true,
+        "setup_seconds": 0.40768437599763274,
+        "optimization_wall_seconds": 95.76606748206541,
+        "setup_plus_optimization_seconds": 96.17375185806304,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3160,
+        "loss_gradient_evaluations": 7511,
+        "metrics": {
+          "pde_rms": 0.012690536279652612,
+          "boundary_uv_rms": 0.008841600430503112,
+          "outflow_p_rms": 0.0016596615003405205,
+          "relative_l2_u": 0.009311418376079015,
+          "relative_l2_v": 0.019798267493457644,
+          "relative_l2_p": 0.009921019103081102
+        },
+        "independent_metrics": {
+          "pde_rms": 0.012686977887403306,
+          "boundary_uv_rms": 0.008841600430503112,
+          "outflow_p_rms": 0.0016596615003405205,
+          "relative_l2_u": 0.00931077899318378,
+          "relative_l2_v": 0.0197955268024565,
+          "relative_l2_p": 0.009946520440712155
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "61ee3eb99281903ef3db0845c254764acf6589801c8925561bc7463bb24bd8f4",
+        "total_wall_seconds": 96.65986630111001
+      },
+      "process_wall_seconds": 98.47019282099791,
+      "all_attempts_process_wall_seconds": 98.47019282099791,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/04-75101-TorchNestedAD.json",
+      "output_sha256": "21074b8e990124ce1f053af66f92778e8570929695a3959b6d9bb6bac798830c",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75101,
+      "backend": "F",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/05-75101-F.json",
+      "original_output_sha256": "c482dfc4397497dac7d3332b27ee59714bed2a7a5628755e24da4eef3c5bd6b8",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "F",
+        "converged": true,
+        "setup_seconds": 0.19640970206819475,
+        "optimization_wall_seconds": 21.86741438903846,
+        "setup_plus_optimization_seconds": 22.063824091106653,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3560,
+        "loss_gradient_evaluations": 7974,
+        "metrics": {
+          "pde_rms": 0.011349925281094256,
+          "boundary_uv_rms": 0.008705548227007158,
+          "outflow_p_rms": 0.0018673548625068972,
+          "relative_l2_u": 0.008632671249153633,
+          "relative_l2_v": 0.01997180411343577,
+          "relative_l2_p": 0.009111888448562158
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011347440810581174,
+          "boundary_uv_rms": 0.008705548227007158,
+          "outflow_p_rms": 0.0018673548625068972,
+          "relative_l2_u": 0.008631856263994955,
+          "relative_l2_v": 0.01996956960875177,
+          "relative_l2_p": 0.009134653089195553
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "e03936f67a8628622b7ebc812cf461b7a3b33c98a7c5394c3cd8c9b465a34f9d",
+        "total_wall_seconds": 22.42663338314742
+      },
+      "process_wall_seconds": 24.218956956872717,
+      "all_attempts_process_wall_seconds": 24.218956956872717,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/05-75101-F.json",
+      "output_sha256": "c482dfc4397497dac7d3332b27ee59714bed2a7a5628755e24da4eef3c5bd6b8",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75101,
+      "backend": "B1",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/06-75101-B1.json",
+      "original_output_sha256": "bcdc37143825dcff72e043bf33269db0c78368d3935282d29633b8ff7126e5ea",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "B1",
+        "converged": true,
+        "setup_seconds": 0.1925285910256207,
+        "optimization_wall_seconds": 21.847939969971776,
+        "setup_plus_optimization_seconds": 22.040468560997397,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3560,
+        "loss_gradient_evaluations": 7967,
+        "metrics": {
+          "pde_rms": 0.011548278565434758,
+          "boundary_uv_rms": 0.008325390112827579,
+          "outflow_p_rms": 0.0016508321302029275,
+          "relative_l2_u": 0.009603185914654607,
+          "relative_l2_v": 0.019901384426355404,
+          "relative_l2_p": 0.009890155788123864
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011541181925392772,
+          "boundary_uv_rms": 0.008325390112827579,
+          "outflow_p_rms": 0.0016508321302029275,
+          "relative_l2_u": 0.00960188202851462,
+          "relative_l2_v": 0.01990002893949707,
+          "relative_l2_p": 0.009913221862828695
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "941c1f0c7fe33eb35be56a2af8ab0058be1f84394f6a61017c14d9d3f9839e87",
+        "total_wall_seconds": 22.527761470992118
+      },
+      "process_wall_seconds": 24.315877825021744,
+      "all_attempts_process_wall_seconds": 24.315877825021744,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/06-75101-B1.json",
+      "output_sha256": "bcdc37143825dcff72e043bf33269db0c78368d3935282d29633b8ff7126e5ea",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75101,
+      "backend": "HopperTMA",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/07-75101-HopperTMA.json",
+      "original_output_sha256": "c722d9986252761c6ffd2238f65c21e0864f38ace9c57ae4689caf6b64f0ee18",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "HopperTMA",
+        "converged": true,
+        "setup_seconds": 0.20709631592035294,
+        "optimization_wall_seconds": 21.647114916006103,
+        "setup_plus_optimization_seconds": 21.854211231926456,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3560,
+        "loss_gradient_evaluations": 7974,
+        "metrics": {
+          "pde_rms": 0.011349925281094256,
+          "boundary_uv_rms": 0.008705548227007158,
+          "outflow_p_rms": 0.0018673548625068972,
+          "relative_l2_u": 0.008632671249153633,
+          "relative_l2_v": 0.01997180411343577,
+          "relative_l2_p": 0.009111888448562158
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011347440810581174,
+          "boundary_uv_rms": 0.008705548227007158,
+          "outflow_p_rms": 0.0018673548625068972,
+          "relative_l2_u": 0.008631856263994955,
+          "relative_l2_v": 0.01996956960875177,
+          "relative_l2_p": 0.009134653089195553
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "e03936f67a8628622b7ebc812cf461b7a3b33c98a7c5394c3cd8c9b465a34f9d",
+        "total_wall_seconds": 22.20582258887589
+      },
+      "process_wall_seconds": 23.991077384911478,
+      "all_attempts_process_wall_seconds": 23.991077384911478,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/07-75101-HopperTMA.json",
+      "output_sha256": "c722d9986252761c6ffd2238f65c21e0864f38ace9c57ae4689caf6b64f0ee18",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75101,
+      "backend": "CuEquivariance",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/08-75101-CuEquivariance.json",
+      "original_output_sha256": "9088fa4b4008f35705977d8dffb1408daf00faf6cfcdc1bd54cdeef5b3052e31",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "CuEquivariance",
+        "converged": true,
+        "setup_seconds": 3.0975134188774973,
+        "optimization_wall_seconds": 22.341913347830996,
+        "setup_plus_optimization_seconds": 25.439426766708493,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3600,
+        "loss_gradient_evaluations": 8038,
+        "metrics": {
+          "pde_rms": 0.01097207595626434,
+          "boundary_uv_rms": 0.008400276542318976,
+          "outflow_p_rms": 0.00218284952937462,
+          "relative_l2_u": 0.008830729703688313,
+          "relative_l2_v": 0.019756164984830203,
+          "relative_l2_p": 0.009533712363784187
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010969073270184301,
+          "boundary_uv_rms": 0.008400276542318976,
+          "outflow_p_rms": 0.00218284952937462,
+          "relative_l2_u": 0.00882993730845942,
+          "relative_l2_v": 0.019754526596815623,
+          "relative_l2_p": 0.009560121123297733
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "5841a549d253c20c5bb321422c42b7643da1f73ec724a836622ec94e8698ce8c",
+        "total_wall_seconds": 25.793689514743164
+      },
+      "process_wall_seconds": 27.859592011896893,
+      "all_attempts_process_wall_seconds": 27.859592011896893,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/08-75101-CuEquivariance.json",
+      "output_sha256": "9088fa4b4008f35705977d8dffb1408daf00faf6cfcdc1bd54cdeef5b3052e31",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75102,
+      "backend": "cuBLASLt",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/09-75102-cuBLASLt.json",
+      "original_output_sha256": "644d64fe2aeec293d93f11456829e6b219121998e99e81a151ec6ad3398ebf8a",
+      "original_converged": false,
+      "reused_converged_run": false,
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 35, 62.90, 400.00, 345, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "cuBLASLt",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/09-75102-cuBLASLt.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "process_wall_seconds": 27.859785774024203,
+      "all_attempts_process_wall_seconds": 54.14225529995747,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 37, 98.71, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/09-75102-cuBLASLt.json",
+      "log": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/09-75102-cuBLASLt.log",
+      "log_sha256": "5c87f8556dc5a6e7e56804242889ab59bf2ed49d751f4322d62b90e7a6bd668f",
+      "completed": true,
+      "output_sha256": "5da4229d6b77d7dc009547b8984fedf2c3aa59d280c56ac14ca532195c4bca37",
+      "result": {
+        "backend": "cuBLASLt",
+        "converged": true,
+        "setup_seconds": 0.4288495641667396,
+        "optimization_wall_seconds": 25.15812975890003,
+        "setup_plus_optimization_seconds": 25.58697932306677,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4340,
+        "loss_gradient_evaluations": 8874,
+        "metrics": {
+          "pde_rms": 0.010831545066194787,
+          "boundary_uv_rms": 0.009501664136258121,
+          "outflow_p_rms": 0.0023069715676465475,
+          "relative_l2_u": 0.008433816690662746,
+          "relative_l2_v": 0.019974914694146872,
+          "relative_l2_p": 0.00936583142336322
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010831916991168374,
+          "boundary_uv_rms": 0.009501664136258121,
+          "outflow_p_rms": 0.0023069715676465475,
+          "relative_l2_u": 0.008432750137159141,
+          "relative_l2_v": 0.01997569353649728,
+          "relative_l2_p": 0.00937776847661205
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "9a549f81bdf0aac6ae9b2443639fe5a26a2868259a317c8cf115cd8cc0fb215b",
+        "total_wall_seconds": 26.07607372617349
+      },
+      "checkpoint_sha256": "518d8373f7f0624eb88af558712c68adb009e53af20ee03fdeaaf07ad386a874"
+    },
+    {
+      "seed": 75102,
+      "backend": "TorchJetCompiled",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/10-75102-TorchJetCompiled.json",
+      "original_output_sha256": "1a99ebcf85e7c09dcdc7f57b02dae90a5af8703d98c8af45c38d589ab456539b",
+      "original_converged": false,
+      "reused_converged_run": false,
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 37, 98.71, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "TorchJetCompiled",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/10-75102-TorchJetCompiled.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "process_wall_seconds": 31.60911834309809,
+      "all_attempts_process_wall_seconds": 62.812400944996625,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 39, 93.43, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/10-75102-TorchJetCompiled.json",
+      "log": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/10-75102-TorchJetCompiled.log",
+      "log_sha256": "3556d43769a7322a08cd21cc7213a538ba39375fd940fa52449d74d4fe777948",
+      "completed": true,
+      "output_sha256": "154f13f2975bcc86d62fc99812b5fe7fdcea044b11f32369c24f080cdc27c981",
+      "result": {
+        "backend": "TorchJetCompiled",
+        "converged": true,
+        "setup_seconds": 4.027477949857712,
+        "optimization_wall_seconds": 24.647062169155106,
+        "setup_plus_optimization_seconds": 28.674540119012818,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4060,
+        "loss_gradient_evaluations": 8576,
+        "metrics": {
+          "pde_rms": 0.010405456299015996,
+          "boundary_uv_rms": 0.00932812161995494,
+          "outflow_p_rms": 0.0024470678820906772,
+          "relative_l2_u": 0.009046559517127418,
+          "relative_l2_v": 0.019851908062951375,
+          "relative_l2_p": 0.009692081167298043
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010404597664630637,
+          "boundary_uv_rms": 0.00932812161995494,
+          "outflow_p_rms": 0.0024470678820906772,
+          "relative_l2_u": 0.009045138438664977,
+          "relative_l2_v": 0.019850696031288383,
+          "relative_l2_p": 0.009699287378161921
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "09310c42c4934194775cfa3052bb0723fc5c701c9d051681e0f8d2aff158c712",
+        "total_wall_seconds": 29.165142433019355
+      },
+      "checkpoint_sha256": "4c53f610fc6809a15ab143be27066584884f9ae84343ed534a2da388abb9c980"
+    },
+    {
+      "seed": 75102,
+      "backend": "HopperTMA",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/11-75102-HopperTMA.json",
+      "original_output_sha256": "04425bd978c36a80f9cd863b0b7f1bb90a58f3af8d6edd22f3256ca0cca6564b",
+      "original_converged": false,
+      "reused_converged_run": false,
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 39, 93.43, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "HopperTMA",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/11-75102-HopperTMA.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "process_wall_seconds": 28.090601447038352,
+      "all_attempts_process_wall_seconds": 54.48174825892784,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 1, 39, 99.80, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/11-75102-HopperTMA.json",
+      "log": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/11-75102-HopperTMA.log",
+      "log_sha256": "af5d590748a6e24ffe486133a34793a8ebbf84f25d5f57085ff14c893cc1d1b4",
+      "completed": true,
+      "output_sha256": "d9ce33ed477267561b0a338dae637351f45f1a351cebeabac106fe47d068c29d",
+      "result": {
+        "backend": "HopperTMA",
+        "converged": true,
+        "setup_seconds": 0.20720971398986876,
+        "optimization_wall_seconds": 25.6898669579532,
+        "setup_plus_optimization_seconds": 25.89707667194307,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4380,
+        "loss_gradient_evaluations": 8937,
+        "metrics": {
+          "pde_rms": 0.010212977566490047,
+          "boundary_uv_rms": 0.00881046582281352,
+          "outflow_p_rms": 0.0021642385636500205,
+          "relative_l2_u": 0.008317235706975085,
+          "relative_l2_v": 0.019790379609566533,
+          "relative_l2_p": 0.00912187369892738
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010212517550043397,
+          "boundary_uv_rms": 0.00881046582281352,
+          "outflow_p_rms": 0.0021642385636500205,
+          "relative_l2_u": 0.008316283626304053,
+          "relative_l2_v": 0.019791653373453812,
+          "relative_l2_p": 0.00913129933676554
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "e2b9d6a64d880dd0c2c49fbfad407ade8f89929e256f3db9d5231e29ea55f6d2",
+        "total_wall_seconds": 26.304983355104923
+      },
+      "checkpoint_sha256": "fba3e445ea549db49b0281c58512320356e885f1a0a1d59695acd2f29c159b6f"
+    },
+    {
+      "seed": 75102,
+      "backend": "TorchNestedAD",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/12-75102-TorchNestedAD.json",
+      "original_output_sha256": "7c0d4b97f44af9c6ce3c78e51b80d62bf967a0e310320be9f4a576a5af6fe5cc",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "TorchNestedAD",
+        "converged": true,
+        "setup_seconds": 0.45698077511042356,
+        "optimization_wall_seconds": 102.79230940993875,
+        "setup_plus_optimization_seconds": 103.24929018504918,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3540,
+        "loss_gradient_evaluations": 7999,
+        "metrics": {
+          "pde_rms": 0.010118031795799976,
+          "boundary_uv_rms": 0.009382479887968193,
+          "outflow_p_rms": 0.0029798091420622803,
+          "relative_l2_u": 0.00760072350204104,
+          "relative_l2_v": 0.019708520477702756,
+          "relative_l2_p": 0.008246755699458297
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010118190280093278,
+          "boundary_uv_rms": 0.009382479887968193,
+          "outflow_p_rms": 0.0029798091420622803,
+          "relative_l2_u": 0.007600308199977254,
+          "relative_l2_v": 0.01970953332567418,
+          "relative_l2_p": 0.008253437745377063
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "1363d18b25da840dd8614859caf90c05b9e64068a703b170e81c849d36592b95",
+        "total_wall_seconds": 103.61041230615228
+      },
+      "process_wall_seconds": 105.43540265201591,
+      "all_attempts_process_wall_seconds": 105.43540265201591,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/12-75102-TorchNestedAD.json",
+      "output_sha256": "7c0d4b97f44af9c6ce3c78e51b80d62bf967a0e310320be9f4a576a5af6fe5cc",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75102,
+      "backend": "CuEquivariance",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/13-75102-CuEquivariance.json",
+      "original_output_sha256": "bd53ef68b948ab3b46d01af583c5b5910f6b5eaaf6d7aab2f15eb8c5cd6026ce",
+      "original_converged": false,
+      "reused_converged_run": false,
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 1, 39, 99.80, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "CuEquivariance",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/13-75102-CuEquivariance.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "process_wall_seconds": 31.433670111000538,
+      "all_attempts_process_wall_seconds": 60.869764647912234,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 39, 97.81, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/13-75102-CuEquivariance.json",
+      "log": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/13-75102-CuEquivariance.log",
+      "log_sha256": "ba090366bf8ed295b0d34d77cae0c0b4a8944522eb090593bb404aa008f722b2",
+      "completed": true,
+      "output_sha256": "18a1a4797de9f2ba7d09d83420c075af248886ad7758bff10c397c463db4afc3",
+      "result": {
+        "backend": "CuEquivariance",
+        "converged": true,
+        "setup_seconds": 3.0078572682105005,
+        "optimization_wall_seconds": 25.893389249918982,
+        "setup_plus_optimization_seconds": 28.901246518129483,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4360,
+        "loss_gradient_evaluations": 8940,
+        "metrics": {
+          "pde_rms": 0.01165054078785876,
+          "boundary_uv_rms": 0.009221101918904934,
+          "outflow_p_rms": 0.002119323277269524,
+          "relative_l2_u": 0.00913953458951328,
+          "relative_l2_v": 0.019910841059676443,
+          "relative_l2_p": 0.009827636492845572
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011648639095832622,
+          "boundary_uv_rms": 0.009221101918904934,
+          "outflow_p_rms": 0.002119323277269524,
+          "relative_l2_u": 0.009138367996862545,
+          "relative_l2_v": 0.019910423542950497,
+          "relative_l2_p": 0.00984033986764591
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "36eedfc1f4a6c280db38d0fa11a846869e545be12ea38b18bbcb3377059d8b74",
+        "total_wall_seconds": 29.385052466066554
+      },
+      "checkpoint_sha256": "d87b824b7f870741ddbcbb9840a81b90c9cdb9ac7cf74cc54aadd46c89d956b1"
+    },
+    {
+      "seed": 75102,
+      "backend": "PhysicsNeMo",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/14-75102-PhysicsNeMo.json",
+      "original_output_sha256": "840f4bafa9e8bf0a6910c6f8a73ec56a04b981b3085c0b128c0e5326f3a084c1",
+      "original_converged": false,
+      "reused_converged_run": false,
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 39, 97.09, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "PhysicsNeMo",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/14-75102-PhysicsNeMo.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "process_wall_seconds": 125.02622583904304,
+      "all_attempts_process_wall_seconds": 246.8193703140132,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 46, 124.58, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/14-75102-PhysicsNeMo.json",
+      "log": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/14-75102-PhysicsNeMo.log",
+      "log_sha256": "f78ee8588f127c589778d6a8a056cb0e102271f2b1ac41adc1bc19f92d449b00",
+      "completed": true,
+      "output_sha256": "1be036d6c13f1b52c86a76370b1f8bce6aee9cb1fa847e6cd5b5fe20542c9483",
+      "result": {
+        "backend": "PhysicsNeMo",
+        "converged": true,
+        "setup_seconds": 0.765575461089611,
+        "optimization_wall_seconds": 122.00835164706223,
+        "setup_plus_optimization_seconds": 122.77392710815184,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4160,
+        "loss_gradient_evaluations": 8654,
+        "metrics": {
+          "pde_rms": 0.010787408102889088,
+          "boundary_uv_rms": 0.008988186888199695,
+          "outflow_p_rms": 0.0027194089079931277,
+          "relative_l2_u": 0.00815663551093315,
+          "relative_l2_v": 0.019736415261891748,
+          "relative_l2_p": 0.008787258812481758
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010787628662205269,
+          "boundary_uv_rms": 0.008988186888199695,
+          "outflow_p_rms": 0.0027194089079931277,
+          "relative_l2_u": 0.008156229793912806,
+          "relative_l2_v": 0.019735715321316644,
+          "relative_l2_p": 0.008794522499739362
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "1cfbe1ede60b29305b6785ef10256a9fba1b0fd2f7ff1d24958e6a923d5d7a49",
+        "total_wall_seconds": 123.13189412211068
+      },
+      "checkpoint_sha256": "0f21b5110acd6b51e45b4ea5e7ff67e0df9c823f6542f43edf1dd5be971a1ef9"
+    },
+    {
+      "seed": 75102,
+      "backend": "F",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/15-75102-F.json",
+      "original_output_sha256": "46a1ff1786dd2242d844e4a195a6e8ffcbb8c126872bfe77b3cce53f42216352",
+      "original_converged": false,
+      "reused_converged_run": false,
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 46, 124.58, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "F",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/15-75102-F.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "process_wall_seconds": 27.886052661808208,
+      "all_attempts_process_wall_seconds": 53.86258800490759,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 102.99, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/15-75102-F.json",
+      "log": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/15-75102-F.log",
+      "log_sha256": "ea4c9bc9968e9a25a7cd5b67d5c93ce3b56c8ac5ee65ce6ba98a3f0234816d65",
+      "completed": true,
+      "output_sha256": "d08ebd04884b1e25d10368c1c5387ade3f6f7f8ba83c163101e3131f98efd678",
+      "result": {
+        "backend": "F",
+        "converged": true,
+        "setup_seconds": 0.19459730084054172,
+        "optimization_wall_seconds": 25.526794714853168,
+        "setup_plus_optimization_seconds": 25.72139201569371,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4380,
+        "loss_gradient_evaluations": 8937,
+        "metrics": {
+          "pde_rms": 0.010212977566490047,
+          "boundary_uv_rms": 0.00881046582281352,
+          "outflow_p_rms": 0.0021642385636500205,
+          "relative_l2_u": 0.008317235706975085,
+          "relative_l2_v": 0.019790379609566533,
+          "relative_l2_p": 0.00912187369892738
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010212517550043397,
+          "boundary_uv_rms": 0.00881046582281352,
+          "outflow_p_rms": 0.0021642385636500205,
+          "relative_l2_u": 0.008316283626304053,
+          "relative_l2_v": 0.019791653373453812,
+          "relative_l2_p": 0.00913129933676554
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "e2b9d6a64d880dd0c2c49fbfad407ade8f89929e256f3db9d5231e29ea55f6d2",
+        "total_wall_seconds": 26.07544651767239
+      },
+      "checkpoint_sha256": "d5b34a91ae0d3ac2d28b9feedcf58b0c6897e8b103c0a0f209d410e92391272a"
+    },
+    {
+      "seed": 75102,
+      "backend": "B1",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/16-75102-B1.json",
+      "original_output_sha256": "7a971120cc6f2b2542e6c7d68e4f26ed25865dd4d3eeafc9d378826b1d83ddbc",
+      "original_converged": false,
+      "reused_converged_run": false,
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 102.99, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "B1",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/16-75102-B1.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "process_wall_seconds": 27.561928519047797,
+      "all_attempts_process_wall_seconds": 53.57211825903505,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 103.28, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/16-75102-B1.json",
+      "log": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/extension1/16-75102-B1.log",
+      "log_sha256": "4792a5cb2256fe35c69b9f719c6a39602d9005d5ee03666676c56826e7b23ffe",
+      "completed": true,
+      "output_sha256": "767dffdd1cf01a5455b32c7f3684cc39853f9f4dc232e7eb4219beb012ae7644",
+      "result": {
+        "backend": "B1",
+        "converged": true,
+        "setup_seconds": 0.197185262106359,
+        "optimization_wall_seconds": 25.13792882603593,
+        "setup_plus_optimization_seconds": 25.33511408814229,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4340,
+        "loss_gradient_evaluations": 8874,
+        "metrics": {
+          "pde_rms": 0.010831545066194787,
+          "boundary_uv_rms": 0.009501664136258121,
+          "outflow_p_rms": 0.0023069715676465475,
+          "relative_l2_u": 0.008433816690662746,
+          "relative_l2_v": 0.019974914694146872,
+          "relative_l2_p": 0.00936583142336322
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010831916991168374,
+          "boundary_uv_rms": 0.009501664136258121,
+          "outflow_p_rms": 0.0023069715676465475,
+          "relative_l2_u": 0.008432750137159141,
+          "relative_l2_v": 0.01997569353649728,
+          "relative_l2_p": 0.00937776847661205
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "9a549f81bdf0aac6ae9b2443639fe5a26a2868259a317c8cf115cd8cc0fb215b",
+        "total_wall_seconds": 25.695136573165655
+      },
+      "checkpoint_sha256": "9a1a200eacc74ee8e944b1f289ea23f8da21722fb2b6a68e3c5bada61bf94b54"
+    },
+    {
+      "seed": 75103,
+      "backend": "HopperTMA",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/17-75103-HopperTMA.json",
+      "original_output_sha256": "d05c945df113174b888038ad013f1a3ec3fbc450977d7f3e7dd135dd942d8b04",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "HopperTMA",
+        "converged": true,
+        "setup_seconds": 0.2068431437946856,
+        "optimization_wall_seconds": 19.2610615210142,
+        "setup_plus_optimization_seconds": 19.467904664808884,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3080,
+        "loss_gradient_evaluations": 7440,
+        "metrics": {
+          "pde_rms": 0.010472383844504383,
+          "boundary_uv_rms": 0.009462869422902632,
+          "outflow_p_rms": 0.0018233980068302518,
+          "relative_l2_u": 0.008818335909463588,
+          "relative_l2_v": 0.019965456582326385,
+          "relative_l2_p": 0.010265086691510442
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010467497311306242,
+          "boundary_uv_rms": 0.009462869422902632,
+          "outflow_p_rms": 0.0018233980068302518,
+          "relative_l2_u": 0.008817757808565387,
+          "relative_l2_v": 0.01996865502271071,
+          "relative_l2_p": 0.010274840030262283
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "e62d83c2eafa669dd4553b95cf39efe85940a0874b0b3084023a115cbe0e2914",
+        "total_wall_seconds": 19.835914213676006
+      },
+      "process_wall_seconds": 21.695299803977832,
+      "all_attempts_process_wall_seconds": 21.695299803977832,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/17-75103-HopperTMA.json",
+      "output_sha256": "d05c945df113174b888038ad013f1a3ec3fbc450977d7f3e7dd135dd942d8b04",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75103,
+      "backend": "PhysicsNeMo",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/18-75103-PhysicsNeMo.json",
+      "original_output_sha256": "60ce94d230272ccdeb65e285ef35565a2f9ad04385479f9926bdd99ffbe7e16f",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "PhysicsNeMo",
+        "converged": true,
+        "setup_seconds": 0.7899388091173023,
+        "optimization_wall_seconds": 103.56499888584949,
+        "setup_plus_optimization_seconds": 104.3549376949668,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3100,
+        "loss_gradient_evaluations": 7470,
+        "metrics": {
+          "pde_rms": 0.00967944253751333,
+          "boundary_uv_rms": 0.009148875941359269,
+          "outflow_p_rms": 0.001854906770579484,
+          "relative_l2_u": 0.008481154010411902,
+          "relative_l2_v": 0.019896363726470044,
+          "relative_l2_p": 0.009172236138291441
+        },
+        "independent_metrics": {
+          "pde_rms": 0.009675790255152205,
+          "boundary_uv_rms": 0.009148875941359269,
+          "outflow_p_rms": 0.001854906770579484,
+          "relative_l2_u": 0.008480381353248329,
+          "relative_l2_v": 0.01989873293126583,
+          "relative_l2_p": 0.009182075343944891
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "6396ecc39f4278cac3dd886a68ca6e014dd9e0b9286d238aae39701f0f1939d2",
+        "total_wall_seconds": 104.7133512608707
+      },
+      "process_wall_seconds": 106.62601235997863,
+      "all_attempts_process_wall_seconds": 106.62601235997863,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/18-75103-PhysicsNeMo.json",
+      "output_sha256": "60ce94d230272ccdeb65e285ef35565a2f9ad04385479f9926bdd99ffbe7e16f",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75103,
+      "backend": "cuBLASLt",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/19-75103-cuBLASLt.json",
+      "original_output_sha256": "20bcee775f768ff53f84e192991f8ca17d46b0c90238927e587556730fd2225b",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "cuBLASLt",
+        "converged": true,
+        "setup_seconds": 0.4329295288771391,
+        "optimization_wall_seconds": 20.859705314971507,
+        "setup_plus_optimization_seconds": 21.292634843848646,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3340,
+        "loss_gradient_evaluations": 7758,
+        "metrics": {
+          "pde_rms": 0.009970307584695663,
+          "boundary_uv_rms": 0.009196084795045294,
+          "outflow_p_rms": 0.0013296402099082598,
+          "relative_l2_u": 0.008470430803652939,
+          "relative_l2_v": 0.01988264352219466,
+          "relative_l2_p": 0.010383034602158402
+        },
+        "independent_metrics": {
+          "pde_rms": 0.009966836029578522,
+          "boundary_uv_rms": 0.009196084795045294,
+          "outflow_p_rms": 0.0013296402099082598,
+          "relative_l2_u": 0.008469312018175511,
+          "relative_l2_v": 0.019887814384334932,
+          "relative_l2_p": 0.010389585090332951
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "72cf693a5c3ba14f828a374b25774a79b2e1b4ad14ccce7e067b5a12ae8d5943",
+        "total_wall_seconds": 21.798818026902154
+      },
+      "process_wall_seconds": 23.589485235977918,
+      "all_attempts_process_wall_seconds": 23.589485235977918,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/19-75103-cuBLASLt.json",
+      "output_sha256": "20bcee775f768ff53f84e192991f8ca17d46b0c90238927e587556730fd2225b",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75103,
+      "backend": "TorchJetCompiled",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/20-75103-TorchJetCompiled.json",
+      "original_output_sha256": "d73ccd4851bdb3e7c2c87e0439bd668c073d39bb4046e9b8e5b79afaa4ef83d4",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "TorchJetCompiled",
+        "converged": true,
+        "setup_seconds": 4.085077394032851,
+        "optimization_wall_seconds": 20.590685162926093,
+        "setup_plus_optimization_seconds": 24.675762556958944,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3220,
+        "loss_gradient_evaluations": 7601,
+        "metrics": {
+          "pde_rms": 0.009564639259166204,
+          "boundary_uv_rms": 0.009268002111574726,
+          "outflow_p_rms": 0.001974405436586355,
+          "relative_l2_u": 0.008298723765488882,
+          "relative_l2_v": 0.019886928991081944,
+          "relative_l2_p": 0.0098711392572719
+        },
+        "independent_metrics": {
+          "pde_rms": 0.009558549116267022,
+          "boundary_uv_rms": 0.009268002111574726,
+          "outflow_p_rms": 0.001974405436586355,
+          "relative_l2_u": 0.00829758551346778,
+          "relative_l2_v": 0.019890787883708117,
+          "relative_l2_p": 0.009880057135634009
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "90952c122d9f8983756511b4d6ecaa63cfe023081dd903ee519504e71f45fa69",
+        "total_wall_seconds": 25.060519226826727
+      },
+      "process_wall_seconds": 27.476261978037655,
+      "all_attempts_process_wall_seconds": 27.476261978037655,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/20-75103-TorchJetCompiled.json",
+      "output_sha256": "d73ccd4851bdb3e7c2c87e0439bd668c073d39bb4046e9b8e5b79afaa4ef83d4",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75103,
+      "backend": "F",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/21-75103-F.json",
+      "original_output_sha256": "b4f8aa34eb7606e4922a574cf39c98627f6fa5f7e337eed8e753b9eef698007f",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "F",
+        "converged": true,
+        "setup_seconds": 0.194706073962152,
+        "optimization_wall_seconds": 19.531765658874065,
+        "setup_plus_optimization_seconds": 19.726471732836217,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3080,
+        "loss_gradient_evaluations": 7440,
+        "metrics": {
+          "pde_rms": 0.010472383844504383,
+          "boundary_uv_rms": 0.009462869422902632,
+          "outflow_p_rms": 0.0018233980068302518,
+          "relative_l2_u": 0.008818335909463588,
+          "relative_l2_v": 0.019965456582326385,
+          "relative_l2_p": 0.010265086691510442
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010467497311306242,
+          "boundary_uv_rms": 0.009462869422902632,
+          "outflow_p_rms": 0.0018233980068302518,
+          "relative_l2_u": 0.008817757808565387,
+          "relative_l2_v": 0.01996865502271071,
+          "relative_l2_p": 0.010274840030262283
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "e62d83c2eafa669dd4553b95cf39efe85940a0874b0b3084023a115cbe0e2914",
+        "total_wall_seconds": 20.210129042621702
+      },
+      "process_wall_seconds": 22.01244802493602,
+      "all_attempts_process_wall_seconds": 22.01244802493602,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/21-75103-F.json",
+      "output_sha256": "b4f8aa34eb7606e4922a574cf39c98627f6fa5f7e337eed8e753b9eef698007f",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75103,
+      "backend": "B1",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/22-75103-B1.json",
+      "original_output_sha256": "4c760004f9dd29c1f69d8fece6064d4ad0471806432c07cc56c87b598c39894f",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "B1",
+        "converged": true,
+        "setup_seconds": 0.20158393518067896,
+        "optimization_wall_seconds": 20.754376341123134,
+        "setup_plus_optimization_seconds": 20.955960276303813,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3340,
+        "loss_gradient_evaluations": 7758,
+        "metrics": {
+          "pde_rms": 0.009970307584695663,
+          "boundary_uv_rms": 0.009196084795045294,
+          "outflow_p_rms": 0.0013296402099082598,
+          "relative_l2_u": 0.008470430803652939,
+          "relative_l2_v": 0.01988264352219466,
+          "relative_l2_p": 0.010383034602158402
+        },
+        "independent_metrics": {
+          "pde_rms": 0.009966836029578522,
+          "boundary_uv_rms": 0.009196084795045294,
+          "outflow_p_rms": 0.0013296402099082598,
+          "relative_l2_u": 0.008469312018175511,
+          "relative_l2_v": 0.019887814384334932,
+          "relative_l2_p": 0.010389585090332951
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "72cf693a5c3ba14f828a374b25774a79b2e1b4ad14ccce7e067b5a12ae8d5943",
+        "total_wall_seconds": 21.309746141312644
+      },
+      "process_wall_seconds": 23.12446125294082,
+      "all_attempts_process_wall_seconds": 23.12446125294082,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/22-75103-B1.json",
+      "output_sha256": "4c760004f9dd29c1f69d8fece6064d4ad0471806432c07cc56c87b598c39894f",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75103,
+      "backend": "TorchNestedAD",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/23-75103-TorchNestedAD.json",
+      "original_output_sha256": "85bec10b04d7c174205409f172102fc5e8997ef7e5e91c98e8e4146483edff9d",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "TorchNestedAD",
+        "converged": true,
+        "setup_seconds": 0.39714337908662856,
+        "optimization_wall_seconds": 87.32680811197497,
+        "setup_plus_optimization_seconds": 87.7239514910616,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 2620,
+        "loss_gradient_evaluations": 6914,
+        "metrics": {
+          "pde_rms": 0.010826158903152125,
+          "boundary_uv_rms": 0.009806194391390334,
+          "outflow_p_rms": 0.0024189454103536847,
+          "relative_l2_u": 0.008173179316530057,
+          "relative_l2_v": 0.01975279046708273,
+          "relative_l2_p": 0.010544761145707219
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010823832328353843,
+          "boundary_uv_rms": 0.009806194391390334,
+          "outflow_p_rms": 0.0024189454103536847,
+          "relative_l2_u": 0.008172277130248654,
+          "relative_l2_v": 0.019755505766359184,
+          "relative_l2_p": 0.01055506801787542
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "c1f663a8cef4985ab1130d8d2c5a892f1d31899fe7f88a3fff6207bcb3679208",
+        "total_wall_seconds": 88.08008443703875
+      },
+      "process_wall_seconds": 89.86909207887948,
+      "all_attempts_process_wall_seconds": 89.86909207887948,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/23-75103-TorchNestedAD.json",
+      "output_sha256": "85bec10b04d7c174205409f172102fc5e8997ef7e5e91c98e8e4146483edff9d",
+      "completed": true,
+      "returncode": 0
+    },
+    {
+      "seed": 75103,
+      "backend": "CuEquivariance",
+      "original_output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/24-75103-CuEquivariance.json",
+      "original_output_sha256": "58adcdcc87fb9b575c2d612bc4ecba1846fd6eff0dd16a1b50a2f1dfacd213fe",
+      "original_converged": true,
+      "reused_converged_run": true,
+      "result": {
+        "backend": "CuEquivariance",
+        "converged": true,
+        "setup_seconds": 2.983265836024657,
+        "optimization_wall_seconds": 17.230982743902132,
+        "setup_plus_optimization_seconds": 20.21424857992679,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 2519,
+        "loss_gradient_evaluations": 6846,
+        "metrics": {
+          "pde_rms": 0.0109625774378728,
+          "boundary_uv_rms": 0.009985758284087891,
+          "outflow_p_rms": 0.0024999543915806915,
+          "relative_l2_u": 0.007562216860461692,
+          "relative_l2_v": 0.0197927342634384,
+          "relative_l2_p": 0.010051252305398746
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010964201476050211,
+          "boundary_uv_rms": 0.009985758284087891,
+          "outflow_p_rms": 0.0024999543915806915,
+          "relative_l2_u": 0.007561034041703216,
+          "relative_l2_v": 0.019794411341890916,
+          "relative_l2_p": 0.010060070319163896
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "ba083372b2773d5fbedffa9442c3af7d584a5152a627b4e81fe67fafe492ce0c",
+        "total_wall_seconds": 20.58144153887406
+      },
+      "process_wall_seconds": 22.647600603988394,
+      "all_attempts_process_wall_seconds": 22.647600603988394,
+      "output": "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/24-75103-CuEquivariance.json",
+      "output_sha256": "58adcdcc87fb9b575c2d612bc4ecba1846fd6eff0dd16a1b50a2f1dfacd213fe",
+      "completed": true,
+      "returncode": 0
+    }
+  ],
+  "completed": true,
+  "all_runs_completed": true,
+  "all_runs_converged": true,
+  "finished_utc": "2026-09-09T08:44:23.614412+00:00"
+}

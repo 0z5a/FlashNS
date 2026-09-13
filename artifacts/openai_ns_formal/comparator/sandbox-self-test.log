@@ -1,0 +1,2 @@
+{"guard": "libseccomp_deny_af_unix_socket_and_socketpair", "uid": 65533, "self_test": "passed", "exec_inheritance": "passed", "script_sha256": "aaa4bb477158d2655d399f288ec451f4640a19227ac82c6541dcaa083ea46ab3"}
+{"landlock_allowed_write": true, "landlock_forbidden_write_denied": true}

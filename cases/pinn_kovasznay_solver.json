@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "workload_source_id": "pinn_kovasznay_solver",
+  "relationship_to_openai_ns_formal": "independent manufactured steady Navier-Stokes boundary-value problem",
+  "implementation": "experiments/pinn_solver/problem.py",
+  "protocols": [
+    "experiments/pinn_solver/artifacts/formal1/protocol.json",
+    "experiments/pinn_solver/artifacts/extension1/protocol.json"
+  ],
+  "results": [
+    "experiments/pinn_solver/artifacts/formal1/suite.json",
+    "experiments/pinn_solver/artifacts/extension1/suite.json"
+  ],
+  "same_acceptance_criteria": true,
+  "original_fixed_budget_converged": 17,
+  "eventual_converged": 24,
+  "network": [
+    2,
+    64,
+    64,
+    3
+  ],
+  "precision": "FP64",
+  "data_seed": 642701,
+  "initialization_seeds": [
+    75101,
+    75102,
+    75103
+  ],
+  "extra_independent_scalar_ad_acceptance": true
+}

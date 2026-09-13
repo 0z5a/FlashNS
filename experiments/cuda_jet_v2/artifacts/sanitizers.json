@@ -1,0 +1,93 @@
+{
+  "timestamp_utc": "2026-09-08T15:07:05.256648+00:00",
+  "build": {
+    "command": [
+      "nvcc",
+      "-O3",
+      "-std=c++17",
+      "-arch=sm_86",
+      "-lineinfo",
+      "/root/flashns-day0-20260908/experiments/cuda_jet_v2/sanitizer_smoke.cu",
+      "/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts/libdgrad_jet.so",
+      "-Xlinker",
+      "-rpath",
+      "-Xlinker",
+      "/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts",
+      "-o",
+      "/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts/sanitizer_smoke"
+    ],
+    "returncode": 0,
+    "seconds": 1.6506188102066517,
+    "log": "smoke_build.log"
+  },
+  "source_hashes": {
+    "check_sanitizers.py": "6d3ebc7638fd7077db9cbc7a17ba61e88dc71934176e8af98ba897704183d805",
+    "sanitizer_smoke.cu": "a422f7846f1d254241106cd412517b9c58539c544da122c02d77a577b6b25a9a",
+    "dgrad_jet_vjp.cu": "fd300d9813190de6eb032d8f99a724d4aecd67449f5731e29bec8720d8a4702d",
+    "libdgrad_jet.so": "790d1a551df7e7d0b02b4f2c4e3c6ed88ff9acc171b5f97ee6d028dac1c5aa3f",
+    "sanitizer_smoke": "4b7aed42d93a6047e34d5bab66f83d71342dbd3e891339df284426cffd3cf1de"
+  },
+  "standalone": {
+    "command": [
+      "/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts/sanitizer_smoke"
+    ],
+    "returncode": 0,
+    "seconds": 0.6232292670756578,
+    "log": "smoke.log"
+  },
+  "tools": {
+    "memcheck": {
+      "command": [
+        "compute-sanitizer",
+        "--tool",
+        "memcheck",
+        "--error-exitcode",
+        "99",
+        "/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts/sanitizer_smoke"
+      ],
+      "returncode": 0,
+      "seconds": 1.002351051196456,
+      "log": "memcheck.log"
+    },
+    "racecheck": {
+      "command": [
+        "compute-sanitizer",
+        "--tool",
+        "racecheck",
+        "--error-exitcode",
+        "99",
+        "/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts/sanitizer_smoke"
+      ],
+      "returncode": 0,
+      "seconds": 5.391526352614164,
+      "log": "racecheck.log"
+    },
+    "initcheck": {
+      "command": [
+        "compute-sanitizer",
+        "--tool",
+        "initcheck",
+        "--error-exitcode",
+        "99",
+        "/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts/sanitizer_smoke"
+      ],
+      "returncode": 0,
+      "seconds": 0.5368195287883282,
+      "log": "initcheck.log"
+    },
+    "synccheck": {
+      "command": [
+        "compute-sanitizer",
+        "--tool",
+        "synccheck",
+        "--error-exitcode",
+        "99",
+        "/root/flashns-day0-20260908/experiments/cuda_jet_v2/artifacts/sanitizer_smoke"
+      ],
+      "returncode": 0,
+      "seconds": 0.46889569610357285,
+      "log": "synccheck.log"
+    }
+  },
+  "all_passed": true
+}

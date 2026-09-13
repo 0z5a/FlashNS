@@ -1,0 +1,70 @@
+{
+  "timestamp_utc": "2026-09-09T02:33:51.298513+00:00",
+  "pythonpath": "src:.deps",
+  "package_versions": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pytest": "9.1.1",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0",
+    "packaging": "26.3"
+  },
+  "imported_module_paths": {
+    "torch": "/venv/main/lib/python3.12/site-packages/torch/__init__.py",
+    "numpy": "/root/flashns-v5-20260909/.deps/numpy/__init__.py",
+    "scipy": "/root/flashns-v5-20260909/.deps/scipy/__init__.py",
+    "pytest": "/root/flashns-v5-20260909/.deps/pytest/__init__.py"
+  },
+  "cpu_controls": {
+    "cpu.max": "2048000 100000\n",
+    "cpu.stat": "usage_usec 1080041003\nuser_usec 930055272\nsystem_usec 149985731\ncore_sched.force_idle_usec 0\nnr_periods 49903\nnr_throttled 13\nthrottled_usec 10458935\nnr_bursts 0\nburst_usec 0\n",
+    "cpuset.cpus.effective": "0-31\n"
+  },
+  "commands": {
+    "pip_check": {
+      "command": [
+        "/venv/main/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "returncode": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": ""
+    },
+    "pip_freeze": {
+      "command": [
+        "/venv/main/bin/python",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "returncode": 0,
+      "stdout": "anyio==4.15.1\nasttokens==3.0.2\ncertifi==2026.7.22\nclick==8.5.0\ncomm==0.2.3\ncuda-bindings==12.9.7\ncuda-pathfinder==1.8.1\ncuda-toolkit==12.8.1\ndebugpy==1.8.21\nexecuting==2.2.1\nfilelock==3.32.5\nfsspec==2026.7.0\nh11==0.16.0\nhf-xet==1.6.0\nhttpcore==1.0.9\nhttpx==0.28.1\nhuggingface_hub==1.30.0\nidna==3.19\niniconfig==2.3.0\nipykernel==7.3.0\nipython==9.17.1\nipython_pygments_lexers==1.1.1\nipywidgets==8.1.9\njedi==0.20.0\nJinja2==3.1.6\njupyter_client==8.10.0\njupyter_core==5.9.1\njupyterlab_widgets==3.0.17\nMarkupSafe==3.0.3\nmatplotlib-inline==0.2.2\nmpmath==1.3.0\nnest-asyncio2==1.7.2\nnetworkx==3.6.1\nnumpy==2.5.3\nnvidia-cublas-cu12==12.8.4.1\nnvidia-cuda-cupti-cu12==12.8.90\nnvidia-cuda-nvrtc-cu12==12.8.93\nnvidia-cuda-runtime-cu12==12.8.90\nnvidia-cudnn-cu12==9.19.0.56\nnvidia-cufft-cu12==11.3.3.83\nnvidia-cufile-cu12==1.13.1.3\nnvidia-curand-cu12==10.3.9.90\nnvidia-cusolver-cu12==11.7.3.90\nnvidia-cusparse-cu12==12.5.8.93\nnvidia-cusparselt-cu12==0.7.1\nnvidia-nccl-cu12==2.28.9\nnvidia-nvjitlink-cu12==12.8.93\nnvidia-nvshmem-cu12==3.4.5\nnvidia-nvtx-cu12==12.8.90\npackaging==26.3\nparso==0.8.7\npexpect==4.9.0\npillow==12.3.0\nplatformdirs==4.11.7\npluggy==1.6.0\nprompt_toolkit==3.0.53\npsutil==7.2.2\nptyprocess==0.7.0\npure_eval==0.2.3\nPygments==2.21.0\npytest==9.1.1\npython-dateutil==2.9.0.post0\nPyYAML==6.0.3\npyzmq==27.2.0\nscipy==1.18.1\nsetuptools==81.0.0\nsix==1.17.0\nstack-data==0.6.3\nsympy==1.14.0\ntorch==2.11.0+cu128\ntorchaudio==2.11.0+cu128\ntorchcodec==0.11.0+cu128\ntorchvision==0.26.0+cu128\ntornado==6.5.8\ntqdm==4.70.0\ntraitlets==5.16.1\ntriton==3.6.0\ntyping_extensions==4.16.0\nwcwidth==0.8.3\nwheel==0.48.0\nwidgetsnbextension==4.0.16\n",
+      "stderr": ""
+    },
+    "gpu_final": {
+      "command": [
+        "nvidia-smi",
+        "--query-gpu=index,uuid,clocks.sm,clocks.mem,temperature.gpu,power.draw,utilization.gpu,memory.used",
+        "--format=csv"
+      ],
+      "returncode": 0,
+      "stdout": "index, uuid, clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], utilization.gpu [%], memory.used [MiB]\n0, GPU-b0dd3c99-e896-4231-e044-feb228d8312b, 210 MHz, 405 MHz, 50, 14.93 W, 0 %, 1 MiB\n1, GPU-05f77118-4e18-dea2-78fc-d40ad5397445, 210 MHz, 405 MHz, 58, 16.52 W, 0 %, 1 MiB\n2, GPU-70480540-f4f9-6c7a-23f4-790c840194f7, 210 MHz, 405 MHz, 54, 14.15 W, 0 %, 1 MiB\n3, GPU-dfbcbbb7-c51d-27d8-7da4-85959913a7ea, 210 MHz, 405 MHz, 59, 16.25 W, 0 %, 1 MiB\n",
+      "stderr": ""
+    },
+    "proof_source_commit": {
+      "command": [
+        "git",
+        "-C",
+        "sources/openai_ns_formal/repository",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538\n",
+      "stderr": ""
+    }
+  }
+}

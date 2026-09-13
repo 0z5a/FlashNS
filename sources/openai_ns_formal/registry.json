@@ -1,0 +1,157 @@
+{
+  "schema_version": 2,
+  "workload_source_id": "openai_ns_formal",
+  "recorded_utc": "2026-09-09T02:27:14.890911+00:00",
+  "repository_url": "https://github.com/openai/NavierStokesAndEuler",
+  "commit": "8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538",
+  "retrieval": "Full pinned repository materialized locally and in separate unprivileged CPU build/check directories; 2,496 tracked source files hashed before and after each phase. Locked dependencies fetched according to the upstream lake-manifest.json; public Mathlib cache used.",
+  "lean_toolchain": "leanprover/lean4:v4.34.0-rc2",
+  "upstream_declared_license": "Apache-2.0",
+  "paper": {
+    "url": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+    "local_sha256": "0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f",
+    "pages": 166
+  },
+  "cpu_build": {
+    "status": "passed",
+    "exit_code": 0,
+    "report": "artifacts/openai_ns_formal/build/lake-build.json",
+    "wall_seconds": 1054.3874019461218,
+    "sources_unchanged": true,
+    "default_targets": [
+      "NavierStokes",
+      "Euler",
+      "ComparatorChallenges"
+    ]
+  },
+  "comparator_check": {
+    "status": "passed",
+    "challenges": {
+      "navier-stokes": {
+        "status": "passed",
+        "report": "artifacts/openai_ns_formal/comparator/comparator-navier-stokes.json",
+        "exit_code": 0,
+        "wall_seconds": 935.7293197060935,
+        "wall_time_includes_pauses_for_gpu_timing": false,
+        "sources_unchanged": true
+      },
+      "euler": {
+        "status": "passed",
+        "report": "artifacts/openai_ns_formal/comparator/comparator-euler.json",
+        "exit_code": 0,
+        "wall_seconds": 2258.5498187430203,
+        "wall_time_includes_pauses_for_gpu_timing": true,
+        "sources_unchanged": true,
+        "recorded_pause_seconds": 528.8001887102146
+      }
+    },
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enable_nanoda": true,
+    "kernels": [
+      "nanoda",
+      "Lean default"
+    ],
+    "checker_context": "artifacts/openai_ns_formal/comparator/checker-context.json",
+    "theorem_count": 4,
+    "no_source_or_challenge_patches": true
+  },
+  "local_numerical_reference": {
+    "object": "local_projected_complex_wave_amplitude",
+    "implementation": "experiments/openai_ns_formal/projected_amplitude.py",
+    "paper_equations": [
+      "7.3",
+      "7.4",
+      "7.5",
+      "7.6",
+      "7.13"
+    ],
+    "lean_file": "NavierStokes/TangentProjection.lean",
+    "independent_reference": "100/120 digit 4x4 saddle-system solve, plus Radau trajectory integration and exact tangency-defect decay",
+    "validation_status": "passed",
+    "validation_report": "experiments/openai_ns_formal/artifacts/numerical-validation.json",
+    "scope": "Finite local coefficient samples; not the global profile/cutoff/correction construction."
+  },
+  "gpu_adapter": {
+    "entry": "experiments/openai_ns_formal/numerical_run.py",
+    "operator": "experiments/openai_ns_formal/projected_amplitude.py:torch_operator",
+    "dtype": "float64",
+    "implementations": [
+      "PyTorch eager",
+      "PyTorch Inductor fullgraph"
+    ],
+    "validation_status": "passed",
+    "benchmark_status": "passed",
+    "benchmark_report": "experiments/openai_ns_formal/artifacts/numerical-benchmark-v3.json",
+    "performance_scope": "Batched finite local RHS/pressure only; resident and pageable CPU-to-CPU timings separate.",
+    "cpu_baseline": "faster of whole-array and 65536-point tiled NumPy within each paired repetition",
+    "process_environment": {
+      "NUMPY_MADVISE_HUGEPAGE": "0",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "preserved_incomplete_attempts": [
+      "experiments/openai_ns_formal/artifacts/numerical-benchmark.json",
+      "experiments/openai_ns_formal/artifacts/numerical-benchmark-v2.json"
+    ]
+  },
+  "openai_proof_replayed": true,
+  "relationship_to_pinn_jet_local": "Separate source; current synthetic weighted steady-NS CUDA benchmarks do not evaluate the official construction or formal proofs.",
+  "updated_utc": "2026-09-09T09:02:22.982937+00:00",
+  "initial_inventory_files": {
+    "README.md": {
+      "upstream_path": "README.md",
+      "url": "https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/README.md",
+      "sha256": "2ca277a62b6bb6ce34686303c9c777e56d5b460160004a49a28e4e72086d781e",
+      "bytes": 2018
+    },
+    "LICENSE": {
+      "upstream_path": "LICENSE",
+      "url": "https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    "lean-toolchain": {
+      "upstream_path": "lean-toolchain",
+      "url": "https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/lean-toolchain",
+      "sha256": "8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88",
+      "bytes": 29
+    },
+    "lake-manifest.json": {
+      "upstream_path": "lake-manifest.json",
+      "url": "https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/lake-manifest.json",
+      "sha256": "5ec1dc8e009008d0efb9601cd38f6ba54e753fd538b0e5f8c3e6c5ec72ee1e09",
+      "bytes": 3810
+    },
+    "lakefile.toml": {
+      "upstream_path": "lakefile.toml",
+      "url": "https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/lakefile.toml",
+      "sha256": "97b2804da5b9a2cd0aaf44ce42b7c39e9947beff9d2ac01a11e0d3d867af1c09",
+      "bytes": 662
+    },
+    "formalization.yaml": {
+      "upstream_path": "formalization.yaml",
+      "url": "https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/formalization.yaml",
+      "sha256": "6c6d30c58c70a0a04fa41a08a50ba7eb7e8a96a7f604a30b4bec6b921ea87dc3",
+      "bytes": 4379
+    },
+    "NavierStokes.lean": {
+      "upstream_path": "NavierStokes.lean",
+      "url": "https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/NavierStokes.lean",
+      "sha256": "ebe2349ab5b76f4f8b5d1e88a629337fb6bc59e2c5ef62a6f8fcf247b1be4e07",
+      "bytes": 39
+    },
+    "ComparatorChallenges__README.md": {
+      "upstream_path": "ComparatorChallenges/README.md",
+      "url": "https://github.com/openai/NavierStokesAndEuler/blob/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538/ComparatorChallenges/README.md",
+      "sha256": "f28c5f581d7bbc9504db467b88686a89ad5a94e4fd38b48a1866ae6224b5a1d8",
+      "bytes": 665
+    }
+  },
+  "source_manifest_report": "artifacts/openai_ns_formal/build/lake-build.json",
+  "proof_replay_scope": "Four declarations in the two unchanged official Comparator challenges, accepted by both configured kernels; no claim of an independent mathematical reconstruction of the full paper."
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "exact arithmetic / logical capacity, not measured performance",
+  "Ni": 2048,
+  "Nb": 512,
+  "Q": 10,
+  "C": 64,
+  "dense_rows": 25600,
+  "compact_rows": 20992,
+  "row_work_reduction": 0.18000000000000005,
+  "dense_H_MiB": 12.5,
+  "compact_H_MiB": 10.25,
+  "aux_MiB_unchanged": 1.25,
+  "dense_H_plus_aux_MiB": 13.75,
+  "compact_H_plus_aux_MiB": 11.5,
+  "activation_correlation_products_per_channel_dense": 89600,
+  "activation_correlation_products_per_channel_compact": 72192,
+  "correlation_work_reduction": 0.19428571428571428,
+  "eliminated_barH_logical_write_read_dense_MiB": 25.0,
+  "eliminated_barH_logical_write_read_compact_MiB": 20.5
+}

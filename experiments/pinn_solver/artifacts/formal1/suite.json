@@ -1,0 +1,1871 @@
+{
+  "timestamp_utc": "2026-09-09T08:19:09.556756+00:00",
+  "protocol_sha256": "5966156260b9a18b74423923f2bbec61942a074e6e81f551a3ad6194fb7c6e6f",
+  "preflight_sha256": "95cece87086b2f0d539db5156d640d338d43873f7e6ea50945ddb7406a02162b",
+  "pilot_sha256": "dc36ed71d1ea7485de9bb89f234ef58e75789532fcc30f2e9c4120e4c469fce6",
+  "suite_source_sha256": "1806e03204096a3c668b6aaa77ac23ef11e33458a182a2769ca9a74a4e33e356",
+  "randomization_seed": 90109,
+  "schedule": [
+    {
+      "seed": 75101,
+      "backend": "cuBLASLt"
+    },
+    {
+      "seed": 75101,
+      "backend": "TorchJetCompiled"
+    },
+    {
+      "seed": 75101,
+      "backend": "PhysicsNeMo"
+    },
+    {
+      "seed": 75101,
+      "backend": "TorchNestedAD"
+    },
+    {
+      "seed": 75101,
+      "backend": "F"
+    },
+    {
+      "seed": 75101,
+      "backend": "B1"
+    },
+    {
+      "seed": 75101,
+      "backend": "HopperTMA"
+    },
+    {
+      "seed": 75101,
+      "backend": "CuEquivariance"
+    },
+    {
+      "seed": 75102,
+      "backend": "cuBLASLt"
+    },
+    {
+      "seed": 75102,
+      "backend": "TorchJetCompiled"
+    },
+    {
+      "seed": 75102,
+      "backend": "HopperTMA"
+    },
+    {
+      "seed": 75102,
+      "backend": "TorchNestedAD"
+    },
+    {
+      "seed": 75102,
+      "backend": "CuEquivariance"
+    },
+    {
+      "seed": 75102,
+      "backend": "PhysicsNeMo"
+    },
+    {
+      "seed": 75102,
+      "backend": "F"
+    },
+    {
+      "seed": 75102,
+      "backend": "B1"
+    },
+    {
+      "seed": 75103,
+      "backend": "HopperTMA"
+    },
+    {
+      "seed": 75103,
+      "backend": "PhysicsNeMo"
+    },
+    {
+      "seed": 75103,
+      "backend": "cuBLASLt"
+    },
+    {
+      "seed": 75103,
+      "backend": "TorchJetCompiled"
+    },
+    {
+      "seed": 75103,
+      "backend": "F"
+    },
+    {
+      "seed": 75103,
+      "backend": "B1"
+    },
+    {
+      "seed": 75103,
+      "backend": "TorchNestedAD"
+    },
+    {
+      "seed": 75103,
+      "backend": "CuEquivariance"
+    }
+  ],
+  "policy": "24 sequential, fresh-process runs; 3 paired initialization seeds; no per-backend tuning; compiler caches populated by the preflight; nonconvergence and exceptions remain in results",
+  "process_wall_timing": "includes Python/dependency imports, source hashing, symbolic check, problem preparation, backend setup, training, stop checks, checkpoint writing and process teardown; nvidia-smi probes excluded",
+  "environment": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONPATH": "/root/flashns-hopper-20260909/.libdeps:/root/flashns-hopper-20260909/src"
+  },
+  "runs": [
+    {
+      "seed": 75101,
+      "backend": "cuBLASLt",
+      "output": "01-75101-cuBLASLt.json",
+      "log": "01-75101-cuBLASLt.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "cuBLASLt",
+        "--seed",
+        "75101",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/01-75101-cuBLASLt.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 33, 62.40, 400.00, 345, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 24.509157235966995,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 36, 98.49, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "f7c070117a52600a9170ff7cde2fd950e8c88fcdb9b6c903861864560d9042ad",
+      "output_sha256": "febf649ff8f6e48cde6d52b862e1fe53ddb7039ec3d29fb330f0fac01409b8fa",
+      "completed": true,
+      "result": {
+        "backend": "cuBLASLt",
+        "converged": true,
+        "setup_seconds": 0.430631787981838,
+        "optimization_wall_seconds": 21.811741584911942,
+        "setup_plus_optimization_seconds": 22.24237337289378,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3560,
+        "loss_gradient_evaluations": 7967,
+        "metrics": {
+          "pde_rms": 0.011548278565434758,
+          "boundary_uv_rms": 0.008325390112827579,
+          "outflow_p_rms": 0.0016508321302029275,
+          "relative_l2_u": 0.009603185914654607,
+          "relative_l2_v": 0.019901384426355404,
+          "relative_l2_p": 0.009890155788123864
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011541181925392772,
+          "boundary_uv_rms": 0.008325390112827579,
+          "outflow_p_rms": 0.0016508321302029275,
+          "relative_l2_u": 0.00960188202851462,
+          "relative_l2_v": 0.01990002893949707,
+          "relative_l2_p": 0.009913221862828695
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "941c1f0c7fe33eb35be56a2af8ab0058be1f84394f6a61017c14d9d3f9839e87",
+        "total_wall_seconds": 22.722830425947905
+      },
+      "checkpoint_sha256": "ef91b793c8942e0f9b4f33a51ae32869d74cc0029ec802dce8f87c1971448934"
+    },
+    {
+      "seed": 75101,
+      "backend": "TorchJetCompiled",
+      "output": "02-75101-TorchJetCompiled.json",
+      "log": "02-75101-TorchJetCompiled.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "TorchJetCompiled",
+        "--seed",
+        "75101",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/02-75101-TorchJetCompiled.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 36, 97.80, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 28.357867968035862,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 37, 93.03, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "94c17187a62f182f1506c8bc32acc62b67d974c73a915ea0df498a930f92932b",
+      "output_sha256": "b7fccc28bd923ccd9b2ae1417da49e8cae1fe049c1b4838289d1721228033f6f",
+      "completed": true,
+      "result": {
+        "backend": "TorchJetCompiled",
+        "converged": true,
+        "setup_seconds": 4.051487908931449,
+        "optimization_wall_seconds": 21.471770656993613,
+        "setup_plus_optimization_seconds": 25.52325856592506,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3340,
+        "loss_gradient_evaluations": 7731,
+        "metrics": {
+          "pde_rms": 0.012099995869718052,
+          "boundary_uv_rms": 0.008397116337519984,
+          "outflow_p_rms": 0.0022834983915812853,
+          "relative_l2_u": 0.00898502195562392,
+          "relative_l2_v": 0.019980982942039784,
+          "relative_l2_p": 0.009375410859309366
+        },
+        "independent_metrics": {
+          "pde_rms": 0.012097643056487624,
+          "boundary_uv_rms": 0.008397116337519984,
+          "outflow_p_rms": 0.0022834983915812853,
+          "relative_l2_u": 0.008984086058843497,
+          "relative_l2_v": 0.019979999500552147,
+          "relative_l2_p": 0.009400633026061537
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "8b2dec7f4f37ad5e851507230632e166ea49efd66721a631b60fc8b7e047e5bc",
+        "total_wall_seconds": 25.941473643062636
+      },
+      "checkpoint_sha256": "44aabda657281e853737ff983fb8d8c57891adb42bb6118e906c5ab764202fe5"
+    },
+    {
+      "seed": 75101,
+      "backend": "PhysicsNeMo",
+      "output": "03-75101-PhysicsNeMo.json",
+      "log": "03-75101-PhysicsNeMo.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "PhysicsNeMo",
+        "--seed",
+        "75101",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/03-75101-PhysicsNeMo.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 37, 93.03, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 120.7864225639496,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 45, 116.60, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "95f9a29fc33c9503e6c3e2e3eb9cba6eb514702afd69aac00c96cbc26d1084a3",
+      "output_sha256": "a1a347589fc9ff87cd8605d37f42d84814a3c4fc8f64e8c6d74203ff30da7523",
+      "completed": true,
+      "result": {
+        "backend": "PhysicsNeMo",
+        "converged": true,
+        "setup_seconds": 0.7795630290638655,
+        "optimization_wall_seconds": 117.54113079491071,
+        "setup_plus_optimization_seconds": 118.32069382397458,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3800,
+        "loss_gradient_evaluations": 8260,
+        "metrics": {
+          "pde_rms": 0.011609856128262323,
+          "boundary_uv_rms": 0.008425732730496216,
+          "outflow_p_rms": 0.0018734982053391172,
+          "relative_l2_u": 0.009193747209625878,
+          "relative_l2_v": 0.01992820150984568,
+          "relative_l2_p": 0.009756218099356439
+        },
+        "independent_metrics": {
+          "pde_rms": 0.01160562554924808,
+          "boundary_uv_rms": 0.008425732730496216,
+          "outflow_p_rms": 0.0018734982053391172,
+          "relative_l2_u": 0.009192853555885791,
+          "relative_l2_v": 0.019926490244009807,
+          "relative_l2_p": 0.00978216761957627
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "f2406b7d07ff887658c149d64d39f56705f9d72435fa3dda468899078ff178e5",
+        "total_wall_seconds": 118.78979656891897
+      },
+      "checkpoint_sha256": "19714583cb6a8a3b019670248a6f8a84cdaf763a3e054eaf46eb17577b1fe63a"
+    },
+    {
+      "seed": 75101,
+      "backend": "TorchNestedAD",
+      "output": "04-75101-TorchNestedAD.json",
+      "log": "04-75101-TorchNestedAD.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "TorchNestedAD",
+        "--seed",
+        "75101",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/04-75101-TorchNestedAD.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 45, 116.60, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 98.47019282099791,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 47, 129.89, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "37e7603553566463a089aa3471cf3e3f52c8d70ae0ac2c77f3ec89f5008edb25",
+      "output_sha256": "21074b8e990124ce1f053af66f92778e8570929695a3959b6d9bb6bac798830c",
+      "completed": true,
+      "result": {
+        "backend": "TorchNestedAD",
+        "converged": true,
+        "setup_seconds": 0.40768437599763274,
+        "optimization_wall_seconds": 95.76606748206541,
+        "setup_plus_optimization_seconds": 96.17375185806304,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3160,
+        "loss_gradient_evaluations": 7511,
+        "metrics": {
+          "pde_rms": 0.012690536279652612,
+          "boundary_uv_rms": 0.008841600430503112,
+          "outflow_p_rms": 0.0016596615003405205,
+          "relative_l2_u": 0.009311418376079015,
+          "relative_l2_v": 0.019798267493457644,
+          "relative_l2_p": 0.009921019103081102
+        },
+        "independent_metrics": {
+          "pde_rms": 0.012686977887403306,
+          "boundary_uv_rms": 0.008841600430503112,
+          "outflow_p_rms": 0.0016596615003405205,
+          "relative_l2_u": 0.00931077899318378,
+          "relative_l2_v": 0.0197955268024565,
+          "relative_l2_p": 0.009946520440712155
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "61ee3eb99281903ef3db0845c254764acf6589801c8925561bc7463bb24bd8f4",
+        "total_wall_seconds": 96.65986630111001
+      },
+      "checkpoint_sha256": "b1167eba5957b81662d836dfd51f1330cb003d00db603564dcf33a902a1df2c8"
+    },
+    {
+      "seed": 75101,
+      "backend": "F",
+      "output": "05-75101-F.json",
+      "log": "05-75101-F.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "F",
+        "--seed",
+        "75101",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/05-75101-F.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 47, 129.89, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 24.218956956872717,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 44, 104.08, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "0a449ce023b452859105ea7bc4005f86a6ae87f43eda97dd30c7b5b3bab4d882",
+      "output_sha256": "c482dfc4397497dac7d3332b27ee59714bed2a7a5628755e24da4eef3c5bd6b8",
+      "completed": true,
+      "result": {
+        "backend": "F",
+        "converged": true,
+        "setup_seconds": 0.19640970206819475,
+        "optimization_wall_seconds": 21.86741438903846,
+        "setup_plus_optimization_seconds": 22.063824091106653,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3560,
+        "loss_gradient_evaluations": 7974,
+        "metrics": {
+          "pde_rms": 0.011349925281094256,
+          "boundary_uv_rms": 0.008705548227007158,
+          "outflow_p_rms": 0.0018673548625068972,
+          "relative_l2_u": 0.008632671249153633,
+          "relative_l2_v": 0.01997180411343577,
+          "relative_l2_p": 0.009111888448562158
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011347440810581174,
+          "boundary_uv_rms": 0.008705548227007158,
+          "outflow_p_rms": 0.0018673548625068972,
+          "relative_l2_u": 0.008631856263994955,
+          "relative_l2_v": 0.01996956960875177,
+          "relative_l2_p": 0.009134653089195553
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "e03936f67a8628622b7ebc812cf461b7a3b33c98a7c5394c3cd8c9b465a34f9d",
+        "total_wall_seconds": 22.42663338314742
+      },
+      "checkpoint_sha256": "5a763d43544580e3d1e8c340df83518f32ad73a3512853dfc49513e50102aedb"
+    },
+    {
+      "seed": 75101,
+      "backend": "B1",
+      "output": "06-75101-B1.json",
+      "log": "06-75101-B1.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "B1",
+        "--seed",
+        "75101",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/06-75101-B1.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 44, 103.29, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 24.315877825021744,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 103.19, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "8cd86ccc1b6bb1b9cb2961a9ed6ac61b9590b45538c09335afc09adfa6d4a79a",
+      "output_sha256": "bcdc37143825dcff72e043bf33269db0c78368d3935282d29633b8ff7126e5ea",
+      "completed": true,
+      "result": {
+        "backend": "B1",
+        "converged": true,
+        "setup_seconds": 0.1925285910256207,
+        "optimization_wall_seconds": 21.847939969971776,
+        "setup_plus_optimization_seconds": 22.040468560997397,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3560,
+        "loss_gradient_evaluations": 7967,
+        "metrics": {
+          "pde_rms": 0.011548278565434758,
+          "boundary_uv_rms": 0.008325390112827579,
+          "outflow_p_rms": 0.0016508321302029275,
+          "relative_l2_u": 0.009603185914654607,
+          "relative_l2_v": 0.019901384426355404,
+          "relative_l2_p": 0.009890155788123864
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011541181925392772,
+          "boundary_uv_rms": 0.008325390112827579,
+          "outflow_p_rms": 0.0016508321302029275,
+          "relative_l2_u": 0.00960188202851462,
+          "relative_l2_v": 0.01990002893949707,
+          "relative_l2_p": 0.009913221862828695
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "941c1f0c7fe33eb35be56a2af8ab0058be1f84394f6a61017c14d9d3f9839e87",
+        "total_wall_seconds": 22.527761470992118
+      },
+      "checkpoint_sha256": "c8abe2672cbdda4b28f40737da13e270c788b0b62514f1d0e8664a7de2e82991"
+    },
+    {
+      "seed": 75101,
+      "backend": "HopperTMA",
+      "output": "07-75101-HopperTMA.json",
+      "log": "07-75101-HopperTMA.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "HopperTMA",
+        "--seed",
+        "75101",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/07-75101-HopperTMA.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 103.19, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 23.991077384911478,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 102.59, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "72cb5df152275cc7eceb5ef7e740032fd342a0f0143cf3736c8d047916aba5c6",
+      "output_sha256": "c722d9986252761c6ffd2238f65c21e0864f38ace9c57ae4689caf6b64f0ee18",
+      "completed": true,
+      "result": {
+        "backend": "HopperTMA",
+        "converged": true,
+        "setup_seconds": 0.20709631592035294,
+        "optimization_wall_seconds": 21.647114916006103,
+        "setup_plus_optimization_seconds": 21.854211231926456,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3560,
+        "loss_gradient_evaluations": 7974,
+        "metrics": {
+          "pde_rms": 0.011349925281094256,
+          "boundary_uv_rms": 0.008705548227007158,
+          "outflow_p_rms": 0.0018673548625068972,
+          "relative_l2_u": 0.008632671249153633,
+          "relative_l2_v": 0.01997180411343577,
+          "relative_l2_p": 0.009111888448562158
+        },
+        "independent_metrics": {
+          "pde_rms": 0.011347440810581174,
+          "boundary_uv_rms": 0.008705548227007158,
+          "outflow_p_rms": 0.0018673548625068972,
+          "relative_l2_u": 0.008631856263994955,
+          "relative_l2_v": 0.01996956960875177,
+          "relative_l2_p": 0.009134653089195553
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "e03936f67a8628622b7ebc812cf461b7a3b33c98a7c5394c3cd8c9b465a34f9d",
+        "total_wall_seconds": 22.20582258887589
+      },
+      "checkpoint_sha256": "5347a364c309852607110b5409250a1fd8bf91fc1dd732a590d957baa799964b"
+    },
+    {
+      "seed": 75101,
+      "backend": "CuEquivariance",
+      "output": "08-75101-CuEquivariance.json",
+      "log": "08-75101-CuEquivariance.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "CuEquivariance",
+        "--seed",
+        "75101",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/08-75101-CuEquivariance.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 102.59, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 27.859592011896893,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 99.86, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "16b4401a886ac4b58106e1f3baf4c29741e6f8d269b5f629856f34b0eb0e1b8d",
+      "output_sha256": "9088fa4b4008f35705977d8dffb1408daf00faf6cfcdc1bd54cdeef5b3052e31",
+      "completed": true,
+      "result": {
+        "backend": "CuEquivariance",
+        "converged": true,
+        "setup_seconds": 3.0975134188774973,
+        "optimization_wall_seconds": 22.341913347830996,
+        "setup_plus_optimization_seconds": 25.439426766708493,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3600,
+        "loss_gradient_evaluations": 8038,
+        "metrics": {
+          "pde_rms": 0.01097207595626434,
+          "boundary_uv_rms": 0.008400276542318976,
+          "outflow_p_rms": 0.00218284952937462,
+          "relative_l2_u": 0.008830729703688313,
+          "relative_l2_v": 0.019756164984830203,
+          "relative_l2_p": 0.009533712363784187
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010969073270184301,
+          "boundary_uv_rms": 0.008400276542318976,
+          "outflow_p_rms": 0.00218284952937462,
+          "relative_l2_u": 0.00882993730845942,
+          "relative_l2_v": 0.019754526596815623,
+          "relative_l2_p": 0.009560121123297733
+        },
+        "parameter_initial_sha256": "ea07eb4a9acee70a66bd7b58e084702250bb97b877c713a38afdd6156ae45231",
+        "parameter_final_sha256": "5841a549d253c20c5bb321422c42b7643da1f73ec724a836622ec94e8698ce8c",
+        "total_wall_seconds": 25.793689514743164
+      },
+      "checkpoint_sha256": "45f94c19cada65feb70a79abad3db1205f4a13bb3783b1d149395f58b877211d"
+    },
+    {
+      "seed": 75102,
+      "backend": "cuBLASLt",
+      "output": "09-75102-cuBLASLt.json",
+      "log": "09-75102-cuBLASLt.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "cuBLASLt",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/09-75102-cuBLASLt.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 99.86, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 26.282469525933266,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 41, 102.44, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "f4bc841571d3b10fab064a8fc2ab55b7c5716c7bd1de2ca3228a2b4044a7e71d",
+      "output_sha256": "644d64fe2aeec293d93f11456829e6b219121998e99e81a151ec6ad3398ebf8a",
+      "completed": true,
+      "result": {
+        "backend": "cuBLASLt",
+        "converged": false,
+        "setup_seconds": 0.43193457601591945,
+        "optimization_wall_seconds": 23.704722128110006,
+        "setup_plus_optimization_seconds": 24.136656704125926,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4000,
+        "loss_gradient_evaluations": 8490,
+        "metrics": {
+          "pde_rms": 0.011795399154458569,
+          "boundary_uv_rms": 0.010025548705340547,
+          "outflow_p_rms": 0.002508674340922139,
+          "relative_l2_u": 0.008708348969574328,
+          "relative_l2_v": 0.020941179175305344,
+          "relative_l2_p": 0.009815866550735896
+        },
+        "independent_metrics": null,
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "b319126bfa13470a88e928cc0866094b6afcae203bdf1af5e91d1fc9b3ee7347",
+        "total_wall_seconds": 24.48834156105295
+      },
+      "checkpoint_sha256": "b2a635c2c8b6b984328e80689cb06680baf69cff25043c64615167681757f6d5"
+    },
+    {
+      "seed": 75102,
+      "backend": "TorchJetCompiled",
+      "output": "10-75102-TorchJetCompiled.json",
+      "log": "10-75102-TorchJetCompiled.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "TorchJetCompiled",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/10-75102-TorchJetCompiled.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 41, 102.44, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 31.203282601898536,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 41, 93.99, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "a871e15cf8510f1a1aa14549b14f658c358ad5f8f1e96ebb71ed19551774769e",
+      "output_sha256": "1a99ebcf85e7c09dcdc7f57b02dae90a5af8703d98c8af45c38d589ab456539b",
+      "completed": true,
+      "result": {
+        "backend": "TorchJetCompiled",
+        "converged": false,
+        "setup_seconds": 4.073614209191874,
+        "optimization_wall_seconds": 24.35422800690867,
+        "setup_plus_optimization_seconds": 28.427842216100544,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4000,
+        "loss_gradient_evaluations": 8508,
+        "metrics": {
+          "pde_rms": 0.010805816017958401,
+          "boundary_uv_rms": 0.00944484582307405,
+          "outflow_p_rms": 0.0026279292287631952,
+          "relative_l2_u": 0.009249867286970609,
+          "relative_l2_v": 0.02050355943821124,
+          "relative_l2_p": 0.010373926578259368
+        },
+        "independent_metrics": null,
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "20c0223224affc8f881d009d75c2c825f3f0b4bb029d0d5280c8e6692fc5f9f6",
+        "total_wall_seconds": 28.81620652321726
+      },
+      "checkpoint_sha256": "cf17f861246698dd1c20cbfe0d4b3303709d2752b1aea02fafc30db0c8844210"
+    },
+    {
+      "seed": 75102,
+      "backend": "HopperTMA",
+      "output": "11-75102-HopperTMA.json",
+      "log": "11-75102-HopperTMA.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "HopperTMA",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/11-75102-HopperTMA.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 41, 93.99, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 26.391146811889485,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 41, 100.02, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "3e73a5aedb682842cadaa803ba667d6ca2db8ec4eab958805538b200fab57cc2",
+      "output_sha256": "04425bd978c36a80f9cd863b0b7f1bb90a58f3af8d6edd22f3256ca0cca6564b",
+      "completed": true,
+      "result": {
+        "backend": "HopperTMA",
+        "converged": false,
+        "setup_seconds": 0.20715904794633389,
+        "optimization_wall_seconds": 23.910797680029646,
+        "setup_plus_optimization_seconds": 24.11795672797598,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4000,
+        "loss_gradient_evaluations": 8501,
+        "metrics": {
+          "pde_rms": 0.011302864591057957,
+          "boundary_uv_rms": 0.009954258707148219,
+          "outflow_p_rms": 0.0026210077543145525,
+          "relative_l2_u": 0.009265374179687418,
+          "relative_l2_v": 0.021757029345602485,
+          "relative_l2_p": 0.009395530238248498
+        },
+        "independent_metrics": null,
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "d0efc93da9d7164f9e521fb6aea128ccb5b62b632986f1b7c7b2b1e8f030651e",
+        "total_wall_seconds": 24.59319007699378
+      },
+      "checkpoint_sha256": "ff1b03df3199ea069733773fb622611460c00f6b912b490201801e41cc1c961e"
+    },
+    {
+      "seed": 75102,
+      "backend": "TorchNestedAD",
+      "output": "12-75102-TorchNestedAD.json",
+      "log": "12-75102-TorchNestedAD.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "TorchNestedAD",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/12-75102-TorchNestedAD.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 41, 99.44, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 105.43540265201591,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 46, 131.12, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "c582b8cc4430feaffa3b19aba59deb9ed7aa52d9cf7b0de1f6d5b81c91d9b791",
+      "output_sha256": "7c0d4b97f44af9c6ce3c78e51b80d62bf967a0e310320be9f4a576a5af6fe5cc",
+      "completed": true,
+      "result": {
+        "backend": "TorchNestedAD",
+        "converged": true,
+        "setup_seconds": 0.45698077511042356,
+        "optimization_wall_seconds": 102.79230940993875,
+        "setup_plus_optimization_seconds": 103.24929018504918,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3540,
+        "loss_gradient_evaluations": 7999,
+        "metrics": {
+          "pde_rms": 0.010118031795799976,
+          "boundary_uv_rms": 0.009382479887968193,
+          "outflow_p_rms": 0.0029798091420622803,
+          "relative_l2_u": 0.00760072350204104,
+          "relative_l2_v": 0.019708520477702756,
+          "relative_l2_p": 0.008246755699458297
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010118190280093278,
+          "boundary_uv_rms": 0.009382479887968193,
+          "outflow_p_rms": 0.0029798091420622803,
+          "relative_l2_u": 0.007600308199977254,
+          "relative_l2_v": 0.01970953332567418,
+          "relative_l2_p": 0.008253437745377063
+        },
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "1363d18b25da840dd8614859caf90c05b9e64068a703b170e81c849d36592b95",
+        "total_wall_seconds": 103.61041230615228
+      },
+      "checkpoint_sha256": "d8e592aab6abf34f94f9179baf952ee29a25ef22241847b19eb6f32c3c1ebb5e"
+    },
+    {
+      "seed": 75102,
+      "backend": "CuEquivariance",
+      "output": "13-75102-CuEquivariance.json",
+      "log": "13-75102-CuEquivariance.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "CuEquivariance",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/13-75102-CuEquivariance.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 46, 131.12, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 29.436094536911696,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 102.19, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "13c3f64019a72fc1c551a99f9c0eef9f660f2792005dc49627dbbced507bcc88",
+      "output_sha256": "bd53ef68b948ab3b46d01af583c5b5910f6b5eaaf6d7aab2f15eb8c5cd6026ce",
+      "completed": true,
+      "result": {
+        "backend": "CuEquivariance",
+        "converged": false,
+        "setup_seconds": 2.966423222096637,
+        "optimization_wall_seconds": 23.947766690980643,
+        "setup_plus_optimization_seconds": 26.91418991307728,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4000,
+        "loss_gradient_evaluations": 8539,
+        "metrics": {
+          "pde_rms": 0.012518549702204371,
+          "boundary_uv_rms": 0.01001963733279485,
+          "outflow_p_rms": 0.002158212811112382,
+          "relative_l2_u": 0.00981817992450527,
+          "relative_l2_v": 0.02135914550946526,
+          "relative_l2_p": 0.010052237169273696
+        },
+        "independent_metrics": null,
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "19a459e27126c0d8b1bcda759f99d761d49817b61b7de85c3367b8ce12a93cb4",
+        "total_wall_seconds": 27.378170170122758
+      },
+      "checkpoint_sha256": "618555739e41be34b1bc7f5a2fa1cb330a66622f49e4ff29a8ac7101608afe56"
+    },
+    {
+      "seed": 75102,
+      "backend": "PhysicsNeMo",
+      "output": "14-75102-PhysicsNeMo.json",
+      "log": "14-75102-PhysicsNeMo.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "PhysicsNeMo",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/14-75102-PhysicsNeMo.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 101.24, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 121.79314447497018,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 47, 130.97, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "6ee9f26e160d9bb522a0eb79af9b88622c36825335e321f7cc7b06d709b691b8",
+      "output_sha256": "840f4bafa9e8bf0a6910c6f8a73ec56a04b981b3085c0b128c0e5326f3a084c1",
+      "completed": true,
+      "result": {
+        "backend": "PhysicsNeMo",
+        "converged": false,
+        "setup_seconds": 0.7587310068774968,
+        "optimization_wall_seconds": 118.76840038993396,
+        "setup_plus_optimization_seconds": 119.52713139681146,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4000,
+        "loss_gradient_evaluations": 8472,
+        "metrics": {
+          "pde_rms": 0.01073997879860007,
+          "boundary_uv_rms": 0.009522750928510836,
+          "outflow_p_rms": 0.0022054519324799945,
+          "relative_l2_u": 0.008760043702392422,
+          "relative_l2_v": 0.020484950213648462,
+          "relative_l2_p": 0.010312232958695256
+        },
+        "independent_metrics": null,
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "49dd9af17c1a48a69a28c51de788833150714480a3f252202fb38f935bfc9b75",
+        "total_wall_seconds": 119.89950504689477
+      },
+      "checkpoint_sha256": "d712b35171bf254c34ef8f4731e9bb288e6356a100de9f07916dbf69cbd3a61d"
+    },
+    {
+      "seed": 75102,
+      "backend": "F",
+      "output": "15-75102-F.json",
+      "log": "15-75102-F.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "F",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/15-75102-F.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 47, 124.88, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 25.976535343099385,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 44, 103.94, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "df89db17b50ba6ae105efb74afeb2d4c86100e5d4e8ce2d4c4bf3dee563f2a8c",
+      "output_sha256": "46a1ff1786dd2242d844e4a195a6e8ffcbb8c126872bfe77b3cce53f42216352",
+      "completed": true,
+      "result": {
+        "backend": "F",
+        "converged": false,
+        "setup_seconds": 0.1938751309644431,
+        "optimization_wall_seconds": 23.647518740966916,
+        "setup_plus_optimization_seconds": 23.84139387193136,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4000,
+        "loss_gradient_evaluations": 8501,
+        "metrics": {
+          "pde_rms": 0.011302864591057957,
+          "boundary_uv_rms": 0.009954258707148219,
+          "outflow_p_rms": 0.0026210077543145525,
+          "relative_l2_u": 0.009265374179687418,
+          "relative_l2_v": 0.021757029345602485,
+          "relative_l2_p": 0.009395530238248498
+        },
+        "independent_metrics": null,
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "d0efc93da9d7164f9e521fb6aea128ccb5b62b632986f1b7c7b2b1e8f030651e",
+        "total_wall_seconds": 24.19395284797065
+      },
+      "checkpoint_sha256": "0824c27fe4e7bfea79979432a2d049c4bcfb15e032bc59e0a91bc274b6e270a1"
+    },
+    {
+      "seed": 75102,
+      "backend": "B1",
+      "output": "16-75102-B1.json",
+      "log": "16-75102-B1.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "B1",
+        "--seed",
+        "75102",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/16-75102-B1.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 44, 103.46, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 26.010189739987254,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 103.84, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "2585c8ccc4ebbe201bd9b796308912ce8df8b916dc265ef2a956f2a6336c7548",
+      "output_sha256": "7a971120cc6f2b2542e6c7d68e4f26ed25865dd4d3eeafc9d378826b1d83ddbc",
+      "completed": true,
+      "result": {
+        "backend": "B1",
+        "converged": false,
+        "setup_seconds": 0.1930571140255779,
+        "optimization_wall_seconds": 23.67415094305761,
+        "setup_plus_optimization_seconds": 23.86720805708319,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 4000,
+        "loss_gradient_evaluations": 8490,
+        "metrics": {
+          "pde_rms": 0.011795399154458569,
+          "boundary_uv_rms": 0.010025548705340547,
+          "outflow_p_rms": 0.002508674340922139,
+          "relative_l2_u": 0.008708348969574328,
+          "relative_l2_v": 0.020941179175305344,
+          "relative_l2_p": 0.009815866550735896
+        },
+        "independent_metrics": null,
+        "parameter_initial_sha256": "3cf6b1b5feb2c77f53d037f1af1b7aa192230543f5fbb05ff9703a46fb463810",
+        "parameter_final_sha256": "b319126bfa13470a88e928cc0866094b6afcae203bdf1af5e91d1fc9b3ee7347",
+        "total_wall_seconds": 24.221550146117806
+      },
+      "checkpoint_sha256": "2c0c83f74cc10a4b09f504626e784101ceef114db65e58cb2ef08570daaf7b8b"
+    },
+    {
+      "seed": 75103,
+      "backend": "HopperTMA",
+      "output": "17-75103-HopperTMA.json",
+      "log": "17-75103-HopperTMA.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "HopperTMA",
+        "--seed",
+        "75103",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/17-75103-HopperTMA.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 103.06, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 21.695299803977832,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 102.23, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "761ab765bda6608e6481f9abecabeb744eba98f3bdfdc9aa3306e20ded664db6",
+      "output_sha256": "d05c945df113174b888038ad013f1a3ec3fbc450977d7f3e7dd135dd942d8b04",
+      "completed": true,
+      "result": {
+        "backend": "HopperTMA",
+        "converged": true,
+        "setup_seconds": 0.2068431437946856,
+        "optimization_wall_seconds": 19.2610615210142,
+        "setup_plus_optimization_seconds": 19.467904664808884,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3080,
+        "loss_gradient_evaluations": 7440,
+        "metrics": {
+          "pde_rms": 0.010472383844504383,
+          "boundary_uv_rms": 0.009462869422902632,
+          "outflow_p_rms": 0.0018233980068302518,
+          "relative_l2_u": 0.008818335909463588,
+          "relative_l2_v": 0.019965456582326385,
+          "relative_l2_p": 0.010265086691510442
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010467497311306242,
+          "boundary_uv_rms": 0.009462869422902632,
+          "outflow_p_rms": 0.0018233980068302518,
+          "relative_l2_u": 0.008817757808565387,
+          "relative_l2_v": 0.01996865502271071,
+          "relative_l2_p": 0.010274840030262283
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "e62d83c2eafa669dd4553b95cf39efe85940a0874b0b3084023a115cbe0e2914",
+        "total_wall_seconds": 19.835914213676006
+      },
+      "checkpoint_sha256": "73ad7ccbb5234251bff8a4f3bdd7734131f3c52bfb5705e43102c8654c891825"
+    },
+    {
+      "seed": 75103,
+      "backend": "PhysicsNeMo",
+      "output": "18-75103-PhysicsNeMo.json",
+      "log": "18-75103-PhysicsNeMo.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "PhysicsNeMo",
+        "--seed",
+        "75103",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/18-75103-PhysicsNeMo.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 2, 42, 101.63, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 106.62601235997863,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 46, 125.62, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "dd9c3e12143ec56ca93a23d211390c523664accc70814a82a777fa4b458698bd",
+      "output_sha256": "60ce94d230272ccdeb65e285ef35565a2f9ad04385479f9926bdd99ffbe7e16f",
+      "completed": true,
+      "result": {
+        "backend": "PhysicsNeMo",
+        "converged": true,
+        "setup_seconds": 0.7899388091173023,
+        "optimization_wall_seconds": 103.56499888584949,
+        "setup_plus_optimization_seconds": 104.3549376949668,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3100,
+        "loss_gradient_evaluations": 7470,
+        "metrics": {
+          "pde_rms": 0.00967944253751333,
+          "boundary_uv_rms": 0.009148875941359269,
+          "outflow_p_rms": 0.001854906770579484,
+          "relative_l2_u": 0.008481154010411902,
+          "relative_l2_v": 0.019896363726470044,
+          "relative_l2_p": 0.009172236138291441
+        },
+        "independent_metrics": {
+          "pde_rms": 0.009675790255152205,
+          "boundary_uv_rms": 0.009148875941359269,
+          "outflow_p_rms": 0.001854906770579484,
+          "relative_l2_u": 0.008480381353248329,
+          "relative_l2_v": 0.01989873293126583,
+          "relative_l2_p": 0.009182075343944891
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "6396ecc39f4278cac3dd886a68ca6e014dd9e0b9286d238aae39701f0f1939d2",
+        "total_wall_seconds": 104.7133512608707
+      },
+      "checkpoint_sha256": "293e442bd2431f1d35ad83038506d00bfce06f69197d044c657fa97190c0a93c"
+    },
+    {
+      "seed": 75103,
+      "backend": "cuBLASLt",
+      "output": "19-75103-cuBLASLt.json",
+      "log": "19-75103-cuBLASLt.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "cuBLASLt",
+        "--seed",
+        "75103",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/19-75103-cuBLASLt.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 47, 125.62, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 23.589485235977918,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 44, 103.66, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "a4da83675a21767c14bee5d921580f66ce5c41e8e4b50752ff2f7e0e20c7a03c",
+      "output_sha256": "20bcee775f768ff53f84e192991f8ca17d46b0c90238927e587556730fd2225b",
+      "completed": true,
+      "result": {
+        "backend": "cuBLASLt",
+        "converged": true,
+        "setup_seconds": 0.4329295288771391,
+        "optimization_wall_seconds": 20.859705314971507,
+        "setup_plus_optimization_seconds": 21.292634843848646,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3340,
+        "loss_gradient_evaluations": 7758,
+        "metrics": {
+          "pde_rms": 0.009970307584695663,
+          "boundary_uv_rms": 0.009196084795045294,
+          "outflow_p_rms": 0.0013296402099082598,
+          "relative_l2_u": 0.008470430803652939,
+          "relative_l2_v": 0.01988264352219466,
+          "relative_l2_p": 0.010383034602158402
+        },
+        "independent_metrics": {
+          "pde_rms": 0.009966836029578522,
+          "boundary_uv_rms": 0.009196084795045294,
+          "outflow_p_rms": 0.0013296402099082598,
+          "relative_l2_u": 0.008469312018175511,
+          "relative_l2_v": 0.019887814384334932,
+          "relative_l2_p": 0.010389585090332951
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "72cf693a5c3ba14f828a374b25774a79b2e1b4ad14ccce7e067b5a12ae8d5943",
+        "total_wall_seconds": 21.798818026902154
+      },
+      "checkpoint_sha256": "f1d0893e3234d43ecf5a46183650d45359fe27b07cf83846f6cb3b673ec84c74"
+    },
+    {
+      "seed": 75103,
+      "backend": "TorchJetCompiled",
+      "output": "20-75103-TorchJetCompiled.json",
+      "log": "20-75103-TorchJetCompiled.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "TorchJetCompiled",
+        "--seed",
+        "75103",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/20-75103-TorchJetCompiled.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 44, 103.66, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 27.476261978037655,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 96.91, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "16260e1d5ad961026983035a124cf2a69d2eee9b719d90c671fd445e597cb64d",
+      "output_sha256": "d73ccd4851bdb3e7c2c87e0439bd668c073d39bb4046e9b8e5b79afaa4ef83d4",
+      "completed": true,
+      "result": {
+        "backend": "TorchJetCompiled",
+        "converged": true,
+        "setup_seconds": 4.085077394032851,
+        "optimization_wall_seconds": 20.590685162926093,
+        "setup_plus_optimization_seconds": 24.675762556958944,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3220,
+        "loss_gradient_evaluations": 7601,
+        "metrics": {
+          "pde_rms": 0.009564639259166204,
+          "boundary_uv_rms": 0.009268002111574726,
+          "outflow_p_rms": 0.001974405436586355,
+          "relative_l2_u": 0.008298723765488882,
+          "relative_l2_v": 0.019886928991081944,
+          "relative_l2_p": 0.0098711392572719
+        },
+        "independent_metrics": {
+          "pde_rms": 0.009558549116267022,
+          "boundary_uv_rms": 0.009268002111574726,
+          "outflow_p_rms": 0.001974405436586355,
+          "relative_l2_u": 0.00829758551346778,
+          "relative_l2_v": 0.019890787883708117,
+          "relative_l2_p": 0.009880057135634009
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "90952c122d9f8983756511b4d6ecaa63cfe023081dd903ee519504e71f45fa69",
+        "total_wall_seconds": 25.060519226826727
+      },
+      "checkpoint_sha256": "7533d85248d17e538c8e7e7a506585ce45da988d14b9d20b3ad76cee284ab24e"
+    },
+    {
+      "seed": 75103,
+      "backend": "F",
+      "output": "21-75103-F.json",
+      "log": "21-75103-F.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "F",
+        "--seed",
+        "75103",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/21-75103-F.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 43, 96.91, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 22.01244802493602,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 102.96, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "3d07de77bfa64d325ee35590edeb257ceee625bf92e748c68caa09fa6627f9ff",
+      "output_sha256": "b4f8aa34eb7606e4922a574cf39c98627f6fa5f7e337eed8e753b9eef698007f",
+      "completed": true,
+      "result": {
+        "backend": "F",
+        "converged": true,
+        "setup_seconds": 0.194706073962152,
+        "optimization_wall_seconds": 19.531765658874065,
+        "setup_plus_optimization_seconds": 19.726471732836217,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3080,
+        "loss_gradient_evaluations": 7440,
+        "metrics": {
+          "pde_rms": 0.010472383844504383,
+          "boundary_uv_rms": 0.009462869422902632,
+          "outflow_p_rms": 0.0018233980068302518,
+          "relative_l2_u": 0.008818335909463588,
+          "relative_l2_v": 0.019965456582326385,
+          "relative_l2_p": 0.010265086691510442
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010467497311306242,
+          "boundary_uv_rms": 0.009462869422902632,
+          "outflow_p_rms": 0.0018233980068302518,
+          "relative_l2_u": 0.008817757808565387,
+          "relative_l2_v": 0.01996865502271071,
+          "relative_l2_p": 0.010274840030262283
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "e62d83c2eafa669dd4553b95cf39efe85940a0874b0b3084023a115cbe0e2914",
+        "total_wall_seconds": 20.210129042621702
+      },
+      "checkpoint_sha256": "32fb90463c831fa39022b4f14ec1b0a9e7c6782ad776de72e9791e4cb598c67a"
+    },
+    {
+      "seed": 75103,
+      "backend": "B1",
+      "output": "22-75103-B1.json",
+      "log": "22-75103-B1.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "B1",
+        "--seed",
+        "75103",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/22-75103-B1.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 102.22, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 23.12446125294082,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 42, 103.18, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "e9023f1a2f2c4d6a824c3e90a1a31aa7576444327733ec5e4bc19b6399c90b6e",
+      "output_sha256": "4c760004f9dd29c1f69d8fece6064d4ad0471806432c07cc56c87b598c39894f",
+      "completed": true,
+      "result": {
+        "backend": "B1",
+        "converged": true,
+        "setup_seconds": 0.20158393518067896,
+        "optimization_wall_seconds": 20.754376341123134,
+        "setup_plus_optimization_seconds": 20.955960276303813,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 3340,
+        "loss_gradient_evaluations": 7758,
+        "metrics": {
+          "pde_rms": 0.009970307584695663,
+          "boundary_uv_rms": 0.009196084795045294,
+          "outflow_p_rms": 0.0013296402099082598,
+          "relative_l2_u": 0.008470430803652939,
+          "relative_l2_v": 0.01988264352219466,
+          "relative_l2_p": 0.010383034602158402
+        },
+        "independent_metrics": {
+          "pde_rms": 0.009966836029578522,
+          "boundary_uv_rms": 0.009196084795045294,
+          "outflow_p_rms": 0.0013296402099082598,
+          "relative_l2_u": 0.008469312018175511,
+          "relative_l2_v": 0.019887814384334932,
+          "relative_l2_p": 0.010389585090332951
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "72cf693a5c3ba14f828a374b25774a79b2e1b4ad14ccce7e067b5a12ae8d5943",
+        "total_wall_seconds": 21.309746141312644
+      },
+      "checkpoint_sha256": "268c4afdf684db272ba229fd89322b19e829f2e4e0a1e511333023b9e472282a"
+    },
+    {
+      "seed": 75103,
+      "backend": "TorchNestedAD",
+      "output": "23-75103-TorchNestedAD.json",
+      "log": "23-75103-TorchNestedAD.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "TorchNestedAD",
+        "--seed",
+        "75103",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/23-75103-TorchNestedAD.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 3, 42, 102.27, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 89.86909207887948,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 46, 132.32, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "579d9b9ad63b180504d1004da4bf787e8c135471ab48fb84d13804929f9f2235",
+      "output_sha256": "85bec10b04d7c174205409f172102fc5e8997ef7e5e91c98e8e4146483edff9d",
+      "completed": true,
+      "result": {
+        "backend": "TorchNestedAD",
+        "converged": true,
+        "setup_seconds": 0.39714337908662856,
+        "optimization_wall_seconds": 87.32680811197497,
+        "setup_plus_optimization_seconds": 87.7239514910616,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 2620,
+        "loss_gradient_evaluations": 6914,
+        "metrics": {
+          "pde_rms": 0.010826158903152125,
+          "boundary_uv_rms": 0.009806194391390334,
+          "outflow_p_rms": 0.0024189454103536847,
+          "relative_l2_u": 0.008173179316530057,
+          "relative_l2_v": 0.01975279046708273,
+          "relative_l2_p": 0.010544761145707219
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010823832328353843,
+          "boundary_uv_rms": 0.009806194391390334,
+          "outflow_p_rms": 0.0024189454103536847,
+          "relative_l2_u": 0.008172277130248654,
+          "relative_l2_v": 0.019755505766359184,
+          "relative_l2_p": 0.01055506801787542
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "c1f663a8cef4985ab1130d8d2c5a892f1d31899fe7f88a3fff6207bcb3679208",
+        "total_wall_seconds": 88.08008443703875
+      },
+      "checkpoint_sha256": "ef1e52130279cd37cb38b0347cc4b897e409c2ab04b6d3fc35041cc0234db7f8"
+    },
+    {
+      "seed": 75103,
+      "backend": "CuEquivariance",
+      "output": "24-75103-CuEquivariance.json",
+      "log": "24-75103-CuEquivariance.log",
+      "command": [
+        "/root/flashns-euler-44408-20260909/.venv/bin/python",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/solve.py",
+        "--backend",
+        "CuEquivariance",
+        "--seed",
+        "75103",
+        "--output",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/24-75103-CuEquivariance.json",
+        "--protocol",
+        "/root/flashns-hopper-20260909/experiments/pinn_solver/artifacts/formal1/protocol.json",
+        "--hopper-build",
+        "/root/flashns-hopper-20260909/experiments/cuda_jet_hopper/artifacts/grid1"
+      ],
+      "before": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 46, 132.32, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "process_wall_seconds": 22.647600603988394,
+      "returncode": 0,
+      "after": {
+        "gpu": {
+          "returncode": 0,
+          "stdout": "GPU-83b4118c-a437-c4e5-e929-805a26db958f, NVIDIA H100 NVL, 570.211.01, 95830, 0, 0, 44, 101.88, 400.00, 1785, 2619\n"
+        },
+        "compute_processes": {
+          "returncode": 0,
+          "stdout": ""
+        }
+      },
+      "log_sha256": "b997b8327327a6edbdab5eec0a7f2d8c3620fedb8152f405e6c2689edafa1b4e",
+      "output_sha256": "58adcdcc87fb9b575c2d612bc4ecba1846fd6eff0dd16a1b50a2f1dfacd213fe",
+      "completed": true,
+      "result": {
+        "backend": "CuEquivariance",
+        "converged": true,
+        "setup_seconds": 2.983265836024657,
+        "optimization_wall_seconds": 17.230982743902132,
+        "setup_plus_optimization_seconds": 20.21424857992679,
+        "adam_updates": 4000,
+        "lbfgs_iterations": 2519,
+        "loss_gradient_evaluations": 6846,
+        "metrics": {
+          "pde_rms": 0.0109625774378728,
+          "boundary_uv_rms": 0.009985758284087891,
+          "outflow_p_rms": 0.0024999543915806915,
+          "relative_l2_u": 0.007562216860461692,
+          "relative_l2_v": 0.0197927342634384,
+          "relative_l2_p": 0.010051252305398746
+        },
+        "independent_metrics": {
+          "pde_rms": 0.010964201476050211,
+          "boundary_uv_rms": 0.009985758284087891,
+          "outflow_p_rms": 0.0024999543915806915,
+          "relative_l2_u": 0.007561034041703216,
+          "relative_l2_v": 0.019794411341890916,
+          "relative_l2_p": 0.010060070319163896
+        },
+        "parameter_initial_sha256": "cd6c162df72ad4daa892e15549552070b7c456a425a9099b94b4605095966c0e",
+        "parameter_final_sha256": "ba083372b2773d5fbedffa9442c3af7d584a5152a627b4e81fe67fafe492ce0c",
+        "total_wall_seconds": 20.58144153887406
+      },
+      "checkpoint_sha256": "f07154a15adcb9fcf25b00908b0f6e111414f6f4249498d8511dedea1af70d2d"
+    }
+  ],
+  "completed": true,
+  "all_runs_completed": true,
+  "all_runs_converged": false,
+  "finished_utc": "2026-09-09T08:37:33.663354+00:00"
+}

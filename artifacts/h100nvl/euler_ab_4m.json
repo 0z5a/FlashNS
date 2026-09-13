@@ -1,0 +1,886 @@
+{
+  "timestamp_utc": "2026-09-09T05:51:54.698113+00:00",
+  "adapter": "official_euler_frozen_splines",
+  "metadata": {
+    "timestamp_utc": "2026-09-09T05:51:54.702633+00:00",
+    "python": "3.12.14 (main, Sep  2 2026, 23:27:36) [GCC 15.3.0]",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.39",
+    "dependencies": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "sympy": "1.14.0",
+      "mpmath": "1.3.0"
+    },
+    "input_and_code_hashes": {
+      "src/flashns/__init__.py": "30a814dbede825388cfa02aa2220d57986d5629e2298923f156dc1f0254a5d18",
+      "src/flashns/affine.py": "6134cd6ebd0c047ca5392a2008768ebf5b97eda4f085f2d42d71fc1284970c84",
+      "src/flashns/cli.py": "182de99bab17437637935198f88fd46c2d2cb11698d1e4046d0bcab34a98ecb8",
+      "src/flashns/diagnostics.py": "9a75a660d0fea02eb6e37916c9e8b8d47d47df1b64c1991f0360ab47a12c1af8",
+      "src/flashns/distributed_contract.py": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+      "src/flashns/euler.py": "4fc7a38f745a3240093415328ed33cb452933280ba07ec4762eade95e3396585",
+      "src/flashns/jet_spec.py": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+      "src/flashns/jet_stable.py": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+      "src/flashns/provenance.py": "14acb0719a68979b307903d05c19b1cd8c5926129d470b0cb573e796a2320209",
+      "src/flashns/reference.py": "1e7ab5a46e86bb1c6b89a8a4aeafc462eb07b0a14e68dc37ae1728b067bf05fc",
+      "src/flashns/spline_reference.py": "2e99a6b0eb2afa1bc049502e208fdb650ccb0eec9951164026d86b9f3ba4dedc",
+      "src/flashns/symbolic.py": "5d8f369928afbd2a9241ae03ca312b367cc3826a209c0556d15d765a2281f4ac",
+      "src/flashns/torch_spline.py": "6135dfbb0b4db0b5ce586cb4a7c246e31193d9ea5339dcaf276bea74f972ab92",
+      "src/flashns/validation.py": "9d58d43a8b23c9bdb0b0a20bcb49c4be32b935b6bd76b92733a862de2a83b00e",
+      "pyproject.toml": "0d4fba11f6fcc647b09b5d2a8ac5b44ecb9fce4285ede55ba6086e7e73e9a956",
+      "uv.lock": "fa90a06dae080835f785721f1f0a2bee836f58c74a9fd902e3389c762e161267",
+      "scripts/doctor.py": "644cb0c896dc463fae29606c192f19a5f7e9d83e80cb401ba57b56cdeea5b448",
+      "scripts/preflight_multigpu.py": "0edc1a5c2880a59c96dd4a26bb343a9d1b55f049a709707e53e0f5722043eb9d",
+      "scripts/profile_euler.py": "18ce85fe027273ca6e6385876e56f152afd6c1d97eeb6faa996c1002194a0307",
+      "sources/registry.json": "69cbcab6afa2775777a395a3bbf064c79d38f0ed4454fcb55b26982d5bc9c60d"
+    },
+    "code_fingerprint": "82ddfe17e524902def2e856e1c8beecd114ef7ed14601f2b1b4bd847d9ec1f5c"
+  },
+  "script_sha256": "09d9ba2654910e0c1af611394953cb2604f5443e3afed28a9d9a010f8c8d10e1",
+  "sources": {
+    "euler_paper": {
+      "sha256": "f0164c40fad09a646412acec95f7908ea6b2fd61d16b809954a4048665fb5f78",
+      "bytes": 3556634
+    },
+    "euler_code": {
+      "sha256": "a238bc3662ec86ee61f7b904d365255d061b07dd9f1aa12a2a728af5959265ad",
+      "bytes": 284850126
+    },
+    "euler_Omega": {
+      "sha256": "e556a9432e07bd8ec1c3b106ab60a1ee2fcbd44c1ab629bccb237c0f34e3a041",
+      "bytes": 122412654
+    },
+    "euler_Psi": {
+      "sha256": "72a3147ee028ce91d544692b37da55e6ecfc7de0f6148437e8f9be515d06b1b7",
+      "bytes": 465849710
+    },
+    "euler_U": {
+      "sha256": "6f0f0e31be8efb509d700bff20288bbdcfa914483191c44ca72b33bc1499b86c",
+      "bytes": 121229936
+    },
+    "euler_meta": {
+      "sha256": "44f27313fb368f741304d07bfda29aa37a134357dd7dcdf5cd34ebf062f8194a",
+      "bytes": 66
+    }
+  },
+  "points_sha256": "101bc2adbc7bb58624f0685f7a5efdeb7fa172ffe9857b43f2f6b47cc59a8110",
+  "point_counts": {
+    "full_computational_box": 1000000,
+    "physical_box_radius3": 1000000,
+    "axis": 1000000,
+    "far_field": 1000000
+  },
+  "same_points_as_previous_A5000_4m": true,
+  "points_file": "artifacts/gpu/euler_points_4m.npz",
+  "batch_size": 4096,
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "gpu": "NVIDIA H100 NVL",
+  "uuid": "83b4118c-a437-c4e5-e929-805a26db958f",
+  "torch_threads": 4,
+  "telemetry_before": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,clocks.sm,clocks.mem,temperature.gpu,power.draw,utilization.gpu,memory.used",
+      "--format=csv"
+    ],
+    "returncode": 0,
+    "output": "index, uuid, clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], utilization.gpu [%], memory.used [MiB]\n0, GPU-83b4118c-a437-c4e5-e929-805a26db958f, 1785 MHz, 2619 MHz, 35, 92.76 W, 44 %, 1007 MiB\n"
+  },
+  "precision": "FP64",
+  "profile_parameters": {
+    "lambda": 0.5,
+    "C_raw": 10.237270294850788,
+    "degree": 9
+  },
+  "timing_scope": "complete sampled residual evaluation over all domains; GPU paths include CPU input transfer and returning all outputs to CPU; separate per-repeat full-output comparison",
+  "reference_scope": "local control-coefficient derivative CPU implementation; separate 80/100-digit diagnostics validate selected values; no proof or interval certificate",
+  "initialization_seconds": {
+    "point_load_and_hash": 0.37222267291508615,
+    "source_hashes": 0.6493658809922636,
+    "JSON_and_SciPy_construction": 8.447496311040595,
+    "adapter_and_GPU_transfer": 0.031426327070221305,
+    "all_backend_small_warmups": 1.717799527104944
+  },
+  "resident_spline_bytes": 266547752,
+  "atol": 2e-09,
+  "rtol": 2e-09,
+  "paired_observations": [
+    {
+      "repeat": 0,
+      "order": [
+        "SciPy_direct_CPU",
+        "SciPy_NumPy_stable_CPU",
+        "Torch_upstream_GPU",
+        "Torch_stable_eager_GPU",
+        "Torch_stable_vectorized_GPU"
+      ],
+      "measurements": {
+        "SciPy_direct_CPU": {
+          "synchronized_wall_seconds": 102.4085213819053,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null
+        },
+        "SciPy_NumPy_stable_CPU": {
+          "synchronized_wall_seconds": 41.64949135715142,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null
+        },
+        "Torch_upstream_GPU": {
+          "synchronized_wall_seconds": 170.41754147806205,
+          "peak_cuda_allocated_bytes": 377033216,
+          "peak_cuda_reserved_bytes": 406847488
+        },
+        "Torch_stable_eager_GPU": {
+          "synchronized_wall_seconds": 32.883838559966534,
+          "peak_cuda_allocated_bytes": 288253952,
+          "peak_cuda_reserved_bytes": 406847488
+        },
+        "Torch_stable_vectorized_GPU": {
+          "synchronized_wall_seconds": 15.570108010899276,
+          "peak_cuda_allocated_bytes": 288253952,
+          "peak_cuda_reserved_bytes": 406847488
+        }
+      },
+      "comparison_to_stable_CPU": {
+        "SciPy_direct_CPU": {
+          "full_computational_box": {
+            "max_absolute_error": 1.4808509618562774e-07,
+            "max_tolerance_ratio": 74.04210845043593,
+            "passed": false
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 1.0449016336840132e-06,
+            "max_tolerance_ratio": 522.4503648408862,
+            "passed": false
+          },
+          "axis": {
+            "max_absolute_error": 7.882032581414851e-09,
+            "max_tolerance_ratio": 3.9408556421613365,
+            "passed": false
+          },
+          "far_field": {
+            "max_absolute_error": 9.475969339170671e-18,
+            "max_tolerance_ratio": 4.737977599935386e-09,
+            "passed": true
+          }
+        },
+        "SciPy_NumPy_stable_CPU": {
+          "full_computational_box": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          }
+        },
+        "Torch_upstream_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.4191773549080543e-07,
+            "max_tolerance_ratio": 120.95498794501184,
+            "passed": false
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.5281198603103842e-06,
+            "max_tolerance_ratio": 1264.0574181004536,
+            "passed": false
+          },
+          "axis": {
+            "max_absolute_error": 3.4723880146424126e-08,
+            "max_tolerance_ratio": 17.36075977625109,
+            "passed": false
+          },
+          "far_field": {
+            "max_absolute_error": 5.1275351220275885e-17,
+            "max_tolerance_ratio": 2.5637636159876232e-08,
+            "passed": true
+          }
+        },
+        "Torch_stable_eager_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210852182677937e-05,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210853907943543e-05,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 3.552713678800501e-14,
+            "max_tolerance_ratio": 1.776356073231468e-05,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 1.3552527156068805e-20,
+            "max_tolerance_ratio": 6.776153853315185e-12,
+            "passed": true
+          }
+        },
+        "Torch_stable_vectorized_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210852182677937e-05,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210853907943543e-05,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 3.552713678800501e-14,
+            "max_tolerance_ratio": 1.776356073231468e-05,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 1.3552527156068805e-20,
+            "max_tolerance_ratio": 6.776153853315185e-12,
+            "passed": true
+          }
+        }
+      },
+      "full_output_comparison_seconds": 1.15328583214432
+    },
+    {
+      "repeat": 1,
+      "order": [
+        "SciPy_direct_CPU",
+        "Torch_stable_vectorized_GPU",
+        "Torch_stable_eager_GPU",
+        "Torch_upstream_GPU",
+        "SciPy_NumPy_stable_CPU"
+      ],
+      "measurements": {
+        "SciPy_direct_CPU": {
+          "synchronized_wall_seconds": 102.56448087189347,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null
+        },
+        "Torch_stable_vectorized_GPU": {
+          "synchronized_wall_seconds": 15.557547642849386,
+          "peak_cuda_allocated_bytes": 288253952,
+          "peak_cuda_reserved_bytes": 406847488
+        },
+        "Torch_stable_eager_GPU": {
+          "synchronized_wall_seconds": 32.78198723704554,
+          "peak_cuda_allocated_bytes": 288253952,
+          "peak_cuda_reserved_bytes": 406847488
+        },
+        "Torch_upstream_GPU": {
+          "synchronized_wall_seconds": 175.89550188393332,
+          "peak_cuda_allocated_bytes": 377033216,
+          "peak_cuda_reserved_bytes": 406847488
+        },
+        "SciPy_NumPy_stable_CPU": {
+          "synchronized_wall_seconds": 41.918246214976534,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null
+        }
+      },
+      "comparison_to_stable_CPU": {
+        "SciPy_direct_CPU": {
+          "full_computational_box": {
+            "max_absolute_error": 1.4808509618562774e-07,
+            "max_tolerance_ratio": 74.04210845043593,
+            "passed": false
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 1.0449016336840132e-06,
+            "max_tolerance_ratio": 522.4503648408862,
+            "passed": false
+          },
+          "axis": {
+            "max_absolute_error": 7.882032581414851e-09,
+            "max_tolerance_ratio": 3.9408556421613365,
+            "passed": false
+          },
+          "far_field": {
+            "max_absolute_error": 9.475969339170671e-18,
+            "max_tolerance_ratio": 4.737977599935386e-09,
+            "passed": true
+          }
+        },
+        "Torch_stable_vectorized_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210852182677937e-05,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210853907943543e-05,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 3.552713678800501e-14,
+            "max_tolerance_ratio": 1.776356073231468e-05,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 1.3552527156068805e-20,
+            "max_tolerance_ratio": 6.776153853315185e-12,
+            "passed": true
+          }
+        },
+        "Torch_stable_eager_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210852182677937e-05,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210853907943543e-05,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 3.552713678800501e-14,
+            "max_tolerance_ratio": 1.776356073231468e-05,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 1.3552527156068805e-20,
+            "max_tolerance_ratio": 6.776153853315185e-12,
+            "passed": true
+          }
+        },
+        "Torch_upstream_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.4191773549080543e-07,
+            "max_tolerance_ratio": 120.95498794501184,
+            "passed": false
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.5281198603103842e-06,
+            "max_tolerance_ratio": 1264.0574181004536,
+            "passed": false
+          },
+          "axis": {
+            "max_absolute_error": 3.4723880146424126e-08,
+            "max_tolerance_ratio": 17.36075977625109,
+            "passed": false
+          },
+          "far_field": {
+            "max_absolute_error": 5.1275351220275885e-17,
+            "max_tolerance_ratio": 2.5637636159876232e-08,
+            "passed": true
+          }
+        },
+        "SciPy_NumPy_stable_CPU": {
+          "full_computational_box": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          }
+        }
+      },
+      "full_output_comparison_seconds": 38.18300599581562
+    },
+    {
+      "repeat": 2,
+      "order": [
+        "Torch_upstream_GPU",
+        "Torch_stable_eager_GPU",
+        "Torch_stable_vectorized_GPU",
+        "SciPy_direct_CPU",
+        "SciPy_NumPy_stable_CPU"
+      ],
+      "measurements": {
+        "Torch_upstream_GPU": {
+          "synchronized_wall_seconds": 177.6682345510926,
+          "peak_cuda_allocated_bytes": 377033216,
+          "peak_cuda_reserved_bytes": 406847488
+        },
+        "Torch_stable_eager_GPU": {
+          "synchronized_wall_seconds": 33.124019481940195,
+          "peak_cuda_allocated_bytes": 288253952,
+          "peak_cuda_reserved_bytes": 406847488
+        },
+        "Torch_stable_vectorized_GPU": {
+          "synchronized_wall_seconds": 15.496223771944642,
+          "peak_cuda_allocated_bytes": 288253952,
+          "peak_cuda_reserved_bytes": 406847488
+        },
+        "SciPy_direct_CPU": {
+          "synchronized_wall_seconds": 101.88532789191231,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null
+        },
+        "SciPy_NumPy_stable_CPU": {
+          "synchronized_wall_seconds": 41.985326351132244,
+          "peak_cuda_allocated_bytes": null,
+          "peak_cuda_reserved_bytes": null
+        }
+      },
+      "comparison_to_stable_CPU": {
+        "Torch_upstream_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.4191773549080543e-07,
+            "max_tolerance_ratio": 120.95498794501184,
+            "passed": false
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.5281198603103842e-06,
+            "max_tolerance_ratio": 1264.0574181004536,
+            "passed": false
+          },
+          "axis": {
+            "max_absolute_error": 3.4723880146424126e-08,
+            "max_tolerance_ratio": 17.36075977625109,
+            "passed": false
+          },
+          "far_field": {
+            "max_absolute_error": 5.1275351220275885e-17,
+            "max_tolerance_ratio": 2.5637636159876232e-08,
+            "passed": true
+          }
+        },
+        "Torch_stable_eager_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210852182677937e-05,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210853907943543e-05,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 3.552713678800501e-14,
+            "max_tolerance_ratio": 1.776356073231468e-05,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 1.3552527156068805e-20,
+            "max_tolerance_ratio": 6.776153853315185e-12,
+            "passed": true
+          }
+        },
+        "Torch_stable_vectorized_GPU": {
+          "full_computational_box": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210852182677937e-05,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 2.842170943040401e-14,
+            "max_tolerance_ratio": 1.4210853907943543e-05,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 3.552713678800501e-14,
+            "max_tolerance_ratio": 1.776356073231468e-05,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 1.3552527156068805e-20,
+            "max_tolerance_ratio": 6.776153853315185e-12,
+            "passed": true
+          }
+        },
+        "SciPy_direct_CPU": {
+          "full_computational_box": {
+            "max_absolute_error": 1.4808509618562774e-07,
+            "max_tolerance_ratio": 74.04210845043593,
+            "passed": false
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 1.0449016336840132e-06,
+            "max_tolerance_ratio": 522.4503648408862,
+            "passed": false
+          },
+          "axis": {
+            "max_absolute_error": 7.882032581414851e-09,
+            "max_tolerance_ratio": 3.9408556421613365,
+            "passed": false
+          },
+          "far_field": {
+            "max_absolute_error": 9.475969339170671e-18,
+            "max_tolerance_ratio": 4.737977599935386e-09,
+            "passed": true
+          }
+        },
+        "SciPy_NumPy_stable_CPU": {
+          "full_computational_box": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "physical_box_radius3": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "axis": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          },
+          "far_field": {
+            "max_absolute_error": 0.0,
+            "max_tolerance_ratio": 0.0,
+            "passed": true
+          }
+        }
+      },
+      "full_output_comparison_seconds": 27.177707922877744
+    }
+  ],
+  "sampled_residual_statistics": {
+    "SciPy_direct_CPU": {
+      "full_computational_box": {
+        "eq1": {
+          "sample_RMSE": 4.1690951560843544e-05,
+          "sample_max_abs": 0.0035457629810391467
+        },
+        "eq2": {
+          "sample_RMSE": 1.7131316915722762e-05,
+          "sample_max_abs": 0.0009448146826742665
+        },
+        "eq3": {
+          "sample_RMSE": 3.7979302685449984e-05,
+          "sample_max_abs": 0.0013923011690957707
+        }
+      },
+      "physical_box_radius3": {
+        "eq1": {
+          "sample_RMSE": 1.7272893740290017e-05,
+          "sample_max_abs": 5.661161132941572e-05
+        },
+        "eq2": {
+          "sample_RMSE": 4.340937870764306e-06,
+          "sample_max_abs": 1.2371564739710461e-05
+        },
+        "eq3": {
+          "sample_RMSE": 7.819600508785052e-06,
+          "sample_max_abs": 2.5414359409033186e-05
+        }
+      },
+      "axis": {
+        "eq1": {
+          "sample_RMSE": 9.03749471546864e-05,
+          "sample_max_abs": 0.0013899863183226557
+        },
+        "eq2": {
+          "sample_RMSE": 4.798819428908085e-05,
+          "sample_max_abs": 0.00037048806871914364
+        },
+        "eq3": {
+          "sample_RMSE": 8.56152626271595e-05,
+          "sample_max_abs": 0.0014151742046372674
+        }
+      },
+      "far_field": {
+        "eq1": {
+          "sample_RMSE": 6.219186970651485e-06,
+          "sample_max_abs": 2.2453610269197484e-05
+        },
+        "eq2": {
+          "sample_RMSE": 3.0979479323266204e-06,
+          "sample_max_abs": 1.3644729241694235e-05
+        },
+        "eq3": {
+          "sample_RMSE": 2.0732029425056132e-06,
+          "sample_max_abs": 8.259470096656457e-06
+        }
+      }
+    },
+    "SciPy_NumPy_stable_CPU": {
+      "full_computational_box": {
+        "eq1": {
+          "sample_RMSE": 4.169095156084115e-05,
+          "sample_max_abs": 0.0035457629810178304
+        },
+        "eq2": {
+          "sample_RMSE": 1.7131316915731074e-05,
+          "sample_max_abs": 0.0009448146826755988
+        },
+        "eq3": {
+          "sample_RMSE": 3.797930267781735e-05,
+          "sample_max_abs": 0.001392301250589732
+        }
+      },
+      "physical_box_radius3": {
+        "eq1": {
+          "sample_RMSE": 1.727289374337001e-05,
+          "sample_max_abs": 5.661160038705759e-05
+        },
+        "eq2": {
+          "sample_RMSE": 4.340937870494342e-06,
+          "sample_max_abs": 1.2371566759317165e-05
+        },
+        "eq3": {
+          "sample_RMSE": 7.819599901726542e-06,
+          "sample_max_abs": 2.5414361056012017e-05
+        }
+      },
+      "axis": {
+        "eq1": {
+          "sample_RMSE": 9.03749471545262e-05,
+          "sample_max_abs": 0.0013899863183155503
+        },
+        "eq2": {
+          "sample_RMSE": 4.7988194289076074e-05,
+          "sample_max_abs": 0.0003704880687191575
+        },
+        "eq3": {
+          "sample_RMSE": 8.561526218628062e-05,
+          "sample_max_abs": 0.0014151740756577454
+        }
+      },
+      "far_field": {
+        "eq1": {
+          "sample_RMSE": 6.219186970651486e-06,
+          "sample_max_abs": 2.2453610269197505e-05
+        },
+        "eq2": {
+          "sample_RMSE": 3.0979479323266204e-06,
+          "sample_max_abs": 1.3644729241694239e-05
+        },
+        "eq3": {
+          "sample_RMSE": 2.073202942505613e-06,
+          "sample_max_abs": 8.259470096656457e-06
+        }
+      }
+    },
+    "Torch_upstream_GPU": {
+      "full_computational_box": {
+        "eq1": {
+          "sample_RMSE": 4.1690951561216225e-05,
+          "sample_max_abs": 0.003545762981140399
+        },
+        "eq2": {
+          "sample_RMSE": 1.7131316915804566e-05,
+          "sample_max_abs": 0.0009448146826898096
+        },
+        "eq3": {
+          "sample_RMSE": 3.797930310053477e-05,
+          "sample_max_abs": 0.001392301382734754
+        }
+      },
+      "physical_box_radius3": {
+        "eq1": {
+          "sample_RMSE": 1.7272893862876545e-05,
+          "sample_max_abs": 5.661156484038088e-05
+        },
+        "eq2": {
+          "sample_RMSE": 4.34093787278334e-06,
+          "sample_max_abs": 1.237156062178224e-05
+        },
+        "eq3": {
+          "sample_RMSE": 7.819601953511421e-06,
+          "sample_max_abs": 2.541427333785113e-05
+        }
+      },
+      "axis": {
+        "eq1": {
+          "sample_RMSE": 9.037494715407552e-05,
+          "sample_max_abs": 0.0013899863184292371
+        },
+        "eq2": {
+          "sample_RMSE": 4.7988194289098626e-05,
+          "sample_max_abs": 0.00037048806871844975
+        },
+        "eq3": {
+          "sample_RMSE": 8.561525892560163e-05,
+          "sample_max_abs": 0.0014151743631641237
+        }
+      },
+      "far_field": {
+        "eq1": {
+          "sample_RMSE": 6.219186970651486e-06,
+          "sample_max_abs": 2.2453610269197613e-05
+        },
+        "eq2": {
+          "sample_RMSE": 3.0979479323266204e-06,
+          "sample_max_abs": 1.3644729241694274e-05
+        },
+        "eq3": {
+          "sample_RMSE": 2.073202942505611e-06,
+          "sample_max_abs": 8.259470096656457e-06
+        }
+      }
+    },
+    "Torch_stable_eager_GPU": {
+      "full_computational_box": {
+        "eq1": {
+          "sample_RMSE": 4.1690951560846146e-05,
+          "sample_max_abs": 0.003545762981016054
+        },
+        "eq2": {
+          "sample_RMSE": 1.713131691573091e-05,
+          "sample_max_abs": 0.0009448146826751547
+        },
+        "eq3": {
+          "sample_RMSE": 3.797930267781732e-05,
+          "sample_max_abs": 0.0013923012505898428
+        }
+      },
+      "physical_box_radius3": {
+        "eq1": {
+          "sample_RMSE": 1.7272893743367044e-05,
+          "sample_max_abs": 5.661160038705759e-05
+        },
+        "eq2": {
+          "sample_RMSE": 4.340937870494344e-06,
+          "sample_max_abs": 1.2371566759261654e-05
+        },
+        "eq3": {
+          "sample_RMSE": 7.819599901725986e-06,
+          "sample_max_abs": 2.541436105598803e-05
+        }
+      },
+      "axis": {
+        "eq1": {
+          "sample_RMSE": 9.037494715451314e-05,
+          "sample_max_abs": 0.001389986318319103
+        },
+        "eq2": {
+          "sample_RMSE": 4.798819428907098e-05,
+          "sample_max_abs": 0.0003704880687190881
+        },
+        "eq3": {
+          "sample_RMSE": 8.561526218628404e-05,
+          "sample_max_abs": 0.0014151740756577454
+        }
+      },
+      "far_field": {
+        "eq1": {
+          "sample_RMSE": 6.219186970651486e-06,
+          "sample_max_abs": 2.2453610269197505e-05
+        },
+        "eq2": {
+          "sample_RMSE": 3.0979479323266204e-06,
+          "sample_max_abs": 1.3644729241694235e-05
+        },
+        "eq3": {
+          "sample_RMSE": 2.073202942505613e-06,
+          "sample_max_abs": 8.259470096656457e-06
+        }
+      }
+    },
+    "Torch_stable_vectorized_GPU": {
+      "full_computational_box": {
+        "eq1": {
+          "sample_RMSE": 4.1690951560846146e-05,
+          "sample_max_abs": 0.003545762981016054
+        },
+        "eq2": {
+          "sample_RMSE": 1.713131691573091e-05,
+          "sample_max_abs": 0.0009448146826751547
+        },
+        "eq3": {
+          "sample_RMSE": 3.797930267781732e-05,
+          "sample_max_abs": 0.0013923012505898428
+        }
+      },
+      "physical_box_radius3": {
+        "eq1": {
+          "sample_RMSE": 1.7272893743367044e-05,
+          "sample_max_abs": 5.661160038705759e-05
+        },
+        "eq2": {
+          "sample_RMSE": 4.340937870494344e-06,
+          "sample_max_abs": 1.2371566759261654e-05
+        },
+        "eq3": {
+          "sample_RMSE": 7.819599901725986e-06,
+          "sample_max_abs": 2.541436105598803e-05
+        }
+      },
+      "axis": {
+        "eq1": {
+          "sample_RMSE": 9.037494715451314e-05,
+          "sample_max_abs": 0.001389986318319103
+        },
+        "eq2": {
+          "sample_RMSE": 4.798819428907098e-05,
+          "sample_max_abs": 0.0003704880687190881
+        },
+        "eq3": {
+          "sample_RMSE": 8.561526218628404e-05,
+          "sample_max_abs": 0.0014151740756577454
+        }
+      },
+      "far_field": {
+        "eq1": {
+          "sample_RMSE": 6.219186970651486e-06,
+          "sample_max_abs": 2.2453610269197505e-05
+        },
+        "eq2": {
+          "sample_RMSE": 3.0979479323266204e-06,
+          "sample_max_abs": 1.3644729241694235e-05
+        },
+        "eq3": {
+          "sample_RMSE": 2.073202942505613e-06,
+          "sample_max_abs": 8.259470096656457e-06
+        }
+      }
+    }
+  },
+  "median_seconds": {
+    "SciPy_direct_CPU": 102.4085213819053,
+    "SciPy_NumPy_stable_CPU": 41.918246214976534,
+    "Torch_upstream_GPU": 175.89550188393332,
+    "Torch_stable_eager_GPU": 32.883838559966534,
+    "Torch_stable_vectorized_GPU": 15.557547642849386
+  },
+  "passed_declared_contract": {
+    "SciPy_direct_CPU": false,
+    "SciPy_NumPy_stable_CPU": true,
+    "Torch_upstream_GPU": false,
+    "Torch_stable_eager_GPU": true,
+    "Torch_stable_vectorized_GPU": true
+  },
+  "paired_speedup_over_stable_vectorized_median": {
+    "SciPy_direct_CPU": null,
+    "SciPy_NumPy_stable_CPU": 2.694399347331785,
+    "Torch_upstream_GPU": null,
+    "Torch_stable_eager_GPU": 2.1119852564251596,
+    "Torch_stable_vectorized_GPU": 1.0
+  },
+  "full_repeated_AB_workflow_seconds": 1179.8096938859671,
+  "telemetry_after": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=index,uuid,clocks.sm,clocks.mem,temperature.gpu,power.draw,utilization.gpu,memory.used",
+      "--format=csv"
+    ],
+    "returncode": 0,
+    "output": "index, uuid, clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], utilization.gpu [%], memory.used [MiB]\n0, GPU-83b4118c-a437-c4e5-e929-805a26db958f, 1785 MHz, 2619 MHz, 38, 92.87 W, 0 %, 1007 MiB\n"
+  },
+  "completed": true,
+  "science_scope": "frozen profile sampled evaluation only; no training, proof replay, continuous-domain verification or convergence claim"
+}

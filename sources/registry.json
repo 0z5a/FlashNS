@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "retrieved_date": "2026-09-08",
+  "artifacts": {
+    "boussinesq_paper": {
+      "path": "sources/boussinesq.pdf",
+      "url": "https://cims.nyu.edu/~tristanb/boussinesq.pdf",
+      "bytes": 846615,
+      "sha256": "895a628d1783bcb039374686f50b895b5f450f53b8ef8aa173523487a7a4a21b",
+      "license_status": "unverified",
+      "downloaded_utc": "2026-09-08T10:13:08.581035+00:00"
+    },
+    "euler_paper": {
+      "path": "sources/euler.pdf",
+      "url": "https://anima-ai.org/wp-content/uploads/2026/09/Euler.pdf",
+      "bytes": 3556634,
+      "sha256": "f0164c40fad09a646412acec95f7908ea6b2fd61d16b809954a4048665fb5f78",
+      "license_status": "unverified",
+      "downloaded_utc": "2026-09-08T10:13:08.583285+00:00"
+    },
+    "euler_code": {
+      "path": "sources/euler_code.zip",
+      "url": "https://anima-ai.org/wp-content/uploads/2026/09/euler_code.zip",
+      "bytes": 284850126,
+      "sha256": "a238bc3662ec86ee61f7b904d365255d061b07dd9f1aa12a2a728af5959265ad",
+      "license_status": "unverified",
+      "downloaded_utc": "2026-09-08T10:13:08.843592+00:00"
+    },
+    "euler_checkSplineAccuracy": {
+      "path": "sources/vendor/eulerRepo/checkSplineAccuracy.py",
+      "archive": "euler_code",
+      "member": "eulerRepo/checkSplineAccuracy.py",
+      "bytes": 7057,
+      "sha256": "370e7760229a4df2c1833f9457e828f0faf89c0537d2233b6ea9110dc9913781",
+      "license_status": "unverified"
+    },
+    "euler_splineEvaluator": {
+      "path": "sources/vendor/eulerRepo/splineEvaluator.py",
+      "archive": "euler_code",
+      "member": "eulerRepo/splineEvaluator.py",
+      "bytes": 5559,
+      "sha256": "68284fe92c9db2e9269adfddb2a9972f3d7ddc8a8aecf0933dd458d5c6905452",
+      "license_status": "unverified"
+    },
+    "euler_Omega": {
+      "path": "sources/vendor/eulerRepo/splines/Omega.json",
+      "archive": "euler_code",
+      "member": "eulerRepo/splines/Omega.json",
+      "bytes": 122412654,
+      "sha256": "e556a9432e07bd8ec1c3b106ab60a1ee2fcbd44c1ab629bccb237c0f34e3a041",
+      "license_status": "unverified"
+    },
+    "euler_Psi": {
+      "path": "sources/vendor/eulerRepo/splines/Psi.json",
+      "archive": "euler_code",
+      "member": "eulerRepo/splines/Psi.json",
+      "bytes": 465849710,
+      "sha256": "72a3147ee028ce91d544692b37da55e6ecfc7de0f6148437e8f9be515d06b1b7",
+      "license_status": "unverified"
+    },
+    "euler_U": {
+      "path": "sources/vendor/eulerRepo/splines/U.json",
+      "archive": "euler_code",
+      "member": "eulerRepo/splines/U.json",
+      "bytes": 121229936,
+      "sha256": "6f0f0e31be8efb509d700bff20288bbdcfa914483191c44ca72b33bc1499b86c",
+      "license_status": "unverified"
+    },
+    "euler_meta": {
+      "path": "sources/vendor/eulerRepo/splines/meta.json",
+      "archive": "euler_code",
+      "member": "eulerRepo/splines/meta.json",
+      "bytes": 66,
+      "sha256": "44f27313fb368f741304d07bfda29aa37a134357dd7dcdf5cd34ebf062f8194a",
+      "license_status": "unverified"
+    }
+  },
+  "upstream_discovery": {
+    "euler_archive_link": "https://anima-ai.org/2026/09/07/stable-singularity-of-the-euler-equations-on-r3-without-forcing/",
+    "code_repository": null,
+    "code_commit": null,
+    "archive_sha_is_version": true
+  },
+  "boussinesq_scope": {
+    "authors": [
+      "Levent Alpoge",
+      "Tristan Buckmaster"
+    ],
+    "section": "3.1",
+    "lemma": "3.1",
+    "equations": [
+      "3.1",
+      "3.2"
+    ],
+    "pdf_page": 8,
+    "code_repository": null,
+    "proof_replay": "not_run"
+  },
+  "euler_archive_scope": {
+    "contains": [
+      "three frozen FP64 degree-9 tensor product splines",
+      "PyTorch spline evaluator",
+      "sampled CUDA PDE residual checker"
+    ],
+    "not_present_in_archive": [
+      "PINN training scripts",
+      "PINN weights",
+      "Julia Arb verification code",
+      "interval certificates",
+      "Lean proof"
+    ],
+    "license_file_present": false
+  }
+}

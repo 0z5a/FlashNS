@@ -1,0 +1,292 @@
+{
+  "passed": true,
+  "completed": true,
+  "target": "CPU and HOST C++; CUDA execution pending",
+  "python": "3.12.13",
+  "platform": "macOS-26.6.1-arm64-arm-64bit",
+  "dependencies": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0",
+    "torch": "2.14.0",
+    "pytest": "9.1.1"
+  },
+  "source_hashes": {
+    "experiments/cuda_jet/input/jet_reference.py": "5c8972f4d75be95e55ef7c2fabedd6714156f564af7a8527625843bc8a5c0b90",
+    "experiments/cuda_jet_h100/common.py": "543e8e6a35fc77bca6c7e6743bf3a58b5cdd21c3b50d7b0ede774efbb2740ea6",
+    "experiments/cuda_jet_h100/gpu.py": "25cc2914911c2e3012a3321b0bfe109abda06eae661339fd7e99ace9a4f12b46",
+    "experiments/cuda_jet_h100/scientific_backends.py": "bd439b4de736cdc6f0734061f21ae362b5b2f610e093240d27cdba5bca16447a",
+    "experiments/cuda_jet_h100/stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+    "experiments/cuda_jet_hopper/hopper.py": "ca5a0b6fa7e8e4d00018d3f0d0103434fc45d2cbebe1d4a41c2335c8dda2d144",
+    "experiments/pinn_solver/backends.py": "f2fc752cf08289f63b045eec1d254f0b662818ced84c8459a5bdba2e4c1f1de2",
+    "experiments/pinn_solver/problem.py": "ddddf911d4c0028d828339ff578b96c24ee919bb2d5768f3cc4d221cd20e462a",
+    "experiments/pinn_v8/benchmark.py": "060388b4feac312c475ca9e87255bace0b44d7728f674a1675271b351f000c75",
+    "experiments/pinn_v8/build.py": "ebe4721c76b12f68fe8283882a2f9ddd79f353c2a2a14a61749a9888c738ab35",
+    "experiments/pinn_v8/check_sanitizers.py": "2a9c166636a061b263929dde0ec6f4224d7f4a9043f1b8f7687ca4ea4dc32a98",
+    "experiments/pinn_v8/freeze_selection.py": "8755303a7229066e9752a2f5dcb69470170d54f572c9e5acde0c65a257e54638",
+    "experiments/pinn_v8/generate_residual.py": "42ef9cde9c2b39af205ca56a2847acc67169a7ecb02a9729880a7b4c855d1886",
+    "experiments/pinn_v8/native.cu": "e9dceac25d41a48f96144dc2d4810aa1a52d64a3cbb0d088a14aa8aa5a46478b",
+    "experiments/pinn_v8/native.py": "8e357cdabffbc594620df616d6415c5ee9d17707b98f197fa3372ed4a9bf7ab6",
+    "experiments/pinn_v8/preflight.py": "91747ef18116e91414949fcf25f8f72429d380d1b986d0206469b46fdc9a5bcb",
+    "experiments/pinn_v8/residual_generated.cuh": "d515c2c3ceebf301770cebe588ac06cdde8fbe24d5b8910ffe1c8566705bc7f9",
+    "experiments/pinn_v8/run_suite.py": "67414fb44182ce0b5ea92868f2a2793c407c446b8c29b0610975c50da3298ec6",
+    "experiments/pinn_v8/runtime.py": "2eb611cb8cb745c07c8a8099bcc29fa73022d34e7023c6ab0ddfce337d950fa9",
+    "experiments/pinn_v8/solve.py": "ae2f583a33d84f7f6385da3f8e5599bbd68a9261eff396ea095ac55488da0f89",
+    "experiments/pinn_v8/validate_host.py": "363b7118baec9ba209618c3027d4ce92e53c04895dc5267769bdb04965966d94",
+    "experiments/pinn_v8/validate_local.py": "74d25760c6d9079dc02c6ac56d14fb25f38af4565c1f2892072d0839b01b3358",
+    "src/flashns/distributed_contract.py": "4545c1f5084650c5e24e4e9217c6b2af6239d5c599b95cca6153d547ea04e751",
+    "src/flashns/jet_packed.py": "0305b8982eeef0bb0780e07bcdfbb324660d429ca027549d6cee9ec1c6e20ff3",
+    "src/flashns/jet_spec.py": "092f07b5d00b41cd20c03f2ad0271c0271b1e30009d0ee279598a994b22b6a85",
+    "src/flashns/jet_stable.py": "76441b9e8ed219577294197d9f3a91438c8d59df56e3df1d69daf32701772407",
+    "src/flashns/ns_seed.py": "4bc0e53a4610dc96109454ecaa3ee27c4ef6ed1fda567fb050307cdd7f08c288",
+    "src/flashns/pinn_packed.py": "3edd22a4de9f6bfbcac24b8422de827e7bda00c58dc2926c5e8ed73ce0538b9e"
+  },
+  "checks": [
+    {
+      "name": "imported_reference_integrity",
+      "passed": true,
+      "wall_seconds": 0.002465666038915515,
+      "detail": {
+        "verified_payload_files": 18
+      }
+    },
+    {
+      "name": "original_reference_suite",
+      "passed": true,
+      "wall_seconds": 2.248492042068392,
+      "detail": {
+        "command": [
+          "/Users/0z5a/Documents/infra/flashns/.venv/bin/python",
+          "/Users/0z5a/Documents/infra/flashns/sources/flashns_v8_reference/tests/verify_math.py",
+          "--handoff-root",
+          "/Users/0z5a/Documents/infra",
+          "--output",
+          "/Users/0z5a/Documents/infra/flashns/experiments/pinn_v8/artifacts/local-ready-20260909/reference.json"
+        ],
+        "log": "reference.log"
+      }
+    },
+    {
+      "name": "shared_host_cpp_math",
+      "passed": true,
+      "wall_seconds": 0.46552483388222754,
+      "detail": {
+        "passed": true,
+        "target": "HOST C++ only; CUDA build/stream/barrier validation pending",
+        "platform": "macOS-26.6.1-arm64-arm-64bit",
+        "cases": 27,
+        "max_error_over_tolerance": 9.773985753882853e-06,
+        "header_sha256": "d515c2c3ceebf301770cebe588ac06cdde8fbe24d5b8910ffe1c8566705bc7f9",
+        "compiler_command": [
+          "/usr/bin/g++",
+          "-std=c++17",
+          "-O2",
+          "-fno-fast-math",
+          "-ffp-contract=off",
+          "-shared",
+          "-fPIC",
+          "/var/folders/12/3pb2615n5wddcr6spjcz8_pw0000gn/T/flashns-v8-host-2ezm8pbp/check.cpp",
+          "-o",
+          "/var/folders/12/3pb2615n5wddcr6spjcz8_pw0000gn/T/flashns-v8-host-2ezm8pbp/host_math.so"
+        ],
+        "compiler_output": ""
+      }
+    },
+    {
+      "name": "project_pytest",
+      "passed": true,
+      "wall_seconds": 2.9309604591690004,
+      "detail": {
+        "command": [
+          "/Users/0z5a/Documents/infra/flashns/.venv/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--junitxml",
+          "/Users/0z5a/Documents/infra/flashns/experiments/pinn_v8/artifacts/local-ready-20260909/pytest.xml"
+        ],
+        "log": "pytest.log"
+      }
+    },
+    {
+      "name": "full_2560_point_loss_gradient",
+      "passed": true,
+      "wall_seconds": 0.75622683390975,
+      "detail": {
+        "problem": {
+          "workload_source_id": "pinn_kovasznay_solver",
+          "relationship_to_openai_ns_formal": "independent manufactured steady NS boundary-value problem",
+          "domain": [
+            [
+              -0.5,
+              1.0
+            ],
+            [
+              -0.5,
+              1.5
+            ]
+          ],
+          "viscosity": 0.07,
+          "lambda": -2.3702299358793253,
+          "network": [
+            2,
+            64,
+            64,
+            3
+          ],
+          "hidden_activation": "stable tanh",
+          "output_activation": "linear",
+          "coordinates": "physical x,y, no nonlinear coordinate transform",
+          "dtype": "float64",
+          "interior_count": 2048,
+          "boundary_count": 512,
+          "pressure_outflow_count": 128,
+          "validation_count": 8192,
+          "validation_boundary_count": 1028,
+          "data_seed": 642701,
+          "training_points_sha256": "5b97f1f2212505b3ee6e6e05fe9ce157d5e971d51468c0aab2d9c588e14e24da",
+          "pde_weights_sha256": "d824609996144956ff7599343a6d9f93cb8ffec6aa3ca23951fd56703d72ed62",
+          "boundary_weights_sha256": "ecabbebfe40613f3ccd73050d48b0e1302f455ca41eacb9fd2a72164ebe51d5b",
+          "validation_points_sha256": "adccec9abab9b4a93f6023caf9725adc8651d260987b0e0074ece77bd248874b",
+          "validation_boundary_sha256": "253bd32f74fc69e41a2f1ef9478bf05b79c1877f642e7b16fa2db8edc884bcd4",
+          "loss": "0.5 mean_interior(ru^2+rv^2+div^2+0.2*(|grad ru|^2+|grad rv|^2+|grad div|^2)) + 0.5*10*(mean_boundary(|uv-uv_exact|^2)+mean_outflow((p-p_exact)^2))",
+          "boundary_condition": "Dirichlet u,v on every edge; exact p at x=1 fixes pressure gauge"
+        },
+        "parameters": 4547,
+        "checks": [
+          {
+            "layout": "dense",
+            "seed": "autograd",
+            "loss_error_ratio": 0.0,
+            "all_parameters_error_ratio": 0.00021922974910760717,
+            "metadata": {
+              "layout": "dense",
+              "seed": "autograd",
+              "full_order": 3,
+              "dimension": 2,
+              "interior_count": 2048,
+              "boundary_count": 512,
+              "segment_rows": [
+                25600
+              ],
+              "packed_rows_total": 25600,
+              "precision": "FP64 stable_aux_a1",
+              "weights": "already globally normalized",
+              "supports_hvp_or_double_backward": false
+            }
+          },
+          {
+            "layout": "dense",
+            "seed": "explicit",
+            "loss_error_ratio": 0.0,
+            "all_parameters_error_ratio": 0.00021922974910760717,
+            "metadata": {
+              "layout": "dense",
+              "seed": "explicit",
+              "full_order": 3,
+              "dimension": 2,
+              "interior_count": 2048,
+              "boundary_count": 512,
+              "segment_rows": [
+                25600
+              ],
+              "packed_rows_total": 25600,
+              "precision": "FP64 stable_aux_a1",
+              "weights": "already globally normalized",
+              "supports_hvp_or_double_backward": false
+            }
+          },
+          {
+            "layout": "split",
+            "seed": "autograd",
+            "loss_error_ratio": 0.0,
+            "all_parameters_error_ratio": 0.0001795785090316812,
+            "metadata": {
+              "layout": "split",
+              "seed": "autograd",
+              "full_order": 3,
+              "dimension": 2,
+              "interior_count": 2048,
+              "boundary_count": 512,
+              "segment_rows": [
+                20480,
+                512
+              ],
+              "packed_rows_total": 20992,
+              "precision": "FP64 stable_aux_a1",
+              "weights": "already globally normalized",
+              "supports_hvp_or_double_backward": false
+            }
+          },
+          {
+            "layout": "split",
+            "seed": "explicit",
+            "loss_error_ratio": 0.0,
+            "all_parameters_error_ratio": 0.0001795785090316812,
+            "metadata": {
+              "layout": "split",
+              "seed": "explicit",
+              "full_order": 3,
+              "dimension": 2,
+              "interior_count": 2048,
+              "boundary_count": 512,
+              "segment_rows": [
+                20480,
+                512
+              ],
+              "packed_rows_total": 20992,
+              "precision": "FP64 stable_aux_a1",
+              "weights": "already globally normalized",
+              "supports_hvp_or_double_backward": false
+            }
+          },
+          {
+            "layout": "compact",
+            "seed": "autograd",
+            "loss_error_ratio": 0.0,
+            "all_parameters_error_ratio": 0.00021922974910760717,
+            "metadata": {
+              "layout": "compact",
+              "seed": "autograd",
+              "full_order": 3,
+              "dimension": 2,
+              "interior_count": 2048,
+              "boundary_count": 512,
+              "segment_rows": [
+                20992
+              ],
+              "packed_rows_total": 20992,
+              "precision": "FP64 stable_aux_a1",
+              "weights": "already globally normalized",
+              "supports_hvp_or_double_backward": false
+            }
+          },
+          {
+            "layout": "compact",
+            "seed": "explicit",
+            "loss_error_ratio": 0.0,
+            "all_parameters_error_ratio": 0.00021922974910760717,
+            "metadata": {
+              "layout": "compact",
+              "seed": "explicit",
+              "full_order": 3,
+              "dimension": 2,
+              "interior_count": 2048,
+              "boundary_count": 512,
+              "segment_rows": [
+                20992
+              ],
+              "packed_rows_total": 20992,
+              "precision": "FP64 stable_aux_a1",
+              "weights": "already globally normalized",
+              "supports_hvp_or_double_backward": false
+            }
+          }
+        ],
+        "reference": "independent scalar nested AD",
+        "is_gpu_performance_measurement": false
+      }
+    }
+  ]
+}

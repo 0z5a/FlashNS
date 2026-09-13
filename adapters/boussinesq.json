@@ -1,0 +1,38 @@
+{
+  "source": {
+    "paper_url": "https://cims.nyu.edu/~tristanb/boussinesq.pdf",
+    "paper_sha256": "895a628d1783bcb039374686f50b895b5f450f53b8ef8aa173523487a7a4a21b",
+    "section": "3.1, Lemma 3.1, equations (3.1)-(3.2), PDF page 8",
+    "code_repository": null,
+    "code_commit": null,
+    "license_status": "unverified; source PDFs remain local cache"
+  },
+  "problem": {
+    "equation": "inviscid 2D Boussinesq in scalar/vorticity form",
+    "domain": "local region in R^2 where older state is exactly affine",
+    "forcing": "wave scalar and vorticity residual increments vanish; background residuals may be nonzero",
+    "viscosity_and_dissipation": "none",
+    "boundary_and_symmetry": "no global boundary condition; odd periodic phase profile F, even mean-zero primitive P",
+    "background": "u_old=D(t)x with trace(D)=0; theta_old=G(t).x; J(a,b)=(-b,a)"
+  },
+  "representation": {
+    "type": "explicit_wave",
+    "normalization": "dimensionless, signed Theta and Omega, no amplitude rescaling",
+    "precision": "FP64 production; 80-decimal-digit independent mpmath reference; exact symbolic SymPy expressions",
+    "implemented_profiles": "sine and finite sine series; generic primitive in symbolic checker",
+    "not_implemented": "paper's affine-near-zero periodic profile and full transported compact-layer hierarchy"
+  },
+  "acceptance": {
+    "predicate_and_tolerances": "cases/affine.json",
+    "numerical_domain": "exactly the stored times and listed points; no continuous enclosure",
+    "trusted_checker": "none for global theorem; independent numerical and symbolic regression checks only",
+    "reference_integration": "RK4 at 80 decimal digits; 64/128 substeps per stored time interval; refinement difference is not a rigorous truncation bound",
+    "FP64_envelope": "1e-100 <= |zeta| <= 1e100; positive finite lambda; estimated harmonic phase error <= 1e-6 rad; underflow, overflow and excessive self-advection cancellation rejected"
+  },
+  "status": {
+    "reproduction": "local CPU checks implemented; see timestamped artifacts",
+    "gpu_benchmark": "not_run",
+    "proof_replay": "not_run",
+    "global_blowup": "not_attempted"
+  }
+}

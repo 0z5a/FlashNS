@@ -1,0 +1,180 @@
+{
+  "timestamp_utc": "2026-09-09T03:28:03.573807+00:00",
+  "tested_build": {
+    "timestamp_utc": "2026-09-09T03:26:39.275247+00:00",
+    "cutlass_commit": "cb4247394dd82148787aed73e5dc7cef33cbf862",
+    "capability": [
+      9,
+      0
+    ],
+    "fast_math": false,
+    "libraries": {
+      "stable": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/stable_kernels.cu",
+          "-o",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/libstable.so"
+        ],
+        "seconds": 1.2072619009995833,
+        "returncode": 0,
+        "path": "libstable.so",
+        "sha256": "38643c4fb0294c4413b41c3d2b9a1bb66f28cb7c27892fb97c012a1ecffe2be5"
+      },
+      "dgrad_n64": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "-I/root/flashns-h100-20260909/third_party/cutlass/include",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/stable_dgrad.cu",
+          "-o",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/libdgrad_n64.so"
+        ],
+        "seconds": 8.58454268600326,
+        "returncode": 0,
+        "path": "libdgrad_n64.so",
+        "sha256": "1dd0c74715f17326f9ac68a943d849f8eceaa717d0d6d107e335e2363af20732"
+      },
+      "dgrad_n32": {
+        "command": [
+          "nvcc",
+          "-O3",
+          "-std=c++17",
+          "-arch=sm_90",
+          "--expt-relaxed-constexpr",
+          "-shared",
+          "-Xcompiler=-fPIC",
+          "-lineinfo",
+          "--ptxas-options=-v",
+          "-I/root/flashns-h100-20260909/third_party/cutlass/include",
+          "-DFLASHNS_TILE_N=32",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/stable_dgrad.cu",
+          "-o",
+          "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/libdgrad_n32.so"
+        ],
+        "seconds": 9.243504532030784,
+        "returncode": 0,
+        "path": "libdgrad_n32.so",
+        "sha256": "902350ab6ed9404defc69b09c59089c1987817130fee75a4eb404f3f2b576bf2"
+      }
+    },
+    "source_hashes": {
+      "build.py": "aa763f54401a0b29feda08df51778ae1b68c38048d39e1658c8c9c4d82867a9f",
+      "generate_stable_header.py": "d51d85f9f6879f0a2a3a456b7fceae6b8639fdf467dcac1f2b2bae98132a7903",
+      "stable_jet.cuh": "e477a06378d9e9b3cbbf51f31622a9c5c2471cef3d36655cfde38ffb560dd123",
+      "stable_kernels.cu": "442a6faf44a5a0ac113e599ce3c4ee1cbfda7d2f728f87b94ccd8b6a91bac575",
+      "stable_dgrad.cu": "09626e30d3d90ea2ac18217fd5eeddae76ff12cefab9c0c36028b445ef0c3b80"
+    }
+  },
+  "tools": {
+    "memcheck": {
+      "command": [
+        "compute-sanitizer",
+        "--tool",
+        "memcheck",
+        "--error-exitcode",
+        "99",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/sanitizer_smoke",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts",
+        "0"
+      ],
+      "returncode": 0,
+      "seconds": 1.1404385970090516,
+      "log": "memcheck.log"
+    },
+    "racecheck": {
+      "command": [
+        "compute-sanitizer",
+        "--tool",
+        "racecheck",
+        "--error-exitcode",
+        "99",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/sanitizer_smoke",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts",
+        "0"
+      ],
+      "returncode": 0,
+      "seconds": 9.935147765965667,
+      "log": "racecheck.log"
+    },
+    "initcheck": {
+      "command": [
+        "compute-sanitizer",
+        "--tool",
+        "initcheck",
+        "--error-exitcode",
+        "99",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/sanitizer_smoke",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts",
+        "0"
+      ],
+      "returncode": 0,
+      "seconds": 0.8315247959690168,
+      "log": "initcheck.log"
+    },
+    "synccheck": {
+      "command": [
+        "compute-sanitizer",
+        "--tool",
+        "synccheck",
+        "--error-exitcode",
+        "99",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/sanitizer_smoke",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts",
+        "0"
+      ],
+      "returncode": 0,
+      "seconds": 0.8012547209509648,
+      "log": "synccheck.log"
+    }
+  },
+  "build": {
+    "command": [
+      "nvcc",
+      "-O3",
+      "-std=c++17",
+      "-arch=sm_90",
+      "-lineinfo",
+      "/root/flashns-h100-20260909/experiments/cuda_jet_h100/sanitizer_smoke.cu",
+      "-ldl",
+      "-o",
+      "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/sanitizer_smoke"
+    ],
+    "returncode": 0,
+    "seconds": 2.1797898309887387,
+    "log": "smoke_build.log"
+  },
+  "source_hashes": {
+    "check_sanitizers.py": "47be8b9283b8ea5d4dec4c746445fd5f8666996f23002255146a6b511bf583ed",
+    "sanitizer_smoke.cu": "fc7530461484b4eba5d09c7036f0a642ac346624cacce36983ac925a8778e876",
+    "sanitizer_smoke": "af7bea03586c8f850782627584aea9eb46156f8f5ec9db4ff34b5833cb305179"
+  },
+  "standalone_by_gpu": {
+    "0": {
+      "command": [
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts/sanitizer_smoke",
+        "/root/flashns-h100-20260909/experiments/cuda_jet_h100/artifacts",
+        "0"
+      ],
+      "returncode": 0,
+      "seconds": 0.7619299129582942,
+      "log": "smoke_gpu0.log"
+    }
+  },
+  "all_passed": true
+}

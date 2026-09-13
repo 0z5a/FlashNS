@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-13",
+  "base_commit": "255058062000dd500b0c86e73ceec93acb177bb5",
+  "pytest": {
+    "passed": 235,
+    "skipped": 0,
+    "seconds": 4.11,
+    "log": "publication-checks-20260913/pytest.log",
+    "command": "PYTHONPATH=src OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python -m pytest -q",
+    "source_only_without_optional_euler_reference": {
+      "passed": 233,
+      "skipped": 2
+    }
+  },
+  "host_cpp": {
+    "passed": 27,
+    "total": 27,
+    "report": "publication-checks-20260913/host.json"
+  },
+  "reference_integration": {
+    "passed": 23,
+    "total": 23,
+    "report": "publication-checks-20260913/reference.json"
+  },
+  "original_tested_source_sha256": {
+    "matched": 60,
+    "mismatches": 0
+  },
+  "comparison_recomputed": "publication-checks-20260913/library-comparison.json",
+  "new_gpu_run": false,
+  "wheel_build": {
+    "passed": true,
+    "filename": "flashns-0.1.0-py3-none-any.whl",
+    "cli_entry_point_verified": true
+  },
+  "lockfile_check": true,
+  "documentation_links": {
+    "missing": 0
+  },
+  "shell_syntax_passed": true
+}
