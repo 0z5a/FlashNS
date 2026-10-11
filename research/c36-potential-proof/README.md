@@ -57,3 +57,37 @@ PYTHONPATH=src python -m box376.audit_potential_scale_gpu \
 ```
 
 The H100 run in [gpu-scale-result.json](gpu-scale-result.json) passed all 26 comparisons and the independent NumPy audit of 39 saved arrays. The largest error was 0.00164087 of the unchanged tolerance budget; peak allocated GPU memory was 20.484 GiB. Science and audit exited normally; their process IDs and GPU contexts were confirmed absent. Other workloads occupied the GPU at completion, so the device was not globally idle and no exclusive-GPU timing claim is made. The earlier 17-point CPU/CUDA result files retain their original evidence from commit `e7d1e1c733f8ef54b8a451a5b54eb5e800c90676`; the new scale result records the fixed source hashes.
+
+`prepare_geometry(points, eta=1/32, *, chunk_size=256)` now computes the affine
+spatial feature derivatives directly and bounds native gate differentiation by
+`chunk_size`. It preallocates the returned C36 arrays, preserves point order,
+dtype and device, and returns detached tensors. Exactly flat time regions have
+zero gate states and require no gate derivative graph. Empty Nx4 inputs are
+supported; malformed coordinates, invalid chunk sizes and nonfinite/nonpositive
+cutoff widths are rejected. Total output storage still grows with the point
+count; the chunk bound applies to the derivative graph. Five CPU tests cover
+coordinate-AD agreement, flat cutoffs, uneven chunks, noncontiguous input views,
+input preservation, empty inputs and invalid arguments.
+
+The proof in [gpu-geometry-result.json](gpu-geometry-result.json) checks all 4096
+geometry rows against the frozen native geometry from commit `7679cb6`, performs
+fresh native coordinate differentiation at 131 points, rechecks the original 17
+CPU anchors, and tests a different geometry partition. Both complete parameter
+gradients and the full interior states/losses are recomputed in CUDA and compared
+with the previous 128-point-partition arrays. Native parameter gradients are not
+rerun in this check. Use the original reference packet identified by
+`reference_provenance.raw_sha256`; regenerating the scale packet using the new
+geometry implementation does not reproduce that independent full reference.
+
+```sh
+PYTHONPATH=src python -m unittest box376.test_potential_geometry
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.verify_geometry_preparation_gpu --inputs data \
+  --cpu-proof outputs/subset --scale-proof outputs/gpu-scale-7679cb6 \
+  --output outputs/gpu-geometry
+PYTHONPATH=src python -m box376.audit_geometry_preparation_gpu --inputs data \
+  --cpu-proof outputs/subset --scale-proof outputs/gpu-scale-7679cb6 \
+  --proof outputs/gpu-geometry --output outputs/gpu-geometry-audit.json
+```
+
+All 18 comparisons passed; the separate NumPy reader verified all 16 saved arrays. The maximum error was 0.0010071 of the original tolerance budget. Geometry-only peak PyTorch allocation was 0.618 GiB and full-proof peak was 1.766 GiB. The observed 4096-point setup call took 23.940 seconds; this is a diagnostic measurement, not a paired speed comparison. The scientific worker and reader exited normally and released their GPU context. Historical result files preserve the exact source hashes used in their runs.

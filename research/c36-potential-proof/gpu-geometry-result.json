@@ -1,0 +1,282 @@
+{
+  "proof": {
+    "status": "PASS",
+    "started": 1791725664.0130002,
+    "device": "cuda",
+    "interior_points": 4096,
+    "fresh_native_geometry_points": 131,
+    "geometry_chunk": 256,
+    "candidate_chunk": 128,
+    "seeds": [
+      361901,
+      361902
+    ],
+    "parameter_count": 50692,
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "fresh_native_parameter_gradient_checked": false,
+    "full_objective_checked": false,
+    "optimizer_updates": 0,
+    "checks": [
+      {
+        "name": "inputs_full_vs_frozen_native",
+        "entries": 589824,
+        "maximum_error_over_original_budget": 3.862339666894886e-05
+      },
+      {
+        "name": "inputs_anchors_vs_cpu",
+        "entries": 2448,
+        "maximum_error_over_original_budget": 9.413390572007085e-06
+      },
+      {
+        "name": "gate_full_vs_frozen_native",
+        "entries": 147456,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "gate_anchors_vs_cpu",
+        "entries": 612,
+        "maximum_error_over_original_budget": 7.178036218476666e-07
+      },
+      {
+        "name": "inputs_fresh_native",
+        "entries": 18864,
+        "maximum_error_over_original_budget": 9.413390572007085e-06
+      },
+      {
+        "name": "gate_fresh_native",
+        "entries": 4716,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "inputs_partition",
+        "entries": 18864,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "gate_partition",
+        "entries": 4716,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_state_vs_frozen",
+        "entries": 278528,
+        "maximum_error_over_original_budget": 0.0003764560806142885
+      },
+      {
+        "name": "seed361901_chunk_losses_vs_frozen",
+        "entries": 32,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_chunk_losses_total_vs_frozen",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_chunk_gradients_vs_frozen",
+        "entries": 1622144,
+        "maximum_error_over_original_budget": 1.8352396447117666e-07
+      },
+      {
+        "name": "seed361901_chunk_gradients_total_vs_frozen",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.1335690554980563e-06
+      },
+      {
+        "name": "seed361902_state_vs_frozen",
+        "entries": 278528,
+        "maximum_error_over_original_budget": 0.0010071046748238012
+      },
+      {
+        "name": "seed361902_chunk_losses_vs_frozen",
+        "entries": 32,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_chunk_losses_total_vs_frozen",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_chunk_gradients_vs_frozen",
+        "entries": 1622144,
+        "maximum_error_over_original_budget": 1.3940276787455611e-07
+      },
+      {
+        "name": "seed361902_chunk_gradients_total_vs_frozen",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 3.2864407720793206e-07
+      }
+    ],
+    "diagnostic_stage_seconds": {
+      "geometry_4096": 23.940323608985636,
+      "native_geometry_131": 82.1066530040116,
+      "geometry_131_chunk13": 13.467921809002291
+    },
+    "torch": "2.4.0a0+gite3b9b71",
+    "numpy": "1.26.4",
+    "cuda_runtime": "11.8",
+    "gpu_name": "NVIDIA H100",
+    "dtype": "float64",
+    "timing_scope": "diagnostic setup calls only; no paired speed claim",
+    "scale_reference_sha256": "866fcecaee7b2fc68013c6915ab01a9dc883eb20c5d37451e3d23c6e1be8f7f1",
+    "cpu_reference_sha256": "a377f729f81b062f2c0075d9969731d748c4a24f6b65f409a8404c178af0c087",
+    "source_file_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
+    "training_cache_key": "6f6121bd890390ed89d20790797a36288b5f855bd59ece191e4d5a8cf85b8dc7",
+    "normalization_key": "46710e73f2b699396512563fce4fca39b0ae1906cae4b9573e14f809647a9164",
+    "phase": "gradient_4096_seed361902",
+    "geometry_peak_allocated_bytes": 663089664,
+    "complete_gradient_entries_per_comparison": 101384,
+    "finished": 1791725795.512821,
+    "peak_allocated_bytes": 1895938560,
+    "raw_sha256": "40c861d72cf605242e6333f96d32aabdd62dc994fa02cf49c9cee4428e73987e"
+  },
+  "independent_saved_array_audit": {
+    "status": "PASS",
+    "reader": "independent NumPy recomputation",
+    "raw_arrays": 16,
+    "comparisons": 18,
+    "raw_sha256": "40c861d72cf605242e6333f96d32aabdd62dc994fa02cf49c9cee4428e73987e",
+    "checks": [
+      {
+        "name": "inputs_full_vs_frozen_native",
+        "entries": 589824,
+        "maximum_error_over_original_budget": 3.862339666894886e-05
+      },
+      {
+        "name": "inputs_anchors_vs_cpu",
+        "entries": 2448,
+        "maximum_error_over_original_budget": 9.413390572007085e-06
+      },
+      {
+        "name": "gate_full_vs_frozen_native",
+        "entries": 147456,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "gate_anchors_vs_cpu",
+        "entries": 612,
+        "maximum_error_over_original_budget": 7.178036218476666e-07
+      },
+      {
+        "name": "inputs_fresh_native",
+        "entries": 18864,
+        "maximum_error_over_original_budget": 9.413390572007085e-06
+      },
+      {
+        "name": "gate_fresh_native",
+        "entries": 4716,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "inputs_partition",
+        "entries": 18864,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "gate_partition",
+        "entries": 4716,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_state_vs_frozen",
+        "entries": 278528,
+        "maximum_error_over_original_budget": 0.0003764560806142885
+      },
+      {
+        "name": "seed361901_chunk_losses_vs_frozen",
+        "entries": 32,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_chunk_losses_total_vs_frozen",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_chunk_gradients_vs_frozen",
+        "entries": 1622144,
+        "maximum_error_over_original_budget": 1.8352396447117666e-07
+      },
+      {
+        "name": "seed361901_chunk_gradients_total_vs_frozen",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.1335690554980563e-06
+      },
+      {
+        "name": "seed361902_state_vs_frozen",
+        "entries": 278528,
+        "maximum_error_over_original_budget": 0.0010071046748238012
+      },
+      {
+        "name": "seed361902_chunk_losses_vs_frozen",
+        "entries": 32,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_chunk_losses_total_vs_frozen",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_chunk_gradients_vs_frozen",
+        "entries": 1622144,
+        "maximum_error_over_original_budget": 1.3940276787455611e-07
+      },
+      {
+        "name": "seed361902_chunk_gradients_total_vs_frozen",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 3.2864407720793206e-07
+      }
+    ]
+  },
+  "source_sha256": {
+    "src/torch_c36.py": "f5f9682e8d6ab01d9ca9de6e3513b919512aaa7b2a1738772c700ccaf80ce17a",
+    "src/c17.py": "0569b104560ac2f451e1f892a2f94e74ec20b7a0ddc07c586b9cc87fac474dd2",
+    "src/torch_c17.py": "7a0854c66bb0a5e2aedc18b43cf622d6321f8421f45e8f109a7885a757a2f2c3",
+    "src/a24.py": "b4712ed6543570e2b2a3133f6cb42d6ed34201b54605cd25453bf58a6a66320e",
+    "src/torch_references.py": "fbae909ee5011f8ca7af7a2ab3c74a28f915c0a0fb2f7506f523a3873511df65",
+    "src/taylor_oracle.py": "c4ffe646284b749efe060551f7a9da885524cf1ed6591c6c207ebfa8becbd42d",
+    "src/box376/prepare_normalized_training_data.py": "e32757e68180d94ee2aad1718154efc4821cd3bafe80e250c209e7b39af3364e",
+    "src/box376/source.py": "52ced2e79d12317fac039ea626d81277955d974e8c440ddd20db65bbf64c893a",
+    "src/box376/data.py": "d2b4891cd56246d4cdb1a1d9e195a3197db1c03c1267264b4c0fc99b6f9acea9",
+    "src/box376/prepared_ad_objective.py": "80f571faf22f5eade6d288622401ac57c6bb4dc7bedcb06374439b6259a5e9a5",
+    "src/box376/train_normalized_development.py": "a94ea2537eb77f1e8ab91af0304c9227371aea59e66bd0500e673c213bd2cf7d",
+    "src/box376/c36_coordinate_oracle.py": "7656e8423c8a08807aae75e62111f8d6cb77b6bed77ef3aa2d3ae9cfbe2823e5",
+    "src/box376/validation.py": "007dba52db5fd54592eb9e3de94f9834ab7dcd5dcaa859c5376beeea91171da8",
+    "src/box376/potential_geometry.py": "01efd0a1ec878ed6ce40520d30f7aac199dab5e404f9ee381aa3e74bf6441d04",
+    "src/box376/test_potential_geometry.py": "35a047fe54cb1e778fd17babf4e08360870257c18072f41d479461c2ccf2fbb1",
+    "src/box376/frozen_data.py": "e7b74a5dc28c8fcccf11e2883e0847572f9219f4a5a0f9153cdc65d83133c558",
+    "src/box376/__init__.py": "20725a695599baaabd3f0609ee0f4ee3c0ecf0bc9eede709bc24d3d7ecee2bc2",
+    "src/box376/potential_model.py": "c7da05498a13f05f01fe3c81b7865996514a1e1ccf2578181560e3288b82130b",
+    "src/box376/normalized_objective.py": "a07772cd0df977dbdb907d80d55ecf2ebd125ed55bd435f8ad7d2824494874a1",
+    "src/box376/verify_potential_gradient.py": "8545d8da4d4f6fce45ef1f0130d5c7a85823a2efe9345b1cf531b746dfa580ff",
+    "src/box376/audit_geometry_preparation_gpu.py": "4b4994ad10ce3e757a7557625e411d5b7d159182a17b689d9a2c6d60d9502a9d",
+    "src/box376/validation_data.py": "a3468884ecf3ae6f50f5a79b826bf3bc59641a55de7ea703d3fb5101db39dfac",
+    "src/box376/objective.py": "a0ecff744e71388fcc6bfefe6870b9a2c0d4b30aa991a879b9d18990e99a479a",
+    "src/box376/capture_objective.py": "03a58c55f3234fca15a972a63757d259e6ab34cb0a2db404b622aa33b6be66ee",
+    "src/box376/verify_geometry_preparation_gpu.py": "cd7696eae7bbf84af5bd5d7029fe4b620637f1a6a240672035e7a1d170ca2caa",
+    "src/box376/audit_normalized_development.py": "18e152184904b24b41799b5187cdf33b0d51d5f8a6e5dfb6b91153f882584547",
+    "src/e2e/naive_q35.py": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682"
+  },
+  "cpu_tests_passed": 5,
+  "execution_exit_codes": {
+    "geometry-regression": 0,
+    "science": 0,
+    "audit": 0,
+    "slurm_step": 0
+  },
+  "test_worker_gpu_context_released": true,
+  "assigned_gpu_apps_absent_at_completion": true,
+  "reference_provenance": {
+    "frozen_cuda_commit": "7679cb653bb502f32d1daa0363080384a26e3cde",
+    "published_result": "gpu-scale-result.json",
+    "raw_sha256": "866fcecaee7b2fc68013c6915ab01a9dc883eb20c5d37451e3d23c6e1be8f7f1",
+    "geometry_was_computed_with_native_coordinate_ad": true
+  },
+  "scope": "Bounded geometry setup: all 4096 points against frozen native geometry; 131 fresh native geometry points; chunk-size 13 consistency; 17 original CPU anchors. Two complete 50692-parameter gradients and full interior states/losses are compared with the published CUDA arrays using identical 128-point partitions. Native parameter gradients are historical references, not newly recomputed here.",
+  "objective_scope": "Weighted interior numerator with frozen physical scales, before family normalization. No complete multi-family objective, optimizer step, training convergence or physical acceptance claim.",
+  "timing_scope": "Observed single setup calls include allocation and synchronization; no paired throughput or acceleration claim.",
+  "memory_scope": "Peak PyTorch allocated memory; full proof and geometry-only peaks are separate. Not whole-device memory usage."
+}
