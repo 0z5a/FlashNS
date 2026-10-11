@@ -91,3 +91,46 @@ PYTHONPATH=src python -m box376.audit_geometry_preparation_gpu --inputs data \
 ```
 
 All 18 comparisons passed; the separate NumPy reader verified all 16 saved arrays. The maximum error was 0.0010071 of the original tolerance budget. Geometry-only peak PyTorch allocation was 0.618 GiB and full-proof peak was 1.766 GiB. The observed 4096-point setup call took 23.940 seconds; this is a diagnostic measurement, not a paired speed comparison. The scientific worker and reader exited normally and released their GPU context. Historical result files preserve the exact source hashes used in their runs.
+
+`PreparedPotentialNormalizedObjective(data, calibration, geometry_chunk=256)`
+prepares the C36 geometry and physical normalization for all four loss families.
+It clones and detaches source tensors and copies the source metadata. Later
+changes to the caller's coordinates, weights, forcing, targets, denominators or
+calibration key cannot invalidate the prepared geometry. Calling the object with
+`(parameters, chunk)` returns a detached normalized loss, the complete flat
+parameter gradient, and four raw weighted family numerators. The
+`contributions(parameters, chunk)` iterator exposes each family index, its raw
+chunk numerator and its normalized gradient contribution. Global family
+denominators and coefficients are applied to each contribution; a subset retains
+the original denominators when it represents part of the canonical objective.
+This interface does not install an autograd backward or perform optimizer steps.
+
+The CUDA objective check evaluates the canonical 4,999 points (4,096 interior,
+512 initial, 384 boundary and 7 gauge points) with candidate chunks of 128 and 64.
+It compares fresh native parameter gradients at 131 interior points and all 903
+value-family points, with the unchanged physical source and normalization.
+The remaining interior points have candidate partition consistency checks.
+The compact potential gate vanishes at canonical initial, boundary and gauge
+points. A separate diagnostic challenge therefore assigns 17 active interior
+coordinates to each family, with nonzero targets and different nonunit global
+weight sums. Those coordinates are synthetic value-loss probes, not new physical
+initial or boundary conditions; the canonical cache is unchanged. The challenge
+checks nonzero gradients in every family against native AD and verifies that
+mutating caller data leaves the prepared objective unchanged. Both seeds retain
+all 50,692 parameters, float64 and the original derivative comparison budget.
+
+```sh
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.verify_potential_objective_gpu --inputs data --output outputs/gpu-objective
+PYTHONPATH=src python -m box376.audit_potential_objective_gpu --inputs data \
+  --proof outputs/gpu-objective --output outputs/gpu-objective-audit.json
+```
+
+The NumPy reader reconstructs normalized losses, gradients, family numerators
+and family gradients from saved chunk arrays, verifies the original input cache,
+and repeats all native and partition comparisons. Timings are diagnostic setup
+and evaluation calls. This proof does not establish a full independent native
+reference for all 4,096 interior points, optimizer behavior, training convergence,
+physical acceptance or comparative performance.
+
+The H100 run in [gpu-objective-result.json](gpu-objective-result.json) passed all 52 comparisons and five CPU geometry regression tests. The independent NumPy reader verified all 140 saved arrays. The maximum error was 2.07227e-05 of the original tolerance budget and peak PyTorch allocation was 10.797 GiB. Science, audit and the Slurm step exited normally, and the worker processes and their GPU contexts were confirmed absent. The raw archive was fully read and hash-verified on MN5 and VPS.
