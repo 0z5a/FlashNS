@@ -1,7 +1,7 @@
 {
   "README.md": {
-    "bytes": 705,
-    "sha256": "9fde9acad5a6488b6a6be5c9d7cd4e793b8929afc62b0689be84185f6d67cbce"
+    "bytes": 2251,
+    "sha256": "920f823563a0143c25880d31691e3e3897ec0a4abce0daba64fb20fb92bf8ffe"
   },
   ".gitignore": {
     "bytes": 22,
@@ -118,5 +118,13 @@
   "src/e2e/naive_q35.py": {
     "bytes": 1984,
     "sha256": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682"
+  },
+  "src/box376/verify_potential_gpu.py": {
+    "bytes": 9443,
+    "sha256": "99a422a3e0a5909219389ad60aa91d2ea06be14cc05cbd5dae6d26a1635cad8e"
+  },
+  "src/box376/audit_potential_gpu.py": {
+    "bytes": 4143,
+    "sha256": "c238bf2836018e0b04596fbb61b3eea26698e879d56ac4949eb1d806ae874bcc"
   }
 }

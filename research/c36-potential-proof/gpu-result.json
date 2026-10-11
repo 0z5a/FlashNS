@@ -1,0 +1,350 @@
+{
+  "proof": {
+    "status": "PASS",
+    "device": "cuda",
+    "N": 17,
+    "seeds": [
+      361901,
+      361902
+    ],
+    "parameter_count": 50692,
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "tolerance_relaxed": false,
+    "full_4096_point_objective_checked": false,
+    "optimizer_updates": 0,
+    "training_converged": false,
+    "physical_acceptance_evaluated": false,
+    "checks": [
+      {
+        "name": "geometry_input_states_vs_cpu",
+        "entries": 2448,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "geometry_gate_states_vs_cpu",
+        "entries": 612,
+        "maximum_error_over_original_budget": 6.978449898051223e-07
+      },
+      {
+        "name": "seed361901_theta_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_C36_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 3.3922687811893e-05
+      },
+      {
+        "name": "seed361901_C36_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.208704300930165e-08
+      },
+      {
+        "name": "seed361901_C36_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.5613070922439982e-07
+      },
+      {
+        "name": "seed361901_native_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 7.161456315844183e-05
+      },
+      {
+        "name": "seed361901_native_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.208704300930165e-08
+      },
+      {
+        "name": "seed361901_native_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.6865245234460396e-07
+      },
+      {
+        "name": "seed361901_state_gpu_vs_native",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 5.276862548517145e-05
+      },
+      {
+        "name": "seed361901_loss_gpu_vs_native",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_gradient_gpu_vs_native",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.6909265268702212e-07
+      },
+      {
+        "name": "seed361902_theta_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_C36_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 0.00021300990524524363
+      },
+      {
+        "name": "seed361902_C36_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.418542476643718e-08
+      },
+      {
+        "name": "seed361902_C36_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.7575238481897063e-07
+      },
+      {
+        "name": "seed361902_native_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 6.758968147205875e-05
+      },
+      {
+        "name": "seed361902_native_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.418542476643718e-08
+      },
+      {
+        "name": "seed361902_native_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.327382686868615e-07
+      },
+      {
+        "name": "seed361902_state_gpu_vs_native",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 0.0004328470510433146
+      },
+      {
+        "name": "seed361902_loss_gpu_vs_native",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_gradient_gpu_vs_native",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.517008784992703e-07
+      }
+    ],
+    "diagnostic_stage_seconds": {
+      "geometry": 24.468402780999895,
+      "seed_361901_candidate": 5.505182207969483,
+      "seed_361901_native_ad": 151.62037463096203,
+      "seed_361902_candidate": 0.06361570197623223,
+      "seed_361902_native_ad": 182.76813490496716
+    },
+    "started": 1791707044.4006078,
+    "torch": "2.4.0a0+gite3b9b71",
+    "numpy": "1.26.4",
+    "cuda_runtime": "11.8",
+    "gpu_name": "NVIDIA H100",
+    "gpu_memory_bytes": 67952836608,
+    "dtype": "float64",
+    "timing_scope": "diagnostic first calls; not a speed benchmark",
+    "cpu_reference_sha256": "a377f729f81b062f2c0075d9969731d748c4a24f6b65f409a8404c178af0c087",
+    "selected_interior_indices": [
+      0,
+      255,
+      511,
+      767,
+      1023,
+      1279,
+      1535,
+      1791,
+      2047,
+      2303,
+      2559,
+      2815,
+      3071,
+      3327,
+      3583,
+      3839,
+      4095
+    ],
+    "training_cache_key": "6f6121bd890390ed89d20790797a36288b5f855bd59ece191e4d5a8cf85b8dc7",
+    "normalization_key": "46710e73f2b699396512563fce4fca39b0ae1906cae4b9573e14f809647a9164",
+    "checked_families": [
+      "interior"
+    ],
+    "phase": "seed_361902_pass",
+    "divergence": [
+      {
+        "seed": 361901,
+        "maximum_absolute_divergence": 1.1102230246251565e-16,
+        "maximum_absolute_divergence_gradient": 2.842170943040401e-14
+      },
+      {
+        "seed": 361902,
+        "maximum_absolute_divergence": 2.220446049250313e-16,
+        "maximum_absolute_divergence_gradient": 5.684341886080802e-14
+      }
+    ],
+    "complete_gradient_entries": 101384,
+    "gpu_native_gradient_comparisons": 2,
+    "cpu_reference_gradient_comparisons": 4,
+    "finished": 1791707413.1821935,
+    "whole_process_peak_allocated_bytes": 3653741056,
+    "whole_process_peak_reserved_bytes": 3718250496,
+    "raw_sha256": "8f27876618ad8549878ababf211a7290262eedf4bcfb126ceab2227279ccc40d"
+  },
+  "independent_saved_array_audit": {
+    "status": "PASS",
+    "audit_backend": "NumPy on CPU; producer comparison function not imported",
+    "raw_arrays": 20,
+    "comparisons": 22,
+    "complete_gradient_entries": 101384,
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "gpu_raw_sha256": "8f27876618ad8549878ababf211a7290262eedf4bcfb126ceab2227279ccc40d",
+    "cpu_raw_sha256": "a377f729f81b062f2c0075d9969731d748c4a24f6b65f409a8404c178af0c087",
+    "checks": [
+      {
+        "name": "geometry_input_states_vs_cpu",
+        "entries": 2448,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "geometry_gate_states_vs_cpu",
+        "entries": 612,
+        "maximum_error_over_original_budget": 6.978449898051223e-07
+      },
+      {
+        "name": "seed361901_theta_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_C36_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 3.3922687811893e-05
+      },
+      {
+        "name": "seed361901_C36_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.208704300930165e-08
+      },
+      {
+        "name": "seed361901_C36_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.5613070922439982e-07
+      },
+      {
+        "name": "seed361901_native_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 7.161456315844183e-05
+      },
+      {
+        "name": "seed361901_native_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.208704300930165e-08
+      },
+      {
+        "name": "seed361901_native_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.6865245234460396e-07
+      },
+      {
+        "name": "seed361901_state_gpu_vs_native",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 5.276862548517145e-05
+      },
+      {
+        "name": "seed361901_loss_gpu_vs_native",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_gradient_gpu_vs_native",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.6909265268702212e-07
+      },
+      {
+        "name": "seed361902_theta_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_C36_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 0.00021300990524524363
+      },
+      {
+        "name": "seed361902_C36_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.418542476643718e-08
+      },
+      {
+        "name": "seed361902_C36_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.7575238481897063e-07
+      },
+      {
+        "name": "seed361902_native_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 6.758968147205875e-05
+      },
+      {
+        "name": "seed361902_native_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.418542476643718e-08
+      },
+      {
+        "name": "seed361902_native_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.327382686868615e-07
+      },
+      {
+        "name": "seed361902_state_gpu_vs_native",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 0.0004328470510433146
+      },
+      {
+        "name": "seed361902_loss_gpu_vs_native",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_gradient_gpu_vs_native",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.517008784992703e-07
+      }
+    ]
+  },
+  "source_sha256": {
+    "src/torch_c36.py": "f5f9682e8d6ab01d9ca9de6e3513b919512aaa7b2a1738772c700ccaf80ce17a",
+    "src/c17.py": "0569b104560ac2f451e1f892a2f94e74ec20b7a0ddc07c586b9cc87fac474dd2",
+    "src/torch_c17.py": "7a0854c66bb0a5e2aedc18b43cf622d6321f8421f45e8f109a7885a757a2f2c3",
+    "src/a24.py": "b4712ed6543570e2b2a3133f6cb42d6ed34201b54605cd25453bf58a6a66320e",
+    "src/torch_references.py": "fbae909ee5011f8ca7af7a2ab3c74a28f915c0a0fb2f7506f523a3873511df65",
+    "src/taylor_oracle.py": "c4ffe646284b749efe060551f7a9da885524cf1ed6591c6c207ebfa8becbd42d",
+    "src/box376/prepare_normalized_training_data.py": "e32757e68180d94ee2aad1718154efc4821cd3bafe80e250c209e7b39af3364e",
+    "src/box376/source.py": "52ced2e79d12317fac039ea626d81277955d974e8c440ddd20db65bbf64c893a",
+    "src/box376/audit_potential_gpu.py": "c238bf2836018e0b04596fbb61b3eea26698e879d56ac4949eb1d806ae874bcc",
+    "src/box376/data.py": "d2b4891cd56246d4cdb1a1d9e195a3197db1c03c1267264b4c0fc99b6f9acea9",
+    "src/box376/prepared_ad_objective.py": "80f571faf22f5eade6d288622401ac57c6bb4dc7bedcb06374439b6259a5e9a5",
+    "src/box376/train_normalized_development.py": "a94ea2537eb77f1e8ab91af0304c9227371aea59e66bd0500e673c213bd2cf7d",
+    "src/box376/c36_coordinate_oracle.py": "7656e8423c8a08807aae75e62111f8d6cb77b6bed77ef3aa2d3ae9cfbe2823e5",
+    "src/box376/validation.py": "007dba52db5fd54592eb9e3de94f9834ab7dcd5dcaa859c5376beeea91171da8",
+    "src/box376/potential_geometry.py": "0b2926041108c2ef0e83f919e112a3146fc816bb3c79a098d4af348d05598f64",
+    "src/box376/frozen_data.py": "e7b74a5dc28c8fcccf11e2883e0847572f9219f4a5a0f9153cdc65d83133c558",
+    "src/box376/__init__.py": "20725a695599baaabd3f0609ee0f4ee3c0ecf0bc9eede709bc24d3d7ecee2bc2",
+    "src/box376/potential_model.py": "4059eebf640a0bc68d335935d296815fbd2b355ecb8e37b763cc5903f08c65b1",
+    "src/box376/normalized_objective.py": "a07772cd0df977dbdb907d80d55ecf2ebd125ed55bd435f8ad7d2824494874a1",
+    "src/box376/verify_potential_gpu.py": "99a422a3e0a5909219389ad60aa91d2ea06be14cc05cbd5dae6d26a1635cad8e",
+    "src/box376/verify_potential_gradient.py": "8545d8da4d4f6fce45ef1f0130d5c7a85823a2efe9345b1cf531b746dfa580ff",
+    "src/box376/validation_data.py": "a3468884ecf3ae6f50f5a79b826bf3bc59641a55de7ea703d3fb5101db39dfac",
+    "src/box376/objective.py": "a0ecff744e71388fcc6bfefe6870b9a2c0d4b30aa991a879b9d18990e99a479a",
+    "src/box376/capture_objective.py": "03a58c55f3234fca15a972a63757d259e6ab34cb0a2db404b622aa33b6be66ee",
+    "src/box376/audit_normalized_development.py": "18e152184904b24b41799b5187cdf33b0d51d5f8a6e5dfb6b91153f882584547",
+    "src/e2e/naive_q35.py": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682"
+  },
+  "execution_exit_codes": {
+    "science": 0,
+    "audit": 0,
+    "slurm_step": 0
+  },
+  "assigned_gpu_released": true,
+  "launch_note": "Initial attempt failed before scientific import because environment activation overwrote PYTHONPATH. Setting the module path after activation fixed the launcher; the next attempt is reported here.",
+  "scope": "H100 CUDA qualification of the C36 potential model on 17 fixed interior points, two seeds, all 50692 parameters per seed. No full 4096-point objective, optimizer training, physical acceptance, or speed claim."
+}
