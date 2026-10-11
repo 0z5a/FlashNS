@@ -47,7 +47,8 @@ def features_and_gate(points, eta=1/32):
         minus, _ = smooth_switch((half_width[:, i] + 2 * eta - relative[:, i]) / eta)
         plus, _ = smooth_switch((half_width[:, i] + 2 * eta + relative[:, i]) / eta)
         axes.append(minus * plus)
-    gate = (ds / 4) * torch.stack(axes, 1).prod(1)
+    # Explicit products avoid reciprocal intermediates in high-order derivatives near zero.
+    gate = (ds / 4) * axes[0] * axes[1] * axes[2]
     return features, gate[:, None]
 
 

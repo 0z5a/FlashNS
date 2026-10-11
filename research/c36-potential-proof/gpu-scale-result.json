@@ -1,0 +1,546 @@
+{
+  "proof": {
+    "status": "PASS",
+    "started": 1791723607.4420834,
+    "device": "cuda",
+    "seeds": [
+      361901,
+      361902
+    ],
+    "parameter_count": 50692,
+    "interior_points": 4096,
+    "native_reference_points": 131,
+    "geometry_chunk": 256,
+    "candidate_chunks": [
+      128,
+      64
+    ],
+    "native_chunk": 66,
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "tolerance_relaxed": false,
+    "checked_families": [
+      "interior"
+    ],
+    "full_4096_point_objective_checked": false,
+    "full_interior_native_reference_checked": false,
+    "optimizer_updates": 0,
+    "training_converged": false,
+    "physical_acceptance_evaluated": false,
+    "checks": [
+      {
+        "name": "geometry_input_states_anchor_vs_cpu",
+        "entries": 2448,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "geometry_gate_states_anchor_vs_cpu",
+        "entries": 612,
+        "maximum_error_over_original_budget": 7.178036218476666e-07
+      },
+      {
+        "name": "seed361901_anchor_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 3.3922687811893e-05
+      },
+      {
+        "name": "seed361901_anchor_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.208704300930165e-08
+      },
+      {
+        "name": "seed361901_anchor_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.5613070922439982e-07
+      },
+      {
+        "name": "seed361901_full_partition_state",
+        "entries": 278528,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full_partition_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full_partition_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.0221276349925945e-06
+      },
+      {
+        "name": "seed361901_native_chunk_state",
+        "entries": 8908,
+        "maximum_error_over_original_budget": 0.0016408658756791427
+      },
+      {
+        "name": "seed361901_native_chunk_loss",
+        "entries": 2,
+        "maximum_error_over_original_budget": 1.3656553009678878e-07
+      },
+      {
+        "name": "seed361901_native_total_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_native_chunk_gradient",
+        "entries": 101384,
+        "maximum_error_over_original_budget": 3.791128757234751e-07
+      },
+      {
+        "name": "seed361901_native_total_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 3.6120028440003514e-07
+      },
+      {
+        "name": "seed361901_subset_state_vs_full",
+        "entries": 8908,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_anchor_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 0.00021300990524524363
+      },
+      {
+        "name": "seed361902_anchor_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.418542476643718e-08
+      },
+      {
+        "name": "seed361902_anchor_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.7575238481897063e-07
+      },
+      {
+        "name": "seed361902_full_partition_state",
+        "entries": 278528,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full_partition_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full_partition_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.3164649755410577e-06
+      },
+      {
+        "name": "seed361902_native_chunk_state",
+        "entries": 8908,
+        "maximum_error_over_original_budget": 0.000747734976779719
+      },
+      {
+        "name": "seed361902_native_chunk_loss",
+        "entries": 2,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_native_total_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_native_chunk_gradient",
+        "entries": 101384,
+        "maximum_error_over_original_budget": 3.294784044510213e-07
+      },
+      {
+        "name": "seed361902_native_total_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 5.744214677120421e-07
+      },
+      {
+        "name": "seed361902_subset_state_vs_full",
+        "entries": 8908,
+        "maximum_error_over_original_budget": 0.0
+      }
+    ],
+    "diagnostic_stage_seconds": {
+      "geometry_4096": 502.7426839029649,
+      "seed361901_full128": 1.8665944749955088,
+      "seed361901_full64": 3.842131507990416,
+      "seed361901_subset_candidate": 0.12029865296790376,
+      "seed361901_native": 333.05270365200704,
+      "seed361902_full128": 1.8890019009704702,
+      "seed361902_full64": 3.78056123299757,
+      "seed361902_subset_candidate": 0.11908175703138113,
+      "seed361902_native": 313.8893076480017
+    },
+    "torch": "2.4.0a0+gite3b9b71",
+    "numpy": "1.26.4",
+    "cuda_runtime": "11.8",
+    "gpu_name": "NVIDIA H100",
+    "dtype": "float64",
+    "timing_scope": "diagnostic calls; no comparative speed claim",
+    "training_cache_key": "6f6121bd890390ed89d20790797a36288b5f855bd59ece191e4d5a8cf85b8dc7",
+    "normalization_key": "46710e73f2b699396512563fce4fca39b0ae1906cae4b9573e14f809647a9164",
+    "source_file_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
+    "regression_source_indices": [
+      1965,
+      2489
+    ],
+    "cpu_reference_sha256": "a377f729f81b062f2c0075d9969731d748c4a24f6b65f409a8404c178af0c087",
+    "selected_interior_indices": [
+      0,
+      31,
+      63,
+      95,
+      127,
+      159,
+      191,
+      223,
+      255,
+      287,
+      319,
+      351,
+      383,
+      415,
+      447,
+      479,
+      511,
+      543,
+      575,
+      607,
+      639,
+      671,
+      703,
+      735,
+      767,
+      799,
+      831,
+      863,
+      895,
+      927,
+      959,
+      991,
+      1023,
+      1055,
+      1087,
+      1119,
+      1151,
+      1183,
+      1215,
+      1247,
+      1279,
+      1311,
+      1343,
+      1375,
+      1407,
+      1439,
+      1471,
+      1503,
+      1535,
+      1567,
+      1599,
+      1631,
+      1663,
+      1695,
+      1727,
+      1759,
+      1791,
+      1823,
+      1855,
+      1887,
+      1919,
+      1951,
+      1965,
+      1983,
+      2015,
+      2047,
+      2079,
+      2111,
+      2143,
+      2175,
+      2207,
+      2239,
+      2271,
+      2303,
+      2335,
+      2367,
+      2399,
+      2431,
+      2463,
+      2489,
+      2495,
+      2527,
+      2559,
+      2591,
+      2623,
+      2655,
+      2687,
+      2719,
+      2751,
+      2783,
+      2815,
+      2847,
+      2879,
+      2911,
+      2943,
+      2975,
+      3007,
+      3039,
+      3071,
+      3103,
+      3135,
+      3167,
+      3199,
+      3231,
+      3263,
+      3295,
+      3327,
+      3359,
+      3391,
+      3423,
+      3455,
+      3487,
+      3519,
+      3551,
+      3583,
+      3615,
+      3647,
+      3679,
+      3711,
+      3743,
+      3775,
+      3807,
+      3839,
+      3871,
+      3903,
+      3935,
+      3967,
+      3999,
+      4031,
+      4063,
+      4095
+    ],
+    "phase": "seed361902_pass",
+    "complete_gradient_entries_per_comparison": 101384,
+    "full_interior_partition_consistency_checked": true,
+    "finished": 1791724785.951551,
+    "peak_allocated_bytes": 21994854400,
+    "peak_reserved_bytes": 22187868160,
+    "raw_sha256": "866fcecaee7b2fc68013c6915ab01a9dc883eb20c5d37451e3d23c6e1be8f7f1"
+  },
+  "cutoff_geometry_regression": {
+    "cpu_tests_passed": 2,
+    "source_indices": [
+      1965,
+      2489
+    ],
+    "cpu_reproduction": {
+      "original": {
+        "nonfinite": 15,
+        "flat_row_all_zero": false,
+        "shape": [
+          2,
+          1,
+          36
+        ]
+      },
+      "fixed": {
+        "nonfinite": 0,
+        "flat_row_all_zero": true,
+        "shape": [
+          2,
+          1,
+          36
+        ]
+      }
+    }
+  },
+  "independent_saved_array_audit": {
+    "status": "PASS",
+    "audit_backend": "NumPy; no producer import",
+    "raw_sha256": "866fcecaee7b2fc68013c6915ab01a9dc883eb20c5d37451e3d23c6e1be8f7f1",
+    "raw_arrays": 39,
+    "comparisons": 26,
+    "source_arrays_exact": true,
+    "checks": [
+      {
+        "name": "geometry_input_states_anchor_vs_cpu",
+        "entries": 2448,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "geometry_gate_states_anchor_vs_cpu",
+        "entries": 612,
+        "maximum_error_over_original_budget": 7.178036218476666e-07
+      },
+      {
+        "name": "seed361901_anchor_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 3.3922687811893e-05
+      },
+      {
+        "name": "seed361901_anchor_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.208704300930165e-08
+      },
+      {
+        "name": "seed361901_anchor_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.5613070922439982e-07
+      },
+      {
+        "name": "seed361901_full_partition_state",
+        "entries": 278528,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full_partition_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full_partition_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.0221276349925945e-06
+      },
+      {
+        "name": "seed361901_native_chunk_state",
+        "entries": 8908,
+        "maximum_error_over_original_budget": 0.0016408658756791427
+      },
+      {
+        "name": "seed361901_native_chunk_loss",
+        "entries": 2,
+        "maximum_error_over_original_budget": 1.3656553009678878e-07
+      },
+      {
+        "name": "seed361901_native_total_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_native_chunk_gradient",
+        "entries": 101384,
+        "maximum_error_over_original_budget": 3.791128757234751e-07
+      },
+      {
+        "name": "seed361901_native_total_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 3.6120028440003514e-07
+      },
+      {
+        "name": "seed361901_subset_state_vs_full",
+        "entries": 8908,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_anchor_state_vs_cpu",
+        "entries": 1156,
+        "maximum_error_over_original_budget": 0.00021300990524524363
+      },
+      {
+        "name": "seed361902_anchor_loss_vs_cpu",
+        "entries": 1,
+        "maximum_error_over_original_budget": 8.418542476643718e-08
+      },
+      {
+        "name": "seed361902_anchor_gradient_vs_cpu",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.7575238481897063e-07
+      },
+      {
+        "name": "seed361902_full_partition_state",
+        "entries": 278528,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full_partition_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full_partition_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.3164649755410577e-06
+      },
+      {
+        "name": "seed361902_native_chunk_state",
+        "entries": 8908,
+        "maximum_error_over_original_budget": 0.000747734976779719
+      },
+      {
+        "name": "seed361902_native_chunk_loss",
+        "entries": 2,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_native_total_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_native_chunk_gradient",
+        "entries": 101384,
+        "maximum_error_over_original_budget": 3.294784044510213e-07
+      },
+      {
+        "name": "seed361902_native_total_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 5.744214677120421e-07
+      },
+      {
+        "name": "seed361902_subset_state_vs_full",
+        "entries": 8908,
+        "maximum_error_over_original_budget": 0.0
+      }
+    ]
+  },
+  "source_sha256": {
+    "src/torch_c36.py": "f5f9682e8d6ab01d9ca9de6e3513b919512aaa7b2a1738772c700ccaf80ce17a",
+    "src/c17.py": "0569b104560ac2f451e1f892a2f94e74ec20b7a0ddc07c586b9cc87fac474dd2",
+    "src/torch_c17.py": "7a0854c66bb0a5e2aedc18b43cf622d6321f8421f45e8f109a7885a757a2f2c3",
+    "src/a24.py": "b4712ed6543570e2b2a3133f6cb42d6ed34201b54605cd25453bf58a6a66320e",
+    "src/torch_references.py": "fbae909ee5011f8ca7af7a2ab3c74a28f915c0a0fb2f7506f523a3873511df65",
+    "src/taylor_oracle.py": "c4ffe646284b749efe060551f7a9da885524cf1ed6591c6c207ebfa8becbd42d",
+    "src/box376/prepare_normalized_training_data.py": "e32757e68180d94ee2aad1718154efc4821cd3bafe80e250c209e7b39af3364e",
+    "src/box376/source.py": "52ced2e79d12317fac039ea626d81277955d974e8c440ddd20db65bbf64c893a",
+    "src/box376/data.py": "d2b4891cd56246d4cdb1a1d9e195a3197db1c03c1267264b4c0fc99b6f9acea9",
+    "src/box376/prepared_ad_objective.py": "80f571faf22f5eade6d288622401ac57c6bb4dc7bedcb06374439b6259a5e9a5",
+    "src/box376/train_normalized_development.py": "a94ea2537eb77f1e8ab91af0304c9227371aea59e66bd0500e673c213bd2cf7d",
+    "src/box376/audit_potential_scale_gpu.py": "16768585dbac09247098a4d181bb264ccd680629c9d3a1395d52c7d614e9d159",
+    "src/box376/c36_coordinate_oracle.py": "7656e8423c8a08807aae75e62111f8d6cb77b6bed77ef3aa2d3ae9cfbe2823e5",
+    "src/box376/validation.py": "007dba52db5fd54592eb9e3de94f9834ab7dcd5dcaa859c5376beeea91171da8",
+    "src/box376/potential_geometry.py": "01efd0a1ec878ed6ce40520d30f7aac199dab5e404f9ee381aa3e74bf6441d04",
+    "src/box376/test_potential_geometry.py": "956d3547fff7bb13580343e143b8fa6c917b5ab78abba5eeb04df3883cf00d07",
+    "src/box376/frozen_data.py": "e7b74a5dc28c8fcccf11e2883e0847572f9219f4a5a0f9153cdc65d83133c558",
+    "src/box376/__init__.py": "20725a695599baaabd3f0609ee0f4ee3c0ecf0bc9eede709bc24d3d7ecee2bc2",
+    "src/box376/potential_model.py": "4059eebf640a0bc68d335935d296815fbd2b355ecb8e37b763cc5903f08c65b1",
+    "src/box376/normalized_objective.py": "a07772cd0df977dbdb907d80d55ecf2ebd125ed55bd435f8ad7d2824494874a1",
+    "src/box376/verify_potential_scale_gpu.py": "aeab5ca526ebc469a8b5471462ae8d6fe4608627664d12d4d48503e009494b14",
+    "src/box376/verify_potential_gradient.py": "8545d8da4d4f6fce45ef1f0130d5c7a85823a2efe9345b1cf531b746dfa580ff",
+    "src/box376/validation_data.py": "a3468884ecf3ae6f50f5a79b826bf3bc59641a55de7ea703d3fb5101db39dfac",
+    "src/box376/objective.py": "a0ecff744e71388fcc6bfefe6870b9a2c0d4b30aa991a879b9d18990e99a479a",
+    "src/box376/capture_objective.py": "03a58c55f3234fca15a972a63757d259e6ab34cb0a2db404b622aa33b6be66ee",
+    "src/box376/audit_normalized_development.py": "18e152184904b24b41799b5187cdf33b0d51d5f8a6e5dfb6b91153f882584547",
+    "src/e2e/naive_q35.py": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682"
+  },
+  "execution_exit_codes": {
+    "geometry-regression": 0,
+    "science": 0,
+    "audit": 0,
+    "slurm_step": 0
+  },
+  "test_worker_gpu_context_released": true,
+  "assigned_gpu_apps_absent_at_completion": false,
+  "other_workloads_observed_at_completion": true,
+  "release_verification": {
+    "observed_at": 1791724887.2912889,
+    "worker_processes_absent": true,
+    "worker_gpu_apps_absent": true,
+    "assigned_gpu_apps_absent": false,
+    "other_gpu_workloads_present": true,
+    "stages_natural_zero": true,
+    "slurm_step_natural_zero": true
+  },
+  "objective_scope": "Weighted interior numerator with frozen physical scales, before family normalization; no initial, boundary, or gauge losses.",
+  "gradient_aggregation_scope": "CUDA computes each chunk gradient; NumPy float64 sums saved chunk gradients for the partition and native-total comparisons.",
+  "scope": "Two seeds and all 50692 parameters. Partition consistency over all 4096 interior points with chunks 128 and 64; independent native CUDA automatic differentiation over 131 fixed points in chunks 66 and 65, including the two cutoff regression points; the original 17-point CPU arrays are also checked. No full interior native reference, complete multi-family objective, training, physical acceptance, or speed claim.",
+  "launch_note": "Three earlier attempts are retained: no unlocked eligible GPU lane; out-of-memory geometry preprocessing of all 4096 points at once; and 15 nonfinite high-order geometry entries at source indices 1965 and 2489 after bounding geometry batches. This proof uses chunks of 256 and explicit multiplication of the three axis gates, includes both regression points in the native reference, and rechecks the original CPU anchors."
+}
