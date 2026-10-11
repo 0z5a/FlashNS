@@ -1,0 +1,101 @@
+{
+  "proof": {
+    "state": "EXPERIMENTAL_POTENTIAL_SUBSET_COMPLETE_PARAMETER_GRADIENT_PROOF_PASS",
+    "CPU_only": true,
+    "GPU_workload_created": false,
+    "optimizer_updates": 0,
+    "complete_physical_acceptance_evaluated": false,
+    "GPU_qualification": false,
+    "training_converged": false,
+    "high_concurrency_qualified": false,
+    "formal_protocol_frozen": false,
+    "state_channels": 36,
+    "parameter_count": 50692,
+    "representation": "prescribed geometry features; learned curl potential and pressure",
+    "exact_velocity_inserted": false,
+    "source_depends_on_parameters": false,
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "tolerance_relaxed": false,
+    "checks": [
+      {
+        "seed": 361901,
+        "state": {
+          "entries": 1156,
+          "maximum_error_over_original_budget": 4.2267434141562164e-05
+        },
+        "loss": {
+          "entries": 1,
+          "maximum_error_over_original_budget": 0.0
+        },
+        "complete_parameter_gradient": {
+          "entries": 50692,
+          "maximum_error_over_original_budget": 1.7879311817466696e-07
+        },
+        "maximum_absolute_divergence": 1.0842021724855044e-19,
+        "maximum_absolute_divergence_gradient": 2.842170943040401e-14
+      },
+      {
+        "seed": 361902,
+        "state": {
+          "entries": 1156,
+          "maximum_error_over_original_budget": 0.0001522474643259505
+        },
+        "loss": {
+          "entries": 1,
+          "maximum_error_over_original_budget": 0.0
+        },
+        "complete_parameter_gradient": {
+          "entries": 50692,
+          "maximum_error_over_original_budget": 2.460533387465588e-07
+        },
+        "maximum_absolute_divergence": 5.551115123125783e-17,
+        "maximum_absolute_divergence_gradient": 5.684341886080802e-14
+      }
+    ],
+    "training_cache_key": "6f6121bd890390ed89d20790797a36288b5f855bd59ece191e4d5a8cf85b8dc7",
+    "normalization_key": "46710e73f2b699396512563fce4fca39b0ae1906cae4b9573e14f809647a9164",
+    "N": 17,
+    "selected_interior_indices": [
+      0,
+      255,
+      511,
+      767,
+      1023,
+      1279,
+      1535,
+      1791,
+      2047,
+      2303,
+      2559,
+      2815,
+      3071,
+      3327,
+      3583,
+      3839,
+      4095
+    ],
+    "checked_families": [
+      "interior"
+    ],
+    "full_4096_point_objective_checked": false,
+    "potential_scale": 0.01,
+    "pressure_scale": 0.1,
+    "complete_gradient_comparisons": 2,
+    "complete_gradient_entries": 101384,
+    "raw_sha256": "a377f729f81b062f2c0075d9969731d748c4a24f6b65f409a8404c178af0c087"
+  },
+  "runtime": {
+    "python": "3.11.5 (main, May 21 2024, 17:16:23) [GCC 11.3.1 20221121 (Red Hat 11.3.1-4)]",
+    "torch": "2.4.0a0+gite3b9b71",
+    "numpy": "1.26.4"
+  },
+  "repeat_validation": {
+    "both_natural_exit": 0,
+    "identical_ndarrays": 20,
+    "comparison": "All stored arrays compared by dtype, shape and exact bytes",
+    "scope": "Deterministic repeat of the same proof. Independent native AD is the reference within each run.",
+    "complete_runs": 2,
+    "reruns_after_initial_run": 1
+  }
+}
