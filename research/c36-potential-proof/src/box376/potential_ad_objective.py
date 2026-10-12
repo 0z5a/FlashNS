@@ -8,7 +8,6 @@ import torch_c36 as c36
 
 from box376.data import FAMILIES, flatten
 from box376.normalized_objective import PreparedNormalizedADObjective
-from box376.objective import physical_parameters
 from box376.potential_geometry import native_field
 from box376.c36_coordinate_oracle import native_c17
 from box376.potential_objective import PreparedPotentialNormalizedObjective
@@ -47,8 +46,10 @@ class PreparedPotentialADObjective(PreparedPotentialNormalizedObjective):
                     else:
                         state = native_field(leaves, x, self._data["eta"])[:, :, None]
                 else:
-                    raw, _ = c36.forward(physical_parameters(leaves), inputs[sl])
-                    scale = raw.new_tensor([.01, .01, .01, .1])[None, :, None]
+                    alpha, origin, scale = self._model_constants
+                    weight, bias = leaves[0]
+                    physical = [(weight * alpha, bias - (weight * alpha) @ origin)] + leaves[1:]
+                    raw, _ = c36.forward(physical, inputs[sl])
                     state = c36.curl_pressure(c36.multiply(gate[sl], raw * scale))
                 weights = family["weights"][sl]
                 if name == "interior":

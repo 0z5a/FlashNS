@@ -53,6 +53,27 @@ def timed_call(function):
     return result, time.perf_counter() - started
 
 
+def capture(function):
+    """Capture warmed compute on a side stream; optimizer steps stay outside."""
+    started = time.perf_counter()
+    stream = torch.cuda.Stream()
+    stream.wait_stream(torch.cuda.current_stream())
+    with torch.cuda.stream(stream):
+        for _ in range(3):
+            function()
+    torch.cuda.current_stream().wait_stream(stream)
+    torch.cuda.synchronize()
+    graph = torch.cuda.CUDAGraph()
+    with torch.cuda.graph(graph, stream=stream):
+        result = function()
+
+    def replay():
+        graph.replay()
+        return result
+
+    return replay, time.perf_counter() - started
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("inputs", "protocol", "output"):
@@ -60,9 +81,12 @@ def main():
     parser.add_argument("--mode", choices=("timing", "training"), required=True)
     parser.add_argument("--baseline", choices=("taylor_parameter_ad", "native_coordinate_ad"), default="taylor_parameter_ad")
     parser.add_argument("--eager", action="store_true", help="Train without graph capture in a fresh process.")
+    parser.add_argument("--graphs", action="store_true", help="Use the separately frozen paired graph-timing protocol.")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     protocol = json.loads(args.protocol.read_text())
+    if args.mode == "timing":
+        assert args.graphs == protocol["performance"]["CUDA_graphs_in_measured_windows"]
     torch.set_num_threads(4)
     torch.set_default_dtype(torch.float64)
     assert torch.cuda.is_available() and torch.cuda.device_count() == 1
@@ -122,11 +146,31 @@ def main():
 
             if args.mode == "timing":
                 spec = protocol["performance"]
-                check("initial-gradient")
+                initial = check("initial-gradient")
+                evaluators = {"explicit": lambda: explicit(parameters, chunk),
+                              "reference": lambda: reference(parameters, reference_chunk)}
+                if args.graphs:
+                    group["graph_qualification"] = {}
+                    original = theta.detach().clone()
+                    for name in ("explicit", "reference"):
+                        if name == "reference" and args.baseline == "native_coordinate_ad":
+                            continue
+                        replay, seconds = capture(evaluators[name])
+                        with torch.no_grad():
+                            theta.add_(.001)
+                        check("changed-parameter-" + name + "-graph", replay())
+                        with torch.no_grad():
+                            theta.copy_(original)
+                        actual = replay()
+                        for a, b in zip(actual, initial):
+                            compare(cpu(a), cpu(b))
+                        evaluators[name] = replay
+                        group["graph_qualification"][name] = {"passed": True, "capture_seconds": seconds,
+                                                               "original_and_changed_parameters_checked": True}
                 for _ in range(2):
-                    timed_call(lambda: explicit(parameters, chunk))
+                    timed_call(evaluators["explicit"])
                 for _ in range(1 if args.baseline == "native_coordinate_ad" else 2):
-                    timed_call(lambda: reference(parameters, reference_chunk))
+                    timed_call(evaluators["reference"])
                 group["pairs"] = []
                 for index in range(spec["pairs_per_seed_per_baseline"]):
                     order = ("explicit", "reference") if (index + seed_index) % 2 == 0 else ("reference", "explicit")
@@ -138,7 +182,7 @@ def main():
                         native = name == "reference" and args.baseline == "native_coordinate_ad"
                         minimum = spec["native_window_evaluations"] if native else spec["window_minimum_evaluations"]
                         while len(durations) < minimum or (not native and elapsed < spec["window_minimum_seconds"]):
-                            result, duration = timed_call(lambda: explicit(parameters, chunk) if name == "explicit" else reference(parameters, reference_chunk))
+                            result, duration = timed_call(evaluators[name])
                             assert all(torch.isfinite(value).all().item() for value in result)
                             durations.append(duration)
                             elapsed += duration
@@ -149,7 +193,7 @@ def main():
                     group["pairs"].append(pair)
                     group.pop("active_pair")
                     progress(f"seed{seed}-pair{index}-complete")
-                check("final-gradient")
+                check("final-gradient", evaluators["explicit"]())
             else:
                 spec = protocol["training"]
                 group.update(Adam_updates=0, LBFGS_calls=0, LBFGS_closures=0, checkpoints=[])

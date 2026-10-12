@@ -239,3 +239,22 @@ its process: PyTorch 2.4 can leave the allocator in capture mode, so an eager
 fallback must use a fresh process and `--eager` with a new output directory.
 The executed training packet's complete gradient and changed-parameter replay
 checks pass on H100; optimization and physical acceptance are still in progress.
+
+[protocol-graph-timing-20261012.json](protocol-graph-timing-20261012.json)
+adds a separate timing scope in which both the explicit computation and the
+C36 parameter-AD baseline use qualified CUDA graph replay. Parameter AD also
+constructs its model constants during setup. Both captures are checked at the
+original parameters and after a parameter change, with the same full objective,
+FP64 precision and original derivative tolerance. Capture costs are reported
+separately. Native coordinate AD remains an eager baseline. The eager protocol
+and its raw measurements are preserved, including slowdowns.
+
+```sh
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_run --inputs data \
+  --protocol protocol-graph-timing-20261012.json --mode timing --graphs \
+  --baseline taylor_parameter_ad --output outputs/timing-matched-graphs
+PYTHONPATH=src python -m box376.audit_potential_run --inputs data \
+  --protocol protocol-graph-timing-20261012.json --proof outputs/timing-matched-graphs \
+  --output outputs/timing-matched-graphs/audit.json
+```
