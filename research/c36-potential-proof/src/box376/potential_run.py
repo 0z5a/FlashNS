@@ -82,6 +82,7 @@ def main():
     parser.add_argument("--baseline", choices=("taylor_parameter_ad", "native_coordinate_ad"), default="taylor_parameter_ad")
     parser.add_argument("--eager", action="store_true", help="Train without graph capture in a fresh process.")
     parser.add_argument("--graphs", action="store_true", help="Use the separately frozen paired graph-timing protocol.")
+    parser.add_argument("--train-engine", choices=("explicit", "taylor_ad"), default="explicit")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     protocol = json.loads(args.protocol.read_text())
@@ -100,6 +101,10 @@ def main():
               "cuda": torch.version.cuda, "gpu": torch.cuda.get_device_name(0),
               "groups": [], "setup_seconds": {}, "training_converged": False,
               "physical_acceptance_evaluated": False, "complete_solver_speedup": None}
+    baseline_training = args.mode == "training" and args.train_engine == "taylor_ad"
+    report.update(training_engine=args.train_engine,
+                  gradient_actual_prefix="taylor_ad" if baseline_training else "explicit",
+                  gradient_reference_prefix="explicit" if baseline_training else "reference")
 
     def progress(phase):
         report.update(phase=phase, wall_seconds=time.perf_counter() - started)
@@ -120,6 +125,9 @@ def main():
                 coordinate_ad=args.mode == "timing" and args.baseline == "native_coordinate_ad"))
         chunk = protocol["explicit_chunk"]
         reference_chunk = protocol["coordinate_ad_chunk"] if args.mode == "timing" and args.baseline == "native_coordinate_ad" else protocol["taylor_ad_chunk"]
+        training_engine = reference if baseline_training else explicit
+        comparison_engine = explicit if baseline_training else reference
+        comparison_chunk = chunk if baseline_training else reference_chunk
         topology = tuple(protocol["topology"])
         progress("prepared")
         for seed_index, seed in enumerate(protocol["seeds"]):
@@ -131,14 +139,15 @@ def main():
 
             def check(tag, actual=None):
                 progress(f"seed{seed}-{tag}-started")
-                candidate = explicit(parameters, chunk) if actual is None else actual
-                expected = reference(parameters, reference_chunk)
+                candidate = training_engine(parameters, chunk) if actual is None else actual
+                expected = comparison_engine(parameters, comparison_chunk)
                 arrays = {"theta": cpu(theta)}
                 checks = []
                 for name, a, b in zip(("loss", "gradient", "numerators"), candidate, expected):
                     aa, bb = cpu(a), cpu(b)
                     checks.append({"name": name, **compare(aa, bb)})
-                    arrays["explicit_" + name], arrays["reference_" + name] = aa, bb
+                    arrays[report["gradient_actual_prefix"] + "_" + name] = aa
+                    arrays[report["gradient_reference_prefix"] + "_" + name] = bb
                 group["checks"].append({"tag": tag, "comparisons": checks})
                 group["raw_files"].append(save_arrays(f"seed{seed}-{tag}", arrays))
                 progress(f"seed{seed}-{tag}")
@@ -209,12 +218,12 @@ def main():
                         stream.wait_stream(torch.cuda.current_stream())
                         with torch.cuda.stream(stream):
                             for _ in range(3):
-                                explicit(parameters, chunk)
+                                training_engine(parameters, chunk)
                         torch.cuda.current_stream().wait_stream(stream)
                         torch.cuda.synchronize()
                         graph = torch.cuda.CUDAGraph()
                         with torch.cuda.graph(graph, stream=stream):
-                            graph_result = explicit(parameters, chunk)
+                            graph_result = training_engine(parameters, chunk)
                         original = theta.detach().clone()
                         with torch.no_grad():
                             theta.add_(.001)
@@ -243,7 +252,7 @@ def main():
 
                 def evaluate():
                     if graph is None:
-                        return explicit(parameters, chunk)
+                        return training_engine(parameters, chunk)
                     graph.replay()
                     return graph_result
 
@@ -252,7 +261,7 @@ def main():
                     torch.save({"theta": theta.detach().cpu(), "optimizer_state": optimizer.state_dict(),
                         "protocol_sha256": report["protocol_sha256"], "representation": "C36-curl-potential",
                         "Adam_updates": group["Adam_updates"], "LBFGS_calls": group["LBFGS_calls"],
-                        "LBFGS_closures": group["LBFGS_closures"]}, path)
+                        "LBFGS_closures": group["LBFGS_closures"], "training_engine": args.train_engine}, path)
                     group["checkpoints"].append({"filename": path.name, "sha256": sha(path)})
 
                 with (args.output / f"seed{seed}-updates.jsonl").open("x", buffering=1) as events:

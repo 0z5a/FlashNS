@@ -258,3 +258,11 @@ PYTHONPATH=src python -m box376.audit_potential_run --inputs data \
   --protocol protocol-graph-timing-20261012.json --proof outputs/timing-matched-graphs \
   --output outputs/timing-matched-graphs/audit.json
 ```
+
+Use `--train-engine taylor_ad` to run the parameter-AD training baseline with
+the identical fresh seeds, objective, Adam/LBFGS recipe and finite budgets.
+Its scheduled gradient checks use the explicit implementation as the reference;
+saved arrays identify the actual and reference engines. Run independent physical
+acceptance for both baseline checkpoints as for the explicit checkpoints.
+Complete-solver speed or time to accepted accuracy remains unset until both
+implementations pass the same physical gates.

@@ -63,6 +63,8 @@ def main():
     assert report["state"] == "COMPLETE" and report["protocol_sha256"] == sha(args.protocol)
     result = {"status": "PASS", "reader": "NumPy only; saved-array audit", "comparisons": 0,
               "independent_optimizer_trajectory_replay": False, "complete_solver_speedup": None}
+    actual_prefix = report.get("gradient_actual_prefix", "explicit")
+    reference_prefix = report.get("gradient_reference_prefix", "reference")
     if "mode" in report:
         source_file = args.inputs / "training-source.npz"
         assert sha(source_file) == protocol["source_sha256"]
@@ -76,11 +78,11 @@ def main():
                 with np.load(path, allow_pickle=False) as raw:
                     assert len(raw.files) == row["arrays"] and all(np.isfinite(raw[k]).all() for k in raw.files)
                     assert raw["theta"].shape == (50692,) and raw["theta"].dtype == np.float64
-                    if "explicit_loss" in raw:
+                    if actual_prefix + "_loss" in raw:
                         for name in ("loss", "gradient", "numerators"):
-                            close(raw["explicit_" + name], raw["reference_" + name])
+                            close(raw[actual_prefix + "_" + name], raw[reference_prefix + "_" + name])
                             result["comparisons"] += 1
-                        close(raw["explicit_loss"], (raw["explicit_numerators"] * factors).sum())
+                        close(raw[actual_prefix + "_loss"], (raw[actual_prefix + "_numerators"] * factors).sum())
                     else:
                         close(raw["loss"], (raw["numerators"] * factors).sum())
             if report["mode"] == "training":
@@ -94,8 +96,8 @@ def main():
                 for row in group["checkpoints"]:
                     assert sha(args.proof / row["filename"]) == row["sha256"]
                 with np.load(args.proof / f"seed{group['seed']}-final-gradient.npz", allow_pickle=False) as final:
-                    close(group["final_loss"], final["explicit_loss"])
-                    close(group["final_gradient_infinity"], np.abs(final["explicit_gradient"]).max())
+                    close(group["final_loss"], final[actual_prefix + "_loss"])
+                    close(group["final_gradient_infinity"], np.abs(final[actual_prefix + "_gradient"]).max())
                 converged = group["final_loss"] <= spec["loss_convergence_limit"] and group["final_gradient_infinity"] <= spec["gradient_infinity_convergence_limit"]
                 assert group["training_converged"] == converged
             else:
