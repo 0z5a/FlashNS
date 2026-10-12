@@ -165,3 +165,67 @@ Science, audit and the Slurm step exit naturally with code zero. Successful
 and failed-start archives are fully read and hash-verified on two existing MN5
 allocations. Optimizer updates, training convergence, physical acceptance and
 comparative performance remain unqualified.
+
+## Frozen timing, training and physical acceptance protocol
+
+[protocol-20261012.json](protocol-20261012.json) fixes the next experiment before
+its GPU measurements. It adopts the existing 4,999-point source cache and fixed
+normalization without changing the cache's historical development metadata.
+Both original seeds start from fresh C36 curl-potential parameters. Direct
+velocity-model checkpoints are incompatible with this representation.
+
+The timing runner measures complete objective and gradient evaluations with
+CUDA synchronization. Each baseline has five alternating AB/BA pairs per seed;
+candidate and Taylor-AD windows last at least 60 seconds. Geometry setup is
+reported separately. Native coordinate AD and parameter AD over C36 Taylor
+states are distinct baselines: the latter shares the forward algebra and is
+not an independent coordinate derivative oracle. No complete-solver speedup
+is inferred from objective timings.
+
+Training uses 4,000 Adam updates and 20 LBFGS calls per seed, with frozen
+hyperparameters and a finite closure cap. Compute-only CUDA graph replay must
+match eager and parameter-AD gradients at changed parameters before use.
+Initial, scheduled and final complete gradients are checked; all LBFGS
+candidates are retained. Adam checkpoints and optimizer state are saved every
+100 updates. A finished budget is separate from the declared loss and gradient
+convergence test.
+
+```sh
+PYTHONPATH=src python -m unittest box376.test_potential_ad_objective
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_run --inputs data --protocol protocol-20261012.json \
+  --mode timing --baseline taylor_parameter_ad --output outputs/timing-taylor
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_run --inputs data --protocol protocol-20261012.json \
+  --mode timing --baseline native_coordinate_ad --output outputs/timing-native
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_run --inputs data --protocol protocol-20261012.json \
+  --mode training --output outputs/training
+PYTHONPATH=src python -m box376.audit_potential_run --inputs data \
+  --protocol protocol-20261012.json --proof outputs/training --output outputs/training/audit.json
+```
+
+Physical acceptance observes the trained potential through native coordinate
+AD, with a separate NumPy residual consumer. It includes independent stratified
+and uniform-volume holdouts, seven time slices, initial/boundary values and
+27 particles integrated with the observed network velocity. Two DOP853
+refinements check trajectory integration. The original velocity, momentum,
+divergence, pressure and endpoint limits remain unchanged. Time-slice and region
+diagnostics are reported separately from the original combined gate. No exact
+velocity is inserted into the model or trajectory right-hand side.
+
+```sh
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_physical --inputs data --protocol protocol-20261012.json \
+  --checkpoint outputs/training/seed361901-final.pt --output outputs/physical-seed361901
+PYTHONPATH=src python -m box376.audit_potential_run --inputs data \
+  --protocol protocol-20261012.json --proof outputs/physical-seed361901 \
+  --training outputs/training --output outputs/physical-seed361901/audit.json
+```
+
+Repeat physical acceptance for seed 361902. The NumPy-only reader reconstructs
+saved gradient comparisons, family-normalized losses, paired statistics,
+physical equations and acceptance decisions. It checks observed saved arrays;
+it does not independently replay every Adam update or reintegrate particle
+paths. GPU results for this protocol are pending; no speed, training convergence
+or physical acceptance is claimed by these new entry points alone.
