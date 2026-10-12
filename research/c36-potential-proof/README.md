@@ -284,7 +284,21 @@ families, and original/changed-parameter graph replay are checked. The unchanged
 `atol=1e-11, rtol=1e-9` budget passes a separate NumPy reader of all 96 arrays.
 The raw arrays, source packet and exit receipts have verified copies on durable
 MN5 storage and in the local workspace. The reported three-sample timings are
-diagnostic; the full paired eager and matched-graph experiments are running.
+diagnostic. The complete paired timings at source commit `ae51ca6` are recorded
+in [paired-packed-gather-result-20261012.json](paired-packed-gather-result-20261012.json).
+Each mode has ten alternating pairs, two original seeds and windows of at least
+60 seconds; setup and capture are excluded and reported separately.
+
+| Execution of both engines | Explicit seconds/evaluation | Parameter AD seconds/evaluation | Paired baseline/explicit ratio (95% bootstrap interval) |
+| --- | ---: | ---: | --- |
+| Eager | 1.73958 | 1.69253 | 0.97293 (0.97047–0.97592) |
+| CUDA graph replay | 0.48423 | 0.46955 | 0.96968 (0.96932–0.97008) |
+
+The explicit implementation remains 2.78% slower in eager and 3.13% slower in
+matched graph replay. Both GPU runs and NumPy readers exit normally; all 36
+gradient comparisons and paired statistics also pass local NumPy rereading of
+the copied raw arrays. Both timing archives have verified MN5/local copies.
+The native-coordinate-AD timing experiment is still running.
 
 ```sh
 PYTHONPATH=src python -m unittest test_c36_unpack
@@ -319,3 +333,22 @@ Physical observation also accepts `--device cpu --observer-chunk 128`. CUDA and
 GPU-trained checkpoint with the same holdouts, native derivatives, NumPy
 equations, particle integration and acceptance gates. CPU observation timings
 are separate from GPU performance measurements.
+
+[training-finite-budget-result-20261012.json](training-finite-budget-result-20261012.json)
+records the complete original explicit budgets at commit `7281fae`: 4,000 Adam
+updates and 20 LBFGS calls per seed, with 444/438 closures. Both fail convergence:
+losses are 5.40207e-4 and 5.16776e-4; gradient infinity norms are 7.50714e-4 and
+1.28521e-3. The limits remain 1e-4 and 1e-3. All 48 scheduled saved-gradient
+comparisons pass the NumPy audit. The complete 1.54 GB training archive, including
+all candidates/checkpoints, has been member-verified on durable MN5 storage.
+Both final checkpoints also have verified local copies.
+
+Native-AD CPU value observations cover both complete 4,096-point holdouts for
+each seed. Stratified/uniform velocity relative errors are 2.053%/4.374% and
+1.881%/3.461%, above the original 1% limit; corrected pressure also exceeds its
+original limit. Separate NumPy readers recheck the saved value metrics. These
+value observations exclude PDE derivatives and trajectories. GPU physical
+observation exhausted memory with the old recursive derivative cache; its failure
+and source are retained. Full physical acceptance is continuing with the cache
+lifetime fix, and the identical-budget parameter-AD baseline remains in progress.
+No complete-solver speed or time to accepted accuracy is established.

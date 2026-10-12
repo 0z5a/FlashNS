@@ -104,7 +104,7 @@
     {"seed": 361902, "engine": "parameterAD", "mode": "eager", "evaluation_seconds": [1.7318253240082413, 1.7395620750030503, 1.7337623829953372], "scope": "diagnostic only; three samples, no paired performance claim"},
     {"seed": 361902, "engine": "parameterAD", "mode": "graph", "evaluation_seconds": [0.47125380497891456, 0.47016774700023234, 0.4690688509726897], "scope": "diagnostic only; three samples, no paired performance claim"}
   ],
-  "formal_paired_timings": "RUNNING; diagnostic samples do not establish speedup",
+  "formal_paired_timings": "COMPLETE; see paired-packed-gather-result-20261012.json",
   "training_converged": false,
   "physical_acceptance_evaluated": false
 }
