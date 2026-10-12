@@ -229,3 +229,13 @@ physical equations and acceptance decisions. It checks observed saved arrays;
 it does not independently replay every Adam update or reintegrate particle
 paths. GPU results for this protocol are pending; no speed, training convergence
 or physical acceptance is claimed by these new entry points alone.
+
+The prepared objective now constructs its affine transform and output-scale
+constants on the device during setup. Its default eager equations are unchanged;
+a CPU regression checks bitwise equality of the default and cached forward
+states and complete parameter pullbacks. This avoids host-to-device constant
+creation during CUDA graph capture. A failed capture is preserved and terminates
+its process: PyTorch 2.4 can leave the allocator in capture mode, so an eager
+fallback must use a fresh process and `--eager` with a new output directory.
+The executed training packet's complete gradient and changed-parameter replay
+checks pass on H100; optimization and physical acceptance are still in progress.

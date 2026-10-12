@@ -59,6 +59,7 @@ def main():
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--mode", choices=("timing", "training"), required=True)
     parser.add_argument("--baseline", choices=("taylor_parameter_ad", "native_coordinate_ad"), default="taylor_parameter_ad")
+    parser.add_argument("--eager", action="store_true", help="Train without graph capture in a fresh process.")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     protocol = json.loads(args.protocol.read_text())
@@ -155,39 +156,44 @@ def main():
                 result = check("Adam0")
                 group["initial_loss"] = float(result[0])
                 graph, graph_result = None, None
-                try:
-                    stream = torch.cuda.Stream()
-                    stream.wait_stream(torch.cuda.current_stream())
-                    with torch.cuda.stream(stream):
-                        for _ in range(3):
-                            explicit(parameters, chunk)
-                    torch.cuda.current_stream().wait_stream(stream)
-                    torch.cuda.synchronize()
-                    graph = torch.cuda.CUDAGraph()
-                    with torch.cuda.graph(graph, stream=stream):
-                        graph_result = explicit(parameters, chunk)
-                    original = theta.detach().clone()
-                    with torch.no_grad():
-                        theta.add_(.001)
-                    graph.replay()
-                    changed = tuple(value.clone() for value in graph_result)
-                    torch.cuda.synchronize()
-                    check("changed-parameter-graph", changed)
-                    with torch.no_grad():
-                        theta.copy_(original)
-                    graph.replay()
-                    torch.cuda.synchronize()
-                    for a, b in zip(graph_result, result):
-                        compare(cpu(a), cpu(b))
-                    group["compute_graph_qualified"] = True
-                except Exception:
+                if args.eager:
                     group["compute_graph_qualified"] = False
-                    group["graph_failure"] = traceback.format_exc()
-                    if "original" in locals():
+                    group["fresh_process_eager_requested"] = True
+                else:
+                    try:
+                        stream = torch.cuda.Stream()
+                        stream.wait_stream(torch.cuda.current_stream())
+                        with torch.cuda.stream(stream):
+                            for _ in range(3):
+                                explicit(parameters, chunk)
+                        torch.cuda.current_stream().wait_stream(stream)
+                        torch.cuda.synchronize()
+                        graph = torch.cuda.CUDAGraph()
+                        with torch.cuda.graph(graph, stream=stream):
+                            graph_result = explicit(parameters, chunk)
+                        original = theta.detach().clone()
+                        with torch.no_grad():
+                            theta.add_(.001)
+                        graph.replay()
+                        changed = tuple(value.clone() for value in graph_result)
+                        torch.cuda.synchronize()
+                        check("changed-parameter-graph", changed)
                         with torch.no_grad():
                             theta.copy_(original)
-                    graph, graph_result = None, None
-                    torch.cuda.empty_cache()
+                        graph.replay()
+                        torch.cuda.synchronize()
+                        for a, b in zip(graph_result, result):
+                            compare(cpu(a), cpu(b))
+                        group["compute_graph_qualified"] = True
+                    except Exception:
+                        group["compute_graph_qualified"] = False
+                        group["graph_failure"] = traceback.format_exc()
+                        if "original" in locals():
+                            with torch.no_grad():
+                                theta.copy_(original)
+                        # A failed capture can leave the allocator in capture mode.
+                        # Preserve it and exit; any eager fallback needs a fresh process.
+                        raise RuntimeError("CUDA graph qualification failed; restart with a fresh CUDA context")
                 optimizer = torch.optim.Adam([theta], lr=1e-3, betas=tuple(spec["Adam_betas"]),
                     eps=spec["Adam_eps"], weight_decay=0, foreach=False)
 

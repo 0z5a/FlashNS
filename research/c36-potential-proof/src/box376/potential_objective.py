@@ -6,6 +6,7 @@ import torch
 
 from box376.data import FAMILIES, flatten
 from box376.normalized_objective import PreparedNormalizedObjective
+from box376.objective import ORIGIN, SCALE
 from box376.potential_model import forward, parameter_vjp, prepare_geometry
 
 
@@ -29,6 +30,9 @@ class PreparedPotentialNormalizedObjective:
                       for key, value in family.items()}
             self._data["families"][name] = frozen
         self._consumer = PreparedNormalizedObjective(self._data, calibration)
+        prototype = self._data["families"]["interior"]["points"]
+        self._model_constants = (prototype.new_tensor(SCALE), prototype.new_tensor(ORIGIN),
+                                 prototype.new_tensor([.01, .01, .01, .1])[None, :, None])
         for name in FAMILIES:
             points = self._data["families"][name]["points"]
             self._geometry[name] = prepare_geometry(points, self._data["eta"], chunk_size=geometry_chunk)
@@ -44,7 +48,7 @@ class PreparedPotentialNormalizedObjective:
             factor = self._consumer.coefficients[index] / self._consumer.denominators[index]
             for begin in range(0, len(inputs), chunk):
                 sl = slice(begin, begin + chunk)
-                state, tape = forward(parameters, inputs[sl], gate[sl])
+                state, tape = forward(parameters, inputs[sl], gate[sl], constants=self._model_constants)
                 weights = family["weights"][sl]
                 if name == "interior":
                     numerator, bar = self._consumer.interior(state, family["force"][sl],
@@ -57,7 +61,7 @@ class PreparedPotentialNormalizedObjective:
                     numerator = (weights * difference.square().sum(-1) * scale).sum()
                     bar = torch.zeros_like(state)
                     bar[:, components, 0] = 2 * weights[:, None] * difference * scale
-                gradient = flatten(parameter_vjp(tape, bar * factor))
+                gradient = flatten(parameter_vjp(tape, bar * factor, constants=self._model_constants))
                 yield index, numerator.detach(), gradient.detach()
 
     def __call__(self, parameters, chunk):
