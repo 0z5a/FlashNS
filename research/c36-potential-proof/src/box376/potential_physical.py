@@ -21,7 +21,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("inputs", "protocol", "checkpoint", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
+    parser.add_argument("--observer-chunk", type=int, default=128)
     args = parser.parse_args()
+    if args.observer_chunk < 1:
+        parser.error("--observer-chunk must be positive")
     args.output.mkdir(parents=True, exist_ok=False)
     protocol = json.loads(args.protocol.read_text())
     calibration = json.loads((args.inputs / "calibration.json").read_text())
@@ -31,14 +35,16 @@ def main():
     assert checkpoint["representation"] == "C36-curl-potential"
     torch.set_num_threads(4)
     torch.set_default_dtype(torch.float64)
-    assert torch.cuda.device_count() == 1
+    if args.device == "cuda":
+        assert torch.cuda.device_count() == 1
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
-    parameters = views(checkpoint["theta"].to("cuda"), tuple(protocol["topology"]))
+    parameters = views(checkpoint["theta"].to(args.device), tuple(protocol["topology"]))
     datasets, raw, metadata = make_holdouts(seed=protocol["physical"]["holdout_seed"])
     report = {"state": "RUNNING", "started_unix": time.time(), "protocol_sha256": sha(args.protocol),
               "checkpoint_sha256": sha(args.checkpoint), "validation_metadata": metadata,
               "observer": "native coordinate AD", "consumer": "independent NumPy",
+              "device": args.device, "observer_chunk": args.observer_chunk,
               "datasets": {}, "physical_acceptance_pass": False}
     raw["theta"] = checkpoint["theta"].numpy().copy()
 
@@ -48,13 +54,13 @@ def main():
         print(json.dumps({"phase": phase, "unix": time.time()}), flush=True)
 
     def values(points):
-        x = torch.from_numpy(np.ascontiguousarray(points)).to("cuda").requires_grad_(True)
+        x = torch.from_numpy(np.ascontiguousarray(points)).to(args.device).requires_grad_(True)
         return cpu(native_field(parameters, x))
 
     for name, dataset in datasets.items():
         states = []
-        for begin in range(0, len(dataset["points"]), 128):
-            x = torch.from_numpy(dataset["points"][begin:begin + 128].copy()).to("cuda").requires_grad_(True)
+        for begin in range(0, len(dataset["points"]), args.observer_chunk):
+            x = torch.from_numpy(dataset["points"][begin:begin + args.observer_chunk].copy()).to(args.device).requires_grad_(True)
             states.append(cpu(native_c17(lambda p: native_field(parameters, p), x)))
             progress(f"{name}-native-{begin}")
         state = np.concatenate(states)

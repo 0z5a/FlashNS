@@ -303,3 +303,19 @@ The earlier complete eager experiment at commit `73baa3b` is preserved in
 different source revisions' timings is historical evidence, not a paired
 before/after optimization experiment. A separate native-coordinate-AD timing
 experiment and identical-budget training/physical acceptance remain in progress.
+
+The native derivative oracle now builds cached derivative prefixes iteratively.
+The recursive closure previously retained itself, its cache and native graphs
+until cyclic garbage collection. Prefix order, native differentiation and
+parameter graphs are preserved. Two CPU tests verify bitwise C17/C36 states and
+parameter gradients, and immediate closure release with cyclic collection
+disabled. [native-oracle-cache-result-20261012.json](native-oracle-cache-result-20261012.json)
+also verifies bitwise native states and all 50,692 parameter gradients at two
+points from a completed trained checkpoint; a separate NumPy reader rechecks
+the saved arrays. This does not qualify a new GPU speed ratio.
+
+Physical observation also accepts `--device cpu --observer-chunk 128`. CUDA and
+128-point chunks remain the defaults. This permits CPU observation of a verified
+GPU-trained checkpoint with the same holdouts, native derivatives, NumPy
+equations, particle integration and acceptance gates. CPU observation timings
+are separate from GPU performance measurements.
