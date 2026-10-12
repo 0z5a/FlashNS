@@ -134,3 +134,34 @@ reference for all 4,096 interior points, optimizer behavior, training convergenc
 physical acceptance or comparative performance.
 
 The H100 run in [gpu-objective-result.json](gpu-objective-result.json) passed all 52 comparisons and five CPU geometry regression tests. The independent NumPy reader verified all 140 saved arrays. The maximum error was 2.07227e-05 of the original tolerance budget and peak PyTorch allocation was 10.797 GiB. Science, audit and the Slurm step exited normally, and the worker processes and their GPU contexts were confirmed absent. The raw archive was fully read and hash-verified on MN5 and VPS.
+
+## Full native objective qualification
+
+Use `--native-all` to include every canonical interior point in the fresh native
+reference. `--native-interior-chunk` controls native coordinate AD memory use;
+the successful H100 qualification uses chunks of 256. The default subset mode
+and the historical result above keep their original scope.
+
+```sh
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.verify_potential_objective_gpu --inputs data \
+  --native-all --native-interior-chunk 256 --output outputs/gpu-objective-full-native
+PYTHONPATH=src python -m box376.audit_potential_objective_gpu --inputs data \
+  --proof outputs/gpu-objective-full-native --output outputs/gpu-objective-full-native-audit.json
+```
+
+The 2026-10-12 H100 run in
+[gpu-objective-full-native-result.json](gpu-objective-full-native-result.json)
+passes all 52 comparisons for two seeds and all 50,692 parameters per seed.
+Fresh native AD now covers all 4,999 canonical points: 4,096 interior, 512
+initial, 384 boundary and seven gauge points. Candidate partitions 128 and 64,
+nonzero value-family diagnostic probes and caller-data mutation checks also pass.
+The separate NumPy reader verifies all 140 saved arrays and reconstructs every
+chunk gradient and normalized family contribution. The physical cache, model,
+normalization and `atol=1e-11, rtol=1e-9` remain unchanged. Five CPU geometry
+regression tests pass. The maximum error is 2.07227e-05 of the original
+tolerance budget; peak PyTorch allocation/reservation is 37.761/37.867 GiB.
+Science, audit and the Slurm step exit naturally with code zero. Successful
+and failed-start archives are fully read and hash-verified on two existing MN5
+allocations. Optimizer updates, training convergence, physical acceptance and
+comparative performance remain unqualified.

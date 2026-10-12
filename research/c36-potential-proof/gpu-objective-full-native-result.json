@@ -1,0 +1,676 @@
+{
+  "proof": {
+    "status": "PASS",
+    "started": 1791798678.1471784,
+    "device": "cuda",
+    "seeds": [
+      361901,
+      361902
+    ],
+    "parameter_count": 50692,
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "tolerance_relaxed": false,
+    "checked_families": [
+      "interior",
+      "initial",
+      "boundary",
+      "gauge"
+    ],
+    "family_counts": [
+      4096,
+      512,
+      384,
+      7
+    ],
+    "full_candidate_points": 4999,
+    "fresh_native_family_counts": [
+      4096,
+      512,
+      384,
+      7
+    ],
+    "fresh_native_points": 4999,
+    "diagnostic_family_counts": [
+      17,
+      17,
+      17,
+      17
+    ],
+    "diagnostic_points": 68,
+    "geometry_chunk": 256,
+    "candidate_chunks": [
+      128,
+      64
+    ],
+    "native_interior_chunk": 256,
+    "full_interior_native_reference_checked": true,
+    "optimizer_updates": 0,
+    "training_converged": false,
+    "physical_acceptance_evaluated": false,
+    "checks": [
+      {
+        "name": "seed361901_full128_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full128_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full128_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full64_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 3.2177829200306135e-07
+      },
+      {
+        "name": "seed361901_full64_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full64_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 3.217782920030612e-07
+      },
+      {
+        "name": "seed361901_full_partition_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 3.2177829200306145e-07
+      },
+      {
+        "name": "seed361901_full_partition_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.1731727298535211e-06
+      },
+      {
+        "name": "seed361901_full_partition_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 3.217782920030613e-07
+      },
+      {
+        "name": "seed361901_subset_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 3.2177829200306135e-07
+      },
+      {
+        "name": "seed361901_subset_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_subset_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 3.217782920030612e-07
+      },
+      {
+        "name": "seed361901_subset_fresh_native_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 3.2177829200306135e-07
+      },
+      {
+        "name": "seed361901_subset_fresh_native_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.7711058033914555e-06
+      },
+      {
+        "name": "seed361901_subset_fresh_native_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 3.217782920030612e-07
+      },
+      {
+        "name": "seed361901_subset_fresh_native_family_gradients",
+        "entries": 202768,
+        "maximum_error_over_original_budget": 1.7711058033914555e-06
+      },
+      {
+        "name": "seed361901_diagnostic_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_fresh_native_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_fresh_native_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.7871033533035698e-05
+      },
+      {
+        "name": "seed361901_diagnostic_fresh_native_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_fresh_native_family_gradients",
+        "entries": 202768,
+        "maximum_error_over_original_budget": 5.818905612173796e-06
+      },
+      {
+        "name": "seed361901_diagnostic_caller_mutation_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_caller_mutation_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_caller_mutation_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full128_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 1.6357155998654678e-07
+      },
+      {
+        "name": "seed361902_full128_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full128_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 1.635715599865467e-07
+      },
+      {
+        "name": "seed361902_full64_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 1.6357155998654678e-07
+      },
+      {
+        "name": "seed361902_full64_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full64_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 1.635715599865467e-07
+      },
+      {
+        "name": "seed361902_full_partition_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full_partition_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 9.244757329413245e-07
+      },
+      {
+        "name": "seed361902_full_partition_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_subset_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 1.6357155998654678e-07
+      },
+      {
+        "name": "seed361902_subset_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_subset_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 1.635715599865467e-07
+      },
+      {
+        "name": "seed361902_subset_fresh_native_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 1.6357155998654678e-07
+      },
+      {
+        "name": "seed361902_subset_fresh_native_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 2.2547939604156015e-06
+      },
+      {
+        "name": "seed361902_subset_fresh_native_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 1.635715599865467e-07
+      },
+      {
+        "name": "seed361902_subset_fresh_native_family_gradients",
+        "entries": 202768,
+        "maximum_error_over_original_budget": 2.2547939604156015e-06
+      },
+      {
+        "name": "seed361902_diagnostic_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_fresh_native_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_fresh_native_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 2.0722664178307465e-05
+      },
+      {
+        "name": "seed361902_diagnostic_fresh_native_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_fresh_native_family_gradients",
+        "entries": 202768,
+        "maximum_error_over_original_budget": 6.226416324650187e-06
+      },
+      {
+        "name": "seed361902_diagnostic_caller_mutation_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_caller_mutation_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_caller_mutation_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      }
+    ],
+    "diagnostic_stage_seconds": {
+      "prepare_canonical_4999": 31.970860002038535,
+      "prepare_native_reference_4999": 32.606196921959054,
+      "prepare_diagnostic_68": 6.711476966040209,
+      "seed361901_full128": 10.324223747011274,
+      "seed361901_full64": 10.262905421026517,
+      "seed361901_subset": 10.234419636020903,
+      "seed361901_subset_native": 3574.7299001860083,
+      "seed361901_diagnostic": 1.6673433550167829,
+      "seed361901_diagnostic_native": 243.27598913997645,
+      "seed361902_full128": 5.177656677959021,
+      "seed361902_full64": 10.257994383980986,
+      "seed361902_subset": 10.26633515697904,
+      "seed361902_subset_native": 3614.385785505001,
+      "seed361902_diagnostic": 1.6529845129698515,
+      "seed361902_diagnostic_native": 182.83768549899105
+    },
+    "torch": "2.4.0a0+gite3b9b71",
+    "numpy": "1.26.4",
+    "cuda_runtime": "11.8",
+    "gpu_name": "NVIDIA H100",
+    "dtype": "float64",
+    "timing_scope": "diagnostic calls; no paired performance claim",
+    "source_file_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
+    "training_cache_key": "6f6121bd890390ed89d20790797a36288b5f855bd59ece191e4d5a8cf85b8dc7",
+    "normalization_key": "46710e73f2b699396512563fce4fca39b0ae1906cae4b9573e14f809647a9164",
+    "phase": "seed361902_complete",
+    "complete_gradient_entries_per_comparison": 101384,
+    "full_candidate_partition_consistency_checked": true,
+    "fresh_native_parameter_gradient_checked": true,
+    "nonzero_value_family_gradients_checked": true,
+    "caller_mutation_isolated": true,
+    "finished": 1791806455.2117164,
+    "peak_allocated_bytes": 40545909760,
+    "peak_reserved_bytes": 40659582976,
+    "raw_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66"
+  },
+  "independent_saved_array_audit": {
+    "status": "PASS",
+    "reader": "independent NumPy recomputation",
+    "raw_arrays": 140,
+    "comparisons": 52,
+    "raw_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66",
+    "checks": [
+      {
+        "name": "seed361901_full128_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full128_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full128_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full64_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 3.2177829200306135e-07
+      },
+      {
+        "name": "seed361901_full64_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_full64_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 3.217782920030612e-07
+      },
+      {
+        "name": "seed361901_full_partition_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 3.2177829200306145e-07
+      },
+      {
+        "name": "seed361901_full_partition_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.1731727298535211e-06
+      },
+      {
+        "name": "seed361901_full_partition_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 3.217782920030613e-07
+      },
+      {
+        "name": "seed361901_subset_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 3.2177829200306135e-07
+      },
+      {
+        "name": "seed361901_subset_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_subset_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 3.217782920030612e-07
+      },
+      {
+        "name": "seed361901_subset_fresh_native_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 3.2177829200306135e-07
+      },
+      {
+        "name": "seed361901_subset_fresh_native_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.7711058033914555e-06
+      },
+      {
+        "name": "seed361901_subset_fresh_native_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 3.217782920030612e-07
+      },
+      {
+        "name": "seed361901_subset_fresh_native_family_gradients",
+        "entries": 202768,
+        "maximum_error_over_original_budget": 1.7711058033914555e-06
+      },
+      {
+        "name": "seed361901_diagnostic_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_fresh_native_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_fresh_native_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 1.7871033533035698e-05
+      },
+      {
+        "name": "seed361901_diagnostic_fresh_native_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_fresh_native_family_gradients",
+        "entries": 202768,
+        "maximum_error_over_original_budget": 5.818905612173796e-06
+      },
+      {
+        "name": "seed361901_diagnostic_caller_mutation_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_caller_mutation_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361901_diagnostic_caller_mutation_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full128_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 1.6357155998654678e-07
+      },
+      {
+        "name": "seed361902_full128_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full128_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 1.635715599865467e-07
+      },
+      {
+        "name": "seed361902_full64_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 1.6357155998654678e-07
+      },
+      {
+        "name": "seed361902_full64_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full64_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 1.635715599865467e-07
+      },
+      {
+        "name": "seed361902_full_partition_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_full_partition_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 9.244757329413245e-07
+      },
+      {
+        "name": "seed361902_full_partition_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_subset_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 1.6357155998654678e-07
+      },
+      {
+        "name": "seed361902_subset_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_subset_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 1.635715599865467e-07
+      },
+      {
+        "name": "seed361902_subset_fresh_native_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 1.6357155998654678e-07
+      },
+      {
+        "name": "seed361902_subset_fresh_native_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 2.2547939604156015e-06
+      },
+      {
+        "name": "seed361902_subset_fresh_native_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 1.635715599865467e-07
+      },
+      {
+        "name": "seed361902_subset_fresh_native_family_gradients",
+        "entries": 202768,
+        "maximum_error_over_original_budget": 2.2547939604156015e-06
+      },
+      {
+        "name": "seed361902_diagnostic_aggregate_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_aggregate_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_aggregate_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_fresh_native_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_fresh_native_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 2.0722664178307465e-05
+      },
+      {
+        "name": "seed361902_diagnostic_fresh_native_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_fresh_native_family_gradients",
+        "entries": 202768,
+        "maximum_error_over_original_budget": 6.226416324650187e-06
+      },
+      {
+        "name": "seed361902_diagnostic_caller_mutation_loss",
+        "entries": 1,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_caller_mutation_gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "seed361902_diagnostic_caller_mutation_numerators",
+        "entries": 4,
+        "maximum_error_over_original_budget": 0.0
+      }
+    ],
+    "full_candidate_points": 4999,
+    "fresh_native_points": 4999,
+    "full_interior_native_reference_checked": true,
+    "diagnostic_points": 68
+  },
+  "source_sha256": {
+    "src/taylor_oracle.py": "c4ffe646284b749efe060551f7a9da885524cf1ed6591c6c207ebfa8becbd42d",
+    "src/torch_c36.py": "f5f9682e8d6ab01d9ca9de6e3513b919512aaa7b2a1738772c700ccaf80ce17a",
+    "src/c17.py": "0569b104560ac2f451e1f892a2f94e74ec20b7a0ddc07c586b9cc87fac474dd2",
+    "src/torch_references.py": "fbae909ee5011f8ca7af7a2ab3c74a28f915c0a0fb2f7506f523a3873511df65",
+    "src/a24.py": "b4712ed6543570e2b2a3133f6cb42d6ed34201b54605cd25453bf58a6a66320e",
+    "src/torch_c17.py": "7a0854c66bb0a5e2aedc18b43cf622d6321f8421f45e8f109a7885a757a2f2c3",
+    "src/box376/audit_normalized_development.py": "18e152184904b24b41799b5187cdf33b0d51d5f8a6e5dfb6b91153f882584547",
+    "src/box376/frozen_data.py": "e7b74a5dc28c8fcccf11e2883e0847572f9219f4a5a0f9153cdc65d83133c558",
+    "src/box376/c36_coordinate_oracle.py": "7656e8423c8a08807aae75e62111f8d6cb77b6bed77ef3aa2d3ae9cfbe2823e5",
+    "src/box376/audit_potential_objective_gpu.py": "1b2736af278fa7928a68e2bf862a2230334212ea3a90129b1faa87381a01a4c2",
+    "src/box376/verify_potential_gradient.py": "8545d8da4d4f6fce45ef1f0130d5c7a85823a2efe9345b1cf531b746dfa580ff",
+    "src/box376/verify_potential_objective_gpu.py": "a078064cd5a709e585de6dc43cf737957857270a2009d691d230a40c7724ef46",
+    "src/box376/validation_data.py": "a3468884ecf3ae6f50f5a79b826bf3bc59641a55de7ea703d3fb5101db39dfac",
+    "src/box376/prepared_ad_objective.py": "80f571faf22f5eade6d288622401ac57c6bb4dc7bedcb06374439b6259a5e9a5",
+    "src/box376/__init__.py": "20725a695599baaabd3f0609ee0f4ee3c0ecf0bc9eede709bc24d3d7ecee2bc2",
+    "src/box376/data.py": "d2b4891cd56246d4cdb1a1d9e195a3197db1c03c1267264b4c0fc99b6f9acea9",
+    "src/box376/capture_objective.py": "03a58c55f3234fca15a972a63757d259e6ab34cb0a2db404b622aa33b6be66ee",
+    "src/box376/potential_geometry.py": "01efd0a1ec878ed6ce40520d30f7aac199dab5e404f9ee381aa3e74bf6441d04",
+    "src/box376/train_normalized_development.py": "a94ea2537eb77f1e8ab91af0304c9227371aea59e66bd0500e673c213bd2cf7d",
+    "src/box376/potential_model.py": "c7da05498a13f05f01fe3c81b7865996514a1e1ccf2578181560e3288b82130b",
+    "src/box376/test_potential_geometry.py": "35a047fe54cb1e778fd17babf4e08360870257c18072f41d479461c2ccf2fbb1",
+    "src/box376/normalized_objective.py": "a07772cd0df977dbdb907d80d55ecf2ebd125ed55bd435f8ad7d2824494874a1",
+    "src/box376/objective.py": "a0ecff744e71388fcc6bfefe6870b9a2c0d4b30aa991a879b9d18990e99a479a",
+    "src/box376/validation.py": "007dba52db5fd54592eb9e3de94f9834ab7dcd5dcaa859c5376beeea91171da8",
+    "src/box376/source.py": "52ced2e79d12317fac039ea626d81277955d974e8c440ddd20db65bbf64c893a",
+    "src/box376/prepare_normalized_training_data.py": "e32757e68180d94ee2aad1718154efc4821cd3bafe80e250c209e7b39af3364e",
+    "src/box376/potential_objective.py": "ab7f9b74b91bee7d2a4e35e14a1ce4d24474844f29d52e12b3166b20e9d155d6",
+    "src/e2e/naive_q35.py": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682"
+  },
+  "cpu_tests_passed": 5,
+  "execution_exit_codes": {
+    "geometry-regression": 0,
+    "science": 0,
+    "audit": 0,
+    "slurm_step": 0
+  },
+  "test_worker_gpu_context_released": true,
+  "assigned_gpu_apps_absent_at_completion": true,
+  "raw_archive": {
+    "sha256": "363e8cbd77b9746c177abe501b91f6133a08960217b5e575be8f6b700768951f",
+    "entries": 76,
+    "bytes": 140819948,
+    "MN5_source_full_reader_pass": true,
+    "MN5_internal_backup_full_reader_pass": true
+  },
+  "source_base_commit": "0e499505c34b4ccb8735fa9d9efc986dfd37efeb",
+  "scope": "Normalized four-family canonical objective, loss/numerators and complete 50692-parameter gradients for two seeds. Fresh native CUDA coordinate/parameter AD covers all 4096 interior, 512 initial, 384 boundary and seven gauge points. Candidate partitions128/64, native interior chunks256, synthetic nonzero diagnostic probes and caller mutation isolation pass.",
+  "timing_scope": "Diagnostic setup/evaluation calls; no paired speed claim.",
+  "memory_scope": "Peak PyTorch allocated/reserved memory for this qualification, not whole-device usage.",
+  "optimizer_updates": 0,
+  "training_converged": false,
+  "physical_acceptance_evaluated": false
+}

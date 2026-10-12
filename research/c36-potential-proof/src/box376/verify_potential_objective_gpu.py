@@ -27,6 +27,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("inputs", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--native-all", action="store_true",
+                        help="Check every canonical interior point with chunked native CUDA autograd.")
+    parser.add_argument("--native-interior-chunk", type=int, choices=(32, 66, 128, 256), default=66)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(4)
@@ -36,9 +39,11 @@ def main():
               "seeds": list(SEEDS), "parameter_count": 50692, "atol": 1e-11, "rtol": 1e-9,
               "tolerance_relaxed": False, "checked_families": list(FAMILIES),
               "family_counts": [4096, 512, 384, 7], "full_candidate_points": 4999,
-              "fresh_native_family_counts": [131, 512, 384, 7], "fresh_native_points": 1034,
+              "fresh_native_family_counts": [4096 if args.native_all else 131, 512, 384, 7],
+              "fresh_native_points": 4999 if args.native_all else 1034,
               "diagnostic_family_counts": [17] * 4, "diagnostic_points": 68,
-              "geometry_chunk": 256, "candidate_chunks": [128, 64], "native_interior_chunk": 66,
+              "geometry_chunk": 256, "candidate_chunks": [128, 64],
+              "native_interior_chunk": args.native_interior_chunk,
               "full_interior_native_reference_checked": False, "optimizer_updates": 0,
               "training_converged": False, "physical_acceptance_evaluated": False,
               "checks": [], "diagnostic_stage_seconds": {}}
@@ -104,7 +109,7 @@ def main():
         scales = calibration["candidate_fixed_physical_scales"]
         for index, name in enumerate(FAMILIES):
             family = data["families"][name]
-            chunk = 66 if name == "interior" else 128
+            chunk = args.native_interior_chunk if name == "interior" else 128
             for begin in range(0, len(family["points"]), chunk):
                 progress(prefix + "_" + name + "_" + str(begin))
                 sl = slice(begin, begin + chunk)
@@ -149,6 +154,8 @@ def main():
         arrays["coefficients"] = np.array(COEFFICIENTS)
         save_data("canonical", data)
         indices = np.unique(np.r_[np.linspace(0, 4095, 129, dtype=np.int64), [1965, 2489]])
+        if args.native_all:
+            indices = np.arange(4096, dtype=np.int64)
         arrays["native_indices"] = indices
         subset = copy.deepcopy(data)
         for key, value in subset["families"]["interior"].items():
@@ -173,7 +180,8 @@ def main():
             challenge["families"][name] = family
         save_data("diagnostic", challenge)
         full_objective = timed("prepare_canonical_4999", lambda: PreparedPotentialNormalizedObjective(data, calibration))
-        subset_objective = timed("prepare_subset_1034", lambda: PreparedPotentialNormalizedObjective(subset, calibration))
+        subset_objective = timed("prepare_native_reference_" + str(record["fresh_native_points"]),
+                                 lambda: PreparedPotentialNormalizedObjective(subset, calibration))
         challenge_objective = timed("prepare_diagnostic_68", lambda: PreparedPotentialNormalizedObjective(challenge, calibration))
         independent = PreparedNormalizedADObjective(data, calibration, "a24")
         for seed in SEEDS:
@@ -215,6 +223,7 @@ def main():
         assert len(record["checks"]) == 52
         record.update(status="PASS", complete_gradient_entries_per_comparison=101384,
                       full_candidate_partition_consistency_checked=True, fresh_native_parameter_gradient_checked=True,
+                      full_interior_native_reference_checked=args.native_all,
                       nonzero_value_family_gradients_checked=True, caller_mutation_isolated=True)
     except BaseException:
         record.update(status="FAILED", failure=traceback.format_exc())

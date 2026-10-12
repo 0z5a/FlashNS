@@ -24,12 +24,16 @@ def main():
     assert record["status"] == "PASS" and record["atol"] == 1e-11 and record["rtol"] == 1e-9
     assert record["seeds"] == [361901, 361902] and record["parameter_count"] == 50692
     assert record["family_counts"] == [4096, 512, 384, 7]
-    assert record["fresh_native_family_counts"] == [131, 512, 384, 7]
-    assert record["full_candidate_points"] == 4999 and record["fresh_native_points"] == 1034
+    native_all = record["full_interior_native_reference_checked"]
+    assert isinstance(native_all, bool)
+    native_interior = 4096 if native_all else 131
+    native_points = native_interior + 512 + 384 + 7
+    assert record["fresh_native_family_counts"] == [native_interior, 512, 384, 7]
+    assert record["full_candidate_points"] == 4999 and record["fresh_native_points"] == native_points
     assert record["checked_families"] == list(FAMILIES) and record["diagnostic_family_counts"] == [17] * 4
     assert record["geometry_chunk"] == 256 and record["candidate_chunks"] == [128, 64]
-    assert record["native_interior_chunk"] == 66 and record["optimizer_updates"] == 0
-    assert record["full_interior_native_reference_checked"] is False
+    native_chunk = record["native_interior_chunk"]
+    assert native_chunk in (32, 66, 128, 256) and record["optimizer_updates"] == 0
     assert record["tolerance_relaxed"] is False
     for flag in ("full_candidate_partition_consistency_checked", "fresh_native_parameter_gradient_checked",
                  "nonzero_value_family_gradients_checked", "caller_mutation_isolated"):
@@ -45,6 +49,8 @@ def main():
     assert key == record["normalization_key"] == "46710e73f2b699396512563fce4fca39b0ae1906cae4b9573e14f809647a9164"
     assert np.array_equal(arrays["coefficients"], COEFFICIENTS)
     indices = np.unique(np.r_[np.linspace(0, 4095, 129, dtype=np.int64), [1965, 2489]])
+    if native_all:
+        indices = np.arange(4096, dtype=np.int64)
     assert np.array_equal(arrays["native_indices"], indices)
     selected = arrays["diagnostic_indices"]
     assert selected.shape == (17,) and selected.dtype == np.int64 and len(np.unique(selected)) == 17
@@ -98,10 +104,10 @@ def main():
         for label, counts, chunks, data_label in (
                 ("full128", [4096, 512, 384, 7], [128] * 4, "canonical"),
                 ("full64", [4096, 512, 384, 7], [64] * 4, "canonical"),
-                ("subset", [131, 512, 384, 7], [64] * 4, "subset"),
-                ("subset_native", [131, 512, 384, 7], [66, 128, 128, 128], "subset"),
+                ("subset", [native_interior, 512, 384, 7], [64] * 4, "subset"),
+                ("subset_native", [native_interior, 512, 384, 7], [native_chunk, 128, 128, 128], "subset"),
                 ("diagnostic", [17] * 4, [7] * 4, "diagnostic"),
-                ("diagnostic_native", [17] * 4, [66, 128, 128, 128], "diagnostic")):
+                ("diagnostic_native", [17] * 4, [native_chunk, 128, 128, 128], "diagnostic")):
             prefix = f"seed{seed}_" + label
             for suffix in ("family", "chunk_numerators", "chunk_gradients", "loss", "gradient", "numerators", "family_gradients"):
                 expected.add(prefix + "_" + suffix)
@@ -140,7 +146,8 @@ def main():
     assert checks == record["checks"] and len(checks) == 52
     result = {"status": "PASS", "reader": "independent NumPy recomputation", "raw_arrays": len(arrays),
               "comparisons": len(checks), "raw_sha256": record["raw_sha256"], "checks": checks,
-              "full_candidate_points": 4999, "fresh_native_points": 1034, "diagnostic_points": 68}
+              "full_candidate_points": 4999, "fresh_native_points": native_points,
+              "full_interior_native_reference_checked": native_all, "diagnostic_points": 68}
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({key: value for key, value in result.items() if key != "checks"}))
 
