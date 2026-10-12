@@ -266,3 +266,40 @@ saved arrays identify the actual and reference engines. Run independent physical
 acceptance for both baseline checkpoints as for the explicit checkpoints.
 Complete-solver speed or time to accepted accuracy remains unset until both
 implementations pass the same physical gates.
+
+## Packed symmetric gathers
+
+`torch_c36.unpack` now expands symmetric derivative channels with four cached
+index gathers. This preserves the original forward values and transpose while
+removing the chain of in-place `CopySlices` operations. The two CPU regression
+tests compare the previous expansion's values and complete activation/product
+input gradients, including noncontiguous and empty inputs.
+
+[packed-gather-result-20261012.json](packed-gather-result-20261012.json) records
+48 passing H100 comparisons across both original seeds, all 4,999 canonical
+points and all 50,692 parameters. The preserved pre-optimization full native-AD
+reference is identified by SHA-256; fresh native coordinate AD is not rerun by
+this qualification. Both candidate chunk sizes, parameter AD, nonzero value
+families, and original/changed-parameter graph replay are checked. The unchanged
+`atol=1e-11, rtol=1e-9` budget passes a separate NumPy reader of all 96 arrays.
+The raw arrays, source packet and exit receipts have verified copies on durable
+MN5 storage and in the local workspace. The reported three-sample timings are
+diagnostic; the full paired eager and matched-graph experiments are running.
+
+```sh
+PYTHONPATH=src python -m unittest test_c36_unpack
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.verify_packed_gather --inputs data \
+  --protocol protocol-20261012.json \
+  --reference preserved-full-native/raw-proof.npz --output outputs/packed-gather
+PYTHONPATH=src python -m box376.audit_packed_gather \
+  --proof outputs/packed-gather --output outputs/packed-gather-audit.json
+```
+
+The earlier complete eager experiment at commit `73baa3b` is preserved in
+[paired-eager-result-20261012.json](paired-eager-result-20261012.json): explicit
+2.55670 seconds versus parameter AD 2.35870 seconds, paired speed ratio 0.92256
+(95% bootstrap interval 0.92122–0.92419). This is an observed slowdown. Comparing
+different source revisions' timings is historical evidence, not a paired
+before/after optimization experiment. A separate native-coordinate-AD timing
+experiment and identical-budget training/physical acceptance remain in progress.
