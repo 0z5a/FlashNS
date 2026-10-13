@@ -18,10 +18,13 @@ class PreparedPotentialNormalizedObjective:
     explicit-gradient interface returns detached loss, gradient and family
     numerators; it does not install an autograd backward or update parameters.
     """
-    def __init__(self, data, calibration, *, geometry_chunk=256, activation=None):
+    def __init__(self, data, calibration, *, geometry_chunk=256, activation=None, activation_vjp=None):
         if activation is not None and not callable(activation):
             raise ValueError("Activation must be callable")
         self._activation = activation
+        if activation_vjp is not None and (activation is None or not callable(activation_vjp)):
+            raise ValueError("A callable activation and its transpose must be selected together")
+        self._activation_vjp = activation_vjp
         self._data = copy.deepcopy({key: value for key, value in data.items() if key != "families"})
         self._data["families"] = {}
         self._geometry = {}
@@ -52,7 +55,7 @@ class PreparedPotentialNormalizedObjective:
             for begin in range(0, len(inputs), chunk):
                 sl = slice(begin, begin + chunk)
                 state, tape = forward(parameters, inputs[sl], gate[sl], constants=self._model_constants,
-                                      activation=self._activation)
+                                      activation=self._activation, activation_vjp=self._activation_vjp)
                 weights = family["weights"][sl]
                 if name == "interior":
                     numerator, bar = self._consumer.interior(state, family["force"][sl],

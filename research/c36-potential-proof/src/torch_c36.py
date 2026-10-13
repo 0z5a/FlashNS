@@ -153,14 +153,14 @@ def forward(parameters, input_state, *, activation=None):
     return state, tape
 
 
-def parameter_vjp(parameters, tape, cotangent, *, activation=None):
+def parameter_vjp(parameters, tape, cotangent, *, activation=None, activation_vjp=None):
     nonlinear = activate if activation is None else activation
     gradients, bar = [], cotangent
     for index in range(len(parameters) - 1, -1, -1):
         state, z = tape[index]
         weight, _ = parameters[index]
         if index < len(parameters) - 1:
-            bar = state_vjp(nonlinear, z, bar)
+            bar = state_vjp(nonlinear, z, bar) if activation_vjp is None else activation_vjp(z, bar).detach()
         gradients.append((torch.einsum("noq,nwq->ow", bar, state), bar[:, :, 0].sum(0)))
         bar = torch.einsum("noq,ow->nwq", bar, weight)
     return list(reversed(gradients))

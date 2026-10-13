@@ -14,8 +14,10 @@ from box376.potential_objective import PreparedPotentialNormalizedObjective
 
 
 class PreparedPotentialADObjective(PreparedPotentialNormalizedObjective):
-    def __init__(self, data, calibration, *, coordinate_ad=False, geometry_chunk=256):
-        super().__init__(data, calibration, geometry_chunk=geometry_chunk)
+    def __init__(self, data, calibration, *, coordinate_ad=False, geometry_chunk=256, activation=None):
+        if coordinate_ad and activation is not None:
+            raise ValueError("Jet activation selection requires Taylor parameter AD")
+        super().__init__(data, calibration, geometry_chunk=geometry_chunk, activation=activation)
         self.independent = PreparedNormalizedADObjective(self._data, calibration)
         self.coordinate_ad = coordinate_ad
 
@@ -49,7 +51,7 @@ class PreparedPotentialADObjective(PreparedPotentialNormalizedObjective):
                     alpha, origin, scale = self._model_constants
                     weight, bias = leaves[0]
                     physical = [(weight * alpha, bias - (weight * alpha) @ origin)] + leaves[1:]
-                    raw, _ = c36.forward(physical, inputs[sl])
+                    raw, _ = c36.forward(physical, inputs[sl], activation=self._activation)
                     state = c36.curl_pressure(c36.multiply(gate[sl], raw * scale))
                 weights = family["weights"][sl]
                 if name == "interior":
