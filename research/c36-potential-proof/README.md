@@ -374,3 +374,31 @@ gradient comparisons pass. Its complete 1.55 GB training archive is verified on
 MN5. Physical observation is continuing from its original verified checkpoints
 after the same old-cache OOM. No complete-solver speed or time to accepted
 accuracy is established.
+
+## Opt-in packed activation candidate
+
+`torch_c36_packed.activate_packed` computes the same tanh identities in symmetric
+storage: ten third-derivative and six Hessian entries rather than dense 27/9
+entries. The default activation remains unchanged. Select the candidate with
+`PreparedPotentialNormalizedObjective(data, calibration, activation=activate_packed)`;
+the chosen activation is also retained for the parameter transpose.
+
+[packed-activation-cpu-result-20261013.json](packed-activation-cpu-result-20261013.json)
+checks both initial seeds, changed parameters and both original trained final
+checkpoints. All 50,692 gradient entries pass against the previous explicit
+implementation and parameter AD on small canonical subsets, with two partitions
+and the original tolerance. A separate NumPy reader passes 72 comparisons.
+CPU tests also cover all derivative-state transposes, noncontiguous and empty
+inputs, and zero/saturated activation values. A local single-activation/transpose
+diagnostic took 0.01510 seconds versus 0.02924 seconds for dense storage. This
+is a CPU kernel diagnostic; full 4,999-point GPU qualification and formal paired
+performance have not run, and no new GPU acceleration claim is made.
+
+```sh
+PYTHONPATH=src python -m unittest test_c36_packed box376.test_potential_audit
+PYTHONPATH=src python -m box376.verify_packed_activation_cpu --inputs data \
+  --protocol protocol-20261012.json --training original-training \
+  --output outputs/packed-activation-cpu
+PYTHONPATH=src python -m box376.audit_packed_activation_cpu \
+  --proof outputs/packed-activation-cpu --output outputs/packed-activation-cpu-audit.json
+```
