@@ -36,3 +36,7 @@ PYTHONPATH=src uv run pytest -q
 科学库的历史 H100 环境与哈希固定依赖见 [H100 运行说明](experiments/cuda_jet_h100/README.md)。Euler 原始输入须另行按来源登记下载，来源缺失时相关测试会跳过。
 
 本次保留 GitHub 已发布的 G1/G2 实现，补上本地缺失的 H100/Hopper/A4000 实验、八后端完整求解、Euler/仿射波/形式化来源适配、测试及历史结果。见[差异和补交清单](docs/source-sync-20260913.md)。本次执行 CPU/HOST 回归和证据检查，没有重新运行 GPU 性能测试。
+
+## 研究论文
+
+[2026-10-13 研究稿](research/manuscript/README.md)保留已通过验收的 2D H20 求解实验，并加入完整 C36 导数检查、H100/CPU 配对性能、已完成的 3D 训练与物理验收失败结果。CPU 解析转置加速与 GPU 性能、完整求解器加速分别报告。

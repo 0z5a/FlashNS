@@ -1,0 +1,31 @@
+{
+  "revision": "2026-10-13",
+  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
+  "evidence_snapshot_commit": "1634120bc27869ea62f5d2439d5e565ae23a58b2",
+  "manuscript_sha256": "e2777cd89deb652fed0e1ea38ac0f5e9eafa077031b8812a97ad084e3c5e3032",
+  "evidence_sha256": {
+    "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
+    "../c36-potential-proof/gpu-objective-full-native-result.json": "2a7772e484545484dd79882925fc33354c12984d7bef326ec027f2a51ec14f8b",
+    "../c36-potential-proof/paired-packed-gather-result-20261012.json": "775ac78b50ba5aa55763cb4bf4105470467d1f69f069f829e50b4a943c31a298",
+    "../c36-potential-proof/paired-native-coordinate-result-20261013.json": "837d7281089e85ddaf9f0d32cd7e0e651c07bec9b9a936bce174c8dd412a8d2e",
+    "../c36-potential-proof/training-finite-budget-result-20261012.json": "0a7121cf1d4139e6d6d2d3ae046f20e8da6adcfea592ce835b912c1925e55234",
+    "../c36-potential-proof/physical-finite-budget-result-20261013.json": "1072d8a76521e21f021d8ed59e3a6e9d336c47067badc73d08c1eebc2fb53631",
+    "../c36-potential-proof/analytic-transpose-cpu-result-20261013.json": "9606e1129e811762e74dea63ba1433989e763c443e6d98de6107a9f5016849ca",
+    "../c36-potential-proof/paired-analytic-vs-compiled-ad-cpu-result-20261013.json": "4c65564ce9c28bf40190a7452b49a04ff42f400d72164857c1bee0fb63bea070"
+  },
+  "performance_scopes": {
+    "H20_2D": "accepted solve comparisons retained from October 6",
+    "H100_3D": "full objective/gradient; packed gather; no speedup over C36 parameter AD",
+    "CPU_3D": "full objective/gradient; compiled packed activation and analytic activation transpose",
+    "native_3D": "older recursive cache and older candidate; no repaired-native performance claim"
+  },
+  "C36_training_converged": false,
+  "C36_physical_acceptance_pass": false,
+  "new_CPU_variant_GPU_qualified": false,
+  "C36_complete_solver_speedup": null,
+  "pdf_sha256": "58fcbe223e6e0ef78c4262f198b7b1e9c65e0e5cd2fd7d389dd136fe17166643",
+  "pages": 21,
+  "latex_compilation": "SUCCESS",
+  "pdf_visual_review": "PASS",
+  "pdf_export": "ReportLab with 300 dpi STIX math images; same standalone LaTeX content"
+}

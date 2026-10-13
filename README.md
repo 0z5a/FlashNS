@@ -75,3 +75,7 @@ The [tested source manifest](docs/tested-source-sha256.json) records the unchang
 - [A4000 sample data parallelism](experiments/cuda_jet_v5/README.md) and [earlier CUDA fusion](experiments/cuda_jet_v2/README.md).
 - [Euler spline and affine-wave reproduction](docs/day0-results.md). Run `PYTHONPATH=src uv run python -m flashns.cli fetch-sources` to retrieve hash-pinned inputs before source-dependent checks. The 4M-point Euler comparison measured 2.694× paired speedup over stable CPU evaluation, including GPU input/output transfers; initialization and comparison costs are reported separately in the [H100 report](docs/cuda-h100-results.md).
 - [Formal-source reproduction and independent numerical adapter](experiments/openai_ns_formal/README.md), with [scope and results](docs/openai-ns-formal-results.md).
+
+## Research manuscript
+
+The [October 13 research draft](research/manuscript/README.md) retains the accepted 2D H20 solves and adds the full C36 derivative qualifications, matched H100/CPU timing, and completed 3D training and physical acceptance failures. The new CPU analytic-transpose result is separate from GPU and complete-solver performance.
