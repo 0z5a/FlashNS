@@ -561,6 +561,27 @@ The unmodified Cao NS script naturally completes on the public-comparison GPU. I
 
 \section{Three-dimensional transient C36 study}\label{sec:c36}
 \subsection{Scientific problem and derivative contract}
+The mathematical source is OpenAI Math376's incompressible box-transport
+construction~\cite{math376}. We instantiate one compactly supported box
+motion in the unit cube over $t\in[0,1]$. For prescribed smooth centers
+$c(t)$, a determinant-one diagonal dilation $D(t)$ and a smooth cutoff
+$\chi$, the construction gives
+\begin{align}
+y&=x-c(t),\qquad L=\dot D D^{-1},\qquad \operatorname{tr}L=0,\\
+B&=\tfrac12\dot c\times y+\tfrac13(Ly)\times y,\\
+U&=\nabla\times(\chi B)=\chi(\dot c+Ly)+\nabla\chi\times B,\\
+p&=0,\qquad f=\partial_t U+(U\cdot\nabla)U-\nu\Delta U.
+\label{eq:math376source}
+\end{align}
+The prescribed motion determines the fixed external force and its spatial
+derivative; both are independent of learned parameters. The cutoff curl
+term is retained at box faces, edges and corners. Numerical choices belong
+to this project's single-box instance. The original mathematical commit
+and source-file hash agree with the provenance recorded in the frozen
+training cache. This is a constructed forced-flow problem under stated
+conditions, rather than a claim of a general formula for arbitrary
+Navier--Stokes data or a fluid regularity theorem.
+
 This separate manufactured transient incompressible-flow experiment uses
 the frozen physical-coordinate source cache and calibration, viscosity
 $\nu=0.01$, cutoff width $\eta=1/32$, and the affine/$\tanh$ network
@@ -979,6 +1000,11 @@ NVIDIA. CUDA Deep Neural Network library (cuDNN).
 NVIDIA. cuEquivariance public implementation.
 Source commit \texttt{70674ada7a00372e88ebe99969c700a6dcddd08f}.
 \url{https://github.com/NVIDIA/cuEquivariance}.
+\bibitem{math376}
+OpenAI. Incompressible Box Transport and Finite Computation.
+September 27, 2026. Mathematical geometry source pinned at commit
+\texttt{adc7f1241b42e322a6451854ab7e4b4c146bf78a}.
+\href{https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Incompressible-Box-Transport-and-Finite-Computation-September-27-2026/build/geometry.tex}{Original box-transport potential, curl extension and forced-flow realization}.
 \bibitem{flashns3dartifact}
 Dezhen Lu. FlashNS C36 experiment and reproducibility artifact.
 Evidence snapshot \texttt{37ced2805131fcfaba6f7f89f8b0b1d17e5cef28},

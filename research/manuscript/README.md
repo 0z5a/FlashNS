@@ -6,4 +6,11 @@ The new C36 section reports complete 4,999-point / 50,692-parameter checks, pair
 
 [Evidence index](evidence-index.json) pins the source reports and their SHA256 values. [C36 reproduction instructions](../c36-potential-proof/README.md) describe the independent readers and protocols. The complete historical H20 artifacts remain preserved separately.
 
+The three-dimensional problem definition explicitly attributes its mathematical
+source to OpenAI Math376's *Incompressible Box Transport and Finite Computation*.
+The paper gives the compact-curl construction and residual-defined fixed force,
+identifies the single-box instance's scope, and cites the pinned original
+geometry source. [The source-to-data mapping](../c36-potential-proof/math376-provenance.json)
+records the matching mathematical commit and physical-source SHA256.
+
 [中文思路摘要](flashns-summary.zh-CN.md) explains the method, validated H20 solve results and current H100 C36 scope. [H20-on-H100 supplementary batch](../h20-on-h100/README.zh-CN.md) reproduces the original 2D experiment with frozen data and initializations; its new GPU results remain pending.

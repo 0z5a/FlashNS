@@ -2,7 +2,7 @@
   "revision": "2026-10-13",
   "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
   "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
-  "manuscript_sha256": "60acefd6609f840cb9ad7076bf93f15bc61b49e184b7fa7527a51650e164f821",
+  "manuscript_sha256": "28c33f85eacc33b1c35a1473f3afe3248ef4ae5a51cd7cbe73474e7b5d071b08",
   "evidence_sha256": {
     "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
     "../c36-potential-proof/gpu-objective-full-native-result.json": "2a7772e484545484dd79882925fc33354c12984d7bef326ec027f2a51ec14f8b",
@@ -17,7 +17,8 @@
     "../c36-potential-proof/protocol-graph-timing-20261012.json": "26293f7c66f84432396b3e0052463fa8b458d1e343e5f478e124fd92180585ee",
     "../c36-potential-proof/paired-analytic-vs-compiled-ad-gpu-result-20261013.json": "e1a4b306a37ed1431158836589c15bd420efc740df6598a2403db87ff63282ea",
     "../c36-potential-proof/compiler-preflight-negative-results-20261013.json": "af8c9ed757433a13249017edd781bd8ec38ca27253fc873527d5f667acc89525",
-    "../c36-potential-proof/compiled-activation-GPU-smoke-result-20261013.json": "bd5576325c844a0a8464ce7590cf9019e4906703fc1771350990d1d656882e56"
+    "../c36-potential-proof/compiled-activation-GPU-smoke-result-20261013.json": "bd5576325c844a0a8464ce7590cf9019e4906703fc1771350990d1d656882e56",
+    "../c36-potential-proof/math376-provenance.json": "20aa0b47412606eaf0dbd27b6a4e308254840111e273c9d30d4bbc4237961485"
   },
   "performance_scopes": {
     "H20_2D": "accepted solve comparisons retained from October 6",
@@ -29,11 +30,13 @@
   "C36_physical_acceptance_pass": false,
   "new_CPU_variant_GPU_qualified": true,
   "C36_complete_solver_speedup": null,
-  "pdf_sha256": "3b9dc72ddfd5f48778bd96b2cdf09af3d95393e37e223330e1084e2d279e36c7",
+  "pdf_sha256": "4917d95835f3c99be049a5020461784e7dea97280de4e3933c6a1a27d7594cc9",
   "pages": 22,
   "latex_compilation": "SUCCESS",
-  "pdf_visual_review": "PASS: all 22 rendered pages; no word outside page bounds; final performance table and conclusion inspected",
+  "pdf_visual_review": "PASS: all 22 pages on two contact sheets; pages 11, 12 and 18 inspected at full resolution; no clipping or overlap",
   "pdf_export": "ReportLab with 300 dpi STIX math images; same standalone LaTeX content",
   "eager_analytic_variant_GPU_qualified": true,
-  "compiled_analytic_variant_GPU_qualified": true
+  "compiled_analytic_variant_GPU_qualified": true,
+  "mathematical_source": "OpenAI Math376; pinned geometry commit adc7f1241b42e322a6451854ab7e4b4c146bf78a; single-box forced-flow instance",
+  "mathematical_source_documentation_commit": "aea2792dca918c2455a387f84a793f86d28c0afb"
 }
