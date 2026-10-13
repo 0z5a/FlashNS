@@ -1,0 +1,15 @@
+{
+  "state": "PASS",
+  "reader": "NumPy only; no Torch imports",
+  "numerical_comparisons": 42,
+  "arrays": 105,
+  "CPU_backends": 7,
+  "maximum_error_over_original_budget": 0.00038082231798332365,
+  "atol": 2e-12,
+  "rtol": 2e-11,
+  "tolerance_relaxed": false,
+  "archive_members_verified": 70,
+  "archive_sha256": "187b51529f5e97ecebefcf5d468bdaf9460eb296492ea50b509a18a10d978f0a",
+  "GPU_qualification": false,
+  "scope": "CPU preparation only; unchanged H20 science on the actual MN5 numerical stack; no new GPU performance claim"
+}
