@@ -298,7 +298,18 @@ The explicit implementation remains 2.78% slower in eager and 3.13% slower in
 matched graph replay. Both GPU runs and NumPy readers exit normally; all 36
 gradient comparisons and paired statistics also pass local NumPy rereading of
 the copied raw arrays. Both timing archives have verified MN5/local copies.
-The native-coordinate-AD timing experiment is still running.
+The earlier native-coordinate-AD experiment is now complete at source `73baa3b`.
+[paired-native-coordinate-result-20261013.json](paired-native-coordinate-result-20261013.json)
+preserves all ten alternating pairs: explicit 2.77727 seconds versus native
+3,484.28352 seconds, ratio 1,254.84 (95% bootstrap interval 1,211.34–1,291.26).
+The original native-specific window rule uses one complete native evaluation;
+candidate windows last at least 60 seconds. This measures the original recursive
+native derivative implementation; the later cache lifetime repair is outside
+that experiment. All gradient/statistic audits pass, and the complete archive
+has 57 verified members on MN5 and locally. The original controller's exit 1
+retains the earlier pre-update training failure; timing science, reader and
+timing driver each exit 0. These measurements remain separate from the newer
+packed-gather/Taylor-AD comparison and complete-solver accuracy.
 
 ```sh
 PYTHONPATH=src python -m unittest test_c36_unpack
@@ -316,7 +327,7 @@ The earlier complete eager experiment at commit `73baa3b` is preserved in
 (95% bootstrap interval 0.92122–0.92419). This is an observed slowdown. Comparing
 different source revisions' timings is historical evidence, not a paired
 before/after optimization experiment. The separate native-coordinate-AD timing
-experiment remains in progress; original finite-budget training is complete.
+experiment and original finite-budget training are complete.
 
 The native derivative oracle now builds cached derivative prefixes iteratively.
 The recursive closure previously retained itself, its cache and native graphs
@@ -371,9 +382,14 @@ The identical-budget parameter-AD baseline also completed both 4,000-Adam /
 20-LBFGS budgets. Its final losses are 5.38698e-4 / 5.15322e-4 and gradient
 infinity norms 5.90443e-4 / 2.06306e-3; both seeds fail convergence. All saved
 gradient comparisons pass. Its complete 1.55 GB training archive is verified on
-MN5. Physical observation is continuing from its original verified checkpoints
-after the same old-cache OOM. No complete-solver speed or time to accepted
-accuracy is established.
+MN5. Physical observation completed from its original verified checkpoints after
+the same old-cache OOM, with both original trajectory refinements and all holdouts.
+Both seeds fail the original physical gates. Velocity relative errors are
+2.033%/4.313% and 1.850%/3.415%; endpoint errors 0.02276/0.02998. Remote and local
+NumPy readers each pass 117 checks per seed. The 15.3 MB archive has 123 verified
+members on MN5 and locally. Both training engines remain unaccepted at the
+original finite budget. No complete-solver speed or time to accepted accuracy
+is established.
 
 ## Opt-in packed activation candidate
 

@@ -488,5 +488,210 @@
   "audit_scope": "Saved-array NumPy audit; analytic source independently checked, frozen source bytes used for cancellation-sensitive residuals; no optimizer replay or independent ODE reintegration",
   "local_reader_sha256": "73f83c6ecdeb70e5e07705b58534fa019ede4c1af653c56dab39a8629fd35926",
   "previous_attempt": "Old recursive native derivative cache exhausted GPU memory; trace preserved; no optimizer extension",
-  "baseline_physical_acceptance": "Original baseline checkpoints restored internally; same complete physical protocol RUNNING after old-cache OOM; not accepted or compared prematurely"
+  "baseline_physical_acceptance": {
+    "state": "COMPLETE",
+    "training_source_commit": "de1d223",
+    "observer_source_commit": "1f1983a2b015cf1dc8b390ecc5a596bb7bd0e935",
+    "physical_acceptance_pass": false,
+    "groups": [
+      {
+        "seed": 361901,
+        "checkpoint_sha256": "e3139bcfb2d102bf6f5325b366c140aec8b53478f2fe49a3fa184fc54847be82",
+        "raw_sha256": "3f1e1b510013f9a18de3f09cc9e0c457d0ee67424b1538805a1198eb2ee45d9a",
+        "physical_acceptance_pass": false,
+        "datasets": {
+          "stratified": {
+            "global": {
+              "velocity_relative_l2": 0.020330592844342514,
+              "velocity_reference_is_zero": false,
+              "normalized_velocity_error_rms": 0.019977835045275383,
+              "normalized_divergence_rms": 1.9991307675644475e-14,
+              "normalized_divergence_gradient_rms": 2.999645114152282e-12,
+              "normalized_momentum_rms": 0.014275780798096563,
+              "normalized_momentum_gradient_rms": 0.013898073407178059,
+              "normalized_corrected_pressure_rms": 0.02474598772661764,
+              "normalized_pressure_gauge_rms": 0.0,
+              "velocity_component_error_rms": [
+                0.008851208150125326,
+                0.00749162908273622,
+                0.005949123781737009
+              ],
+              "velocity_component_relative_l2": [
+                0.019619075425694882,
+                0.02257453145472545,
+                0.01907382914593051
+              ]
+            },
+            "field_gate_pass": false
+          },
+          "uniform": {
+            "global": {
+              "velocity_relative_l2": 0.04312612979380391,
+              "velocity_reference_is_zero": false,
+              "normalized_velocity_error_rms": 0.0029967372287875633,
+              "normalized_divergence_rms": 8.900561659733834e-16,
+              "normalized_divergence_gradient_rms": 2.5189566599694783e-13,
+              "normalized_momentum_rms": 0.0014858127598635904,
+              "normalized_momentum_gradient_rms": 0.000982520439244736,
+              "normalized_corrected_pressure_rms": 0.0028369761350000027,
+              "normalized_pressure_gauge_rms": 0.0,
+              "velocity_component_error_rms": [
+                0.0012170676870772261,
+                0.0013658786045920022,
+                0.0006893043150925283
+              ],
+              "velocity_component_relative_l2": [
+                0.0333764281997952,
+                0.06674869594953434,
+                0.03936776852097081
+              ]
+            },
+            "field_gate_pass": false
+          }
+        },
+        "trajectories": [
+          {
+            "rtol": 1e-09,
+            "atol": 1e-11,
+            "max_step": 0.015625,
+            "nfev": 1037,
+            "maximum_path_error": 0.022762187150681828,
+            "maximum_endpoint_error": 0.02276218714006304
+          },
+          {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.022762187133207063,
+            "maximum_endpoint_error": 0.022762187132550044,
+            "maximum_refinement_change": 7.232464888174558e-11
+          }
+        ],
+        "initial_normalized_velocity_rms": 0.0,
+        "boundary_normalized_velocity_rms": 0.0,
+        "remote_NumPy_audit": {
+          "status": "PASS",
+          "reader": "NumPy only; saved-array audit",
+          "comparisons": 117,
+          "independent_optimizer_trajectory_replay": false,
+          "complete_solver_speedup": null,
+          "physical_acceptance_pass": false
+        },
+        "local_NumPy_audit": {
+          "status": "PASS",
+          "reader": "NumPy only; saved-array audit",
+          "comparisons": 117,
+          "independent_optimizer_trajectory_replay": false,
+          "complete_solver_speedup": null,
+          "physical_acceptance_pass": false
+        }
+      },
+      {
+        "seed": 361902,
+        "checkpoint_sha256": "c4c988d87ada4e461339e2668ead5153edd4d71be4c146bcb04d6457e0609c09",
+        "raw_sha256": "1adf8b9eca78a9695ad23e4f7ae565c136302bc75865d7f059b0cf724435e4ad",
+        "physical_acceptance_pass": false,
+        "datasets": {
+          "stratified": {
+            "global": {
+              "velocity_relative_l2": 0.018497154732615508,
+              "velocity_reference_is_zero": false,
+              "normalized_velocity_error_rms": 0.01817620906996616,
+              "normalized_divergence_rms": 1.7831026258546208e-14,
+              "normalized_divergence_gradient_rms": 2.974114737576542e-12,
+              "normalized_momentum_rms": 0.013831891509842237,
+              "normalized_momentum_gradient_rms": 0.013646602626194316,
+              "normalized_corrected_pressure_rms": 0.01982536528493461,
+              "normalized_pressure_gauge_rms": 0.0,
+              "velocity_component_error_rms": [
+                0.007514335496453295,
+                0.0073927946570506555,
+                0.005430172768014116
+              ],
+              "velocity_component_relative_l2": [
+                0.016655840917808057,
+                0.02227671360672361,
+                0.017409990346468215
+              ]
+            },
+            "field_gate_pass": false
+          },
+          "uniform": {
+            "global": {
+              "velocity_relative_l2": 0.03415378222690687,
+              "velocity_reference_is_zero": false,
+              "normalized_velocity_error_rms": 0.002373269087502951,
+              "normalized_divergence_rms": 8.260030716944827e-16,
+              "normalized_divergence_gradient_rms": 5.862863567693541e-14,
+              "normalized_momentum_rms": 0.0014260563430248422,
+              "normalized_momentum_gradient_rms": 0.0014294926972380515,
+              "normalized_corrected_pressure_rms": 0.003094262576768795,
+              "normalized_pressure_gauge_rms": 0.0,
+              "velocity_component_error_rms": [
+                0.0008945911891832073,
+                0.001073607510629348,
+                0.0006664770139273663
+              ],
+              "velocity_component_relative_l2": [
+                0.024532948258323237,
+                0.05246579092403364,
+                0.0380640483954005
+              ]
+            },
+            "field_gate_pass": false
+          }
+        },
+        "trajectories": [
+          {
+            "rtol": 1e-09,
+            "atol": 1e-11,
+            "max_step": 0.015625,
+            "nfev": 1037,
+            "maximum_path_error": 0.029979836823699237,
+            "maximum_endpoint_error": 0.029979836823664816
+          },
+          {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.02997983681966412,
+            "maximum_endpoint_error": 0.02997983681966412,
+            "maximum_refinement_change": 7.172884182801179e-11
+          }
+        ],
+        "initial_normalized_velocity_rms": 0.0,
+        "boundary_normalized_velocity_rms": 0.0,
+        "remote_NumPy_audit": {
+          "status": "PASS",
+          "reader": "NumPy only; saved-array audit",
+          "comparisons": 117,
+          "independent_optimizer_trajectory_replay": false,
+          "complete_solver_speedup": null,
+          "physical_acceptance_pass": false
+        },
+        "local_NumPy_audit": {
+          "status": "PASS",
+          "reader": "NumPy only; saved-array audit",
+          "comparisons": 117,
+          "independent_optimizer_trajectory_replay": false,
+          "complete_solver_speedup": null,
+          "physical_acceptance_pass": false
+        }
+      }
+    ],
+    "archive": {
+      "archive_sha256": "2181a472ee6d59b23096a66dfad4556b5ab4bd5495c17e8890b11ac878018df9",
+      "archive_bytes": 15297121,
+      "source_bytes_removed": false
+    },
+    "archive_members_verified": 123,
+    "archive_copies_verified": [
+      "MN5 GPFS",
+      "local workspace"
+    ],
+    "science_and_reader_exit": 0,
+    "optimizer_extension": false
+  }
 }
