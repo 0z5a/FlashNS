@@ -1,8 +1,8 @@
 {
   "revision": "2026-10-13",
   "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
-  "evidence_snapshot_commit": "acfe37360de0e5a76b6650fc00d619f99364bdef",
-  "manuscript_sha256": "166801fe00cdd3dc1eaa0a355cbc39215816b532720c6588d5af8cbfe3a6645d",
+  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
+  "manuscript_sha256": "60acefd6609f840cb9ad7076bf93f15bc61b49e184b7fa7527a51650e164f821",
   "evidence_sha256": {
     "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
     "../c36-potential-proof/gpu-objective-full-native-result.json": "2a7772e484545484dd79882925fc33354c12984d7bef326ec027f2a51ec14f8b",
@@ -14,22 +14,26 @@
     "../c36-potential-proof/paired-analytic-vs-compiled-ad-cpu-result-20261013.json": "4c65564ce9c28bf40190a7452b49a04ff42f400d72164857c1bee0fb63bea070",
     "../c36-potential-proof/paired-analytic-vs-packed-ad-gpu-result-20261013.json": "e4336cb26a1c5875eb706660dafcefa9075ab8ffb1a1d4958ea519b078a78a3a",
     "../c36-potential-proof/analytic-gpu-compiled-attempt-result-20261013.json": "89da7ff4a39ab14cde2d73316235d989cb8df834d745fd0e790c13abb16662f7",
-    "../c36-potential-proof/protocol-graph-timing-20261012.json": "26293f7c66f84432396b3e0052463fa8b458d1e343e5f478e124fd92180585ee"
+    "../c36-potential-proof/protocol-graph-timing-20261012.json": "26293f7c66f84432396b3e0052463fa8b458d1e343e5f478e124fd92180585ee",
+    "../c36-potential-proof/paired-analytic-vs-compiled-ad-gpu-result-20261013.json": "e1a4b306a37ed1431158836589c15bd420efc740df6598a2403db87ff63282ea",
+    "../c36-potential-proof/compiler-preflight-negative-results-20261013.json": "af8c9ed757433a13249017edd781bd8ec38ca27253fc873527d5f667acc89525",
+    "../c36-potential-proof/compiled-activation-GPU-smoke-result-20261013.json": "bd5576325c844a0a8464ce7590cf9019e4906703fc1771350990d1d656882e56"
   },
   "performance_scopes": {
     "H20_2D": "accepted solve comparisons retained from October 6",
-    "H100_3D": "Full objective/gradient. Older gather/dense-activation rows regress; subsequent eager packed activation/analytic transpose gives 1.044582x vs matched packed-forward parameter AD under CUDA Graph replay. No solver gain.",
+    "H100_3D": "Full objective/gradient. Earlier dense-activation gather rows regress. Eager packed analytic graph: 1.044582x. Compiled packed analytic graph: 1.323962x vs equally compiled packed-forward parameter AD. No solver gain.",
     "CPU_3D": "full objective/gradient; compiled packed activation and analytic activation transpose",
     "native_3D": "older recursive cache and older candidate; no repaired-native performance claim"
   },
   "C36_training_converged": false,
   "C36_physical_acceptance_pass": false,
-  "new_CPU_variant_GPU_qualified": false,
+  "new_CPU_variant_GPU_qualified": true,
   "C36_complete_solver_speedup": null,
-  "pdf_sha256": "5644d93bbd96ef6f312b335bb0913b540722134d22c9a30052b6eabaa8a49fe8",
-  "pages": 21,
+  "pdf_sha256": "3b9dc72ddfd5f48778bd96b2cdf09af3d95393e37e223330e1084e2d279e36c7",
+  "pages": 22,
   "latex_compilation": "SUCCESS",
-  "pdf_visual_review": "PASS",
+  "pdf_visual_review": "PASS: all 22 rendered pages; no word outside page bounds; final performance table and conclusion inspected",
   "pdf_export": "ReportLab with 300 dpi STIX math images; same standalone LaTeX content",
-  "eager_analytic_variant_GPU_qualified": true
+  "eager_analytic_variant_GPU_qualified": true,
+  "compiled_analytic_variant_GPU_qualified": true
 }
