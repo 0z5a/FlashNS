@@ -11,6 +11,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("proof", "reference", "protocol", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--inputs", type=Path)
     args = parser.parse_args()
     assert not args.output.exists()
     report = json.loads((args.proof / "report.json").read_text())
@@ -86,6 +87,9 @@ def main():
         "baseline_mean_seconds": float(np.mean(baseline_means)),
         "fresh_native_coordinate_AD_repeated": False, "complete_solver_speedup": None}
     result["activation_mode"] = mode
+    if report.get("zero_gate_folding", False):
+        from box376.audit_zero_gate_folding import audit_folding
+        result["zero_gate_folding"] = audit_folding(args.proof, args.inputs, args.reference, report)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result))
 

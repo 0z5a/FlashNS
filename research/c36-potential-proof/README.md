@@ -472,3 +472,24 @@ Use `--activation-mode eager` for the explicit packed forward plus CUDA Graphs, 
 BSC's alpha Torch 2.4 runtime passes legacy tuple targets to Triton. The opt-in `--legacy-triton-target` adapter translates only that target representation to Triton 3.0's device target, checking architecture and warp size against the actual CUDA device. Source, dtype and compiler options stay unchanged; both arms use the same per-process adapter. The [small GPU compiler fixture](compiled-activation-GPU-smoke-result-20261013.json) passes forward and activation-transpose checks at saturated and near-zero values with large cotangents.
 
 The subsequent [complete compiled H100 experiment](paired-analytic-vs-compiled-ad-gpu-result-20261013.json) passes all 78 numerical comparisons and independent remote/local NumPy readers of 156 arrays and 20 timing windows. Both arms compile the same packed forward; the candidate also compiles its analytic activation transpose. Ten alternating pairs give **1.323962×** (95% paired interval [1.323087, 1.324762]), with candidate/control window means 0.164484/0.217771 seconds. All 114 members of the complete 161,322,508-byte archive are verified on MN5 and locally. Science, readers and the actual Slurm step exit zero, owned children are joined and the original GPU lock is released. [Earlier compiler preflight failures](compiler-preflight-negative-results-20261013.json) retain their original failed status and fully verified cluster archives. These timings establish objective/gradient throughput, with no additional training or physical acceptance claim.
+
+## Exact zero-gate constant folding
+
+`box376.fold_zero_gate.ZeroGateFoldedObjective` is an opt-in wrapper around either prepared Taylor-state engine. It evaluates the network only where at least one of the 36 gate channels is nonzero, using exact equality without a threshold. For every omitted network row, it retains the parameter-independent forcing, forcing-gradient or target loss at the original weight. Every family keeps its original full weight sum, normalization and coefficient. The original prepared engine remains usable; the default path is unchanged. Native-coordinate AD cannot select this wrapper.
+
+The [CPU qualification](zero-gate-folding-cpu-result-20261013.json) passes 12 full-objective/numerator/all-parameter-gradient comparisons against the preserved native H100 anchors, covering both original stored initializations. The NumPy-only reader verifies all 24 objective arrays and 15 folding arrays. Of the 4,999 canonical rows, 2,933 have active jets; the other 2,066 are represented by their constant loss. Four regression cases cover nonzero forcing/targets, changed parameters, empty active families, and a zero gate value with a nonzero derivative as small as `1e-30`. The same regressions also pass in the actual BSC runtime before GPU admission. The complete CPU archive is fully verified locally. This is numerical CPU qualification; the folded GPU comparison is pending and no new timing ratio is claimed.
+
+To qualify and measure both equally folded compiled-forward arms, add `--fold-zero-gates` to `box376.packed_analytic_gpu_run`. Pass `--inputs` to the NumPy reader so it can verify the original family weight sums and physical normalization:
+
+```bash
+PYTHONPATH=src python -m box376.packed_analytic_gpu_run \
+  --inputs data --protocol protocol-graph-timing-20261012.json \
+  --reference preserved-full-native-reference.npz \
+  --activation-mode compiled --fold-zero-gates --output outputs/folded-GPU
+PYTHONPATH=src python -m box376.audit_packed_analytic_gpu \
+  --inputs data --protocol protocol-graph-timing-20261012.json \
+  --reference preserved-full-native-reference.npz \
+  --proof outputs/folded-GPU --output outputs/folded-GPU-audit.json
+```
+
+On the legacy BSC compiler runtime, select `--legacy-triton-target` explicitly for the GPU worker as described above. Use a new output directory for every attempt. Both arms use folding and the same packed forward; the complete objective, stored parameter bytes and original numerical/timing protocol are preserved.

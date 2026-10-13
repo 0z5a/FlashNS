@@ -29,6 +29,7 @@ def main():
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--activation-mode", choices=("compiled", "eager"), default="compiled")
     parser.add_argument("--legacy-triton-target", action="store_true")
+    parser.add_argument("--fold-zero-gates", action="store_true")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     protocol = json.loads(args.protocol.read_text())
@@ -51,6 +52,8 @@ def main():
                     "box376/potential_ad_objective.py", "box376/packed_analytic_gpu_run.py"]
     if compatibility is not None:
         source_names.append("box376/triton_target_compat.py")
+    if args.fold_zero_gates:
+        source_names.append("box376/fold_zero_gate.py")
     source = Path(__file__).resolve().parents[1]
     report = {"state": "RUNNING", "started": time.time(), "device": "cuda",
         "gpu": torch.cuda.get_device_name(0), "torch": torch.__version__,
@@ -64,6 +67,7 @@ def main():
         "physical_acceptance_evaluated": False, "default_activation_changed": False}
     report["activation_mode"] = args.activation_mode
     report["compiler_compatibility"] = compatibility
+    report["zero_gate_folding"] = args.fold_zero_gates
 
     def progress(phase):
         report["phase"] = phase
@@ -95,6 +99,9 @@ def main():
                 activation=activate_packed, activation_vjp=activate_packed_vjp))
         dense_ad, report["setup_seconds"]["dense_AD"] = timed_call(lambda:
             PreparedPotentialADObjective(data, calibration))
+        if args.fold_zero_gates:
+            from box376.fold_zero_gate import ZeroGateFoldedObjective
+            eager, report["setup_seconds"]["eager_folding"] = timed_call(lambda: ZeroGateFoldedObjective(eager))
         progress("prepared; qualifying eager analytic path before compilation")
         topology = tuple(protocol["topology"])
         for seed in protocol["seeds"]:
@@ -117,6 +124,16 @@ def main():
                 activation=forward, activation_vjp=transpose))
         baseline, report["setup_seconds"]["baseline"] = timed_call(lambda:
             PreparedPotentialADObjective(data, calibration, activation=forward))
+        if args.fold_zero_gates:
+            prepared = candidate
+            candidate, report["setup_seconds"]["candidate_folding"] = timed_call(lambda: ZeroGateFoldedObjective(candidate))
+            baseline, report["setup_seconds"]["baseline_folding"] = timed_call(lambda: ZeroGateFoldedObjective(baseline))
+            assert candidate.counts == baseline.counts == eager.counts
+            report["folding_family_counts"] = candidate.counts
+            proof = candidate.proof_arrays(prepared)
+            assert np.array_equal(proof["constant_numerators"], baseline._constant_numerators.cpu().numpy())
+            np.savez_compressed(args.output / "zero-gate-proof.npz", **proof)
+            report["folding_raw_sha256"] = sha(args.output / "zero-gate-proof.npz")
         spec = protocol["performance"]
         for index, seed in enumerate(protocol["seeds"]):
             theta = torch.from_numpy(reference[f"seed{seed}_theta"]).to("cuda")
