@@ -410,6 +410,44 @@ diagnostic took 0.01510 seconds versus 0.02924 seconds for dense storage. This
 is a CPU kernel diagnostic; full 4,999-point GPU qualification and formal paired
 performance have not run, and no new GPU acceleration claim is made.
 
+The CPU candidate now also passes all 4,999 canonical points and complete
+50,692-parameter gradients against preserved full native-GPU anchors for both
+seeds, with 128/64 partitions and changed parameters. A separate NumPy reader
+passes 36 comparisons of 72 arrays; maximum error is 9.18e-6 of the unchanged
+tolerance budget. Original initial checkpoint bytes are used directly because
+regeneration under another PyTorch build differed by one last bit. Native
+coordinate AD and CUDA graphs are not rerun in this CPU check. Single CPU calls
+took 3.89/3.73 seconds for packed storage, 6.36/6.21 for dense storage and
+5.14/5.13 for parameter AD. These are diagnostics, not formal GPU paired results.
+
+`torch_c36_packed_vjp.activate_packed_vjp` adds an opt-in analytic transpose for
+the nonlinear state. It reverses packed contractions and differentiates the
+actual stable coefficient program, including exp-based coefficients, tanh
+rounding and the absolute-value origin. Saturated inputs with cotangents scaled
+by 1e8 pass the original comparison budget. Select it with
+`activation=activate_packed, activation_vjp=activate_packed_vjp`; default
+nonlinear pullbacks continue using local state autograd. The parameter-AD
+baseline also accepts `activation=activate_packed` so equivalent forward
+optimizations can be compared on both engines.
+
+[analytic-transpose-cpu-result-20261013.json](analytic-transpose-cpu-result-20261013.json)
+records 42 passing full canonical comparisons for the analytic candidate,
+packed/compiled parameter AD and changed parameters, plus independent NumPy
+audits of all 84 arrays. Compilation is opt-in through `torch.compile` on the
+selected forward and transpose. These CPU results use PyTorch 2.14.1; CUDA and
+the cluster's PyTorch 2.4 runtime remain unqualified for these new variants.
+
+[paired-analytic-vs-compiled-ad-cpu-result-20261013.json](paired-analytic-vs-compiled-ad-cpu-result-20261013.json)
+records ten alternating CPU pairs, both original initial checkpoints, all
+4,999 points and 50,692 gradients. Both engines share compiled packed forward;
+the candidate uses the analytic transpose and the baseline uses parameter AD.
+Every window has at least three evaluations and 60 seconds. Setup/compilation
+and warmup are excluded and recorded separately. The ratio is 1.26509 with
+95% paired bootstrap interval 1.20315–1.32790. NumPy independently rechecks all
+24 initial/final gradient arrays and the complete pairing/statistics. This is
+a CPU objective/gradient measurement; GPU and accepted-solver speedups are
+not established.
+
 ```sh
 PYTHONPATH=src python -m unittest test_c36_packed box376.test_potential_audit
 PYTHONPATH=src python -m box376.verify_packed_activation_cpu --inputs data \
@@ -417,4 +455,10 @@ PYTHONPATH=src python -m box376.verify_packed_activation_cpu --inputs data \
   --output outputs/packed-activation-cpu
 PYTHONPATH=src python -m box376.audit_packed_activation_cpu \
   --proof outputs/packed-activation-cpu --output outputs/packed-activation-cpu-audit.json
+PYTHONPATH=src python -m box376.verify_packed_activation_full_cpu --inputs data \
+  --protocol protocol-20261012.json --training original-training \
+  --gather-proof preserved-packed-gather/qualification --activation-mode analytic \
+  --output outputs/analytic-full-cpu
+PYTHONPATH=src python -m box376.audit_packed_activation_full_cpu \
+  --proof outputs/analytic-full-cpu --output outputs/analytic-full-cpu-audit.json
 ```

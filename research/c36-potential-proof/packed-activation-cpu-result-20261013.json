@@ -131,5 +131,97 @@
     "packed_median_seconds": 0.015098316700004943,
     "finished": 1791864897.0230012
   },
-  "scope": "Same C36 tanh derivative identities and transpose in symmetric packed storage; original physical objective, checkpoint and tolerances; CPU canonical subsets only; no formal full-objective or GPU speed claim"
+  "scope": "Same C36 tanh derivative identities and transpose in symmetric packed storage; original physical objective, checkpoint and tolerances; CPU canonical subsets only; no formal full-objective or GPU speed claim",
+  "full_canonical_CPU_qualification": {
+    "state": "PASS",
+    "device": "cpu",
+    "points": 4999,
+    "parameters_per_seed": 50692,
+    "seeds": [
+      361901,
+      361902
+    ],
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "tolerance_relaxed": false,
+    "reference_provenance": {
+      "complete_native_GPU_raw_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66",
+      "preserved_gather_raw_sha256": "7d1db3ce8fb6dbaeeeabff46e4e981633b1761c5dd7cc8c82eaf79c0c939320b",
+      "fresh_native_coordinate_AD_repeated": false,
+      "initial_theta_loaded_from_original_verified_checkpoints": true,
+      "regenerated_weights_not_used": true
+    },
+    "protocol_sha256": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
+    "raw_sha256": "a89187e81147e1d10e5b06892bd0f8c5cca9962048adf8c556a7506bcceba79c",
+    "GPU_qualification_run": false,
+    "CUDA_graph_qualification_run": false,
+    "default_activation_changed": false,
+    "diagnostic_timings": [
+      {
+        "seed": 361901,
+        "engine": "packed128",
+        "evaluation_seconds": 3.890866832996835,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361901,
+        "engine": "packed64",
+        "evaluation_seconds": 3.6637646659983147,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361901,
+        "engine": "dense128",
+        "evaluation_seconds": 6.356757125002332,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361901,
+        "engine": "parameterAD128",
+        "evaluation_seconds": 5.1376309170009336,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361902,
+        "engine": "packed128",
+        "evaluation_seconds": 3.7310358330032614,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361902,
+        "engine": "packed64",
+        "evaluation_seconds": 3.6530424170014157,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361902,
+        "engine": "dense128",
+        "evaluation_seconds": 6.214273583002068,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361902,
+        "engine": "parameterAD128",
+        "evaluation_seconds": 5.125637042001472,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      }
+    ],
+    "source_sha256": {
+      "torch_c36_packed.py": "74243076b2412c838ff1c0e6a69b80dea036571c30046ae7713520362ed22334",
+      "torch_c36.py": "6e9a1fa061563d02a5ef69ea23b575275b2d074390a1eda161c343ca7dcc98e8",
+      "box376/potential_model.py": "b4ecaef905b803e7f3424fe598e0cdf9f02f92d335b01855e4e6a6a7858411af",
+      "box376/potential_objective.py": "7145945cd48f09559679a3cf72d34bac202b4633ac00321da1015272fd619cd9"
+    },
+    "finished": 1791881748.1041331,
+    "comparisons": 36,
+    "NumPy_audit": {
+      "state": "PASS",
+      "reader": "NumPy only; saved full canonical CPU arrays; fresh process without Torch",
+      "comparisons": 36,
+      "arrays": 72,
+      "maximum_error_over_original_budget": 9.176113876652286e-06
+    },
+    "maximum_error_over_original_budget": 9.176113876652286e-06,
+    "scope": "Full canonical CPU checks against preserved native-GPU anchors; native coordinate AD not rerun; GPU kernel/capture/performance not qualified"
+  }
 }
