@@ -28,6 +28,7 @@ def main():
     for name in ("inputs", "protocol", "reference", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--activation-mode", choices=("compiled", "eager"), default="compiled")
+    parser.add_argument("--legacy-triton-target", action="store_true")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     protocol = json.loads(args.protocol.read_text())
@@ -37,12 +38,19 @@ def main():
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
     assert torch.cuda.is_available() and torch.cuda.device_count() == 1
+    compatibility = None
+    if args.legacy_triton_target:
+        assert args.activation_mode == "compiled"
+        from box376.triton_target_compat import enable_legacy_target_compat
+        compatibility = enable_legacy_target_compat()
     with np.load(args.reference, allow_pickle=False) as raw:
         reference = {name: raw[name].copy() for name in raw.files}
     arrays, checks = {}, []
     source_names = ["torch_c36.py", "torch_c36_packed.py", "torch_c36_packed_vjp.py",
                     "box376/potential_model.py", "box376/potential_objective.py",
                     "box376/potential_ad_objective.py", "box376/packed_analytic_gpu_run.py"]
+    if compatibility is not None:
+        source_names.append("box376/triton_target_compat.py")
     source = Path(__file__).resolve().parents[1]
     report = {"state": "RUNNING", "started": time.time(), "device": "cuda",
         "gpu": torch.cuda.get_device_name(0), "torch": torch.__version__,
@@ -55,6 +63,7 @@ def main():
         "complete_solver_speedup": None, "training_performed": False,
         "physical_acceptance_evaluated": False, "default_activation_changed": False}
     report["activation_mode"] = args.activation_mode
+    report["compiler_compatibility"] = compatibility
 
     def progress(phase):
         report["phase"] = phase

@@ -14,11 +14,15 @@ from torch_c36_packed_vjp import activate_packed_vjp
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--legacy-triton-target", action="store_true")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     torch.set_default_dtype(torch.float64)
     torch.backends.cuda.matmul.allow_tf32 = False
     assert torch.cuda.device_count() == 1
+    if args.legacy_triton_target:
+        from box376.triton_target_compat import enable_legacy_target_compat
+        enable_legacy_target_compat()
     torch.manual_seed(795913)
     state = .25 * torch.randn(7, 4, 36, device="cuda")
     state[..., 0] = torch.tensor([-40., -20., -1e-12, 0., 1e-12, 20., 40.], device="cuda")[:, None]
