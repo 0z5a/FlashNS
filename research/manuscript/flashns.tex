@@ -14,7 +14,7 @@
 
 
 \begin{abstract}
-High-order physics-informed training requires coordinate derivatives and their complete parameter gradients. FlashNS executes consumer-specific derivative states with parameter transposes and bounded chunk workspaces. In the original two-dimensional FP64 Navier--Stokes experiment on NVIDIA H20, all 18 representation-study solves and all 54 matched public-comparison solves pass unchanged numerical and independent scalar-AD acceptance. The eight-channel GL8 implementation gives 1.659$\times$ paired setup-plus-optimization speedup over compiled compact Q10; the public collapsed Taylor, explicit differentiation and exact two-dimensional STDE adaptations give respective baseline/GL8 ratios of 1.730, 2.312 and 3.368. We extend the study to a three-dimensional transient curl-potential model with a 36-channel partial derivative state, 4,999 objective points and all 50,692 parameters. Full H100 objective-gradient checks pass the frozen numerical budget. A packed-gather candidate nevertheless remains slower than C36 Taylor-state parameter AD: paired baseline/candidate ratios are 0.973 in eager mode and 0.970 with CUDA Graph replay. A separately compiled packed activation and analytic activation transpose give a 1.265$\times$ paired objective-gradient speedup on one CPU thread (95\% bootstrap interval 1.203--1.328); this variant has no CUDA qualification or GPU performance result. Both H100 training engines complete their frozen two-seed budgets, but neither passes the prescribed convergence and physical acceptance criteria. The results establish the stated execution tradeoffs and numerical qualifications; they do not establish three-dimensional time-to-accuracy acceleration or a fluid regularity theorem.
+High-order physics-informed training requires coordinate derivatives and their complete parameter gradients. FlashNS executes consumer-specific derivative states with parameter transposes and bounded chunk workspaces. In the original two-dimensional FP64 Navier--Stokes experiment on NVIDIA H20, all 18 representation-study solves and all 54 matched public-comparison solves pass unchanged numerical and independent scalar-AD acceptance. The eight-channel GL8 implementation gives 1.659$\times$ paired setup-plus-optimization speedup over compiled compact Q10; the public collapsed Taylor, explicit differentiation and exact two-dimensional STDE adaptations give respective baseline/GL8 ratios of 1.730, 2.312 and 3.368. We extend the study to a three-dimensional transient curl-potential model with a 36-channel partial derivative state, 4,999 objective points and all 50,692 parameters. Full H100 objective-gradient checks pass the frozen numerical budget. A packed-gather candidate nevertheless remains slower than C36 Taylor-state parameter AD: paired baseline/candidate ratios are 0.973 in eager mode and 0.970 with CUDA Graph replay. A subsequent packed activation with analytic activation transpose gives 1.0446$\times$ paired H100 CUDA Graph speedup over parameter AD using the same packed forward (95\% interval 1.0441--1.0451). Separately compiling both packed forward arms gives 1.265$\times$ on one CPU thread (interval 1.203--1.328); the compiled CUDA variant remains unqualified. Both H100 training engines complete their frozen two-seed budgets, but neither passes the prescribed convergence and physical acceptance criteria. The results establish the stated execution tradeoffs and numerical qualifications; they do not establish three-dimensional time-to-accuracy acceleration or a fluid regularity theorem.
 \end{abstract}
 
 \section{Introduction}
@@ -656,12 +656,13 @@ PDEs, datasets, hardware or independent training seeds.
 
 \begin{table}[htbp]\centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Complete C36 objective and all-parameter-gradient timing against the internal C36 parameter-AD control. Times are means over paired windows in seconds; the ratio is a paired geometric mean, not the ratio of these time means. Ten pairs per row. H100 rows use the packed-gather source; the CPU row uses a later compiled packed activation with analytic activation transpose and an equally compiled forward in its parameter-AD baseline. These different versions and devices are not pooled.}
+\caption{Complete C36 objective and all-parameter-gradient timing against the internal C36 parameter-AD control. Times are means over paired windows in seconds; the ratio is a paired geometric mean, not the ratio of these time means. Ten pairs per row. The first two H100 rows retain the earlier packed-gather source and dense activation. The H100 packed-graph row uses a later packed activation with analytic activation transpose and the same eager packed forward in its parameter-AD control; both arms replay graphs. The CPU row compiles the packed activation in both forward arms and the candidate activation transpose. These different versions and devices are not pooled.}
 \label{tab:c36performance}
 \begin{tabular}{lrrrr}\toprule
 Device / mode & Candidate s & AD s & Ratio & 95\% interval\\\midrule
 H100 eager & 1.739582 & 1.692531 & 0.972935 & 0.970474--0.975924\\
 H100 graph & 0.484235 & 0.469551 & 0.969678 & 0.969317--0.970075\\
+H100 packed graph & 0.328305 & 0.342941 & 1.044582 & 1.044130--1.045051\\
 CPU compiled & 1.865900 & 2.352072 & 1.265086 & 1.203149--1.327900
 \\\bottomrule\end{tabular}
 \end{table}
@@ -671,6 +672,30 @@ control shares C36 forward algebra and is a strong execution baseline;
 it is not an independent coordinate derivative oracle or the public
 collapsed Taylor library used in the H20 campaign. GPU timing and saved
 gradient readers complete naturally with exit zero.
+
+The later H100 packed-graph experiment records 78 comparisons and 156
+saved arrays, including both original and changed parameters for both
+seeds, direct calls and graph replay, and the original 128/64-point
+candidate partitions. The preserved complete native anchors are checked
+without a fresh native coordinate-AD rerun. Both remote and local
+NumPy-only readers pass all 78 comparisons and reconstruct every timing
+window. The maximum numerical error is $2.35186\times10^{-6}$ of the
+unchanged comparison budget. Candidate/control window means are
+0.328305/0.342941 seconds; the paired ratio is 1.044582, with interval
+1.044130--1.045051. This is a 4.458\% throughput improvement against this
+matched packed-forward parameter-AD control, with setup, warm-up and
+capture outside the timing windows. It is not a pooled comparison with
+the older dense-activation experiment, and no new optimizer or physical
+acceptance result is inferred. Both workers exit zero; all 106 members
+of the complete 161,241,343-byte archive are verified on cluster storage
+and locally, and the original GPU lock is released.
+
+An initial compiled CUDA attempt retains 18 passing direct full-gradient
+checks but stops before compiled evaluation because Triton is unavailable.
+The whole attempt remains failed, with its logs, arrays and complete archive
+retained. The successful packed-graph experiment explicitly selects eager
+activation plus CUDA Graph replay; it does not silently fall back from
+compiler failure. The compiled GPU path is a separate experiment.
 
 The newer CPU variant uses Torch 2.14.1, NumPy 2.5.4, CPU Inductor and
 one Torch thread. Both arms compile the same packed forward; only the
@@ -800,10 +825,11 @@ not publication of every raw checkpoint or profiler trace.
 
 The unmodified source cache and calibration remain frozen. Neither
 optimization budgets, physical limits, accepted seeds nor global loss
-denominators are weakened in response to these failures. The new analytic
-activation is an opt-in CPU-qualified research path. Its CUDA qualification,
-fair paired GPU comparison, trained accuracy and accepted solve timing
-remain open work; no such result is implied by compilation or CPU speed.
+denominators are weakened in response to these failures. The analytic activation remains an opt-in research path: its eager CUDA
+Graph variant now has full-objective qualification and a paired H100 timing
+result. The compiled CUDA variant, trained accuracy and accepted solve
+timing remain open work; neither the CPU nor the H100 throughput ratio
+implies three-dimensional physical acceptance.
 
 
 \section{Discussion and limits}
@@ -876,8 +902,9 @@ tradeoffs. The original H20 evidence supports that tested solve setting. The add
 C36 study qualifies full derivatives but finds no H100 advantage over the
 strong parameter-AD control, and its completed training budgets fail physical
 acceptance. The later CPU analytic activation achieves a paired 1.265$\times$
-objective-gradient speedup with an equally compiled forward baseline. GPU
-transfer of that improvement and accepted three-dimensional solve acceleration
+objective-gradient speedup with an equally compiled forward baseline. The subsequent eager packed activation and analytic activation transpose
+provide 1.0446$\times$ matched-forward H100 CUDA Graph throughput, while
+compiled GPU performance and accepted three-dimensional solve acceleration
 remain unestablished; broader scientific claims require further experiments.
 
 
@@ -929,9 +956,9 @@ Source commit \texttt{70674ada7a00372e88ebe99969c700a6dcddd08f}.
 \url{https://github.com/NVIDIA/cuEquivariance}.
 \bibitem{flashns3dartifact}
 Dezhen Lu. FlashNS C36 experiment and reproducibility artifact.
-Evidence snapshot \texttt{1634120bc27869ea62f5d2439d5e565ae23a58b2},
+Evidence snapshot \texttt{acfe37360de0e5a76b6650fc00d619f99364bdef},
 October 13, 2026; per-experiment runtime hashes are retained in the result files.
-\href{https://github.com/0z5a/FlashNS/tree/1634120bc27869ea62f5d2439d5e565ae23a58b2/research/c36-potential-proof}{Public C36 source, frozen protocols and result JSON files}.
+\href{https://github.com/0z5a/FlashNS/tree/acfe37360de0e5a76b6650fc00d619f99364bdef/research/c36-potential-proof}{Public C36 source, frozen protocols and result JSON files}.
 \end{thebibliography}
 
 
