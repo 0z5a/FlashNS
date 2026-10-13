@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "scope": "Documentation of the mathematical source and unchanged frozen single-box experiment; no new scientific execution",
+  "math_source": {
+    "repository": "https://github.com/openai/math",
+    "title": "Incompressible Box Transport and Finite Computation",
+    "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "path": "preprints/Incompressible-Box-Transport-and-Finite-Computation-September-27-2026/build/geometry.tex",
+    "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Incompressible-Box-Transport-and-Finite-Computation-September-27-2026/build/geometry.tex",
+    "file_sha256": "85df813993752ee5209ef12ba9b2a8f4d9bb1511cb36948acd0ce1dc1b2c29d4",
+    "formula_labels": [
+      "eq:bb-potential",
+      "eq:bb-residual"
+    ],
+    "applicability": "Prescribed smooth determinant-one affine box motions with suitable separated compact supports and the residual-defined fixed forcing"
+  },
+  "experiment": {
+    "kind": "single compact-curl forced-flow box; project-selected numerical instance",
+    "domain": "[0,1]^3",
+    "time_interval": [
+      0,
+      1
+    ],
+    "nu": 0.01,
+    "eta": 0.03125,
+    "reference_pressure": 0,
+    "motion_center_initial": [
+      0.375,
+      0.375,
+      0.375
+    ],
+    "motion_center_displacement": [
+      0.125,
+      0.0625,
+      0.03125
+    ],
+    "motion_initial_half_width": [
+      0.0625,
+      0.0625,
+      0.0625
+    ],
+    "motion_final_dilation": [
+      2,
+      1.5,
+      0.3333333333333333
+    ],
+    "initial_and_boundary_reference_velocity": "zero",
+    "formula": "y=x-c(t); L=D_dot D_inverse; B=c_dot cross y/2 + (L y) cross y/3; U=curl(chi B); f=U_t+(U dot grad)U-nu Laplacian(U)",
+    "cutoff_velocity_term_preserved": "grad(chi) cross B",
+    "forcing_and_spatial_forcing_derivative_depend_on_trainable_parameters": false,
+    "exact_velocity_inserted_into_learned_network_or_trained_trajectory_RHS": false
+  },
+  "source_to_frozen_data": {
+    "implementation": "src/box376/source.py",
+    "implementation_sha256": "52ced2e79d12317fac039ea626d81277955d974e8c440ddd20db65bbf64c893a",
+    "matches_original_CPU_source_bytes": true,
+    "data_metadata": "data/training-source.json",
+    "data_metadata_sha256": "6c2495b1c31a19e3231cccf2b4b4956d215e02a5a5c93f495a1ac7766f06e6b5",
+    "data_body": "data/training-source.npz",
+    "data_body_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
+    "data_declared_math_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "data_declared_source_sha256": "52ced2e79d12317fac039ea626d81277955d974e8c440ddd20db65bbf64c893a"
+  },
+  "current_evidence": {
+    "complete_native_all_point_gradient_reference": "gpu-objective-full-native-result.json",
+    "paired_compiled_H100_objective_gradient_timing": "paired-analytic-vs-compiled-ad-gpu-result-20261013.json",
+    "finite_training": "training-finite-budget-result-20261012.json",
+    "independent_physical_acceptance": "physical-finite-budget-result-20261013.json",
+    "complete_3D_solver_speedup": null,
+    "physical_acceptance_pass": false,
+    "arbitrary_data_general_solution_or_regularity_theorem_claimed": false
+  }
+}

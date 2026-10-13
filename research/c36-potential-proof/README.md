@@ -1,5 +1,22 @@
 # C36 potential gradient proof
 
+The mathematical source of this three-dimensional problem is OpenAI Math376,
+*Incompressible Box Transport and Finite Computation*, pinned at commit
+`adc7f1241b42e322a6451854ab7e4b4c146bf78a`. The [original geometry source](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Incompressible-Box-Transport-and-Finite-Computation-September-27-2026/build/geometry.tex)
+constructs smooth, compactly supported incompressible motion for prescribed
+volume-preserving affine box schedules. This experiment instantiates one box
+in the unit cube, `t in [0,1]`, `nu=0.01`, `eta=1/32`, and zero reference
+pressure. With `y=x-c(t)` and `L=D_dot D_inverse`, the potential is
+`A=chi * (c_dot cross y / 2 + (L y) cross y / 3)`, the exact velocity is
+`U=curl A`, and the fixed forcing is `f=U_t+(U dot grad)U-nu Laplacian(U)`.
+The implementation includes the cutoff contribution `grad(chi) cross B`
+and the spatial derivative of the fixed force. The network learns its own
+potential and pressure. This is a constructed forced-flow instance with stated
+conditions. Its numerical results do not establish a general solution formula
+for arbitrary Navier--Stokes data or a regularity theorem. The original
+mathematical-source hash, implementation hash and frozen-data linkage are
+recorded in [math376-provenance.json](math376-provenance.json).
+
 This research snapshot compares the complete 50,692-parameter C36 gradient with independent native automatic differentiation. It uses two seeds and 17 fixed interior points from the full physical source cache, float64, and the unchanged `atol=1e-11`, `rtol=1e-9` budget.
 
 Run from this directory with NumPy and PyTorch installed. First produce the CPU reference:
