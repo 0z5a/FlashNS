@@ -1,0 +1,59 @@
+{
+  "state": "NEGATIVE_COMPILER_EVIDENCE_PRESERVED",
+  "cases": [
+    {
+      "state": "FAILED_COMPILER_PREFLIGHT",
+      "reason": "Extracted ptxas lacked executable mode",
+      "scientific_full_objective_started": false,
+      "paired_performance_measured": false,
+      "archive": {
+        "state": "PASS",
+        "path": "/gpfs/scratch/ehpc390/tueb043681/loops-test-47086932/control/flashns-packed-analytic-20261013-v3-1791893074/durable/complete-batch.tar.gz",
+        "sha256": "6c7ae05acc9d9ebe802cf6cb1de27c5198321cff7262f1e6d55ca67650e20ac6",
+        "bytes": 140934834,
+        "members_verified": 99,
+        "source_bytes_removed": false,
+        "copy": "cluster GPFS only"
+      },
+      "archive_independently_rechecked": true,
+      "owned_children_joined": true,
+      "original_GPU_locks_released": true
+    },
+    {
+      "state": "FAILED_COMPILER_PREFLIGHT",
+      "reason": "Legacy Torch tuple target incompatible with Triton GPUTarget",
+      "scientific_full_objective_started": false,
+      "paired_performance_measured": false,
+      "archive": {
+        "state": "PASS",
+        "path": "/gpfs/scratch/ehpc390/tueb043681/loops-test-47086932/control/flashns-packed-analytic-20261013-v4-1791893465/durable/complete-batch.tar.gz",
+        "sha256": "2c8c87c3becb5ee658cd23955be10c587f622f1fabfb109820192eefc20333ed",
+        "bytes": 140935636,
+        "members_verified": 99,
+        "source_bytes_removed": false,
+        "copy": "cluster GPFS only"
+      },
+      "archive_independently_rechecked": true,
+      "owned_children_joined": true,
+      "original_GPU_locks_released": true
+    },
+    {
+      "state": "FAILED_COMPILER_PREFLIGHT",
+      "reason": "Triton 2.3.1 lacks the triton_key API required by this Torch runtime",
+      "scientific_full_objective_started": false,
+      "paired_performance_measured": false,
+      "archive": {
+        "state": "PASS",
+        "path": "/gpfs/scratch/ehpc390/tueb043681/loops-test-47086932/control/flashns-packed-analytic-20261013-v7-1791894532/durable/complete-batch.tar.gz",
+        "sha256": "225bed5d6d0863825428e51a8df864b16dbb271ed8ad722469eac48e79fdb36b",
+        "bytes": 140934587,
+        "members_verified": 99,
+        "source_bytes_removed": false,
+        "copy": "cluster GPFS only"
+      },
+      "archive_independently_rechecked": true,
+      "owned_children_joined": true,
+      "original_GPU_locks_released": true
+    }
+  ]
+}
