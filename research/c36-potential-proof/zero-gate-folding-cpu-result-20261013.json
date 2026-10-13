@@ -122,12 +122,13 @@
   "raw_sha256": "73ab852890560000a4bc94d09da8f286bea31cd155908197751ec57eac9ad56d",
   "reference_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66",
   "complete_CPU_archive": {
-    "sha256": "efcc0d86c17d661a8a15e1f492efcbaba06f375019f0216df3046a328f1b2d1b",
-    "bytes": 144302895,
-    "members_verified": 13,
+    "sha256": "eab1e55d163b1044598d80ad56528a12429a5ac2f1d25adbc163cc0279c750be",
+    "bytes": 144387477,
+    "members_verified": 72,
     "verified_copies": [
       "local"
     ],
-    "source_bytes_removed": false
+    "source_bytes_removed": false,
+    "full_source_and_execution_logs_included": true
   }
 }
