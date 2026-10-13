@@ -1,0 +1,492 @@
+{
+  "state": "COMPLETE",
+  "physical_acceptance_pass": false,
+  "observer": "Native coordinate AD on H100; NumPy physical equations and DOP853 trajectories",
+  "training_source_commit": "7281faed9ec4d1fe1821715cd627a64578f73f07",
+  "observer_source_commit": "1f1983a2b015cf1dc8b390ecc5a596bb7bd0e935",
+  "original_protocol_sha256": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
+  "protocol_physical": {
+    "holdout_seed": 794701,
+    "state_observer": "native coordinate AD of the trained curl-potential network",
+    "independent_consumer": "NumPy physical equations",
+    "stratified_points": 4096,
+    "uniform_volume_points": 4096,
+    "time_slices": [
+      0,
+      0.25,
+      0.375,
+      0.5,
+      0.625,
+      0.75,
+      1
+    ],
+    "time_slice_points": 256,
+    "initial_points": 512,
+    "boundary_points": 384,
+    "particles": 27,
+    "gated_datasets": [
+      "stratified",
+      "uniform"
+    ],
+    "velocity_relative_l2_limit": 0.01,
+    "zero_reference_velocity_normalized_rms_limit": 0.001,
+    "normalized_divergence_rms_limit": 0.001,
+    "normalized_momentum_rms_limit": 0.01,
+    "normalized_momentum_gradient_rms_limit": 0.02,
+    "normalized_divergence_gradient_rms_limit": 0.02,
+    "normalized_corrected_pressure_rms_limit": 0.001,
+    "normalized_pressure_gauge_rms_limit": 0.001,
+    "initial_boundary_velocity_normalized_rms_limit": 0.001,
+    "trajectory_method": "DOP853 using observed trained velocity",
+    "trajectory_refinements": [
+      [
+        1e-09,
+        1e-11,
+        0.015625
+      ],
+      [
+        1e-11,
+        1e-13,
+        0.0078125
+      ]
+    ],
+    "maximum_trajectory_refinement_change": 1e-07,
+    "maximum_trajectory_endpoint_error": 0.001,
+    "exact_velocity_inserted_into_model_or_trajectory_rhs": false
+  },
+  "all_original_field_datasets_completed": true,
+  "two_original_trajectory_refinements_completed": true,
+  "groups": [
+    {
+      "seed": 361901,
+      "checkpoint_sha256": "131e705b8cf6544469324e79734c87f663c04499f7435300cf32e0532092d9a7",
+      "raw_sha256": "73c1ae2cb1bc9e1f554b59dbf46db7cdf3b1267ebf7cb24c0ed428351cb366bc",
+      "holdout_validation_key": "bfab59dd85cac3926c4bc7991a9f80ac158259f89dead657c1f016fbff77b112",
+      "physical_acceptance_pass": false,
+      "datasets": {
+        "stratified": {
+          "global": {
+            "velocity_relative_l2": 0.020528022572665096,
+            "velocity_reference_is_zero": false,
+            "normalized_velocity_error_rms": 0.020171839154041925,
+            "normalized_divergence_rms": 1.8080387148344943e-14,
+            "normalized_divergence_gradient_rms": 2.9409345207248154e-12,
+            "normalized_momentum_rms": 0.014220286637485207,
+            "normalized_momentum_gradient_rms": 0.013895194462442823,
+            "normalized_corrected_pressure_rms": 0.025935432539300595,
+            "normalized_pressure_gauge_rms": 0.0,
+            "velocity_component_error_rms": [
+              0.008991108138772916,
+              0.007529096733256189,
+              0.005970609676604364
+            ],
+            "velocity_component_relative_l2": [
+              0.019929169639137604,
+              0.02268743275374288,
+              0.01914271631365182
+            ]
+          },
+          "field_gate_pass": false
+        },
+        "uniform": {
+          "global": {
+            "velocity_relative_l2": 0.04374257212236859,
+            "velocity_reference_is_zero": false,
+            "normalized_velocity_error_rms": 0.003039572412103171,
+            "normalized_divergence_rms": 9.291789529445995e-16,
+            "normalized_divergence_gradient_rms": 2.5436612721718785e-13,
+            "normalized_momentum_rms": 0.001525025294997757,
+            "normalized_momentum_gradient_rms": 0.0009917899000092929,
+            "normalized_corrected_pressure_rms": 0.0030220920274870063,
+            "normalized_pressure_gauge_rms": 0.0,
+            "velocity_component_error_rms": [
+              0.0012375308494255994,
+              0.0013830944560032608,
+              0.0006983050851023292
+            ],
+            "velocity_component_relative_l2": [
+              0.033937602632501916,
+              0.06759001202806368,
+              0.03988182337671152
+            ]
+          },
+          "field_gate_pass": false
+        }
+      },
+      "initial_normalized_velocity_rms": 0.0,
+      "boundary_normalized_velocity_rms": 0.0,
+      "trajectories": [
+        {
+          "rtol": 1e-09,
+          "atol": 1e-11,
+          "max_step": 0.015625,
+          "nfev": 1037,
+          "maximum_path_error": 0.023166030018815956,
+          "maximum_endpoint_error": 0.023166030008644957
+        },
+        {
+          "rtol": 1e-11,
+          "atol": 1e-13,
+          "max_step": 0.0078125,
+          "nfev": 1982,
+          "maximum_path_error": 0.02316603000123639,
+          "maximum_endpoint_error": 0.02316603000123639,
+          "maximum_refinement_change": 7.229720569374063e-11
+        }
+      ],
+      "remote_NumPy_audit": {
+        "status": "PASS",
+        "reader": "NumPy only; saved-array audit",
+        "comparisons": 117,
+        "independent_optimizer_trajectory_replay": false,
+        "complete_solver_speedup": null,
+        "physical_acceptance_pass": false
+      },
+      "local_NumPy_audit": {
+        "status": "PASS",
+        "reader": "NumPy only; saved-array audit",
+        "comparisons": 117,
+        "independent_optimizer_trajectory_replay": false,
+        "complete_solver_speedup": null,
+        "physical_acceptance_pass": false
+      },
+      "time_slices": {
+        "time-0": {
+          "velocity_relative_l2": null,
+          "normalized_velocity_error_rms": 0.0,
+          "normalized_divergence_rms": 0.0,
+          "normalized_divergence_gradient_rms": 0.0,
+          "normalized_momentum_rms": 0.0,
+          "normalized_momentum_gradient_rms": 0.0,
+          "normalized_corrected_pressure_rms": 0.0,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.25": {
+          "velocity_relative_l2": null,
+          "normalized_velocity_error_rms": 0.0,
+          "normalized_divergence_rms": 0.0,
+          "normalized_divergence_gradient_rms": 0.0,
+          "normalized_momentum_rms": 0.0,
+          "normalized_momentum_gradient_rms": 0.0,
+          "normalized_corrected_pressure_rms": 0.0,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.375": {
+          "velocity_relative_l2": 0.029416623758517408,
+          "normalized_velocity_error_rms": 0.025390293775333656,
+          "normalized_divergence_rms": 1.9387766856552032e-14,
+          "normalized_divergence_gradient_rms": 2.9898519513888336e-12,
+          "normalized_momentum_rms": 0.014829138886916074,
+          "normalized_momentum_gradient_rms": 0.014317947370619673,
+          "normalized_corrected_pressure_rms": 0.025189577011976563,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.5": {
+          "velocity_relative_l2": 0.015386610754976628,
+          "normalized_velocity_error_rms": 0.024661797480763727,
+          "normalized_divergence_rms": 4.0918940906156714e-14,
+          "normalized_divergence_gradient_rms": 4.464027112716632e-12,
+          "normalized_momentum_rms": 0.014660002840794053,
+          "normalized_momentum_gradient_rms": 0.015708071866673813,
+          "normalized_corrected_pressure_rms": 0.04551302340876855,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.625": {
+          "velocity_relative_l2": 0.027420584844047805,
+          "normalized_velocity_error_rms": 0.02586432923384168,
+          "normalized_divergence_rms": 1.8027385854865535e-14,
+          "normalized_divergence_gradient_rms": 3.08542860222281e-12,
+          "normalized_momentum_rms": 0.019745839318962115,
+          "normalized_momentum_gradient_rms": 0.018817052131060295,
+          "normalized_corrected_pressure_rms": 0.025945801158702847,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.75": {
+          "velocity_relative_l2": null,
+          "normalized_velocity_error_rms": 0.0,
+          "normalized_divergence_rms": 0.0,
+          "normalized_divergence_gradient_rms": 0.0,
+          "normalized_momentum_rms": 0.0,
+          "normalized_momentum_gradient_rms": 0.0,
+          "normalized_corrected_pressure_rms": 0.0,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-1": {
+          "velocity_relative_l2": null,
+          "normalized_velocity_error_rms": 0.0,
+          "normalized_divergence_rms": 0.0,
+          "normalized_divergence_gradient_rms": 0.0,
+          "normalized_momentum_rms": 0.0,
+          "normalized_momentum_gradient_rms": 0.0,
+          "normalized_corrected_pressure_rms": 0.0,
+          "normalized_pressure_gauge_rms": 0.0
+        }
+      }
+    },
+    {
+      "seed": 361902,
+      "checkpoint_sha256": "d2699806ba6e6691e43a84726a6cea0c9220a5a65f4c82044c3219362bbcbf08",
+      "raw_sha256": "830e4ec5194b52c571a4e36a8fef9d0cbc61c0955fb21a83b4b85917a044b1ed",
+      "holdout_validation_key": "bfab59dd85cac3926c4bc7991a9f80ac158259f89dead657c1f016fbff77b112",
+      "physical_acceptance_pass": false,
+      "datasets": {
+        "stratified": {
+          "global": {
+            "velocity_relative_l2": 0.018807718740725243,
+            "velocity_reference_is_zero": false,
+            "normalized_velocity_error_rms": 0.018481384456267912,
+            "normalized_divergence_rms": 2.0053603913757875e-14,
+            "normalized_divergence_gradient_rms": 3.0476024305451808e-12,
+            "normalized_momentum_rms": 0.013856000596097151,
+            "normalized_momentum_gradient_rms": 0.013694759432604828,
+            "normalized_corrected_pressure_rms": 0.022480294278054175,
+            "normalized_pressure_gauge_rms": 0.0,
+            "velocity_component_error_rms": [
+              0.007658834988053293,
+              0.0075014150787668776,
+              0.005517024854188483
+            ],
+            "velocity_component_relative_l2": [
+              0.016976130123144934,
+              0.022604019603800925,
+              0.01768845183314009
+            ]
+          },
+          "field_gate_pass": false
+        },
+        "uniform": {
+          "global": {
+            "velocity_relative_l2": 0.03460539411927297,
+            "velocity_reference_is_zero": false,
+            "normalized_velocity_error_rms": 0.002404650576574366,
+            "normalized_divergence_rms": 7.402778716707418e-16,
+            "normalized_divergence_gradient_rms": 1.2219559211926566e-13,
+            "normalized_momentum_rms": 0.0014217474581600176,
+            "normalized_momentum_gradient_rms": 0.0013867951600348358,
+            "normalized_corrected_pressure_rms": 0.0034071748825674738,
+            "normalized_pressure_gauge_rms": 0.0,
+            "velocity_component_error_rms": [
+              0.0009378759053858367,
+              0.00106349673853762,
+              0.0006710397707526552
+            ],
+            "velocity_component_relative_l2": [
+              0.025719972807430262,
+              0.0519716907529812,
+              0.03832463802262682
+            ]
+          },
+          "field_gate_pass": false
+        }
+      },
+      "initial_normalized_velocity_rms": 0.0,
+      "boundary_normalized_velocity_rms": 0.0,
+      "trajectories": [
+        {
+          "rtol": 1e-09,
+          "atol": 1e-11,
+          "max_step": 0.015625,
+          "nfev": 1037,
+          "maximum_path_error": 0.029802597676272684,
+          "maximum_endpoint_error": 0.029802597676267032
+        },
+        {
+          "rtol": 1e-11,
+          "atol": 1e-13,
+          "max_step": 0.0078125,
+          "nfev": 1982,
+          "maximum_path_error": 0.029802597671837038,
+          "maximum_endpoint_error": 0.029802597671837038,
+          "maximum_refinement_change": 7.258655639960794e-11
+        }
+      ],
+      "remote_NumPy_audit": {
+        "status": "PASS",
+        "reader": "NumPy only; saved-array audit",
+        "comparisons": 117,
+        "independent_optimizer_trajectory_replay": false,
+        "complete_solver_speedup": null,
+        "physical_acceptance_pass": false
+      },
+      "local_NumPy_audit": {
+        "status": "PASS",
+        "reader": "NumPy only; saved-array audit",
+        "comparisons": 117,
+        "independent_optimizer_trajectory_replay": false,
+        "complete_solver_speedup": null,
+        "physical_acceptance_pass": false
+      },
+      "time_slices": {
+        "time-0": {
+          "velocity_relative_l2": null,
+          "normalized_velocity_error_rms": 0.0,
+          "normalized_divergence_rms": 0.0,
+          "normalized_divergence_gradient_rms": 0.0,
+          "normalized_momentum_rms": 0.0,
+          "normalized_momentum_gradient_rms": 0.0,
+          "normalized_corrected_pressure_rms": 0.0,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.25": {
+          "velocity_relative_l2": null,
+          "normalized_velocity_error_rms": 0.0,
+          "normalized_divergence_rms": 0.0,
+          "normalized_divergence_gradient_rms": 0.0,
+          "normalized_momentum_rms": 0.0,
+          "normalized_momentum_gradient_rms": 0.0,
+          "normalized_corrected_pressure_rms": 0.0,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.375": {
+          "velocity_relative_l2": 0.02867883372195,
+          "normalized_velocity_error_rms": 0.024753486984495306,
+          "normalized_divergence_rms": 2.0156717543410792e-14,
+          "normalized_divergence_gradient_rms": 3.4794552121005694e-12,
+          "normalized_momentum_rms": 0.015220237119862971,
+          "normalized_momentum_gradient_rms": 0.013315658170349905,
+          "normalized_corrected_pressure_rms": 0.02479060618027284,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.5": {
+          "velocity_relative_l2": 0.014740713276379753,
+          "normalized_velocity_error_rms": 0.023626547219081504,
+          "normalized_divergence_rms": 3.0917677482759515e-14,
+          "normalized_divergence_gradient_rms": 5.34061634444033e-12,
+          "normalized_momentum_rms": 0.013842808973898153,
+          "normalized_momentum_gradient_rms": 0.018525760531035985,
+          "normalized_corrected_pressure_rms": 0.040581756828376725,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.625": {
+          "velocity_relative_l2": 0.023454228841848033,
+          "normalized_velocity_error_rms": 0.022123083812455726,
+          "normalized_divergence_rms": 1.7313174410288328e-14,
+          "normalized_divergence_gradient_rms": 2.6827531021069876e-12,
+          "normalized_momentum_rms": 0.017776346970973245,
+          "normalized_momentum_gradient_rms": 0.016100065420691218,
+          "normalized_corrected_pressure_rms": 0.017000416967141916,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-0.75": {
+          "velocity_relative_l2": null,
+          "normalized_velocity_error_rms": 0.0,
+          "normalized_divergence_rms": 0.0,
+          "normalized_divergence_gradient_rms": 0.0,
+          "normalized_momentum_rms": 0.0,
+          "normalized_momentum_gradient_rms": 0.0,
+          "normalized_corrected_pressure_rms": 0.0,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "time-1": {
+          "velocity_relative_l2": null,
+          "normalized_velocity_error_rms": 0.0,
+          "normalized_divergence_rms": 0.0,
+          "normalized_divergence_gradient_rms": 0.0,
+          "normalized_momentum_rms": 0.0,
+          "normalized_momentum_gradient_rms": 0.0,
+          "normalized_corrected_pressure_rms": 0.0,
+          "normalized_pressure_gauge_rms": 0.0
+        }
+      }
+    }
+  ],
+  "native_cache_GPU_qualification": {
+    "state": "PASS",
+    "checks": [
+      {
+        "name": "state",
+        "entries": 136,
+        "maximum_error_over_original_budget": 7.602391895620387e-05
+      },
+      {
+        "name": "gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.008984358205479485
+      }
+    ],
+    "points": 2,
+    "parameters": 50692,
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "reference_sha256": "cb6619be3af8ef10790c6d10da42a7f812aaeda533e12e76f99dbf41196fa105",
+    "raw_sha256": "c304db406722165f48153fa0051034c2f9ee27f46d5fb79b19289ccbb2ff3ac8",
+    "peak_allocated_bytes": 1698138112,
+    "finished": 1791827827.6014178,
+    "source_sha256": "af202e977fafae0559f2fb93f55bb4e42d8770517723988e170aecd7b6b10e3e",
+    "memory_lifetime_check": {
+      "observations": 16,
+      "cyclic_GC_disabled": true,
+      "minimum_allocated_bytes": 67514880,
+      "maximum_allocated_bytes": 67514880,
+      "growth_bytes": 0
+    }
+  },
+  "archive": {
+    "archive_sha256": "40c0903a717455b2c783c57c3f16230e88d11edb3bb54001e3e901cb3e013584",
+    "archive_bytes": 17670100,
+    "source_bytes_removed": false
+  },
+  "archive_members_verified": 126,
+  "archive_copies_verified": [
+    "MN5 GPFS",
+    "local workspace"
+  ],
+  "stage_waits": [
+    {
+      "name": "native-cache-GPU-qualification",
+      "pid": 1450340,
+      "exit": 0,
+      "finished": 1791827832.974675
+    },
+    {
+      "name": "physical-seed361901",
+      "pid": 1465269,
+      "exit": 0,
+      "finished": 1791834335.847864
+    },
+    {
+      "name": "physical-seed361901-audit",
+      "pid": 1479823,
+      "exit": 0,
+      "finished": 1791834336.3624554
+    },
+    {
+      "name": "physical-seed361902",
+      "pid": 1479824,
+      "exit": 0,
+      "finished": 1791840830.4615376
+    },
+    {
+      "name": "physical-seed361902-audit",
+      "pid": 1497047,
+      "exit": 0,
+      "finished": 1791840830.9696736
+    }
+  ],
+  "resource_release": {
+    "state": "COMPLETE",
+    "started": 1791825954.8065803,
+    "stages": [
+      {
+        "name": "cached-constants-CPU-regression",
+        "pid": 1449848,
+        "exit": 0,
+        "finished": 1791826006.6380148
+      },
+      {
+        "name": "physical-driver",
+        "pid": 1450294,
+        "exit": 0,
+        "finished": 1791840831.673461,
+        "assigned_gpu_apps_absent_before_unlock": true
+      }
+    ],
+    "resource_locks_released": true,
+    "assigned_GPU_apps_absent_at_final_observation": true,
+    "finished": 1791840831.8544261
+  },
+  "audit_scope": "Saved-array NumPy audit; analytic source independently checked, frozen source bytes used for cancellation-sensitive residuals; no optimizer replay or independent ODE reintegration",
+  "local_reader_sha256": "73f83c6ecdeb70e5e07705b58534fa019ede4c1af653c56dab39a8629fd35926",
+  "previous_attempt": "Old recursive native derivative cache exhausted GPU memory; trace preserved; no optimizer extension",
+  "baseline_physical_acceptance": "Original baseline checkpoints restored internally; same complete physical protocol RUNNING after old-cache OOM; not accepted or compared prematurely"
+}

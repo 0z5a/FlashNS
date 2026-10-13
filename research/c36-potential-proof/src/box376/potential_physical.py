@@ -7,6 +7,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
+from scipy.integrate import solve_ivp
 
 from box376.c36_coordinate_oracle import native_c17
 from box376.data import views
@@ -87,7 +88,6 @@ def main():
         raw[name + "_native_values"] = actual
         report[name + "_normalized_velocity_rms"] = weighted_rms(actual[:, :3], np.ones(len(actual))) / scales["velocity"]
 
-    from scipy.integrate import solve_ivp
     initial = np.array(list(itertools.product((-1., 0., 1.), repeat=3))) * H0 + C0
     times = np.unique(np.r_[np.linspace(0, 1, 129), .25, .375, .5, .625, .75])
     exact = trajectory(times[:, None], initial[None, :, :])

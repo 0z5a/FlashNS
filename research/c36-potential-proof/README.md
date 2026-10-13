@@ -315,8 +315,8 @@ The earlier complete eager experiment at commit `73baa3b` is preserved in
 2.55670 seconds versus parameter AD 2.35870 seconds, paired speed ratio 0.92256
 (95% bootstrap interval 0.92122–0.92419). This is an observed slowdown. Comparing
 different source revisions' timings is historical evidence, not a paired
-before/after optimization experiment. A separate native-coordinate-AD timing
-experiment and identical-budget training/physical acceptance remain in progress.
+before/after optimization experiment. The separate native-coordinate-AD timing
+experiment remains in progress; original finite-budget training is complete.
 
 The native derivative oracle now builds cached derivative prefixes iteratively.
 The recursive closure previously retained itself, its cache and native graphs
@@ -349,6 +349,28 @@ each seed. Stratified/uniform velocity relative errors are 2.053%/4.374% and
 original limit. Separate NumPy readers recheck the saved value metrics. These
 value observations exclude PDE derivatives and trajectories. GPU physical
 observation exhausted memory with the old recursive derivative cache; its failure
-and source are retained. Full physical acceptance is continuing with the cache
-lifetime fix, and the identical-budget parameter-AD baseline remains in progress.
-No complete-solver speed or time to accepted accuracy is established.
+and source are retained. The cache lifetime repair passed H100 qualification of
+the native state and all 50,692 parameter gradients at the trained CPU anchors.
+Sixteen native observations with cyclic collection disabled retained exactly
+67,514,880 allocated bytes after each observation.
+
+[physical-finite-budget-result-20261013.json](physical-finite-budget-result-20261013.json)
+records both complete GPU physical observations, all original holdouts and both
+DOP853 trajectory refinements. The original physical gates fail for both seeds.
+Velocity relative errors remain 2.053%/4.374% and 1.881%/3.461%; stratified
+momentum RMS is 0.01422/0.01386 against 0.01. Maximum particle endpoint errors
+are 0.02317/0.02980 against 0.001. Refinement changes are below 7.3e-11 against
+1e-7, while initial/boundary velocity and pressure gauge errors are zero.
+Both remote and local NumPy readers pass all 117 comparisons per seed. The
+17.7 MB archive has 126 member-verified files on MN5 and locally. Readers check
+the analytic source independently at the original tolerance and use the sealed
+force bytes for cancellation-sensitive residuals. They do not reintegrate the
+ODE or replay optimizer trajectories.
+
+The identical-budget parameter-AD baseline also completed both 4,000-Adam /
+20-LBFGS budgets. Its final losses are 5.38698e-4 / 5.15322e-4 and gradient
+infinity norms 5.90443e-4 / 2.06306e-3; both seeds fail convergence. All saved
+gradient comparisons pass. Its complete 1.55 GB training archive is verified on
+MN5. Physical observation is continuing from its original verified checkpoints
+after the same old-cache OOM. No complete-solver speed or time to accepted
+accuracy is established.

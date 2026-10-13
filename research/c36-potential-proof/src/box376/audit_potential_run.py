@@ -26,6 +26,16 @@ def rms(value, weights):
     return float(np.sqrt(np.sum(weights * np.mean(value.reshape(len(value), -1)**2, axis=1)) / weights.sum()))
 
 
+def validated_saved_source(raw, name):
+    analytic = source(raw[name + "_points"])
+    saved = {key: raw[name + "_source_" + key] for key in analytic}
+    for key, value in analytic.items():
+        close(saved[key], value)
+    # Residuals subtract the frozen force bytes. Re-generating those bytes on a
+    # different NumPy build can amplify last-bit rounding through cancellation.
+    return saved
+
+
 def physical_metrics(state, exact, gauge, weights, scales):
     n = len(state)
     assert state.shape == (n, 4, 17) and state.dtype == np.float64 and np.isfinite(state).all()
@@ -134,9 +144,7 @@ def main():
             assert any(np.array_equal(raw["theta"], np.load(p, allow_pickle=False)["theta"]) for p in final_files)
             gates = {}
             for name, observed in report["datasets"].items():
-                exact = source(raw[name + "_points"])
-                for key, value in exact.items():
-                    close(raw[name + "_source_" + key], value)
+                exact = validated_saved_source(raw, name)
                 metrics, residuals = physical_metrics(raw[name + "_native_state"], exact, raw[name + "_gauge"], raw[name + "_weights"], scales)
                 for key, value in metrics.items():
                     if value is None or isinstance(value, bool):

@@ -49,7 +49,7 @@
     "MN5 GPFS",
     "local workspace"
   ],
-  "physical_acceptance_evaluated": false,
+  "physical_acceptance_evaluated": true,
   "complete_solver_speedup": null,
   "scope": "Original finite-budget C36 explicit training; no convergence or complete physical acceptance achieved",
   "holdout_values": [
@@ -80,7 +80,7 @@
       "saved_array_audit": "PASS; 10 metric checks in NumPy only",
       "velocity_limit": 0.01,
       "normalized_corrected_pressure_limit": 0.001,
-      "PDE_and_trajectory_acceptance": "RUNNING; not evaluated by this value-only diagnostic"
+      "PDE_and_trajectory_acceptance": "COMPLETE; original gates FAIL; see full physical result"
     },
     {
       "seed": 361902,
@@ -109,7 +109,48 @@
       "saved_array_audit": "PASS; 10 metric checks in NumPy only",
       "velocity_limit": 0.01,
       "normalized_corrected_pressure_limit": 0.001,
-      "PDE_and_trajectory_acceptance": "RUNNING; not evaluated by this value-only diagnostic"
+      "PDE_and_trajectory_acceptance": "COMPLETE; original gates FAIL; see full physical result"
     }
-  ]
+  ],
+  "physical_acceptance_pass": false,
+  "physical_result": "physical-finite-budget-result-20261013.json",
+  "same_budget_parameter_AD_baseline": {
+    "state": "COMPLETE",
+    "source_commit": "de1d223",
+    "training_converged": false,
+    "science_exit": 0,
+    "reader_exit": 0,
+    "full_archive_sha256": "49c0a807de3bb2a78a14f85e217a42b241af10e0d877609ffdf9efcfde1014aa",
+    "full_archive_bytes": 1550489600,
+    "archive_members_verified": 1085,
+    "saved_array_audit": {
+      "status": "PASS",
+      "reader": "NumPy only; saved-array audit",
+      "comparisons": 48,
+      "independent_optimizer_trajectory_replay": false,
+      "complete_solver_speedup": null
+    },
+    "groups": [
+      {
+        "seed": 361901,
+        "Adam_updates": 4000,
+        "LBFGS_calls": 20,
+        "LBFGS_closures": 449,
+        "final_loss": 0.0005386980063031752,
+        "final_gradient_infinity": 0.000590442860294764,
+        "training_converged": false
+      },
+      {
+        "seed": 361902,
+        "Adam_updates": 4000,
+        "LBFGS_calls": 20,
+        "LBFGS_closures": 443,
+        "final_loss": 0.0005153224253622525,
+        "final_gradient_infinity": 0.0020630573965239093,
+        "training_converged": false
+      }
+    ],
+    "physical_acceptance": "RUNNING after native cache OOM; no optimizer updates added",
+    "complete_solver_speedup": null
+  }
 }
