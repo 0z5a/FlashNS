@@ -462,3 +462,9 @@ PYTHONPATH=src python -m box376.verify_packed_activation_full_cpu --inputs data 
 PYTHONPATH=src python -m box376.audit_packed_activation_full_cpu \
   --proof outputs/analytic-full-cpu --output outputs/analytic-full-cpu-audit.json
 ```
+
+## Opt-in analytic activation on H100
+
+`box376.packed_analytic_gpu_run` freezes the full canonical objective, original stored parameter bytes, unchanged error budget and two seeds. Before measuring ten alternating pairs (each arm at least 60 seconds and three evaluations), it checks original/changed parameters in direct calls and CUDA Graph replay against the preserved full native reference and parameter AD. Both measured arms share the same packed forward; the candidate uses the manual analytic activation transpose.
+
+Use `--activation-mode eager` for the explicit packed forward plus CUDA Graphs, or `--activation-mode compiled` to compile both forward arms and the candidate activation transpose. Compiled mode requires a compatible Triton installation; compiler failures are preserved and do not silently select eager mode. `box376.audit_packed_analytic_gpu` is a separate NumPy-only reader for saved gradients, native anchors, window durations and paired bootstrap statistics. These entry points do not run training or establish complete-solver acceleration. GPU results are pending until a completed run and independent audit are published.
