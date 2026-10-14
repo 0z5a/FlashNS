@@ -1,0 +1,199 @@
+{
+  "version": "C36-potential-20261014-v2-development",
+  "scope": "Development reachability study: does the frozen C36 problem reach the training and physical gates when only the L-BFGS budget grows? Seeds 361901/361902 were observed in v1, so no result here is a formal time-to-accuracy claim.",
+  "source_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
+  "calibration_sha256": "5aea51c47816fa006ab0124874ea12d1111fd3a436d70f9d05f29bc242316063",
+  "topology": [
+    4,
+    128,
+    128,
+    128,
+    128,
+    4
+  ],
+  "seeds": [
+    361901,
+    361902
+  ],
+  "dtype": "float64",
+  "TF32": false,
+  "potential_scale": 0.01,
+  "pressure_scale": 0.1,
+  "family_counts": [
+    4096,
+    512,
+    384,
+    7
+  ],
+  "parameter_count": 50692,
+  "explicit_chunk": 128,
+  "taylor_ad_chunk": 128,
+  "coordinate_ad_chunk": 256,
+  "geometry_chunk": 256,
+  "atol": 1e-11,
+  "rtol": 1e-09,
+  "training": {
+    "start": "fresh original initialization; no direct-velocity checkpoints",
+    "Adam_updates_per_seed": 4000,
+    "Adam_lr": "0.001 * 0.5**floor((update-1)/1000)",
+    "Adam_betas": [
+      0.9,
+      0.999
+    ],
+    "Adam_eps": 1e-08,
+    "Adam_weight_decay": 0,
+    "Adam_foreach": false,
+    "gradient_clipping": false,
+    "LBFGS_calls_per_seed": 800,
+    "LBFGS_max_iter": 20,
+    "LBFGS_max_eval": 25,
+    "LBFGS_closure_cap_per_seed": 20800,
+    "LBFGS_history_size": 20,
+    "LBFGS_lr": 1,
+    "LBFGS_line_search": "strong_wolfe",
+    "LBFGS_tolerance_grad": 0,
+    "LBFGS_tolerance_change": 0,
+    "loss_convergence_limit": 0.0001,
+    "gradient_infinity_convergence_limit": 0.001,
+    "supervised_interior_velocity_term": false,
+    "maximum_training_seconds": 5700,
+    "checkpoint_LBFGS_calls": [
+      20,
+      50,
+      100,
+      200,
+      400,
+      800
+    ],
+    "complete_gradient_check_Adam_updates": [
+      100,
+      500,
+      1000,
+      2000,
+      4000
+    ],
+    "complete_gradient_check_every_LBFGS_calls": 50,
+    "stop_rule": "none; the full budget runs and the first closure meeting both training limits is recorded with its parameters",
+    "engine": "both: packed activation with analytic transpose, and parameter AD over the same packed forward; each compiled with CUDA Graph replay of the complete loss and gradient",
+    "gradient_reference": "dense eager C36 parameter AD (chunk 128); preserved full native AD at the original parameters"
+  },
+  "physical": {
+    "holdout_seed": 794701,
+    "state_observer": "native coordinate AD of the trained curl-potential network",
+    "independent_consumer": "NumPy physical equations",
+    "stratified_points": 4096,
+    "uniform_volume_points": 4096,
+    "time_slices": [
+      0,
+      0.25,
+      0.375,
+      0.5,
+      0.625,
+      0.75,
+      1
+    ],
+    "time_slice_points": 256,
+    "initial_points": 512,
+    "boundary_points": 384,
+    "particles": 27,
+    "gated_datasets": [
+      "stratified",
+      "uniform"
+    ],
+    "velocity_relative_l2_limit": 0.01,
+    "zero_reference_velocity_normalized_rms_limit": 0.001,
+    "normalized_divergence_rms_limit": 0.001,
+    "normalized_momentum_rms_limit": 0.01,
+    "normalized_momentum_gradient_rms_limit": 0.02,
+    "normalized_divergence_gradient_rms_limit": 0.02,
+    "normalized_corrected_pressure_rms_limit": 0.001,
+    "normalized_pressure_gauge_rms_limit": 0.001,
+    "initial_boundary_velocity_normalized_rms_limit": 0.001,
+    "trajectory_method": "DOP853 using observed trained velocity",
+    "trajectory_refinements": [
+      [
+        1e-09,
+        1e-11,
+        0.015625
+      ],
+      [
+        1e-11,
+        1e-13,
+        0.0078125
+      ]
+    ],
+    "maximum_trajectory_refinement_change": 1e-07,
+    "maximum_trajectory_endpoint_error": 0.001,
+    "exact_velocity_inserted_into_model_or_trajectory_rhs": false
+  },
+  "supersedes_protocol_sha256": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
+  "changes_from_v1": {
+    "LBFGS_calls_per_seed": [
+      20,
+      800
+    ],
+    "LBFGS_closure_cap_per_seed": [
+      520,
+      20800
+    ],
+    "training_engine": [
+      "dense explicit C36 (v1 sources 7281fae / de1d223)",
+      "qualified compiled packed analytic engine"
+    ],
+    "saved_state": [
+      "every L-BFGS candidate",
+      "scheduled checkpoints, the first training-gate closure and all loss/gradient events"
+    ],
+    "gradient_checks": [
+      "after every L-BFGS call",
+      "every 50 L-BFGS calls and at scheduled Adam updates"
+    ],
+    "unchanged": "data, calibration, eta, model, normalization, Adam schedule, L-BFGS settings, seeds, training limits and every physical gate"
+  },
+  "physical_observation": {
+    "observer": "unchanged box376.potential_physical with this protocol",
+    "priority": [
+      "final",
+      "LBFGS-call20",
+      "gate-first",
+      "Adam4000",
+      "LBFGS-call200",
+      "LBFGS-call50",
+      "LBFGS-call100",
+      "LBFGS-call400"
+    ],
+    "per_seed_observation_budget_seconds": 3000,
+    "note": "Per lane. LBFGS-call20 is the v1 budget point. An observation starts only if the lane budget and the allocation deadline both allow its estimated duration; skipped observations are recorded.",
+    "first_observation_estimate_seconds": 1500
+  },
+  "decision_rule": {
+    "a": "Loss stays above 1e-4: the problem is budget-, capacity- or sampling-limited at this scale; no formal v3 on budget alone.",
+    "b": "Loss passes 1e-4 but physical errors stop falling: training objective or sampling does not control the physical gates; change the problem definition explicitly in a new protocol.",
+    "c": "Physical gates pass: freeze a formal v3 with new seeds generated and stored on the cluster runtime and both engines (compiled packed analytic and equally compiled parameter AD) for time to accepted accuracy."
+  },
+  "arms": [
+    {
+      "engine": "analytic",
+      "seeds": [
+        361901,
+        361902
+      ]
+    },
+    {
+      "engine": "parameter_ad",
+      "seeds": [
+        361901,
+        361902
+      ]
+    }
+  ],
+  "execution": {
+    "allocation": "one new ACC node, 3 h, four H100 GPUs; one lane per (seed, engine), all four concurrent",
+    "start_command": "embedded in the batch script; the cluster-side driver runs admission, training, observation, reader and archive",
+    "deadline_reserve_seconds": 900
+  },
+  "paired_development_analysis": {
+    "statistic": "per seed, parameter_ad/analytic ratios of training seconds to first reach loss 1e-3, 3e-4 and 1e-4, and of mean seconds per evaluation",
+    "status": "development only: seeds observed in v1, two concurrent lanes per engine on one node; not a formal time-to-accuracy result"
+  }
+}
