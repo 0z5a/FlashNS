@@ -663,8 +663,8 @@
     "sha256": "363e8cbd77b9746c177abe501b91f6133a08960217b5e575be8f6b700768951f",
     "entries": 76,
     "bytes": 140819948,
-    "MN5_source_full_reader_pass": true,
-    "MN5_internal_backup_full_reader_pass": true
+    "source_full_reader_pass": true,
+    "backup_full_reader_pass": true
   },
   "source_base_commit": "0e499505c34b4ccb8735fa9d9efc986dfd37efeb",
   "scope": "Normalized four-family canonical objective, loss/numerators and complete 50692-parameter gradients for two seeds. Fresh native CUDA coordinate/parameter AD covers all 4096 interior, 512 initial, 384 boundary and seven gauge points. Candidate partitions128/64, native interior chunks256, synthetic nonzero diagnostic probes and caller mutation isolation pass.",
@@ -672,5 +672,7 @@
   "memory_scope": "Peak PyTorch allocated/reserved memory for this qualification, not whole-device usage.",
   "optimizer_updates": 0,
   "training_converged": false,
-  "physical_acceptance_evaluated": false
+  "physical_acceptance_evaluated": false,
+  "release_view": true,
+  "release_input_sha256": "2a7772e484545484dd79882925fc33354c12984d7bef326ec027f2a51ec14f8b"
 }

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "cpu_regression": {
+    "tests": 19,
+    "modules": [
+      "test_c36_unpack",
+      "test_c36_packed",
+      "box376.test_coordinate_oracle",
+      "box376.test_potential_geometry",
+      "box376.test_potential_ad_objective",
+      "box376.test_potential_audit",
+      "box376.test_fold_zero_gate"
+    ],
+    "torch": "2.14.1",
+    "python": "3.12.13",
+    "log_sha256": "de354fc08f6f63079558ed4c033761a1335e59634d99f4455f4380bc632eb104"
+  },
+  "evidence_index": {
+    "reports": 15,
+    "hashes_verified": true,
+    "manuscript_and_pdf_verified": true
+  },
+  "private_locations_and_site_labels": "normalized in public views; original report and code hashes retained",
+  "whitespace": "PASS",
+  "scope": "Publication validation only. Existing GPU results retain their original source identities; no new GPU run or accepted 3D solve."
+}
