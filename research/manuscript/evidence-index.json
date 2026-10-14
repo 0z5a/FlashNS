@@ -2,7 +2,7 @@
   "revision": "2026-10-14",
   "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
   "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
-  "manuscript_sha256": "f97819c3c373ab075eab6b6077d55ce617f615852df22b985a29973e66c6e168",
+  "manuscript_sha256": "975c66200d826e26125e53c7591445b497bc1ce6c23bd93530457a3e70f7209e",
   "previous_manuscript_sha256": "28c33f85eacc33b1c35a1473f3afe3248ef4ae5a51cd7cbe73474e7b5d071b08",
   "evidence_sha256": {
     "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
@@ -36,7 +36,7 @@
   "C36_physical_acceptance_pass": false,
   "new_CPU_variant_GPU_qualified": true,
   "C36_complete_solver_speedup": null,
-  "pdf_sha256": "970c9a30c1bb01ae8a522da5683d6390c5bcc12ec433dae621905a235748bed2",
+  "pdf_sha256": "c635225adc81ab71232441c3debe6262ba71dc4e3c58d6ca870ec83ed8092d21",
   "previous_pdf_sha256": "4917d95835f3c99be049a5020461784e7dea97280de4e3933c6a1a27d7594cc9",
   "pages": 25,
   "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",

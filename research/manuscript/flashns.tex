@@ -31,7 +31,7 @@ and 1.73--3.37$\times$ faster than matched adaptations of collapsed Taylor
 mode, explicit differentiation and exact STDE. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
-faster than internal full-jet and naive baselines. A 36-channel
+faster than internal full spatial-jet and naive baselines. A 36-channel
 curl-potential contract gives 1.32$\times$ objective-gradient throughput on
 H100, but its frozen-budget training misses physical acceptance.
 \end{abstract}
@@ -955,7 +955,8 @@ passed every gate. That seed is excluded. The formal protocol fixes six
 seeds, 642202--642207, before any formal run; four are new draws from the
 original initializer, which reproduces the earlier three bit for bit.
 
-All 18 cells run once on two H100 GPUs of one node. The three arms of a
+All 18 cells run once on two NVIDIA H100 GPUs of one node with Torch
+2.4.0a0 and NumPy 1.26.4, FP64 and TF32 disabled. The three arms of a
 seed share a GPU, and the six seeds use the six arm orders, so every arm
 occupies every position twice. Each case is a fresh process; nothing is
 retried. Times are setup and graph capture plus optimization, including
@@ -983,7 +984,13 @@ reaches the gates 3.602$\times$ faster than A24 (six accepted pairs, range
 3.353--4.284) and 6.957$\times$ faster than naive Q35 (range 6.750--7.436).
 The arms need similar numbers of evaluations, with acceptance between
 L-BFGS blocks 165 and 270, so the gain comes from cheaper complete
-loss/gradient evaluations rather than from fewer optimizer steps. As $v$ in
+loss/gradient evaluations rather than from fewer optimizer steps. Measured
+as setup-plus-optimization time per evaluation, A24 and naive Q35 cost
+3.537$\times$ (3.311--3.713) and 7.034$\times$ (6.757--7.300) as much as
+C17, which spends 8.0--8.7\,ms per evaluation including optimizer and
+stop-check work. These ratios measure the contracted state and the explicit
+parameter transpose together, because both baselines also use autograd for
+the parameter gradient; neither change is isolated here. As $v$ in
 two dimensions, pressure relative $L_2$ is the binding gate: its largest
 final values are 0.03966 (C17), 0.03972 (A24) and 0.039999 (naive Q35)
 against 0.04, while every other gate stays at or below 22\% of its limit.
@@ -1076,7 +1083,7 @@ matched public derivative methods; a chunked variant trades replay time
 for an 85\% lower allocated setup peak at 16,384 points. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
-faster than internal full-jet and naive baselines. The C36 curl-potential
+faster than internal full spatial-jet and naive baselines. The C36 curl-potential
 extension passes complete gradient qualification and improves
 objective-gradient throughput by 1.32$\times$ over an equally compiled
 parameter-AD control, but its frozen training budget does not reach

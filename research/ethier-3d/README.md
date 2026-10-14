@@ -30,7 +30,7 @@ Optimizer: 2,000 Adam updates (learning rate 1e-3), then up to 400 strong-Wolfe 
 
 ## Result
 
-On 2026-10-14 all 18 planned solves (6 formal seeds × 3 arms) ran on two NVIDIA H100 GPUs (FP64), and all 18 passed every gate in both the stop check and the independent final check. Times are setup plus optimization. The ratio is the geometric mean of six per-seed baseline/C17 ratios, not a ratio of medians.
+On 2026-10-14 all 18 planned solves (6 formal seeds × 3 arms) ran on two NVIDIA H100 GPUs (FP64, TF32 disabled, Torch 2.4.0a0, NumPy 1.26.4), and all 18 passed every gate in both the stop check and the independent final check. Times are setup plus optimization. The ratio is the geometric mean of six per-seed baseline/C17 ratios, not a ratio of medians.
 
 | Arm | Accepted | Median s | Median evaluations | Paired ratio vs C17 | Range |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -38,11 +38,12 @@ On 2026-10-14 all 18 planned solves (6 formal seeds × 3 arms) ran on two NVIDIA
 | A24 reference | 6/6 | 210.1 | 7,220 | 3.602 | 3.353–4.284 |
 | Naive Q35 | 6/6 | 386.6 | 6,675 | 6.957 | 6.750–7.436 |
 
-- The arms need similar numbers of loss/gradient evaluations: acceptance falls between L-BFGS blocks 165 and 270. The gain therefore comes mainly from cheaper complete loss/gradient evaluations, not from fewer optimizer steps.
+- The arms need similar numbers of loss/gradient evaluations: acceptance falls between L-BFGS blocks 165 and 270. The gain therefore comes mainly from cheaper complete loss/gradient evaluations, not from fewer optimizer steps. Per evaluation (setup-plus-optimization time divided by evaluations, paired per seed), A24 and naive Q35 cost 3.537× (3.311–3.713) and 7.034× (6.757–7.300) as much as C17, which spends 8.0–8.7 ms per evaluation.
+- The ratios measure the contracted state and the explicit parameter transpose together, because both baselines also use autograd for the parameter gradient; neither change is isolated.
 - Pressure relative L2 is the binding gate. Its largest final values are 0.03966 (C17), 0.03972 (A24) and 0.039999 (naive Q35) against 0.04, while every other gate stays at or below 22% of its limit.
 - The independent NumPy audit ([audit-v4-20261014.json](audit-v4-20261014.json)) verifies 14 source files and 91 raw files. It passes 1,512 comparisons over 2,227,032 numbers, with a maximum absolute discrepancy of 1.8e-14.
 - [result-v4-20261014.json](result-v4-20261014.json) lists every case with its independent metrics, evaluation count and the L-BFGS block at acceptance.
-- The complete 126-member archive (19,218,796 bytes, sha256 `1671ffc5…80dd41`) has verified copies on cluster scratch, persistent project storage and locally.
+- The complete 126-member archive (19,218,796 bytes, sha256 `1671ffc5…80dd41`) has verified copies on cluster scratch, persistent project storage and locally. It includes 8 macOS `._*` metadata files carried over from the upload; they are not in the source manifest and played no role in the run.
 
 Scope:
 - Both baselines are internal, and the problem is small (4,740 parameters, 512 interior points).
