@@ -10,10 +10,12 @@ native reference at the initial parameters. The training gate and all loss thres
 evaluated only on events of the original problem. Checkpoints use the v1 format.
 """
 import argparse
+import gc
 import hashlib
 import json
 import time
 import traceback
+import weakref
 from pathlib import Path
 
 import numpy as np
@@ -102,7 +104,9 @@ def main():
                                       "width": current["width"],
                                       "training_seconds": time.perf_counter() - training_started if training_started else 0.0})
 
-    current = {"width": None, "evaluate": None, "dense": None}
+    # A captured graph replays into the engine's buffers without owning the engine, so the
+    # engine is kept here for as long as its replay is in use.
+    current = {"width": None, "evaluate": None, "dense": None, "engine": None}
     try:
         data, calibration = load_problem(args, protocol) if not args.self_test else _cpu_problem(args, protocol)
         topology = tuple(protocol["topology"])
@@ -133,7 +137,7 @@ def main():
         def enter_stage(index):
             stage = stages[index]
             width = stage["width"]
-            current["evaluate"] = current["dense"] = None
+            current["evaluate"] = current["dense"] = current["engine"] = None
             if device == "cuda":
                 torch.cuda.empty_cache()
             t = time.perf_counter()
@@ -145,7 +149,13 @@ def main():
                           entered_LBFGS_calls=report["LBFGS_calls"])
             original = theta.detach().clone()
             if args.self_test:
-                evaluate = lambda: engine(params, chunk)
+                # Like a captured graph, this replay does not own the engine.
+                handle = weakref.ref(engine)
+
+                def evaluate():
+                    live = handle()
+                    assert live is not None, "engine released while its replay is in use"
+                    return live(params, chunk)
             else:
                 for _ in range(2):
                     engine(params, chunk)
@@ -163,7 +173,7 @@ def main():
                 theta.copy_(original)
             record["setup_seconds"] = time.perf_counter() - t
             report["stage_records"].append(record)
-            current.update(width=width, evaluate=evaluate, dense=dense, index=index)
+            current.update(width=width, evaluate=evaluate, dense=dense, engine=engine, index=index)
             progress(f"stage{index}-width{width}")
 
         # The original problem is qualified against the preserved native reference before training.
@@ -177,11 +187,22 @@ def main():
             check(tag, tuple(v.clone() for v in current["evaluate"]()), current["dense"](params, chunk),
                   f"dense parameter AD at width {current['width']}")
 
+        def enter(index):
+            """Enter a stage, then re-check the replay after garbage collection and allocator churn."""
+            enter_stage(index)
+            gc.collect()
+            if device == "cuda":
+                torch.cuda.empty_cache()
+                free, _ = torch.cuda.mem_get_info()
+                churn = torch.full((int(min(.5 * free, 8e9)) // 8,), float("nan"), device=device)
+                del churn
+            full_check(f"stage{index}-retained")
+
         loss_limit, gradient_limit = spec["loss_convergence_limit"], spec["gradient_infinity_convergence_limit"]
         checkpoint_calls = set(spec["checkpoint_LBFGS_calls"])
         check_calls = spec["complete_gradient_check_every_LBFGS_calls"]
         closure_cap = spec["LBFGS_closure_cap_per_seed"]
-        enter_stage(0)
+        enter(0)
         optimizer = torch.optim.Adam([theta], lr=1e-3, betas=tuple(spec["Adam_betas"]),
                                      eps=spec["Adam_eps"], weight_decay=0, foreach=False)
         progress("training-started")
@@ -203,12 +224,12 @@ def main():
         for index, stage in enumerate(stages):
             if index > 0:
                 checkpoint(f"stage{index - 1}-end")
-                enter_stage(index)
+                enter(index)
             adam = stage.get("Adam_updates", 0) if scale else min(2, stage.get("Adam_updates", 0))
             for _ in range(adam):
                 update += 1
                 loss, gradient, _ = current["evaluate"]()
-                assert torch.isfinite(loss).item() and torch.isfinite(gradient).all().item()
+                assert torch.isfinite(loss).item() and loss.item() >= 0 and torch.isfinite(gradient).all().item()
                 optimizer.param_groups[0]["lr"] = 1e-3 * .5 ** ((update - 1) // 1000)
                 event = {"phase": "Adam", "update": update, "loss": float(loss),
                          "gradient_infinity": float(gradient.abs().max())}
@@ -233,7 +254,7 @@ def main():
                 if report["LBFGS_closures"] >= closure_cap:
                     raise RuntimeError("Frozen LBFGS closure budget exhausted")
                 loss, gradient, _ = current["evaluate"]()
-                assert torch.isfinite(loss).item() and torch.isfinite(gradient).all().item()
+                assert torch.isfinite(loss).item() and loss.item() >= 0 and torch.isfinite(gradient).all().item()
                 index_ = report["LBFGS_closures"]
                 report["LBFGS_closures"] += 1
                 event = {"phase": "LBFGS", "call": report["LBFGS_calls"] + 1, "closure": index_,
