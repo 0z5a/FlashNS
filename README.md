@@ -78,7 +78,9 @@ The [tested source manifest](docs/tested-source-sha256.json) records the unchang
 
 ## Research manuscript
 
-The [October 14 research draft](research/manuscript/README.md) keeps the accepted 2D H20 solves as the main result and reports the C36 extension (full derivative qualification, matched H100/CPU objective-gradient timing, and the failed 3D training and physical acceptance). It is restructured after an external review; no measured value changed.
+The [October 14 research draft](research/manuscript/README.md) keeps the accepted 2D H20 solves as the main result. It adds the first accepted 3D solve comparison and reports the C36 extension (full derivative qualification, matched H100/CPU objective-gradient timing, and the failed 3D training and physical acceptance). It is restructured after an external review; no earlier measured value changed.
+
+**Accepted 3D solves ([research/ethier-3d](research/ethier-3d/README.md)).** On the transient Ethier–Steinman benchmark (FP64, H100), the 17-channel C17 contract passes all eight gates in 18 of 18 solves, together with the internal baselines. Paired setup-plus-optimization speedups are **3.602×** over the A24 full spatial-jet reference (range 3.353–4.284) and **6.957×** over a naive 35-monomial ablation (range 6.750–7.436), six seed pairs each. Both baselines are internal, and the network is small (4,740 parameters).
 
 ### Naming
 

@@ -25,15 +25,15 @@ two-dimensional Navier--Stokes objective, an eight-channel state (GL8:
 value, gradient, Hessian and gradient of the Laplacian) replaces the
 ten-channel third-order jet, while its parameter transpose requires the
 fourth activation derivative. On an NVIDIA H20 in FP64, all 72 planned
-solves pass unchanged accuracy gates and an independent scalar-AD check.
+solves pass unchanged accuracy gates and an independent scalar-AD check;
 GL8 reaches the gates 1.66$\times$ faster than a compiled full-jet control
 and 1.73--3.37$\times$ faster than matched adaptations of collapsed Taylor
-mode, explicit differentiation and exact STDE. A 36-channel extension (C36)
-for a transient three-dimensional curl-potential model passes complete
-50,692-parameter gradient checks and gives 1.32$\times$ objective-gradient
-throughput on H100 over an equally compiled parameter-AD control. Its four
-frozen-budget training runs miss the physical acceptance gates, so no
-three-dimensional time-to-accuracy gain is claimed.
+mode, explicit differentiation and exact STDE. On the transient
+three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
+all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
+faster than internal full-jet and naive baselines. A 36-channel
+curl-potential contract gives 1.32$\times$ objective-gradient throughput on
+H100, but its frozen-budget training misses physical acceptance.
 \end{abstract}
 
 \section{Introduction}
@@ -68,8 +68,10 @@ change the parameter gradient even if some forward residuals agreed.
 \begin{enumerate}
 \item \emph{Consumer contracts.} We state closed derivative states for two
 fixed consumers: GL8 for the two-dimensional gradient-enhanced
-Navier--Stokes residual and C36 for a transient three-dimensional
-curl-potential momentum residual and its gradient. Each contract is closed
+Navier--Stokes residual, C17 for a transient three-dimensional
+velocity--pressure residual and its spatial gradient, and C36 for a
+transient three-dimensional curl-potential momentum residual and its
+gradient. Each contract is closed
 under affine layers and smooth pointwise activations, and the runtime
 rejects observables the contract cannot answer.
 \item \emph{Complete parameter transposes.} We derive and implement the
@@ -85,16 +87,17 @@ globally weighted gradient in a bounded workspace.
 identical data and initial parameter bytes under one optimizer program and
 unchanged accuracy gates, with an independent scalar-AD final check, pinned
 public sources and every attempt retained. Ratios are reported only for
-jointly accepted pairs. We apply it to eight baselines in two dimensions and
-report the three-dimensional extension, including its failed acceptance.
+jointly accepted pairs. We apply it to eight baselines in two dimensions
+and to two internal baselines on a three-dimensional benchmark, and report
+the C36 extension, including its failed acceptance.
 \end{enumerate}
 
 The paper does not claim the first residual-aware derivative method, a
 globally minimal state, a pure representation effect separated from
 execution, or superiority across PDEs, precisions or GPU families. The
-two-dimensional H20 campaign and the three-dimensional H100/CPU study use
-different models, data, seeds, gates and hardware; their timings are never
-pooled. Table~\ref{tab:terms} defines the names used throughout.
+two-dimensional H20 campaign, the C36 study (H100 and CPU) and the
+Ethier--Steinman solves (H100) use different models, data, seeds, gates and
+hardware; their timings are never pooled. Table~\ref{tab:terms} defines the names used throughout.
 
 \begin{table}[t]
 \centering\small
@@ -105,6 +108,8 @@ Name & Meaning\\\midrule
 Q10 & Complete two-dimensional third-order state: value, 2 first, 3 second and 4 third partials (10 channels).\\
 GL8 & Two-dimensional consumer state $(z,\nabla z,\nabla^2 z,\nabla\Delta z)$ with packed symmetric Hessian (8 channels).\\
 chunk-512 & GL8 executed in 512-point interior chunks that accumulate the globally weighted loss and gradient.\\
+C17 & Three-dimensional transient velocity--pressure consumer state: value, spatial gradient, packed spatial Hessian, gradient of the spatial Laplacian, time derivative and its spatial gradient (17 channels).\\
+A24 / Naive Q35 & Ethier--Steinman baselines: complete spatial third-order jet plus time channels (24), and all 35 monomials of $(x,y,z,t)$ through degree three; both with autograd parameter gradients.\\
 C36 & Three-dimensional transient consumer state for a curl potential (36 channels, Eq.~\eqref{eq:c36state}).\\
 Explicit / analytic transpose & Hand-written reverse rule for a derivative state, as opposed to framework autograd.\\
 Parameter AD & Internal control that executes the same derivative-state forward and obtains the parameter gradient with PyTorch autograd.\\
@@ -875,7 +880,124 @@ the uniform-volume value. The velocity relative error, in contrast, is
 larger on the uniform holdout. These observations motivate a separately
 preregistered protocol with a larger L-BFGS budget; they do not license
 changing the completed protocol's budget, gates or seeds after observing
-its outcome.
+its outcome. The Ethier--Steinman solves in Section~\ref{sec:ethier}, whose
+development run failed only its pressure gate at 100 L-BFGS blocks and
+passed once the block budget alone was raised, are consistent with this
+reading, although they use a different contract and problem.
+
+\section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
+\subsection{Benchmark, contract and baselines}
+The C36 study qualifies derivatives and throughput but yields no accepted
+solve. We therefore also train on the transient three-dimensional
+Ethier--Steinman flow~\cite{ethier}, which NSFnets also uses as a PINN
+benchmark~\cite{nsfnets}. With $a=0.5$, $d=1$ and $\nu=1$,
+\begin{equation}
+u_*=-a\left[e^{ax}\sin(ay+dz)+e^{az}\cos(ax+dy)\right]e^{-\nu d^2t},
+\end{equation}
+$v_*$ and $w_*$ follow by cyclic permutation of $(x,y,z)$, the force is
+zero, and the pressure of this Beltrami flow is $p_*=-|u_*|^2/2$ up to a
+function of time. We use the cube $[-0.5,0.5]^3$, $t\in[0,0.25]$ and the
+gauge $p(x,t)-p(0,0,0,t)$. At four points, evaluated at 80 and 160 decimal
+digits, this field satisfies all 16 momentum, divergence and
+residual-gradient observations to below $10^{-65}$.
+
+A 4--64--64--4 $\tanh$ network with 4,740 parameters predicts
+$(u,v,w,p)$ directly. Let $r$ collect the three momentum residuals and the
+divergence. The FP64 objective is
+\begin{equation}
+L=\operatorname{mean}_{\Omega}\left(\|r\|_2^2+0.1\|\nabla_x r\|_F^2\right)
++10\operatorname{mean}_{\partial\Omega}\|u-u_*\|_2^2
++10\operatorname{mean}_{t=0}\|u-u_*\|_2^2
++\operatorname{mean}_{\rm gauge}p^2
+\end{equation}
+over 512 interior, 384 boundary, 256 initial and 64 gauge points, where
+$\nabla_x$ is the spatial gradient. The residual reads $\partial_t u$,
+$\nabla u$, $\Delta u$ and $\nabla p$; its spatial gradient additionally
+reads $\nabla\partial_t u$, the full spatial Hessian (through convection and
+the divergence gradient) and $\nabla\Delta u$. The C17 contract keeps
+exactly these: value, spatial gradient, packed spatial Hessian, gradient of
+the spatial Laplacian, $\partial_t z$ and $\nabla\partial_t z$, that is
+$1+3+6+3+1+3=17$ channels. Through an activation the spatial blocks follow
+Eq.~\eqref{eq:closure}, $\partial_t y=a_1\partial_t z$ and
+$\nabla\partial_t y=a_1\nabla\partial_t z+a_2\,\partial_t z\,\nabla z$; diffusion
+excludes time. Its explicit parameter transpose again uses $a_4$.
+
+Two internal baselines share the data, initial parameter bytes, objective,
+optimizer program, FP64 CUDA Graph replay and gates. \textbf{A24} propagates
+the complete spatial third-order jet plus $\partial_t z$ and
+$\nabla\partial_t z$ (24 channels) and takes its parameter gradient by
+autograd. \textbf{Naive Q35} propagates all 35 monomials of $(x,y,z,t)$
+through degree three with a generic autograd parameter gradient. Both are
+internal implementations, not public libraries.
+
+\subsection{Protocol}
+Eight gates on separate validation sets of the same sizes must hold:
+normalized momentum, divergence, boundary-velocity, initial-velocity and
+gauge RMS at most 0.01, normalized residual-gradient RMS at most 0.02,
+velocity relative $L_2$ at most 0.02 and pressure relative $L_2$ at most
+0.04. A candidate stop must be confirmed by independent scalar coordinate
+AD. Adam runs 2,000 updates with learning rate $10^{-3}$; strong-Wolfe
+L-BFGS then permits at most 400 blocks of at most 20 iterations, nominally
+25 evaluations, history 50 and tolerances $10^{-10}$/$10^{-12}$. Stop checks
+run every 200 Adam updates and every five blocks. Before training, each
+process checks the complete loss and all 4,740 gradients against scalar AD
+on a small point subset and, through three in-place graph replays on all
+points, against the eager A24 reference at
+absolute $2\times10^{-12}$ and relative $2\times10^{-11}$.
+
+A development protocol with 100 L-BFGS blocks, run on one H20 with seed
+642201, passed seven gates in all three arms and failed only pressure
+relative $L_2$ (6.95\%, 6.95\% and 7.04\%). Removing each model's own
+pressure offset at the origin did not change that error, and it was still
+decreasing at the final block. The successor protocol changes only the
+block budget, to 400; a CPU development run of C17 on the same seed then
+passed every gate. That seed is excluded. The formal protocol fixes six
+seeds, 642202--642207, before any formal run; four are new draws from the
+original initializer, which reproduces the earlier three bit for bit.
+
+All 18 cells run once on two H100 GPUs of one node. The three arms of a
+seed share a GPU, and the six seeds use the six arm orders, so every arm
+occupies every position twice. Each case is a fresh process; nothing is
+retried. Times are setup and graph capture plus optimization, including
+stop checks and the confirming independent check; the pre-training
+qualification and the archived final field evaluation are reported
+separately. An independent NumPy reader rechecks every saved qualification
+gradient, the final fields against a separate 35-monomial Taylor oracle,
+all metrics and every acceptance decision.
+
+\subsection{Results}
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Ethier--Steinman solves on H100. Accepted means both validators pass all eight gates. Times are medians of setup plus optimization in seconds. Evaluations are complete loss/gradient evaluations, including Adam. The ratio is the geometric mean of per-seed baseline/C17 ratios over $n$ jointly accepted pairs; values above one favor C17.}
+\label{tab:ethier}
+\begin{tabular}{lcrrrl}\toprule
+Arm & Accepted & Setup + opt. s & Evaluations & Ratio / $n$ & Range\\\midrule
+FlashNS C17 & 6/6 & 55.7 & 6,676 & 1.000 & --\\
+A24 reference & 6/6 & 210.1 & 7,220 & 3.602 / 6 & 3.353--4.284\\
+Naive Q35 & 6/6 & 386.6 & 6,675 & 6.957 / 6 & 6.750--7.436\\
+\bottomrule\end{tabular}
+\end{table}
+
+All 18 formal solves pass both validators (Table~\ref{tab:ethier}). C17
+reaches the gates 3.602$\times$ faster than A24 (six accepted pairs, range
+3.353--4.284) and 6.957$\times$ faster than naive Q35 (range 6.750--7.436).
+The arms need similar numbers of evaluations, with acceptance between
+L-BFGS blocks 165 and 270, so the gain comes from cheaper complete
+loss/gradient evaluations rather than from fewer optimizer steps. As $v$ in
+two dimensions, pressure relative $L_2$ is the binding gate: its largest
+final values are 0.03966 (C17), 0.03972 (A24) and 0.039999 (naive Q35)
+against 0.04, while every other gate stays at or below 22\% of its limit.
+The independent reader verifies 14 source and 91 raw files and passes 1,512
+comparisons over 2,227,032 numbers, with maximum absolute discrepancy
+$1.78\times10^{-14}$.
+
+These are accepted three-dimensional solve comparisons against internal
+baselines on a small network (4,740 parameters, 512 interior points). C17
+is a velocity--pressure contract without a divergence-free construction;
+the result says nothing about C36 training. The two GPUs ran concurrently
+on a node whose other GPUs carried another workload, so absolute times
+include that environment. The paired ratios compare arms of one seed on
+one GPU.
 
 \section{Discussion and limitations}\label{sec:limits}
 \paragraph{Attribution of the two-dimensional gain.}
@@ -930,15 +1052,17 @@ parameter derivatives, nonlocal losses or reduced precision; all
 measurements use FP64.
 
 \paragraph{Three dimensions.}
-The C36 study establishes derivative correctness for the full objective
-and a throughput gain for its gradient against an internal control. It has not
-established an accepted three-dimensional solve, its only baseline is
-internal, its gains depend on compilation, the zero-gate constant folding
-in the artifact is qualified on CPU only, and the problem is a single
-constructed box instance. Accepted transient solutions on a standard
-benchmark, external three-dimensional baselines, a second nonlinear PDE,
-reduced-precision measurements and device-traffic measurements remain open
-experiments rather than implied consequences of the implementation.
+The Ethier--Steinman solves establish an accepted three-dimensional
+solve-level gain for a 17-channel transient contract, but only against
+internal baselines and on a small network. The C36 study establishes
+derivative correctness for the full objective of a larger curl-potential
+model and a throughput gain for its gradient against an internal control,
+but no accepted solve. Its gains depend on compilation, the zero-gate
+constant folding in the artifact is qualified on CPU only, and the problem
+is a single constructed box instance. External three-dimensional baselines,
+accepted C36 solves, a second nonlinear PDE, reduced-precision measurements
+and device-traffic measurements remain open experiments rather than implied
+consequences of the implementation.
 
 \section{Conclusion}
 FlashNS gives a concrete consumer contract for high-order PINN training:
@@ -949,11 +1073,15 @@ Navier--Stokes objective with independent acceptance, all 72 planned
 two-dimensional H20 solves pass and GL8 shortens the paired solve time by
 1.66$\times$ over a compiled full-jet control and 1.73--3.37$\times$ over
 matched public derivative methods; a chunked variant trades replay time
-for an 85\% lower allocated setup peak at 16,384 points. The three-dimensional C36 extension passes
-complete gradient qualification and improves objective-gradient throughput
-by 1.32$\times$ over an equally compiled parameter-AD control, but its
-frozen training budget does not reach physical acceptance. Accepted
-three-dimensional solve acceleration remains unestablished.
+for an 85\% lower allocated setup peak at 16,384 points. On the transient
+three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
+all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
+faster than internal full-jet and naive baselines. The C36 curl-potential
+extension passes complete gradient qualification and improves
+objective-gradient throughput by 1.32$\times$ over an equally compiled
+parameter-AD control, but its frozen training budget does not reach
+physical acceptance. Accepted C36 solves and external three-dimensional
+comparisons remain open.
 
 
 \begin{thebibliography}{99}
@@ -972,6 +1100,14 @@ Xiaowei Jin, Shengze Cai, Hui Li, and George Em Karniadakis.
 NSFnets (Navier-Stokes flow nets): Physics-informed neural networks for the incompressible Navier-Stokes equations.
 \emph{Journal of Computational Physics}, 426:109951, 2021.
 \url{https://doi.org/10.1016/j.jcp.2020.109951}.
+\bibitem{ethier}
+C. Ross Ethier and D. A. Steinman.
+Exact fully 3D Navier--Stokes solutions for benchmarking.
+\emph{International Journal for Numerical Methods in Fluids}, 19(5):369--375, 1994.
+\url{https://doi.org/10.1002/fld.1650190502}.
+\bibitem{flashnsethier}
+Dezhen Lu. FlashNS Ethier--Steinman protocol, source and audited result.
+\href{https://github.com/0z5a/FlashNS/tree/main/research/ethier-3d}{Frozen protocol v4, executed-source hashes and result JSON files}.
 \bibitem{griewank}
 Andreas Griewank and Andrea Walther.
 \emph{Evaluating Derivatives: Principles and Techniques of Algorithmic Differentiation}.
@@ -1249,6 +1385,18 @@ failure is preserved and no tolerance is widened. GPU timing and physical
 archives have fully verified cluster and local copies. Publication of
 compact result JSON files is not publication of every raw checkpoint or
 profiler trace.
+
+\subsection{Ethier--Steinman campaign}
+The 18 cases ran as one batch on two GPUs of an existing allocation,
+holding the original per-GPU lane locks, while the node's other two GPUs
+carried another owner's workload. All 18 processes exit zero, and the locks
+are released before the CPU-only audit. The complete 126-member archive
+(19,218,796 bytes) is verified on cluster scratch, on persistent project
+storage and locally. The public source copies differ from the executed
+bytes only in a site activation path and a hardware label, and a release
+map lists both hashes~\cite{flashnsethier}. The development history,
+including the nonconverged 100-block runs on one H20 and the CPU
+development run, is retained with the artifact.
 
 \section{Every planned public solve}
 \small\setlength{\tabcolsep}{4pt}

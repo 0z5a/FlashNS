@@ -1,0 +1,562 @@
+{
+  "state": "OFFBOX_NUMPY_COMPLETE_OBJECTIVE_AND_Q35_AUDIT_PASS",
+  "protocol_version": 4,
+  "source_files_verified": 14,
+  "raw_files_verified": 91,
+  "comparisons": 1512,
+  "numeric_entries": 2227032,
+  "max_absolute_error": 1.7763568394002505e-14,
+  "rows": [
+    {
+      "id": "c17_graph-642202",
+      "arm": "c17_graph",
+      "seed": 642202,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0003430907916406751,
+        "normalized_divergence_rms": 0.0007149282834231843,
+        "normalized_spatial_residual_gradient_rms": 0.0014125234355981087,
+        "normalized_boundary_velocity_rms": 0.000727480395773389,
+        "normalized_initial_velocity_rms": 0.0004179025168614208,
+        "normalized_pressure_gauge_rms": 0.0005754492349561892,
+        "velocity_relative_l2": 0.0009020011096801278,
+        "pressure_relative_l2": 0.03873236761871565
+      },
+      "timing_seconds": {
+        "qualification_small": 0.39856540702749044,
+        "setup_capture": 0.11998548393603414,
+        "qualification_full_replay": 0.17590375896543264,
+        "optimization_including_stop_checks": 58.785663840943016,
+        "final_independent_acceptance": 0.07344564702361822,
+        "total_worker": 64.69614348490722,
+        "solve_setup_plus_optimization": 58.90564932487905
+      },
+      "closure_evaluations": 6844
+    },
+    {
+      "id": "c17_graph-642203",
+      "arm": "c17_graph",
+      "seed": 642203,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.00029909104637566245,
+        "normalized_divergence_rms": 0.0012237777917056415,
+        "normalized_spatial_residual_gradient_rms": 0.0013164460691550048,
+        "normalized_boundary_velocity_rms": 0.0006723258260975864,
+        "normalized_initial_velocity_rms": 0.000367254140826804,
+        "normalized_pressure_gauge_rms": 0.00040453044070982525,
+        "velocity_relative_l2": 0.0009114081083702061,
+        "pressure_relative_l2": 0.039009325772252024
+      },
+      "timing_seconds": {
+        "qualification_small": 0.40084905398543924,
+        "setup_capture": 0.10257424006704241,
+        "qualification_full_replay": 0.17708364001009613,
+        "optimization_including_stop_checks": 65.4797650569817,
+        "final_independent_acceptance": 0.06022459897212684,
+        "total_worker": 71.34625740908086,
+        "solve_setup_plus_optimization": 65.58233929704875
+      },
+      "closure_evaluations": 7563
+    },
+    {
+      "id": "a24_graph-642202",
+      "arm": "a24_graph",
+      "seed": 642202,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0003300132039104939,
+        "normalized_divergence_rms": 0.0007247795091344498,
+        "normalized_spatial_residual_gradient_rms": 0.0013939731024313839,
+        "normalized_boundary_velocity_rms": 0.0007166433520277994,
+        "normalized_initial_velocity_rms": 0.00041078916363744924,
+        "normalized_pressure_gauge_rms": 0.000468152768903991,
+        "velocity_relative_l2": 0.0008977393825128254,
+        "pressure_relative_l2": 0.03972353426645295
+      },
+      "timing_seconds": {
+        "qualification_small": 0.4311042280169204,
+        "setup_capture": 0.2912142489803955,
+        "qualification_full_replay": 0.19698629493359476,
+        "optimization_including_stop_checks": 197.22090044699144,
+        "final_independent_acceptance": 0.05928542499896139,
+        "total_worker": 201.55531030404381,
+        "solve_setup_plus_optimization": 197.51211469597183
+      },
+      "closure_evaluations": 6931
+    },
+    {
+      "id": "naive_q35_graph-642203",
+      "arm": "naive_q35_graph",
+      "seed": 642203,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0003031962335734049,
+        "normalized_divergence_rms": 0.0012065777852928643,
+        "normalized_spatial_residual_gradient_rms": 0.0013206413049859438,
+        "normalized_boundary_velocity_rms": 0.000682155558048114,
+        "normalized_initial_velocity_rms": 0.00036904125519261467,
+        "normalized_pressure_gauge_rms": 0.0004526483834035897,
+        "velocity_relative_l2": 0.0009125409410933415,
+        "pressure_relative_l2": 0.03944679920009072
+      },
+      "timing_seconds": {
+        "qualification_small": 0.5212542050285265,
+        "setup_capture": 0.5173714749980718,
+        "qualification_full_replay": 0.32889870100189,
+        "optimization_including_stop_checks": 444.0477119520074,
+        "final_independent_acceptance": 0.07084715506061912,
+        "total_worker": 448.9641039109556,
+        "solve_setup_plus_optimization": 444.56508342700545
+      },
+      "closure_evaluations": 7457
+    },
+    {
+      "id": "naive_q35_graph-642202",
+      "arm": "naive_q35_graph",
+      "seed": 642202,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.00032915358447096864,
+        "normalized_divergence_rms": 0.0007198661662414174,
+        "normalized_spatial_residual_gradient_rms": 0.00138423842482653,
+        "normalized_boundary_velocity_rms": 0.0007041515648829941,
+        "normalized_initial_velocity_rms": 0.00041862370177952525,
+        "normalized_pressure_gauge_rms": 0.0005067454251891048,
+        "velocity_relative_l2": 0.0009045884628580805,
+        "pressure_relative_l2": 0.039702083330793524
+      },
+      "timing_seconds": {
+        "qualification_small": 0.4360624540131539,
+        "setup_capture": 0.4093742159893736,
+        "qualification_full_replay": 0.2918311300454661,
+        "optimization_including_stop_checks": 397.1861626179889,
+        "final_independent_acceptance": 0.08752826799172908,
+        "total_worker": 401.6346970279701,
+        "solve_setup_plus_optimization": 397.59553683397826
+      },
+      "closure_evaluations": 6837
+    },
+    {
+      "id": "a24_graph-642203",
+      "arm": "a24_graph",
+      "seed": 642203,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.00030907407372945646,
+        "normalized_divergence_rms": 0.001245409083189724,
+        "normalized_spatial_residual_gradient_rms": 0.00134291701087967,
+        "normalized_boundary_velocity_rms": 0.000671803891272213,
+        "normalized_initial_velocity_rms": 0.0003651758233147405,
+        "normalized_pressure_gauge_rms": 0.0004522853032567577,
+        "velocity_relative_l2": 0.0009086297056074424,
+        "pressure_relative_l2": 0.03900805761916022
+      },
+      "timing_seconds": {
+        "qualification_small": 0.3882272000191733,
+        "setup_capture": 0.2722180859418586,
+        "qualification_full_replay": 0.2280890599358827,
+        "optimization_including_stop_checks": 222.479143771925,
+        "final_independent_acceptance": 0.08835185202769935,
+        "total_worker": 226.71041513409,
+        "solve_setup_plus_optimization": 222.75136185786687
+      },
+      "closure_evaluations": 7549
+    },
+    {
+      "id": "a24_graph-642204",
+      "arm": "a24_graph",
+      "seed": 642204,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0003564010751538328,
+        "normalized_divergence_rms": 0.0008975978828976172,
+        "normalized_spatial_residual_gradient_rms": 0.0015483797413958229,
+        "normalized_boundary_velocity_rms": 0.0007501074008753033,
+        "normalized_initial_velocity_rms": 0.0004253309504616785,
+        "normalized_pressure_gauge_rms": 0.00016185757286962167,
+        "velocity_relative_l2": 0.0009747492715266727,
+        "pressure_relative_l2": 0.0395335815591906
+      },
+      "timing_seconds": {
+        "qualification_small": 0.40526410995516926,
+        "setup_capture": 0.2963325830642134,
+        "qualification_full_replay": 0.23543649294879287,
+        "optimization_including_stop_checks": 222.83616806706414,
+        "final_independent_acceptance": 0.06920391693711281,
+        "total_worker": 227.11108367703855,
+        "solve_setup_plus_optimization": 223.13250065012835
+      },
+      "closure_evaluations": 7508
+    },
+    {
+      "id": "a24_graph-642205",
+      "arm": "a24_graph",
+      "seed": 642205,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.00045762467755301164,
+        "normalized_divergence_rms": 0.0011979774636494286,
+        "normalized_spatial_residual_gradient_rms": 0.001778607700859254,
+        "normalized_boundary_velocity_rms": 0.0008290261716178099,
+        "normalized_initial_velocity_rms": 0.0004992796999552491,
+        "normalized_pressure_gauge_rms": 0.0020586110039704716,
+        "velocity_relative_l2": 0.001034867169111611,
+        "pressure_relative_l2": 0.038423637765322316
+      },
+      "timing_seconds": {
+        "qualification_small": 0.38725729496218264,
+        "setup_capture": 0.26057931990362704,
+        "qualification_full_replay": 0.20019580505322665,
+        "optimization_including_stop_checks": 167.75456220505293,
+        "final_independent_acceptance": 0.06770578306168318,
+        "total_worker": 171.85035595099907,
+        "solve_setup_plus_optimization": 168.01514152495656
+      },
+      "closure_evaluations": 5720
+    },
+    {
+      "id": "c17_graph-642204",
+      "arm": "c17_graph",
+      "seed": 642204,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0004169749398611328,
+        "normalized_divergence_rms": 0.0009835752975686706,
+        "normalized_spatial_residual_gradient_rms": 0.0018297332461813093,
+        "normalized_boundary_velocity_rms": 0.0008324720679681925,
+        "normalized_initial_velocity_rms": 0.0004677415432823331,
+        "normalized_pressure_gauge_rms": 0.0003178424757623047,
+        "velocity_relative_l2": 0.0010490328183167298,
+        "pressure_relative_l2": 0.0396555473302403
+      },
+      "timing_seconds": {
+        "qualification_small": 0.3074455299647525,
+        "setup_capture": 0.09823474695440382,
+        "qualification_full_replay": 0.14635410101618618,
+        "optimization_including_stop_checks": 51.98960732202977,
+        "final_independent_acceptance": 0.06998451007530093,
+        "total_worker": 55.61011149198748,
+        "solve_setup_plus_optimization": 52.08784206898417
+      },
+      "closure_evaluations": 6508
+    },
+    {
+      "id": "naive_q35_graph-642205",
+      "arm": "naive_q35_graph",
+      "seed": 642205,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.00046420709345459455,
+        "normalized_divergence_rms": 0.0011327891921545958,
+        "normalized_spatial_residual_gradient_rms": 0.0017786442844005593,
+        "normalized_boundary_velocity_rms": 0.0008277639708321101,
+        "normalized_initial_velocity_rms": 0.0004964068555787335,
+        "normalized_pressure_gauge_rms": 0.0022018443788229215,
+        "velocity_relative_l2": 0.0010394611557234465,
+        "pressure_relative_l2": 0.039892250911449524
+      },
+      "timing_seconds": {
+        "qualification_small": 0.4288106400053948,
+        "setup_capture": 0.474344676011242,
+        "qualification_full_replay": 0.3046430320246145,
+        "optimization_including_stop_checks": 327.14943395904265,
+        "final_independent_acceptance": 0.07061647903174162,
+        "total_worker": 331.086934846011,
+        "solve_setup_plus_optimization": 327.6237786350539
+      },
+      "closure_evaluations": 5682
+    },
+    {
+      "id": "naive_q35_graph-642204",
+      "arm": "naive_q35_graph",
+      "seed": 642204,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0004288050872347379,
+        "normalized_divergence_rms": 0.0011102211045507437,
+        "normalized_spatial_residual_gradient_rms": 0.0018668501732609158,
+        "normalized_boundary_velocity_rms": 0.0008695382809679475,
+        "normalized_initial_velocity_rms": 0.0005335748464811902,
+        "normalized_pressure_gauge_rms": 0.0008638760714469375,
+        "velocity_relative_l2": 0.0010428861793540841,
+        "pressure_relative_l2": 0.039616027708812784
+      },
+      "timing_seconds": {
+        "qualification_small": 0.48688896803651005,
+        "setup_capture": 0.4547311420319602,
+        "qualification_full_replay": 0.33173400501254946,
+        "optimization_including_stop_checks": 351.4581057319883,
+        "final_independent_acceptance": 0.08756113599520177,
+        "total_worker": 355.35801800200716,
+        "solve_setup_plus_optimization": 351.9128368740203
+      },
+      "closure_evaluations": 6023
+    },
+    {
+      "id": "c17_graph-642205",
+      "arm": "c17_graph",
+      "seed": 642205,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0004415840800478479,
+        "normalized_divergence_rms": 0.0011473514005105828,
+        "normalized_spatial_residual_gradient_rms": 0.0017552578568675442,
+        "normalized_boundary_velocity_rms": 0.0008223344781543763,
+        "normalized_initial_velocity_rms": 0.0005007935512875323,
+        "normalized_pressure_gauge_rms": 0.0021132849552070996,
+        "velocity_relative_l2": 0.0010187443740395825,
+        "pressure_relative_l2": 0.03923265299105912
+      },
+      "timing_seconds": {
+        "qualification_small": 0.3404830319341272,
+        "setup_capture": 0.10611623106524348,
+        "qualification_full_replay": 0.14860336598940194,
+        "optimization_including_stop_checks": 47.47947499004658,
+        "final_independent_acceptance": 0.05961654498241842,
+        "total_worker": 52.21144993696362,
+        "solve_setup_plus_optimization": 47.58559122111183
+      },
+      "closure_evaluations": 5831
+    },
+    {
+      "id": "naive_q35_graph-642207",
+      "arm": "naive_q35_graph",
+      "seed": 642207,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.00031951060127727944,
+        "normalized_divergence_rms": 0.0008280357222756107,
+        "normalized_spatial_residual_gradient_rms": 0.0014448149300998693,
+        "normalized_boundary_velocity_rms": 0.0006485323765460453,
+        "normalized_initial_velocity_rms": 0.00038691141595802793,
+        "normalized_pressure_gauge_rms": 0.00042599946173522523,
+        "velocity_relative_l2": 0.0008593160520402463,
+        "pressure_relative_l2": 0.038765445898635856
+      },
+      "timing_seconds": {
+        "qualification_small": 0.521153862006031,
+        "setup_capture": 0.4835995640605688,
+        "qualification_full_replay": 0.3048977309372276,
+        "optimization_including_stop_checks": 375.051446409896,
+        "final_independent_acceptance": 0.09200917696580291,
+        "total_worker": 379.3524338150164,
+        "solve_setup_plus_optimization": 375.5350459739566
+      },
+      "closure_evaluations": 6513
+    },
+    {
+      "id": "naive_q35_graph-642206",
+      "arm": "naive_q35_graph",
+      "seed": 642206,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.00024967355259835445,
+        "normalized_divergence_rms": 0.0007867691258879811,
+        "normalized_spatial_residual_gradient_rms": 0.0012661395016568787,
+        "normalized_boundary_velocity_rms": 0.0006059914916532875,
+        "normalized_initial_velocity_rms": 0.00034208390101172755,
+        "normalized_pressure_gauge_rms": 0.0002450552252530644,
+        "velocity_relative_l2": 0.0008763728321042294,
+        "pressure_relative_l2": 0.039999084435070345
+      },
+      "timing_seconds": {
+        "qualification_small": 0.4729044820414856,
+        "setup_capture": 0.41205202497076243,
+        "qualification_full_replay": 0.2907805599970743,
+        "optimization_including_stop_checks": 471.1448190070223,
+        "final_independent_acceptance": 0.07312519801780581,
+        "total_worker": 475.1989668670576,
+        "solve_setup_plus_optimization": 471.55687103199307
+      },
+      "closure_evaluations": 8078
+    },
+    {
+      "id": "a24_graph-642207",
+      "arm": "a24_graph",
+      "seed": 642207,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.00032649956621783033,
+        "normalized_divergence_rms": 0.0008500603489270409,
+        "normalized_spatial_residual_gradient_rms": 0.001483729894678329,
+        "normalized_boundary_velocity_rms": 0.0006653015710654332,
+        "normalized_initial_velocity_rms": 0.0004034188304063672,
+        "normalized_pressure_gauge_rms": 0.00046108163937529973,
+        "velocity_relative_l2": 0.0008713841838973923,
+        "pressure_relative_l2": 0.03897047466733657
+      },
+      "timing_seconds": {
+        "qualification_small": 0.41304991499055177,
+        "setup_capture": 0.37271740392316133,
+        "qualification_full_replay": 0.263425539014861,
+        "optimization_including_stop_checks": 187.41532698599622,
+        "final_independent_acceptance": 0.05864260997623205,
+        "total_worker": 191.5342135860119,
+        "solve_setup_plus_optimization": 187.78804438991938
+      },
+      "closure_evaluations": 6297
+    },
+    {
+      "id": "c17_graph-642206",
+      "arm": "c17_graph",
+      "seed": 642206,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0002747482064997639,
+        "normalized_divergence_rms": 0.0008909683262159481,
+        "normalized_spatial_residual_gradient_rms": 0.0013358584026926794,
+        "normalized_boundary_velocity_rms": 0.0006140053881194523,
+        "normalized_initial_velocity_rms": 0.0003427324771605369,
+        "normalized_pressure_gauge_rms": 0.00022318712636053184,
+        "velocity_relative_l2": 0.0008812035808270547,
+        "pressure_relative_l2": 0.03940328375765048
+      },
+      "timing_seconds": {
+        "qualification_small": 0.30657760705798864,
+        "setup_capture": 0.10281889501493424,
+        "qualification_full_replay": 0.1463619499700144,
+        "optimization_including_stop_checks": 63.31303586799186,
+        "final_independent_acceptance": 0.06836910196579993,
+        "total_worker": 66.90805030602496,
+        "solve_setup_plus_optimization": 63.41585476300679
+      },
+      "closure_evaluations": 7796
+    },
+    {
+      "id": "a24_graph-642206",
+      "arm": "a24_graph",
+      "seed": 642206,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0002743717447732668,
+        "normalized_divergence_rms": 0.0009060298410372253,
+        "normalized_spatial_residual_gradient_rms": 0.0013403900380695294,
+        "normalized_boundary_velocity_rms": 0.0006120158154049857,
+        "normalized_initial_velocity_rms": 0.0003452213418831949,
+        "normalized_pressure_gauge_rms": 0.00028218605398166107,
+        "velocity_relative_l2": 0.0008866844902727211,
+        "pressure_relative_l2": 0.03970442521914199
+      },
+      "timing_seconds": {
+        "qualification_small": 0.39083580696024,
+        "setup_capture": 0.3252595579251647,
+        "qualification_full_replay": 0.20682754402514547,
+        "optimization_including_stop_checks": 224.12529946304858,
+        "final_independent_acceptance": 0.06968877697363496,
+        "total_worker": 228.12654885603115,
+        "solve_setup_plus_optimization": 224.45055902097374
+      },
+      "closure_evaluations": 7735
+    },
+    {
+      "id": "c17_graph-642207",
+      "arm": "c17_graph",
+      "seed": 642207,
+      "actual_exit_code": 0,
+      "state": "ACCEPTED",
+      "accepted": true,
+      "independent_metrics": {
+        "normalized_momentum_rms": 0.0003227400191743918,
+        "normalized_divergence_rms": 0.0008277508225701369,
+        "normalized_spatial_residual_gradient_rms": 0.0014550282951418432,
+        "normalized_boundary_velocity_rms": 0.0006513847248808626,
+        "normalized_initial_velocity_rms": 0.0003988064967265773,
+        "normalized_pressure_gauge_rms": 0.0004557786504621241,
+        "velocity_relative_l2": 0.0008489991677645441,
+        "pressure_relative_l2": 0.03793399941581111
+      },
+      "timing_seconds": {
+        "qualification_small": 0.35045469098258764,
+        "setup_capture": 0.19288378697820008,
+        "qualification_full_replay": 0.17784610006492585,
+        "optimization_including_stop_checks": 52.22874741302803,
+        "final_independent_acceptance": 0.09507423895411193,
+        "total_worker": 55.63301315298304,
+        "solve_setup_plus_optimization": 52.42163120000623
+      },
+      "closure_evaluations": 6404
+    }
+  ],
+  "planned_cells": 18,
+  "attempted_cells": 18,
+  "not_run_cells": [],
+  "accepted_count": 18,
+  "formal_seeds": [
+    642202,
+    642203,
+    642204,
+    642205,
+    642206,
+    642207
+  ],
+  "external_solver_results": false,
+  "paired_ratios": {
+    "a24_graph": {
+      "baseline_over_c17_setup_plus_optimization": {
+        "642202": 3.3530249977662456,
+        "642203": 3.3965144312546784,
+        "642204": 4.2837731759863615,
+        "642205": 3.5307986559262283,
+        "642206": 3.5393445355230857,
+        "642207": 3.5822625143701567
+      },
+      "accepted_pairs": 6,
+      "geometric_mean": 3.601982960937864,
+      "range": [
+        3.3530249977662456,
+        4.2837731759863615
+      ]
+    },
+    "naive_q35_graph": {
+      "baseline_over_c17_setup_plus_optimization": {
+        "642202": 6.749701283167965,
+        "642203": 6.778731716375527,
+        "642204": 6.756141604176142,
+        "642205": 6.884936600087892,
+        "642206": 7.435945991649277,
+        "642207": 7.163742092289413
+      },
+      "accepted_pairs": 6,
+      "geometric_mean": 6.956935487893118,
+      "range": [
+        6.749701283167965,
+        7.435945991649277
+      ]
+    }
+  }
+}
