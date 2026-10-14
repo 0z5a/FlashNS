@@ -2,7 +2,7 @@
   "revision": "2026-10-14",
   "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
   "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
-  "manuscript_sha256": "5dec6417d3374074fa577fcb0ddd277b58f265d7a2ad23da60baf58c85a970c0",
+  "manuscript_sha256": "fa350a3428c89e5ae05a767b93677a626452a396350cc6248e5b88dba3b9252d",
   "previous_manuscript_sha256": "28c33f85eacc33b1c35a1473f3afe3248ef4ae5a51cd7cbe73474e7b5d071b08",
   "evidence_sha256": {
     "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
@@ -40,9 +40,9 @@
   "C36_physical_acceptance_pass": false,
   "new_CPU_variant_GPU_qualified": true,
   "C36_complete_solver_speedup": null,
-  "pdf_sha256": "ed27583c35cfe6a9515b6cf6d7c04bc1a4771ba8db993d409e174af6a5d7acb4",
+  "pdf_sha256": "76a1762bb609f5c3ee2b0f99cfed314275951fa092bcfc1411195b44b1ebef2d",
   "previous_pdf_sha256": "4917d95835f3c99be049a5020461784e7dea97280de4e3933c6a1a27d7594cc9",
-  "pages": 26,
+  "pages": 27,
   "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
   "pdf_visual_review": "PASS: Figures 1-3, the Ethier-Steinman results page and the C36 v2 results page inspected at 90-100 dpi",
   "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
@@ -74,7 +74,7 @@
   "Ethier_v4_archive_sha256": "1671ffc5d5ab5ade522f74db196e36d8be5d3e73463c96d98ae9a8930680dd41",
   "revision_note_20261014_ethier": "Adds Section 7 (accepted Ethier-Steinman solves, protocol v4, H100) and its result, audit, protocol and release-map hashes; abstract, contributions, terminology, discussion and conclusion updated accordingly.",
   "C36_v2_development_training_gate": "4/4",
-  "C36_v2_development_physical_acceptance": "0/2 complete observations pass; 2 parameter-AD observations partial",
+  "C36_v2_development_physical_acceptance": "0/2 complete observations pass; 2 parameter-AD observations partial (stopped by the batch time guard); metrics not independently re-read",
   "C36_v2_development_archive_sha256": "266aa8d22138d802ad818590a87fd6887a1c16987ab806d9d176ca1b3b45c6e8",
   "revision_note_20261014_c36v2": "Adds Section 6.7 (C36 development run with 800 L-BFGS calls, both engines, branch (b) of its registered rule) and pins its protocol, result and reader JSON; abstract, discussion and conclusion updated."
 }

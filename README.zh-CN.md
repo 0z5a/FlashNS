@@ -43,4 +43,4 @@ PYTHONPATH=src uv run pytest -q
 
 **通过验收的 3D 求解（[research/ethier-3d](research/ethier-3d/README.md)）**：在瞬态 Ethier–Steinman 基准上（FP64，H100），17 通道 C17 契约与内部基线共 18 次求解全部通过 8 项门限。C17 的配对加速比为：相对 A24 完整空间 jet 参考 **3.602×**（3.353–4.284），相对朴素 35 单项式消融 **6.957×**（6.750–7.436），各 6 对。两条基线都是内部实现，网络规模较小（4,740 参数）。
 
-**C36 开发性运行（[详情](research/c36-potential-proof/README.md#development-run-with-a-larger-l-bfgs-budget-v2)）**：数据、模型、门限都不变，只把 L-BFGS 预算加大 40 倍。四个 run（两种引擎 × 两个种子）全部通过训练门限。最终检查点除分层修正压力（超门限 2–3 倍）和一个种子的轨迹终点（超 7%）外，其余物理门限全部通过。analytic 引擎到达各 loss 阈值比参数 AD 快 1.30–1.33×。种子在 v1 已观测过，因此不作正式的到达精度时间结论。
+**C36 开发性运行（[详情](research/c36-potential-proof/README.md#development-run-with-a-larger-l-bfgs-budget-v2)）**：数据、模型、门限都不变，只把 L-BFGS 预算加大 40 倍。四个 run（两种引擎 × 两个种子）全部通过训练门限。完整观测的两个最终检查点（analytic 引擎）中，除分层修正压力（约为门限的 2.5 倍）和一个种子的轨迹终点（超 7%）外，其余物理门限全部通过。按预先登记的规则，机械判定为情形 (b)，但该情形要求的趋势条件无法评估。analytic 引擎到达各 loss 阈值比参数 AD 快 1.30–1.33×。种子在 v1 已观测过，因此不作正式的到达精度时间结论。

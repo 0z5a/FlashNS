@@ -874,11 +874,14 @@ of magnitude away. Third, the budget is small relative to the problem: each
 C36 solve spends 438--449 L-BFGS evaluations on 50,692 parameters, whereas
 the accepted two-dimensional solves spend 2,208--5,259 L-BFGS evaluations
 after the same 4,000-update Adam phase on 4,547 parameters. Fourth, the
-residual error is concentrated near the cutoff: the stratified holdout
-assigns 75\% of its spatial mass to the face, edge and corner transition
-layers of width $\eta$, and its corrected-pressure error is 6.4--8.7 times
-the uniform-volume value. The velocity relative error, in contrast, is
-larger on the uniform holdout. These observations motivate a separately
+stratified corrected-pressure error is 6.4--8.7 times the uniform-volume
+value, but this ratio mostly reflects how the two holdouts weight space:
+4,033 of the 4,096 uniform-volume points lie outside the box support, where
+the reference flow vanishes, whereas the stratified holdout places 90\% of
+its mass inside the support. The published observations of this protocol
+contain no regional breakdown; for the development run in
+Section~\ref{sec:c36v2} the largest pressure error lies in the box plateau
+rather than in the cutoff layers. These observations motivate a separately
 preregistered protocol with a larger L-BFGS budget; they do not license
 changing the completed protocol's budget, gates or seeds after observing
 its outcome. The Ethier--Steinman solves in Section~\ref{sec:ethier}, whose
@@ -899,9 +902,10 @@ CUDA Graph replay. All complete loss/gradient checks pass at 28 check
 points per run, against dense parameter AD and, at the original parameters,
 against the preserved native reference, with maximum error
 $1.16\times10^{-5}$ of the original budget. A decision rule was registered
-before the run: (a) the loss stays above $10^{-4}$; (b) the loss passes
-but physical acceptance does not; (c) physical acceptance passes, which
-would justify a formal protocol with new seeds and both engines.
+before the run, with the conditions (a) ``Loss stays above 1e-4'', (b)
+``Loss passes 1e-4 but physical errors stop falling'' and (c) ``Physical
+gates pass''; branch (c) would lead to a formal protocol with new seeds and
+both engines.
 
 \begin{table}[htbp]\centering\small
 \setlength{\tabcolsep}{4pt}
@@ -921,11 +925,13 @@ All four runs pass the training gate between L-BFGS calls 85 and 92, about
 and finish the budget with losses of 1.3--2.3$\times10^{-6}$. On these
 development seeds the analytic engine reaches every loss threshold from
 $10^{-2}$ to $10^{-5}$ 1.30--1.33$\times$ sooner than parameter AD, with
-nearly identical evaluation counts.
+nearly identical evaluation counts. Both arms' training times include the
+same scheduled dense-AD checks and checkpoint writes, which bias these
+ratios toward one.
 
 \begin{table}[htbp]\centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Physical observation of the final C36 development checkpoints. S/U are the stratified and uniform holdouts; velocity is relative L2 and pressure the normalized corrected-pressure RMS. Limits: velocity 0.01, pressure 0.001, endpoint 0.001. The parameter-AD observations were stopped at the allocation end after both holdouts and are partial.}
+\caption{Physical observation of the final C36 development checkpoints. S/U are the stratified and uniform holdouts; velocity is relative L2 and pressure the normalized corrected-pressure RMS. Limits: velocity 0.01, pressure 0.001, endpoint 0.001. The batch's own time guard stopped the parameter-AD observations after both holdouts, so that the reader and archive could finish within the allocation; they are partial.}
 \label{tab:c36v2physical}
 \begin{tabular}{lrrrrrrl}\toprule
 Engine & Seed & Vel. S & Vel. U & Press. S & Press. U & Endpoint & Outcome\\\midrule
@@ -937,22 +943,29 @@ Parameter AD & 361902 & 0.0015 & 0.0025 & 0.0033 & 0.0005 & -- & Partial
 \end{table}
 
 One complete physical observation takes about 99 minutes, so only the
-final checkpoints were observed (Table~\ref{tab:c36v2physical}). Compared
+final checkpoints were observed (Table~\ref{tab:c36v2physical}). These
+metrics are the observer's own NumPy consumer output; unlike the original
+observations, they have not been re-read by an independent reader. Compared
 with the original budget, stratified velocity error falls from
 0.018--0.021 to 0.0011--0.0015, uniform velocity error from 0.034--0.044 to
 0.0020--0.0025, stratified momentum RMS from 0.014 to 0.0009--0.0011, and
 the analytic trajectory endpoint error from 0.023--0.030 to 0.00097 and
-0.00107. The uniform field gate, the initial and boundary values and the
-trajectory refinement checks pass. The stratified corrected pressure,
+0.00107. The uniform field gate passes in every run, although only 63 of
+its 4,096 points lie inside the box support; the initial and boundary values
+and the trajectory refinement checks pass in both complete observations. The stratified corrected pressure,
 0.0021--0.0033 against 0.001, fails in every run, and the endpoint error of
 seed 361901 exceeds its limit by 7\%. For the analytic runs the pressure
 error is largest in the plateau region inside the box (0.0042--0.0046),
 where the velocity error is also largest, rather than in the cutoff layers.
-By the registered rule the outcome is branch (b): the training gate passes
-but physical acceptance does not. Only final checkpoints were observed, so
-the run cannot show whether the physical errors still fall at this loss
-level; a formal protocol needs intermediate observations or a larger
-budget, stated before it runs.
+The reader's mechanical classification is (b), because the training gate
+passes and no observation passes physical acceptance. The trend condition
+of (b), that physical errors stop falling, could not be evaluated: only the
+final checkpoints were observed, and relative to the original budget every
+reported physical error fell, by 7--31 times per seed. Strictly, none of the three
+registered branches applies cleanly. The run shows that budget alone reaches
+the training gate but not, within 800 calls, the stratified pressure gate. A
+formal protocol needs intermediate observations or a larger budget, stated
+before it runs.
 
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}

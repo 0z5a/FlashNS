@@ -527,14 +527,16 @@ Each seed trains with both engines on one four-GPU H100 node, one lane per GPU: 
 | parameter_ad | 361902 | 85 | 1,276 | 2.34e-6 | partial: stratified pressure 0.0033 fails, uniform passes |
 
 - **Training gate.** All four runs pass it after about 1,860–2,040 L-BFGS evaluations. On these seeds, the analytic engine reaches every loss threshold from 1e-2 to 1e-5 1.30–1.33× sooner than parameter AD.
-- **Physical observation.** One complete observation takes about 99 minutes, so only the final checkpoints were observed. The parameter-AD observations were stopped at the allocation end after both holdouts.
+- **Physical observation.** One complete observation takes about 99 minutes, so only the final checkpoints were observed. The batch's own time guard stopped the parameter-AD observations after both holdouts, so that the reader and archive could finish within the allocation. The physical metrics are the observer's own NumPy consumer output and have not been re-read by an independent reader.
 - **Comparison with v1.**
   - Stratified velocity error falls from 0.018–0.021 to 0.0011–0.0015.
   - Uniform velocity error falls from 0.034–0.044 to 0.0020–0.0025.
   - The analytic trajectory endpoint error falls from 0.023–0.030 to 0.00097 and 0.00107.
-  - The uniform field gate passes, and so do the initial and boundary values.
+  - The uniform field gate passes in every run, but only 63 of its 4,096 points lie inside the box support.
+  - The initial and boundary values pass in both complete observations.
 - **Remaining failure.** Stratified corrected pressure fails in every run. It is largest in the plateau region inside the box, not in the cutoff layers.
-- **Outcome.** By the registered rule this is branch (b): the training gate passes but physical acceptance does not.
+- **Outcome.** The registered conditions are (a) "Loss stays above 1e-4", (b) "Loss passes 1e-4 but physical errors stop falling" and (c) "Physical gates pass". The reader's mechanical classification is (b). The trend condition of (b) could not be evaluated, however: only final checkpoints were observed, and every reported physical error fell 7–31× per seed relative to v1. Budget alone reaches the training gate, but within 800 calls it does not reach the stratified pressure gate.
+- **Timing caveat.** Both arms' training times include the same scheduled dense-AD checks and checkpoint writes, which bias the 1.30–1.33× toward one.
 
 Files:
 - [c36-v2-development-result-20261014.json](c36-v2-development-result-20261014.json): public summary.
