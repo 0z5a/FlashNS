@@ -2,7 +2,7 @@
   "revision": "2026-10-14",
   "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
   "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
-  "manuscript_sha256": "975c66200d826e26125e53c7591445b497bc1ce6c23bd93530457a3e70f7209e",
+  "manuscript_sha256": "5dec6417d3374074fa577fcb0ddd277b58f265d7a2ad23da60baf58c85a970c0",
   "previous_manuscript_sha256": "28c33f85eacc33b1c35a1473f3afe3248ef4ae5a51cd7cbe73474e7b5d071b08",
   "evidence_sha256": {
     "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
@@ -23,24 +23,28 @@
     "../ethier-3d/result-v4-20261014.json": "fa1e6d627f88d6dcd2ac626e52a4eba19d4e06082a639913b1cb5142a12389a2",
     "../ethier-3d/audit-v4-20261014.json": "74b9b9564dac606fd170546a47de93d64e707fb309e441d9f260439465c47267",
     "../ethier-3d/release-source-map.json": "9e33d08f6cfcbec0d8237bb72f53f2366b88204767e82c928ba79b56d0d6c715",
-    "../ethier-3d/src/protocol-v4.json": "768252cbb63ce5471bbc905f1e1d85216ef74e12aca74f6f43516db42e05d5e7"
+    "../ethier-3d/src/protocol-v4.json": "768252cbb63ce5471bbc905f1e1d85216ef74e12aca74f6f43516db42e05d5e7",
+    "../c36-potential-proof/protocol-v2-development-20261014.json": "00d5db987788d2dfbca6f12ac6835a84a743fd447f93cadcee15845c95bc1aa7",
+    "../c36-potential-proof/c36-v2-development-result-20261014.json": "1b2a1e991af5a64738078d7b5834e5b1ad109acfa97d00934d8b74c8939f8dd0",
+    "../c36-potential-proof/c36-v2-development-reader-20261014.json": "27663398171d8865ac19bf0a9ca313f47611a4cc6c673418e5f35213e239aa08"
   },
   "performance_scopes": {
     "H20_2D": "accepted solve comparisons retained from October 6",
     "H100_3D": "Full objective/gradient. Earlier dense-activation gather rows regress. Eager packed analytic graph: 1.044582x. Compiled packed analytic graph: 1.323962x vs equally compiled packed-forward parameter AD. No solver gain.",
     "CPU_3D": "full objective/gradient; compiled packed activation and analytic activation transpose",
     "native_3D": "older recursive cache and older candidate; no repaired-native performance claim",
-    "H100_3D_Ethier": "Accepted solves, protocol v4: 18/18 pass all eight gates; paired setup-plus-optimization speedup of C17 over A24 3.602x (3.353-4.284) and over naive Q35 6.957x (6.750-7.436), six pairs each; internal baselines only."
+    "H100_3D_Ethier": "Accepted solves, protocol v4: 18/18 pass all eight gates; paired setup-plus-optimization speedup of C17 over A24 3.602x (3.353-4.284) and over naive Q35 6.957x (6.750-7.436), six pairs each; internal baselines only.",
+    "H100_3D_C36_v2_development": "Development run, budget-only change (800 L-BFGS calls): 4/4 runs pass the training gate at calls 85-92; analytic reaches every loss threshold 1.30-1.33x sooner than packed-forward parameter AD on observed seeds; final physical observations fail only stratified corrected pressure (0.0021-0.0033 vs 0.001) and, for seed 361901, the trajectory endpoint (0.00107 vs 0.001)."
   },
   "C36_training_converged": false,
   "C36_physical_acceptance_pass": false,
   "new_CPU_variant_GPU_qualified": true,
   "C36_complete_solver_speedup": null,
-  "pdf_sha256": "c635225adc81ab71232441c3debe6262ba71dc4e3c58d6ca870ec83ed8092d21",
+  "pdf_sha256": "ed27583c35cfe6a9515b6cf6d7c04bc1a4771ba8db993d409e174af6a5d7acb4",
   "previous_pdf_sha256": "4917d95835f3c99be049a5020461784e7dea97280de4e3933c6a1a27d7594cc9",
-  "pages": 25,
+  "pages": 26,
   "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
-  "pdf_visual_review": "PASS: Figures 1-3 and the Ethier-Steinman results page inspected at 90-100 dpi",
+  "pdf_visual_review": "PASS: Figures 1-3, the Ethier-Steinman results page and the C36 v2 results page inspected at 90-100 dpi",
   "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
   "eager_analytic_variant_GPU_qualified": true,
   "compiled_analytic_variant_GPU_qualified": true,
@@ -68,5 +72,9 @@
   "revision_note_20261014": "Restructured per external review: shorter abstract, explicit contributions, terminology table, related work with five verified additional references, method figure, stopping-rule and closure-count clarification, three-dimensional failure diagnosis, and execution records moved to an appendix. No measured value, gate, seed or evidence file changed; evidence_sha256 entries are unchanged.",
   "Ethier_v4_accepted_solves": "18/18",
   "Ethier_v4_archive_sha256": "1671ffc5d5ab5ade522f74db196e36d8be5d3e73463c96d98ae9a8930680dd41",
-  "revision_note_20261014_ethier": "Adds Section 7 (accepted Ethier-Steinman solves, protocol v4, H100) and its result, audit, protocol and release-map hashes; abstract, contributions, terminology, discussion and conclusion updated accordingly."
+  "revision_note_20261014_ethier": "Adds Section 7 (accepted Ethier-Steinman solves, protocol v4, H100) and its result, audit, protocol and release-map hashes; abstract, contributions, terminology, discussion and conclusion updated accordingly.",
+  "C36_v2_development_training_gate": "4/4",
+  "C36_v2_development_physical_acceptance": "0/2 complete observations pass; 2 parameter-AD observations partial",
+  "C36_v2_development_archive_sha256": "266aa8d22138d802ad818590a87fd6887a1c16987ab806d9d176ca1b3b45c6e8",
+  "revision_note_20261014_c36v2": "Adds Section 6.7 (C36 development run with 800 L-BFGS calls, both engines, branch (b) of its registered rule) and pins its protocol, result and reader JSON; abstract, discussion and conclusion updated."
 }

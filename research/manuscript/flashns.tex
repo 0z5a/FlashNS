@@ -33,7 +33,8 @@ three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
 faster than internal full spatial-jet and naive baselines. A 36-channel
 curl-potential contract gives 1.32$\times$ objective-gradient throughput on
-H100, but its frozen-budget training misses physical acceptance.
+H100; with a larger L-BFGS budget its training passes the loss gate and most
+physical gates, but stratified pressure still fails.
 \end{abstract}
 
 \section{Introduction}
@@ -885,6 +886,74 @@ development run failed only its pressure gate at 100 L-BFGS blocks and
 passed once the block budget alone was raised, are consistent with this
 reading, although they use a different contract and problem.
 
+\subsection{Development run with a larger L-BFGS budget}\label{sec:c36v2}
+A separately frozen development protocol changes only the L-BFGS budget,
+from 20 to 800 calls (closure cap 520 to 20,800). Data, model,
+normalization, Adam schedule, L-BFGS settings, seeds, training limits and
+every physical gate are those of the original protocol. Because seeds
+361901 and 361902 were already observed, this is a reachability study
+rather than a formal time-to-accuracy comparison. Both engines train both
+seeds on one four-GPU H100 node: variant (iii) with its analytic activation
+transpose, and parameter AD over the same compiled packed forward, each with
+CUDA Graph replay. All complete loss/gradient checks pass at 28 check
+points per run, against dense parameter AD and, at the original parameters,
+against the preserved native reference, with maximum error
+$1.16\times10^{-5}$ of the original budget. A decision rule was registered
+before the run: (a) the loss stays above $10^{-4}$; (b) the loss passes
+but physical acceptance does not; (c) physical acceptance passes, which
+would justify a formal protocol with new seeds and both engines.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{C36 development training with 800 L-BFGS calls. Gate is the first L-BFGS call at which a closure meets both training limits (loss $\le10^{-4}$, $\|g\|_\infty\le10^{-3}$); seconds count training time to that closure. Final values are after the full budget; s/eval is mean training time per complete evaluation, including optimizer work.}
+\label{tab:c36v2training}
+\begin{tabular}{lrrrrrr}\toprule
+Engine & Seed & Gate call & Seconds & Final loss & Final $\|g\|_\infty$ & s/eval\\\midrule
+Analytic & 361901 & 92 & 1,014 & $1.84\times10^{-6}$ & $2.9\times10^{-5}$ & 0.168\\
+Analytic & 361902 & 86 & 975 & $1.35\times10^{-6}$ & $1.9\times10^{-5}$ & 0.167\\
+Parameter AD & 361901 & 90 & 1,319 & $1.63\times10^{-6}$ & $4.4\times10^{-5}$ & 0.211\\
+Parameter AD & 361902 & 85 & 1,276 & $2.34\times10^{-6}$ & $1.7\times10^{-6}$ & 0.209
+\\\bottomrule\end{tabular}
+\end{table}
+
+All four runs pass the training gate between L-BFGS calls 85 and 92, about
+1,860--2,040 L-BFGS evaluations after Adam, far beyond the original 20 calls,
+and finish the budget with losses of 1.3--2.3$\times10^{-6}$. On these
+development seeds the analytic engine reaches every loss threshold from
+$10^{-2}$ to $10^{-5}$ 1.30--1.33$\times$ sooner than parameter AD, with
+nearly identical evaluation counts.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Physical observation of the final C36 development checkpoints. S/U are the stratified and uniform holdouts; velocity is relative L2 and pressure the normalized corrected-pressure RMS. Limits: velocity 0.01, pressure 0.001, endpoint 0.001. The parameter-AD observations were stopped at the allocation end after both holdouts and are partial.}
+\label{tab:c36v2physical}
+\begin{tabular}{lrrrrrrl}\toprule
+Engine & Seed & Vel. S & Vel. U & Press. S & Press. U & Endpoint & Outcome\\\midrule
+Analytic & 361901 & 0.0013 & 0.0022 & 0.0025 & 0.0004 & 0.00107 & Fail\\
+Analytic & 361902 & 0.0012 & 0.0023 & 0.0025 & 0.0003 & 0.00097 & Fail\\
+Parameter AD & 361901 & 0.0011 & 0.0020 & 0.0021 & 0.0004 & -- & Partial\\
+Parameter AD & 361902 & 0.0015 & 0.0025 & 0.0033 & 0.0005 & -- & Partial
+\\\bottomrule\end{tabular}
+\end{table}
+
+One complete physical observation takes about 99 minutes, so only the
+final checkpoints were observed (Table~\ref{tab:c36v2physical}). Compared
+with the original budget, stratified velocity error falls from
+0.018--0.021 to 0.0011--0.0015, uniform velocity error from 0.034--0.044 to
+0.0020--0.0025, stratified momentum RMS from 0.014 to 0.0009--0.0011, and
+the analytic trajectory endpoint error from 0.023--0.030 to 0.00097 and
+0.00107. The uniform field gate, the initial and boundary values and the
+trajectory refinement checks pass. The stratified corrected pressure,
+0.0021--0.0033 against 0.001, fails in every run, and the endpoint error of
+seed 361901 exceeds its limit by 7\%. For the analytic runs the pressure
+error is largest in the plateau region inside the box (0.0042--0.0046),
+where the velocity error is also largest, rather than in the cutoff layers.
+By the registered rule the outcome is branch (b): the training gate passes
+but physical acceptance does not. Only final checkpoints were observed, so
+the run cannot show whether the physical errors still fall at this loss
+level; a formal protocol needs intermediate observations or a larger
+budget, stated before it runs.
+
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
 The C36 study qualifies derivatives and throughput but yields no accepted
@@ -1064,7 +1133,9 @@ solve-level gain for a 17-channel transient contract, but only against
 internal baselines and on a small network. The C36 study establishes
 derivative correctness for the full objective of a larger curl-potential
 model and a throughput gain for its gradient against an internal control,
-but no accepted solve. Its gains depend on compilation, the zero-gate
+but no accepted solve. With 800 L-BFGS calls its training passes the loss
+gate and most physical gates, while stratified pressure stays 2--3 times
+above its limit. Its gains depend on compilation, the zero-gate
 constant folding in the artifact is qualified on CPU only, and the problem
 is a single constructed box instance. External three-dimensional baselines,
 accepted C36 solves, a second nonlinear PDE, reduced-precision measurements
@@ -1086,9 +1157,10 @@ all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
 faster than internal full spatial-jet and naive baselines. The C36 curl-potential
 extension passes complete gradient qualification and improves
 objective-gradient throughput by 1.32$\times$ over an equally compiled
-parameter-AD control, but its frozen training budget does not reach
-physical acceptance. Accepted C36 solves and external three-dimensional
-comparisons remain open.
+parameter-AD control. Its original training budget does not reach the
+training gate; a development run with 40 times more L-BFGS calls does, and
+passes most physical gates, but stratified pressure still fails. Accepted
+C36 solves and external three-dimensional comparisons remain open.
 
 
 \begin{thebibliography}{99}

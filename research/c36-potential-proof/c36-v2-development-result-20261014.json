@@ -1,0 +1,379 @@
+{
+  "state": "C36_V2_DEVELOPMENT_RESULT",
+  "protocol_version": "C36-potential-20261014-v2-development",
+  "protocol_sha256": "00d5db987788d2dfbca6f12ac6835a84a743fd447f93cadcee15845c95bc1aa7",
+  "formal_claim": false,
+  "driver_state": "COMPLETE",
+  "reader_exit": 0,
+  "archive": {
+    "sha256": "266aa8d22138d802ad818590a87fd6887a1c16987ab806d9d176ca1b3b45c6e8",
+    "bytes": 171805751,
+    "members": 295,
+    "members_match_sources": true,
+    "whole_file_sha_reread": true
+  },
+  "decision_rule_branch_mechanical": "b",
+  "paired_development_parameter_ad_over_analytic": {
+    "361901": {
+      "per_evaluation_seconds_ratio": 1.2554448761005146,
+      "time_to_loss_ratio": {
+        "0.01": 1.2997765477748886,
+        "0.001": 1.3119808049803665,
+        "0.0003": 1.3044933490663875,
+        "0.0001": 1.3006415392821122,
+        "3e-05": 1.3093549573532468,
+        "1e-05": 1.3002842202081728
+      }
+    },
+    "361902": {
+      "per_evaluation_seconds_ratio": 1.2535963891506459,
+      "time_to_loss_ratio": {
+        "0.01": 1.3064853966892496,
+        "0.001": 1.3163314283037362,
+        "0.0003": 1.311468939717491,
+        "0.0001": 1.307687578364285,
+        "3e-05": 1.3293907351850873,
+        "1e-05": 1.3300874739263626
+      }
+    }
+  },
+  "runs": [
+    {
+      "seed": 361901,
+      "engine": "analytic",
+      "training_state": "COMPLETE",
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18085,
+      "training_seconds": 3718.9497123470064,
+      "final_loss": 1.8375584223818301e-06,
+      "final_gradient_infinity": 2.9079011590260256e-05,
+      "after_Adam_loss": 0.0011217050303855035,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 92,
+        "closure": 2038,
+        "loss": 9.991364528658995e-05,
+        "gradient_infinity": 0.0003972452209165221,
+        "training_seconds": 1014.079515425954
+      },
+      "first_evaluation_at_or_below": {
+        "0.01": {
+          "evaluation": 552,
+          "training_seconds": 96.28867595689371
+        },
+        "0.001": {
+          "evaluation": 4042,
+          "training_seconds": 677.0372978379019
+        },
+        "0.0003": {
+          "evaluation": 5144,
+          "training_seconds": 863.8201440379489
+        },
+        "0.0001": {
+          "evaluation": 6039,
+          "training_seconds": 1014.079515425954
+        },
+        "3e-05": {
+          "evaluation": 8077,
+          "training_seconds": 1359.1749666389078
+        },
+        "1e-05": {
+          "evaluation": 12129,
+          "training_seconds": 2045.3939803940011
+        }
+      },
+      "mean_seconds_per_evaluation": 0.16831352093579294,
+      "gradient_checks": {
+        "saved_comparisons": 84,
+        "check_points": 28,
+        "maximum_error_over_original_budget": 9.266501195510147e-06
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "complete": true,
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "velocity_relative_l2": 0.001296130612172602,
+              "normalized_momentum_rms": 0.0010002251697022392,
+              "normalized_corrected_pressure_rms": 0.0024919160189368792,
+              "normalized_divergence_rms": 1.8210486094580655e-14
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "velocity_relative_l2": 0.0022408887429268966,
+              "normalized_momentum_rms": 9.286086915495298e-05,
+              "normalized_corrected_pressure_rms": 0.0004118418075428115,
+              "normalized_divergence_rms": 7.372659695214041e-16
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.0010666329862029532,
+            "maximum_endpoint_error": 0.0010666327770903225,
+            "maximum_refinement_change": 6.432143270683646e-11
+          },
+          "last_phase": "COMPLETE"
+        }
+      }
+    },
+    {
+      "seed": 361901,
+      "engine": "parameter_ad",
+      "training_state": "COMPLETE",
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18073,
+      "training_seconds": 4665.92216756905,
+      "final_loss": 1.626615838014678e-06,
+      "final_gradient_infinity": 4.422441587511042e-05,
+      "after_Adam_loss": 0.0011217278395833537,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 90,
+        "closure": 1990,
+        "loss": 9.993031167556344e-05,
+        "gradient_infinity": 0.00026668019136384793,
+        "training_seconds": 1318.9539418980712
+      },
+      "first_evaluation_at_or_below": {
+        "0.01": {
+          "evaluation": 552,
+          "training_seconds": 125.15376282506622
+        },
+        "0.001": {
+          "evaluation": 4042,
+          "training_seconds": 888.2599390191026
+        },
+        "0.0003": {
+          "evaluation": 5118,
+          "training_seconds": 1126.8476326870732
+        },
+        "0.0001": {
+          "evaluation": 5991,
+          "training_seconds": 1318.9539418980712
+        },
+        "3e-05": {
+          "evaluation": 8071,
+          "training_seconds": 1779.6424804790877
+        },
+        "1e-05": {
+          "evaluation": 12043,
+          "training_seconds": 2659.5935168151045
+        }
+      },
+      "mean_seconds_per_evaluation": 0.21130834743727794,
+      "gradient_checks": {
+        "saved_comparisons": 84,
+        "check_points": 28,
+        "maximum_error_over_original_budget": 2.5420725835673985e-06
+      },
+      "physical": {
+        "final": {
+          "state": "RUNNING",
+          "complete": false,
+          "physical_acceptance_pass": null,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "velocity_relative_l2": 0.001140955648927131,
+              "normalized_momentum_rms": 0.0009437086189630888,
+              "normalized_corrected_pressure_rms": 0.002081740047867811,
+              "normalized_divergence_rms": 1.9747625441322156e-14
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "velocity_relative_l2": 0.0019783616097894976,
+              "normalized_momentum_rms": 9.124346079082689e-05,
+              "normalized_corrected_pressure_rms": 0.00036996222079164435,
+              "normalized_divergence_rms": 7.856100007648172e-16
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            null,
+            null
+          ],
+          "trajectory": null,
+          "last_phase": "time-0.375-complete"
+        }
+      }
+    },
+    {
+      "seed": 361902,
+      "engine": "analytic",
+      "training_state": "COMPLETE",
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 17918,
+      "training_seconds": 3650.412388049066,
+      "final_loss": 1.3460146575228013e-06,
+      "final_gradient_infinity": 1.8534086756870475e-05,
+      "after_Adam_loss": 0.0010896046410125242,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 86,
+        "closure": 1890,
+        "loss": 9.997105058299071e-05,
+        "gradient_infinity": 0.0005647791249764362,
+        "training_seconds": 975.4607267720858
+      },
+      "first_evaluation_at_or_below": {
+        "0.01": {
+          "evaluation": 564,
+          "training_seconds": 96.8132288340712
+        },
+        "0.001": {
+          "evaluation": 4030,
+          "training_seconds": 665.5840051369742
+        },
+        "0.0003": {
+          "evaluation": 5048,
+          "training_seconds": 834.1690837830538
+        },
+        "0.0001": {
+          "evaluation": 5891,
+          "training_seconds": 975.4607267720858
+        },
+        "3e-05": {
+          "evaluation": 7600,
+          "training_seconds": 1261.5579537280137
+        },
+        "1e-05": {
+          "evaluation": 10955,
+          "training_seconds": 1821.3743630730314
+        }
+      },
+      "mean_seconds_per_evaluation": 0.1664705341966423,
+      "gradient_checks": {
+        "saved_comparisons": 84,
+        "check_points": 28,
+        "maximum_error_over_original_budget": 1.1573979881270457e-05
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "complete": true,
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "velocity_relative_l2": 0.0011591762662345982,
+              "normalized_momentum_rms": 0.0008749663457167014,
+              "normalized_corrected_pressure_rms": 0.002487031711327192,
+              "normalized_divergence_rms": 1.8402209521580283e-14
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "velocity_relative_l2": 0.002338866958395196,
+              "normalized_momentum_rms": 8.382815132802864e-05,
+              "normalized_corrected_pressure_rms": 0.00033257161014269406,
+              "normalized_divergence_rms": 1.6883528791780182e-15
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.000969908438949665,
+            "maximum_endpoint_error": 0.0009690527043195745,
+            "maximum_refinement_change": 6.32687323656397e-11
+          },
+          "last_phase": "COMPLETE"
+        }
+      }
+    },
+    {
+      "seed": 361902,
+      "engine": "parameter_ad",
+      "training_state": "COMPLETE",
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18421,
+      "training_seconds": 4680.744000944076,
+      "final_loss": 2.3432190799127226e-06,
+      "final_gradient_infinity": 1.7394085533282865e-06,
+      "after_Adam_loss": 0.001100672143986476,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 85,
+        "closure": 1858,
+        "loss": 9.991832351576907e-05,
+        "gradient_infinity": 0.00026726387150928337,
+        "training_seconds": 1275.5978755820543
+      },
+      "first_evaluation_at_or_below": {
+        "0.01": {
+          "evaluation": 564,
+          "training_seconds": 126.4850696780486
+        },
+        "0.001": {
+          "evaluation": 4032,
+          "training_seconds": 876.1291441380745
+        },
+        "0.0003": {
+          "evaluation": 5033,
+          "training_seconds": 1093.9868438540725
+        },
+        "0.0001": {
+          "evaluation": 5859,
+          "training_seconds": 1275.5978755820543
+        },
+        "3e-05": {
+          "evaluation": 7690,
+          "training_seconds": 1677.1034555850783
+        },
+        "1e-05": {
+          "evaluation": 11095,
+          "training_seconds": 2422.587225654046
+        }
+      },
+      "mean_seconds_per_evaluation": 0.20868686056888988,
+      "gradient_checks": {
+        "saved_comparisons": 84,
+        "check_points": 28,
+        "maximum_error_over_original_budget": 2.351859177519258e-06
+      },
+      "physical": {
+        "final": {
+          "state": "RUNNING",
+          "complete": false,
+          "physical_acceptance_pass": null,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "velocity_relative_l2": 0.0015453961111052076,
+              "normalized_momentum_rms": 0.0011464943025397186,
+              "normalized_corrected_pressure_rms": 0.0032751867446685623,
+              "normalized_divergence_rms": 1.9001670146679525e-14
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "velocity_relative_l2": 0.002517008970422742,
+              "normalized_momentum_rms": 0.0001254175767959175,
+              "normalized_corrected_pressure_rms": 0.0005113243823564623,
+              "normalized_divergence_rms": 7.430206617288763e-16
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            null,
+            null
+          ],
+          "trajectory": null,
+          "last_phase": "time-0-complete"
+        }
+      }
+    }
+  ],
+  "scope": "Development reachability study on the two v1 seeds; only the L-BFGS budget differs from v1. Partial physical observations stopped at the allocation end are reported as partial, never as acceptance."
+}

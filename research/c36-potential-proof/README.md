@@ -512,3 +512,31 @@ PYTHONPATH=src python -m box376.audit_packed_analytic_gpu \
 ```
 
 On the legacy legacy compiler runtime, select `--legacy-triton-target` explicitly for the GPU worker as described above. Use a new output directory for every attempt. Both arms use folding and the same packed forward; the complete objective, stored parameter bytes and original numerical/timing protocol are preserved.
+
+## Development run with a larger L-BFGS budget (v2)
+
+[protocol-v2-development-20261014.json](protocol-v2-development-20261014.json) changes only the L-BFGS budget, from 20 to 800 calls (closure cap 520 to 20,800). Data, model, normalization, Adam schedule, L-BFGS settings, seeds, training limits and every physical gate stay as in v1. Seeds 361901 and 361902 were observed in v1, so this is a development reachability study, not a formal time-to-accuracy comparison.
+
+Each seed trains with both engines on one four-GPU H100 node, one lane per GPU: the compiled packed activation with its analytic transpose (`analytic`), and parameter AD over the same compiled packed forward (`parameter_ad`). Both replay CUDA Graphs. `box376.run_c36_v2` runs the batch once. Each lane runs a compiler smoke, the training (`box376.potential_train_v2`) and physical observations of its checkpoints within a time budget and the allocation deadline. Then `box376.read_c36_v2` rechecks every saved comparison, hash and event count from the raw files. Every complete loss/gradient check passes at 28 check points per run, with a maximum error of 1.16e-5 of the original budget.
+
+| Engine | Seed | First call meeting both training limits | Seconds to it | Final loss | Final physical outcome |
+| --- | ---: | ---: | ---: | ---: | --- |
+| analytic | 361901 | 92 | 1,014 | 1.84e-6 | fails stratified pressure (0.0025) and endpoint (0.00107) |
+| analytic | 361902 | 86 | 975 | 1.35e-6 | fails stratified pressure (0.0025) only |
+| parameter_ad | 361901 | 90 | 1,319 | 1.63e-6 | partial: stratified pressure 0.0021 fails, uniform passes |
+| parameter_ad | 361902 | 85 | 1,276 | 2.34e-6 | partial: stratified pressure 0.0033 fails, uniform passes |
+
+- **Training gate.** All four runs pass it after about 1,860–2,040 L-BFGS evaluations. On these seeds, the analytic engine reaches every loss threshold from 1e-2 to 1e-5 1.30–1.33× sooner than parameter AD.
+- **Physical observation.** One complete observation takes about 99 minutes, so only the final checkpoints were observed. The parameter-AD observations were stopped at the allocation end after both holdouts.
+- **Comparison with v1.**
+  - Stratified velocity error falls from 0.018–0.021 to 0.0011–0.0015.
+  - Uniform velocity error falls from 0.034–0.044 to 0.0020–0.0025.
+  - The analytic trajectory endpoint error falls from 0.023–0.030 to 0.00097 and 0.00107.
+  - The uniform field gate passes, and so do the initial and boundary values.
+- **Remaining failure.** Stratified corrected pressure fails in every run. It is largest in the plateau region inside the box, not in the cutoff layers.
+- **Outcome.** By the registered rule this is branch (b): the training gate passes but physical acceptance does not.
+
+Files:
+- [c36-v2-development-result-20261014.json](c36-v2-development-result-20261014.json): public summary.
+- [c36-v2-development-reader-20261014.json](c36-v2-development-reader-20261014.json): independent reader output.
+- Complete archive: 295 members, sha256 `266aa8d2…b3b45c6e8`. It has verified copies on cluster scratch and persistent project storage.
