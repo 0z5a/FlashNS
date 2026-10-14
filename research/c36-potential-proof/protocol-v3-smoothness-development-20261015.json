@@ -1,0 +1,251 @@
+{
+  "version": "C36-potential-20261015-v3-smoothness-development",
+  "scope": "Development study of a temporal-smoothness continuation scheduler: train on smoother motion schedules (transition width w > 1/2) and finish on the original problem (w = 1/2) with the same total budget as v2. Paired with the v2 analytic runs on the same seeds.",
+  "source_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
+  "calibration_sha256": "5aea51c47816fa006ab0124874ea12d1111fd3a436d70f9d05f29bc242316063",
+  "topology": [
+    4,
+    128,
+    128,
+    128,
+    128,
+    4
+  ],
+  "seeds": [
+    361901,
+    361902
+  ],
+  "dtype": "float64",
+  "TF32": false,
+  "potential_scale": 0.01,
+  "pressure_scale": 0.1,
+  "family_counts": [
+    4096,
+    512,
+    384,
+    7
+  ],
+  "parameter_count": 50692,
+  "explicit_chunk": 128,
+  "taylor_ad_chunk": 128,
+  "coordinate_ad_chunk": 256,
+  "geometry_chunk": 256,
+  "atol": 1e-11,
+  "rtol": 1e-09,
+  "training": {
+    "start": "fresh original initialization; no direct-velocity checkpoints",
+    "Adam_updates_per_seed": 4000,
+    "Adam_lr": "0.001 * 0.5**floor((update-1)/1000)",
+    "Adam_betas": [
+      0.9,
+      0.999
+    ],
+    "Adam_eps": 1e-08,
+    "Adam_weight_decay": 0,
+    "Adam_foreach": false,
+    "gradient_clipping": false,
+    "LBFGS_calls_per_seed": 800,
+    "LBFGS_max_iter": 20,
+    "LBFGS_max_eval": 25,
+    "LBFGS_closure_cap_per_seed": 20800,
+    "LBFGS_history_size": 20,
+    "LBFGS_lr": 1,
+    "LBFGS_line_search": "strong_wolfe",
+    "LBFGS_tolerance_grad": 0,
+    "LBFGS_tolerance_change": 0,
+    "loss_convergence_limit": 0.0001,
+    "gradient_infinity_convergence_limit": 0.001,
+    "supervised_interior_velocity_term": false,
+    "maximum_training_seconds": 5700,
+    "checkpoint_LBFGS_calls": [
+      20,
+      50,
+      100,
+      200,
+      400,
+      800
+    ],
+    "complete_gradient_check_Adam_updates": [
+      100,
+      500,
+      1000,
+      2000,
+      4000
+    ],
+    "complete_gradient_check_every_LBFGS_calls": 50,
+    "stop_rule": "none; the full budget runs; the first original-problem closure meeting both training limits is recorded with its parameters",
+    "engine": "packed activation with analytic transpose, compiled, CUDA Graph replay; one graph per stage",
+    "gradient_reference": "dense eager C36 parameter AD at the stage width (chunk 128); preserved full native AD for the original problem at the initial parameters",
+    "stage_rules": "Adam state carries across stages; the learning rate follows the global update index; L-BFGS restarts at every stage; the training gate and loss thresholds count only events of the original problem"
+  },
+  "physical": {
+    "holdout_seed": 794701,
+    "state_observer": "native coordinate AD of the trained curl-potential network",
+    "independent_consumer": "NumPy physical equations",
+    "stratified_points": 4096,
+    "uniform_volume_points": 4096,
+    "time_slices": [
+      0,
+      0.25,
+      0.375,
+      0.5,
+      0.625,
+      0.75,
+      1
+    ],
+    "time_slice_points": 256,
+    "initial_points": 512,
+    "boundary_points": 384,
+    "particles": 27,
+    "gated_datasets": [
+      "stratified",
+      "uniform"
+    ],
+    "velocity_relative_l2_limit": 0.01,
+    "zero_reference_velocity_normalized_rms_limit": 0.001,
+    "normalized_divergence_rms_limit": 0.001,
+    "normalized_momentum_rms_limit": 0.01,
+    "normalized_momentum_gradient_rms_limit": 0.02,
+    "normalized_divergence_gradient_rms_limit": 0.02,
+    "normalized_corrected_pressure_rms_limit": 0.001,
+    "normalized_pressure_gauge_rms_limit": 0.001,
+    "initial_boundary_velocity_normalized_rms_limit": 0.001,
+    "trajectory_method": "DOP853 using observed trained velocity",
+    "trajectory_refinements": [
+      [
+        1e-09,
+        1e-11,
+        0.015625
+      ],
+      [
+        1e-11,
+        1e-13,
+        0.0078125
+      ]
+    ],
+    "maximum_trajectory_refinement_change": 1e-07,
+    "maximum_trajectory_endpoint_error": 0.001,
+    "exact_velocity_inserted_into_model_or_trajectory_rhs": false
+  },
+  "supersedes_protocol_sha256": "00d5db987788d2dfbca6f12ac6835a84a743fd447f93cadcee15845c95bc1aa7",
+  "changes_from_v1": {
+    "LBFGS_calls_per_seed": [
+      20,
+      800
+    ],
+    "LBFGS_closure_cap_per_seed": [
+      520,
+      20800
+    ],
+    "training_engine": [
+      "dense explicit C36 (v1 sources 7281fae / de1d223)",
+      "qualified compiled packed analytic engine"
+    ],
+    "saved_state": [
+      "every L-BFGS candidate",
+      "scheduled checkpoints, the first training-gate closure and all loss/gradient events"
+    ],
+    "gradient_checks": [
+      "after every L-BFGS call",
+      "every 50 L-BFGS calls and at scheduled Adam updates"
+    ],
+    "unchanged": "data, calibration, eta, model, normalization, Adam schedule, L-BFGS settings, seeds, training limits and every physical gate"
+  },
+  "physical_observation": {
+    "separate_batch": true,
+    "checkpoints_per_run": [
+      "final",
+      "gate-first",
+      "LBFGS-call200",
+      "LBFGS-call400",
+      "stage1-end"
+    ],
+    "observer": "unchanged box376.potential_physical at the original schedule, independent reader box376.audit_potential_run"
+  },
+  "decision_rule": {
+    "a": "Loss stays above 1e-4: the problem is budget-, capacity- or sampling-limited at this scale; no formal v3 on budget alone.",
+    "b": "Loss passes 1e-4 but physical errors stop falling: training objective or sampling does not control the physical gates; change the problem definition explicitly in a new protocol.",
+    "c": "Physical gates pass: freeze a formal v3 with new seeds generated and stored on the cluster runtime and both engines (compiled packed analytic and equally compiled parameter AD) for time to accepted accuracy."
+  },
+  "arms": [
+    {
+      "schedule": "C1",
+      "seeds": [
+        361901,
+        361902
+      ]
+    },
+    {
+      "schedule": "C2",
+      "seeds": [
+        361901,
+        361902
+      ]
+    }
+  ],
+  "execution": {
+    "allocation": "one new ACC node, four H100 lanes, one (seed, schedule) per lane; training only, followed by a separate all-planes observation batch",
+    "deadline_reserve_seconds": 900
+  },
+  "smoothness_parameter": {
+    "name": "motion schedule transition width w",
+    "definition": "s_w(t) = switch(t/w - (1/(2w) - 1/2)); the box moves for t in (1/2 - w/2, 1/2 + w/2); k-th time derivatives scale as w^-k",
+    "original": 0.5,
+    "implementation": "box376.schedule_family (new file; pinned source, geometry and model modules unchanged and swapped in only while a width-w problem is prepared)",
+    "verification": "box376.test_schedule_family: bitwise identity at w = 1/2; derivative scaling and window; zero value targets; at w = 3/4 the analytic objective and parameter AD agree with an independent native coordinate-AD oracle within the original budget"
+  },
+  "schedules": {
+    "C1": [
+      {
+        "width": 1.0,
+        "Adam_updates": 1000
+      },
+      {
+        "width": 0.75,
+        "Adam_updates": 1000
+      },
+      {
+        "width": 0.5,
+        "Adam_updates": 2000,
+        "LBFGS_calls": 800
+      }
+    ],
+    "C2": [
+      {
+        "width": 1.0,
+        "Adam_updates": 2000
+      },
+      {
+        "width": 0.75,
+        "Adam_updates": 2000,
+        "LBFGS_calls": 100
+      },
+      {
+        "width": 0.5,
+        "LBFGS_calls": 700
+      }
+    ]
+  },
+  "baseline": {
+    "runs": "v2 development analytic runs, seeds 361901 and 361902 (same engine, data, initial bytes, Adam schedule, L-BFGS settings and total budget, with w = 1/2 throughout)",
+    "result": "c36-v2-development-result-20261014.json"
+  },
+  "analysis": {
+    "paired_statistics": [
+      "per seed and schedule: training seconds and evaluations from the start to the first original-problem loss at or below 1e-3, 3e-4, 1e-4, 3e-5, 1e-5, compared with the v2 analytic run of the same seed",
+      "final loss and gradient infinity norm at equal total budget",
+      "physical metrics of matched checkpoints on all planes"
+    ],
+    "decision_rule": {
+      "helps": "both schedules or one schedule reach every threshold sooner and the final physical errors (stratified pressure in particular) are lower than the baseline on both seeds",
+      "no_effect": "differences within the seed-to-seed spread of the baseline",
+      "hurts": "thresholds reached later or final errors higher on both seeds"
+    },
+    "status": "development: v1 seeds; not a formal time-to-accuracy result"
+  },
+  "test_matrix": {
+    "training_runs": 4,
+    "observations_planned": 20,
+    "planes_per_observation": 13
+  }
+}
