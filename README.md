@@ -78,4 +78,17 @@ The [tested source manifest](docs/tested-source-sha256.json) records the unchang
 
 ## Research manuscript
 
-The [October 13 research draft](research/manuscript/README.md) retains the accepted 2D H20 solves and adds the full C36 derivative qualifications, matched H100/CPU timing, and completed 3D training and physical acceptance failures. The new CPU analytic-transpose result is separate from GPU and complete-solver performance.
+The [October 14 research draft](research/manuscript/README.md) keeps the accepted 2D H20 solves as the main result and reports the C36 extension (full derivative qualification, matched H100/CPU objective-gradient timing, and the failed 3D training and physical acceptance). It is restructured after an external review; no measured value changed.
+
+### Naming
+
+| Name | Where | Meaning |
+| --- | --- | --- |
+| Q10 / Q20 | paper, code | Complete third-order Taylor state in 2D (10 channels) / 3D (20 channels) |
+| GL8 | paper | 2D consumer state: value, gradient, packed Hessian, gradient of the Laplacian (8 channels) |
+| C36 | paper, `research/c36-potential-proof` | 3D transient curl-potential consumer state (36 channels) |
+| C17 / A24 | `research/c36-potential-proof/src` | Earlier 3D velocity-model contract (17 channels) and its full-spatial-third-order reference (24 channels) |
+| B1 | `docs/cuda-*` | Library GEMM plus separate native jet forward/VJP (the library-GEMM jet baseline) |
+| U / F | `docs/cuda-*` | Same CUTLASS main loop with a separate VJP (U) or fused dgrad/VJP (F) |
+| B1+ / F+ | `docs/cuda-h100-results.md` | B1 / F with a finite Torch/cuBLASLt GEMM plan search |
+| G1 / G2 | `docs/validation.md` | SM120 first-layer coordinate-gradient kernel (G1) and its fused VJP/wgrad variant (G2) |

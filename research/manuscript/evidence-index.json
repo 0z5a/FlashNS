@@ -1,8 +1,9 @@
 {
-  "revision": "2026-10-13",
+  "revision": "2026-10-14",
   "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
   "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
-  "manuscript_sha256": "28c33f85eacc33b1c35a1473f3afe3248ef4ae5a51cd7cbe73474e7b5d071b08",
+  "manuscript_sha256": "b75469b61055326391c2aae9b4cd35565fa61d7385c246d9d66d48d52dc7361c",
+  "previous_manuscript_sha256": "28c33f85eacc33b1c35a1473f3afe3248ef4ae5a51cd7cbe73474e7b5d071b08",
   "evidence_sha256": {
     "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
     "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -30,11 +31,12 @@
   "C36_physical_acceptance_pass": false,
   "new_CPU_variant_GPU_qualified": true,
   "C36_complete_solver_speedup": null,
-  "pdf_sha256": "4917d95835f3c99be049a5020461784e7dea97280de4e3933c6a1a27d7594cc9",
-  "pages": 22,
-  "latex_compilation": "SUCCESS",
-  "pdf_visual_review": "PASS: all 22 pages on two contact sheets; pages 11, 12 and 18 inspected at full resolution; no clipping or overlap",
-  "pdf_export": "ReportLab with 300 dpi STIX math images; same standalone LaTeX content",
+  "pdf_sha256": "feb77fd5757d50fefbefc840c5f33b7893d2c2044e9af2b9f3a637ad1498b879",
+  "previous_pdf_sha256": "4917d95835f3c99be049a5020461784e7dea97280de4e3933c6a1a27d7594cc9",
+  "pages": 23,
+  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
+  "pdf_visual_review": "PASS: Figures 1-3 inspected at 100 dpi after the TikZ conversion; marks, labels and legends render without overlap",
+  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
   "eager_analytic_variant_GPU_qualified": true,
   "compiled_analytic_variant_GPU_qualified": true,
   "mathematical_source": "OpenAI Math376; pinned geometry commit adc7f1241b42e322a6451854ab7e4b4c146bf78a; single-box forced-flow instance",
@@ -57,5 +59,6 @@
     "../c36-potential-proof/compiled-activation-GPU-smoke-result-20261013.json": "bd5576325c844a0a8464ce7590cf9019e4906703fc1771350990d1d656882e56",
     "../c36-potential-proof/math376-provenance.json": "20aa0b47412606eaf0dbd27b6a4e308254840111e273c9d30d4bbc4237961485"
   },
-  "release_note": "Evidence hashes pin the public copies. Original evidence hashes and release-input hashes retain provenance; private archive locators and site labels were normalized without changing measured arrays, timing values, checks or acceptance outcomes."
+  "release_note": "Evidence hashes pin the public copies. Original evidence hashes and release-input hashes retain provenance; private archive locators and site labels were normalized without changing measured arrays, timing values, checks or acceptance outcomes.",
+  "revision_note_20261014": "Restructured per external review: shorter abstract, explicit contributions, terminology table, related work with five verified additional references, method figure, stopping-rule and closure-count clarification, three-dimensional failure diagnosis, and execution records moved to an appendix. No measured value, gate, seed or evidence file changed; evidence_sha256 entries are unchanged."
 }

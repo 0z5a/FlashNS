@@ -39,4 +39,4 @@ PYTHONPATH=src uv run pytest -q
 
 ## 研究论文
 
-[2026-10-13 研究稿](research/manuscript/README.md)保留已通过验收的 2D H20 求解实验，并加入完整 C36 导数检查、H100/CPU 配对性能、已完成的 3D 训练与物理验收失败结果。CPU 解析转置加速与 GPU 性能、完整求解器加速分别报告。
+[2026-10-14 研究稿](research/manuscript/README.md)以已通过验收的 2D H20 求解实验为主体，C36 作为三维推广：完整导数检查、H100/CPU 目标与梯度配对吞吐，以及已完成但未通过验收的 3D 训练和物理检验。本版按外部评审意见重新组织结构，没有改动任何实测数值。命名对照见英文 README 的 Naming 表。

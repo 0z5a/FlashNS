@@ -244,8 +244,10 @@ Repeat physical acceptance for seed 361902. The NumPy-only reader reconstructs
 saved gradient comparisons, family-normalized losses, paired statistics,
 physical equations and acceptance decisions. It checks observed saved arrays;
 it does not independently replay every Adam update or reintegrate particle
-paths. GPU results for this protocol are pending; no speed, training convergence
-or physical acceptance is claimed by these new entry points alone.
+paths. The completed H100 training and physical-acceptance results for this
+protocol are reported below: both engines finish the frozen budget for both
+seeds and all four attempts fail the convergence and physical gates, so no
+solve speed or time to accepted accuracy is claimed.
 
 The prepared objective now constructs its affine transform and output-scale
 constants on the device during setup. Its default eager equations are unchanged;

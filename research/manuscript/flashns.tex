@@ -1,20 +1,39 @@
 \documentclass[11pt]{article}
+\usepackage{lmodern}
 \usepackage[T1]{fontenc}
+% Some TeX installations do not register the Latin Modern map with pdfTeX.
+\ifdefined\pdfmapfile\pdfmapfile{+lm.map}\fi
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,booktabs,longtable,microtype}
-\usepackage{tikz,pgfplots}
-\pgfplotsset{compat=1.17}
+\usepackage{amsmath,amssymb,booktabs,longtable}
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,plotmarks}
 \usepackage[colorlinks=true,linkcolor=teal,citecolor=teal,urlcolor=teal]{hyperref}
 \title{FlashNS: Operator- and Adjoint-Aware Contracted Derivative Execution for High-Order PINNs}
 \author{Dezhen Lu\\University of Tübingen\\\texttt{dezhen.lu@student.uni-tuebingen.de}}
-\date{Updated research draft: October 13, 2026}
+\date{Updated research draft: October 14, 2026}
 \begin{document}\maketitle
 
-
-
-
 \begin{abstract}
-High-order physics-informed training requires coordinate derivatives and their complete parameter gradients. FlashNS executes consumer-specific derivative states with parameter transposes and bounded chunk workspaces. In the original two-dimensional FP64 Navier--Stokes experiment on NVIDIA H20, all 18 representation-study solves and all 54 matched public-comparison solves pass unchanged numerical and independent scalar-AD acceptance. The eight-channel GL8 implementation gives 1.659$\times$ paired setup-plus-optimization speedup over compiled compact Q10; the public collapsed Taylor, explicit differentiation and exact two-dimensional STDE adaptations give respective baseline/GL8 ratios of 1.730, 2.312 and 3.368. We extend the study to a three-dimensional transient curl-potential model with a 36-channel partial derivative state, 4,999 objective points and all 50,692 parameters. Full H100 objective-gradient checks pass the frozen numerical budget. A packed-gather candidate nevertheless remains slower than C36 Taylor-state parameter AD: paired baseline/candidate ratios are 0.973 in eager mode and 0.970 with CUDA Graph replay. A subsequent packed activation with analytic activation transpose gives 1.0446$\times$ paired H100 CUDA Graph speedup over parameter AD using the same packed forward (95\% interval 1.0441--1.0451). Compiling the packed forward in both GPU arms and the candidate activation transpose gives 1.3240$\times$ on H100 (interval 1.3231--1.3248); the corresponding one-thread CPU result is 1.265$\times$ (interval 1.203--1.328). Both H100 training engines complete their frozen two-seed budgets, but neither passes the prescribed convergence and physical acceptance criteria. The results establish the stated execution tradeoffs and numerical qualifications; they do not establish three-dimensional time-to-accuracy acceleration or a fluid regularity theorem.
+Training a physics-informed network on a high-order objective needs
+coordinate derivatives of the network and the complete parameter gradient
+of a loss built from them. FlashNS propagates only the derivative state that
+a fixed residual consumer reads, and transposes every local dependency of
+that state into the parameter gradient. For the gradient-enhanced
+two-dimensional Navier--Stokes objective, an eight-channel state (GL8:
+value, gradient, Hessian and gradient of the Laplacian) replaces the
+ten-channel third-order jet, while its parameter transpose requires the
+fourth activation derivative. On an NVIDIA H20 in FP64, all 72 planned
+solves pass unchanged accuracy gates and an independent scalar-AD check.
+GL8 reaches the gates 1.66$\times$ faster than a compiled full-jet control
+and 1.73--3.37$\times$ faster than matched adaptations of collapsed Taylor
+mode, explicit differentiation and exact STDE. A 36-channel extension (C36)
+for a transient three-dimensional curl-potential model passes complete
+50,692-parameter gradient checks and gives 1.32$\times$ objective-gradient
+throughput on H100 over an equally compiled parameter-AD control. Its four
+frozen-budget training runs miss the physical acceptance gates, so no
+three-dimensional time-to-accuracy gain is claimed.
 \end{abstract}
 
 \section{Introduction}
@@ -26,13 +45,14 @@ uses second coordinate derivatives and its gradient uses third derivatives.
 A fast residual evaluation does not establish a fast training step, and a
 fast training step does not establish a shorter solve to a prescribed error.
 
-Taylor-mode and explicit derivative methods already address the cost of
-nested coordinate automatic differentiation (AD). Residual-specific partial
-jets, collapsed Taylor propagation and stochastic Taylor contractions are
-especially relevant to this problem~\cite{cao,cmtad,stdepp}. We build on that
-setting. Our question is whether a concrete operator contraction, its
+Taylor-mode and forward-propagated derivative methods already address the
+cost of nested coordinate automatic differentiation
+(AD)~\cite{griewank,taylorjax,fwdlap}. Residual-specific partial jets,
+collapsed Taylor propagation and stochastic Taylor contractions are
+especially relevant to this problem~\cite{cao,cmtad,stdepp}. We build on
+that setting. Our question is whether a concrete operator contraction, its
 complete parameter transpose and a practical bounded working-state schedule
-can improve an unchanged third-order training objective beyond a compiled
+can shorten an unchanged third-order training solve beyond a compiled
 full-jet implementation and public derivative methods.
 
 For this objective, independent third partials are not needed: the diffusion
@@ -44,39 +64,97 @@ products between lower derivatives. Its parameter transpose additionally
 depends on the fourth activation derivative. Omitting that dependence would
 change the parameter gradient even if some forward residuals agreed.
 
-FlashNS makes this consumer contract explicit and implements both sides of
-it. It keeps matrix multiplications in library GEMMs, uses explicit CUDA
-rules for pointwise derivative propagation and residual seeds, and replays
-the complete loss/gradient computation with current parameter storage.
-Boundary points use a value-only path. A chunked mode reuses one interior
-workspace and accumulates the complete globally weighted parameter gradient
-before any optimizer update.
+\paragraph{Contributions.}
+\begin{enumerate}
+\item \emph{Consumer contracts.} We state closed derivative states for two
+fixed consumers: GL8 for the two-dimensional gradient-enhanced
+Navier--Stokes residual and C36 for a transient three-dimensional
+curl-potential momentum residual and its gradient. Each contract is closed
+under affine layers and smooth pointwise activations, and the runtime
+rejects observables the contract cannot answer.
+\item \emph{Complete parameter transposes.} We derive and implement the
+reverse rules for these states, including the fourth activation derivative
+that the forward state never stores, the transpose of packed symmetric
+storage, and a transpose of the stable coefficient program that is actually
+executed in saturated regions.
+\item \emph{Execution.} Library GEMMs, explicit pointwise derivative kernels
+and CUDA Graph replay of the complete loss/gradient program are combined
+with value-only boundary rows and a chunked mode that accumulates the
+globally weighted gradient in a bounded workspace.
+\item \emph{A solve-level comparison protocol.} Every method trains from
+identical data and initial parameter bytes under one optimizer program and
+unchanged accuracy gates, with an independent scalar-AD final check, pinned
+public sources and every attempt retained. Ratios are reported only for
+jointly accepted pairs. We apply it to eight baselines in two dimensions and
+report the three-dimensional extension, including its failed acceptance.
+\end{enumerate}
 
-We evaluate the implementation on the original FP64 Kovasznay
-gradient-enhanced objective, including all six numerical acceptance criteria
-and a separate scalar-AD final check. The representation study uses six
-initialization seeds; the public comparison reuses those planned seeds and
-reports its actual coverage. Paired comparisons use identical data and
-initial parameter bytes. We
-report full-gradient replay, setup, optimization and process wall time
-separately. Public competing implementations are pinned and adapted to the
-same objective; their adaptations and application limits are stated
-explicitly. Development qualification never supplies a formal solve result.
+The paper does not claim the first residual-aware derivative method, a
+globally minimal state, a pure representation effect separated from
+execution, or superiority across PDEs, precisions or GPU families. The
+two-dimensional H20 campaign and the three-dimensional H100/CPU study use
+different models, data, seeds, gates and hardware; their timings are never
+pooled. Table~\ref{tab:terms} defines the names used throughout.
 
-The resulting contribution is a verified execution case study: a closed
-contracted derivative state with its complete parameter VJP, a reusable
-chunked implementation, and a source-pinned comparison of actual solves.
-It does not establish the first residual-aware derivative method, a globally
-minimal state, or superiority across PDEs, precisions or GPU families.
+\begin{table}[t]
+\centering\small
+\caption{Terminology. Channel counts are per hidden scalar. ``Raw'' states store unnormalized partial derivatives; GL8 and C36 channels are not Taylor coefficients.}
+\label{tab:terms}
+\begin{tabular}{@{}p{0.25\linewidth}p{0.71\linewidth}@{}}\toprule
+Name & Meaning\\\midrule
+Q10 & Complete two-dimensional third-order state: value, 2 first, 3 second and 4 third partials (10 channels).\\
+GL8 & Two-dimensional consumer state $(z,\nabla z,\nabla^2 z,\nabla\Delta z)$ with packed symmetric Hessian (8 channels).\\
+chunk-512 & GL8 executed in 512-point interior chunks that accumulate the globally weighted loss and gradient.\\
+C36 & Three-dimensional transient consumer state for a curl potential (36 channels, Eq.~\eqref{eq:c36state}).\\
+Explicit / analytic transpose & Hand-written reverse rule for a derivative state, as opposed to framework autograd.\\
+Parameter AD & Internal control that executes the same derivative-state forward and obtains the parameter gradient with PyTorch autograd.\\
+Native coordinate AD & Nested framework autograd over coordinates; used as an independent derivative oracle.\\
+Replay & One CUDA Graph execution of the complete loss and all parameter gradients.\\
+Solve & Training from a fixed initialization until both validators accept, or until the frozen budget ends.\\
+\bottomrule\end{tabular}
+\end{table}
 
+\section{Related work}
+Physics-informed networks put PDE constraints into a training
+objective~\cite{pinn}; gradient-enhanced training also penalizes residual
+derivatives~\cite{gpinn}. NSFnets apply PINNs to the incompressible
+Navier--Stokes equations in velocity--pressure and vorticity--velocity
+forms, including Kovasznay flow and the three-dimensional
+Beltrami (Ethier--Steinman) flow~\cite{nsfnets}.
+Our contribution concerns execution of an unchanged derivative-intensive
+objective rather than a new loss or architecture.
 
-This revision preserves the October 6 H20 campaign and adds a separate
-three-dimensional transient C36 study in Section~\ref{sec:c36}.
-The two campaigns have different models, source data, parameter counts,
-seeds, acceptance gates and hardware; their timings are never pooled.
-The H20 comparisons remain accepted solve measurements. The new H100 and
-CPU ratios measure complete objective/gradient evaluations, while the new
-three-dimensional solver acceptance remains unsuccessful.
+Univariate Taylor propagation and its higher-order reverse sweeps are
+classical algorithmic differentiation~\cite{griewank}. Taylor-mode AD in
+JAX avoids the redundant work of nesting first-order AD~\cite{taylorjax}.
+Forward Laplacian propagates value, gradient and Laplacian forward through
+a network to evaluate a second-order operator for neural variational Monte
+Carlo, with large speedups over nested differentiation~\cite{fwdlap}. GL8
+applies the same forward-propagation principle to a third-order consumer.
+It must additionally retain the full symmetric Hessian, because nonlinear
+convection gradients read it, and it supplies a hand-written complete
+parameter transpose.
+
+Cao et al.~\cite{cao} already exploit residual-dependent partial jets
+and specialized layer rules, checking residuals and parameter gradients.
+FlashNS therefore does not claim priority for propagating only
+PDE-relevant derivative information. Dangel et al.~\cite{cmtad} collapse
+derivative sums within Taylor-mode computation for linear differential
+operators, closely related to retaining contractions instead of a full
+tensor. STDE and its extension~\cite{stde,stdepp} use high-order Taylor
+directions and contractions to avoid materializing large derivative
+tensors; the JMLR code link currently points to the public STDE
+repository~\cite{stdecode}. We evaluate the public implementations of these
+three methods, adapted to the same objective, rather than comparing only
+against our own compiled full-jet backend.
+
+The three-dimensional model learns a vector potential and takes its curl,
+so the velocity is divergence-free by construction. Neural Conservation
+Laws parameterize divergence-free fields with differential forms and prove
+universality of that construction~\cite{ncl}. We use the classical
+vector-potential form only as a model choice; our contribution there is
+the derivative contract that its curl and transient momentum gradient
+require.
 
 \section{Contracted derivative execution}
 \subsection{A fixed scientific objective}
@@ -115,10 +193,9 @@ the raw, unnormalized state is
  z_{x_1x_1x_1}+z_{x_1x_2x_2},
  z_{x_1x_1x_2}+z_{x_2x_2x_2}).
 \end{equation}
-We call this state GL8. It has eight channels per hidden scalar, compared
-with ten for the complete third-order two-dimensional Taylor state Q10.
-The raw-to-Taylor projection includes the appropriate factorials; GL8
-channels must not be read as Taylor coefficients.
+This is GL8, compared with the ten channels of Q10. The raw-to-Taylor
+projection includes the appropriate factorials; GL8 channels must not be
+read as Taylor coefficients.
 
 For a pointwise activation $y=\phi(z)$, let $a_k=\phi^{(k)}(z)$. Direct
 application of the chain rule gives
@@ -134,6 +211,7 @@ with the bias added only to the value channel. Consequently, affine
 layers and smooth pointwise activations form a closed execution rule for
 $S$. The state supplies every quantity in $r$ and $\nabla r$: convection
 gradients need the Hessian, while diffusion gradients need $t$.
+Figure~\ref{fig:method} summarizes the forward closure and its transpose.
 
 Closure is sufficient for this consumer, not a claim of global
 minimality or a reconstruction of all third derivatives. For example,
@@ -141,6 +219,32 @@ $z=x_1^3-3x_1x_2^2$ has $S(z)=0$ at the origin but
 $z_{x_1x_1x_1}=6$. A request for an independent third partial cannot be
 answered from GL8. The runtime rejects unsupported coordinate identities
 or contractions instead of returning such an observable.
+
+\begin{figure}[t]\centering
+\resizebox{\linewidth}{!}{\begin{tikzpicture}[
+  font=\small,>={Stealth[length=2mm]},
+  box/.style={draw,rounded corners=2pt,minimum height=9mm,align=center,inner sep=3pt},
+  st/.style={box,fill=teal!8},
+  op/.style={box,fill=gray!10},
+  rv/.style={box,fill=orange!10}]
+\node[st] (x) {input state\\$(x,e_1,e_2,0,0)$};
+\node[op,right=6mm of x] (aff) {affine\\$Z_q=WX_q\,(+b)$};
+\node[st,right=6mm of aff] (s) {$S(z)=(z,g,H,t)$\\8 channels};
+\node[op,right=6mm of s] (act) {closure~\eqref{eq:closure}\\uses $a_1,a_2,a_3$};
+\node[st,right=6mm of act] (out) {output state\\$(u,v,p)$};
+\node[op,below=11mm of out] (res) {consumer\\$r,\ \nabla r$, loss};
+\node[rv,left=6mm of res] (seed) {residual seeds\\(9 polynomial terms)};
+\node[rv,left=6mm of seed] (actT) {activation transpose\\uses $a_1,\dots,a_4$};
+\node[rv,left=6mm of actT] (affT) {affine transpose\\$\bar W=\sum\bar Z_qX_q^\top$};
+\node[rv,left=6mm of affT] (grad) {complete\\$\nabla_\theta L$};
+\draw[->] (x)--(aff); \draw[->] (aff)--(s); \draw[->] (s)--(act); \draw[->] (act)--(out);
+\draw[->] (out)--(res); \draw[->] (res)--(seed); \draw[->] (seed)--(actT);
+\draw[->] (actT)--(affT); \draw[->] (affT)--(grad);
+\draw[->,dashed] (act.south) .. controls +(0,-0.5) and +(0,0.5) .. (actT.north)
+  node[pos=0.5,below right=0pt,font=\scriptsize]{saved $z,g,H,t$};
+\end{tikzpicture}}
+\caption{Forward closure (top) and complete reverse transpose (bottom) for GL8; two hidden layers repeat the affine/closure pair. Each layer runs one library GEMM over all point/channel rows, the pointwise closure and its transpose run in native kernels, and the reverse affine reductions reuse flattened GEMMs. Boundary rows carry values only. The complete program is captured once and replayed with live parameter storage. C36 follows the same pattern with 36 channels per scalar, packed symmetric second and third spatial derivatives, and time-mixed channels.}\label{fig:method}
+\end{figure}
 
 \subsection{Complete parameter adjoints}
 Reducing the forward state alone is insufficient for training. FlashNS
@@ -161,7 +265,8 @@ coordinate state stops at order three. The value, gradient and Hessian
 differentials are transposed together with~\eqref{eq:differential}.
 For the packed symmetric Hessian, off-diagonal entries use the transpose
 of symmetric unpacking: the two matrix contributions are added, not
-treated as two independent stored channels.
+treated as two independent stored channels. Appendix~\ref{app:transpose}
+gives the complete local transpose.
 
 If $X$ is a layer input state and $\bar Z$ its preactivation adjoint,
 the complete parameter updates are
@@ -176,7 +281,7 @@ residual and residual-gradient terms. It is a specific, verified consumer
 rule rather than a general symbolic residual compiler.
 
 In exact arithmetic, projection of a complete coordinate jet commutes
-with the closed affine/activation rules. Composing with a loss that
+with the closed affine and activation rules. Composing with a loss that
 depends only on that projection therefore preserves its parameter
 derivative by the ordinary chain rule. Our numerical checks test both
 the projected forward quantities and the entire flattened parameter
@@ -193,56 +298,24 @@ CUDA Graph replay reads the current parameter storage rather than a
 snapshot, which is checked by consecutive in-place updates.
 
 Dirichlet and outlet consumers that need only values use a separate
-value-only path. The chunked implementation processes interior points
-in blocks of 512 and accumulates the complete parameter gradient using
-the original global weights. It never normalizes each chunk separately.
-Its working-state bound is proportional to chunk size, while fixed data,
-parameters and optimizer storage remain outside that bound. Floating
-reduction order can alter line-search trajectories; every backend must
-still satisfy the same independent final criteria.
+value-only path. At 2,048 interior and 512 boundary points this reduces
+logical point/channel rows from 25,600 for full Q10 rows everywhere to
+20,992 for interior-only Q10 and 16,896 for interior-only GL8; these are
+workload counts, not measured speedups. The chunked implementation
+processes interior points in blocks of 512 and accumulates the complete
+parameter gradient using the original global weights. It never normalizes
+each chunk separately. Its working-state bound is proportional to chunk
+size, while fixed data, parameters and optimizer storage remain outside
+that bound (Appendix~\ref{app:chunk}). Floating reduction order can alter
+line-search trajectories; every backend must still satisfy the same
+independent final criteria.
 
 The measured GL8 production scope is two-dimensional, constant-viscosity,
-pointwise affine/$\tanh$ networks with first parameter VJPs. The current
+pointwise affine and $\tanh$ networks with first parameter VJPs. The current
 contract does not support a learned contraction, nonlinear coordinate
 changes, sample-coupled layers, nonlocal losses, HVPs or double backward.
 
-
-\section{Relation to existing derivative methods}
-Physics-informed networks put PDE constraints into a training
-objective~\cite{pinn}; gradient-enhanced training also penalizes residual
-derivatives~\cite{gpinn}. Our contribution concerns execution of that
-unchanged derivative-intensive objective.
-
-Cao et al.~\cite{cao} already exploit residual-dependent partial jets
-and specialized layer rules, checking residuals and parameter gradients.
-FlashNS therefore does not claim priority for propagating only
-PDE-relevant derivative information. The comparison here examines a
-specific contracted state together with an explicit complete parameter
-transpose and bounded interior working storage.
-
-Dangel et al.~\cite{cmtad} collapse derivative sums within Taylor-mode
-computation for linear differential operators. This is closely related
-to retaining contractions instead of a full tensor. We evaluate the
-public collapsed transform, including parameter backward and the
-additional residual-gradient consumer. Merely comparing with our own
-older compiled full-jet implementation would not constitute this
-external baseline.
-
-STDE and its extension~\cite{stde,stdepp} use high-order Taylor
-directions and contractions to avoid materializing large derivative
-tensors. The JMLR code link currently points to the public STDE
-repository. Our two-dimensional exact-coordinate adaptation evaluates
-that code; it is neither a separate implementation of every STDE++
-mixed-partial construction nor an experiment on high-dimensional
-stochastic amortization. Those distinctions bound the comparison.
-
-The baseline adapters and precise source commits are part of the
-artifact. Their measured results pertain to the matched scientific
-objective and execution modes, not to each method's full application
-range or the speedups originally reported on other workloads.
-
-
-\section{Experimental protocol}
+\section{Two-dimensional experimental protocol}
 \subsection{Problem, data and acceptance}
 The analytic Kovasznay solution is
 \begin{equation}
@@ -284,7 +357,7 @@ Relative $L_2$ error of $p$ & 0.02\\\bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Optimizer and finite attempts}
+\subsection{Optimizer, stopping and finite attempts}
 Every formal arm uses the same optimizer and stopping program. Adam permits
 4,000 updates with learning rate $10^{-3}$, halved every 1,000 updates,
 $\beta=(0.9,0.999)$ and $\epsilon=10^{-8}$. Stop checks occur before training
@@ -292,25 +365,24 @@ and every 100 Adam updates. Strong-Wolfe L-BFGS then permits at most 500
 blocks, each with 20 iterations, nominal 25 evaluations, history size 50,
 learning rate 1, gradient tolerance $10^{-12}$ and change tolerance
 $10^{-15}$. Stop checks follow each block. Line searches may exceed a
-nominal evaluation limit; reported closure counts are actual counts.
+nominal evaluation limit; reported closure counts are actual counts and
+include the Adam evaluations.
 
-The two-dimensional formal seeds are 862101--862106. Its development
-seeds 361901 and 361902 and older regression seeds are excluded from the
-two-dimensional formal comparisons. The new three-dimensional campaign
-uses its separately frozen original seeds 361901 and 361902. No seed,
-threshold or optimizer budget is changed after an observed result. Every
-attempt is retained. Nonconvergence consumes its measured cost and counts
-against the attempted arm; an unsupported execution variant does not turn
-into a successful baseline through substitution. Paired time ratios are
-computed only when both members pass and are accompanied by all outcomes.
+The two-dimensional formal seeds are 862101--862106. Development seeds
+361901 and 361902 and older regression seeds are excluded from the formal
+comparisons. No seed, threshold or optimizer budget is changed after an
+observed result. Every attempt is retained. Nonconvergence consumes its
+measured cost and counts against the attempted arm; an unsupported
+execution variant does not turn into a successful baseline through
+substitution. Paired time ratios are computed only when both members pass
+and are accompanied by all outcomes.
 
 The Q10/GL8/chunk campaign balances the six permutations of three arms.
 The subsequent public comparison has six paper-group arms; three sampled
 permutations and their reverses balance their order over the same six seeds.
 NVIDIA baselines use separately admitted windows, so their timings are not
-interleaved with paper-group controls. This shared H20 runs one admitted GPU
-window at a time. All recorded children finish naturally. Whole-window
-ownership includes copying and checking evidence before explicit handback.
+interleaved with paper-group controls. Each window runs one GPU process at
+a time; Appendix~\ref{app:records} gives the device and window records.
 
 \subsection{Baselines and execution modes}
 \textbf{Q10 compact} propagates the complete two-dimensional third-order
@@ -324,8 +396,6 @@ that function. Its value, first derivatives and diagonal second derivatives
 assemble the Navier--Stokes residual. Coordinate AD of that residual adds
 the original gradient-enhancement term; parameter AD supplies the complete
 gradient. This is a matched-objective adaptation of the public implementation.
-We also execute the unmodified original author NS training recipe separately;
-its architecture, objective and timing are not pooled with matched solves.
 
 \textbf{Collapsed Taylor} calls the public \texttt{jet(collapsed=True)}
 transform with exact coordinate directions. The collapsed second-order
@@ -333,8 +403,9 @@ output supplies the Laplacian, and residual coordinate AD supplies the
 additional third-order consumer. Parameter AD is included. We test both the
 default complete loss/gradient program and its traced, compiled variant.
 
-\textbf{STDE exact} calls the public \texttt{hess\_diag} sparse-STDE operator
-with dimension two, \texttt{rand\_batch\_size=0} and no randomized Jacobian.
+\textbf{STDE exact} calls the public sparse-STDE operator
+\texttt{hess\_diag} with dimension two, no randomized Jacobian and
+\texttt{rand\_batch\_size=0}.
 The two coordinate directions are exhausted, so this experiment uses no
 stochastic derivative estimator. JAX forward residual differentiation and
 parameter backward preserve the same loss. JAX runs on the GPU in FP64;
@@ -366,7 +437,8 @@ only at the 2,048 interior points and values only at 512 boundary points,
 matching the Q10/GL8 controls' point policy. Public adapters use
 \texttt{torch.tanh}, while production FlashNS preserves its stable tail
 convention. Mathematically they represent the same activation; numerical
-full-gradient equivalence is checked rather than assumed.
+full-gradient equivalence is checked rather than assumed. Pinned source
+commits are listed in Table~\ref{tab:sources}.
 
 \subsection{Qualification, caches and timing scopes}
 Qualification evaluates the complete loss and all 4,547 parameter gradients
@@ -390,7 +462,7 @@ two-second warm-up and reports the median group wall time. The earlier
 representation/memory study instead uses five independently ordered
 processes per shape/arm, each with seven groups of 100 replays; these are
 separate experiments. Replay timing includes full loss, every parameter
-gradient and chunk/interoperation costs, but excludes optimizer, stop
+gradient, chunking and interoperation costs, but excludes optimizer, stop
 validation and setup.
 
 Optimization wall time includes training, optimizer work, line searches,
@@ -401,26 +473,18 @@ wall time includes those costs. We report paired geometric means of time
 ratios, not ratios of unpaired medians. Small-sample ranges are descriptive,
 not a general-PDE confidence guarantee.
 
-The GPU is NVIDIA H20 (SM90, 97,871 MiB), driver 580.76.05, CUDA toolkit
-13.0.88, Torch 2.12.1+cu130 and Triton 3.7.1. All matched experiments use FP64 and
-TF32 is disabled. JAX is 0.11.2; the native cuEquivariance ops package is
-0.12.0. New dependencies live in a task-owned environment inheriting the
-unchanged base numerical stack. This original two-dimensional campaign reports H20 measurements only.
-The separate H100 and CPU measurements added in this revision are described
-in Section~\ref{sec:c36}; no new Blackwell, SM120 or multi-GPU result is claimed.
+All matched experiments use FP64 with TF32 disabled on an NVIDIA H20 (SM90,
+97,871 MiB), driver 580.76.05, CUDA toolkit 13.0.88, Torch 2.12.1+cu130,
+Triton 3.7.1, JAX 0.11.2 and the native cuEquivariance ops package 0.12.0.
 
-
-The representation, memory and profiler study used the earlier physical H20 \texttt{edf64e5f}; the current public comparison, with six planned seeds, uses physical H20 \texttt{d952768b}. All current public measurements use the latter device; the planned NVIDIA comparisons use that same device. Earlier public campaigns remain archived separately and are not pooled with the current public timing comparison. Pairwise ratios are computed within their own device-specific campaign.
-
-
-\section{Two-dimensional H20 results}
+\section{Two-dimensional results}
 
 \subsection{Complete-gradient qualification}
 
 \begin{table}[t]
 \centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Development GPU qualification on seed 361902. Median complete loss/all-parameter-gradient wall time from five groups of 30 replays; optimizer, validation and setup excluded. Each passing variant satisfies three successive updated-parameter checks. JAX exchange is included. A missing value indicates failed qualification, not zero time.}
+\caption{Development GPU qualification on seed 361902. Median complete loss/all-parameter-gradient wall time from five groups of 30 replays; optimizer, validation and setup excluded. Each passing variant satisfies three successive updated-parameter checks. JAX exchange is included.}
 \label{tab:qualification}
 \begin{tabular}{llrr}\toprule
 Method & Selected execution & Gradient ms & Max gradient error\\\midrule
@@ -436,12 +500,36 @@ cuEquivariance polynomial & Native polynomial + graph & 3.340 & $5.33\times10^{-
 \bottomrule\end{tabular}
 \end{table}
 
+All nine paper-group development variants in Table~\ref{tab:qualification}
+pass the complete-gradient checks; their largest observed absolute
+parameter-gradient discrepancy is $7.55\times10^{-15}$. Selection uses
+development replay latency only, never observed formal solve speed or
+convergence. The separate NVIDIA qualification attempts nine variants, of
+which five pass; failed native-path or complete-gradient checks remain in
+the raw reports, consume their measured process cost, and leave their
+formal cells not-run. Qualification process-wall costs, including
+unsuccessful variants and the original author recipe where applicable, are
+137.927\,s (NVIDIA group) and 263.687\,s (paper group); they are separate
+from warm-dependency formal solve timings. Appendix~\ref{app:records}
+records the cuEquivariance initialization repair and the scalar
+tensor-product variants that failed higher-order autograd qualification.
 
-9 of 9 paper-group development variants pass the complete-gradient checks; their largest observed absolute parameter-gradient discrepancy is $7.55\times10^{-15}$. Selected variants are Q10 compact (q10\_compact-default), FlashNS GL8 (gl8\_native-default), Torch coordinate AD (torch\_ad-compiled), Cao ED (ed\_author-compiled), Collapsed Taylor (torchjet\_collapsed-compiled), STDE exact (2D) (stde\_exact-default). Selection uses development replay latency only, never observed formal solve speed or convergence. Qualification costs and every alternative remain in the artifact.
+\subsection{What the reported solve times measure}
+Across all 54 accepted public solves the largest final $v$ relative error
+is 0.0199--0.0200 for every method, at its limit of 0.02, while the other
+five criteria retain margin (Table~\ref{tab:validation}). The relative
+$L_2$ error of $v$ is therefore the binding criterion in this problem: a
+reported solve time is, in practice, the time to the first stop check at
+which $v$ crosses 0.02 with all other criteria already satisfied. Every
+accepted solve completes the 4,000-update Adam phase and stops during
+L-BFGS, since each run records more than 4,000 loss/gradient evaluations.
 
-The separate NVIDIA qualification attempts 9 variants, of which 5 pass. Failed native-path or complete-gradient checks remain in the raw reports and consume their measured process cost. Only selected passing formal arms are trained; unsupported planned cells remain not-run.
-
-The cuEquivariance polynomial adapter requires an initialization-only portability repair: its unused inherited FlashNS native-build initialization is omitted, while polynomial evaluation and all derivative and parameter-gradient functions remain inherited without modification. An initial recovery attempt fails at import before numerical evaluation and is retained with its process cost. The corrected recovery passes all three updated-parameter checks and the native-path profile before formal training. Scalar tensor-product variants fail higher-order autograd qualification; these failures characterize the tested route and do not establish a general limitation of cuEquivariance.
+Stop checks run every 100 Adam updates and after each L-BFGS block of at
+most 20 iterations and nominally 25 evaluations. The measured time thus
+overshoots the first true crossing by at most one check interval. For GL8,
+one nominal block is at most about 0.4\% of its 6,261--9,032 recorded
+evaluations. The same rule applies to every arm, so check granularity
+enters paired ratios only through differing optimization trajectories.
 
 \subsection{Six-seed representation and chunk comparison}
 
@@ -458,18 +546,24 @@ GL8 chunk-512 & 6/6 & 28.004 & 28.354 & 31.091 & 1.423$\times$\\
 \bottomrule\end{tabular}
 \end{table}
 
-
 Native GL8 is faster than Q10 in all six paired solves. The optimization-only geometric mean is 1.479$\times$, while setup plus optimization is 1.659$\times$ (pair range 1.460--1.809). Full-process speedup is 1.635$\times$. Chunk-512 has setup-plus-optimization speedup 1.423$\times$. Its six-seed median is longer than native GL8, consistent with the extra replay and accumulation schedule. Development preflight cost is 24.962 seconds and is reported separately.
 
 \begin{figure}[t]\centering
-\begin{tikzpicture}\begin{axis}[width=.92\linewidth,height=5.1cm,ymin=0,ymax=60,
-xtick={1,2,3,4,5,6},xticklabels={862101,862102,862103,862104,862105,862106},
-xlabel={Initialization seed},ylabel={Setup + optimization (s)},grid=major,
-legend style={at={(0.5,1.04)},anchor=south,legend columns=3,font=\small}]
-\addplot+[mark=square*,color=gray] coordinates {(1,37.011357) (2,53.326424) (3,40.025775) (4,35.828603) (5,34.515535) (6,47.547321)};\addlegendentry{Q10 compact}
-\addplot+[mark=*,color=teal] coordinates {(1,22.297896) (2,32.538588) (3,23.922210) (4,20.678393) (5,19.075999) (6,32.572024)};\addlegendentry{GL8 native}
-\addplot+[mark=triangle*,color=orange] coordinates {(1,27.961008) (2,33.489470) (3,28.747084) (4,23.076026) (5,25.755669) (6,35.001419)};\addlegendentry{GL8 chunk-512}
-\end{axis}\end{tikzpicture}
+\begin{tikzpicture}[x=2.2cm,y=0.085cm,font=\small]
+\foreach \yy in {0,10,...,60}{\draw[gray!25] (0.5,\yy)--(6.5,\yy); \node[left] at (0.5,\yy) {\yy};}
+\foreach \xx/\lab in {1/862101,2/862102,3/862103,4/862104,5/862105,6/862106}{\draw[gray!25] (\xx,0)--(\xx,60); \node[below] at (\xx,0) {\lab};}
+\draw (0.5,0) rectangle (6.5,60);
+\node[rotate=90] at (0.05,30) {Setup + optimization (s)};
+\node at (3.5,-9) {Initialization seed};
+\draw[gray,thick] plot[mark=square*,mark size=1.6pt] coordinates {(1,37.011357) (2,53.326424) (3,40.025775) (4,35.828603) (5,34.515535) (6,47.547321)};
+\draw[teal,thick] plot[mark=*,mark size=1.6pt] coordinates {(1,22.297896) (2,32.538588) (3,23.922210) (4,20.678393) (5,19.075999) (6,32.572024)};
+\draw[orange,thick] plot[mark=triangle*,mark size=2pt] coordinates {(1,27.961008) (2,33.489470) (3,28.747084) (4,23.076026) (5,25.755669) (6,35.001419)};
+\begin{scope}[shift={(1.2,66)}]
+\draw[gray,thick] plot[mark=square*,mark size=1.6pt] coordinates {(0,0) (0.25,0)}; \node[right] at (0.3,0) {Q10 compact};
+\draw[teal,thick] plot[mark=*,mark size=1.6pt] coordinates {(1.6,0) (1.85,0)}; \node[right] at (1.9,0) {GL8 native};
+\draw[orange,thick] plot[mark=triangle*,mark size=2pt] coordinates {(3.1,0) (3.35,0)}; \node[right] at (3.4,0) {GL8 chunk-512};
+\end{scope}
+\end{tikzpicture}
 \caption{Every observed paired solve in the representation campaign. All 18 pass. Connected points identify backends across different initialization seeds; they do not interpolate a continuous experimental variable.}\label{fig:paired-internal}\end{figure}
 
 \subsection{Source-pinned public solves}
@@ -493,27 +587,29 @@ cuEquivariance polynomial & 6/0/0/0 & 32.155 & 35.729 & 38.697 & 1.555 / 6\\
 \bottomrule\end{tabular}
 \end{table}
 
-
 The public matrix plans 54 cells and records 54 actual formal child attempts, of which 54 pass every acceptance criterion. The priority paper group records 36 of 36 planned attempts. All observed formal initial parameter hashes match the corresponding seeds in the original representation campaign; the six planned initializations are reused across experiments, not additional independent seeds for each backend.
 
 Paired baseline/GL8 setup-plus-optimization ratios are Collapsed Taylor: 1.730$\times$ (6 accepted pairs, range 1.482--1.906); Cao ED: 2.312$\times$ (6 accepted pairs, range 2.024--2.607); STDE exact (2D): 3.368$\times$ (6 accepted pairs, range 2.833--3.862); Torch coordinate AD: 2.994$\times$ (6 accepted pairs, range 2.712--3.259). They describe the matched adaptations and common optimizer pipeline. They are not the original papers' speedup claims.
 
 \begin{figure}[t]\centering
-\begin{tikzpicture}\begin{axis}[width=.92\linewidth,height=5.3cm,
-xmin=.5,xmax=5.5,ymode=log,log ticks with fixed point,
-xtick={1,2,3,4,5},xticklabels={Q10,Collapsed Taylor,Cao ED,Torch AD,STDE exact},
-ylabel={Baseline / GL8 setup + optimization},grid=major,
-legend style={at={(0.5,1.04)},anchor=south,legend columns=2,font=\small}]
-\addplot[gray,dashed,forget plot] coordinates {(.5,1) (5.5,1)};
-\addplot[only marks,mark=*,mark size=2pt,teal] coordinates {(0.8625,1.7685157) (0.9175,1.6292653) (0.9725,1.5851020) (1.0275,1.6935076) (1.0825,1.8106506) (1.1375,1.4825818) (1.8625,1.9064955) (1.9175,1.4817714) (1.9725,1.5580050) (2.0275,1.8483542) (2.0825,1.8930807) (2.1375,1.7390763) (2.8625,2.4648008) (2.9175,2.0238531) (2.9725,2.2179618) (3.0275,2.5158157) (3.0825,2.6066059) (3.1375,2.1033487) (3.8625,3.0155709) (3.9175,2.8884972) (3.9725,2.8921820) (4.0275,3.2589793) (4.0825,3.2329917) (4.1375,2.7119036) (4.8625,3.5381748) (4.9175,2.8325723) (4.9725,3.1815392) (5.0275,3.6198600) (5.0825,3.8620535) (5.1375,3.2737326)};\addlegendentry{Accepted seed pair}
-\addplot[only marks,mark=diamond*,mark size=3.5pt,orange] coordinates {(1,1.6578672) (2,1.7297226) (3,2.3116925) (4,2.9936746) (5,3.3678945)};\addlegendentry{Paired geometric mean}
-\end{axis}\end{tikzpicture}
-\caption{Paper-group solve ratios for every jointly accepted initialization pair. Above one favors GL8; the dashed line is equal time. Horizontal offsets separate seed observations, not additional experimental conditions. Table~\ref{tab:public} retains all attempted outcomes and the accepted-pair denominators.}\label{fig:paired-public}\end{figure}
+\begin{tikzpicture}[x=2.4cm,y=3.6cm,font=\small]
+\def\ly#1{ln(#1)}
+\foreach \r in {1,1.5,2,2.5,3,3.5,4}{\draw[gray!25] (0.5,{ln(\r)})--(5.5,{ln(\r)}); \node[left] at (0.5,{ln(\r)}) {\r};}
+\foreach \xx/\lab in {1/Q10,2/Collapsed Taylor,3/Cao ED,4/Torch AD,5/STDE exact}{\node[below] at (\xx,0) {\lab};}
+\draw (0.5,0) rectangle (5.5,{ln(4.2)});
+\draw[gray,dashed] (0.5,0)--(5.5,0);
+\node[rotate=90] at (0.12,{ln(4.2)/2}) {Baseline / GL8 setup + optimization};
+\foreach \px/\py in {0.8625/1.7685157,0.9175/1.6292653,0.9725/1.5851020,1.0275/1.6935076,1.0825/1.8106506,1.1375/1.4825818,1.8625/1.9064955,1.9175/1.4817714,1.9725/1.5580050,2.0275/1.8483542,2.0825/1.8930807,2.1375/1.7390763,2.8625/2.4648008,2.9175/2.0238531,2.9725/2.2179618,3.0275/2.5158157,3.0825/2.6066059,3.1375/2.1033487,3.8625/3.0155709,3.9175/2.8884972,3.9725/2.8921820,4.0275/3.2589793,4.0825/3.2329917,4.1375/2.7119036,4.8625/3.5381748,4.9175/2.8325723,4.9725/3.1815392,5.0275/3.6198600,5.0825/3.8620535,5.1375/3.2737326}{\fill[teal] (\px,{ln(\py)}) circle (1.6pt);}
+\foreach \px/\py in {1/1.6578672,2/1.7297226,3/2.3116925,4/2.9936746,5/3.3678945}{\fill[orange] (\px,{ln(\py)}) +(0,2.6pt) -- +(2.6pt,0) -- +(0,-2.6pt) -- +(-2.6pt,0) -- cycle;}
+\fill[teal] (1.0,{ln(4.55)}) circle (1.6pt); \node[right] at (1.05,{ln(4.55)}) {Accepted seed pair};
+\fill[orange] (3.0,{ln(4.55)}) +(0,2.6pt) -- +(2.6pt,0) -- +(0,-2.6pt) -- +(-2.6pt,0) -- cycle; \node[right] at (3.05,{ln(4.55)}) {Paired geometric mean};
+\end{tikzpicture}
+\caption{Paper-group solve ratios for every jointly accepted initialization pair, on a logarithmic axis. Above one favors GL8; the dashed line is equal time. Horizontal offsets separate seed observations, not additional experimental conditions. Table~\ref{tab:public} retains all attempted outcomes and the accepted-pair denominators.}\label{fig:paired-public}\end{figure}
 
 \begin{table}[t]
 \centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Largest final error over all accepted seeds and both validators, rounded to four decimals. Acceptance uses the unrounded values and every criterion; $n$ is the number of accepted seeds. Unsupported or unattempted methods have no final-error statistic.}
+\caption{Largest final error over all accepted seeds and both validators, rounded to four decimals. Acceptance uses the unrounded values and every criterion; $n$ is the number of accepted seeds.}
 \label{tab:validation}
 \begin{tabular}{lrrrrrrr}\toprule
 Method & $n$ & PDE & Boundary & Outlet & $u$ & $v$ & $p$\\\midrule
@@ -529,10 +625,11 @@ cuEquivariance polynomial & 6 & 0.0150 & 0.0098 & 0.0024 & 0.0094 & 0.0199 & 0.0
 \bottomrule\end{tabular}
 \end{table}
 
-
-The nvidia qualification retains 4 failed execution variants. Their complete tracebacks and process costs are in the raw artifact. Formal cells with no passing variant remain not-run; no failed backend is renamed or replaced by the scalar diagnostic.
-
-Qualification process-wall costs, including unsuccessful variants and the original author recipe where applicable, are nvidia 137.927 s, papers 263.687 s. These costs are separate from warm-dependency formal solve timings.
+An unmodified run of the original Cao NS script (its own six-hidden-layer
+FP32 lid-driven-cavity recipe, three 1,000-Adam repeats) completes on the
+same GPU with AD and ED mean times of 11.132 and 4.613 seconds (ratio
+2.413). This confirms the public script runs; it is not a Kovasznay gPINN
+solve or a FlashNS comparison, and its timing is not pooled.
 
 \subsection{Memory and replay tradeoff}
 
@@ -552,14 +649,9 @@ Interior & Method & Gradient ms & Setup peak MiB & Ready reserved MiB\\\midrule
 \bottomrule\end{tabular}
 \end{table}
 
+At 16,384 interior points, chunk-512 reduces native GL8 setup/capture allocated peak from 312.79 to 45.88 MiB, a reduction of 85.33\%, and ready reserved memory from 340 to 76 MiB. Full-gradient replay increases from 11.511 to 17.908 ms, a 55.58\% cost. At 2,048 points, native GL8 remains the speed-oriented option. No maximum trainable scale or device-traffic reduction is inferred from these counters.
 
-At 16,384 interior points, chunk-512 reduces native GL8 setup/capture allocated peak from 312.79 to 45.88 MiB, a reduction of 85.33\%, and ready reserved memory from 340 to 76 MiB. Full-gradient replay increases from 11.511 to 17.908 ms, a 55.58\% cost. At 2,048 points, native GL8 remains the speed-oriented option. No maximum trainable scale or device-traffic reduction is inferred from these counters. A separate 2,048-point native profile attributes 82.30\% of kernel-time sum to library GEMMs; that single-profile share is not a solve-wall attribution.
-
-\subsection{Original author recipe sanity check}
-
-The unmodified Cao NS script naturally completes on the public-comparison GPU. It uses its own six-hidden-layer 64-wide network, FP32 lid-driven-cavity objective and three 1,000-Adam repeats. The archived summary gives AD and ED mean times of 11.132 and 4.613 seconds respectively (ratio 2.413). Its complete-gradient consistency report is retained. This separate reproduction confirms the public script runs; it is not a Kovasznay gPINN solve or a FlashNS comparison.
-
-\section{Three-dimensional transient C36 study}\label{sec:c36}
+\section{Three-dimensional transient extension: C36}\label{sec:c36}
 \subsection{Scientific problem and derivative contract}
 The mathematical source is OpenAI Math376's incompressible box-transport
 construction~\cite{math376}. We instantiate one compactly supported box
@@ -576,22 +668,18 @@ p&=0,\qquad f=\partial_t U+(U\cdot\nabla)U-\nu\Delta U.
 The prescribed motion determines the fixed external force and its spatial
 derivative; both are independent of learned parameters. The cutoff curl
 term is retained at box faces, edges and corners. Numerical choices belong
-to this project's single-box instance. The original mathematical commit
-and source-file hash agree with the provenance recorded in the frozen
-training cache. This is a constructed forced-flow problem under stated
-conditions, rather than a claim of a general formula for arbitrary
+to this project's single-box instance, which is a constructed forced-flow
+problem under stated conditions rather than a general formula for arbitrary
 Navier--Stokes data or a fluid regularity theorem.
 
-This separate manufactured transient incompressible-flow experiment uses
-the frozen physical-coordinate source cache and calibration, viscosity
-$\nu=0.01$, cutoff width $\eta=1/32$, and the affine/$\tanh$ network
-widths 4--128--128--128--128--4. Its outputs represent a three-component
-curl potential and pressure, with scales 0.01 and 0.1 respectively. The
-prescribed moving-box geometry supplies input features and a compact gate;
-the model and particle right-hand side use the learned potential, without
-inserting the exact interior velocity. The curl construction enforces
-divergence freedom in real arithmetic. Numerical divergence is still
-measured rather than assumed to establish all physical acceptance.
+The model uses viscosity $\nu=0.01$, cutoff width $\eta=1/32$, and the
+affine/$\tanh$ network widths 4--128--128--128--128--4 (50,692 parameters).
+Its outputs represent a three-component curl potential and pressure, with
+scales 0.01 and 0.1 respectively. The prescribed moving-box geometry
+supplies input features and a compact gate; the model and particle
+right-hand side use the learned potential, without inserting the exact
+interior velocity. The curl construction enforces divergence freedom in
+real arithmetic; numerical divergence is still measured.
 
 For a scalar potential intermediate, the retained raw derivative state is
 \begin{equation}
@@ -604,40 +692,33 @@ symmetric third derivative; $m=\partial_t z$, $n=\nabla\partial_t z$ and
 $K=\nabla^2\partial_t z$. These blocks have
 $1+3+6+10+6+1+3+6=36$ independent channels. They supply the curl velocity,
 transient momentum residual and its gradient, including contracted fourth
-spatial derivatives of the potential. C36 is a partial-jet contract for
-this consumer, not GL8, a full fourth-order jet, or a minimality result.
+spatial derivatives of the potential. For comparison, a complete
+fourth-order jet in the four variables $(x_1,x_2,x_3,t)$ has
+$\binom{8}{4}=70$ coefficients. C36 is a partial-jet contract for this
+consumer, not a minimality result.
 
 The canonical objective contains 4,096 interior, 512 initial, 384 boundary
 and seven pressure-gauge points. All 4,999 points and all 50,692 parameters
 are included. Frozen physical normalization and the original global
 family denominators are retained, including during chunk accumulation.
-The source and calibration hashes and complete scientific protocol are
-identified in the artifact~\cite{flashns3dartifact}. FP64 and disabled TF32
-are fixed. This campaign's two original stored initializations are
-361901 and 361902; they are not extra H20 formal seeds.
+FP64 and disabled TF32 are fixed. This campaign's two stored
+initializations are 361901 and 361902; they are not two-dimensional formal
+seeds. Source and calibration hashes and the complete protocol are part of
+the artifact~\cite{flashns3dartifact}.
 
-\subsection{Execution changes and numerical qualification}
-The H100 packed-gather revision transposes symmetric unpacking through
-four cached integer gathers instead of a chain of 54 in-place slice
-assignments. It retains the same C36 algebra and local state-autograd
-nonlinear pullbacks. Its full-objective GPU proof records 48 comparisons
-and 96 saved arrays, covering both original and changed parameters.
-The maximum discrepancy is $2.07227\times10^{-5}$ of the unchanged
-$10^{-11}+10^{-9}|g_{\rm ref}|$ comparison budget. Its complete native
-reference derives from the earlier all-point H100 qualification, which
-freshly evaluated native coordinate and parameter AD at every canonical
-point; the gather qualification does not rerun that expensive native
-reference. Partition agreement alone is not an independent coordinate
-oracle.
-
-The subsequent opt-in packed activation computes the six Hessian and
-ten third-derivative entries directly, avoiding their full 9- and
-27-entry expansion and repacking. A manual analytic transpose reverses
-the activation's packed contractions and the actual stable coefficient
-program. Gate and curl nonlinear pullbacks still use local state autograd;
-this is not a fully manual nonlinear adjoint for the entire model.
-For the activation primal $y=\tanh z$ and $e=\exp(-2|z|)$, the frozen
-coefficient convention is
+\subsection{Execution variants and numerical qualification}
+Three successive execution variants share the C36 algebra. (i) A
+packed-gather revision transposes symmetric unpacking through four cached
+integer gathers, keeping dense 9- and 27-entry activation storage and
+local state-autograd nonlinear pullbacks. (ii) A packed activation computes
+the six Hessian and ten third-derivative entries directly, and a manual
+analytic transpose reverses the activation's packed contractions and the
+actual stable coefficient program. (iii) The same variant with the packed
+forward compiled in both timing arms and the candidate's activation
+transpose compiled. Gate and curl nonlinear pullbacks still use local state
+autograd in all variants; this is not a fully manual adjoint for the
+entire model. For $y=\tanh z$ and $e=\exp(-2|z|)$, the frozen coefficient
+convention is
 \begin{align}
 a_1&=4e/(1+e)^2,\qquad a_2=-2ya_1,\\
 a_3&=4y^2a_1-2a_1^2,\qquad
@@ -650,117 +731,59 @@ substituting an idealized fifth derivative at saturated values. Regression
 checks include values 0, $\pm10^{-16}$, $\pm10^{-12}$, $\pm20$ and
 $\pm40$, with cotangents scaled to $10^8$.
 
-Full canonical CPU qualification at original and changed parameters
-records 42 comparisons and 84 preserved arrays for the compiled analytic
-variant. A fresh NumPy-only reader passes every comparison; its maximum
-error is $9.17612\times10^{-6}$ of the original budget. This rechecks the
-preserved H100 native reference ancestry rather than freshly running
-native coordinate AD on all CPU points. Exact initial tensor bytes come
-from the original checkpoints: regeneration under the newer Torch version
-was rejected after 1,804 of 50,692 entries differed by one ULP. That failed
-attempt is retained. No tolerance or scientific data was changed. Ten
-CPU regression checks pass. These facts do not qualify this new variant's
-CUDA execution, CUDA Graph replay, training or physical acceptance.
+The reference is a fresh native coordinate-AD evaluation on H100 at all
+4,999 canonical points, for both initializations and all 50,692 parameters
+(52 comparisons, 140 saved arrays, maximum error $2.07227\times10^{-5}$ of
+the unchanged $10^{-11}+10^{-9}|g_{\rm ref}|$ budget). Later variants are
+checked against that preserved reference at original and changed
+parameters, in direct calls and graph replay, and against parameter AD.
+Variant (i) passes 48 comparisons. Variants (ii) and (iii) each pass 78
+comparisons over 156 arrays with maximum error $2.35186\times10^{-6}$ of
+the budget; both remote and local NumPy-only readers pass every comparison.
+A full canonical CPU qualification of the compiled analytic variant passes
+42 comparisons (maximum $9.17612\times10^{-6}$ of the budget). Exact initial
+tensor bytes come from the original checkpoints: regeneration under a newer
+Torch version was rejected after 1,804 of 50,692 entries differed by one
+ULP. No tolerance or scientific data was changed.
 
-\subsection{Paired complete-objective performance}
+\subsection{Paired complete-objective throughput}
 Each reported ratio is the geometric mean of matched baseline/candidate
 mean evaluation times. Two frozen initializations each have five
 alternating AB/BA pairs, for ten pairs per comparison. Candidate and
-C36 parameter-AD windows last at least 60 seconds and contain at least
-three complete evaluations. Setup, compilation, warm-up and graph
-capture are excluded from these ratios and reported separately. CUDA
-timings synchronize each complete evaluation. The native-coordinate-AD
-leg has its original special rule of one complete native evaluation per
-window. The 95\% intervals use 10,000 paired bootstrap resamples with
-seed 795912; they describe these timing pairs, not uncertainty across
-PDEs, datasets, hardware or independent training seeds.
+parameter-AD windows last at least 60 seconds and contain at least three
+complete evaluations. Setup, compilation, warm-up and graph capture are
+excluded from these ratios. CUDA timings synchronize each complete
+evaluation. The 95\% intervals use 10,000 paired bootstrap resamples with
+seed 795912; they describe these timing pairs, not uncertainty across PDEs,
+datasets, hardware or training seeds.
 
 \begin{table}[htbp]\centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Complete C36 objective and all-parameter-gradient timing against the internal C36 parameter-AD control. Times are means over paired windows in seconds; the ratio is a paired geometric mean, not the ratio of these time means. Ten pairs per row. The first two H100 rows retain the earlier packed-gather source and dense activation. The H100 packed-graph row uses a later packed activation with analytic activation transpose and the same eager packed forward in its parameter-AD control; both arms replay graphs. The final H100 row and the CPU row compile the packed activation in both forward arms and the candidate activation transpose. These different versions and devices are not pooled.}
+\caption{Complete C36 objective and all-parameter-gradient timing against the internal C36 parameter-AD control. Times are means over paired windows in seconds; the ratio is a paired geometric mean, not the ratio of these time means. Ten pairs per row. Rows 1--2 use variant (i), row 3 variant (ii) and rows 4--5 variant (iii); in every row both arms share the same forward and execution mode. Different variants and devices are not pooled.}
 \label{tab:c36performance}
 \begin{tabular}{lrrrr}\toprule
 Device / mode & Candidate s & AD s & Ratio & 95\% interval\\\midrule
-H100 eager & 1.739582 & 1.692531 & 0.972935 & 0.970474--0.975924\\
-H100 graph & 0.484235 & 0.469551 & 0.969678 & 0.969317--0.970075\\
-H100 packed graph & 0.328305 & 0.342941 & 1.044582 & 1.044130--1.045051\\
-H100 compiled graph & 0.164484 & 0.217771 & 1.323962 & 1.323087--1.324762\\
-CPU compiled & 1.865900 & 2.352072 & 1.265086 & 1.203149--1.327900
+H100 eager, (i) & 1.739582 & 1.692531 & 0.972935 & 0.970474--0.975924\\
+H100 graph, (i) & 0.484235 & 0.469551 & 0.969678 & 0.969317--0.970075\\
+H100 packed graph, (ii) & 0.328305 & 0.342941 & 1.044582 & 1.044130--1.045051\\
+H100 compiled graph, (iii) & 0.164484 & 0.217771 & 1.323962 & 1.323087--1.324762\\
+CPU compiled, (iii) & 1.865900 & 2.352072 & 1.265086 & 1.203149--1.327900
 \\\bottomrule\end{tabular}
 \end{table}
-The H100 source \texttt{ae51ca643280} remains 2.782\% slower in eager
-mode and 3.127\% slower when both arms replay CUDA Graphs. The parameter-AD
-control shares C36 forward algebra and is a strong execution baseline;
-it is not an independent coordinate derivative oracle or the public
-collapsed Taylor library used in the H20 campaign. GPU timing and saved
-gradient readers complete naturally with exit zero.
 
-The later H100 packed-graph experiment records 78 comparisons and 156
-saved arrays, including both original and changed parameters for both
-seeds, direct calls and graph replay, and the original 128/64-point
-candidate partitions. The preserved complete native anchors are checked
-without a fresh native coordinate-AD rerun. Both remote and local
-NumPy-only readers pass all 78 comparisons and reconstruct every timing
-window. The maximum numerical error is $2.35186\times10^{-6}$ of the
-unchanged comparison budget. Candidate/control window means are
-0.328305/0.342941 seconds; the paired ratio is 1.044582, with interval
-1.044130--1.045051. This is a 4.458\% throughput improvement against this
-matched packed-forward parameter-AD control, with setup, warm-up and
-capture outside the timing windows. It is not a pooled comparison with
-the older dense-activation experiment, and no new optimizer or physical
-acceptance result is inferred. Both workers exit zero; all 106 members
-of the complete 161,241,343-byte archive are verified on cluster storage
-and locally, and the original GPU lock is released.
-
-An initial compiled CUDA attempt retains 18 passing direct full-gradient
-checks but stops before compiled evaluation because Triton is unavailable.
-The whole attempt remains failed, with its logs, arrays and complete archive
-retained. The successful packed-graph experiment explicitly selects eager
-activation plus CUDA Graph replay; it does not silently fall back from
-compiler failure. The compiled GPU path is a separate experiment.
-
-The completed compiled H100 experiment uses Torch 2.4.0a0, Triton 3.0.0
-and the same frozen scientific data, original stored parameters and timing
-protocol. Both arms compile the same packed activation forward; the
-candidate also compiles its analytic activation transpose. The old cluster
-Torch runtime supplies compiler targets as tuples. An explicit per-process
-adapter changes only that representation to Triton's device target, checking
-the backend, architecture and warp size against the actual CUDA device.
-Kernel source, FP64 dtype and compiler options remain unchanged, and both
-arms use the same adapter. No installed Torch or Triton source is modified.
-
-The full canonical compiled check passes 78 comparisons and preserves 156
-arrays. Both remote and local NumPy readers pass every comparison, all 20
-timing windows and the ten-pair bootstrap reconstruction; maximum error is
-$2.35186\times10^{-6}$ of the original numerical budget. Candidate/control
-means are 0.164484/0.217771 seconds, with paired ratio 1.323962 and interval
-1.323087--1.324762. Compilation, warm-up and graph capture are measured
-outside these windows. The complete 161,322,508-byte archive and all 114
-members are independently verified on cluster storage and locally. All
-owned children finish and the original GPU lock is released. The earlier
-compiler failures remain failed, fully archived outcomes; the result does
-not imply new training convergence, physical acceptance or solve timing.
-
-The newer CPU variant uses Torch 2.14.1, NumPy 2.5.4, CPU Inductor and
-one Torch thread. Both arms compile the same packed forward; only the
-candidate supplies the analytic activation transpose. A fresh NumPy-only
-reader checks 24 saved gradient arrays, 12 gradient comparisons and all
-20 paired timing windows. All checks pass at the original budget. The
-1.265$\times$ result is CPU objective-gradient throughput. The H100 compiled
-experiment is reported separately above; neither result establishes an
-accepted three-dimensional solve.
-
-A separate older source, \texttt{73baa3b281fb}, measures native
-coordinate AD with its original recursive derivative cache. Mean
-candidate/native times are 2.777272/3,484.283522 seconds, with paired ratio
-1,254.839 and interval 1,211.337--1,291.263 (ten pairs). That candidate
-predates packed gather, and the baseline predates the later cache-lifetime
-repair. The large ratio is specific to that slow recursive native path;
-it is not a speedup against the optimized parameter-AD control, the repaired
-native implementation or a complete accepted solver. The timing worker,
-reader and timing driver exit zero. The original whole controller exits
-one due to its earlier failed training stage, which remains a failed
-controller outcome rather than being relabeled successful.
+Variant (i) is 2.782\% slower in eager mode and 3.127\% slower when both
+arms replay CUDA Graphs: integer gathers alone do not beat a strong
+parameter-AD control that shares the forward algebra. Computing the
+activation in packed symmetric storage with its analytic transpose turns
+this into a 4.458\% gain, and compiling the packed forward in both arms
+plus the candidate transpose gives 1.324$\times$ (164.5 versus 217.8 ms
+per complete evaluation). The one-thread CPU result for variant (iii) is
+1.265$\times$. The parameter-AD control is a strong execution baseline but
+not an independent coordinate oracle, and no public library supplies this
+three-dimensional consumer; external three-dimensional baselines remain
+open (Section~\ref{sec:limits}). An older comparison against a recursive
+native coordinate-AD implementation is recorded only in
+Appendix~\ref{app:records}, because its baseline is not competitive.
 
 \subsection{Frozen-budget training outcomes}
 Both H100 engines start from their original fresh initializations and
@@ -771,13 +794,13 @@ history 20, at most 20 iterations and nominal 25 evaluations per call,
 zero gradient/change stopping tolerances and a 520-closure cap per seed.
 The complete-gradient checks run at frozen Adam checkpoints and after
 every L-BFGS call. Each engine passes all 48 scheduled saved-gradient
-comparisons. Successful execution and gradient checks do not establish
-convergence: the original joint gate requires loss at most $10^{-4}$
-and gradient infinity norm at most $10^{-3}$.
+comparisons. The original joint convergence gate requires loss at most
+$10^{-4}$ and gradient infinity norm at most $10^{-3}$. The evaluated
+training sources predate variants (ii) and (iii).
 
 \begin{table}[htbp]\centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{All four C36 training attempts finish the original finite budget. Actual L-BFGS closure counts, final loss and full-gradient infinity norm are shown. Every attempt fails the joint convergence gate; no additional optimizer budget is silently appended.}
+\caption{All four C36 training attempts finish the original finite budget. Actual L-BFGS closure counts (Adam evaluations excluded), final loss and full-gradient infinity norm are shown. Every attempt fails the joint convergence gate; no additional optimizer budget is silently appended.}
 \label{tab:c36training}
 \begin{tabular}{lrrrrl}\toprule
 Engine & Seed & Closures & Loss & $\|g\|_\infty$ & Gate\\\midrule
@@ -787,25 +810,19 @@ Parameter AD & 361901 & 449 & 0.00053870 & 0.00059044 & Fail\\
 Parameter AD & 361902 & 443 & 0.00051532 & 0.00206306 & Fail
 \\\bottomrule\end{tabular}
 \end{table}
-All four losses remain above $10^{-4}$. The explicit seed 361902 and
-parameter-AD seed 361902 also exceed the gradient limit. The evaluated
-training sources are \texttt{7281faed9ec4} (explicit) and
-\texttt{de1d223} (parameter AD); they do not train the later CPU analytic
-activation variant. No accepted three-dimensional time-to-accuracy or
-whole-solver acceleration is available.
 
-\subsection{Independent physical observations and failures}
+\subsection{Independent physical observations}
 The unchanged holdout seed 794701 supplies 4,096 stratified and 4,096
 uniform-volume points, seven time slices with 256 points each, 512 initial
 points, 384 boundary points and seven pressure-gauge points. Native
 coordinate AD observes the final learned model on H100; NumPy reconstructs
 the physical metrics. Learned-velocity trajectories use SciPy DOP853 for
-27 particles at 129 uniform output times plus the critical times. Both
-original refinements complete: $(\mathrm{rtol},\mathrm{atol},\mathrm{max\ step})$
-are $(10^{-9},10^{-11},1/64)$ and $(10^{-11},10^{-13},1/128)$.
-The exact velocity is used for error comparison, never as the trajectory
-right-hand side. Both stratified and uniform field gates and the trajectory
-gate must pass; time-slice and regional reports remain diagnostics.
+27 particles at 129 uniform output times plus the critical times, with two
+refinements $(\mathrm{rtol},\mathrm{atol},\mathrm{max\ step})$ of
+$(10^{-9},10^{-11},1/64)$ and $(10^{-11},10^{-13},1/128)$. The exact
+velocity is used for error comparison, never as the trajectory right-hand
+side. Both stratified and uniform field gates and the trajectory gate must
+pass; time-slice and regional reports remain diagnostics.
 
 \begin{table}[htbp]\centering\small
 \setlength{\tabcolsep}{4pt}
@@ -834,124 +851,109 @@ Parameter AD & 361902 & 0.029980 & $7.1729\times10^{-11}$ & Fail
 For all four checkpoints, initial/boundary velocity and gauge errors are
 exactly zero. Stratified normalized divergence remains at most
 $2.01\times10^{-14}$, and divergence-gradient RMS at most
-$3.05\times10^{-12}$; their limits are $10^{-3}$ and 0.02. Momentum-gradient
+$3.05\times10^{-12}$, against limits of $10^{-3}$ and 0.02; this follows
+from the curl construction rather than from training. Momentum-gradient
 RMS also passes its 0.02 limit. These satisfied gates coexist with failed
 velocity, stratified momentum, corrected-pressure and trajectory-endpoint
 criteria. Accurate divergence and tightly converged ODE integration do not
 establish an accurate learned velocity field.
 
-The observer source \texttt{1f1983a2b015} repairs a recursive native
-derivative closure cycle that retained CUDA graphs until garbage collection.
-The unchanged checkpoints and physical protocol then complete; the earlier
-OOM and its raw logs remain archived. The repair preserves derivative order
-and parameter dependence. It is checked against original native states and
-all 50,692 gradient entries at two points; sixteen repeated native
-observations keep allocated CUDA memory constant at 67,514,880 bytes.
-This limited memory qualification supplies no repaired-native paired
-performance result.
+\subsection{Diagnosis of the failed acceptance}
+Four observations indicate that the failure is limited by optimization
+rather than by derivative execution. First, the two engines reach nearly
+identical final losses from the same initialization (5.402/5.387 and
+5.168/5.153 $\times10^{-4}$), and all scheduled full-gradient checks pass.
+Second, the losses lie about five times above the $10^{-4}$ gate, not orders
+of magnitude away. Third, the budget is small relative to the problem: each
+C36 solve spends 438--449 L-BFGS evaluations on 50,692 parameters, whereas
+the accepted two-dimensional solves spend 2,208--5,259 L-BFGS evaluations
+after the same 4,000-update Adam phase on 4,547 parameters. Fourth, the
+residual error is concentrated near the cutoff: the stratified holdout
+assigns 75\% of its spatial mass to the face, edge and corner transition
+layers of width $\eta$, and its corrected-pressure error is 6.4--8.7 times
+the uniform-volume value. The velocity relative error, in contrast, is
+larger on the uniform holdout. These observations motivate a separately
+preregistered protocol with a larger L-BFGS budget; they do not license
+changing the completed protocol's budget, gates or seeds after observing
+its outcome.
 
-Each checkpoint's remote and local NumPy readers pass 117 saved-array
-checks. They verify hashes, loss/gradient anchors, field residual metrics,
-trajectory error summaries and refinement statistics. They do not rerun
-the optimizer trajectory or independently reintegrate the ODE. The reader
-checks analytic forcing at its original tolerance and retains sealed
-source bytes for cancellation-sensitive residual subtraction; a prior
-cross-version rounding failure is preserved and no tolerance is widened.
+\section{Discussion and limitations}\label{sec:limits}
+\paragraph{Attribution of the two-dimensional gain.}
+The derivative consumer offers an execution opportunity even after
+replacing nested coordinate AD with Taylor-mode computation. GL8 removes
+independent third-order information that the fixed diffusion-gradient
+consumer never reads, while preserving lower derivatives required by
+nonlinear convection. The measured effect nevertheless combines
+representation, pointwise kernels, graph scheduling and parameter backward.
+GL8 removes 20\% of hidden channels, and a single 2,048-point native profile
+attributes 82.30\% of the kernel-time sum to library GEMMs, yet replay is
+2.06$\times$ faster than compiled Q10 (1.583 versus 3.267 ms). Most of that
+replay gain is therefore likely to come from native pointwise kernels and
+scheduling relative to Inductor-generated code rather than from the
+channel reduction alone. The native-versus-compiled-Q10 comparison does not
+isolate a pure representation effect; a Q10 arm in the same native kernels
+and a GL8 arm compiled by Inductor are needed for that separation, together
+with a per-kernel profile split. The problem is small (4,547 parameters,
+2,048 interior points), where launch overhead is a large share of replay;
+scaling in point count, width and depth is not yet measured.
 
-\subsection{Evidence and current limits}
-The public machine-readable results preserve every timing pair, all
-four training outcomes, and all final physical observations, with full
-source/protocol/raw-array hashes~\cite{flashns3dartifact}. GPU timing and
-physical archives have fully verified cluster and local copies; the
-complete training histories have verified cluster archives, while smaller
-training anchors are also available locally. The complete new CPU packet
-is verified locally only. Publication of compact result JSON files is
-not publication of every raw checkpoint or profiler trace.
-
-The unmodified source cache and calibration remain frozen. Neither
-optimization budgets, physical limits, accepted seeds nor global loss
-denominators are weakened in response to these failures. The analytic activation remains an opt-in research path: its eager CUDA
-Graph and compiled CUDA Graph variants now have full-objective qualification
-and paired H100 timings. Trained accuracy and accepted solve timing remain
-open work; neither the CPU nor the H100 throughput ratio
-implies three-dimensional physical acceptance.
-
-
-\section{Discussion and limits}
-The derivative consumer offers an execution opportunity even after replacing
-nested coordinate AD with Taylor-mode computation. GL8 removes independent
-third-order information that the fixed diffusion-gradient consumer never
-reads, while preserving lower derivatives required by nonlinear convection.
-Its explicit transpose is part of the optimization program, not an
-afterthought to a forward-only operator. The measured effect nevertheless
-combines representation, pointwise kernels, graph scheduling and parameter
-backward; the native-versus-compiled-Q10 solve comparison does not isolate a
-pure representation effect.
-
+\paragraph{Replay versus solve.}
 Replay and solve ratios need not match. Optimizer work, line searches and
 fixed validation remain outside the accelerated derivative program. Small
 floating-point differences can change an L-BFGS trajectory and its closure
 count. Setup also differs between compiled public adapters, JAX and explicit
 native kernels, even with warmed dependency caches. We therefore report
-every timing scope and actual iteration/evaluation count rather than
-extrapolating a replay factor to the whole training run.
+every timing scope and actual evaluation count rather than extrapolating a
+replay factor to the whole training run.
 
+\paragraph{Chunking.}
 Chunking addresses a different engineering constraint. It bounds the
 intermediate execution workspace and permits a substantial allocator
 reduction at the measured larger shape, while paying for input copies,
 extra replay launches and gradient accumulation. The fixed data and
 optimizer remain resident. We measured neither an OOM boundary nor the
-maximum trainable point count, and do not infer those from the two tested
-shapes. Torch allocator counters cannot rank total process memory against
-JAX's allocator.
+maximum trainable point count, and Torch allocator counters cannot rank
+total process memory against JAX's allocator.
 
-The external comparisons must be read within their adaptations. ED and
-collapsed Taylor supply public second-order operators extended to a
+\paragraph{Scope of the external comparisons.}
+ED and collapsed Taylor supply public second-order operators extended to a
 third-order gradient-enhanced consumer; this is not their original training
 benchmark. Exact two-coordinate STDE preserves a deterministic target but
 does not test stochastic amortization in high dimensions. The unmodified
 cuEquivariance polynomial arm has an all-points Q10 boundary policy, unlike
-the compact interior/value-only policy of the paper adapters. Its timing
-therefore reflects both a library implementation and that inherited policy.
-These differences are recorded rather than erased by a common name.
+the compact interior/value-only policy of the paper adapters. The six
+initializations provide a paired view of one fixed-data manufactured PDE,
+not variation across PDEs, sampled datasets, network families or hardware.
+No speed claim is extended to stochastic STDE++ constructions, variable
+viscosity, nonlinear coordinate maps, sample-coupled layers, second
+parameter derivatives, nonlocal losses or reduced precision; all
+measurements use FP64.
 
-The representation campaign's six initializations provide a paired view of
-one fixed-data manufactured PDE. The public comparison reports its actual
-completed-seed coverage separately. These initializations do not measure
-variation across PDEs, sampled datasets, network
-families or hardware. Repeated replay groups within a qualification process
-are timing observations, not additional independent training seeds. The
-prior representation study's independent processes are kept separate from
-the public qualification process. No speed claim in this paper is extended
-to stochastic STDE++ constructions, variable viscosity, nonlinear coordinate
-maps, sample-coupled layers, second parameter derivatives or nonlocal losses.
-
-The new three-dimensional transient case adds full-objective derivative
-qualification, paired execution measurements and complete failed physical
-observations. It has not established an accepted three-dimensional solve.
-A stronger general-purpose evaluation would add a second nonlinear PDE,
-accepted transient solutions, variable-coefficient operators and a broader
-activation/network family. It would also compare cold start and
-native framework optimizers, measure actual device traffic and examine
-generalized consumer selection. These remain open experiments rather than
-implied consequences of the current implementation.
+\paragraph{Three dimensions.}
+The C36 study establishes derivative correctness for the full objective
+and a throughput gain for its gradient against an internal control. It has not
+established an accepted three-dimensional solve, its only baseline is
+internal, its gains depend on compilation, the zero-gate constant folding
+in the artifact is qualified on CPU only, and the problem is a single
+constructed box instance. Accepted transient solutions on a standard
+benchmark, external three-dimensional baselines, a second nonlinear PDE,
+reduced-precision measurements and device-traffic measurements remain open
+experiments rather than implied consequences of the implementation.
 
 \section{Conclusion}
 FlashNS gives a concrete consumer contract for high-order PINN training:
 propagate a closed value/gradient/Hessian/gradient-Laplacian state and
-transpose every local dependency into the complete parameter gradient.
-The H20 experiments evaluate that contract under an unchanged FP64
-Navier--Stokes objective and independent numerical acceptance. The compact
-native path and its chunked alternative offer distinct speed and workspace
-tradeoffs. The original H20 evidence supports that tested solve setting. The earlier
-C36 packed-gather study qualifies full derivatives but is slower than its
-parameter-AD control, and the completed C36 training budgets fail physical
-acceptance. The later CPU analytic activation achieves a paired 1.265$\times$
-objective-gradient speedup with an equally compiled forward baseline. The subsequent eager packed activation and analytic activation transpose
-provide 1.0446$\times$ matched-forward H100 CUDA Graph throughput. Compiling
-the packed forward in both arms and the candidate activation transpose gives
-1.3240$\times$ against the equally compiled parameter-AD control. Accepted
-three-dimensional solve acceleration remains unestablished; broader scientific claims require further experiments.
+transpose every local dependency, including the fourth activation
+derivative, into the complete parameter gradient. Under an unchanged FP64
+Navier--Stokes objective with independent acceptance, all 72 planned
+two-dimensional H20 solves pass and GL8 shortens the paired solve time by
+1.66$\times$ over a compiled full-jet control and 1.73--3.37$\times$ over
+matched public derivative methods; a chunked variant trades replay time
+for an 85\% lower allocated setup peak at 16,384 points. The three-dimensional C36 extension passes
+complete gradient qualification and improves objective-gradient throughput
+by 1.32$\times$ over an equally compiled parameter-AD control, but its
+frozen training budget does not reach physical acceptance. Accepted
+three-dimensional solve acceleration remains unestablished.
 
 
 \begin{thebibliography}{99}
@@ -965,6 +967,30 @@ Jeremy Yu, Lu Lu, Xuhui Meng, and George Em Karniadakis.
 Gradient-enhanced physics-informed neural networks for forward and inverse PDE problems.
 arXiv:2111.02801, 2021.
 \url{https://arxiv.org/abs/2111.02801}.
+\bibitem{nsfnets}
+Xiaowei Jin, Shengze Cai, Hui Li, and George Em Karniadakis.
+NSFnets (Navier-Stokes flow nets): Physics-informed neural networks for the incompressible Navier-Stokes equations.
+\emph{Journal of Computational Physics}, 426:109951, 2021.
+\url{https://doi.org/10.1016/j.jcp.2020.109951}.
+\bibitem{griewank}
+Andreas Griewank and Andrea Walther.
+\emph{Evaluating Derivatives: Principles and Techniques of Algorithmic Differentiation}.
+Second edition, SIAM, 2008.
+\bibitem{taylorjax}
+Jesse Bettencourt, Matthew J. Johnson, and David Duvenaud.
+Taylor-mode automatic differentiation for higher-order derivatives in JAX.
+NeurIPS 2019 Workshop on Program Transformations, 2019.
+\url{https://openreview.net/pdf/025f91ed7c1059e6cb35b1704fc887452a4084f8.pdf}.
+\bibitem{fwdlap}
+Ruichen Li, Haotian Ye, Du Jiang, Xuelan Wen, Chuwei Wang, Zhe Li, Xiang Li, Di He, Ji Chen, Weiluo Ren, and Liwei Wang.
+A computational framework for neural network-based variational Monte Carlo with Forward Laplacian.
+\emph{Nature Machine Intelligence}, 6(2):209--219, 2024.
+\url{https://doi.org/10.1038/s42256-024-00794-x}.
+\bibitem{ncl}
+Jack Richter-Powell, Yaron Lipman, and Ricky T. Q. Chen.
+Neural conservation laws: A divergence-free perspective.
+\emph{Advances in Neural Information Processing Systems}, 35, 2022.
+\url{https://proceedings.neurips.cc/paper_files/paper/2022/hash/f8d39584f87944e5dbe46ec76f19e20a-Abstract.html}.
 \bibitem{cao}
 Wenbo Cao, Zhe Lu, and Weiwei Zhang.
 Verified residual-specific explicit derivative kernels for physics-informed learning and discretized PDE adjoints.
@@ -1015,7 +1041,7 @@ October 13, 2026; per-experiment runtime hashes are retained in the result files
 
 \appendix
 
-\section{Explicit local transpose}
+\section{Explicit local transpose}\label{app:transpose}
 For completeness, let $\bar y$, $\bar g_y$, $B_y$ and $\bar t_y$ denote
 output adjoints. Here $B_y$ is symmetric and represents the Frobenius
 pairing with the full symmetric Hessian. If the stored off-diagonal
@@ -1050,7 +1076,7 @@ derivative agrees with the full-jet derivative. This is a closure and
 transpose argument for a stated consumer; it is not a proof that no other
 representation could use fewer channels.
 
-\section{Chunk accumulation and storage contract}
+\section{Chunk accumulation and storage contract}\label{app:chunk}
 Partition interior and boundary points into finite chunks. With the
 original weights, the loss is the sum of chunk contributions and its
 parameter gradient is the sum of their parameter gradients. The executor
@@ -1075,12 +1101,12 @@ borrowed scalar after another closure would compare an overwritten value.
 The validation harness checks each live loss/gradient before replay and
 checks updated parameter storage separately.
 
-
-
-\section{Original H20 source and evidence provenance}
-The original two-dimensional H20 execution source is commit
-\texttt{286d7e394c8bd39f9aa409715afe9f1bac915cec}, based on public main
-\texttt{7c261ea5635cdcec1bf98b72d1105dcf0b486087} and a preserved local
+\section{Artifact, provenance and execution records}\label{app:records}
+\subsection{Two-dimensional H20 campaign}
+The original two-dimensional H20 execution source is the commit
+\begin{center}\small\texttt{286d7e394c8bd39f9aa409715afe9f1bac915cec},\end{center}
+based on public main \texttt{7c261ea5635c} (full ID
+\texttt{7c261ea5635cdcec1bf98b72d1105dcf0b486087}) and a preserved local
 implementation snapshot. The baseline adapters are separate frozen runtime
 files. Table~\ref{tab:sources} identifies upstream sources; full tree/blob
 hashes, runtime file SHA256 values and all invocation arguments accompany
@@ -1101,6 +1127,30 @@ cuEquivariance & \href{https://github.com/NVIDIA/cuEquivariance}{NVIDIA/cuEquiva
 \end{tabular}
 \end{table}
 
+The representation, memory and profiler study used physical H20
+\texttt{edf64e5f}; the public comparison, with six planned seeds, uses
+physical H20 \texttt{d952768b}, as do the NVIDIA comparisons. Earlier
+public campaigns remain archived separately and are not pooled with the
+current comparison. Pairwise ratios are computed within their own
+device-specific campaign. Dependencies live in a task-owned environment
+inheriting the unchanged base numerical stack. The shared H20 runs one
+admitted GPU window at a time; all recorded children finish naturally, and
+whole-window ownership includes copying and checking evidence before
+explicit handback.
+
+The cuEquivariance polynomial adapter requires an initialization-only
+portability repair: its unused inherited FlashNS native-build
+initialization is omitted, while polynomial evaluation and all derivative
+and parameter-gradient functions remain inherited without modification. An
+initial recovery attempt fails at import before numerical evaluation and is
+retained with its process cost. The corrected recovery passes all three
+updated-parameter checks and the native-path profile before formal
+training. Scalar tensor-product variants fail higher-order autograd
+qualification; these failures characterize the tested route and do not
+establish a general limitation of cuEquivariance. The NVIDIA qualification
+retains four failed execution variants with complete tracebacks and process
+costs; no failed backend is renamed or replaced by the scalar diagnostic.
+
 Original JSON reports, progress histories, complete profiler event names,
 stdout/stderr, final parameter tensors, protocols and natural process-exit
 receipts are preserved. Every archive is copied off the GPU instance and
@@ -1108,10 +1158,9 @@ checked against its recorded whole-archive SHA256 before extraction; every
 manifested member is then checked individually. Analysis rejects altered
 data, optimizer configurations, unmatched initial parameters, repeated
 seed/arm attempts and claimed convergence that violates either validator.
-Archive-level verification includes metadata as well as numerical reports.
 
 One inherited optimizer-protocol description still lists the earlier
-\texttt{formal\_initialization\_seeds} 75101--75103. That field does not
+seeds 75101--75103 in its field \texttt{formal\_initialization\_seeds}. That field does not
 select parameters in the solver. The frozen campaign seed list, each actual
 child's \texttt{--seed} argument and the reported initial tensor-byte hashes
 identify the six formal initializations 862101--862106. We preserve the
@@ -1135,11 +1184,76 @@ zero errors; an earlier full-width racecheck was interrupted for
 instrumentation cost and is not counted as completed. These tests establish
 stated regression coverage, not correctness for every unsupported consumer.
 
+\subsection{Three-dimensional C36 study}
+The problem source and calibration hashes agree with the provenance
+recorded in the frozen training cache, including the original mathematical
+commit and source-file hash. The full native reference was evaluated on
+H100 with native coordinate-AD chunks of 256 points; candidate partitions of
+128 and 64 points, nonzero value-family diagnostic probes and caller-data
+mutation checks also pass. Packed-gather source \texttt{ae51ca643280}
+retains the C36 algebra and local state-autograd pullbacks; its
+qualification records 48 comparisons and 96 saved arrays without rerunning
+the expensive native reference, and partition agreement alone is not an
+independent coordinate oracle.
+
+The first compiled CUDA attempt retained 18 passing direct full-gradient
+checks but stopped before compiled evaluation because Triton was
+unavailable; the whole attempt remains failed and archived. The eager
+packed-graph experiment explicitly selects eager activation plus CUDA Graph
+replay and does not fall back from a compiler failure. The completed
+compiled experiment uses Torch 2.4.0a0 and Triton 3.0.0. That cluster
+runtime supplies compiler targets as tuples; an explicit per-process
+adapter changes only that representation to Triton's device target,
+checking backend, architecture and warp size against the actual device.
+Kernel source, FP64 dtype and compiler options are unchanged, both arms use
+the same adapter, and no installed Torch or Triton source is modified. The
+CPU variant uses Torch 2.14.1, NumPy 2.5.4, CPU Inductor and one Torch
+thread; a fresh NumPy-only reader checks 24 saved gradient arrays, 12
+gradient comparisons and all 20 paired timing windows.
+
+For the eager and compiled H100 throughput experiments, both workers exit
+zero; the complete archives (106 members, 161,241,343 bytes; 114 members,
+161,322,508 bytes) are verified on cluster storage and locally, all owned
+children finish and the original GPU lock is released. The CPU packet is
+verified locally only.
+
+A separate older source, \texttt{73baa3b281fb}, measures native coordinate
+AD with its original recursive derivative cache and the original native
+rule of one complete native evaluation per window. Mean candidate/native
+times are 2.777272/3,484.283522 seconds, with paired ratio 1,254.839 and
+interval 1,211.337--1,291.263 (ten pairs). That candidate predates packed
+gather, and the baseline predates the later cache-lifetime repair. The
+large ratio is specific to that slow recursive native path; it is not a
+speedup against the optimized parameter-AD control, the repaired native
+implementation or an accepted solver. The timing worker, reader and timing
+driver exit zero. The original whole controller exits one due to its
+earlier failed training stage, which remains a failed controller outcome.
+
+The training sources are \texttt{7281faed9ec4} (explicit) and
+\texttt{de1d223} (parameter AD). Complete training histories have verified
+cluster archives, while smaller training anchors are also available
+locally. The physical observer source \texttt{1f1983a2b015} repairs a
+recursive native derivative closure cycle that retained CUDA graphs until
+garbage collection; the earlier out-of-memory failure and its raw logs
+remain archived. The repair preserves derivative order and parameter
+dependence. It is checked against original native states and all 50,692
+gradient entries at two points; sixteen repeated native observations keep
+allocated CUDA memory constant at 67,514,880 bytes. Each checkpoint's remote
+and local NumPy readers pass 117 saved-array checks. They verify hashes,
+loss/gradient anchors, field residual metrics, trajectory error summaries
+and refinement statistics; they do not rerun the optimizer trajectory or
+independently reintegrate the ODE. The reader checks analytic forcing at
+its original tolerance and retains sealed source bytes for
+cancellation-sensitive residual subtraction; a prior cross-version rounding
+failure is preserved and no tolerance is widened. GPU timing and physical
+archives have fully verified cluster and local copies. Publication of
+compact result JSON files is not publication of every raw checkpoint or
+profiler trace.
 
 \section{Every planned public solve}
 \small\setlength{\tabcolsep}{4pt}
 \begin{longtable}{rllrr}
-\caption{All 54 planned public cells, without failed-attempt filtering. Setup plus optimization is in seconds; closure counts are actual. Six paired initialization seeds are reused across methods.}\\
+\caption{All 54 planned public cells, without failed-attempt filtering. Setup plus optimization is in seconds. Closures are actual complete loss/gradient evaluations, including the 4,000 Adam evaluations; every run stops during L-BFGS. Six paired initialization seeds are reused across methods.}\\
 \toprule Seed & Method & Outcome & Setup + opt. & Closures\\\midrule\endfirsthead
 \toprule Seed & Method & Outcome & Setup + opt. & Closures\\\midrule\endhead
 862101 & FlashNS GL8 & accepted & 21.854 & 6833\\
