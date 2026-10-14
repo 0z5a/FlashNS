@@ -1,5 +1,22 @@
 # C36 potential gradient proof
 
+The mathematical source of this three-dimensional problem is OpenAI Math376,
+*Incompressible Box Transport and Finite Computation*, pinned at commit
+`adc7f1241b42e322a6451854ab7e4b4c146bf78a`. The [original geometry source](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Incompressible-Box-Transport-and-Finite-Computation-September-27-2026/build/geometry.tex)
+constructs smooth, compactly supported incompressible motion for prescribed
+volume-preserving affine box schedules. This experiment instantiates one box
+in the unit cube, `t in [0,1]`, `nu=0.01`, `eta=1/32`, and zero reference
+pressure. With `y=x-c(t)` and `L=D_dot D_inverse`, the potential is
+`A=chi * (c_dot cross y / 2 + (L y) cross y / 3)`, the exact velocity is
+`U=curl A`, and the fixed forcing is `f=U_t+(U dot grad)U-nu Laplacian(U)`.
+The implementation includes the cutoff contribution `grad(chi) cross B`
+and the spatial derivative of the fixed force. The network learns its own
+potential and pressure. This is a constructed forced-flow instance with stated
+conditions. Its numerical results do not establish a general solution formula
+for arbitrary Navier--Stokes data or a regularity theorem. The original
+mathematical-source hash, implementation hash and frozen-data linkage are
+recorded in [math376-provenance.json](math376-provenance.json).
+
 This research snapshot compares the complete 50,692-parameter C36 gradient with independent native automatic differentiation. It uses two seeds and 17 fixed interior points from the full physical source cache, float64, and the unchanged `atol=1e-11`, `rtol=1e-9` budget.
 
 Run from this directory with NumPy and PyTorch installed. First produce the CPU reference:
@@ -133,7 +150,7 @@ and evaluation calls. This proof does not establish a full independent native
 reference for all 4,096 interior points, optimizer behavior, training convergence,
 physical acceptance or comparative performance.
 
-The H100 run in [gpu-objective-result.json](gpu-objective-result.json) passed all 52 comparisons and five CPU geometry regression tests. The independent NumPy reader verified all 140 saved arrays. The maximum error was 2.07227e-05 of the original tolerance budget and peak PyTorch allocation was 10.797 GiB. Science, audit and the Slurm step exited normally, and the worker processes and their GPU contexts were confirmed absent. The raw archive was fully read and hash-verified on MN5 and VPS.
+The H100 run in [gpu-objective-result.json](gpu-objective-result.json) passed all 52 comparisons and five CPU geometry regression tests. The independent NumPy reader verified all 140 saved arrays. The maximum error was 2.07227e-05 of the original tolerance budget and peak PyTorch allocation was 10.797 GiB. Science, audit and the Slurm step exited normally, and the worker processes and their GPU contexts were confirmed absent. The raw archive was fully read and hash-verified on the experiment system and an independent host.
 
 ## Full native objective qualification
 
@@ -162,6 +179,334 @@ normalization and `atol=1e-11, rtol=1e-9` remain unchanged. Five CPU geometry
 regression tests pass. The maximum error is 2.07227e-05 of the original
 tolerance budget; peak PyTorch allocation/reservation is 37.761/37.867 GiB.
 Science, audit and the Slurm step exit naturally with code zero. Successful
-and failed-start archives are fully read and hash-verified on two existing MN5
+and failed-start archives are fully read and hash-verified on two existing the experiment system
 allocations. Optimizer updates, training convergence, physical acceptance and
 comparative performance remain unqualified.
+
+## Frozen timing, training and physical acceptance protocol
+
+[protocol-20261012.json](protocol-20261012.json) fixes the next experiment before
+its GPU measurements. It adopts the existing 4,999-point source cache and fixed
+normalization without changing the cache's historical development metadata.
+Both original seeds start from fresh C36 curl-potential parameters. Direct
+velocity-model checkpoints are incompatible with this representation.
+
+The timing runner measures complete objective and gradient evaluations with
+CUDA synchronization. Each baseline has five alternating AB/BA pairs per seed;
+candidate and Taylor-AD windows last at least 60 seconds. Geometry setup is
+reported separately. Native coordinate AD and parameter AD over C36 Taylor
+states are distinct baselines: the latter shares the forward algebra and is
+not an independent coordinate derivative oracle. No complete-solver speedup
+is inferred from objective timings.
+
+Training uses 4,000 Adam updates and 20 LBFGS calls per seed, with frozen
+hyperparameters and a finite closure cap. Compute-only CUDA graph replay must
+match eager and parameter-AD gradients at changed parameters before use.
+Initial, scheduled and final complete gradients are checked; all LBFGS
+candidates are retained. Adam checkpoints and optimizer state are saved every
+100 updates. A finished budget is separate from the declared loss and gradient
+convergence test.
+
+```sh
+PYTHONPATH=src python -m unittest box376.test_potential_ad_objective
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_run --inputs data --protocol protocol-20261012.json \
+  --mode timing --baseline taylor_parameter_ad --output outputs/timing-taylor
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_run --inputs data --protocol protocol-20261012.json \
+  --mode timing --baseline native_coordinate_ad --output outputs/timing-native
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_run --inputs data --protocol protocol-20261012.json \
+  --mode training --output outputs/training
+PYTHONPATH=src python -m box376.audit_potential_run --inputs data \
+  --protocol protocol-20261012.json --proof outputs/training --output outputs/training/audit.json
+```
+
+Physical acceptance observes the trained potential through native coordinate
+AD, with a separate NumPy residual consumer. It includes independent stratified
+and uniform-volume holdouts, seven time slices, initial/boundary values and
+27 particles integrated with the observed network velocity. Two DOP853
+refinements check trajectory integration. The original velocity, momentum,
+divergence, pressure and endpoint limits remain unchanged. Time-slice and region
+diagnostics are reported separately from the original combined gate. No exact
+velocity is inserted into the model or trajectory right-hand side.
+
+```sh
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_physical --inputs data --protocol protocol-20261012.json \
+  --checkpoint outputs/training/seed361901-final.pt --output outputs/physical-seed361901
+PYTHONPATH=src python -m box376.audit_potential_run --inputs data \
+  --protocol protocol-20261012.json --proof outputs/physical-seed361901 \
+  --training outputs/training --output outputs/physical-seed361901/audit.json
+```
+
+Repeat physical acceptance for seed 361902. The NumPy-only reader reconstructs
+saved gradient comparisons, family-normalized losses, paired statistics,
+physical equations and acceptance decisions. It checks observed saved arrays;
+it does not independently replay every Adam update or reintegrate particle
+paths. GPU results for this protocol are pending; no speed, training convergence
+or physical acceptance is claimed by these new entry points alone.
+
+The prepared objective now constructs its affine transform and output-scale
+constants on the device during setup. Its default eager equations are unchanged;
+a CPU regression checks bitwise equality of the default and cached forward
+states and complete parameter pullbacks. This avoids host-to-device constant
+creation during CUDA graph capture. A failed capture is preserved and terminates
+its process: PyTorch 2.4 can leave the allocator in capture mode, so an eager
+fallback must use a fresh process and `--eager` with a new output directory.
+The executed training packet's complete gradient and changed-parameter replay
+checks pass on H100; optimization and physical acceptance are still in progress.
+
+[protocol-graph-timing-20261012.json](protocol-graph-timing-20261012.json)
+adds a separate timing scope in which both the explicit computation and the
+C36 parameter-AD baseline use qualified CUDA graph replay. Parameter AD also
+constructs its model constants during setup. Both captures are checked at the
+original parameters and after a parameter change, with the same full objective,
+FP64 precision and original derivative tolerance. Capture costs are reported
+separately. Native coordinate AD remains an eager baseline. The eager protocol
+and its raw measurements are preserved, including slowdowns.
+
+```sh
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.potential_run --inputs data \
+  --protocol protocol-graph-timing-20261012.json --mode timing --graphs \
+  --baseline taylor_parameter_ad --output outputs/timing-matched-graphs
+PYTHONPATH=src python -m box376.audit_potential_run --inputs data \
+  --protocol protocol-graph-timing-20261012.json --proof outputs/timing-matched-graphs \
+  --output outputs/timing-matched-graphs/audit.json
+```
+
+Use `--train-engine taylor_ad` to run the parameter-AD training baseline with
+the identical fresh seeds, objective, Adam/LBFGS recipe and finite budgets.
+Its scheduled gradient checks use the explicit implementation as the reference;
+saved arrays identify the actual and reference engines. Run independent physical
+acceptance for both baseline checkpoints as for the explicit checkpoints.
+Complete-solver speed or time to accepted accuracy remains unset until both
+implementations pass the same physical gates.
+
+## Packed symmetric gathers
+
+`torch_c36.unpack` now expands symmetric derivative channels with four cached
+index gathers. This preserves the original forward values and transpose while
+removing the chain of in-place `CopySlices` operations. The two CPU regression
+tests compare the previous expansion's values and complete activation/product
+input gradients, including noncontiguous and empty inputs.
+
+[packed-gather-result-20261012.json](packed-gather-result-20261012.json) records
+48 passing H100 comparisons across both original seeds, all 4,999 canonical
+points and all 50,692 parameters. The preserved pre-optimization full native-AD
+reference is identified by SHA-256; fresh native coordinate AD is not rerun by
+this qualification. Both candidate chunk sizes, parameter AD, nonzero value
+families, and original/changed-parameter graph replay are checked. The unchanged
+`atol=1e-11, rtol=1e-9` budget passes a separate NumPy reader of all 96 arrays.
+The raw arrays, source packet and exit receipts have verified copies on durable
+the experiment system storage and in the local workspace. The reported three-sample timings are
+diagnostic. The complete paired timings at source commit `ae51ca6` are recorded
+in [paired-packed-gather-result-20261012.json](paired-packed-gather-result-20261012.json).
+Each mode has ten alternating pairs, two original seeds and windows of at least
+60 seconds; setup and capture are excluded and reported separately.
+
+| Execution of both engines | Explicit seconds/evaluation | Parameter AD seconds/evaluation | Paired baseline/explicit ratio (95% bootstrap interval) |
+| --- | ---: | ---: | --- |
+| Eager | 1.73958 | 1.69253 | 0.97293 (0.97047–0.97592) |
+| CUDA graph replay | 0.48423 | 0.46955 | 0.96968 (0.96932–0.97008) |
+
+The explicit implementation remains 2.78% slower in eager and 3.13% slower in
+matched graph replay. Both GPU runs and NumPy readers exit normally; all 36
+gradient comparisons and paired statistics also pass local NumPy rereading of
+the copied raw arrays. Both timing archives have verified the experiment system/local copies.
+The earlier native-coordinate-AD experiment is now complete at source `73baa3b`.
+[paired-native-coordinate-result-20261013.json](paired-native-coordinate-result-20261013.json)
+preserves all ten alternating pairs: explicit 2.77727 seconds versus native
+3,484.28352 seconds, ratio 1,254.84 (95% bootstrap interval 1,211.34–1,291.26).
+The original native-specific window rule uses one complete native evaluation;
+candidate windows last at least 60 seconds. This measures the original recursive
+native derivative implementation; the later cache lifetime repair is outside
+that experiment. All gradient/statistic audits pass, and the complete archive
+has 57 verified members on the experiment system and locally. The original controller's exit 1
+retains the earlier pre-update training failure; timing science, reader and
+timing driver each exit 0. These measurements remain separate from the newer
+packed-gather/Taylor-AD comparison and complete-solver accuracy.
+
+```sh
+PYTHONPATH=src python -m unittest test_c36_unpack
+CUDA_VISIBLE_DEVICES=0 CUBLAS_WORKSPACE_CONFIG=:4096:8 PYTHONPATH=src \
+  python -m box376.verify_packed_gather --inputs data \
+  --protocol protocol-20261012.json \
+  --reference preserved-full-native/raw-proof.npz --output outputs/packed-gather
+PYTHONPATH=src python -m box376.audit_packed_gather \
+  --proof outputs/packed-gather --output outputs/packed-gather-audit.json
+```
+
+The earlier complete eager experiment at commit `73baa3b` is preserved in
+[paired-eager-result-20261012.json](paired-eager-result-20261012.json): explicit
+2.55670 seconds versus parameter AD 2.35870 seconds, paired speed ratio 0.92256
+(95% bootstrap interval 0.92122–0.92419). This is an observed slowdown. Comparing
+different source revisions' timings is historical evidence, not a paired
+before/after optimization experiment. The separate native-coordinate-AD timing
+experiment and original finite-budget training are complete.
+
+The native derivative oracle now builds cached derivative prefixes iteratively.
+The recursive closure previously retained itself, its cache and native graphs
+until cyclic garbage collection. Prefix order, native differentiation and
+parameter graphs are preserved. Two CPU tests verify bitwise C17/C36 states and
+parameter gradients, and immediate closure release with cyclic collection
+disabled. [native-oracle-cache-result-20261012.json](native-oracle-cache-result-20261012.json)
+also verifies bitwise native states and all 50,692 parameter gradients at two
+points from a completed trained checkpoint; a separate NumPy reader rechecks
+the saved arrays. This does not qualify a new GPU speed ratio.
+
+Physical observation also accepts `--device cpu --observer-chunk 128`. CUDA and
+128-point chunks remain the defaults. This permits CPU observation of a verified
+GPU-trained checkpoint with the same holdouts, native derivatives, NumPy
+equations, particle integration and acceptance gates. CPU observation timings
+are separate from GPU performance measurements.
+
+[training-finite-budget-result-20261012.json](training-finite-budget-result-20261012.json)
+records the complete original explicit budgets at commit `7281fae`: 4,000 Adam
+updates and 20 LBFGS calls per seed, with 444/438 closures. Both fail convergence:
+losses are 5.40207e-4 and 5.16776e-4; gradient infinity norms are 7.50714e-4 and
+1.28521e-3. The limits remain 1e-4 and 1e-3. All 48 scheduled saved-gradient
+comparisons pass the NumPy audit. The complete 1.54 GB training archive, including
+all candidates/checkpoints, has been member-verified on durable the experiment system storage.
+Both final checkpoints also have verified local copies.
+
+Native-AD CPU value observations cover both complete 4,096-point holdouts for
+each seed. Stratified/uniform velocity relative errors are 2.053%/4.374% and
+1.881%/3.461%, above the original 1% limit; corrected pressure also exceeds its
+original limit. Separate NumPy readers recheck the saved value metrics. These
+value observations exclude PDE derivatives and trajectories. GPU physical
+observation exhausted memory with the old recursive derivative cache; its failure
+and source are retained. The cache lifetime repair passed H100 qualification of
+the native state and all 50,692 parameter gradients at the trained CPU anchors.
+Sixteen native observations with cyclic collection disabled retained exactly
+67,514,880 allocated bytes after each observation.
+
+[physical-finite-budget-result-20261013.json](physical-finite-budget-result-20261013.json)
+records both complete GPU physical observations, all original holdouts and both
+DOP853 trajectory refinements. The original physical gates fail for both seeds.
+Velocity relative errors remain 2.053%/4.374% and 1.881%/3.461%; stratified
+momentum RMS is 0.01422/0.01386 against 0.01. Maximum particle endpoint errors
+are 0.02317/0.02980 against 0.001. Refinement changes are below 7.3e-11 against
+1e-7, while initial/boundary velocity and pressure gauge errors are zero.
+Both remote and local NumPy readers pass all 117 comparisons per seed. The
+17.7 MB archive has 126 member-verified files on the experiment system and locally. Readers check
+the analytic source independently at the original tolerance and use the sealed
+force bytes for cancellation-sensitive residuals. They do not reintegrate the
+ODE or replay optimizer trajectories.
+
+The identical-budget parameter-AD baseline also completed both 4,000-Adam /
+20-LBFGS budgets. Its final losses are 5.38698e-4 / 5.15322e-4 and gradient
+infinity norms 5.90443e-4 / 2.06306e-3; both seeds fail convergence. All saved
+gradient comparisons pass. Its complete 1.55 GB training archive is verified on
+the experiment system. Physical observation completed from its original verified checkpoints after
+the same old-cache OOM, with both original trajectory refinements and all holdouts.
+Both seeds fail the original physical gates. Velocity relative errors are
+2.033%/4.313% and 1.850%/3.415%; endpoint errors 0.02276/0.02998. Remote and local
+NumPy readers each pass 117 checks per seed. The 15.3 MB archive has 123 verified
+members on the experiment system and locally. Both training engines remain unaccepted at the
+original finite budget. No complete-solver speed or time to accepted accuracy
+is established.
+
+## Opt-in packed activation candidate
+
+`torch_c36_packed.activate_packed` computes the same tanh identities in symmetric
+storage: ten third-derivative and six Hessian entries rather than dense 27/9
+entries. The default activation remains unchanged. Select the candidate with
+`PreparedPotentialNormalizedObjective(data, calibration, activation=activate_packed)`;
+the chosen activation is also retained for the parameter transpose.
+
+[packed-activation-cpu-result-20261013.json](packed-activation-cpu-result-20261013.json)
+checks both initial seeds, changed parameters and both original trained final
+checkpoints. All 50,692 gradient entries pass against the previous explicit
+implementation and parameter AD on small canonical subsets, with two partitions
+and the original tolerance. A separate NumPy reader passes 72 comparisons.
+CPU tests also cover all derivative-state transposes, noncontiguous and empty
+inputs, and zero/saturated activation values. A local single-activation/transpose
+diagnostic took 0.01510 seconds versus 0.02924 seconds for dense storage. This
+is a CPU kernel diagnostic; full 4,999-point GPU qualification and formal paired
+performance have not run, and no new GPU acceleration claim is made.
+
+The CPU candidate now also passes all 4,999 canonical points and complete
+50,692-parameter gradients against preserved full native-GPU anchors for both
+seeds, with 128/64 partitions and changed parameters. A separate NumPy reader
+passes 36 comparisons of 72 arrays; maximum error is 9.18e-6 of the unchanged
+tolerance budget. Original initial checkpoint bytes are used directly because
+regeneration under another PyTorch build differed by one last bit. Native
+coordinate AD and CUDA graphs are not rerun in this CPU check. Single CPU calls
+took 3.89/3.73 seconds for packed storage, 6.36/6.21 for dense storage and
+5.14/5.13 for parameter AD. These are diagnostics, not formal GPU paired results.
+
+`torch_c36_packed_vjp.activate_packed_vjp` adds an opt-in analytic transpose for
+the nonlinear state. It reverses packed contractions and differentiates the
+actual stable coefficient program, including exp-based coefficients, tanh
+rounding and the absolute-value origin. Saturated inputs with cotangents scaled
+by 1e8 pass the original comparison budget. Select it with
+`activation=activate_packed, activation_vjp=activate_packed_vjp`; default
+nonlinear pullbacks continue using local state autograd. The parameter-AD
+baseline also accepts `activation=activate_packed` so equivalent forward
+optimizations can be compared on both engines.
+
+[analytic-transpose-cpu-result-20261013.json](analytic-transpose-cpu-result-20261013.json)
+records 42 passing full canonical comparisons for the analytic candidate,
+packed/compiled parameter AD and changed parameters, plus independent NumPy
+audits of all 84 arrays. Compilation is opt-in through `torch.compile` on the
+selected forward and transpose. These CPU results use PyTorch 2.14.1; CUDA and
+the cluster's PyTorch 2.4 runtime remain unqualified for these new variants.
+
+[paired-analytic-vs-compiled-ad-cpu-result-20261013.json](paired-analytic-vs-compiled-ad-cpu-result-20261013.json)
+records ten alternating CPU pairs, both original initial checkpoints, all
+4,999 points and 50,692 gradients. Both engines share compiled packed forward;
+the candidate uses the analytic transpose and the baseline uses parameter AD.
+Every window has at least three evaluations and 60 seconds. Setup/compilation
+and warmup are excluded and recorded separately. The ratio is 1.26509 with
+95% paired bootstrap interval 1.20315–1.32790. NumPy independently rechecks all
+24 initial/final gradient arrays and the complete pairing/statistics. This is
+a CPU objective/gradient measurement; GPU and accepted-solver speedups are
+not established.
+
+```sh
+PYTHONPATH=src python -m unittest test_c36_packed box376.test_potential_audit
+PYTHONPATH=src python -m box376.verify_packed_activation_cpu --inputs data \
+  --protocol protocol-20261012.json --training original-training \
+  --output outputs/packed-activation-cpu
+PYTHONPATH=src python -m box376.audit_packed_activation_cpu \
+  --proof outputs/packed-activation-cpu --output outputs/packed-activation-cpu-audit.json
+PYTHONPATH=src python -m box376.verify_packed_activation_full_cpu --inputs data \
+  --protocol protocol-20261012.json --training original-training \
+  --gather-proof preserved-packed-gather/qualification --activation-mode analytic \
+  --output outputs/analytic-full-cpu
+PYTHONPATH=src python -m box376.audit_packed_activation_full_cpu \
+  --proof outputs/analytic-full-cpu --output outputs/analytic-full-cpu-audit.json
+```
+
+## Opt-in analytic activation on H100
+
+`box376.packed_analytic_gpu_run` freezes the full canonical objective, original stored parameter bytes, unchanged error budget and two seeds. Before measuring ten alternating pairs (each arm at least 60 seconds and three evaluations), it checks original/changed parameters in direct calls and CUDA Graph replay against the preserved full native reference and parameter AD. Both measured arms share the same packed forward; the candidate uses the manual analytic activation transpose.
+
+Use `--activation-mode eager` for the explicit packed forward plus CUDA Graphs, or `--activation-mode compiled` to compile both forward arms and the candidate activation transpose. Compiled mode requires a compatible Triton installation; compiler failures are preserved and do not silently select eager mode. `box376.audit_packed_analytic_gpu` is a separate NumPy-only reader for saved gradients, native anchors, window durations and paired bootstrap statistics. These entry points do not run training or establish complete-solver acceleration. The completed [eager packed-forward graph result](paired-analytic-vs-packed-ad-gpu-result-20261013.json) passes 78 numerical checks and both remote/local NumPy audits of 156 arrays and 20 timing windows. Its ten-pair ratio is 1.044582×, with 95% interval [1.044130, 1.045051]; candidate/control means are 0.328305/0.342941 seconds. The complete 106-member archive is verified on the experiment system and locally. This matched-forward graph result is separate from the older dense-activation timings and from compiled GPU performance.
+
+The alpha Torch 2.4 runtime passes legacy tuple targets to Triton. The opt-in `--legacy-triton-target` adapter translates only that target representation to Triton 3.0's device target, checking architecture and warp size against the actual CUDA device. Source, dtype and compiler options stay unchanged; both arms use the same per-process adapter. The [small GPU compiler fixture](compiled-activation-GPU-smoke-result-20261013.json) passes forward and activation-transpose checks at saturated and near-zero values with large cotangents.
+
+The subsequent [complete compiled H100 experiment](paired-analytic-vs-compiled-ad-gpu-result-20261013.json) passes all 78 numerical comparisons and independent remote/local NumPy readers of 156 arrays and 20 timing windows. Both arms compile the same packed forward; the candidate also compiles its analytic activation transpose. Ten alternating pairs give **1.323962×** (95% paired interval [1.323087, 1.324762]), with candidate/control window means 0.164484/0.217771 seconds. All 114 members of the complete 161,322,508-byte archive are verified on the experiment system and locally. Science, readers and the actual Slurm step exit zero, owned children are joined and the original GPU lock is released. [Earlier compiler preflight failures](compiler-preflight-negative-results-20261013.json) retain their original failed status and fully verified cluster archives. These timings establish objective/gradient throughput, with no additional training or physical acceptance claim.
+
+## Exact zero-gate constant folding
+
+`box376.fold_zero_gate.ZeroGateFoldedObjective` is an opt-in wrapper around either prepared Taylor-state engine. It evaluates the network only where at least one of the 36 gate channels is nonzero, using exact equality without a threshold. For every omitted network row, it retains the parameter-independent forcing, forcing-gradient or target loss at the original weight. Every family keeps its original full weight sum, normalization and coefficient. The original prepared engine remains usable; the default path is unchanged. Native-coordinate AD cannot select this wrapper.
+
+The [CPU qualification](zero-gate-folding-cpu-result-20261013.json) passes 12 full-objective/numerator/all-parameter-gradient comparisons against the preserved native H100 anchors, covering both original stored initializations. The NumPy-only reader verifies all 24 objective arrays and 15 folding arrays. Of the 4,999 canonical rows, 2,933 have active jets; the other 2,066 are represented by their constant loss. Four regression cases cover nonzero forcing/targets, changed parameters, empty active families, and a zero gate value with a nonzero derivative as small as `1e-30`. The same regressions also pass in the actual experiment runtime before GPU admission. The complete CPU archive is fully verified locally. This is numerical CPU qualification; the folded GPU comparison is pending and no new timing ratio is claimed.
+
+To qualify and measure both equally folded compiled-forward arms, add `--fold-zero-gates` to `box376.packed_analytic_gpu_run`. Pass `--inputs` to the NumPy reader so it can verify the original family weight sums and physical normalization:
+
+```bash
+PYTHONPATH=src python -m box376.packed_analytic_gpu_run \
+  --inputs data --protocol protocol-graph-timing-20261012.json \
+  --reference preserved-full-native-reference.npz \
+  --activation-mode compiled --fold-zero-gates --output outputs/folded-GPU
+PYTHONPATH=src python -m box376.audit_packed_analytic_gpu \
+  --inputs data --protocol protocol-graph-timing-20261012.json \
+  --reference preserved-full-native-reference.npz \
+  --proof outputs/folded-GPU --output outputs/folded-GPU-audit.json
+```
+
+On the legacy legacy compiler runtime, select `--legacy-triton-target` explicitly for the GPU worker as described above. Use a new output directory for every attempt. Both arms use folding and the same packed forward; the complete objective, stored parameter bytes and original numerical/timing protocol are preserved.

@@ -1,0 +1,227 @@
+{
+  "state": "CPU_SUBSET_QUALIFIED_GPU_NOT_RUN",
+  "default_activation_changed": false,
+  "variant": "torch_c36_packed.activate_packed",
+  "qualification": {
+    "state": "PASS",
+    "device": "cpu",
+    "topology": [
+      4,
+      128,
+      128,
+      128,
+      128,
+      4
+    ],
+    "parameters": 50692,
+    "canonical_subset_indices": {
+      "interior": [
+        1965,
+        2489,
+        1079,
+        2043
+      ],
+      "initial": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "boundary": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "gauge": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "full_4999_point_GPU_qualification": false,
+    "default_implementation_changed": false,
+    "tolerance": {
+      "atol": 1e-11,
+      "rtol": 1e-09
+    },
+    "raw_sha256": "3ae66e6d9cd06e5e1510ec642d9a4e163854d24024c4cb494fdf95f3dbd28932",
+    "protocol_sha256": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
+    "source_sha256": {
+      "torch_c36_packed.py": "74243076b2412c838ff1c0e6a69b80dea036571c30046ae7713520362ed22334",
+      "torch_c36.py": "6e9a1fa061563d02a5ef69ea23b575275b2d074390a1eda161c343ca7dcc98e8",
+      "box376/potential_model.py": "b4ecaef905b803e7f3424fe598e0cdf9f02f92d335b01855e4e6a6a7858411af",
+      "box376/potential_objective.py": "7145945cd48f09559679a3cf72d34bac202b4633ac00321da1015272fd619cd9"
+    },
+    "finished": 1791865355.9759932
+  },
+  "checks": 36,
+  "complete_parameter_vectors_checked_per_state": 50692,
+  "independent_saved_array_audit": {
+    "state": "PASS",
+    "reader": "NumPy only; saved CPU arrays, fresh process without Torch",
+    "comparisons": 72,
+    "maximum_error_over_original_budget": 1.0038035157848054e-08
+  },
+  "maximum_error_over_dense_budget": 6.770811247505096e-10,
+  "maximum_error_over_parameter_AD_budget": 1.0038035157848054e-08,
+  "parameter_states_per_seed": [
+    "initial",
+    "changed_plus_0.007",
+    "trained_final_original_budget"
+  ],
+  "seeds": [
+    361901,
+    361902
+  ],
+  "full_4999_point_GPU_qualification": false,
+  "GPU_formal_speedup": null,
+  "CPU_diagnostic": {
+    "device": "cpu",
+    "scope": "Diagnostic single activation and its complete derivative-state transpose; not full objective, not GPU formal paired performance",
+    "shape": [
+      128,
+      128,
+      36
+    ],
+    "pairs": [
+      {
+        "dense": 0.030780266799956733,
+        "packed": 0.015372908399876905
+      },
+      {
+        "packed": 0.015144050000162678,
+        "dense": 0.029286833400146862
+      },
+      {
+        "dense": 0.028999558400028037,
+        "packed": 0.015091691599991464
+      },
+      {
+        "packed": 0.015357441599917365,
+        "dense": 0.02910551659988414
+      },
+      {
+        "dense": 0.02904797499995766,
+        "packed": 0.01495497500000056
+      },
+      {
+        "packed": 0.015511816799880762,
+        "dense": 0.030851658400024462
+      },
+      {
+        "dense": 0.029320566600108577,
+        "packed": 0.015086566600075457
+      },
+      {
+        "packed": 0.015104941800018423,
+        "dense": 0.02926348319997487
+      },
+      {
+        "dense": 0.029207091799980843,
+        "packed": 0.015033849999963423
+      },
+      {
+        "packed": 0.014975583399973402,
+        "dense": 0.029167749999942316
+      }
+    ],
+    "dense_median_seconds": 0.029235287499977856,
+    "packed_median_seconds": 0.015098316700004943,
+    "finished": 1791864897.0230012
+  },
+  "scope": "Same C36 tanh derivative identities and transpose in symmetric packed storage; original physical objective, checkpoint and tolerances; CPU canonical subsets only; no formal full-objective or GPU speed claim",
+  "full_canonical_CPU_qualification": {
+    "state": "PASS",
+    "device": "cpu",
+    "points": 4999,
+    "parameters_per_seed": 50692,
+    "seeds": [
+      361901,
+      361902
+    ],
+    "atol": 1e-11,
+    "rtol": 1e-09,
+    "tolerance_relaxed": false,
+    "reference_provenance": {
+      "complete_native_GPU_raw_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66",
+      "preserved_gather_raw_sha256": "7d1db3ce8fb6dbaeeeabff46e4e981633b1761c5dd7cc8c82eaf79c0c939320b",
+      "fresh_native_coordinate_AD_repeated": false,
+      "initial_theta_loaded_from_original_verified_checkpoints": true,
+      "regenerated_weights_not_used": true
+    },
+    "protocol_sha256": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
+    "raw_sha256": "a89187e81147e1d10e5b06892bd0f8c5cca9962048adf8c556a7506bcceba79c",
+    "GPU_qualification_run": false,
+    "CUDA_graph_qualification_run": false,
+    "default_activation_changed": false,
+    "diagnostic_timings": [
+      {
+        "seed": 361901,
+        "engine": "packed128",
+        "evaluation_seconds": 3.890866832996835,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361901,
+        "engine": "packed64",
+        "evaluation_seconds": 3.6637646659983147,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361901,
+        "engine": "dense128",
+        "evaluation_seconds": 6.356757125002332,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361901,
+        "engine": "parameterAD128",
+        "evaluation_seconds": 5.1376309170009336,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361902,
+        "engine": "packed128",
+        "evaluation_seconds": 3.7310358330032614,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361902,
+        "engine": "packed64",
+        "evaluation_seconds": 3.6530424170014157,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361902,
+        "engine": "dense128",
+        "evaluation_seconds": 6.214273583002068,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      },
+      {
+        "seed": 361902,
+        "engine": "parameterAD128",
+        "evaluation_seconds": 5.125637042001472,
+        "scope": "Single-call CPU diagnostics only; not formal paired GPU speed"
+      }
+    ],
+    "source_sha256": {
+      "torch_c36_packed.py": "74243076b2412c838ff1c0e6a69b80dea036571c30046ae7713520362ed22334",
+      "torch_c36.py": "6e9a1fa061563d02a5ef69ea23b575275b2d074390a1eda161c343ca7dcc98e8",
+      "box376/potential_model.py": "b4ecaef905b803e7f3424fe598e0cdf9f02f92d335b01855e4e6a6a7858411af",
+      "box376/potential_objective.py": "7145945cd48f09559679a3cf72d34bac202b4633ac00321da1015272fd619cd9"
+    },
+    "finished": 1791881748.1041331,
+    "comparisons": 36,
+    "NumPy_audit": {
+      "state": "PASS",
+      "reader": "NumPy only; saved full canonical CPU arrays; fresh process without Torch",
+      "comparisons": 36,
+      "arrays": 72,
+      "maximum_error_over_original_budget": 9.176113876652286e-06
+    },
+    "maximum_error_over_original_budget": 9.176113876652286e-06,
+    "scope": "Full canonical CPU checks against preserved native-GPU anchors; native coordinate AD not rerun; GPU kernel/capture/performance not qualified"
+  }
+}

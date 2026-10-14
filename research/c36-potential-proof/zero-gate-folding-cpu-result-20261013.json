@@ -1,0 +1,134 @@
+{
+  "state": "PASS",
+  "scope": "CPU qualification against preserved complete H100 native anchors; no new GPU or timing claim",
+  "torch": "2.14.1",
+  "numpy": "2.5.3",
+  "points": 4999,
+  "parameters": 50692,
+  "seeds": [
+    361901,
+    361902
+  ],
+  "numerical_comparisons": 12,
+  "saved_full_objective_arrays": 24,
+  "saved_folding_arrays": 15,
+  "regression_cases": 4,
+  "regression_exit": 0,
+  "atol": 1e-11,
+  "rtol": 1e-09,
+  "tolerance_relaxed": false,
+  "checks": [
+    {
+      "name": "seed361901_explicit_loss",
+      "error_over_budget": 1.6088914600153067e-07
+    },
+    {
+      "name": "seed361901_explicit_gradient",
+      "error_over_budget": 3.5873379974927813e-06
+    },
+    {
+      "name": "seed361901_explicit_numerators",
+      "error_over_budget": 1.608891460015306e-07
+    },
+    {
+      "name": "seed361901_AD_loss",
+      "error_over_budget": 1.6088914600153067e-07
+    },
+    {
+      "name": "seed361901_AD_gradient",
+      "error_over_budget": 3.6290512300217675e-06
+    },
+    {
+      "name": "seed361901_AD_numerators",
+      "error_over_budget": 1.608891460015306e-07
+    },
+    {
+      "name": "seed361902_explicit_loss",
+      "error_over_budget": 1.6357155998654678e-07
+    },
+    {
+      "name": "seed361902_explicit_gradient",
+      "error_over_budget": 6.73720358276259e-06
+    },
+    {
+      "name": "seed361902_explicit_numerators",
+      "error_over_budget": 1.635715599865467e-07
+    },
+    {
+      "name": "seed361902_AD_loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "seed361902_AD_gradient",
+      "error_over_budget": 7.476652756480435e-06
+    },
+    {
+      "name": "seed361902_AD_numerators",
+      "error_over_budget": 0.0
+    }
+  ],
+  "folding": {
+    "state": "PASS",
+    "reader": "NumPy only",
+    "saved_arrays": 15,
+    "counts": {
+      "interior": {
+        "full": 4096,
+        "active": 2933,
+        "folded": 1163,
+        "original_W": 1.0000000000000004
+      },
+      "initial": {
+        "full": 512,
+        "active": 0,
+        "folded": 512,
+        "original_W": 1.0
+      },
+      "boundary": {
+        "full": 384,
+        "active": 0,
+        "folded": 384,
+        "original_W": 1.0
+      },
+      "gauge": {
+        "full": 7,
+        "active": 0,
+        "folded": 7,
+        "original_W": 0.9999999999999998
+      }
+    },
+    "constant_numerators": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "normalization_unchanged": true,
+    "every_original_row_accounted_for": true,
+    "zero_threshold": 0.0
+  },
+  "independent_NumPy_reader": "PASS",
+  "maximum_error_over_original_budget": 7.476652756480435e-06,
+  "fresh_native_coordinate_AD_repeated": false,
+  "GPU_qualification": "PENDING",
+  "complete_solver_speedup": null,
+  "training_performed": false,
+  "physical_acceptance_evaluated": false,
+  "source_sha256": {
+    "box376/fold_zero_gate.py": "10831bebd6d1f9fdf0f70ccc28e87ff26f150ecd86e5b39c66fe6ec3e6f77613",
+    "box376/test_fold_zero_gate.py": "b05e86477cf770a6259005df77b03b15c141b4149fe73429cc9023ba32895ea2",
+    "box376/audit_zero_gate_folding.py": "26cfe4b769e6ab91dddef7bcd191a7c086d70f4a3498e588b76037c548d47e80"
+  },
+  "raw_sha256": "73ab852890560000a4bc94d09da8f286bea31cd155908197751ec57eac9ad56d",
+  "reference_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66",
+  "complete_CPU_archive": {
+    "sha256": "eab1e55d163b1044598d80ad56528a12429a5ac2f1d25adbc163cc0279c750be",
+    "bytes": 144387477,
+    "members_verified": 72,
+    "verified_copies": [
+      "local"
+    ],
+    "source_bytes_removed": false,
+    "full_source_and_execution_logs_included": true
+  }
+}

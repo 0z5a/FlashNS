@@ -16,16 +16,21 @@ def derivative_table(function, points):
 
     def derivative(indices):
         indices = tuple(sorted(indices))
-        if indices in cache:
-            return cache[indices]
-        parent = derivative(indices[:-1])
-        columns = []
-        for component in range(parent.shape[1]):
-            value = parent[:, component]
-            gradient = torch.autograd.grad(value.sum(), points, create_graph=True,
-                                           retain_graph=True, allow_unused=True)[0] if value.requires_grad else None
-            columns.append(points[:, indices[-1]] * 0 if gradient is None else gradient[:, indices[-1]])
-        cache[indices] = torch.stack(columns, 1)
+        # Build the same prefixes in the same order without a recursive closure.
+        # A self-reference otherwise keeps the cache and native graphs alive
+        # after an observation, until Python's cyclic collector happens to run.
+        for length in range(1, len(indices) + 1):
+            prefix = indices[:length]
+            if prefix in cache:
+                continue
+            parent = cache[prefix[:-1]]
+            columns = []
+            for component in range(parent.shape[1]):
+                value = parent[:, component]
+                gradient = torch.autograd.grad(value.sum(), points, create_graph=True,
+                                               retain_graph=True, allow_unused=True)[0] if value.requires_grad else None
+                columns.append(points[:, prefix[-1]] * 0 if gradient is None else gradient[:, prefix[-1]])
+            cache[prefix] = torch.stack(columns, 1)
         return cache[indices]
 
     return values, derivative

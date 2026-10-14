@@ -55,21 +55,39 @@ def prepare_geometry(points, eta=1/32, *, chunk_size=256):
     return inputs, gate
 
 
-def forward(parameters, inputs, gate, potential_scale=.01, pressure_scale=.1):
-    physical = physical_parameters(parameters)
+def forward(parameters, inputs, gate, potential_scale=.01, pressure_scale=.1, *, constants=None, activation=None, activation_vjp=None):
+    """Use optional preconstructed device constants for the default model scales."""
+    if constants is not None and (potential_scale != .01 or pressure_scale != .1):
+        raise ValueError("Preconstructed constants require the default potential and pressure scales")
+    if constants is None:
+        physical = physical_parameters(parameters)
+    else:
+        alpha, origin, scale = constants
+        weight, bias = parameters[0]
+        physical = [(weight * alpha, bias - (weight * alpha) @ origin)] + parameters[1:]
     with torch.no_grad():
-        raw, tape = c36.forward(physical, inputs)
-        scale = raw.new_tensor([potential_scale] * 3 + [pressure_scale])[None, :, None]
+        raw, tape = c36.forward(physical, inputs, activation=activation)
+        if constants is None:
+            scale = raw.new_tensor([potential_scale] * 3 + [pressure_scale])[None, :, None]
         state = c36.curl_pressure(c36.multiply(gate, raw * scale))
-    return state, (physical, raw, tape, gate, scale)
+    result = (physical, raw, tape, gate, scale)
+    if activation_vjp is not None:
+        return state, result + (activation, activation_vjp)
+    return state, result if activation is None else result + (activation,)
 
 
-def parameter_vjp(tape, cotangent):
-    physical, raw, network_tape, gate, scale = tape
+def parameter_vjp(tape, cotangent, *, constants=None):
+    physical, raw, network_tape, gate, scale = tape[:5]
+    activation = tape[5] if len(tape) >= 6 else None
+    activation_vjp = tape[6] if len(tape) == 7 else None
     bar = c36.state_vjp(lambda s: c36.curl_pressure(c36.multiply(gate, s * scale)), raw, cotangent)
     with torch.no_grad():
-        derivatives = c36.parameter_vjp(physical, network_tape, bar)
+        derivatives = c36.parameter_vjp(physical, network_tape, bar, activation=activation,
+                                        activation_vjp=activation_vjp)
         weight, bias = derivatives[0]
-        alpha, origin = weight.new_tensor(SCALE), weight.new_tensor(ORIGIN)
+        if constants is None:
+            alpha, origin = weight.new_tensor(SCALE), weight.new_tensor(ORIGIN)
+        else:
+            alpha, origin, _ = constants
         derivatives[0] = (weight * alpha - bias[:, None] * (alpha * origin)[None, :], bias)
     return derivatives

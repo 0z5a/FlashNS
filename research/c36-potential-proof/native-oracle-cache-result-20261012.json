@@ -1,0 +1,50 @@
+{
+  "state": "PASS",
+  "checkpoint_sha256": "131e705b8cf6544469324e79734c87f663c04499f7435300cf32e0532092d9a7",
+  "old_oracle_sha256": "7656e8423c8a08807aae75e62111f8d6cb77b6bed77ef3aa2d3ae9cfbe2823e5",
+  "new_oracle_sha256": "af202e977fafae0559f2fb93f55bb4e42d8770517723988e170aecd7b6b10e3e",
+  "parameters": 50692,
+  "native_points": 2,
+  "checks": [
+    {
+      "name": "state",
+      "entries": 136,
+      "bitwise_equal": true,
+      "maximum_error_over_original_budget": 0.0
+    },
+    {
+      "name": "gradient",
+      "entries": 50692,
+      "bitwise_equal": true,
+      "maximum_error_over_original_budget": 0.0
+    }
+  ],
+  "raw_sha256": "cb6619be3af8ef10790c6d10da42a7f812aaeda533e12e76f99dbf41196fa105",
+  "diagnostic_seconds": {
+    "recursive": 111.22100370796397,
+    "iterative": 71.66700329096057
+  },
+  "GPU_performance_claim": false,
+  "saved_array_audit": {
+    "state": "PASS",
+    "reader": "NumPy only; producer function and Torch not imported",
+    "raw_sha256": "cb6619be3af8ef10790c6d10da42a7f812aaeda533e12e76f99dbf41196fa105",
+    "checks": [
+      {
+        "name": "state",
+        "entries": 136,
+        "maximum_error_over_original_budget": 0.0
+      },
+      {
+        "name": "gradient",
+        "entries": 50692,
+        "maximum_error_over_original_budget": 0.0
+      }
+    ]
+  },
+  "CPU_unit_tests": {
+    "native_C17_and_C36_states_and_parameter_gradients": "PASS; bitwise equality to recursive reference",
+    "immediate_derivative_cache_release": "PASS; cyclic garbage collection disabled"
+  },
+  "scope": "Native-oracle cache lifetime fix; two trained-model points with all parameters, plus polynomial jet tests. Diagnostic timings establish no formal speedup."
+}

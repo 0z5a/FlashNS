@@ -1,0 +1,53 @@
+{
+  "state": "FAILED_COMPILER_STAGE",
+  "device": "NVIDIA H100",
+  "torch": "2.4.0a0+gite3b9b71",
+  "cuda": "11.8",
+  "numpy": "1.26.4",
+  "points": 4999,
+  "parameters": 50692,
+  "seeds": [
+    361901,
+    361902
+  ],
+  "failure": "No working Triton installation; no compiled evaluation or paired performance window executed",
+  "protocol_sha256": "26293f7c66f84432396b3e0052463fa8b458d1e343e5f478e124fd92180585ee",
+  "reference_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66",
+  "source_sha256": {
+    "torch_c36.py": "ae0006015076fb3c5e2021c04b495d394b882ca2870698a182bb647f0f38996b",
+    "torch_c36_packed.py": "74243076b2412c838ff1c0e6a69b80dea036571c30046ae7713520362ed22334",
+    "torch_c36_packed_vjp.py": "ab7519e2d894f6285484a0b935f36f702e44e5632b8db0b6a95344295767a0a7",
+    "box376/potential_model.py": "42ca8fe85310bfda6af1d12a7d82aa8f19e9788902e3419b210f0c2f29954045",
+    "box376/potential_objective.py": "c3565d027abbdaca57a575590cfae28fda90d7cf6230690329fbe097e2360e9f",
+    "box376/potential_ad_objective.py": "6a42f669c73a1ea49d0d30c5ee0be2617885475673a7565c664dde4a412d1ae0",
+    "box376/packed_analytic_gpu_run.py": "6ae0d6038422383808957dba3837b55f948140a87de69f555b2541b4bda5ff52"
+  },
+  "raw_sha256": "6702995e13dac66b18da99e3218e52f403902d2143be9860c3ec028e3b2a3ca4",
+  "eager_saved_array_audit": {
+    "state": "EAGER_SAVED_ARRAYS_PASS_COMPILER_STAGE_FAILED",
+    "reader": "NumPy only; fresh process without Torch",
+    "comparisons": 18,
+    "raw_arrays": 36,
+    "native_anchor_arrays_verified": 12,
+    "maximum_error_over_original_budget": 2.310778667868266e-06,
+    "CUDA_graph_qualification_run": false,
+    "paired_performance_measured": false,
+    "complete_solver_speedup": null
+  },
+  "full_archive": {
+    "state": "PASS",
+    "path": "private-evidence:complete-batch.tar.gz",
+    "sha256": "c6027e49973a270c885d1e8b89d84363ef5905af6367bdd159d910de9d0701d6",
+    "bytes": 145610454,
+    "members_verified": 101,
+    "source_bytes_removed": false,
+    "copy": "cluster GPFS only"
+  },
+  "compact_archive_sha256": "8e143dc3436050c61690a40aabb313297c90575f706f354ff5bf1a1b08bfbbe5",
+  "compact_archive_bytes": 4685060,
+  "compact_archive_verified_on_cluster_and_local": true,
+  "owned_children_joined": true,
+  "original_GPU_locks_released": true,
+  "release_view": true,
+  "release_input_sha256": "89da7ff4a39ab14cde2d73316235d989cb8df834d745fd0e790c13abb16662f7"
+}

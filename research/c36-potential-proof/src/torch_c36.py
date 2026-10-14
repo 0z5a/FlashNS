@@ -13,22 +13,28 @@ import torch_c17 as c17
 
 PAIRS = c17.PAIRS
 TRIPLES = tuple(itertools.combinations_with_replacement(range(3), 3))
+_UNPACK_INDICES = {}
 
 
 def unpack(state):
     if state.shape[-1] != 36:
         raise ValueError("A 36-channel derivative state is required")
-    hessian = state.new_empty(state.shape[:-1] + (3, 3))
-    fourth = torch.empty_like(hessian)
-    time_hessian = torch.empty_like(hessian)
-    third = state.new_empty(state.shape[:-1] + (3, 3, 3))
-    for slot, (i, j) in enumerate(PAIRS):
-        hessian[..., i, j] = hessian[..., j, i] = state[..., 4 + slot]
-        fourth[..., i, j] = fourth[..., j, i] = state[..., 20 + slot]
-        time_hessian[..., i, j] = time_hessian[..., j, i] = state[..., 30 + slot]
-    for slot, triple in enumerate(TRIPLES):
-        for indices in set(itertools.permutations(triple)):
-            third[..., indices[0], indices[1], indices[2]] = state[..., 10 + slot]
+    # Gather the symmetric channels directly. In-place scalar slices create a
+    # long CopySlices backward chain; these four gathers have the same transpose.
+    key = state.device
+    if key not in _UNPACK_INDICES:
+        pairs = [PAIRS.index((min(i, j), max(i, j))) for i in range(3) for j in range(3)]
+        triples = [TRIPLES.index(tuple(sorted((i, j, k))))
+                   for i in range(3) for j in range(3) for k in range(3)]
+        _UNPACK_INDICES[key] = tuple(torch.tensor(indices, dtype=torch.long, device=state.device)
+                                    for indices in ([4 + v for v in pairs], [10 + v for v in triples],
+                                                    [20 + v for v in pairs], [30 + v for v in pairs]))
+    hi, ti, qi, ki = _UNPACK_INDICES[key]
+    prefix = state.shape[:-1]
+    hessian = state.index_select(-1, hi).reshape(prefix + (3, 3))
+    third = state.index_select(-1, ti).reshape(prefix + (3, 3, 3))
+    fourth = state.index_select(-1, qi).reshape(prefix + (3, 3))
+    time_hessian = state.index_select(-1, ki).reshape(prefix + (3, 3))
     return (state[..., 0], state[..., 1:4], hessian, third, fourth,
             state[..., 26], state[..., 27:30], time_hessian)
 
@@ -136,23 +142,25 @@ def coordinate_state(points):
     return state
 
 
-def forward(parameters, input_state):
+def forward(parameters, input_state, *, activation=None):
+    nonlinear = activate if activation is None else activation
     state, tape = input_state, []
     for index, (weight, bias) in enumerate(parameters):
         z = torch.einsum("nwq,ow->noq", state, weight)
         z[:, :, 0] += bias
         tape.append((state, z))
-        state = activate(z) if index < len(parameters) - 1 else z
+        state = nonlinear(z) if index < len(parameters) - 1 else z
     return state, tape
 
 
-def parameter_vjp(parameters, tape, cotangent):
+def parameter_vjp(parameters, tape, cotangent, *, activation=None, activation_vjp=None):
+    nonlinear = activate if activation is None else activation
     gradients, bar = [], cotangent
     for index in range(len(parameters) - 1, -1, -1):
         state, z = tape[index]
         weight, _ = parameters[index]
         if index < len(parameters) - 1:
-            bar = state_vjp(activate, z, bar)
+            bar = state_vjp(nonlinear, z, bar) if activation_vjp is None else activation_vjp(z, bar).detach()
         gradients.append((torch.einsum("noq,nwq->ow", bar, state), bar[:, :, 0].sum(0)))
         bar = torch.einsum("noq,ow->nwq", bar, weight)
     return list(reversed(gradients))

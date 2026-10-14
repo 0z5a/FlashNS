@@ -1,0 +1,158 @@
+{
+  "state": "COMPLETE",
+  "source_commit": "7281faed9ec4d1fe1821715cd627a64578f73f07",
+  "training_engine": "explicit",
+  "training_converged": false,
+  "original_protocol_sha256": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
+  "groups": [
+    {
+      "seed": 361901,
+      "state": "COMPLETE",
+      "Adam_updates": 4000,
+      "LBFGS_calls": 20,
+      "LBFGS_closures": 444,
+      "initial_loss": 5.510437156722028,
+      "final_loss": 0.0005402070603765181,
+      "final_gradient_infinity": 0.0007507140818142268,
+      "training_converged": false,
+      "compute_graph_qualified": true
+    },
+    {
+      "seed": 361902,
+      "state": "COMPLETE",
+      "Adam_updates": 4000,
+      "LBFGS_calls": 20,
+      "LBFGS_closures": 438,
+      "initial_loss": 5.419907373709556,
+      "final_loss": 0.0005167763619718396,
+      "final_gradient_infinity": 0.0012852052008708618,
+      "training_converged": false,
+      "compute_graph_qualified": true
+    }
+  ],
+  "saved_array_audit": {
+    "status": "PASS",
+    "reader": "NumPy only; saved-array audit",
+    "comparisons": 48,
+    "independent_optimizer_trajectory_replay": false,
+    "complete_solver_speedup": null
+  },
+  "science_exit": 0,
+  "reader_exit": 0,
+  "full_archive": {
+    "archive_sha256": "b670e01029e73d531564a766ad28b0ee60185716c35bda7d87ebee4f3533c490",
+    "archive_bytes": 1542594560,
+    "source_bytes_removed": false
+  },
+  "archive_members_verified": 1074,
+  "checkpoint_archive_copies": [
+    "durable experiment storage",
+    "local workspace"
+  ],
+  "physical_acceptance_evaluated": true,
+  "complete_solver_speedup": null,
+  "scope": "Original finite-budget C36 explicit training; no convergence or complete physical acceptance achieved",
+  "holdout_values": [
+    {
+      "seed": 361901,
+      "checkpoint_sha256": "131e705b8cf6544469324e79734c87f663c04499f7435300cf32e0532092d9a7",
+      "holdout_validation_key": "1fabd5b715c388102c2006831b00db04f47476fa38aa5685d66e070caf714abc",
+      "raw_sha256": "ac143bbd9f04d9231b3197faa3efeaadbb95acb5893542bdc953e78312b59824",
+      "observer": "Native coordinate AD curl on CPU; no C36 decoder",
+      "datasets": {
+        "stratified": {
+          "points": 4096,
+          "velocity_relative_l2": 0.020528022572665096,
+          "normalized_velocity_error_rms": 0.020171839154041925,
+          "normalized_corrected_pressure_rms": 0.025935432539300595,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "uniform": {
+          "points": 4096,
+          "velocity_relative_l2": 0.04374257212236824,
+          "normalized_velocity_error_rms": 0.0030395724121031484,
+          "normalized_corrected_pressure_rms": 0.003022092027487005,
+          "normalized_pressure_gauge_rms": 0.0
+        }
+      },
+      "initial_normalized_velocity_rms": 0.0,
+      "boundary_normalized_velocity_rms": 0.0,
+      "saved_array_audit": "PASS; 10 metric checks in NumPy only",
+      "velocity_limit": 0.01,
+      "normalized_corrected_pressure_limit": 0.001,
+      "PDE_and_trajectory_acceptance": "COMPLETE; original gates FAIL; see full physical result"
+    },
+    {
+      "seed": 361902,
+      "checkpoint_sha256": "d2699806ba6e6691e43a84726a6cea0c9220a5a65f4c82044c3219362bbcbf08",
+      "holdout_validation_key": "1fabd5b715c388102c2006831b00db04f47476fa38aa5685d66e070caf714abc",
+      "raw_sha256": "0ff072c61a78ee80a6151a44c6d407ebc23963c005f8d0874fc0f82393acf3f9",
+      "observer": "Native coordinate AD curl on CPU; no C36 decoder",
+      "datasets": {
+        "stratified": {
+          "points": 4096,
+          "velocity_relative_l2": 0.018807718740725243,
+          "normalized_velocity_error_rms": 0.018481384456267912,
+          "normalized_corrected_pressure_rms": 0.022480294278054175,
+          "normalized_pressure_gauge_rms": 0.0
+        },
+        "uniform": {
+          "points": 4096,
+          "velocity_relative_l2": 0.03460539411927232,
+          "normalized_velocity_error_rms": 0.002404650576574322,
+          "normalized_corrected_pressure_rms": 0.0034071748825674755,
+          "normalized_pressure_gauge_rms": 0.0
+        }
+      },
+      "initial_normalized_velocity_rms": 0.0,
+      "boundary_normalized_velocity_rms": 0.0,
+      "saved_array_audit": "PASS; 10 metric checks in NumPy only",
+      "velocity_limit": 0.01,
+      "normalized_corrected_pressure_limit": 0.001,
+      "PDE_and_trajectory_acceptance": "COMPLETE; original gates FAIL; see full physical result"
+    }
+  ],
+  "physical_acceptance_pass": false,
+  "physical_result": "physical-finite-budget-result-20261013.json",
+  "same_budget_parameter_AD_baseline": {
+    "state": "COMPLETE",
+    "source_commit": "de1d223",
+    "training_converged": false,
+    "science_exit": 0,
+    "reader_exit": 0,
+    "full_archive_sha256": "49c0a807de3bb2a78a14f85e217a42b241af10e0d877609ffdf9efcfde1014aa",
+    "full_archive_bytes": 1550489600,
+    "archive_members_verified": 1085,
+    "saved_array_audit": {
+      "status": "PASS",
+      "reader": "NumPy only; saved-array audit",
+      "comparisons": 48,
+      "independent_optimizer_trajectory_replay": false,
+      "complete_solver_speedup": null
+    },
+    "groups": [
+      {
+        "seed": 361901,
+        "Adam_updates": 4000,
+        "LBFGS_calls": 20,
+        "LBFGS_closures": 449,
+        "final_loss": 0.0005386980063031752,
+        "final_gradient_infinity": 0.000590442860294764,
+        "training_converged": false
+      },
+      {
+        "seed": 361902,
+        "Adam_updates": 4000,
+        "LBFGS_calls": 20,
+        "LBFGS_closures": 443,
+        "final_loss": 0.0005153224253622525,
+        "final_gradient_infinity": 0.0020630573965239093,
+        "training_converged": false
+      }
+    ],
+    "physical_acceptance": "COMPLETE; both seeds fail original gates; see physical-finite-budget-result-20261013.json",
+    "complete_solver_speedup": null
+  },
+  "release_view": true,
+  "release_input_sha256": "0a7121cf1d4139e6d6d2d3ae046f20e8da6adcfea592ce835b912c1925e55234"
+}

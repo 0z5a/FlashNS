@@ -1,0 +1,24 @@
+{
+  "state": "PASS",
+  "torch": "2.4.0a0+gite3b9b71",
+  "points": 7,
+  "width": 4,
+  "channels": 36,
+  "checks": [
+    {
+      "name": "forward",
+      "maximum_error_over_original_budget": 5.429637970503748e-07
+    },
+    {
+      "name": "vjp",
+      "maximum_error_over_original_budget": 8.999791093414662e-07
+    }
+  ],
+  "raw_sha256": "e2f4d08ef51c385768f689f02e1aaaf7163d4d2175b47b67aa8b2ee84d72e37f",
+  "atol": 1e-11,
+  "rtol": 1e-09,
+  "scope": "Compiled CUDA activation/transpose fixture only; canonical qualification and paired timing are a separate ongoing experiment",
+  "triton": "3.0.0",
+  "legacy_tuple_target_adapter": true,
+  "compiler_wheel_sha256": "5ce8520437c602fb633f1324cc3871c47bee3b67acf9756c1a66309b60e3216c"
+}
