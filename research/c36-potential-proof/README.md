@@ -648,3 +648,30 @@ Files:
 - [release-source-map-20261015.json](release-source-map-20261015.json): every executed packet manifest. All published sources are byte-identical to the executed copies, except the attempt-1 trainer.
 - Complete training archive: sha256 `949dbee4…91b4077ac`, 292 members, verified on cluster scratch and persistent project storage.
 
+## Combination study (v4, pre-registered; running)
+
+[protocol-v4-combination-development-20261015.json](protocol-v4-combination-development-20261015.json) tests the combination of the C2 continuation with a long L-BFGS budget.
+
+**Design.** Both the C2 runs and the paired v2 analytic baseline runs resume from their final checkpoints. Their prior budgets were equal: 4,000 Adam updates and 800 L-BFGS calls. Each run then gets 4,000 more L-BFGS calls on the original problem, with a fresh L-BFGS history.
+- `box376.potential_train_v4` verifies each start checkpoint's file and parameter hashes and refuses a mismatch.
+- It checks the original-problem engine against the preserved native reference.
+- At the resume point it checks dense parameter AD at entry, after a parameter change, and after allocator churn.
+- A continuity check requires the start loss to equal the source run's final loss.
+- Counters restart at zero, so the all-planes observer indexes the run's own event log.
+
+**Questions.**
+- Primary: does the extra budget reach physical acceptance?
+- Secondary: does the C2 start reach it sooner? This comparison is underpowered (two seeds, and rounding-equivalent engines already differ by up to 32%), so differences below 32% are not interpreted.
+
+**Decision.** [`box376.decide_c36_v4`](src/box376/decide_c36_v4.py) implements the registered rule mechanically; [six synthetic tests](src/box376/test_decide_c36_v4.py) cover its outcomes and run in CI. It reads the observations at 800, 1,600, 2,400 and 3,200 extra calls and at the final checkpoint. The six mutually exclusive outcomes are:
+- O1: both arms pass, with sub-result C2 sooner, baseline sooner, or same/mixed;
+- O2: only C2 passes;
+- O3: only the baseline passes;
+- O4: partial;
+- O5: no run passes, errors still falling;
+- O6: no run passes, errors stopped falling (final pressure ≥ 0.95× its value at 3,200 calls on both seeds).
+
+If any arm passes on both seeds, a formal fresh-seed protocol follows.
+
+**Status.** Results are pending.
+
