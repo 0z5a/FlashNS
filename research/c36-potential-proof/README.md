@@ -648,7 +648,7 @@ Files:
 - [release-source-map-20261015.json](release-source-map-20261015.json): every executed packet manifest. All published sources are byte-identical to the executed copies, except the attempt-1 trainer.
 - Complete training archive: sha256 `949dbee4…91b4077ac`, 292 members, verified on cluster scratch and persistent project storage.
 
-## Combination study (v4, pre-registered; attempt cancelled)
+## Combination study (v4, pre-registered; attempt cancelled, superseded by v5)
 
 [protocol-v4-combination-development-20261015.json](protocol-v4-combination-development-20261015.json) tests the combination of the C2 continuation with a long L-BFGS budget.
 
@@ -690,4 +690,28 @@ All four lanes passed every qualification check:
 **What the source runs showed.** In the last 50 calls of the source runs:
 - the v2 baseline runs still fall by 3.4–3.7% per 10 calls;
 - the continuation runs have stalled at 1.1–1.4e-6, falling 0.02–0.46% per 10 calls with 24–25 evaluations per call.
+
+## Budget study (v5, pre-registered; running)
+
+[protocol-v5-budget-development-20261015.json](protocol-v5-budget-development-20261015.json) replaces the cancelled v4 design.
+
+**Design.** It is the v2 development recipe with the L-BFGS budget extended from 800 to 4,800 calls, in one continuous run per (seed, engine). That avoids any restart of the L-BFGS history.
+- Both engines (compiled analytic transpose and parameter AD over the same compiled forward) train both seeds on one four-GPU H100 node.
+- The trainer and driver are the unchanged v2 sources (`box376.potential_train_v2`, `box376.run_c36_v2`); only [`entry_c36_v5.sh`](src/box376/entry_c36_v5.sh) and the protocol are new.
+- The smoothness arm is dropped: its source runs had stalled at 1.1–1.4e-6 by call 800, while the baseline was still descending.
+
+**Primary question.** Does the extended budget reach physical acceptance?
+
+**Decision.** [`box376.decide_c36_v5`](src/box376/decide_c36_v5.py) applies the registered rule mechanically; [five synthetic tests](src/box376/test_decide_c36_v5.py) run in CI. It uses the separate all-planes observations at 1,600, 2,400, 3,200 and 4,000 total calls and at the final checkpoint, plus call 800 if its parameters differ from the v2 final. The five mutually exclusive outcomes are:
+- E1: all four runs pass;
+- E2: exactly one engine passes on both seeds;
+- E3: partial;
+- E4: no run passes, errors still falling;
+- E5: no run passes, errors stopped falling (final pressure ≥ 0.95× its value at 4,000 calls on both seeds of an engine).
+
+E1 or E2 leads to a formal fresh-seed time-to-accuracy protocol.
+
+**Reproduction diagnostic.** As a diagnostic only, never a gate, the parameters at call 800 are compared with the v2 runs.
+
+**Status.** Results are pending.
 
