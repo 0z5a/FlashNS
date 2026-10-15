@@ -648,7 +648,7 @@ Files:
 - [release-source-map-20261015.json](release-source-map-20261015.json): every executed packet manifest. All published sources are byte-identical to the executed copies, except the attempt-1 trainer.
 - Complete training archive: sha256 `949dbee4…91b4077ac`, 292 members, verified on cluster scratch and persistent project storage.
 
-## Combination study (v4, pre-registered; running)
+## Combination study (v4, pre-registered; attempt cancelled)
 
 [protocol-v4-combination-development-20261015.json](protocol-v4-combination-development-20261015.json) tests the combination of the C2 continuation with a long L-BFGS budget.
 
@@ -673,5 +673,21 @@ Files:
 
 If any arm passes on both seeds, a formal fresh-seed protocol follows.
 
-**Status.** Results are pending.
+**Status: the attempt was cancelled after 13.5 minutes, before any physical observation.** The cancellation was based on optimizer progress only. The partial outputs are archived (157 members, sha256 `6e1b6143…`).
+
+All four lanes passed every qualification check:
+- native reference ≤ 2.3e-6 of the original budget;
+- dense AD at the resume point, including after allocator churn, ≤ 6.0e-6;
+- the check at L-BFGS call 100 ≤ 6.8e-6;
+- the start loss reproduced the source final loss bit for bit or within 4.2e-11 of the budget.
+
+**Why it was cancelled: the design is flawed.** A fresh L-BFGS history started at a loss of about 1e-6 falls into an overshoot/backtrack cycle.
+- In each iteration the trial step t = 1 raises the loss (to 1.3–1.9e-6). The strong-Wolfe search then accepts a tiny step.
+- Over the first 100 calls the loss fell by only 0.2–0.7%. The source runs fell by about 32% over their last 100 calls.
+- Fresh histories started at higher loss behave normally: the C2 runs' w = 1/2 stage started at loss 1.6e-2, and the v2 runs' L-BFGS started at loss 1.1e-3.
+- The resumed study therefore measured the restart, not the extra budget, and is not continued.
+
+**What the source runs showed.** In the last 50 calls of the source runs:
+- the v2 baseline runs still fall by 3.4–3.7% per 10 calls;
+- the continuation runs have stalled at 1.1–1.4e-6, falling 0.02–0.46% per 10 calls with 24–25 evaluations per call.
 
