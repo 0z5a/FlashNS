@@ -12,7 +12,7 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - Stratified corrected pressure inside the moving box stays 1.9–3.3× above its limit.
 - **Section 6.9: temporal-smoothness continuation.** It widens the box-motion schedule (w = 1, then 3/4, then the original 1/2) under the same budget.
   - One schedule meets the training gate with 0.6–0.7× the baseline's stratified pressure error. The other reaches the loss thresholds in 8–36% fewer evaluations.
-  - Neither changes which acceptance test fails. Under the registered rule, the first schedule is harmful and the second fits no branch cleanly.
+  - Neither changes which acceptance test fails. Under the registered rule, the continuation does not help: the first schedule is harmful and the second fits no branch cleanly.
 - **Earlier text.** Section 6.7, the discussion and the conclusion were updated to match, and Figure 4 is generated from the published observation record.
 
 [Evidence index](evidence-index.json) pins the source reports and their SHA256 values. [C36 reproduction instructions](../c36-potential-proof/README.md) describe the independent readers and protocols. The complete historical H20 artifacts remain preserved separately.

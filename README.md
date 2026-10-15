@@ -90,7 +90,7 @@ The [October 14 research draft](research/manuscript/README.md) keeps the accepte
 - **Smoothness continuation.** A continuation that starts with a slower, smoother box motion (transition width w = 1, then 3/4, then the original 1/2) changes where training meets the loss gate:
   - One schedule reaches the gate with 0.6–0.7× the baseline's stratified pressure error.
   - Another reaches loss thresholds in 8–36% fewer evaluations.
-  - Neither changes which acceptance test fails. Under the registered rule, the slower schedule is harmful and the other fits no branch cleanly.
+  - Neither changes which acceptance test fails. Under the registered rule, the continuation does not help: the slower schedule is harmful and the other fits no branch cleanly.
 
 ### Naming
 

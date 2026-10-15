@@ -1181,7 +1181,7 @@ checkpoint, by at least 2.2 times on pressure.
 
 Along each development run the physical errors fall with the loss
 (Fig.~\ref{fig:c36trend}). Rank correlations between log loss and log error
-are 0.94--0.96 for stratified pressure and 0.99--1.00 for stratified
+are 0.95--0.96 for stratified pressure and 0.99--1.00 for stratified
 velocity; over the L-BFGS checkpoints the log--log slopes are 0.31--0.41 and
 0.45--0.50. In all four runs pressure rises once, from the end of Adam to
 L-BFGS call 20, while velocity falls. The only other increase is in velocity,
@@ -1229,12 +1229,12 @@ updates and 100 L-BFGS calls at $w=\tfrac34$, then 700 L-BFGS calls at
 $w=\tfrac12$. Each uses the same two initializations and is paired with the
 analytic development run of the same seed, the $w=\tfrac12$ baseline. Loss
 thresholds count only evaluations of the original problem, while evaluations
-and seconds are counted from the start. A rule registered before the run
-calls a schedule helpful if it reaches every threshold sooner and lowers the
-final physical errors, stratified pressure in particular, on both seeds. It
-is harmful if thresholds are reached later or final errors are higher on
-both seeds, and without effect if the differences stay within the
-baseline's seed-to-seed spread.
+and seconds are counted from the start. The rule registered before the run
+reads: helps, ``both schedules or one schedule reach every threshold sooner
+and the final physical errors (stratified pressure in particular) are lower
+than the baseline on both seeds''; no effect, ``differences within the
+seed-to-seed spread of the baseline''; hurts, ``thresholds reached later or
+final errors higher on both seeds''.
 
 The first attempt failed in all four lanes at its first in-training check,
 after 100 Adam updates. The graph-capture helper retains the graph and its
@@ -1289,7 +1289,7 @@ evaluation 2,001, against about 560 for the baseline.
 
 \begin{table}[htbp]\centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Physical errors of the continuation runs on the original problem, $\times10^{-3}$. ``Gate'' is the first closure that meets the training gate (loss $10^{-4}$), reached at L-BFGS calls 86--92 (baseline), 51--55 (C1) and 117--118 (C2); the comparison there is matched by loss, not by budget. S: stratified holdout; plateau: its region inside the box; endpoint: trajectory endpoint error. Limits: pressure 1, velocity 10, endpoint 1. Failed lists the failing acceptance tests at the final checkpoint: S (stratified pressure) and T (trajectory endpoint).}
+\caption{Physical errors of the continuation runs on the original problem, $\times10^{-3}$. ``Gate'' is the first closure that meets the training gate (loss $\le10^{-4}$ and $\|g\|_\infty\le10^{-3}$), reached at L-BFGS calls 86--92 (baseline), 51--55 (C1) and 117--118 (C2); the comparison there is matched by loss, not by budget. S: stratified holdout; plateau: its region inside the box; endpoint: trajectory endpoint error. Limits: pressure 1, velocity 10, endpoint 1. Failed lists the failing acceptance tests at the final checkpoint: S (stratified pressure) and T (trajectory endpoint).}
 \label{tab:c36v3physical}
 \begin{tabular}{llrrrrrrrl}\toprule
  & & \multicolumn{3}{c}{Gate} & \multicolumn{4}{c}{Final} & \\\cmidrule(lr){3-5}\cmidrule(lr){6-9}
@@ -1328,11 +1328,15 @@ features, so most of the width dependence lies outside the learned function.
 C2's 100 L-BFGS calls at $w=\tfrac34$ lower that stage's loss to
 1.4--$1.7\times10^{-5}$ but leave the transferred velocity error at 0.049.
 
-Against the registered rule, C2 is harmful by its threshold clause on both
-seeds. C1 is not helpful: its final stratified pressure is higher on seed
-361902, and not all its threshold times in seconds are shorter. Nor is it
-harmful: all its evaluation counts are lower, and its final errors are not
-higher on both seeds. The no-effect band is degenerate, because both baseline
+Against the registered rule, the continuation does not help: neither
+schedule reaches every threshold sooner while lowering the final errors on
+both seeds. Read per schedule, C2 meets the hurts clause through its
+thresholds, which come later at all five on both seeds in seconds and at
+nine of ten in evaluations. C1 meets neither clause. It is not helpful,
+because its final stratified pressure is higher on seed 361902 and not all
+its threshold times in seconds are shorter. Nor is it harmful, because all
+its evaluation counts are lower and its final errors are not higher on both
+seeds. The no-effect band is degenerate, because both baseline
 seeds end at the same stratified pressure to three digits, while two
 numerically equivalent engines differ by up to 32\%. The rule also did not
 state whether thresholds count evaluations or seconds. As for the development
@@ -1870,9 +1874,10 @@ observations with complete archives of 191, 581, 371, and 131 plus 161
 members. All archives, including the failed first continuation attempt, are
 verified on cluster scratch and on persistent project storage; all owned GPU
 locks were released. The
-observation record \texttt{c36-observations-20261015.json} and
-Fig.~\ref{fig:c36trend} are generated from the cluster outputs by two
-published standard-library scripts. The baseline loss curves come from the
+observation record \texttt{c36-observations-20261015.json} is generated from
+the cluster outputs by a published standard-library script; two further
+published scripts compute Fig.~\ref{fig:c36trend} and the rank correlations
+of Section~\ref{sec:c36trend} from that record. The baseline loss curves come from the
 continuation reader's per-run function applied unchanged to the development
 runs. The executed continuation reader labels its output with the
 development reader's state name; that inherited label is kept. A NumPy check

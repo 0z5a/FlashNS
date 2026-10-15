@@ -2,7 +2,7 @@
  "revision": "2026-10-15",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "07882ea112371992477f51fddfe5be630dd7df433ba9065a84783d1875b52c8a",
+ "manuscript_sha256": "51e852943b8ad63116395e2dc0683c9618dcd7d18223dc2c546ab03ebcd9000f",
  "previous_manuscript_sha256": "fa350a3428c89e5ae05a767b93677a626452a396350cc6248e5b88dba3b9252d",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
@@ -33,9 +33,11 @@
   "../c36-potential-proof/c36-v3-smoothness-batches-20261015.json": "211e9d33f7a4a9b0b8c93324e4155ab31714bf53f2ed1203e1caa596e75c8f8a",
   "../c36-potential-proof/c36-v3-baseline-curves-20261015.json": "9f623c6fad1038bd264c8d478f037e441bc36fb1104c95fb58b50c6e5600513f",
   "../c36-potential-proof/c36-schedule-field-distance-20261015.json": "64fc4c54b1530269eab5ea4317123ba04ea9b75c1d8a7c784fc35a461d114c2c",
-  "../c36-potential-proof/release-source-map-20261015.json": "2b6ec0c06842f3282be527fec306aeaf60f6abdacda7c612131c12db9ce33171",
+  "../c36-potential-proof/release-source-map-20261015.json": "11018f6a43212d4e3c798440cd433e65a93e323c604902fd3430a3a5f0ce6e7f",
   "../c36-potential-proof/tools/c36_publish_observations.py": "68a48ff8d78fbd6fc9e6b83a226e546014d7afbec8788346c6f13522bb55726c",
-  "../c36-potential-proof/tools/c36_trend_figure.py": "1377bdfc228675127c9b13f7aa2c96809cb33380ad51b6d0d5dfdc2c9dcee88b"
+  "../c36-potential-proof/tools/c36_trend_figure.py": "1377bdfc228675127c9b13f7aa2c96809cb33380ad51b6d0d5dfdc2c9dcee88b",
+  "../c36-potential-proof/c36-trend-correlations-20261015.json": "8cd58fb57bc87d5e6fc0c569c9b5fe6e264e3a1d964d0173adcfaa9f4e5f1372",
+  "../c36-potential-proof/tools/c36_rank_correlations.py": "f9a0690da687b3734d3fdc18c67c32e092e651dd5d76f3ea63d9df00ed6f89ae"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -49,7 +51,7 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "3a7808932902a068980d0efe6a0d014e61248fc09fe43acdef3ece2bc5d72209",
+ "pdf_sha256": "b32cb5f53d568d13178fbff3fa786ca5d7105df9b2488e56a73ea5260f417fdc",
  "previous_pdf_sha256": "76a1762bb609f5c3ee2b0f99cfed314275951fa092bcfc1411195b44b1ebef2d",
  "pages": 31,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
@@ -88,7 +90,7 @@
  "revision_note_20261014_c36v2": "Adds Section 6.7 (C36 development run with 800 L-BFGS calls, both engines, branch (b) of its registered rule) and pins its protocol, result and reader JSON; abstract, discussion and conclusion updated.",
  "C36_all_planes_observations": "72 observations of 72 distinct parameter vectors; 0 pass physical acceptance; 171/360 acceptance tests and 288/504 diagnostic time-slice planes pass; independent reader 72/72 PASS (8,424 checks)",
  "C36_v3_smoothness_training_gate": "4/4",
- "C36_v3_smoothness_registered_rule": "C2 harmful (threshold clause, both seeds); C1 no branch applies cleanly; no schedule changes which acceptance test fails",
+ "C36_v3_smoothness_registered_rule": "continuation does not help (no schedule meets the helps clause); C2 meets the hurts clause through its thresholds on both seeds; C1 meets no clause cleanly; no schedule changes which acceptance test fails",
  "C36_v3_smoothness_archive_sha256": "949dbee4b9f61465be1f44f892c4b0b040c2fb507da71e84b3adb7d91b4077ac",
  "C36_observation_archive_sha256": {
   "batch 1": "96e2e9037682075f94a3da55017f38fb4596eaa387f27bef08f91b0139235074",

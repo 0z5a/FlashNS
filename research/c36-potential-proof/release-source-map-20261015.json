@@ -1,35 +1,43 @@
 {
  "scope": "Sources of the 2026-10-14/15 C36 development, smoothness-continuation and all-planes observation batches. Each executed packet carried a manifest of file hashes; every public file below is byte-identical to its executed copy except the attempt-1 trainer, which is preserved only in the failed attempt archive.",
  "executed_packets": {
-  "C36 v2 development training batch": {
+  "c36-v2-development": {
+   "label": "C36 v2 development training batch",
    "manifest_sha256": "324eb885360c4023b1c6f89c74f810e402c70f222215050ebc0038959605996c",
    "source_files": 62
   },
-  "C36 v3 smoothness training, attempt 1, failed": {
+  "c36-v3-attempt1": {
+   "label": "C36 v3 smoothness training, attempt 1, failed",
    "manifest_sha256": "cc2578844e56343f2de9a1beb2bee3e28a351d04c4c18cbcfbb06a3f18ab8606",
    "source_files": 71
   },
-  "C36 v3 smoothness training, attempt 2": {
+  "c36-v3-attempt2": {
+   "label": "C36 v3 smoothness training, attempt 2",
    "manifest_sha256": "ad9d5fbd3d6baba6cc83eb6a3c6270f585d8ebf07217008e8a9fcb3a231d59a2",
    "source_files": 71
   },
-  "all-planes observation batch 1": {
+  "observe-1": {
+   "label": "all-planes observation batch 1",
    "manifest_sha256": "5074c0a91d8f59254524d617109993938dae7c0f4af0cb3cfc960c7c56e36ca2",
    "source_files": 65
   },
-  "all-planes observation batch 2": {
+  "observe-2": {
+   "label": "all-planes observation batch 2",
    "manifest_sha256": "18c5d1a104819ecd6ec35e9366debcd514805e7b8994f1ec81483c921472b955",
    "source_files": 65
   },
-  "all-planes observation batch 3, v3 checkpoints": {
+  "observe-3": {
+   "label": "all-planes observation batch 3, v3 checkpoints",
    "manifest_sha256": "a5057373cefb9e237dab43b7ed60308b99167901cd4b92cd72123d3471d2ff2d",
    "source_files": 65
   },
-  "all-planes observation batch 4, development checkpoints (first driver)": {
+  "observe-4-v2": {
+   "label": "all-planes observation batch 4, development checkpoints (first driver)",
    "manifest_sha256": "f28c5e71448a743215ba1fdea2734b6faa1f04450535b1ed766c087c05bce3f1",
    "source_files": 65
   },
-  "all-planes observation batch 4, extra v3 checkpoints (second driver)": {
+  "observe-4-v3": {
+   "label": "all-planes observation batch 4, extra v3 checkpoints (second driver)",
    "manifest_sha256": "61945da882b86301ab529f1b9f9490b9def6e82424345c2ef8a1f65acb98dccd",
    "source_files": 65
   }

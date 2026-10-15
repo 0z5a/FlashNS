@@ -1,0 +1,46 @@
+{
+ "source": "c36-observations-20261015.json",
+ "definition": "Rank correlation between log loss and log stratified error along each C36 run.",
+ "runs": {
+  "seed361901-C1": {
+   "checkpoints": 6,
+   "normalized_corrected_pressure_rms": 1.0,
+   "velocity_relative_l2": 1.0
+  },
+  "seed361901-C2": {
+   "checkpoints": 4,
+   "normalized_corrected_pressure_rms": 0.8,
+   "velocity_relative_l2": 1.0
+  },
+  "seed361901-analytic": {
+   "checkpoints": 11,
+   "normalized_corrected_pressure_rms": 0.9454545454545454,
+   "velocity_relative_l2": 1.0
+  },
+  "seed361901-parameter_ad": {
+   "checkpoints": 11,
+   "normalized_corrected_pressure_rms": 0.9454545454545454,
+   "velocity_relative_l2": 1.0
+  },
+  "seed361902-C1": {
+   "checkpoints": 6,
+   "normalized_corrected_pressure_rms": 1.0,
+   "velocity_relative_l2": 1.0
+  },
+  "seed361902-C2": {
+   "checkpoints": 4,
+   "normalized_corrected_pressure_rms": 1.0,
+   "velocity_relative_l2": 1.0
+  },
+  "seed361902-analytic": {
+   "checkpoints": 11,
+   "normalized_corrected_pressure_rms": 0.9636363636363636,
+   "velocity_relative_l2": 0.990909090909091
+  },
+  "seed361902-parameter_ad": {
+   "checkpoints": 11,
+   "normalized_corrected_pressure_rms": 0.9636363636363636,
+   "velocity_relative_l2": 1.0
+  }
+ }
+}

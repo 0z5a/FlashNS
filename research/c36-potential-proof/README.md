@@ -565,7 +565,7 @@ Four more run-once observation batches (one four-GPU H100 node each) observe eve
   - The stratified holdout fails at every checkpoint. At the finals, only its corrected pressure fails, at 1.9–3.3× the limit.
 - **Diagnostic time slices.** The four slices at rest (t = 0, 1/4, 3/4, 1) always pass. The three inside the motion window always fail, by at least 2.2× on pressure.
 - **Trend.** Along every v2 run the physical errors fall with the loss.
-  - Rank correlation between log loss and log error is 0.94–0.96 for stratified pressure and 0.99–1.00 for velocity.
+  - Rank correlation between log loss and log error is 0.95–0.96 for stratified pressure ([c36-trend-correlations-20261015.json](c36-trend-correlations-20261015.json), from [tools/c36_rank_correlations.py](tools/c36_rank_correlations.py)) and 0.99–1.00 for velocity.
   - The L-BFGS-phase log–log slopes are 0.31–0.41 for pressure and 0.45–0.50 for velocity.
   - From call 400 to call 800, pressure still falls by 0.53–0.83× and velocity by 0.48–0.61×.
   - So the errors have not stopped falling; they fall more slowly than the loss. Extrapolating the pressure slopes would put the gate at a loss 6–47× below the final values; that extrapolation is untested.
@@ -611,7 +611,7 @@ Evaluations to the first original-problem loss at or below each threshold (secon
 - **C1** reaches every registered threshold in 8–36% fewer evaluations on both seeds. It is not always faster in seconds: its two stage rebuilds (about 65 s each) precede every threshold.
 - **C2** is later at every threshold in seconds on both seeds, and later in nine of ten seed–threshold pairs in evaluations.
 
-**Physics (stratified holdout, ×1e-3).**
+**Physics on the original problem (stratified holdout and trajectory endpoint, ×1e-3).**
 
 | Seed | Schedule | Pressure at gate | Velocity at gate | Endpoint at gate | Final pressure | Final plateau pressure | Final endpoint |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -622,13 +622,19 @@ Evaluations to the first original-problem loss at or below each threshold (secon
 | 361902 | C1 | 11.1 | 8.09 | 10.8 | 2.77 | 4.35 | 1.12 |
 | 361902 | C2 | 6.48 | 5.97 | 4.07 | 2.74 | 4.39 | 0.89 |
 
-- **At the training gate** (matched by loss; reached at L-BFGS calls 86–92, 51–55 and 117–118), C2 is clearly closer to the physical solution: 0.61–0.69× the baseline's pressure and 0.40–0.45× its endpoint error.
+- **At the training gate** (loss ≤ 1e-4 and ‖g‖∞ ≤ 1e-3, matched by loss; reached at L-BFGS calls 86–92, 51–55 and 117–118), C2 is clearly closer to the physical solution: 0.61–0.69× the baseline's pressure and 0.40–0.45× its endpoint error.
 - **At the final checkpoints** both schedules are lower than the baseline on seed 361901 and higher on seed 361902. These are 10–22% changes, comparable to the 16–32% difference between the two engines.
 - **Every final checkpoint fails stratified pressure.** Only the trajectory endpoint test differs between the schedules.
 - **Transfer.** The w = 3/4 parameters, observed on the original problem, have stratified velocity error 0.049–0.059. The exact w = 3/4 and w = 1/2 fields differ by 0.81 in that norm ([c36-schedule-field-distance-20261015.json](c36-schedule-field-distance-20261015.json), from `box376.schedule_field_distance`). The gate carries the schedule speed and the potential is learned in moving-box features, so most of the width dependence lies outside the learned function.
 
-**Registered rule.**
-- **C2 is harmful**, by the threshold clause on both seeds.
+**Registered rule.** The protocol's clauses, quoted:
+- helps: "both schedules or one schedule reach every threshold sooner and the final physical errors (stratified pressure in particular) are lower than the baseline on both seeds";
+- no effect: "differences within the seed-to-seed spread of the baseline";
+- hurts: "thresholds reached later or final errors higher on both seeds".
+
+**Reading.**
+- **The continuation does not help:** neither schedule meets the helps clause.
+- **C2 meets the hurts clause through its thresholds:** later at all five in seconds on both seeds, and at nine of ten in evaluations.
 - **C1 fits no branch cleanly.**
   - It is not helpful: its final pressure is higher on seed 361902, and it is not faster in seconds at every threshold.
   - It is not harmful: its evaluation counts are all lower.
