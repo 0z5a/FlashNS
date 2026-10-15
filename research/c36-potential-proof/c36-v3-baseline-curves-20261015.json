@@ -1,0 +1,139 @@
+{
+ "definition": "box376.read_c36_v3.read_seed loss curve (original-problem events only; evaluations and seconds from the start) applied unchanged to the v2 analytic baseline runs",
+ "baseline": {
+  "361901": {
+   "seed": 361901,
+   "engine": "analytic",
+   "training_seconds": 3718.9497123470064,
+   "Adam_updates": 4000,
+   "LBFGS_calls": 800,
+   "LBFGS_closures": 18085,
+   "gradient_checks": {
+    "saved_comparisons": 84,
+    "check_points": 28,
+    "maximum_error_over_original_budget": 9.266501195510147e-06
+   },
+   "events_sealed": true,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 92,
+    "closure": 2038,
+    "loss": 9.991364528658995e-05,
+    "gradient_infinity": 0.0003972452209165221,
+    "training_seconds": 1014.079515425954
+   },
+   "loss_curve": {
+    "evaluations": 22085,
+    "first_original_problem_evaluation": 1,
+    "initial": 5.510437156722028,
+    "after_Adam": 0.0011217050303855035,
+    "minimum": 1.8375584223818301e-06,
+    "final_reported": 1.8375584223818301e-06,
+    "final_gradient_infinity": 2.9079011590260256e-05,
+    "first_evaluation_at_or_below": {
+     "0.01": {
+      "evaluation": 552,
+      "training_seconds": 96.28867595689371
+     },
+     "0.001": {
+      "evaluation": 4042,
+      "training_seconds": 677.0372978379019
+     },
+     "0.0003": {
+      "evaluation": 5144,
+      "training_seconds": 863.8201440379489
+     },
+     "0.0001": {
+      "evaluation": 6039,
+      "training_seconds": 1014.079515425954
+     },
+     "3e-05": {
+      "evaluation": 8077,
+      "training_seconds": 1359.1749666389078
+     },
+     "1e-05": {
+      "evaluation": 12129,
+      "training_seconds": 2045.3939803940011
+     }
+    },
+    "mean_seconds_per_evaluation": 0.16831352093579294,
+    "per_LBFGS_call_end": {
+     "1": 0.0010739466748610049,
+     "20": 0.0005453223117549991,
+     "50": 0.0003089400735385365,
+     "100": 8.26520082596083e-05,
+     "200": 2.6261674644586068e-05,
+     "400": 8.421204995487846e-06,
+     "800": 1.8375584223818301e-06
+    }
+   }
+  },
+  "361902": {
+   "seed": 361902,
+   "engine": "analytic",
+   "training_seconds": 3650.412388049066,
+   "Adam_updates": 4000,
+   "LBFGS_calls": 800,
+   "LBFGS_closures": 17918,
+   "gradient_checks": {
+    "saved_comparisons": 84,
+    "check_points": 28,
+    "maximum_error_over_original_budget": 1.1573979881270457e-05
+   },
+   "events_sealed": true,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 86,
+    "closure": 1890,
+    "loss": 9.997105058299071e-05,
+    "gradient_infinity": 0.0005647791249764362,
+    "training_seconds": 975.4607267720858
+   },
+   "loss_curve": {
+    "evaluations": 21918,
+    "first_original_problem_evaluation": 1,
+    "initial": 5.419907373709556,
+    "after_Adam": 0.0010896046410125242,
+    "minimum": 1.3460146575228013e-06,
+    "final_reported": 1.3460146575228013e-06,
+    "final_gradient_infinity": 1.8534086756870475e-05,
+    "first_evaluation_at_or_below": {
+     "0.01": {
+      "evaluation": 564,
+      "training_seconds": 96.8132288340712
+     },
+     "0.001": {
+      "evaluation": 4030,
+      "training_seconds": 665.5840051369742
+     },
+     "0.0003": {
+      "evaluation": 5048,
+      "training_seconds": 834.1690837830538
+     },
+     "0.0001": {
+      "evaluation": 5891,
+      "training_seconds": 975.4607267720858
+     },
+     "3e-05": {
+      "evaluation": 7600,
+      "training_seconds": 1261.5579537280137
+     },
+     "1e-05": {
+      "evaluation": 10955,
+      "training_seconds": 1821.3743630730314
+     }
+    },
+    "mean_seconds_per_evaluation": 0.1664705341966423,
+    "per_LBFGS_call_end": {
+     "1": 0.0010290151127745387,
+     "20": 0.0005187031249450792,
+     "50": 0.0002810410323320225,
+     "100": 6.771463856546339e-05,
+     "200": 2.3574042793765237e-05,
+     "400": 6.404724625338204e-06,
+     "800": 1.3460146575228013e-06
+    }
+   }
+  }
+ }
+}

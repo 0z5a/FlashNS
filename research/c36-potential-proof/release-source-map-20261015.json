@@ -1,0 +1,189 @@
+{
+ "scope": "Sources of the 2026-10-14/15 C36 development, smoothness-continuation and all-planes observation batches. Each executed packet carried a manifest of file hashes; every public file below is byte-identical to its executed copy except the attempt-1 trainer, which is preserved only in the failed attempt archive.",
+ "executed_packets": {
+  "C36 v2 development training batch": {
+   "manifest_sha256": "324eb885360c4023b1c6f89c74f810e402c70f222215050ebc0038959605996c",
+   "source_files": 62
+  },
+  "C36 v3 smoothness training, attempt 1, failed": {
+   "manifest_sha256": "cc2578844e56343f2de9a1beb2bee3e28a351d04c4c18cbcfbb06a3f18ab8606",
+   "source_files": 71
+  },
+  "C36 v3 smoothness training, attempt 2": {
+   "manifest_sha256": "ad9d5fbd3d6baba6cc83eb6a3c6270f585d8ebf07217008e8a9fcb3a231d59a2",
+   "source_files": 71
+  },
+  "all-planes observation batch 1": {
+   "manifest_sha256": "5074c0a91d8f59254524d617109993938dae7c0f4af0cb3cfc960c7c56e36ca2",
+   "source_files": 65
+  },
+  "all-planes observation batch 2": {
+   "manifest_sha256": "18c5d1a104819ecd6ec35e9366debcd514805e7b8994f1ec81483c921472b955",
+   "source_files": 65
+  },
+  "all-planes observation batch 3, v3 checkpoints": {
+   "manifest_sha256": "a5057373cefb9e237dab43b7ed60308b99167901cd4b92cd72123d3471d2ff2d",
+   "source_files": 65
+  },
+  "all-planes observation batch 4, development checkpoints (first driver)": {
+   "manifest_sha256": "f28c5e71448a743215ba1fdea2734b6faa1f04450535b1ed766c087c05bce3f1",
+   "source_files": 65
+  },
+  "all-planes observation batch 4, extra v3 checkpoints (second driver)": {
+   "manifest_sha256": "61945da882b86301ab529f1b9f9490b9def6e82424345c2ef8a1f65acb98dccd",
+   "source_files": 65
+  }
+ },
+ "files": {
+  "research/c36-potential-proof/src/box376/entry_c36_observe.sh": {
+   "public_source_sha256": "57225d23c61ebd12d0b13b2d37f024cbcaf15d6a5d15d1ccdb4a1a3be1644334",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt1",
+    "c36-v3-attempt2",
+    "observe-1",
+    "observe-2",
+    "observe-3",
+    "observe-4-v2",
+    "observe-4-v3"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/entry_c36_v2.sh": {
+   "public_source_sha256": "21acfb519f2cf29d87581cc63cd7dc3a2a276f35ffa31d82448eef85791fcb76",
+   "executed_byte_identical_in": [
+    "c36-v2-development",
+    "c36-v3-attempt1",
+    "c36-v3-attempt2",
+    "observe-1",
+    "observe-2",
+    "observe-3",
+    "observe-4-v2",
+    "observe-4-v3"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/entry_c36_v3.sh": {
+   "public_source_sha256": "4db4b8240dafefb1d5e21edca1df438c1c9079c2e2a0fa697dbc3b617488a168",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt1",
+    "c36-v3-attempt2"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/observer_calibration.py": {
+   "public_source_sha256": "f2f6ba5498c784f305002d5f66c12403fec3e3b446529d49acf08d06185d0045",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt1",
+    "c36-v3-attempt2",
+    "observe-1",
+    "observe-2",
+    "observe-3",
+    "observe-4-v2",
+    "observe-4-v3"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/potential_train_v2.py": {
+   "public_source_sha256": "a508e7dc1bf1bd5f939f73c3535aff2cc459680c09797d119e87f7cf8ff19cae",
+   "executed_byte_identical_in": [
+    "c36-v2-development",
+    "c36-v3-attempt1",
+    "c36-v3-attempt2",
+    "observe-1",
+    "observe-2",
+    "observe-3",
+    "observe-4-v2",
+    "observe-4-v3"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/potential_train_v3.py": {
+   "public_source_sha256": "27a2065008db0b530186eaa818e81b2f21e4bc1c05616d1e3086c9ca4d155a0b",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt2"
+   ],
+   "executed_other_versions": {
+    "c36-v3-attempt1": {
+     "sha256": "30afdfc0bcd171f84bc97e62f5fc32d4fb1444c6557882bef5663143314a13c7",
+     "note": "attempt-1 trainer before the engine-lifetime repair (e9789fb)"
+    }
+   }
+  },
+  "research/c36-potential-proof/src/box376/read_c36_v2.py": {
+   "public_source_sha256": "6052890343841f5b54160352d73ec0061d6b6b758d4eb0c3eb600d80c8bf4abf",
+   "executed_byte_identical_in": [
+    "c36-v2-development",
+    "c36-v3-attempt1",
+    "c36-v3-attempt2",
+    "observe-1",
+    "observe-2",
+    "observe-3",
+    "observe-4-v2",
+    "observe-4-v3"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/read_c36_v3.py": {
+   "public_source_sha256": "4b5edf90f4f28d5e80e4d12709d9da3efb535a8e2968c37836da01d90dd87afa",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt1",
+    "c36-v3-attempt2"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/run_c36_observe.py": {
+   "public_source_sha256": "225a82d49e4fbf9f0b90c8b2e12b850da706f8b6e3eeea33cbd9ec5db771abef",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt1",
+    "c36-v3-attempt2",
+    "observe-1",
+    "observe-2",
+    "observe-3",
+    "observe-4-v2",
+    "observe-4-v3"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/run_c36_v2.py": {
+   "public_source_sha256": "a43984ec155a53a64fbbf035b9dbeb85739db8488b2f4eb0dac4b697f43c302a",
+   "executed_byte_identical_in": [
+    "c36-v2-development",
+    "c36-v3-attempt1",
+    "c36-v3-attempt2",
+    "observe-1",
+    "observe-2",
+    "observe-3",
+    "observe-4-v2",
+    "observe-4-v3"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/run_c36_v3.py": {
+   "public_source_sha256": "23d3f2b9c3788cda907478c65d8e435d6b8eeeab40f0f5da74580a2a12a7dd17",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt1",
+    "c36-v3-attempt2"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/schedule_family.py": {
+   "public_source_sha256": "569c0373f3bbe17101aef7fe2ea42a6b05acc1e14a5894a8f5d881f1355cce02",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt1",
+    "c36-v3-attempt2"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/test_schedule_family.py": {
+   "public_source_sha256": "bfe8bf9e37cc365860833f06ffeca53308d8ad682de706812e76c68728795c51",
+   "executed_byte_identical_in": [
+    "c36-v3-attempt1",
+    "c36-v3-attempt2"
+   ]
+  }
+ },
+ "other_packet_sources": "All other source files listed in these packet manifests are byte-identical to this repository (checked file by file).",
+ "generated_results": {
+  "research/c36-potential-proof/c36-observations-20261015.json": {
+   "generated_sha256": "7113871cfb326c245971526061346a0a244b98e1baa295d687ea02425b62a299",
+   "public_sha256": "b3dedbdc9ef50053715a05832130a41039e29f5b3147a5a32765d7fffda82e77",
+   "generator": "research/c36-potential-proof/tools/c36_publish_observations.py",
+   "change": "removed the scheduler job identifier of each batch; no measured value, check or outcome changed"
+  },
+  "research/c36-potential-proof/c36-v3-smoothness-result-20261015.json": {
+   "change": "byte-identical to the executed reader output"
+  },
+  "research/c36-potential-proof/c36-v3-baseline-curves-20261015.json": {
+   "change": "byte-identical to the cluster output (renamed)"
+  }
+ }
+}

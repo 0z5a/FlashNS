@@ -82,7 +82,15 @@ The [October 14 research draft](research/manuscript/README.md) keeps the accepte
 
 **Accepted 3D solves ([research/ethier-3d](research/ethier-3d/README.md)).** On the transient Ethier–Steinman benchmark (FP64, H100), the 17-channel C17 contract passes all eight gates in 18 of 18 solves, together with the internal baselines. Paired setup-plus-optimization speedups are **3.602×** over the A24 full spatial-jet reference (range 3.353–4.284) and **6.957×** over a naive 35-monomial ablation (range 6.750–7.436), six seed pairs each. Both baselines are internal, and the network is small (4,740 parameters).
 
-**C36 development run ([details](research/c36-potential-proof/README.md#development-run-with-a-larger-l-bfgs-budget-v2)).** The C36 problem has the same data, model and gates as before; only the L-BFGS budget grows 40×. All four runs (two engines × two seeds) pass the training gate. In the two fully observed final checkpoints (analytic engine), every physical gate passes except stratified corrected pressure (about 2.5× over its limit) and, for one seed, the trajectory endpoint (7% over). Under its pre-registered rule the outcome is mechanically branch (b), but the rule's trend condition could not be evaluated. The analytic engine reaches each loss threshold 1.30–1.33× sooner than parameter AD. These are development seeds, so no formal time-to-accuracy claim is made.
+**C36 development run ([details](research/c36-potential-proof/README.md#development-run-with-a-larger-l-bfgs-budget-v2)).** The C36 problem has the same data, model and gates as before; only the L-BFGS budget grows 40×. All four runs (two engines × two seeds) pass the training gate. In the two fully observed final checkpoints (analytic engine), every physical gate passes except stratified corrected pressure (about 2.5× over its limit) and, for one seed, the trajectory endpoint (7% over). Under its pre-registered rule the outcome is mechanically branch (b). The analytic engine reaches each loss threshold 1.30–1.33× sooner than parameter AD. These are development seeds, so no formal time-to-accuracy claim is made.
+
+**C36 checkpoints on every data plane, and a smoothness continuation ([details](research/c36-potential-proof/README.md#all-plane-observations-along-the-training-trajectory)).**
+- **Observations.** 72 observations cover every saved development checkpoint and 26 continuation checkpoints. Each is checked on all data planes and re-read by the independent reader (8,424 checks, all pass). No checkpoint passes physical acceptance.
+- **Errors still falling.** The physical errors fall with the loss and are still falling at the end of the budget. The remaining failure, stratified pressure inside the moving box, falls more slowly than the loss. So branch (b)'s "errors stop falling" does not hold either.
+- **Smoothness continuation.** A continuation that starts with a slower, smoother box motion (transition width w = 1, then 3/4, then the original 1/2) changes where training meets the loss gate:
+  - One schedule reaches the gate with 0.6–0.7× the baseline's stratified pressure error.
+  - Another reaches loss thresholds in 8–36% fewer evaluations.
+  - Neither changes which acceptance test fails. Under the registered rule, the slower schedule is harmful and the other fits no branch cleanly.
 
 ### Naming
 

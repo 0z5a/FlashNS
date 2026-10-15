@@ -527,7 +527,7 @@ Each seed trains with both engines on one four-GPU H100 node, one lane per GPU: 
 | parameter_ad | 361902 | 85 | 1,276 | 2.34e-6 | partial: stratified pressure 0.0033 fails, uniform passes |
 
 - **Training gate.** All four runs pass it after about 1,860–2,040 L-BFGS evaluations. On these seeds, the analytic engine reaches every loss threshold from 1e-2 to 1e-5 1.30–1.33× sooner than parameter AD.
-- **Physical observation.** One complete observation takes about 99 minutes, so only the final checkpoints were observed. The batch's own time guard stopped the parameter-AD observations after both holdouts, so that the reader and archive could finish within the allocation. The physical metrics are the observer's own NumPy consumer output and have not been re-read by an independent reader.
+- **Physical observation.** One complete observation takes about 99 minutes, so this batch observed only the final checkpoints. The batch's own time guard stopped the parameter-AD observations after both holdouts, so that the reader and archive could finish within the allocation. [The later observation batches](#all-plane-observations-along-the-training-trajectory) reproduce both analytic rows exactly, complete both partial rows and re-read every observation with the independent reader.
 - **Comparison with v1.**
   - Stratified velocity error falls from 0.018–0.021 to 0.0011–0.0015.
   - Uniform velocity error falls from 0.034–0.044 to 0.0020–0.0025.
@@ -535,10 +535,110 @@ Each seed trains with both engines on one four-GPU H100 node, one lane per GPU: 
   - The uniform field gate passes in every run, but only 63 of its 4,096 points lie inside the box support.
   - The initial and boundary values pass in both complete observations.
 - **Remaining failure.** Stratified corrected pressure fails in every run. It is largest in the plateau region inside the box, not in the cutoff layers.
-- **Outcome.** The registered conditions are (a) "Loss stays above 1e-4", (b) "Loss passes 1e-4 but physical errors stop falling" and (c) "Physical gates pass". The reader's mechanical classification is (b). The trend condition of (b) could not be evaluated, however: only final checkpoints were observed, and every reported physical error fell 7–31× per seed relative to v1. Budget alone reaches the training gate, but within 800 calls it does not reach the stratified pressure gate.
+- **Outcome.** The registered conditions are (a) "Loss stays above 1e-4", (b) "Loss passes 1e-4 but physical errors stop falling" and (c) "Physical gates pass". The reader's mechanical classification is (b). This batch could not evaluate the trend condition of (b), because it observed only final checkpoints; every reported physical error fell 7–31× per seed relative to v1. The [later observations of every checkpoint](#all-plane-observations-along-the-training-trajectory) show the errors still falling at the end of the budget, so (b) does not apply either, and no registered branch applies cleanly. Budget alone reaches the training gate, but within 800 calls it does not reach the stratified pressure gate.
 - **Timing caveat.** Both arms' training times include the same scheduled dense-AD checks and checkpoint writes, which bias the 1.30–1.33× toward one.
 
 Files:
 - [c36-v2-development-result-20261014.json](c36-v2-development-result-20261014.json): public summary.
 - [c36-v2-development-reader-20261014.json](c36-v2-development-reader-20261014.json): independent reader output.
 - Complete archive: 295 members, sha256 `266aa8d2…b3b45c6e8`. It has verified copies on cluster scratch and persistent project storage.
+
+## All-plane observations along the training trajectory
+
+Four more run-once observation batches (one four-GPU H100 node each) observe every saved checkpoint of the v2 runs and 26 checkpoints of the v3 continuation runs below.
+- **Coverage.** The v2 runs saved 52 checkpoints, from the untrained parameters through Adam updates 1,000–4,000 and L-BFGS calls 20–800; they hold 46 distinct parameter vectors. In total there are 72 observations of 72 distinct parameter vectors.
+- **Planes.** Each observation uses the unchanged observer (`box376.potential_physical`) on every data plane: the stratified and uniform holdouts, seven time slices, the initial and boundary sets, and both trajectory refinements.
+- **What is gated.** Physical acceptance gates the two holdouts, the initial and boundary values, and the finer trajectory refinement. The time slices are diagnostic planes with the same field limits.
+- **Independent reader.** `box376.audit_potential_run` re-reads every observation: 117 saved-array checks each, 8,424 in total, all PASS.
+- **Reproduction.** Re-observing the two analytic v2 finals reproduces every metric of their earlier observation exactly.
+
+**Observer chunk.** `box376.observer_calibration` measures chunks on 512 points, and `box376.run_c36_observe` picks one by a rule fixed before the measurement: the fastest chunk whose states agree with chunk 128 to 1e-10 of their maximum magnitude, within a peak-memory limit.
+- Chunk 512 is 3.9× faster than chunk 128. It agrees to at most 1.8e-11 absolute (7.9e-12 relative) and peaks at 56.6 GB. Chunks 1,024 and 2,048 run out of device memory.
+- The first batch's 50 GB limit, set before this measurement, kept chunk 128 (about 100 minutes per observation). Its deadline guard stopped it after 8 of 46 planned observations.
+- Later batches use a corrected 60 GB limit and chunk 512 (median 31 minutes). Chunk equivalence rests on the calibration points; no full checkpoint was observed at both chunks.
+
+**Results.**
+- **Acceptance.** No observation passes physical acceptance; 171 of 360 acceptance tests pass.
+  - Initial and boundary values vanish identically, because the gate vanishes there.
+  - The uniform holdout passes from L-BFGS call 200 on (loss ≤ 2.8e-5).
+  - The trajectory endpoint passes only at three final checkpoints.
+  - The stratified holdout fails at every checkpoint. At the finals, only its corrected pressure fails, at 1.9–3.3× the limit.
+- **Diagnostic time slices.** The four slices at rest (t = 0, 1/4, 3/4, 1) always pass. The three inside the motion window always fail, by at least 2.2× on pressure.
+- **Trend.** Along every v2 run the physical errors fall with the loss.
+  - Rank correlation between log loss and log error is 0.94–0.96 for stratified pressure and 0.99–1.00 for velocity.
+  - The L-BFGS-phase log–log slopes are 0.31–0.41 for pressure and 0.45–0.50 for velocity.
+  - From call 400 to call 800, pressure still falls by 0.53–0.83× and velocity by 0.48–0.61×.
+  - So the errors have not stopped falling; they fall more slowly than the loss. Extrapolating the pressure slopes would put the gate at a loss 6–47× below the final values; that extrapolation is untested.
+- **Trajectory sensitivity.** The two engines differ only by rounding, yet they end at stratified pressures of 2.49e-3 and 2.08e-3 (seed 361901) and 2.49e-3 and 3.28e-3 (seed 361902).
+
+Files:
+- [c36-observations-20261015.json](c36-observations-20261015.json): every observation with all planes, acceptance tests, reader result and trend statistics. It was generated on the cluster by [tools/c36_publish_observations.py](tools/c36_publish_observations.py); [tools/c36_trend_figure.py](tools/c36_trend_figure.py) draws the paper's Figure 4 from it.
+- Batches: four observation batches (the last runs two frozen drivers in sequence). The complete archives have 191, 581, 371, 131 and 161 members. They are verified on cluster scratch and on persistent project storage, and every owned GPU lock was released.
+
+## Temporal-smoothness continuation (v3)
+
+[protocol-v3-smoothness-development-20261015.json](protocol-v3-smoothness-development-20261015.json) keeps the v2 budget (4,000 Adam updates, 800 L-BFGS calls) but starts on a smoother problem.
+
+**Smoothness family.** `box376.schedule_family` replaces the motion schedule s(t) = σ(2t − 1/2) by s_w(t) = σ(t/w − 1/(2w) + 1/2). The box then moves for t in (1/2 − w/2, 1/2 + w/2), with the same displacement and dilation.
+- The k-th time derivatives scale as w⁻ᵏ, and w = 1/2 is the original problem bit for bit.
+- The model gate contains the schedule speed, so the geometry features, the gate and the forcing all change with w. The value targets stay zero, which is checked.
+- [`box376.test_schedule_family`](src/box376/test_schedule_family.py) has six CPU tests. They include agreement of both engines with native coordinate AD at w = 3/4; they run in CI.
+
+**Schedules.** Each schedule is paired with the v2 analytic run of the same seed, the w = 1/2 baseline.
+- **C1:** 1,000 Adam updates at w = 1, then 1,000 at w = 3/4, then 2,000 Adam updates and 800 L-BFGS calls at w = 1/2.
+- **C2:** 2,000 Adam updates at w = 1, then 2,000 Adam updates and 100 L-BFGS calls at w = 3/4, then 700 L-BFGS calls at w = 1/2.
+
+**Stage checks.** `box376.potential_train_v3` builds a fresh compiled engine and CUDA Graph for every stage. Each stage is checked against dense parameter AD at the entry parameters, after a parameter change, and again after garbage collection and allocator churn.
+
+**Attempt 1 failed in all four lanes** at the Adam-100 dense-AD check.
+- The graph-capture helper keeps the graph and its outputs but not the engine that owns the prepared data. The trainer held that engine only in a stage-local variable, so replays read released memory.
+- The repair keeps the engine with its replay, adds the post-churn check and a non-negative-loss guard, and gives the CPU self-test a weak-reference replay. A negative control without retention fails the self-test.
+- Attempt 2 changes only the trainer. Both attempts are archived: [c36-v3-smoothness-batches-20261015.json](c36-v3-smoothness-batches-20261015.json).
+
+**Training (attempt 2).** All four runs complete, pass all 32 complete-gradient checks per run (maximum 1.2e-5 of the original budget) and reach the training gate.
+
+Evaluations to the first original-problem loss at or below each threshold (seconds in parentheses):
+
+| Seed | Schedule | 1e-3 | 3e-4 | 1e-4 | 3e-5 | 1e-5 | Final loss |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 361901 | baseline | 4,042 (677) | 5,144 (864) | 6,039 (1,014) | 8,077 (1,359) | 12,129 (2,045) | 1.84e-6 |
+| 361901 | C1 | 2,577 (564) | 4,538 (889) | 5,128 (989) | 6,704 (1,254) | 9,975 (1,826) | 1.11e-6 |
+| 361901 | C2 | 6,239 (1,190) | 6,311 (1,202) | 6,571 (1,246) | 8,010 (1,488) | 12,192 (2,195) | 1.25e-6 |
+| 361902 | baseline | 4,030 (666) | 5,048 (834) | 5,891 (975) | 7,600 (1,262) | 10,955 (1,821) | 1.35e-6 |
+| 361902 | C1 | 2,764 (593) | 4,576 (896) | 5,200 (1,003) | 7,012 (1,309) | 9,903 (1,800) | 1.41e-6 |
+| 361902 | C2 | 6,237 (1,186) | 6,306 (1,197) | 6,585 (1,244) | 8,262 (1,529) | 11,622 (2,118) | 1.32e-6 |
+
+- **C1** reaches every registered threshold in 8–36% fewer evaluations on both seeds. It is not always faster in seconds: its two stage rebuilds (about 65 s each) precede every threshold.
+- **C2** is later at every threshold in seconds on both seeds, and later in nine of ten seed–threshold pairs in evaluations.
+
+**Physics (stratified holdout, ×1e-3).**
+
+| Seed | Schedule | Pressure at gate | Velocity at gate | Endpoint at gate | Final pressure | Final plateau pressure | Final endpoint |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 361901 | baseline | 9.73 | 9.02 | 11.1 | 2.49 | 4.65 | 1.07 |
+| 361901 | C1 | 13.1 | 8.27 | 8.29 | 2.09 | 3.11 | 1.12 |
+| 361901 | C2 | 5.95 | 6.00 | 5.01 | 1.93 | 3.14 | 1.01 |
+| 361902 | baseline | 9.41 | 7.69 | 10.2 | 2.49 | 4.17 | 0.97 |
+| 361902 | C1 | 11.1 | 8.09 | 10.8 | 2.77 | 4.35 | 1.12 |
+| 361902 | C2 | 6.48 | 5.97 | 4.07 | 2.74 | 4.39 | 0.89 |
+
+- **At the training gate** (matched by loss; reached at L-BFGS calls 86–92, 51–55 and 117–118), C2 is clearly closer to the physical solution: 0.61–0.69× the baseline's pressure and 0.40–0.45× its endpoint error.
+- **At the final checkpoints** both schedules are lower than the baseline on seed 361901 and higher on seed 361902. These are 10–22% changes, comparable to the 16–32% difference between the two engines.
+- **Every final checkpoint fails stratified pressure.** Only the trajectory endpoint test differs between the schedules.
+- **Transfer.** The w = 3/4 parameters, observed on the original problem, have stratified velocity error 0.049–0.059. The exact w = 3/4 and w = 1/2 fields differ by 0.81 in that norm ([c36-schedule-field-distance-20261015.json](c36-schedule-field-distance-20261015.json), from `box376.schedule_field_distance`). The gate carries the schedule speed and the potential is learned in moving-box features, so most of the width dependence lies outside the learned function.
+
+**Registered rule.**
+- **C2 is harmful**, by the threshold clause on both seeds.
+- **C1 fits no branch cleanly.**
+  - It is not helpful: its final pressure is higher on seed 361902, and it is not faster in seconds at every threshold.
+  - It is not harmful: its evaluation counts are all lower.
+  - The no-effect band is degenerate, because both baseline seeds end at the same pressure to three digits.
+  - The rule also did not say whether thresholds count evaluations or seconds.
+- **Bottom line.** Within this budget a smoother early problem moves the trajectory, but neither schedule changes which acceptance test fails.
+
+Files:
+- [c36-v3-smoothness-result-20261015.json](c36-v3-smoothness-result-20261015.json): reader output. Its state label is inherited from the v2 reader and is kept unchanged.
+- [c36-v3-baseline-curves-20261015.json](c36-v3-baseline-curves-20261015.json): the v3 reader's per-run function applied unchanged to the v2 analytic runs.
+- [release-source-map-20261015.json](release-source-map-20261015.json): every executed packet manifest. All published sources are byte-identical to the executed copies, except the attempt-1 trainer.
+- Complete training archive: sha256 `949dbee4…91b4077ac`, 292 members, verified on cluster scratch and persistent project storage.
+

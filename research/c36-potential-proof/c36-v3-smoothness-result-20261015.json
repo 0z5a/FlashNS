@@ -1,0 +1,673 @@
+{
+  "state": "C36_V2_DEVELOPMENT_READ",
+  "protocol_version": "C36-potential-20261015-v3-smoothness-development",
+  "protocol_sha256": "ce2af6f91c7237161783a3133d1a07e5ea3fc012aabc4969e1753f685d2dff5b",
+  "runs": [
+    {
+      "seed": 361901,
+      "schedule": "C1",
+      "engine": "analytic",
+      "stage_records": [
+        {
+          "width": 1.0,
+          "interior_force_sha256": "f96b34174d428816afad666228e645d9af0f4709859ce2cc2cb142d60bc84f2b",
+          "interior_force_gradient_sha256": "e0a706b7477ca44ecd44d372ca0f022196f40dff89a86710e2d2512612bf2aa8",
+          "stage": 0,
+          "entered_Adam_updates": 0,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.293929088045843,
+          "setup_seconds": 64.26256941701286
+        },
+        {
+          "width": 0.75,
+          "interior_force_sha256": "befaa37b61f0dde72705fa99cf9078ccf0a45c4212ae807780a8ea2ec2b01db2",
+          "interior_force_gradient_sha256": "82ffd636a8cbdc954999ee0cc9a093d800b2d2bd2f71969393387b51d8a436a0",
+          "stage": 1,
+          "entered_Adam_updates": 1000,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.3079311409965158,
+          "setup_seconds": 65.49395197990816
+        },
+        {
+          "width": 0.5,
+          "stage": 2,
+          "entered_Adam_updates": 2000,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.2913081699516624,
+          "setup_seconds": 64.89257434406318
+        }
+      ],
+      "training_state": "COMPLETE",
+      "training_seconds": 3908.070629945956,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18387,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 96,
+        "check_points": 32,
+        "maximum_error_over_original_budget": 1.0140845679856422e-05
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0015893819509074092
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 169.3144126009429
+        },
+        {
+          "tag": "stage0-end",
+          "training_seconds": 169.31654967996292
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 402.61206613096874
+        },
+        {
+          "tag": "stage1-end",
+          "training_seconds": 402.6157549730269
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 633.4986284049228
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 799.2572392509319
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 873.5464466939447
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 985.12846897298
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 989.4071098349523
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1171.3605219030287
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1547.410900812014
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2323.2522114739986
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3906.342557378928
+        },
+        {
+          "tag": "final",
+          "training_seconds": 3908.2119644089835
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 51,
+        "closure": 1127,
+        "loss": 9.992064969145483e-05,
+        "gradient_infinity": 0.0006170384591885803,
+        "training_seconds": 989.4055945710279,
+        "width": 0.5
+      },
+      "loss_curve": {
+        "evaluations": 22387,
+        "first_original_problem_evaluation": 2001,
+        "initial": 1.4219295219528543,
+        "after_Adam": 0.0006934314964672483,
+        "minimum": 1.1050905486768092e-06,
+        "final_reported": 1.1050905486768092e-06,
+        "final_gradient_infinity": 4.2315800103889e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 2013,
+            "training_seconds": 471.6289703230141
+          },
+          "0.001": {
+            "evaluation": 2577,
+            "training_seconds": 564.1363497819984
+          },
+          "0.0003": {
+            "evaluation": 4538,
+            "training_seconds": 889.0795377659379
+          },
+          "0.0001": {
+            "evaluation": 5128,
+            "training_seconds": 989.4055945710279
+          },
+          "3e-05": {
+            "evaluation": 6704,
+            "training_seconds": 1253.9843977199635
+          },
+          "1e-05": {
+            "evaluation": 9975,
+            "training_seconds": 1826.0640062349848
+          }
+        },
+        "mean_seconds_per_evaluation": 0.17449138894657382,
+        "per_LBFGS_call_end": {
+          "1": 0.0006513681200234977,
+          "20": 0.00034974017414677943,
+          "50": 0.00010227389088694145,
+          "100": 3.821493642091996e-05,
+          "200": 1.5521134252566688e-05,
+          "400": 4.226889823685168e-06,
+          "800": 1.1050905486768092e-06
+        }
+      },
+      "physical": {}
+    },
+    {
+      "seed": 361901,
+      "schedule": "C2",
+      "engine": "analytic",
+      "stage_records": [
+        {
+          "width": 1.0,
+          "interior_force_sha256": "f96b34174d428816afad666228e645d9af0f4709859ce2cc2cb142d60bc84f2b",
+          "interior_force_gradient_sha256": "e0a706b7477ca44ecd44d372ca0f022196f40dff89a86710e2d2512612bf2aa8",
+          "stage": 0,
+          "entered_Adam_updates": 0,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.3289883859688416,
+          "setup_seconds": 70.12800852104556
+        },
+        {
+          "width": 0.75,
+          "interior_force_sha256": "befaa37b61f0dde72705fa99cf9078ccf0a45c4212ae807780a8ea2ec2b01db2",
+          "interior_force_gradient_sha256": "82ffd636a8cbdc954999ee0cc9a093d800b2d2bd2f71969393387b51d8a436a0",
+          "stage": 1,
+          "entered_Adam_updates": 2000,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.3731066629989073,
+          "setup_seconds": 70.54191119899042
+        },
+        {
+          "width": 0.5,
+          "stage": 2,
+          "entered_Adam_updates": 4000,
+          "entered_LBFGS_calls": 100,
+          "graph_capture_seconds": 3.463169480091892,
+          "setup_seconds": 70.44709871697705
+        }
+      ],
+      "training_state": "COMPLETE",
+      "training_seconds": 3850.0057123269653,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 17992,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 96,
+        "check_points": 32,
+        "maximum_error_over_original_budget": 8.861985532382296e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0022557900520041585
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 169.79159584001172
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 335.8615839270642
+        },
+        {
+          "tag": "stage0-end",
+          "training_seconds": 335.8664543660125
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 572.8594787670299
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 739.0038507459685
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 811.9613451180048
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 921.8301270160591
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1109.218820043956
+        },
+        {
+          "tag": "stage1-end",
+          "training_seconds": 1111.0993548750412
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1245.8020117330598
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1557.3117865760578
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2304.4697057480225
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3848.127952557057
+        },
+        {
+          "tag": "final",
+          "training_seconds": 3850.171584369964
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 117,
+        "closure": 2570,
+        "loss": 9.982032660226038e-05,
+        "gradient_infinity": 0.0005138933544882366,
+        "training_seconds": 1245.7998951809714,
+        "width": 0.5
+      },
+      "loss_curve": {
+        "evaluations": 21992,
+        "first_original_problem_evaluation": 6201,
+        "initial": 1.4219295219528543,
+        "after_Adam": 0.00031289842324963015,
+        "minimum": 1.248560364079235e-06,
+        "final_reported": 1.248560364079235e-06,
+        "final_gradient_infinity": 5.435128166943009e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 6208,
+            "training_seconds": 1185.0302583000157
+          },
+          "0.001": {
+            "evaluation": 6239,
+            "training_seconds": 1190.2048412900185
+          },
+          "0.0003": {
+            "evaluation": 6311,
+            "training_seconds": 1202.2620611710008
+          },
+          "0.0001": {
+            "evaluation": 6571,
+            "training_seconds": 1245.7998951809714
+          },
+          "3e-05": {
+            "evaluation": 8010,
+            "training_seconds": 1488.246331233997
+          },
+          "1e-05": {
+            "evaluation": 12192,
+            "training_seconds": 2195.280891972012
+          }
+        },
+        "mean_seconds_per_evaluation": 0.17497835666846834,
+        "per_LBFGS_call_end": {
+          "1": 0.00028430940549438807,
+          "20": 9.597622037400487e-05,
+          "50": 3.0388648862926067e-05,
+          "100": 1.3929371862615455e-05,
+          "200": 2.593859210997339e-05,
+          "400": 8.266653196186529e-06,
+          "800": 1.248560364079235e-06
+        }
+      },
+      "physical": {}
+    },
+    {
+      "seed": 361902,
+      "schedule": "C1",
+      "engine": "analytic",
+      "stage_records": [
+        {
+          "width": 1.0,
+          "interior_force_sha256": "f96b34174d428816afad666228e645d9af0f4709859ce2cc2cb142d60bc84f2b",
+          "interior_force_gradient_sha256": "e0a706b7477ca44ecd44d372ca0f022196f40dff89a86710e2d2512612bf2aa8",
+          "stage": 0,
+          "entered_Adam_updates": 0,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.2404702900676057,
+          "setup_seconds": 62.71265229594428
+        },
+        {
+          "width": 0.75,
+          "interior_force_sha256": "befaa37b61f0dde72705fa99cf9078ccf0a45c4212ae807780a8ea2ec2b01db2",
+          "interior_force_gradient_sha256": "82ffd636a8cbdc954999ee0cc9a093d800b2d2bd2f71969393387b51d8a436a0",
+          "stage": 1,
+          "entered_Adam_updates": 1000,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.3151802680222318,
+          "setup_seconds": 62.87509112304542
+        },
+        {
+          "width": 0.5,
+          "stage": 2,
+          "entered_Adam_updates": 2000,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.292742855963297,
+          "setup_seconds": 62.87314796692226
+        }
+      ],
+      "training_state": "COMPLETE",
+      "training_seconds": 3917.159394719056,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18440,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 96,
+        "check_points": 32,
+        "maximum_error_over_original_budget": 1.2132829012959156e-05
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0017999970586970448
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 170.34931542398408
+        },
+        {
+          "tag": "stage0-end",
+          "training_seconds": 170.35148303199094
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 402.1868225389626
+        },
+        {
+          "tag": "stage1-end",
+          "training_seconds": 402.19013377302326
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 632.3256104380125
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 799.3136507640593
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 873.4620992169948
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 985.4799208730692
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1003.0040142850485
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1173.6956264240434
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1549.1102799010696
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2304.598601956037
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3915.4758041360183
+        },
+        {
+          "tag": "final",
+          "training_seconds": 3917.301784503972
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 55,
+        "closure": 1200,
+        "loss": 9.974022314519639e-05,
+        "gradient_infinity": 0.0005757016036472794,
+        "training_seconds": 1003.0024326860439,
+        "width": 0.5
+      },
+      "loss_curve": {
+        "evaluations": 22440,
+        "first_original_problem_evaluation": 2001,
+        "initial": 1.3928299381315465,
+        "after_Adam": 0.0007433450407336709,
+        "minimum": 1.4072012057209717e-06,
+        "final_reported": 1.4072012057209717e-06,
+        "final_gradient_infinity": 8.715306254006679e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 2014,
+            "training_seconds": 469.38197198696434
+          },
+          "0.001": {
+            "evaluation": 2764,
+            "training_seconds": 593.3223818070255
+          },
+          "0.0003": {
+            "evaluation": 4576,
+            "training_seconds": 896.1701191400643
+          },
+          "0.0001": {
+            "evaluation": 5200,
+            "training_seconds": 1002.8339601190528
+          },
+          "3e-05": {
+            "evaluation": 7012,
+            "training_seconds": 1309.3794214329682
+          },
+          "1e-05": {
+            "evaluation": 9903,
+            "training_seconds": 1800.104783568997
+          }
+        },
+        "mean_seconds_per_evaluation": 0.17448627285949003,
+        "per_LBFGS_call_end": {
+          "1": 0.0007037959326014071,
+          "20": 0.0003647235535720567,
+          "50": 0.00011607210977983658,
+          "100": 4.550051954960647e-05,
+          "200": 1.7145519190884407e-05,
+          "400": 4.0355713190456735e-06,
+          "800": 1.4072012057209717e-06
+        }
+      },
+      "physical": {}
+    },
+    {
+      "seed": 361902,
+      "schedule": "C2",
+      "engine": "analytic",
+      "stage_records": [
+        {
+          "width": 1.0,
+          "interior_force_sha256": "f96b34174d428816afad666228e645d9af0f4709859ce2cc2cb142d60bc84f2b",
+          "interior_force_gradient_sha256": "e0a706b7477ca44ecd44d372ca0f022196f40dff89a86710e2d2512612bf2aa8",
+          "stage": 0,
+          "entered_Adam_updates": 0,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.322759283008054,
+          "setup_seconds": 64.32892730506137
+        },
+        {
+          "width": 0.75,
+          "interior_force_sha256": "befaa37b61f0dde72705fa99cf9078ccf0a45c4212ae807780a8ea2ec2b01db2",
+          "interior_force_gradient_sha256": "82ffd636a8cbdc954999ee0cc9a093d800b2d2bd2f71969393387b51d8a436a0",
+          "stage": 1,
+          "entered_Adam_updates": 2000,
+          "entered_LBFGS_calls": 0,
+          "graph_capture_seconds": 3.144723193021491,
+          "setup_seconds": 65.05953891400713
+        },
+        {
+          "width": 0.5,
+          "stage": 2,
+          "entered_Adam_updates": 4000,
+          "entered_LBFGS_calls": 100,
+          "graph_capture_seconds": 3.2745942280162126,
+          "setup_seconds": 65.24859099893365
+        }
+      ],
+      "training_state": "COMPLETE",
+      "training_seconds": 3889.6170654700836,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18059,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 96,
+        "check_points": 32,
+        "maximum_error_over_original_budget": 7.151282620444307e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0017994201043620706
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 170.78574835206382
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 337.97971091605723
+        },
+        {
+          "tag": "stage0-end",
+          "training_seconds": 337.98189229599666
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 570.6009582340484
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 737.8832272080472
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 812.1950933290645
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 924.2980183809996
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1110.5144712310284
+        },
+        {
+          "tag": "stage1-end",
+          "training_seconds": 1112.2827622190816
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1244.4723135910463
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1553.4803106370382
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2331.7485945620574
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3887.857281037024
+        },
+        {
+          "tag": "final",
+          "training_seconds": 3889.7838828160893
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 118,
+        "closure": 2584,
+        "loss": 9.999917825145578e-05,
+        "gradient_infinity": 0.0009032200260842967,
+        "training_seconds": 1244.4699963240419,
+        "width": 0.5
+      },
+      "loss_curve": {
+        "evaluations": 22059,
+        "first_original_problem_evaluation": 6201,
+        "initial": 1.3928299381315465,
+        "after_Adam": 0.0003345918715992279,
+        "minimum": 1.3228680143025967e-06,
+        "final_reported": 1.3228680143025967e-06,
+        "final_gradient_infinity": 9.374544653436694e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 6208,
+            "training_seconds": 1180.922431874089
+          },
+          "0.001": {
+            "evaluation": 6237,
+            "training_seconds": 1185.7980574420653
+          },
+          "0.0003": {
+            "evaluation": 6306,
+            "training_seconds": 1197.4293063910445
+          },
+          "0.0001": {
+            "evaluation": 6585,
+            "training_seconds": 1244.4699963240419
+          },
+          "3e-05": {
+            "evaluation": 8262,
+            "training_seconds": 1528.557789981016
+          },
+          "1e-05": {
+            "evaluation": 11622,
+            "training_seconds": 2117.771094149095
+          }
+        },
+        "mean_seconds_per_evaluation": 0.1762479377996285,
+        "per_LBFGS_call_end": {
+          "1": 0.0003034163795056605,
+          "20": 0.00012124226050959526,
+          "50": 3.7284676088323046e-05,
+          "100": 1.6557744956311544e-05,
+          "200": 2.8342457116234453e-05,
+          "400": 7.313700504321305e-06,
+          "800": 1.3228680143025967e-06
+        }
+      },
+      "physical": {}
+    }
+  ],
+  "any_training_gate": true,
+  "all_training_gate": true,
+  "any_physical_acceptance": false,
+  "decision_rule_branch_mechanical": "b",
+  "decision_note": "Mechanical branch from the pre-registered rule; branch b additionally requires reading the physical-error trend across checkpoints.",
+  "formal_claim": false
+}

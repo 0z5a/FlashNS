@@ -1,0 +1,39 @@
+{
+ "scope": "Execution record of the C36 v3 temporal-smoothness development training (protocol-v3-smoothness-development-20261015.json). Both attempts ran once on one four-GPU H100 node; archives are verified on cluster scratch and persistent project storage.",
+ "protocol_sha256": "ce2af6f91c7237161783a3133d1a07e5ea3fc012aabc4969e1753f685d2dff5b",
+ "attempts": [
+  {
+   "attempt": 1,
+   "time_limit": "02:30:00",
+   "scheduler_state": "COMPLETED",
+   "elapsed": "00:04:14",
+   "packet_manifest_sha256": "cc2578844e56343f2de9a1beb2bee3e28a351d04c4c18cbcfbb06a3f18ab8606",
+   "outcome": "FAILED in all four lanes at the first in-training dense-AD check (Adam update 100)",
+   "failure": "AssertionError: ('Adam100', 'loss', 900516431.9985167) -- graph replays after stage entry read released engine buffers; losses negative from update 2",
+   "cause": "capture() keeps the CUDA graph and its outputs but not the engine owning the prepared data; the trainer held the engine only in a stage-local variable",
+   "archive": {
+    "sha256": "d068e4673535b75162f214428330ecec06bcaa328c8580685e008c898ea90f52"
+   }
+  },
+  {
+   "attempt": 2,
+   "time_limit": "02:30:00",
+   "scheduler_state": "COMPLETED",
+   "elapsed": "01:09:21",
+   "packet_manifest_sha256": "ad9d5fbd3d6baba6cc83eb6a3c6270f585d8ebf07217008e8a9fcb3a231d59a2",
+   "change_from_attempt_1": "potential_train_v3.py only: keep the engine with its replay; re-check each stage after garbage collection and allocator churn; reject negative losses; weak-reference replay in the CPU self-test (a negative control without retention fails at stage0-retained)",
+   "outcome": "COMPLETE in all four lanes; reader exit 0",
+   "archive": {
+    "sha256": "949dbee4b9f61465be1f44f892c4b0b040c2fb507da71e84b3adb7d91b4077ac",
+    "bytes": 177141541,
+    "members": 292,
+    "members_match_sources": true,
+    "whole_file_sha_reread": true
+   }
+  }
+ ],
+ "reader_result": "c36-v3-smoothness-result-20261015.json",
+ "reader_state_label_note": "The executed reader labels its output state 'C36_V2_DEVELOPMENT_READ', inherited from the v2 reader; the executed source is published unchanged.",
+ "baseline_curves": "c36-v3-baseline-curves-20261015.json",
+ "observations": "c36-observations-20261015.json (batches observe-3 and observe-4-smoothness)"
+}
