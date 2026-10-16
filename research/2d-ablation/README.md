@@ -61,4 +61,13 @@ All numbers are H100 numbers; none is compared with or pooled with the H20 campa
 
 ## Status
 
-Pre-registered; the GPU batch is pending.
+Pre-registered.
+
+**Attempt 1 failed at start-up in all 244 tasks** (1:57 of allocation, GPU locks released, archive kept).
+- `bench_gpu` records `git rev-parse HEAD` of the source tree, and the tree had been copied without its git metadata.
+- No timing ran, so no measurement exists from this attempt.
+
+**Attempt 2 is pending.** It changes only the setup and the driver; the protocol and plan are unchanged.
+- The source tree is now a clone of the pinned commit, byte-identical to attempt 1.
+- The driver requires the pinned commit at admission.
+- A fail-fast guard stops starting tasks if the first eight finished tasks all failed.

@@ -1,9 +1,10 @@
 """Cluster-side driver of the 2D representation/execution ablation, run once in its own allocation.
 
 Admission (job/node, source and tool manifests, plan hash, GPU lock inodes, idle GPUs, formal
-initialization hashes), then four lanes pull fresh-process tasks (ablation_bench.py) from one
-pre-randomized queue with a deadline guard, then lock release, the reader (read_ablation.py)
-and a verified archive. Each task's lane, timing, exit code and log are recorded. No retries.
+initialization hashes, a git checkout of the pinned commit), then four lanes pull fresh-process
+tasks (ablation_bench.py) from one pre-randomized queue with a deadline guard and a fail-fast
+guard, then lock release, the reader (read_ablation.py) and a verified archive. Each task's
+lane, timing, exit code and log are recorded. No retries.
 """
 import argparse
 import fcntl
@@ -68,7 +69,11 @@ def main():
     bad = [n for n, v in manifest['files'].items() if sha256(root / n) != v['sha256']]
     state['checks']['manifest'] = {'verified': len(manifest['files']), 'mismatches': bad}
     state['checks']['plan_protocol'] = plan['protocol_sha256'] == sha256(ablation / plan['protocol'])
-    if not state['checks']['job_and_node'] or bad or not state['checks']['plan_protocol']:
+    # bench_gpu records `git rev-parse HEAD` of the source tree; it must be the pinned commit.
+    head = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=source, capture_output=True, text=True)
+    state['checks']['source_commit'] = head.stdout.strip()
+    pinned = head.returncode == 0 and head.stdout.strip() == protocol['source']['commit']
+    if not state['checks']['job_and_node'] or bad or not state['checks']['plan_protocol'] or not pinned:
         return finish('ADMISSION_REFUSED', 2)
     env_base = dict(os.environ, PYTHONDONTWRITEBYTECODE='1', OMP_NUM_THREADS='4',
                     PYTHONPATH=os.pathsep.join([str(source / 'src'), os.environ.get('PYTHONPATH', '')]),
@@ -121,6 +126,10 @@ def main():
     for t in plan['tasks']:
         work.put(t)
     durations = {}
+    # Fail fast: if the first FAIL_FAST finished tasks all failed, stop starting new ones (a systematic
+    # start-up error would otherwise run through the whole plan); skipped tasks are recorded.
+    FAIL_FAST = 8
+    outcomes = []
     defaults = protocol['default_task_estimate_seconds']
     bench = source / 'experiments' / 'contracted_jets'
 
@@ -141,6 +150,12 @@ def main():
             except queue.Empty:
                 return
             record = state['tasks'][t['id']] = {'lane': index, 'tier': t['tier']}
+            with lock:
+                stop = len(outcomes) >= FAIL_FAST and not any(outcomes)
+            if stop:
+                record['state'] = 'NOT_RUN_FAIL_FAST'
+                save()
+                continue
             if time.time() + estimate(t) > args.deadline_unix:
                 record['state'] = 'NOT_RUN_DEADLINE'
                 save()
@@ -172,6 +187,8 @@ def main():
                           state='COMPLETE' if code == 0 else 'FAILED')
             key = (t['kind'], t['cell'], t['interior'], tuple(t['hidden']))
             durations.setdefault(key, []).append(record['seconds'])
+            with lock:
+                outcomes.append(code == 0)
             save()
 
     state['state'] = 'RUNNING'
