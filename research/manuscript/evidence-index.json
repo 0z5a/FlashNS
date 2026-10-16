@@ -2,7 +2,7 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "43fbe772f2ef9c17803b1adac136f5d65c5947927da518b5fd640828552efa1b",
+ "manuscript_sha256": "8b9abdf6aa18a993341caff605facd1d4a1d0e87429ec641054880881d07ba85",
  "previous_manuscript_sha256": "c359b0b2da4f88c56c920d3d268d981b3862d3326e8139a05f68d49f7052d3c1",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
@@ -80,7 +80,7 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "e246cbdc71d5103b8dcb9eb58eea886e7df7ec09ddd11bb1bdd0b6b5a26ae64e",
+ "pdf_sha256": "9c249f450eceb430553b14675dc37f3aef8c0e14edac6bfd7a919f3b997d8418",
  "previous_pdf_sha256": "05703513f38e63a0932c6674305185359ce1df42d2589618b6ac438076b25215",
  "pages": 37,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
@@ -168,7 +168,7 @@
   "pre_registration_commit": "c9b2c20",
   "folded_ratio": "1.400047 (95% interval 1.399911-1.400178); registered classification: analytic advantage under folding",
   "unfolded_repeat_ratio": "1.325303 (1.324919-1.325678), against 1.323962 on 2026-10-13",
-  "folding_factor": "analytic 1.676, parameter AD 1.587 (descriptive; row-count bound 1.704)",
+  "folding_factor": "analytic 1.676, parameter AD 1.587 (descriptive; cost proportional to rows would give 1.704, 1.74 by 128-row chunks)",
   "checks": "78 comparisons per run, largest error 3.0e-6 of the budget; NumPy and folding readers PASS",
   "archive_sha256": "90ab9782a1454fe5a119514c4fde0f797cda35f354003d32c8ac387b352ab5be"
  },

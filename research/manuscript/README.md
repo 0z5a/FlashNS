@@ -30,7 +30,7 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - Both runs pass all 78 numerical comparisons.
   - With folding, the analytic transpose is **1.400×** faster than parameter AD (interval 1.3999–1.4002); the registered classification is an analytic advantage.
   - An unfolded repeat gives 1.325× (1.324× before).
-  - Folding itself shortens an evaluation by 1.68× (analytic) and 1.59× (parameter AD), against a row-count bound of 1.70.
+  - Folding itself shortens an evaluation by 1.68× (analytic) and 1.59× (parameter AD), against 1.70 for cost proportional to rows.
   - Table 11 gains two rows, and the abstract, the limitation and the conclusion are updated; the limitation no longer says the folding is qualified on CPU only.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
