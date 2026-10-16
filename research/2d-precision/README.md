@@ -62,7 +62,7 @@ The batch ran once on one four-GPU H100 node.
 | | TF32 | 0.117 / 0.640 / 2.282 | 1.5–2.2e-4 | **0/6 / 0/6** | – |
 
 Registered decisions:
-- **Training sufficiency.** FP32 is sufficient in both cells at both sizes: all 24 solves pass the FP64 acceptance. TF32 is insufficient: 0 of 24 pass.
+- **Training sufficiency.** At these 1–2% gates, FP32 is sufficient in both cells at both sizes: all 24 solves pass the FP64 acceptance. Every solve stops at the gates, so tighter accuracy was not tested. TF32 is insufficient: 0 of 24 pass.
 - **Solve speed.** FP32 gives no gain at 2,048 points, where the fixed L-BFGS cost dominates. At 65,536 points it is faster: 1.53× for A and 1.36× for C, with all six pairs favourable.
 - **C/A within a precision.** No gain at 2,048 points. At 65,536 points C is faster in both FP64 (1.88×) and FP32 (1.67×), so native GL8 keeps its advantage in FP32.
 - **Replay speed.** Every reduced-precision effect excludes [0.97, 1.03].

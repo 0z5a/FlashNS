@@ -2,7 +2,7 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "3a57f3ca7a4d17171782d9c8a0c4d7fdea66beb9e21c59840ffce5359d84e4b2",
+ "manuscript_sha256": "f37175efa0fbda16ce96fdf831452a7c029ed47ffd8bedabb9f6c170aa972435",
  "previous_manuscript_sha256": "8b9abdf6aa18a993341caff605facd1d4a1d0e87429ec641054880881d07ba85",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
@@ -94,7 +94,7 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "1a65efca362271a78f2abb5653d758d0d2a81c696ca17ee4a16c7a0cde3d4ca3",
+ "pdf_sha256": "debd6d6e629881c85cce58e32f24019271d80872824d462dcad711e36bf6c752",
  "previous_pdf_sha256": "9c249f450eceb430553b14675dc37f3aef8c0e14edac6bfd7a919f3b997d8418",
  "pages": 39,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
@@ -197,7 +197,8 @@
   },
   "c_over_a_fp32_65536_optimization_only": 1.67,
   "gradient_error": "FP32 1.4-2.7e-7, TF32 1.5-2.2e-4 relative L2",
-  "archive_sha256": "70e53723c01294c60a02aa9bf786b3d903ed3a9093e64a9021e4b215b6127e00"
+  "archive_sha256": "70e53723c01294c60a02aa9bf786b3d903ed3a9093e64a9021e4b215b6127e00",
+  "scope_note": "FP32 sufficiency holds at the 1-2% gates; every FP32/FP64 solve stops at the gates, so tighter accuracy was not tested"
  },
  "ethier_external_baselines_H100": {
   "pre_registration_commit": "53c7a5b",
@@ -211,7 +212,8 @@
    "nested_torch_ad": 3.618
   },
   "audit": "1,512 comparisons, max abs 1.8e-14",
-  "archive_sha256": "575a586c38f7fb594b8175375a1a49570ea4fdced4c9ddb95ae48acc5f090c62"
+  "archive_sha256": "575a586c38f7fb594b8175375a1a49570ea4fdced4c9ddb95ae48acc5f090c62",
+  "note": "all arms uncompiled under CUDA Graph; no gain rule registered; 1.085 is a measured ratio (one seed favours the collapsed jet)"
  },
  "revision_note_20261016_precision_and_3d_external": "Adds Section 5.7 and Table 11 (pre-registered FP64/FP32/TF32 study: FP32 sufficient and 1.36-1.53x faster at 65,536 points, TF32 fails) and Section 7.4 and Table 22 (pre-registered external 3D derivative baselines on Ethier-Steinman: C17 1.90x over nested autograd, 1.08x over collapsed jet); updates the abstract, the 3D discussion, the scope and limitations paragraphs and the conclusion; pins protocols, wrappers, patch, results, post-hoc outputs and release maps."
 }
