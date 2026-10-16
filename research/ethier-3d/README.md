@@ -96,4 +96,5 @@ The batch ran once on one four-GPU H100 node in about 8 minutes. All 18 solves e
   - Against a strong public Taylor-mode implementation, C17 shortens this small problem's solve by only about 8%, although its Adam-phase evaluation, which contains the gradient, is 1.37× faster.
   - One seed favours `jet`, and the protocol registered no gain rule, so 1.08× is a measured ratio, not a decided gain.
   - No arm was compiled, whereas the 2D comparison let each baseline use its faster qualified default or compiled variant. Compiled external arms and larger problems, where the gradient dominates, were not run.
+  - In the 2D H100 retest, compiling made the collapsed-Taylor, ED and torch-AD replays 3.2×, 5.0× and 2.3× faster ([details](../2d-h100-retest/README.md)). A compiled `jet` could therefore match or beat C17 here; C17 itself is uncompiled explicit code.
 - **Records.** [release-source-map-ext-20261016.json](release-source-map-ext-20261016.json): all 17 published files are byte-identical to their executed copies.
