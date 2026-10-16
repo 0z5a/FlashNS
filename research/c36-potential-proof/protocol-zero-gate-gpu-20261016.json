@@ -1,0 +1,43 @@
+{
+ "version": "C36-zero-gate-folding-GPU-20261016-v1",
+ "scope": "Objective/gradient throughput of the C36 potential objective with exact zero-gate constant folding on one H100, compiled packed forward and CUDA Graph replay; no training, solver or physical claim",
+ "background": {
+  "cpu_qualification": "zero-gate-folding-cpu-result-20261013.json: 12 full-objective/numerator/gradient comparisons pass; 2,933 of 4,999 canonical rows have active jets",
+  "unfolded_compiled_result": "paired-analytic-vs-compiled-ad-gpu-result-20261013.json: 1.323962 (95% interval 1.323087-1.324762), candidate/control window means 0.164484/0.217771 s",
+  "prepared_batch": "the folded batch prepared on 2026-10-13 was cancelled while pending and never ran; this batch reuses its source packet, data, frozen native reference and runtimes unchanged"
+ },
+ "frozen_inputs": {
+  "timing_protocol": "protocol-graph-timing-20261012.json (unchanged: two seeds, five alternating AB/BA pairs per seed, windows of at least 60 s and 3 evaluations, bootstrap seed 795912, 10,000 resamples)",
+  "reference_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66",
+  "runner": "box376.packed_analytic_gpu_run --activation-mode compiled --legacy-triton-target, unchanged",
+  "audit": "box376.audit_packed_analytic_gpu (NumPy only), with --inputs for the folding reader when folding is on"
+ },
+ "runs": {
+  "primary": {"name": "folded", "flags": ["--fold-zero-gates"], "order": 1},
+  "control": {"name": "unfolded", "flags": [], "order": 2,
+              "purpose": "same-GPU control for the per-arm folding factor and a replication of the 2026-10-13 unfolded ratio",
+              "start_condition": "starts only if at least control_min_remaining_seconds remain before the driver deadline; otherwise recorded as skipped",
+              "failure_policy": "runs whether or not the folded run passed, provided the compiler smoke and CPU folding regressions passed"}
+ },
+ "prerequisites": "compiler smoke (box376.packed_analytic_gpu_smoke) and CPU folding regressions (box376.test_fold_zero_gate) in the actual runtime; if either fails, no GPU science run starts",
+ "gates": "a run's timing is usable only if its runner state is COMPLETE, its NumPy audit passes all 78 comparisons within the original budget and 20 windows, and (folded run) the folding reader passes",
+ "primary_statistic": "paired geometric mean of parameter-AD control over analytic candidate mean evaluation time, both arms folded, with the runner's percentile-bootstrap 95% interval",
+ "classification": {
+  "analytic advantage under folding": "interval lower bound above 1.03",
+  "no effect": "interval inside [0.97, 1.03]",
+  "parameter AD faster under folding": "interval upper bound below 0.97",
+  "unresolved": "any other interval"
+ },
+ "descriptive": {
+  "folding_factor": "per arm, unfolded control window mean over folded window mean; sequential processes on the same GPU",
+  "replication": "unfolded ratio next to 1.323962"
+ },
+ "expectations": {
+  "note": "expectations, not gates",
+  "folded_ratio": "near the unfolded 1.32, because both arms drop the same rows; no numeric prediction",
+  "folding_factor": "at most about 1.70 (4,999/2,933 rows; 40/23 = 1.74 in 128-row chunks), lowered by fixed per-evaluation costs"
+ },
+ "timeouts_seconds": {"compiler_smoke": 900, "cpu_regressions": 600, "science_max": 5400, "audit": 900,
+                      "control_min_remaining_seconds": 2700},
+ "allocation": "one exclusive ACC node, one H100 in use; the other three stay idle for timing isolation; 03:00:00; driver deadline 20 minutes before the allocation end"
+}
