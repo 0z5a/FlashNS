@@ -28,7 +28,10 @@ fourth activation derivative. On an NVIDIA H20 in FP64, all 72 planned
 solves pass unchanged accuracy gates and an independent scalar-AD check;
 GL8 reaches the gates 1.66$\times$ faster than a compiled full-jet control
 and 1.73--3.37$\times$ faster than matched adaptations of collapsed Taylor
-mode, explicit differentiation and exact STDE. On the transient
+mode, explicit differentiation and exact STDE. The same campaign on an H100
+passes all 78 solves, but these ratios compress to 1.22$\times$ and
+1.29--1.69$\times$, because a fixed L-BFGS cost per evaluation dominates at
+this size. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
 faster than internal full spatial-jet and naive baselines; against nested
@@ -943,6 +946,69 @@ points FP32 shortens optimization by 1.53 (A) and 1.36 (C), with all six
 pairs favourable. Native GL8 keeps its advantage in FP32: C over A is 1.67
 in optimization alone at 65,536 points (1.88 in FP64) and no gain at 2,048
 points, as in FP64.
+
+\subsection{The H20 campaign on H100}\label{sec:h100retest}
+The review also asked for the H20 protocol on H100. A registered batch
+runs the two-dimensional campaign unchanged on one four-GPU H100 node: the
+same 460 source, adapter and snapshot files, frozen data, six formal
+initializations, optimizer budget and acceptance. Its plan was prepared
+earlier but never ran; only the batch's job name changed. Each backend
+first qualifies its default and compiled variants against the dense Q10
+oracle, and the faster qualified variant runs the solves. GL8 runs on every
+lane, so every pair shares a seed and a GPU. The analysis is the campaign's
+own audit, with a supplementary reader registered before the run.
+
+All 78 solves pass and are rechecked by complete CPU scalar AD; the
+qualification gradients stay at most $5.5\times10^{-4}$ of their budget.
+Compilation won for ED, collapsed Taylor, torch AD, PhysicsNeMo and cuDNN;
+for example, it made the collapsed-Taylor replay 3.2 times faster (2.36 to
+0.75\,ms). The cuEquivariance native arm failed qualification on H100,
+because its fused tensor product has no registered double-backward
+formula; its polynomial arm runs. Every solve started with a warm compiler
+cache.
+
+\begin{table}[t]
+\centering
+\caption{The H20 campaign on H100 (2,048 points, six formal seeds, all accepted). Ratios are paired baseline/GL8 geometric means (range) over six pairs; above one favours GL8. Setup + opt.\ is the campaign's registered statistic, Optimization only is supplementary. The H20 column repeats Tables~\ref{tab:internal} and~\ref{tab:public}.}
+\label{tab:h100retest}
+\small
+\begin{tabular}{lrlrr}
+\toprule
+Baseline & H100 median s & H100 setup + opt. & H100 opt.\ only & H20 setup + opt.\\
+\midrule
+GL8 (papers lane) & 20.8 & 1.000 & 1.000 & 1.000\\
+Q10 compact & 25.3 & 1.22 (1.12--1.39) & 1.02 & 1.66\\
+Collapsed Taylor & 28.6 & 1.37 (1.28--1.63) & 1.21 & 1.73\\
+Cao ED & 28.0 & 1.29 (1.13--1.42) & 1.09 & 2.31\\
+Torch coordinate AD & 39.4 & 1.90 (1.79--2.00) & 1.67 & 2.99\\
+STDE exact (2D) & 37.2 & 1.69 (1.45--1.88) & 1.58 & 3.37\\
+PhysicsNeMo & 44.1 & 1.93 (1.51--2.43) & 1.52 & 3.11\\
+cuEquivariance polynomial & 32.5 & 1.49 (1.29--1.94) & 1.34 & 1.56\\
+cuDNN convolution AD & 660.0 & 30.1 (25.9--35.7) & 30.4 & 22.9\\
+GL8 chunk-512 & 22.3 & 1.10 (1.04--1.31) & 1.10 & 1.42\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On H100, GL8 still reaches the gates faster than every baseline
+(Table~\ref{tab:h100retest}), but by much less than on H20. Against compiled
+Q10 the registered ratio falls from 1.66 to 1.22, against collapsed Taylor
+from 1.73 to 1.37, and against ED, torch AD and STDE from 2.31--3.37 to
+1.29--1.90. In optimization alone, Q10 (1.02) and ED (1.09) are nearly level
+with GL8; the remaining Q10 gap is its 4.8\,s Inductor compile, against
+0.3--0.6\,s native.
+
+The supplementary phase split shows the mechanism of
+Section~\ref{sec:ablation}. In the Adam phase, an evaluation costs 0.24--0.25\,ms
+for GL8, 0.37--0.40 for Q10, 0.86--0.89 for collapsed Taylor and 2.0--2.3 for
+STDE and torch AD. In the L-BFGS phase, every backend except cuDNN costs
+6.3--9.0\,ms per evaluation. The H20 ratios are therefore those of a device
+where the FP64 gradient is a larger share of each evaluation. On H100 at this
+size the shared optimizer cost compresses them; at larger point counts
+(Section~\ref{sec:ablation}) the gain returns. The memory/replay lane
+reproduces the chunk trade-off at 16,384 points: chunk-512 allocates an 85\%
+lower setup peak than GL8 (45.9 against 312.8\,MiB) at 3.4 times its replay
+time. No H100 ratio is pooled with H20.
 
 \section{Three-dimensional transient extension: C36}\label{sec:c36}
 \subsection{Scientific problem and derivative contract}
@@ -2041,7 +2107,8 @@ derivative, into the complete parameter gradient. Under an unchanged FP64
 Navier--Stokes objective with independent acceptance, all 72 planned
 two-dimensional H20 solves pass and GL8 shortens the paired solve time by
 1.66$\times$ over a compiled full-jet control and 1.73--3.37$\times$ over
-matched public derivative methods; a chunked variant trades replay time
+matched public derivative methods; on H100 the same campaign passes all 78
+solves with these ratios compressed to 1.22$\times$ and 1.29--1.69$\times$; a chunked variant trades replay time
 for an 85\% lower allocated setup peak at 16,384 points. On H100, a
 registered ablation attributes the full-gradient gain mainly to native
 pointwise execution at that size (1.57) and increasingly to the state at

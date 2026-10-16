@@ -1,0 +1,80 @@
+{
+ "scope": "2D H100 retest under the H20 protocol. The batch root copies the 2026-10-13 prepared package (never run) with only the Slurm job name changed in its configuration (config.json, not published: it holds site paths). Adapters, snapshots and the pinned 2D source are referenced by the 460-file manifest in H20-expectations.json. The supplementary reader ran after the batch on its outputs.",
+ "executed_packet": {
+  "config_sha256": "bc9e2e5f45a47f1412882dd2ec5119e171a63ab3cdb6250b81dc94147e9249e2",
+  "start_script_sha256": "0a5c734210f0dc2dc7afa2c89258e8f67b58d7592826dc92d08e487b2c211b20",
+  "pre_registration_commit": "83682ed",
+  "verified_at_start": "533 ready files, 765 runtime-critical files, 460-file original source manifest"
+ },
+ "archive": {
+  "name": "complete-H20-H100-batch.tar.gz",
+  "sha256": "c3672aa24cdb25d0c89b09d0c1ed78a587095323a979308c1905d8ba83dbcfe6",
+  "members": 8851,
+  "bytes": 77993892,
+  "persistent_tape_copy": false
+ },
+ "files": {
+  "research/2d-h100-retest/finite-plan.json": {
+   "public_sha256": "3aeedcee119760b8b1953b8a7530db29219a012de3ae5c47cba5ca201e4d37b9",
+   "executed_path": "finite-plan.json",
+   "executed_sha256": "3aeedcee119760b8b1953b8a7530db29219a012de3ae5c47cba5ca201e4d37b9",
+   "byte_identical": true
+  },
+  "research/2d-h100-retest/H20-expectations.json": {
+   "public_sha256": "16c6477c10b6161cd04c13151b03cacf2dd4a90e283dcb7dc43674d2f3c244d2",
+   "executed_path": "H20-expectations.json",
+   "executed_sha256": "16c6477c10b6161cd04c13151b03cacf2dd4a90e283dcb7dc43674d2f3c244d2",
+   "byte_identical": true
+  },
+  "research/2d-h100-retest/frozen-H20-inputs.json": {
+   "public_sha256": "37f4fe5556966accdf883641deb84d061765f5c9c2236fd28be60db3a780f18d",
+   "executed_path": "frozen-H20-inputs.json",
+   "executed_sha256": "37f4fe5556966accdf883641deb84d061765f5c9c2236fd28be60db3a780f18d",
+   "byte_identical": true
+  },
+  "research/2d-h100-retest/h20_node.py": {
+   "public_sha256": "403e6c00e3debedca0b5c8df00e4ba256dea0ea95e0815dbcbd3aef8ad0bc485",
+   "executed_path": "h20_node.py",
+   "executed_sha256": "a5ce09c20ea6093f0febc20ba6ed0ab39e0399e4be99b9a58f1f918d0692c9c6",
+   "byte_identical": false,
+   "normalization": "the node-local scratch path in a free-space assertion is read from NODE_LOCAL_SCRATCH; no other change"
+  },
+  "research/2d-h100-retest/h20_gpu_lane.py": {
+   "public_sha256": "5a0377c37e6e2685a1bbf972859b23c7c869c4119b25fb7f288c5cea14e2eff4",
+   "executed_path": "h20_gpu_lane.py",
+   "executed_sha256": "5a0377c37e6e2685a1bbf972859b23c7c869c4119b25fb7f288c5cea14e2eff4",
+   "byte_identical": true
+  },
+  "research/2d-h100-retest/h20_case.py": {
+   "public_sha256": "700afea54a702ebf3fb530b4f02316acaacfd7d6a4a60956d5d601af90bc7372",
+   "executed_path": "h20_case.py",
+   "executed_sha256": "700afea54a702ebf3fb530b4f02316acaacfd7d6a4a60956d5d601af90bc7372",
+   "byte_identical": true
+  },
+  "research/2d-h100-retest/audit_h20.py": {
+   "public_sha256": "316635bf72a0409c8de5e1d49966ad0ec400b458e4f6c9ad2103c17da04fc257",
+   "executed_path": "audit_h20.py",
+   "executed_sha256": "316635bf72a0409c8de5e1d49966ad0ec400b458e4f6c9ad2103c17da04fc257",
+   "byte_identical": true
+  },
+  "research/2d-h100-retest/audit-h20-h100-20261016.json": {
+   "public_sha256": "483cdca3ffae9daec9ce07a0c1ee83c4e6df1ec905cee33bd7a2fb104742dda3",
+   "executed_path": "audit.json",
+   "executed_sha256": "4558dcb94e28fb207ae5dabcdf8a3499e5c98af2652e7832435d65a4d5787651",
+   "byte_identical": false,
+   "normalization": "the batch work-directory prefix in recorded commands and paths is replaced by <batch>/; no other change"
+  },
+  "research/2d-h100-retest/read_h20_h100_supplement.py": {
+   "public_sha256": "3d996fed0a73e9682af532b6e39216af14634b71e17492a63656ad5e6829cf08",
+   "executed_path": "posthoc/read_h20_h100_supplement.py",
+   "executed_sha256": "3d996fed0a73e9682af532b6e39216af14634b71e17492a63656ad5e6829cf08",
+   "byte_identical": true
+  },
+  "research/2d-h100-retest/h20-h100-supplement-20261016.json": {
+   "public_sha256": "b101ecf7775ca384a196cf23b6275ecd8e86419d15cec4b7a1a35bee8bde2349",
+   "executed_path": "posthoc/h20-h100-supplement-20261016.json",
+   "executed_sha256": "b101ecf7775ca384a196cf23b6275ecd8e86419d15cec4b7a1a35bee8bde2349",
+   "byte_identical": true
+  }
+ }
+}
