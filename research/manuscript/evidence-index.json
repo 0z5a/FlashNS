@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "8b9abdf6aa18a993341caff605facd1d4a1d0e87429ec641054880881d07ba85",
- "previous_manuscript_sha256": "c359b0b2da4f88c56c920d3d268d981b3862d3326e8139a05f68d49f7052d3c1",
+ "manuscript_sha256": "3a57f3ca7a4d17171782d9c8a0c4d7fdea66beb9e21c59840ffce5359d84e4b2",
+ "previous_manuscript_sha256": "8b9abdf6aa18a993341caff605facd1d4a1d0e87429ec641054880881d07ba85",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -66,7 +66,21 @@
   "../c36-potential-proof/protocol-zero-gate-gpu-20261016.json": "e46472d4413fd4362661930aeb5120e365e1602cca28c1420498c3e81aa77990",
   "../c36-potential-proof/src/box376/run_zero_gate_gpu.py": "92ec81469bdf00f1805f78c322c66de29acf3439230679534c677b7cbaf2eaf4",
   "../c36-potential-proof/src/box376/read_zero_gate_gpu.py": "3c6800c8d9ff65bd81e0366c3847625cf17e7ca93f4dc4ea072c44bb6129fff7",
-  "../c36-potential-proof/src/box376/fold_zero_gate.py": "10831bebd6d1f9fdf0f70ccc28e87ff26f150ecd86e5b39c66fe6ec3e6f77613"
+  "../c36-potential-proof/src/box376/fold_zero_gate.py": "10831bebd6d1f9fdf0f70ccc28e87ff26f150ecd86e5b39c66fe6ec3e6f77613",
+  "../2d-precision/precision-result-20261016.json": "4c88fe317404a6905a584380447251628049cfc973f13b5db50e8f7b97ee0577",
+  "../2d-precision/precision-posthoc-20261016.json": "521256fdadc00bb5bd34ed4ec1280096b7f7ff4a073d49b2dece90b2aaf9a4de",
+  "../2d-precision/release-source-map-20261016.json": "57f209068b481154e50f031031c7551acd1c125d31d4a8ad80634f2fe635264e",
+  "../2d-precision/protocol-2d-precision-20261016.json": "80bf2e147a83c4e068b3091cd66dbc3cfc62400f83a59952b0a89b9acb366d4c",
+  "../2d-precision/read_precision.py": "abf5cd79784fc73a5f3c273775ff957111cb3ae97d2155f194f577260de46bb4",
+  "../2d-precision/posthoc_precision.py": "d8f156302f82eae39a212d97e8b1422b533fb1aeac0efeafa51dbade75569ecf",
+  "../2d-precision/src/fp32-dtype.patch": "6625052647da21bfd322d34a64ac15d4f032ac35a8cc158a515c83a68390ba17",
+  "../2d-precision/src/precision_run.py": "ef2dd1ba3d0c453be55cb043d5d60a1e109a208bede95a37950b5f1c0b9266ff",
+  "../ethier-3d/audit-ext-20261016.json": "e47016bce2a7b96100eb50d08fec8aeb30a7740df6a2bedaea6f560ca9ceb41a",
+  "../ethier-3d/ext-phase-split-20261016.json": "749a9598aa7fa933deca70f3bea65bf81963e266d03a3657e93a403e5c20c28e",
+  "../ethier-3d/release-source-map-ext-20261016.json": "c678dd8902045d818a4fdaf1882ba6426b05c33486e0c93fe8ade572d6ac63ba",
+  "../ethier-3d/src/protocol-ext-20261016.json": "e64cd90d720fb94b76de56dd4c13c6d3d01158b7ae9d8d081adeba98e07292f0",
+  "../ethier-3d/src/external.py": "7f52f1da3b32fc3cf256634222dc04f0d4709629adbf125a91a28612d87d98e1",
+  "../ethier-3d/posthoc_ext_phase_split.py": "08ba5078350fc35cf3987d4db3defe754e8693353237ab023a8cdd6b1ea3f77c"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -80,11 +94,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "9c249f450eceb430553b14675dc37f3aef8c0e14edac6bfd7a919f3b997d8418",
- "previous_pdf_sha256": "05703513f38e63a0932c6674305185359ce1df42d2589618b6ac438076b25215",
- "pages": 37,
+ "pdf_sha256": "1a65efca362271a78f2abb5653d758d0d2a81c696ca17ee4a16c7a0cde3d4ca3",
+ "previous_pdf_sha256": "9c249f450eceb430553b14675dc37f3aef8c0e14edac6bfd7a919f3b997d8418",
+ "pages": 39,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS: Section 6.3 with Table 11 and the zero-gate paragraphs (pages 17-18) inspected at 80 dpi; Section 5.6 solve paragraphs and Table 10, the discussion and the conclusion inspected in the previous revision; earlier review of Figures 1-4, Tables 8-9, the Ethier-Steinman, C36 and appendix pages unchanged",
+ "pdf_visual_review": "PASS: Section 5.7 with Table 11 (page 16) and Section 7.4 with Table 22 (pages 29-30) inspected at 80 dpi; no overfull boxes; earlier pages reviewed in previous revisions",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -172,5 +186,32 @@
   "checks": "78 comparisons per run, largest error 3.0e-6 of the budget; NumPy and folding readers PASS",
   "archive_sha256": "90ab9782a1454fe5a119514c4fde0f797cda35f354003d32c8ac387b352ab5be"
  },
- "revision_note_20261016_zero_gate": "Adds two rows to Table 11 and two paragraphs to Section 6.3 (pre-registered H100 zero-gate folding batch: folded analytic/parameter-AD ratio 1.400, unfolded repeat 1.325, folding factors 1.68 and 1.59); updates the abstract, the limitations and the conclusion; pins the protocol, driver, reader, result and release map."
+ "revision_note_20261016_zero_gate": "Adds two rows to Table 11 and two paragraphs to Section 6.3 (pre-registered H100 zero-gate folding batch: folded analytic/parameter-AD ratio 1.400, unfolded repeat 1.325, folding factors 1.68 and 1.59); updates the abstract, the limitations and the conclusion; pins the protocol, driver, reader, result and release map.",
+ "precision_2d_H100": {
+  "pre_registration_commit": "0763e8d",
+  "tasks": "138/162 passed; the 24 failures are the 24 TF32 solves",
+  "training_sufficiency": "FP32 sufficient (24/24 FP64-accepted), TF32 insufficient (0/24)",
+  "solve_speed_fp64_over_fp32_optimization_only": {
+   "2048": "A 0.98, C 0.97 (no gain)",
+   "65536": "A 1.53, C 1.36 (faster, 6/6)"
+  },
+  "c_over_a_fp32_65536_optimization_only": 1.67,
+  "gradient_error": "FP32 1.4-2.7e-7, TF32 1.5-2.2e-4 relative L2",
+  "archive_sha256": "70e53723c01294c60a02aa9bf786b3d903ed3a9093e64a9021e4b215b6127e00"
+ },
+ "ethier_external_baselines_H100": {
+  "pre_registration_commit": "53c7a5b",
+  "accepted": "18/18",
+  "baseline_over_c17_setup_plus_optimization": {
+   "collapsed_jet": "1.085 (0.98-1.19)",
+   "nested_torch_ad": "1.901 (1.67-2.14)"
+  },
+  "posthoc_adam_phase_per_evaluation": {
+   "collapsed_jet": 1.371,
+   "nested_torch_ad": 3.618
+  },
+  "audit": "1,512 comparisons, max abs 1.8e-14",
+  "archive_sha256": "575a586c38f7fb594b8175375a1a49570ea4fdced4c9ddb95ae48acc5f090c62"
+ },
+ "revision_note_20261016_precision_and_3d_external": "Adds Section 5.7 and Table 11 (pre-registered FP64/FP32/TF32 study: FP32 sufficient and 1.36-1.53x faster at 65,536 points, TF32 fails) and Section 7.4 and Table 22 (pre-registered external 3D derivative baselines on Ethier-Steinman: C17 1.90x over nested autograd, 1.08x over collapsed jet); updates the abstract, the 3D discussion, the scope and limitations paragraphs and the conclusion; pins protocols, wrappers, patch, results, post-hoc outputs and release maps."
 }

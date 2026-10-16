@@ -73,3 +73,25 @@ The review asked for an external baseline on the three-dimensional C36 objective
   - The driver self-test runs all 18 cases as CPU smoke runs, every qualification passing at no more than 2.3e-4 of the budget. The audit then passes 1,512 comparisons, and the archive is verified.
   - The self-test caught one bug before submission: a stale `jet` cache keyed on a reused object id. It was removed.
 - **Expectations** (not gates). Both external arms are expected to cost more per evaluation than C17; there is no numeric prediction. Pressure relative L2 was the binding gate in v4, so some external solves may fail acceptance. Ratios use jointly accepted pairs only.
+
+### Result (2026-10-16)
+
+The batch ran once on one four-GPU H100 node in about 8 minutes. All 18 solves exited normally and **all 18 are accepted** by both validators. The independent audit ([audit-ext-20261016.json](audit-ext-20261016.json)) passes 1,512 comparisons, with a maximum absolute discrepancy of 1.8e-14. The archive `575a586c…` (150 members) was re-read and verified.
+
+| Arm | Accepted | Median s | Median evaluations | Paired ratio vs C17 (registered) | Optimization only | Per evaluation |
+| --- | ---: | ---: | ---: | --- | ---: | ---: |
+| FlashNS C17 | 6/6 | 47.2 | 6,728 | 1.000 | – | – |
+| Collapsed jet (Dangel et al.) | 6/6 | 52.6 | 6,610 | **1.085** (0.98–1.19) | 1.082 | 1.096 |
+| Nested torch AD | 6/6 | 89.0 | 6,709 | **1.901** (1.67–2.14) | 1.897 | 1.911 |
+
+- **Binding gate.** Pressure relative L2 binds again: the largest values are 0.03994 (C17), 0.03997 (jet) and 0.03983 (torch AD) against 0.04. Every other gate stays at or below 22% of its limit.
+- **Phase split** (post hoc, [ext-phase-split-20261016.json](ext-phase-split-20261016.json), `posthoc_ext_phase_split.py`).
+
+  | Time per evaluation | C17 | Collapsed jet | Nested torch AD |
+  | --- | ---: | ---: | ---: |
+  | Adam phase (gradient, Adam step, stop checks) | 2.4–2.7 ms | 3.6–3.7 ms (1.37×) | 8.3–10.1 ms (3.62×) |
+  | L-BFGS phase | 8.4–9.3 ms | 9.0–9.8 ms (1.07×) | 14.2–15.5 ms (1.70×) |
+
+  - The L-BFGS phase adds about 6 ms per evaluation in every arm, as in 2D, and compresses the solve ratios.
+  - Against a strong public Taylor-mode implementation, C17 shortens this small problem's solve by only about 8%, although its Adam-phase evaluation, which contains the gradient, is 1.37× faster. Larger problems, where the gradient dominates, were not run.
+- **Records.** [release-source-map-ext-20261016.json](release-source-map-ext-20261016.json): all 17 published files are byte-identical to their executed copies.

@@ -90,6 +90,9 @@ The [October 14 research draft](research/manuscript/README.md) keeps the accepte
   - At the original 2,048 points this cost absorbs the 1.71× faster gradient: optimization alone is 0.95×.
   - A second pre-registered study ran 36 complete solves at 16,384 and 65,536 points, all accepted. Native GL8 shortens optimization by **1.48×** and **1.88×** over compiled Q10, and the registered rule finds a solve-level gain for every pair at both sizes.
   - The H100 solve-level gain is therefore a matter of problem size.
+- **Precision ([details](research/2d-precision/README.md)).** FP32 training passes the unchanged FP64 acceptance (24/24 solves). At 65,536 points it shortens optimization by 1.53× (Q10) and 1.36× (GL8), and GL8 stays 1.67× faster than Q10. TF32 training fails every solve (0/24).
+
+**External derivative baselines in 3D ([details](research/ethier-3d/README.md#external-derivative-baselines-pre-registered-2026-10-16)).** On Ethier–Steinman, all 18 solves are accepted. C17 is 1.90× faster than nested PyTorch autograd and 1.08× faster than the public collapsed Taylor-mode `jet` package. A fixed L-BFGS cost per evaluation compresses a 1.37× faster gradient phase. The C36 external-baseline item stays open.
 
 **C36 development run ([details](research/c36-potential-proof/README.md#development-run-with-a-larger-l-bfgs-budget-v2)).** The C36 problem has the same data, model and gates as before; only the L-BFGS budget grows 40×. All four runs (two engines × two seeds) pass the training gate. In the two fully observed final checkpoints (analytic engine), every physical gate passes except stratified corrected pressure (about 2.5× over its limit) and, for one seed, the trajectory endpoint (7% over). Under its pre-registered rule the outcome is mechanically branch (b). The analytic engine reaches each loss threshold 1.30–1.33× sooner than parameter AD. These are development seeds, so no formal time-to-accuracy claim is made.
 

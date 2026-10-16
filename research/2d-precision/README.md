@@ -44,6 +44,35 @@ Expectations (not gates):
 - little solve gain at 2,048 points, where the fixed L-BFGS cost dominates, and a possible gain at 65,536 points;
 - FP32 training expected to pass the 1–2% acceptance gates, TF32 uncertain.
 
-## Status
+## Results
 
-Pre-registered; the GPU batch is pending.
+The batch ran once on one four-GPU H100 node.
+- **Admission.** The pinned commit, the 274-file manifest and the frozen data and initialization hashes of all three sizes were verified.
+- **Prebuild.** The FP64 and FP32 native extensions were built before the queue started.
+- **Tasks.** 138 of 162 tasks passed. The 24 failures are exactly the 24 TF32 solves, which did not reach acceptance.
+- **Analysis and archive.** The reader exited 0. The archive `70e53723…` (411 members) was re-read and verified.
+
+| Cell | Precision | Replay ms (2,048 / 16,384 / 65,536) | Gradient error vs FP64 | Accepted (2,048 / 65,536) | FP64/reduced optimization-only |
+| --- | --- | --- | --- | --- | --- |
+| A (Q10, Inductor) | FP64 | 0.281 / 2.920 / 11.440 | ≤ 3.6e-15 abs | 6/6 / 6/6 | – |
+| | FP32 | 0.183 / 1.573 / 6.004 | 1.4–2.7e-7 | 6/6 / 6/6 | 0.98 / **1.53** |
+| | TF32 | 0.187 / 1.534 / 5.829 | 1.5e-4 | **0/6 / 0/6** | – |
+| C (GL8 native) | FP64 | 0.164 / 1.165 / 4.343 | ≤ 3.6e-15 abs | 6/6 / 6/6 | – |
+| | FP32 | 0.136 / 0.662 / 2.399 | 1.5–2.7e-7 | 6/6 / 6/6 | 0.97 / **1.36** |
+| | TF32 | 0.117 / 0.640 / 2.282 | 1.5–2.2e-4 | **0/6 / 0/6** | – |
+
+Registered decisions:
+- **Training sufficiency.** FP32 is sufficient in both cells at both sizes: all 24 solves pass the FP64 acceptance. TF32 is insufficient: 0 of 24 pass.
+- **Solve speed.** FP32 gives no gain at 2,048 points, where the fixed L-BFGS cost dominates. At 65,536 points it is faster: 1.53× for A and 1.36× for C, with all six pairs favourable.
+- **C/A within a precision.** No gain at 2,048 points. At 65,536 points C is faster in both FP64 (1.88×) and FP32 (1.67×), so native GL8 keeps its advantage in FP32.
+- **Replay speed.** Every reduced-precision effect excludes [0.97, 1.03].
+  - FP32 speeds up replay by 1.54/1.86/1.91 (A) and 1.21/1.76/1.81 (C) at the three sizes.
+  - Against FP32, TF32 is 2.5–5% faster at 16,384 and 65,536 points. At 2,048 points it is 2% slower for A and 16% faster for C.
+
+Post hoc ([precision-posthoc-20261016.json](precision-posthoc-20261016.json), `posthoc_precision.py`):
+- **TF32 solves.** L-BFGS makes only 500–850 iterations over about 500 blocks, roughly one per block. The final FP64 metrics stay 10–22× above their limits, with nearly every gate failing.
+- **FP32 and FP64 solves.** All end with their worst gate at 0.95–1.00 of its limit, as the stop rule intends.
+
+Files:
+- [precision-result-20261016.json](precision-result-20261016.json): registered reader output. In its failure tracebacks, the batch path is normalized to `<batch>/`.
+- [release-source-map-20261016.json](release-source-map-20261016.json): byte identity of each published file with its executed copy, plus the archive digest.

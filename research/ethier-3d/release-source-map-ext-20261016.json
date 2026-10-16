@@ -1,0 +1,121 @@
+{
+ "scope": "Ethier external derivative-baseline batch. The executed packet holds the public src/ files below, the v4 data (data-v2.npz, sha256 in the protocol; not tracked in git), the pinned jet snapshot (36 files of the H20 baselines manifest) and a runtime environment script; post-hoc script and output ran in a separate directory.",
+ "executed_packet": {
+  "manifest_sha256": "c53d13998569edbbc565b90fe5052f441a5e93464f1c1091f890a527d225fbed",
+  "files": 52,
+  "start_script_sha256": "6df086295a5763c869300d8e3a16b1fdaa94f5b90157922abf763b8fe979bf9d",
+  "pre_registration_commit": "53c7a5b",
+  "data_sha256": "42904eadb3dfdd767a7a75b3ad2d91f673c8e8292e4ddf659f939a830bc59666"
+ },
+ "archive": {
+  "name": "ethier-ext-complete.tar.gz",
+  "sha256": "575a586c38f7fb594b8175375a1a49570ea4fdced4c9ddb95ae48acc5f090c62",
+  "members": 150,
+  "bytes": 19940700,
+  "persistent_tape_copy": false
+ },
+ "files": {
+  "research/ethier-3d/src/protocol-ext-20261016.json": {
+   "public_sha256": "e64cd90d720fb94b76de56dd4c13c6d3d01158b7ae9d8d081adeba98e07292f0",
+   "executed_path": "protocol-ext-20261016.json",
+   "executed_sha256": "e64cd90d720fb94b76de56dd4c13c6d3d01158b7ae9d8d081adeba98e07292f0",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/external.py": {
+   "public_sha256": "7f52f1da3b32fc3cf256634222dc04f0d4709629adbf125a91a28612d87d98e1",
+   "executed_path": "external.py",
+   "executed_sha256": "7f52f1da3b32fc3cf256634222dc04f0d4709629adbf125a91a28612d87d98e1",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/solve_ext.py": {
+   "public_sha256": "774c8157c34708d73be4987b46a86646fd8026becc69d8ae257c78f66fe70d56",
+   "executed_path": "solve_ext.py",
+   "executed_sha256": "774c8157c34708d73be4987b46a86646fd8026becc69d8ae257c78f66fe70d56",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/run_ext.py": {
+   "public_sha256": "90ec15e41f75c39f5e869bad9e4200c785daf9030b8665a5e9dc87f090849137",
+   "executed_path": "run_ext.py",
+   "executed_sha256": "90ec15e41f75c39f5e869bad9e4200c785daf9030b8665a5e9dc87f090849137",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/audit_ext.py": {
+   "public_sha256": "043e42eeaa1b71456fb7c7d56709925f9b3e5e2bd8199214db65f785d7723222",
+   "executed_path": "audit_ext.py",
+   "executed_sha256": "043e42eeaa1b71456fb7c7d56709925f9b3e5e2bd8199214db65f785d7723222",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/entry_ext.sh": {
+   "public_sha256": "8735b8c094a3c4dad482ccadea53d450b294825450052014476432cf1888be4b",
+   "executed_path": "entry_ext.sh",
+   "executed_sha256": "8735b8c094a3c4dad482ccadea53d450b294825450052014476432cf1888be4b",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/objective.py": {
+   "public_sha256": "72a1fff405d8a6e90082e509848a380a3e6590831ebc0b55decd594b9e0fe258",
+   "executed_path": "objective.py",
+   "executed_sha256": "72a1fff405d8a6e90082e509848a380a3e6590831ebc0b55decd594b9e0fe258",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/c17.py": {
+   "public_sha256": "0569b104560ac2f451e1f892a2f94e74ec20b7a0ddc07c586b9cc87fac474dd2",
+   "executed_path": "c17.py",
+   "executed_sha256": "0569b104560ac2f451e1f892a2f94e74ec20b7a0ddc07c586b9cc87fac474dd2",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/torch_c17.py": {
+   "public_sha256": "7a0854c66bb0a5e2aedc18b43cf622d6321f8421f45e8f109a7885a757a2f2c3",
+   "executed_path": "torch_c17.py",
+   "executed_sha256": "7a0854c66bb0a5e2aedc18b43cf622d6321f8421f45e8f109a7885a757a2f2c3",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/torch_references.py": {
+   "public_sha256": "fbae909ee5011f8ca7af7a2ab3c74a28f915c0a0fb2f7506f523a3873511df65",
+   "executed_path": "torch_references.py",
+   "executed_sha256": "fbae909ee5011f8ca7af7a2ab3c74a28f915c0a0fb2f7506f523a3873511df65",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/taylor_oracle.py": {
+   "public_sha256": "c4ffe646284b749efe060551f7a9da885524cf1ed6591c6c207ebfa8becbd42d",
+   "executed_path": "taylor_oracle.py",
+   "executed_sha256": "c4ffe646284b749efe060551f7a9da885524cf1ed6591c6c207ebfa8becbd42d",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/a24.py": {
+   "public_sha256": "b4712ed6543570e2b2a3133f6cb42d6ed34201b54605cd25453bf58a6a66320e",
+   "executed_path": "a24.py",
+   "executed_sha256": "b4712ed6543570e2b2a3133f6cb42d6ed34201b54605cd25453bf58a6a66320e",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/naive_q35.py": {
+   "public_sha256": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682",
+   "executed_path": "naive_q35.py",
+   "executed_sha256": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/ethier_source.py": {
+   "public_sha256": "613948acb61bb5c945eb4222c98d2fea215aa71d39e9447b413ce30b9bb987d0",
+   "executed_path": "ethier_source.py",
+   "executed_sha256": "613948acb61bb5c945eb4222c98d2fea215aa71d39e9447b413ce30b9bb987d0",
+   "byte_identical": true
+  },
+  "research/ethier-3d/audit-ext-20261016.json": {
+   "public_sha256": "e47016bce2a7b96100eb50d08fec8aeb30a7740df6a2bedaea6f560ca9ceb41a",
+   "executed_path": "audit-ext.json",
+   "executed_sha256": "e47016bce2a7b96100eb50d08fec8aeb30a7740df6a2bedaea6f560ca9ceb41a",
+   "byte_identical": true
+  },
+  "research/ethier-3d/posthoc_ext_phase_split.py": {
+   "public_sha256": "08ba5078350fc35cf3987d4db3defe754e8693353237ab023a8cdd6b1ea3f77c",
+   "executed_path": "posthoc/posthoc_ext_phase_split.py",
+   "executed_sha256": "08ba5078350fc35cf3987d4db3defe754e8693353237ab023a8cdd6b1ea3f77c",
+   "byte_identical": true
+  },
+  "research/ethier-3d/ext-phase-split-20261016.json": {
+   "public_sha256": "749a9598aa7fa933deca70f3bea65bf81963e266d03a3657e93a403e5c20c28e",
+   "executed_path": "posthoc/ext-phase-split-20261016.json",
+   "executed_sha256": "749a9598aa7fa933deca70f3bea65bf81963e266d03a3657e93a403e5c20c28e",
+   "byte_identical": true
+  }
+ }
+}

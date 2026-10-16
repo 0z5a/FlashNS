@@ -31,7 +31,18 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - With folding, the analytic transpose is **1.400×** faster than parameter AD (interval 1.3999–1.4002); the registered classification is an analytic advantage.
   - An unfolded repeat gives 1.325× (1.324× before).
   - Folding itself shortens an evaluation by 1.68× (analytic) and 1.59× (parameter AD), against 1.70 for cost proportional to rows.
-  - Table 11 gains two rows, and the abstract, the limitation and the conclusion are updated; the limitation no longer says the folding is qualified on CPU only.
+  - Table 12 (the C36 timing table) gains two rows, and the abstract, the limitation and the conclusion are updated; the limitation no longer says the folding is qualified on CPU only.
+- **Section 5.7: reduced precision on H100 (October 16).** A pre-registered study runs compiled Q10 and native GL8 in FP64, FP32 and FP32 with TF32 matrix products. The 2D source needed a 28-line patch that relaxes only its dtype checks.
+  - FP32 suffices: gradient error is 1.4–2.7e-7, and all 24 FP32 solves pass the unchanged FP64 acceptance.
+  - TF32 does not: gradient error is 1.5–2.2e-4, and 0 of 24 solves pass, because L-BFGS stalls at about one iteration per block.
+  - FP32 gives no solve gain at 2,048 points. At 65,536 points it shortens optimization by 1.53× (Q10) and 1.36× (GL8).
+  - Native GL8 keeps its advantage in FP32: 1.67× over Q10 at 65,536 points.
+  - Table 11 is new; the scope paragraph and the conclusion are updated.
+- **Section 7.4: external derivative baselines in 3D (October 16).** On Ethier–Steinman, because C36 has no accepted solve, a pre-registered batch adds nested PyTorch autograd and the public collapsed Taylor-mode `jet` package. C17 reruns in the same batch.
+  - All 18 solves pass.
+  - C17 is 1.90× faster than nested autograd and 1.08× faster than collapsed `jet`.
+  - Post hoc, the Adam-phase gap to `jet` is 1.37×; the fixed ~6 ms L-BFGS cost per evaluation compresses it.
+  - Table 22 is new; the abstract, the 3D discussion, the limitations and the conclusion are updated. The C36 external-baseline item stays open.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
   - Protocol v5 runs the development recipe with 4,800 L-BFGS calls. The loss and the physical errors stall soon after call 800, and stratified pressure ends at 2.2–3.0× its limit.
