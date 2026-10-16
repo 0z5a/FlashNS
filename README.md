@@ -86,7 +86,10 @@ The [October 14 research draft](research/manuscript/README.md) keeps the accepte
 - **Execution.** Native pointwise kernels make the same GL8 computation 1.53–1.83× faster at every size; the cuBLAS GEMM time is identical.
 - **Representation.** The GL8 state alone, against compiled Q10, is small and unresolved at the original 2,048 points (1.09, where the A/A control failed), and 1.63–1.66× from 16,384 points on.
 - **Explicit transpose.** Against generic autograd on the same state it gives no gain at 2,048 points and 1.31× from 16,384 points on.
-- **Whole solves.** At the original size on H100, optimizer overhead (2.5–3.8 ms per evaluation, against under 0.3 ms of gradient) absorbs the 1.71× faster gradient: optimization alone is 0.95×. The H20 solve-level gain is therefore device-specific.
+- **Whole solves ([details](research/2d-solve-scale/README.md)).** Each L-BFGS evaluation costs about 6–7 ms beyond the gradient at every measured size.
+  - At the original 2,048 points this cost absorbs the 1.71× faster gradient: optimization alone is 0.95×.
+  - A second pre-registered study ran 36 complete solves at 16,384 and 65,536 points, all accepted. Native GL8 shortens optimization by **1.48×** and **1.88×** over compiled Q10, and the registered rule finds a solve-level gain for every pair at both sizes.
+  - The H100 solve-level gain is therefore a matter of problem size.
 
 **C36 development run ([details](research/c36-potential-proof/README.md#development-run-with-a-larger-l-bfgs-budget-v2)).** The C36 problem has the same data, model and gates as before; only the L-BFGS budget grows 40×. All four runs (two engines × two seeds) pass the training gate. In the two fully observed final checkpoints (analytic engine), every physical gate passes except stratified corrected pressure (about 2.5× over its limit) and, for one seed, the trajectory endpoint (7% over). Under its pre-registered rule the outcome is mechanically branch (b). The analytic engine reaches each loss threshold 1.30–1.33× sooner than parameter AD. These are development seeds, so no formal time-to-accuracy claim is made.
 

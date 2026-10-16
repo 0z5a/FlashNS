@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "277221259b9975b7e2147e9c97a1b0b28ddc034f8dd63c1c21a39189f615c8c7",
- "previous_manuscript_sha256": "568a79bad63e094141f71eceb167cc42532bcf4bce96be4f29230dfd847b744e",
+ "manuscript_sha256": "ac22adda80290b569f89f7700ef0d32fdb3f1112090e05e17e694c28f908ecb2",
+ "previous_manuscript_sha256": "277221259b9975b7e2147e9c97a1b0b28ddc034f8dd63c1c21a39189f615c8c7",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -50,7 +50,17 @@
   "../2d-ablation/2d-ablation-posthoc-20261016.json": "b878df0d4b0778a7f4ff0fc4a3454b520429be8336c6f716ca794709d83710b8",
   "../2d-ablation/release-source-map-20261016.json": "5ce50cc9263a77d79b9401b12622b3d13a4a095138c9e7a52b97c797c79f76f2",
   "../2d-ablation/posthoc_ablation.py": "fd23647a77414ba19a512d59b5e23f5b13f0036d1a7dd96fc9e98bee90726f8b",
-  "../2d-ablation/read_ablation.py": "41803f419a2b7953088a84b7e3fb108ba051bbc608149bfc77f3e17d5cb703fa"
+  "../2d-ablation/read_ablation.py": "41803f419a2b7953088a84b7e3fb108ba051bbc608149bfc77f3e17d5cb703fa",
+  "../2d-solve-scale/solve-scale-result-20261016.json": "9c6ae4069ddc7926efd591445bfaebe83fd2d2dc33c1ea9dae918de7359fb839",
+  "../2d-solve-scale/solve-scale-posthoc-20261016.json": "759916f37e43c3b7d646be953f080ed8e128775cac533b4dcc4dd72305a62b58",
+  "../2d-solve-scale/phase-split-2048-20261016.json": "155f9604b374515452be0544645b3d7fdbad0a73bb01e56468f8c959659eff80",
+  "../2d-solve-scale/release-source-map-20261016.json": "e2ea51f66fce76ea43f5feb137230f36e69b53aefb69b662a980975f08ff9677",
+  "../2d-solve-scale/protocol-2d-solve-scale-20261016.json": "9f7a605fafe86d97797b8201ba627397dccf0cf8ce02c4f48342a7ee7237b8a9",
+  "../2d-solve-scale/plan-2d-solve-scale-20261016.json": "a43c2230538df4bec0877ad2ee38d0216427be5037b1f39915c24f5db6cb297a",
+  "../2d-solve-scale/read_solve_scale.py": "ffe3e5930e68834ce3059b8ef9d659de84ae6e3324e1cbc3db73d97f56db4e1e",
+  "../2d-solve-scale/posthoc_solve_scale.py": "7e6393aa2839e1fde6de737cdd99fb8af3a933c19fc9ff6305966f7fa8c336e6",
+  "../2d-solve-scale/phase_split_2048.py": "d13f33edb4cc738558a19b99343c58d8c349a7946d373bc27cf5b02d5a7750d6",
+  "../2d-solve-scale/src/scale_solve.py": "17d5924cafd0666cf0cacab756763252025b0151bedc0672e204a65c759ff1b6"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -64,11 +74,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "34d05e11a6dcde57557903aaddf5a04de2dab98350b70dc00229692517524da1",
- "previous_pdf_sha256": "6e32fcdd75b2c8a38279c21f2e479db893d7e461748801f9f443d5eb84096a21",
- "pages": 35,
+ "pdf_sha256": "aa30b2deafff03cd1d214b310999b86f6fb511b52faec39d3c51123f279c553b",
+ "previous_pdf_sha256": "34d05e11a6dcde57557903aaddf5a04de2dab98350b70dc00229692517524da1",
+ "pages": 36,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS: Figures 1-4, Tables 8-9 (Section 5.6), the Ethier-Steinman results page, the C36 v2 page, Sections 6.8-6.10 and the C36 appendix inspected at 90 dpi",
+ "pdf_visual_review": "PASS: Section 5.6 solve paragraphs and Table 10 (pages 14-15), the discussion and the conclusion (pages 28-29) inspected at 80 dpi; earlier review of Figures 1-4, Tables 8-9, the Ethier-Steinman, C36 and appendix pages unchanged",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -126,11 +136,26 @@
   "execution_B_over_C": "1.53-1.83 at every size",
   "representation_A_over_B": "1.09 at 2,048 (gate failed), 1.34-1.35 at 4k-8k, 1.63-1.66 from 16k",
   "explicit_transpose_F_over_B": "1.03 at 2,048, 1.07-1.09 at 4k-8k, 1.31 from 16k",
-  "solves": "C/A setup+opt 1.16 (0.91-1.40), optimization only 0.95; optimizer overhead 2.5-3.8 ms per evaluation against <0.3 ms gradient",
+  "solves": "C/A setup+opt 1.16 (0.91-1.40; warm compiler caches), optimization only 0.95; total time per evaluation 2.5-3.8 ms, of which the L-BFGS phase costs 6.3-7.2 ms per evaluation against <0.3 ms gradient replay (post hoc, ../2d-solve-scale/phase-split-2048-20261016.json)",
   "archive_sha256": {
    "attempt_1_failed_startup": "27b01eff0c9b813df63542e99b8d4ec2deef7c5429fb0f2df255c59fb40b1ce8",
    "attempt_2": "658544ae6251d4ba26f57c6ff0e29fc4d75c5d6c6a2c6b035a04bbc918ee70bf"
   }
  },
- "revision_note_20261016_ablation": "Adds Section 5.6 (pre-registered H100 representation/execution ablation, Tables 8-9) and updates the contributions, the attribution and replay-versus-solve discussion and the conclusion; pins the ablation protocol, plan, results, post-hoc checks, reader and release map."
+ "revision_note_20261016_ablation": "Adds Section 5.6 (pre-registered H100 representation/execution ablation, Tables 8-9) and updates the contributions, the attribution and replay-versus-solve discussion and the conclusion; pins the ablation protocol, plan, results, post-hoc checks, reader and release map.",
+ "solve_scale_2d_H100": {
+  "tasks": "36/36 complete, all accepted (cells A, B, C x 16,384 and 65,536 points x six formal seeds); pre-registration commit 170412b",
+  "registered_decision": "solve-level gain for A/C, A/B and B/C at both sizes; 6/6 jointly accepted pairs favour the faster cell in each case",
+  "A_over_C_optimization_only": {
+   "16384": "1.48 (1.31-1.80); predicted about 1.4",
+   "65536": "1.88 (1.75-2.05); predicted about 2.0"
+  },
+  "A_over_C_per_evaluation": {
+   "16384": "1.43",
+   "65536": "1.95"
+  },
+  "posthoc": "L-BFGS phase costs 5.9-7.1 ms per evaluation beyond gradient replay at 2,048, 16,384 and 65,536 points in every cell; Adam phase 0.05-0.12 ms beyond replay. Setup depends on per-lane compiler-cache state set by queue order; the 2,048-point Q10 solve setups were warm-cache values.",
+  "archive_sha256": "430ee078f28a37b74ef6ba7cbe326dff0cce0dde61059959cadf469fd806a7cd"
+ },
+ "revision_note_20261016_solve_scale": "Adds the 'Solves at larger point counts' paragraphs and Table 10 to Section 5.6 (pre-registered H100 solve-scale study: solve-level gains 1.48 and 1.88 for native GL8 over compiled Q10 at 16,384 and 65,536 points), the post-hoc phase split and setup cache-state check, and rewrites the 2,048-point solve explanation, the replay-versus-solve discussion and the conclusion in terms of problem size rather than device; pins the study's protocol, plan, wrapper, reader, results, post-hoc outputs and release map."
 }

@@ -18,7 +18,14 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - Native pointwise execution is 1.53–1.83× at every size.
   - The state alone is unresolved at 2,048 points (the A/A gate failed there) and 1.63–1.66× from 16,384 points on.
   - The explicit transpose beats generic autograd only from 16,384 points on (1.31×).
-  - The solve-level gain does not carry over to H100 at the original size, because optimizer overhead dominates. The contributions, discussion and conclusion are updated accordingly.
+  - At the original size the solve-level gain does not carry over to H100. The L-BFGS phase costs 6.3–7.2 ms per evaluation against under 0.3 ms of gradient replay, so optimization alone is 0.95×.
+  - The contributions, discussion and conclusion are updated accordingly.
+- **Section 5.6: solves at larger point counts (October 16).** A second pre-registered H100 study runs 36 complete solves (cells A, B and C at 16,384 and 65,536 points, six formal seeds, all accepted).
+  - The registered rule finds a solve-level gain for every pair at both sizes.
+  - Native GL8 over compiled Q10 is 1.48× (16,384) and 1.88× (65,536) in optimization alone; the protocol expected about 1.4× and 2.0×.
+  - Post hoc, each L-BFGS evaluation costs 5.9–7.1 ms beyond the gradient at every size. The solve-level gain is therefore a matter of problem size, not of the device.
+  - Setup ratios depend on compiler-cache state set by queue order. The 2,048-point Q10 setups (4.7–5.8 s) were warm-cache values.
+  - Table 10 is new, and the replay-versus-solve discussion and the conclusion are rewritten.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
   - Protocol v5 runs the development recipe with 4,800 L-BFGS calls. The loss and the physical errors stall soon after call 800, and stratified pressure ends at 2.2–3.0× its limit.
