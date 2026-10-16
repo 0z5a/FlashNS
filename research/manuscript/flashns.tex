@@ -21,25 +21,21 @@ coordinate derivatives of the network and the complete parameter gradient
 of a loss built from them. FlashNS propagates only the derivative state that
 a fixed residual consumer reads, and transposes every local dependency of
 that state into the parameter gradient. For the gradient-enhanced
-two-dimensional Navier--Stokes objective, an eight-channel state (GL8:
-value, gradient, Hessian and gradient of the Laplacian) replaces the
-ten-channel third-order jet, while its parameter transpose requires the
-fourth activation derivative. On an NVIDIA H20 in FP64, all 72 planned
-solves pass unchanged accuracy gates and an independent scalar-AD check;
-GL8 reaches the gates 1.66$\times$ faster than a compiled full-jet control
-and 1.73--3.37$\times$ faster than matched adaptations of collapsed Taylor
-mode, explicit differentiation and exact STDE. The same campaign on an H100
-passes all 78 solves, but these ratios compress to 1.22$\times$ and
-1.29--1.69$\times$, because a fixed L-BFGS cost per evaluation dominates at
-this size. On the transient
-three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
-all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
-faster than internal full spatial-jet and naive baselines; against nested
-autograd and a public collapsed Taylor-mode package the paired ratios are
-1.90$\times$ and 1.08$\times$ (range 0.98--1.19). A 36-channel
-curl-potential contract gives 1.32$\times$ objective-gradient throughput on
-H100 (1.40$\times$ when both arms fold exact zero-gate rows); with a larger L-BFGS budget its training passes the loss gate and most
-physical gates, but stratified pressure still fails.
+two-dimensional Navier--Stokes objective, an eight-channel state (GL8)
+replaces the ten-channel third-order jet; its transpose requires the fourth
+activation derivative. On an NVIDIA H20 in FP64, all 72 planned solves pass
+unchanged accuracy gates, and GL8 reaches them 1.66$\times$ faster than a
+compiled full-jet control and 1.73--3.37$\times$ faster than matched
+adaptations of collapsed Taylor mode, explicit differentiation and exact
+STDE. On an H100 the same campaign passes all 78 solves, but a fixed L-BFGS
+cost per evaluation compresses these ratios to 1.22$\times$ and
+1.29--1.69$\times$. On the transient three-dimensional Ethier--Steinman
+benchmark, a 17-channel contract passes all gates in 18 of 18 H100 solves;
+it is 3.60$\times$ and 6.96$\times$ faster than internal baselines, and
+1.90$\times$ and 1.08$\times$ (range 0.98--1.19) against uncompiled nested
+autograd and collapsed Taylor mode. A 36-channel curl-potential contract
+gives 1.32$\times$ objective-gradient throughput on H100, but its training
+still fails a stratified pressure test.
 \end{abstract}
 
 \section{Introduction}
@@ -995,15 +991,16 @@ On H100, GL8 still reaches the gates faster than every baseline
 Q10 the registered ratio falls from 1.66 to 1.22, against collapsed Taylor
 from 1.73 to 1.37, and against ED, torch AD and STDE from 2.31--3.37 to
 1.29--1.90. In optimization alone, Q10 (1.02) and ED (1.09) are nearly level
-with GL8; the remaining Q10 gap is its 4.8\,s Inductor compile, against
-0.3--0.6\,s native.
+with GL8; the remaining Q10 gap is setup, 4.8\,s with a warm compiler cache
+against 0.3--0.6\,s native.
 
 The supplementary phase split shows the mechanism of
 Section~\ref{sec:ablation}. In the Adam phase, an evaluation costs 0.24--0.25\,ms
 for GL8, 0.37--0.40 for Q10, 0.86--0.89 for collapsed Taylor and 2.0--2.3 for
 STDE and torch AD. In the L-BFGS phase, every backend except cuDNN costs
-6.3--9.0\,ms per evaluation. The H20 ratios are therefore those of a device
-where the FP64 gradient is a larger share of each evaluation. On H100 at this
+6.3--9.0\,ms per evaluation. The larger H20 ratios are consistent with a
+device where the FP64 gradient is a larger share of each evaluation; the
+H20 L-BFGS cost was not measured separately. On H100 at this
 size the shared optimizer cost compresses them; at larger point counts
 (Section~\ref{sec:ablation}) the gain returns. The memory/replay lane
 reproduces the chunk trade-off at 16,384 points: chunk-512 allocates an 85\%
@@ -2008,7 +2005,11 @@ an Adam-phase evaluation, which contains the gradient, is 1.37 times
 faster. One of the six seeds favours the collapsed jet, and the protocol
 registered no gain rule, so the 1.08 is a measured ratio rather than a
 decided gain. Compiled variants of the external arms and larger problems,
-where the gradient dominates, were not run.
+where the gradient dominates, were not run. In the two-dimensional campaign
+on H100 (Section~\ref{sec:h100retest}), compiling made the collapsed-Taylor,
+ED and torch-AD replays 3.2, 5.0 and 2.3 times faster, so a compiled
+collapsed jet could match or beat C17 here; C17 itself is uncompiled
+explicit code.
 
 \section{Discussion and limitations}\label{sec:limits}
 \paragraph{Attribution of the two-dimensional gain.}
@@ -2095,8 +2096,8 @@ temporal-smoothness continuation changes where training meets the loss gate
 but not which test fails. The C36 throughput gains depend on compilation, the zero-gate
 folding gain depends on this instance's gate geometry, and the problem is a
 single constructed box instance. External baselines on C36 itself (the
-external three-dimensional comparison uses Ethier--Steinman), accepted C36
-solves, a second nonlinear PDE and device-traffic measurements remain open
+external three-dimensional comparison uses uncompiled Ethier--Steinman
+arms), compiled external three-dimensional arms, accepted C36 solves, a second nonlinear PDE and device-traffic measurements remain open
 experiments rather than implied consequences of the implementation.
 
 \section{Conclusion}

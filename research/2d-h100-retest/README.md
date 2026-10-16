@@ -61,11 +61,12 @@ The batch ran once in 85 minutes; all four lanes and the audit exited 0.
 | Q10 compact (representation lane) | 1.24 (1.13–1.42) | 1.02 | 1.01 | 1.66 |
 
 - **GL8 is still faster than every baseline, by much less than on H20,** as the registered expectation said.
-  - In optimization alone, Q10 (1.02) and ED (1.09) are nearly level. The remaining Q10 gap is setup: a 4.8 s Inductor compile against 0.3–0.6 s native.
+  - In optimization alone, Q10 (1.02) and ED (1.09) are nearly level. The remaining Q10 gap is setup: 4.8 s with a warm compiler cache against 0.3–0.6 s native.
   - Consistency: the representation lane agrees with the ablation and the precision study at 2,048 points. Q10/GL8 is 0.95–1.02 in optimization alone and 1.16–1.32 in setup plus optimization across the three batches.
 - **Phase split** (supplementary).
   - Adam phase, per evaluation: GL8 0.24–0.25 ms, Q10 0.37–0.40, ED 0.69–0.73, collapsed Taylor 0.86–0.89, cuEquivariance 1.2–1.4, PhysicsNeMo 1.9, STDE 2.0, torch AD 2.3, cuDNN 90 ms.
-  - L-BFGS phase: every backend except cuDNN costs 6.3–9.0 ms per evaluation. That shared cost compresses the H20 ratios at this size.
+  - L-BFGS phase: every backend except cuDNN costs 6.3–9.0 ms per evaluation. That shared cost compresses the ratios at this size.
+  - The larger H20 ratios are consistent with the FP64 gradient taking a larger share of each evaluation on H20; the H20 L-BFGS cost was not measured.
 - **Memory and replay lane.** It reproduces the chunk trade-off at 16,384 points: chunk-512 allocates an 85% lower setup peak than GL8 (45.9 against 312.8 MiB) at 3.4× its replay time.
 - **Scope.** No H100 ratio is pooled with H20.
 
