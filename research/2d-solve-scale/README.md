@@ -52,8 +52,9 @@ Registered statistics: paired geometric mean (range) of the first cell's time ov
   - A: the first solve of a cell and size on a lane took 22–23 s; later solves took 4.7–5.9 s.
   - B: 12–14 s first, 3.3–4.3 s later. Two B solves started together at the batch start took 47 s.
   - C: two native solves started at the batch start took 65 s and the rest 0.3–1.4 s; the cause was not investigated.
-  - The same check on the ablation shows every 2,048-point Q10 solve ran after earlier tasks of its cell on its lane. Its 4.7–5.8 s setups are therefore warm-cache values.
-  - Setup-plus-optimization ratios in both studies reflect batch order, not the cells. The registered decision uses optimization alone.
+  - The same check on the ablation shows every 2,048-point Q10 solve ran after earlier tasks of its cell on its lane. Its 4.7–5.8 s setups are therefore warm-cache values, and the 2,048-point setup comparison is warm against warm.
+  - Warm Q10 setup (4.7–5.9 s) is still slower than native (0.3–1.4 s); that is a real difference between the cells.
+  - At 16,384 and 65,536 points, queue order decided which seeds paid a cold compile. This widens the per-seed setup-plus-optimization ranges and lifts the 65,536-point C/A value (2.12) above optimization alone (1.88). The registered decision uses optimization alone.
 - **Scope.** H100 only; nothing is pooled with the H20 campaign. The H20 gain at 2,048 points (1.48 in optimization alone, with a compiled Q10 gradient of 3.27 ms) is consistent with this picture, but the H20 L-BFGS cost was not measured and the problem instances differ. This is one problem and one optimizer implementation.
 
 ## Files

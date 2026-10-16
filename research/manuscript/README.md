@@ -24,7 +24,7 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - The registered rule finds a solve-level gain for every pair at both sizes.
   - Native GL8 over compiled Q10 is 1.48× (16,384) and 1.88× (65,536) in optimization alone; the protocol expected about 1.4× and 2.0×.
   - Post hoc, each L-BFGS evaluation costs 5.9–7.1 ms beyond the gradient at every size. The solve-level gain is therefore a matter of problem size, not of the device.
-  - Setup ratios depend on compiler-cache state set by queue order. The 2,048-point Q10 setups (4.7–5.8 s) were warm-cache values.
+  - The 2,048-point Q10 setups (4.7–5.8 s) were warm-cache values, so that setup comparison is warm against warm; warm Q10 setup is still slower than native. At larger sizes, queue order decided which seeds paid a cold compile, which widens the setup-plus-optimization ranges.
   - Table 10 is new, and the replay-versus-solve discussion and the conclusion are rewritten.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.

@@ -860,9 +860,13 @@ beginning of the batch took 65 seconds of setup, the others 0.3--1.4
 seconds; the cause was not investigated. The same check on the ablation
 shows that every 2,048-point Q10 solve ran after earlier tasks of its cell
 on the same lane, so the 4.7--5.8 seconds quoted above are warm-cache
-values. Setup ratios in both studies therefore reflect the order in which
-the batches ran rather than the cells; the decisions use optimization time
-alone.
+values and the 2,048-point setup comparison is warm against warm. Warm Q10
+setup (4.7--5.9 seconds) remains slower than native setup (0.3--1.4
+seconds), a real difference between the cells. At 16,384 and 65,536 points,
+however, queue order decided which seeds paid a cold compile. This widens
+the per-seed setup-plus-optimization range (0.62--2.14 for C over A at
+16,384 points) and lifts the 65,536-point value (2.12) above optimization
+alone (1.88). The decisions use optimization time alone.
 
 On H100 the solve-level gain is therefore a matter of problem size: it is
 absent at 2,048 points, where a fixed L-BFGS cost per evaluation dominates,
@@ -1821,8 +1825,9 @@ optimization alone is no faster (0.95). At 16,384 and 65,536 points the
 same cost is a smaller share of each evaluation, and native GL8 shortens
 optimization by 1.48 and 1.88 under a registered rule. Whether the
 solve-level gain appears therefore depends on problem size and on the
-optimizer's own cost, not on the derivative program alone. Setup ratios
-depend on compiler-cache state and are not attributed to the cells.
+optimizer's own cost, not on the derivative program alone. Native setup
+avoids compilation, but at larger sizes queue order decided which solves
+met a cold compiler cache, so the decisions use optimization time alone.
 
 \paragraph{Chunking.}
 Chunking addresses a different engineering constraint. It bounds the

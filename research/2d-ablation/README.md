@@ -93,6 +93,7 @@ Full-gradient replay (ms) and ratios; above one favours the second cell:
   - The registered setup-plus-optimization geometric means are C/A 1.16 (0.91–1.40), B/A 0.98 and C/B 1.19.
   - Optimization alone gives 0.95, 0.96 and 0.99. The 1.16 comes from setup: Q10's Inductor compile takes 4.7–5.8 s against 0.3 s native.
   - Each evaluation spends 2.5–3.8 ms in optimizer work against under 0.3 ms of gradient replay. On H100 at this size the faster gradient therefore does not shorten a solve.
+  - *Follow-up:* the [solve-scale study](../2d-solve-scale/README.md) refines this. The 2.5–3.8 ms is total time per evaluation, including the gradient; the L-BFGS phase alone costs 6.3–7.2 ms per evaluation. The 4.7–5.8 s Q10 setups were warm-cache values. At 16,384 and 65,536 points a registered solve-level gain appears (1.48× and 1.88×).
 
 Files:
 - [2d-ablation-result-20261016.json](2d-ablation-result-20261016.json): registered reader output.

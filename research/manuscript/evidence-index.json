@@ -2,7 +2,7 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "ac22adda80290b569f89f7700ef0d32fdb3f1112090e05e17e694c28f908ecb2",
+ "manuscript_sha256": "c359b0b2da4f88c56c920d3d268d981b3862d3326e8139a05f68d49f7052d3c1",
  "previous_manuscript_sha256": "277221259b9975b7e2147e9c97a1b0b28ddc034f8dd63c1c21a39189f615c8c7",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
@@ -74,7 +74,7 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "aa30b2deafff03cd1d214b310999b86f6fb511b52faec39d3c51123f279c553b",
+ "pdf_sha256": "05703513f38e63a0932c6674305185359ce1df42d2589618b6ac438076b25215",
  "previous_pdf_sha256": "34d05e11a6dcde57557903aaddf5a04de2dab98350b70dc00229692517524da1",
  "pages": 36,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
@@ -154,7 +154,7 @@
    "16384": "1.43",
    "65536": "1.95"
   },
-  "posthoc": "L-BFGS phase costs 5.9-7.1 ms per evaluation beyond gradient replay at 2,048, 16,384 and 65,536 points in every cell; Adam phase 0.05-0.12 ms beyond replay. Setup depends on per-lane compiler-cache state set by queue order; the 2,048-point Q10 solve setups were warm-cache values.",
+  "posthoc": "L-BFGS phase costs 5.9-7.1 ms per evaluation beyond gradient replay at 2,048, 16,384 and 65,536 points in every cell; Adam phase 0.05-0.12 ms beyond replay. The 2,048-point Q10 solve setups were warm-cache values (warm Q10 setup still slower than native); at larger sizes queue order decided which seeds paid a cold compile, widening setup-plus-optimization ranges.",
   "archive_sha256": "430ee078f28a37b74ef6ba7cbe326dff0cce0dde61059959cadf469fd806a7cd"
  },
  "revision_note_20261016_solve_scale": "Adds the 'Solves at larger point counts' paragraphs and Table 10 to Section 5.6 (pre-registered H100 solve-scale study: solve-level gains 1.48 and 1.88 for native GL8 over compiled Q10 at 16,384 and 65,536 points), the post-hoc phase split and setup cache-state check, and rewrites the 2,048-point solve explanation, the replay-versus-solve discussion and the conclusion in terms of problem size rather than device; pins the study's protocol, plan, wrapper, reader, results, post-hoc outputs and release map."
