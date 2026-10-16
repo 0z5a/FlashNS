@@ -1,0 +1,94 @@
+{
+ "scope": "C36 zero-gate folding GPU batch (one H100). The executed packet's src/ and protocols are a git archive of public commit c9b2c20 (research/c36-potential-proof); data and the frozen native reference are the unchanged inputs of the 2026-10-13 graph-timing runs. The FP64 runtime and the Triton compiler runtime were verified against the 317-file runtime manifest of the prepared 2026-10-13 batch.",
+ "executed_packet": {
+  "source_commit": "c9b2c20",
+  "manifest_sha256": "5b71a9d4974380324a7f51657e75cf0597eb3438075ba42c73a05eb5dac60bba",
+  "files": 91,
+  "runtime_manifest_sha256": "b38fadb851b26f0f076243ab744e05454512a080ca79583624f107c8656364c3",
+  "start_script_sha256": "07c411458438b2bff1c8f99dd367abcddca77f72e19a13918cdfd3ae16b90811",
+  "frozen_reference_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66"
+ },
+ "archive": {
+  "name": "zero-gate-gpu-complete.tar.gz",
+  "sha256": "90ab9782a1454fe5a119514c4fde0f797cda35f354003d32c8ac387b352ab5be",
+  "members": 133,
+  "bytes": 42478687,
+  "excluded": "frozen native reference (unchanged input)",
+  "persistent_tape_copy": false
+ },
+ "files": {
+  "research/c36-potential-proof/src/box376/run_zero_gate_gpu.py": {
+   "public_sha256": "92ec81469bdf00f1805f78c322c66de29acf3439230679534c677b7cbaf2eaf4",
+   "executed_path": "src/box376/run_zero_gate_gpu.py",
+   "executed_sha256": "c479167e27a679af2cb6c2224108ba540ea546f20cb9446008c1a2e694826043",
+   "byte_identical": false,
+   "normalization": "The executed copy names the node-local cache directly as a fixed scratch path with the account name as prefix. The public copy reads the same two values from NODE_LOCAL_SCRATCH and USER. No other change."
+  },
+  "research/c36-potential-proof/src/box376/read_zero_gate_gpu.py": {
+   "public_sha256": "3c6800c8d9ff65bd81e0366c3847625cf17e7ca93f4dc4ea072c44bb6129fff7",
+   "executed_path": "src/box376/read_zero_gate_gpu.py",
+   "executed_sha256": "3c6800c8d9ff65bd81e0366c3847625cf17e7ca93f4dc4ea072c44bb6129fff7",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/src/box376/entry_zero_gate.sh": {
+   "public_sha256": "d4353121dc2a3a8e17d5d16a5c2ec9138145dd7782a4e81f0ff497266453cf60",
+   "executed_path": "src/box376/entry_zero_gate.sh",
+   "executed_sha256": "d4353121dc2a3a8e17d5d16a5c2ec9138145dd7782a4e81f0ff497266453cf60",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/src/box376/fold_zero_gate.py": {
+   "public_sha256": "10831bebd6d1f9fdf0f70ccc28e87ff26f150ecd86e5b39c66fe6ec3e6f77613",
+   "executed_path": "src/box376/fold_zero_gate.py",
+   "executed_sha256": "10831bebd6d1f9fdf0f70ccc28e87ff26f150ecd86e5b39c66fe6ec3e6f77613",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/src/box376/packed_analytic_gpu_run.py": {
+   "public_sha256": "226cc54c02b762ab38fc54a1f2d82a1af698458370f2c4f2f3233f0552c04b1d",
+   "executed_path": "src/box376/packed_analytic_gpu_run.py",
+   "executed_sha256": "226cc54c02b762ab38fc54a1f2d82a1af698458370f2c4f2f3233f0552c04b1d",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/src/box376/audit_packed_analytic_gpu.py": {
+   "public_sha256": "f5a5ec3786064e309fd0f1c40786bbf5673d92e59da8e85983429be838b59b81",
+   "executed_path": "src/box376/audit_packed_analytic_gpu.py",
+   "executed_sha256": "f5a5ec3786064e309fd0f1c40786bbf5673d92e59da8e85983429be838b59b81",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/src/box376/audit_zero_gate_folding.py": {
+   "public_sha256": "26cfe4b769e6ab91dddef7bcd191a7c086d70f4a3498e588b76037c548d47e80",
+   "executed_path": "src/box376/audit_zero_gate_folding.py",
+   "executed_sha256": "26cfe4b769e6ab91dddef7bcd191a7c086d70f4a3498e588b76037c548d47e80",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/src/box376/packed_analytic_gpu_smoke.py": {
+   "public_sha256": "04c8bb492097823a0f00da28d69408a3f41869a4bf99177da42d02e7b8319673",
+   "executed_path": "src/box376/packed_analytic_gpu_smoke.py",
+   "executed_sha256": "04c8bb492097823a0f00da28d69408a3f41869a4bf99177da42d02e7b8319673",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/src/box376/triton_target_compat.py": {
+   "public_sha256": "0c7f46b95e10010c4ecdd413e08fea0d9388a5e5a5d1f5d83beea79f5668cf29",
+   "executed_path": "src/box376/triton_target_compat.py",
+   "executed_sha256": "0c7f46b95e10010c4ecdd413e08fea0d9388a5e5a5d1f5d83beea79f5668cf29",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/protocol-zero-gate-gpu-20261016.json": {
+   "public_sha256": "e46472d4413fd4362661930aeb5120e365e1602cca28c1420498c3e81aa77990",
+   "executed_path": "protocol-zero-gate-gpu-20261016.json",
+   "executed_sha256": "e46472d4413fd4362661930aeb5120e365e1602cca28c1420498c3e81aa77990",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/protocol-graph-timing-20261012.json": {
+   "public_sha256": "26293f7c66f84432396b3e0052463fa8b458d1e343e5f478e124fd92180585ee",
+   "executed_path": "protocol-graph-timing-20261012.json",
+   "executed_sha256": "26293f7c66f84432396b3e0052463fa8b458d1e343e5f478e124fd92180585ee",
+   "byte_identical": true
+  },
+  "research/c36-potential-proof/zero-gate-folding-gpu-result-20261016.json": {
+   "public_sha256": "f283bcb4721611b96eeaead1584f4c5ce0519a62b5462c7fa468f763250f3b51",
+   "executed_path": "zero-gate-gpu-result.json",
+   "executed_sha256": "f283bcb4721611b96eeaead1584f4c5ce0519a62b5462c7fa468f763250f3b51",
+   "byte_identical": true
+  }
+ }
+}

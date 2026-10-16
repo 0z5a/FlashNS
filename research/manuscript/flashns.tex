@@ -33,7 +33,7 @@ three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
 faster than internal full spatial-jet and naive baselines. A 36-channel
 curl-potential contract gives 1.32$\times$ objective-gradient throughput on
-H100; with a larger L-BFGS budget its training passes the loss gate and most
+H100 (1.40$\times$ when both arms fold exact zero-gate rows); with a larger L-BFGS budget its training passes the loss gate and most
 physical gates, but stratified pressure still fails.
 \end{abstract}
 
@@ -985,7 +985,7 @@ datasets, hardware or training seeds.
 
 \begin{table}[htbp]\centering\small
 \setlength{\tabcolsep}{4pt}
-\caption{Complete C36 objective and all-parameter-gradient timing against the internal C36 parameter-AD control. Times are means over paired windows in seconds; the ratio is a paired geometric mean, not the ratio of these time means. Ten pairs per row. Rows 1--2 use variant (i), row 3 variant (ii) and rows 4--5 variant (iii); in every row both arms share the same forward and execution mode. Different variants and devices are not pooled.}
+\caption{Complete C36 objective and all-parameter-gradient timing against the internal C36 parameter-AD control. Times are means over paired windows in seconds; the ratio is a paired geometric mean, not the ratio of these time means. Ten pairs per row. Rows 1--2 use variant (i), row 3 variant (ii) and rows 4--7 variant (iii); in every row both arms share the same forward and execution mode. Rows 6--7 come from one later registered batch on one H100: a repeat of row 4 and the same comparison with exact zero-gate constant folding in both arms. Different variants and devices are not pooled.}
 \label{tab:c36performance}
 \begin{tabular}{lrrrr}\toprule
 Device / mode & Candidate s & AD s & Ratio & 95\% interval\\\midrule
@@ -993,7 +993,9 @@ H100 eager, (i) & 1.739582 & 1.692531 & 0.972935 & 0.970474--0.975924\\
 H100 graph, (i) & 0.484235 & 0.469551 & 0.969678 & 0.969317--0.970075\\
 H100 packed graph, (ii) & 0.328305 & 0.342941 & 1.044582 & 1.044130--1.045051\\
 H100 compiled graph, (iii) & 0.164484 & 0.217771 & 1.323962 & 1.323087--1.324762\\
-CPU compiled, (iii) & 1.865900 & 2.352072 & 1.265086 & 1.203149--1.327900
+CPU compiled, (iii) & 1.865900 & 2.352072 & 1.265086 & 1.203149--1.327900\\
+H100 compiled graph, (iii), repeat & 0.166597 & 0.220791 & 1.325303 & 1.324919--1.325678\\
+H100 compiled graph, (iii), folded & 0.099377 & 0.139132 & 1.400047 & 1.399911--1.400178
 \\\bottomrule\end{tabular}
 \end{table}
 
@@ -1010,6 +1012,29 @@ three-dimensional consumer; external three-dimensional baselines remain
 open (Section~\ref{sec:limits}). An older comparison against a recursive
 native coordinate-AD implementation is recorded only in
 Appendix~\ref{app:records}, because its baseline is not competitive.
+
+A later registered batch, whose protocol was committed before it ran,
+measures exact zero-gate constant folding on one H100. Folding evaluates
+the network only on rows where at least one of the 36 gate channels is
+nonzero, by exact equality: 2,933 of the 4,999 rows. Every other row keeps
+its parameter-independent forcing or target loss at the original weight;
+that loss is zero for this instance. Both arms fold the same rows.
+
+The batch first runs the folded comparison and then an unfolded repeat on
+the same GPU. Both pass all 78 numerical comparisons, with a largest error
+of $3.0\times10^{-6}$ of the budget, and the independent readers. The
+unfolded repeat gives 1.325 against 1.324 in row 4. With folding the ratio
+is 1.400 (1.3999--1.4002). The registered rule classifies this as an
+analytic advantage under folding, since the interval's lower bound exceeds
+1.03.
+
+Folding shortens an evaluation 1.68 times for the analytic candidate and
+1.59 times for parameter AD; the row count bounds this at 1.70. These
+factors compare sequential processes on the same GPU and are descriptive.
+That parameter AD gains less suggests it carries more cost that does not
+scale with rows. A folded analytic evaluation takes 99.4 milliseconds,
+against 220.8 for unfolded parameter AD. Folding depends on this
+instance's gate geometry and changes no training or acceptance result.
 
 \subsection{Frozen-budget training outcomes}
 Both H100 engines start from their original fresh initializations and
@@ -1867,8 +1892,8 @@ more slowly than the loss. With six times the L-BFGS budget the loss and the
 errors stall, so the gap is not a budget limit of this optimizer. A
 temporal-smoothness continuation changes where training meets the loss gate
 but not which test fails. The C36 throughput gains depend on compilation, the zero-gate
-constant folding in the artifact is qualified on CPU only, and the problem
-is a single constructed box instance. External three-dimensional baselines,
+folding gain depends on this instance's gate geometry, and the problem is a
+single constructed box instance. External three-dimensional baselines,
 accepted C36 solves, a second nonlinear PDE, reduced-precision measurements
 and device-traffic measurements remain open experiments rather than implied
 consequences of the implementation.
@@ -1894,7 +1919,8 @@ all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
 faster than internal full spatial-jet and naive baselines. The C36 curl-potential
 extension passes complete gradient qualification and improves
 objective-gradient throughput by 1.32$\times$ over an equally compiled
-parameter-AD control. Its original training budget does not reach the
+parameter-AD control, and by 1.40$\times$ when both arms fold exact
+zero-gate rows. Its original training budget does not reach the
 training gate; a development run with 40 times more L-BFGS calls does, and
 passes most physical gates, but stratified pressure still fails.
 Observations of every checkpoint show this error still falling at that

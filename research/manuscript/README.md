@@ -26,6 +26,12 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - Post hoc, each L-BFGS evaluation costs 5.9–7.1 ms beyond the gradient at every size. The solve-level gain is therefore a matter of problem size, not of the device.
   - The 2,048-point Q10 setups (4.7–5.8 s) were warm-cache values, so that setup comparison is warm against warm; warm Q10 setup is still slower than native. At larger sizes, queue order decided which seeds paid a cold compile, which widens the setup-plus-optimization ranges.
   - Table 10 is new, and the replay-versus-solve discussion and the conclusion are rewritten.
+- **Section 6.3: zero-gate folding on H100 (October 16).** A pre-registered batch measures exact zero-gate constant folding in both arms on one H100.
+  - Both runs pass all 78 numerical comparisons.
+  - With folding, the analytic transpose is **1.400×** faster than parameter AD (interval 1.3999–1.4002); the registered classification is an analytic advantage.
+  - An unfolded repeat gives 1.325× (1.324× before).
+  - Folding itself shortens an evaluation by 1.68× (analytic) and 1.59× (parameter AD), against a row-count bound of 1.70.
+  - Table 11 gains two rows, and the abstract, the limitation and the conclusion are updated; the limitation no longer says the folding is qualified on CPU only.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
   - Protocol v5 runs the development recipe with 4,800 L-BFGS calls. The loss and the physical errors stall soon after call 800, and stratified pressure ends at 2.2–3.0× its limit.
