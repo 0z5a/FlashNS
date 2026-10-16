@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "568a79bad63e094141f71eceb167cc42532bcf4bce96be4f29230dfd847b744e",
- "previous_manuscript_sha256": "43fabae38f9a29d68b9964231bb170a8b5c6c570bb3ea749574ba89a904979a3",
+ "manuscript_sha256": "277221259b9975b7e2147e9c97a1b0b28ddc034f8dd63c1c21a39189f615c8c7",
+ "previous_manuscript_sha256": "568a79bad63e094141f71eceb167cc42532bcf4bce96be4f29230dfd847b744e",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -43,7 +43,14 @@
   "../c36-potential-proof/c36-v5-observations-20261015.json": "3323f6c0f39e9be674464ebf9c93798ff36cd6fead9ac59c18cf106f3de99f45",
   "../c36-potential-proof/c36-v5-decision-20261015.json": "0591d8180e94b4c5764cc9c18a3206fd2e04859d0157d54abc5ee7c436fca4d9",
   "../c36-potential-proof/c36-v5-training-curves-20261015.json": "f2cb596650aa910ecdec053188259700eba5e8bb24a04f592a2eff474b5e66a0",
-  "../c36-potential-proof/c36-v5-budget-result-20261015.json": "53543c21c232c038bb991c387b661c55da2d1ea9c1542158a31411a7fb4e08e1"
+  "../c36-potential-proof/c36-v5-budget-result-20261015.json": "53543c21c232c038bb991c387b661c55da2d1ea9c1542158a31411a7fb4e08e1",
+  "../2d-ablation/protocol-2d-ablation-20261016.json": "12e3fa7206533785f7d7f36be7d22f0b47a97c13079ca7267d01b083ac12813c",
+  "../2d-ablation/plan-2d-ablation-20261016.json": "23da1f3523e05a18416cdd3f495259055e3576cfbad1a4a126213d352bdab933",
+  "../2d-ablation/2d-ablation-result-20261016.json": "878822d70a4ff06b3d301606da113a68859be031193acc08bb1edc65f74be58c",
+  "../2d-ablation/2d-ablation-posthoc-20261016.json": "b878df0d4b0778a7f4ff0fc4a3454b520429be8336c6f716ca794709d83710b8",
+  "../2d-ablation/release-source-map-20261016.json": "5ce50cc9263a77d79b9401b12622b3d13a4a095138c9e7a52b97c797c79f76f2",
+  "../2d-ablation/posthoc_ablation.py": "fd23647a77414ba19a512d59b5e23f5b13f0036d1a7dd96fc9e98bee90726f8b",
+  "../2d-ablation/read_ablation.py": "41803f419a2b7953088a84b7e3fb108ba051bbc608149bfc77f3e17d5cb703fa"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -57,11 +64,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "6e32fcdd75b2c8a38279c21f2e479db893d7e461748801f9f443d5eb84096a21",
- "previous_pdf_sha256": "5184736e292e69404e0b10036cbe6ac996d5e074803151e70a677942a551e54d",
- "pages": 33,
+ "pdf_sha256": "34d05e11a6dcde57557903aaddf5a04de2dab98350b70dc00229692517524da1",
+ "previous_pdf_sha256": "6e32fcdd75b2c8a38279c21f2e479db893d7e461748801f9f443d5eb84096a21",
+ "pages": 35,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS: Figures 1-4, the Ethier-Steinman results page, the C36 v2 page, Sections 6.8-6.10 and the C36 appendix inspected at 90 dpi",
+ "pdf_visual_review": "PASS: Figures 1-4, Tables 8-9 (Section 5.6), the Ethier-Steinman results page, the C36 v2 page, Sections 6.8-6.10 and the C36 appendix inspected at 90 dpi",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -112,5 +119,18 @@
   "training": "4a1902a85030784ac5765485a79a4bc16735d2160c176bbbc84fff3074c0baf6",
   "observation": "406f71ebc0a6fba6f4dc64c97f6c91b4933f72990ba3394b6beeefd9d4aaaa8e"
  },
- "revision_note_20261016": "Adds Section 6.10: the cancelled v4 resumed design (fresh L-BFGS history at low loss stalls) and the pre-registered v5 budget study (4,800 L-BFGS calls, both engines, 24 all-plane observations, registered outcome E5); updates Section 6.8, the discussion, the conclusion and the C36 appendix; pins the v4/v5 protocols, v5 results, decision and the extended release map."
+ "revision_note_20261016": "Adds Section 6.10: the cancelled v4 resumed design (fresh L-BFGS history at low loss stalls) and the pre-registered v5 budget study (4,800 L-BFGS calls, both engines, 24 all-plane observations, registered outcome E5); updates Section 6.8, the discussion, the conclusion and the C36 appendix; pins the v4/v5 protocols, v5 results, decision and the extended release map.",
+ "ablation_2d_H100": {
+  "tasks": "244/244 complete; 226 timed processes pass the Q10 oracle (max 8.0e-15)",
+  "gates": "A/A passes at 16,384 points (1.0002), fails at 2,048 points (1.057 > 3%); drift repeats within 0.6%",
+  "execution_B_over_C": "1.53-1.83 at every size",
+  "representation_A_over_B": "1.09 at 2,048 (gate failed), 1.34-1.35 at 4k-8k, 1.63-1.66 from 16k",
+  "explicit_transpose_F_over_B": "1.03 at 2,048, 1.07-1.09 at 4k-8k, 1.31 from 16k",
+  "solves": "C/A setup+opt 1.16 (0.91-1.40), optimization only 0.95; optimizer overhead 2.5-3.8 ms per evaluation against <0.3 ms gradient",
+  "archive_sha256": {
+   "attempt_1_failed_startup": "27b01eff0c9b813df63542e99b8d4ec2deef7c5429fb0f2df255c59fb40b1ce8",
+   "attempt_2": "658544ae6251d4ba26f57c6ff0e29fc4d75c5d6c6a2c6b035a04bbc918ee70bf"
+  }
+ },
+ "revision_note_20261016_ablation": "Adds Section 5.6 (pre-registered H100 representation/execution ablation, Tables 8-9) and updates the contributions, the attribution and replay-versus-solve discussion and the conclusion; pins the ablation protocol, plan, results, post-hoc checks, reader and release map."
 }

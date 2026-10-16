@@ -79,7 +79,9 @@ rejects observables the contract cannot answer.
 reverse rules for these states, including the fourth activation derivative
 that the forward state never stores, the transpose of packed symmetric
 storage, and a transpose of the stable coefficient program that is actually
-executed in saturated regions.
+executed in saturated regions. On H100 the explicit two-dimensional
+transpose is faster than generic autograd on the same state only from
+16,384 points on (Section~\ref{sec:ablation}).
 \item \emph{Execution.} Library GEMMs, explicit pointwise derivative kernels
 and CUDA Graph replay of the complete loss/gradient program are combined
 with value-only boundary rows and a chunked mode that accumulates the
@@ -94,8 +96,9 @@ the C36 extension, including its failed acceptance.
 \end{enumerate}
 
 The paper does not claim the first residual-aware derivative method, a
-globally minimal state, a pure representation effect separated from
-execution, or superiority across PDEs, precisions or GPU families. The
+globally minimal state, or superiority across PDEs, precisions or GPU
+families. Representation and execution are separated for one problem on one
+device (Section~\ref{sec:ablation}). The
 two-dimensional H20 campaign, the C36 study (H100 and CPU) and the
 Ethier--Steinman solves (H100) use different models, data, seeds, gates and
 hardware; their timings are never pooled. Table~\ref{tab:terms} defines the names used throughout.
@@ -537,7 +540,7 @@ one nominal block is at most about 0.4\% of its 6,261--9,032 recorded
 evaluations. The same rule applies to every arm, so check granularity
 enters paired ratios only through differing optimization trajectories.
 
-\subsection{Six-seed representation and chunk comparison}
+\subsection{Six-seed representation and chunk comparison}\label{sec:sixseed}
 
 \begin{table}[t]
 \centering\small
@@ -656,6 +659,131 @@ Interior & Method & Gradient ms & Setup peak MiB & Ready reserved MiB\\\midrule
 \end{table}
 
 At 16,384 interior points, chunk-512 reduces native GL8 setup/capture allocated peak from 312.79 to 45.88 MiB, a reduction of 85.33\%, and ready reserved memory from 340 to 76 MiB. Full-gradient replay increases from 11.511 to 17.908 ms, a 55.58\% cost. At 2,048 points, native GL8 remains the speed-oriented option. No maximum trainable scale or device-traffic reduction is inferred from these counters.
+
+\subsection{Representation and execution on H100}\label{sec:ablation}
+The H20 comparison combines the derivative state with its execution.
+
+\paragraph{Design.}
+A separately registered H100 study separates the two. It uses the
+unchanged two-dimensional source at its pinned commit, the same FP64
+objective, data and stable activation, and the same benchmark: a fresh
+process per measurement, a full loss/gradient check against the dense Q10
+oracle, a 2-second warmup and 7$\times$100 timed CUDA Graph replays.
+
+Six cells change one factor at a time:
+\begin{itemize}
+\item A: compact Q10 compiled by Inductor;
+\item B: compact GL8 with the explicit output-state transpose, compiled by
+  Inductor;
+\item C: the same GL8 layout and transpose with the native pointwise
+  kernels, uncompiled;
+\item D and E: A and B run eagerly;
+\item F: the GL8 state with generic parameter autograd, compiled by Inductor.
+\end{itemize}
+There is no native Q10 kernel, so the total C/A is decomposed as
+(B/A)(C/B).
+
+The protocol stated beforehand that an earlier A100 measurement at 2,048
+points had found compiled GL8 no faster than compiled Q10. A cell's time is
+the median over five processes of each process's median. Interior points
+run from 2,048 to 65,536 with 512 boundary coordinates, and four further
+topologies are measured.
+
+\paragraph{Validity checks.}
+All 244 tasks complete. The 226 timed processes pass the oracle with
+gradient errors of at most $8.0\times10^{-15}$, and the four repeated tasks
+agree within 0.6\%.
+
+The registered A/A control (cell A under a second label) passes at 16,384
+points (1.0002) but fails at 2,048 points (1.057 against a 3\% gate), so
+every 2,048-point comparison failed a validity gate. As a post-hoc
+observation, the processes at 2,048 points fall into two states about 6\%
+apart in every compiled and graph cell, on all four GPUs and at a constant
+1,980\,MHz SM clock, while each process's own samples vary by at most
+0.5\%. The cause was not found, and with five bimodal processes the
+bootstrap intervals at this size are not informative.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{H100 full loss and all-parameter-gradient replay (2--64--64--3 network). Times are milliseconds per gradient; ratios are the first cell's time over the second's (above one favours the second cell). Representation A/B and execution B/C multiply to the total A/C; F/B is generic autograd over the explicit transpose on the same GL8 state. The 2,048-point row failed the registered A/A gate. Eager cells D/E were measured at 2,048 and 16,384 points only.}
+\label{tab:ablation}
+\begin{tabular}{rrrrrrrrr}\toprule
+Points & A Q10 & B GL8 & C native & F autograd & A/B & B/C & A/C & F/B\\\midrule
+2,048 & 0.282 & 0.259 & 0.165 & 0.265 & 1.09 & 1.57 & 1.71 & 1.03\\
+4,096 & 0.658 & 0.493 & 0.278 & 0.535 & 1.34 & 1.77 & 2.37 & 1.09\\
+8,192 & 1.519 & 1.126 & 0.614 & 1.206 & 1.35 & 1.83 & 2.48 & 1.07\\
+16,384 & 2.918 & 1.788 & 1.172 & 2.342 & 1.63 & 1.53 & 2.49 & 1.31\\
+32,768 & 5.731 & 3.462 & 2.212 & 4.557 & 1.66 & 1.56 & 2.59 & 1.32\\
+65,536 & 11.422 & 6.939 & 4.338 & 9.090 & 1.65 & 1.60 & 2.63 & 1.31
+\\\bottomrule\end{tabular}
+\end{table}
+
+\paragraph{Decomposition.}
+Native execution makes the same GL8 computation 1.53--1.83 times faster at
+every size (Table~\ref{tab:ablation}). The representation effect is small
+and unresolved at the original 2,048 points (1.09, inside the failed A/A
+gate), 1.34--1.35 at 4,096--8,192 points, and 1.63--1.66 from 16,384 points
+on. The explicit transpose shows no effect against generic autograd at
+2,048 points (1.03) and is 1.07--1.09 times faster at 4,096--8,192 points
+and 1.31 times faster from 16,384 points on. Run eagerly, GL8 is 1.27 and
+1.91 times faster than Q10 at 2,048 and 16,384 points.
+
+Between 8,192 and 16,384 points the representation and transpose effects
+jump while the execution effect falls (1.83 to 1.53). This is a change of
+regime rather than a smooth trend; its cause was not profiled, because
+profiles exist only at 2,048 and 16,384 points.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Kernel time of one untimed replay in microseconds. GEMM is cuBLAS in every cell: Inductor emitted no matrix-multiplication templates. Pointwise is Inductor-generated code for A and B, and native islands plus reductions and other kernels for C.}
+\label{tab:ablationprofile}
+\begin{tabular}{rlrrrr}\toprule
+Points & Cell & Kernels & GEMM & Pointwise & Total\\\midrule
+2,048 & A Q10 & 48 & 87 & 196 & 284\\
+2,048 & B GL8 & 41 & 75 & 170 & 245\\
+2,048 & C native & 26 & 75 & 73 & 152\\
+16,384 & A Q10 & 67 & 711 & 2,202 & 2,915\\
+16,384 & B GL8 & 43 & 571 & 1,193 & 1,766\\
+16,384 & C native & 26 & 573 & 570 & 1,149
+\\\bottomrule\end{tabular}
+\end{table}
+
+\paragraph{Profiles.}
+The profiles locate both effects (Table~\ref{tab:ablationprofile}). B and C
+spend the same time in GEMMs, so the execution effect lies entirely in the
+pointwise work: about 1,190 against 570 microseconds at 16,384 points. Q10's
+GEMM time is 1.25 times GL8's, the ratio of their channel counts, and its
+pointwise time 1.84 times. The eager cells launch 842 (GL8) and 1,155 (Q10)
+kernels per gradient, against 41--67 compiled and 26 native.
+
+\paragraph{Topology.}
+At 16,384 points the decomposition hardly depends on the network. For hidden
+widths 32 and 128 and for three and four hidden layers of width 64, the
+representation effect is 1.61--1.66, execution 1.49--1.55 and the total
+2.39--2.56. At 2,048 points the representation effect varies from 0.92 for
+width 32 (GL8 slower) to 1.63 for width 128, and is 1.26 and 1.39 for
+three and four hidden layers. These 2,048-point cells have three processes
+each and share the bimodality above.
+
+\paragraph{Solves.}
+Development solves of cells A, B and C on the six formal seeds at 2,048
+points all pass acceptance. The registered setup-plus-optimization geometric
+means are 1.16 for C over A (0.91--1.40), 0.98 for B over A and 1.19 for C
+over B. Optimization time alone gives 0.95, 0.96 and 0.99; the 1.16 comes
+entirely from setup, because Q10 compilation takes 4.7--5.8 seconds against
+0.3 seconds for the native path.
+
+Each evaluation spends 2.5--3.8 milliseconds in optimization against
+0.17--0.28 milliseconds of gradient replay. The optimizer, line search and
+stopping checks therefore dominate a solve on this device at this size,
+and evaluation counts vary from 6,115 to 9,231 between seeds and cells. On
+H100 at 2,048 points, GL8's 1.71-fold faster gradient does not translate
+into faster optimization. The H20 solve-level gain of
+Section~\ref{sec:sixseed} (1.48 in optimization alone) was measured where a
+single compiled Q10 gradient took 3.27 milliseconds. It therefore depends on
+a device on which the gradient dominates each evaluation, and does not
+carry over to H100 at this problem size. No H100 ratio here is pooled with
+the H20 campaign.
 
 \section{Three-dimensional transient extension: C36}\label{sec:c36}
 \subsection{Scientific problem and derivative contract}
@@ -1575,19 +1703,20 @@ The derivative consumer offers an execution opportunity even after
 replacing nested coordinate AD with Taylor-mode computation. GL8 removes
 independent third-order information that the fixed diffusion-gradient
 consumer never reads, while preserving lower derivatives required by
-nonlinear convection. The measured effect nevertheless combines
-representation, pointwise kernels, graph scheduling and parameter backward.
-GL8 removes 20\% of hidden channels, and a single 2,048-point native profile
-attributes 82.30\% of the kernel-time sum to library GEMMs, yet replay is
-2.06$\times$ faster than compiled Q10 (1.583 versus 3.267 ms). Most of that
-replay gain is therefore likely to come from native pointwise kernels and
-scheduling relative to Inductor-generated code rather than from the
-channel reduction alone. The native-versus-compiled-Q10 comparison does not
-isolate a pure representation effect; a Q10 arm in the same native kernels
-and a GL8 arm compiled by Inductor are needed for that separation, together
-with a per-kernel profile split. The problem is small (4,547 parameters,
-2,048 interior points), where launch overhead is a large share of replay;
-scaling in point count, width and depth is not yet measured.
+nonlinear convection. The H20 measurement combines representation,
+pointwise kernels, graph scheduling and parameter backward.
+
+The H100 ablation of Section~\ref{sec:ablation} separates them for this
+problem. With the execution held fixed, the GL8 state alone is 1.09 times
+faster than Q10 at the original 2,048 points; this is unresolved, because
+the A/A control failed at that size. It is 1.63--1.66 times faster from
+16,384 points on. Native pointwise kernels add 1.53--1.83 at every size,
+and the GEMMs are identical, so that factor is pure pointwise execution. At
+the size of the H20 campaign, most of the full-gradient gain therefore
+comes from execution, as the earlier profile suggested; the state matters
+at larger point counts. All of this is one problem on one GPU family; no
+native Q10 kernel was available, and wider networks and other PDEs were not
+tested beyond four topologies.
 
 \paragraph{Replay versus solve.}
 Replay and solve ratios need not match. Optimizer work, line searches and
@@ -1596,7 +1725,13 @@ floating-point differences can change an L-BFGS trajectory and its closure
 count. Setup also differs between compiled public adapters, JAX and explicit
 native kernels, even with warmed dependency caches. We therefore report
 every timing scope and actual evaluation count rather than extrapolating a
-replay factor to the whole training run.
+replay factor to the whole training run. On H100 this matters
+decisively. At 2,048 points the native GL8 gradient is 1.71 times faster
+than compiled Q10, but each evaluation spends 2.5--3.8 milliseconds in
+optimizer work against under 0.3 milliseconds of gradient. Optimization
+alone is then no faster (0.95), and the registered 1.16 comes from
+compile-free setup. The H20 solve-level gain is therefore specific to a
+device where the FP64 gradient dominates each evaluation.
 
 \paragraph{Chunking.}
 Chunking addresses a different engineering constraint. It bounds the
@@ -1651,7 +1786,11 @@ Navier--Stokes objective with independent acceptance, all 72 planned
 two-dimensional H20 solves pass and GL8 shortens the paired solve time by
 1.66$\times$ over a compiled full-jet control and 1.73--3.37$\times$ over
 matched public derivative methods; a chunked variant trades replay time
-for an 85\% lower allocated setup peak at 16,384 points. On the transient
+for an 85\% lower allocated setup peak at 16,384 points. On H100, a
+registered ablation attributes the full-gradient gain mainly to native
+pointwise execution at that size (1.57) and increasingly to the state at
+larger point counts (1.63--1.66 from 16,384 points on). At the original
+size, optimizer overhead absorbs the gain in a whole solve. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
 faster than internal full spatial-jet and naive baselines. The C36 curl-potential

@@ -59,15 +59,44 @@ All numbers are H100 numbers; none is compared with or pooled with the H20 campa
   - At the original 2–64–64–3 topology it replaces nothing.
   - Its CPU checks (`src/test_ablation_shapes.py`) show the generic layer views are identical to the original at that topology, and that GL8 (explicit and autograd) and compact Q10 match the dense Q10 oracle at four other topologies.
 
-## Status
+## Results (attempt 2)
 
-Pre-registered.
+All 244 tasks completed on one four-GPU H100 node in 22 minutes.
+- **Correctness.** The 226 timed processes pass the dense Q10 oracle, with a largest gradient error of 8.0e-15.
+- **Drift.** The four drift repeats agree within 0.6%.
+- **A/A gate.** It passes at 16,384 points (1.0002) but **fails at 2,048 points (1.057 against 3%)**, so every 2,048-point comparison failed a registered validity gate.
+  - *Post hoc:* at 2,048 points the processes fall into two states about 6% apart. This happens in every compiled and graph cell, on all four GPUs, at a constant 1,980 MHz SM clock, with ≤ 0.5% spread inside each process. The cause was not found.
 
-**Attempt 1 failed at start-up in all 244 tasks** (1:57 of allocation, GPU locks released, archive kept).
-- `bench_gpu` records `git rev-parse HEAD` of the source tree, and the tree had been copied without its git metadata.
-- No timing ran, so no measurement exists from this attempt.
+Full-gradient replay (ms) and ratios; above one favours the second cell:
 
-**Attempt 2 is pending.** It changes only the setup and the driver; the protocol and plan are unchanged.
-- The source tree is now a clone of the pinned commit, byte-identical to attempt 1.
-- The driver requires the pinned commit at admission.
-- A fail-fast guard stops starting tasks if the first eight finished tasks all failed.
+| Points | A Q10 | B GL8 | C native | F autograd | A/B representation | B/C execution | A/C total | F/B transpose |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2,048 | 0.282 | 0.259 | 0.165 | 0.265 | 1.09 | 1.57 | 1.71 | 1.03 |
+| 4,096 | 0.658 | 0.493 | 0.278 | 0.535 | 1.34 | 1.77 | 2.37 | 1.09 |
+| 8,192 | 1.519 | 1.126 | 0.614 | 1.206 | 1.35 | 1.83 | 2.48 | 1.07 |
+| 16,384 | 2.918 | 1.788 | 1.172 | 2.342 | 1.63 | 1.53 | 2.49 | 1.31 |
+| 32,768 | 5.731 | 3.462 | 2.212 | 4.557 | 1.66 | 1.56 | 2.59 | 1.32 |
+| 65,536 | 11.422 | 6.939 | 4.338 | 9.090 | 1.65 | 1.60 | 2.63 | 1.31 |
+
+- **Execution.** Native pointwise kernels make the same GL8 computation 1.53–1.83× faster at every size.
+  - B and C spend identical time in cuBLAS GEMMs: 571 and 573 µs per replay at 16,384 points.
+  - Inductor emitted no GEMM templates, so the execution factor is pure pointwise work.
+- **Representation.** It is small and unresolved at the original 2,048 points (1.09, inside the failed gate), 1.34–1.35 at 4k–8k, and 1.63–1.66 from 16k on.
+  - Eager, GL8 is 1.27× (2k) and 1.91× (16k) faster than Q10.
+  - Q10's GEMM time is 1.25× GL8's, the channel ratio 10/8, and its pointwise time is 1.84×.
+- **Explicit transpose versus generic autograd** on the same GL8 state: no effect at 2k (1.03), 1.07–1.09 at 4k–8k, 1.31 from 16k on.
+- **Size dependence.** The jump between 8k and 16k is a regime change; its cause was not profiled.
+- **Topology.**
+  - At 16k: representation is 1.61–1.66, execution 1.49–1.55 and total 2.39–2.56 for widths 32 and 128 and for 3 and 4 hidden layers.
+  - At 2k: representation ranges from 0.92 (width 32, GL8 slower) to 1.63 (width 128). These cells have 3 processes each and share the 2k bimodality.
+- **Solves (development, 2,048 points, six formal seeds, 18/18 accepted).**
+  - The registered setup-plus-optimization geometric means are C/A 1.16 (0.91–1.40), B/A 0.98 and C/B 1.19.
+  - Optimization alone gives 0.95, 0.96 and 0.99. The 1.16 comes from setup: Q10's Inductor compile takes 4.7–5.8 s against 0.3 s native.
+  - Each evaluation spends 2.5–3.8 ms in optimizer work against under 0.3 ms of gradient replay. On H100 at this size the faster gradient therefore does not shorten a solve.
+
+Files:
+- [2d-ablation-result-20261016.json](2d-ablation-result-20261016.json): registered reader output.
+- [2d-ablation-posthoc-20261016.json](2d-ablation-posthoc-20261016.json): clock/bimodality check, solve split, oracle maximum and profile microseconds, from `posthoc_ablation.py`; labelled post hoc.
+- [release-source-map-20261016.json](release-source-map-20261016.json): executed copies of every published source.
+
+Attempt 1 failed at start-up in all 244 tasks, before any timing ran: the source tree had been copied without its git metadata. Attempt 2 cloned the pinned commit and added a fail-fast guard; the protocol and plan were unchanged. Both archives are kept.

@@ -82,6 +82,12 @@ The [October 14 research draft](research/manuscript/README.md) keeps the accepte
 
 **Accepted 3D solves ([research/ethier-3d](research/ethier-3d/README.md)).** On the transient Ethier–Steinman benchmark (FP64, H100), the 17-channel C17 contract passes all eight gates in 18 of 18 solves, together with the internal baselines. Paired setup-plus-optimization speedups are **3.602×** over the A24 full spatial-jet reference (range 3.353–4.284) and **6.957×** over a naive 35-monomial ablation (range 6.750–7.436), six seed pairs each. Both baselines are internal, and the network is small (4,740 parameters).
 
+**Representation versus execution on H100 ([details](research/2d-ablation/README.md)).** A pre-registered ablation separates GL8's derivative state from its execution on the same 2D objective (FP64, H100).
+- **Execution.** Native pointwise kernels make the same GL8 computation 1.53–1.83× faster at every size; the cuBLAS GEMM time is identical.
+- **Representation.** The GL8 state alone, against compiled Q10, is small and unresolved at the original 2,048 points (1.09, where the A/A control failed), and 1.63–1.66× from 16,384 points on.
+- **Explicit transpose.** Against generic autograd on the same state it gives no gain at 2,048 points and 1.31× from 16,384 points on.
+- **Whole solves.** At the original size on H100, optimizer overhead (2.5–3.8 ms per evaluation, against under 0.3 ms of gradient) absorbs the 1.71× faster gradient: optimization alone is 0.95×. The H20 solve-level gain is therefore device-specific.
+
 **C36 development run ([details](research/c36-potential-proof/README.md#development-run-with-a-larger-l-bfgs-budget-v2)).** The C36 problem has the same data, model and gates as before; only the L-BFGS budget grows 40×. All four runs (two engines × two seeds) pass the training gate. In the two fully observed final checkpoints (analytic engine), every physical gate passes except stratified corrected pressure (about 2.5× over its limit) and, for one seed, the trajectory endpoint (7% over). Under its pre-registered rule the outcome is mechanically branch (b). The analytic engine reaches each loss threshold 1.30–1.33× sooner than parameter AD. These are development seeds, so no formal time-to-accuracy claim is made.
 
 **C36 checkpoints on every data plane, and a smoothness continuation ([details](research/c36-potential-proof/README.md#all-plane-observations-along-the-training-trajectory)).**

@@ -14,6 +14,11 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - One schedule meets the training gate with 0.6–0.7× the baseline's stratified pressure error. The other reaches the loss thresholds in 8–36% fewer evaluations.
   - Neither changes which acceptance test fails. Under the registered rule, the continuation does not help: the first schedule is harmful and the second fits no branch cleanly.
 - **Earlier text.** Section 6.7, the discussion and the conclusion were updated to match, and Figure 4 is generated from the published observation record.
+- **Section 5.6: representation and execution on H100 (October 16).** A pre-registered ablation (244 fresh-process measurements) separates the GL8 state from its execution.
+  - Native pointwise execution is 1.53–1.83× at every size.
+  - The state alone is unresolved at 2,048 points (the A/A gate failed there) and 1.63–1.66× from 16,384 points on.
+  - The explicit transpose beats generic autograd only from 16,384 points on (1.31×).
+  - The solve-level gain does not carry over to H100 at the original size, because optimizer overhead dominates. The contributions, discussion and conclusion are updated accordingly.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
   - Protocol v5 runs the development recipe with 4,800 L-BFGS calls. The loss and the physical errors stall soon after call 800, and stratified pressure ends at 2.2–3.0× its limit.

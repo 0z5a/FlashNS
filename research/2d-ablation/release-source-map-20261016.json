@@ -1,0 +1,75 @@
+{
+ "scope": "2D representation/execution ablation (H100). The timed backends run inside the pinned two-dimensional source tree (commit 286d7e394c8bd39f9aa409715afe9f1bac915cec, a clone of the preserved bundle; 263 tracked files, not published here) with the two added wrapper files below.",
+ "executed_packet": {
+  "attempt": 2,
+  "manifest_sha256": "48579af364a9148d6f04a1b72af81bca7a2dd99b07fce8fdfad242f7c1aee449",
+  "files": 272,
+  "source_commit": "286d7e394c8bd39f9aa409715afe9f1bac915cec"
+ },
+ "attempt_1": {
+  "note": "same protocol, plan and source bytes; tree copied without git metadata, so every task failed at start-up before timing; its driver lacked the commit check and fail-fast guard",
+  "manifest_sha256": "962eb5f227e657a961193ad8498aa7c1afb798b14b5bf2a70d97ffcaf4a5fee6",
+  "driver_sha256": "5efd9d2f4e2787382c3c8c524eb4f9c3dc59423d0862bef79bbce05b8c900754"
+ },
+ "files": {
+  "research/2d-ablation/protocol-2d-ablation-20261016.json": {
+   "public_sha256": "12e3fa7206533785f7d7f36be7d22f0b47a97c13079ca7267d01b083ac12813c",
+   "executed_path": "ablation/protocol-2d-ablation-20261016.json",
+   "executed_sha256": "12e3fa7206533785f7d7f36be7d22f0b47a97c13079ca7267d01b083ac12813c",
+   "byte_identical": true
+  },
+  "research/2d-ablation/plan-2d-ablation-20261016.json": {
+   "public_sha256": "23da1f3523e05a18416cdd3f495259055e3576cfbad1a4a126213d352bdab933",
+   "executed_path": "ablation/plan-2d-ablation-20261016.json",
+   "executed_sha256": "23da1f3523e05a18416cdd3f495259055e3576cfbad1a4a126213d352bdab933",
+   "byte_identical": true
+  },
+  "research/2d-ablation/run_ablation.py": {
+   "public_sha256": "d998d6089769cc9f02ed43fe747a5899706bed3317a2a247c697931f652c0a1c",
+   "executed_path": "ablation/run_ablation.py",
+   "executed_sha256": "d998d6089769cc9f02ed43fe747a5899706bed3317a2a247c697931f652c0a1c",
+   "byte_identical": true
+  },
+  "research/2d-ablation/read_ablation.py": {
+   "public_sha256": "41803f419a2b7953088a84b7e3fb108ba051bbc608149bfc77f3e17d5cb703fa",
+   "executed_path": "ablation/read_ablation.py",
+   "executed_sha256": "41803f419a2b7953088a84b7e3fb108ba051bbc608149bfc77f3e17d5cb703fa",
+   "byte_identical": true
+  },
+  "research/2d-ablation/make_ablation_plan.py": {
+   "public_sha256": "365de3c48975cc94ee5f5af1d4b134cb5e33325279e307c130839f16404c954f",
+   "executed_path": "ablation/make_ablation_plan.py",
+   "executed_sha256": "365de3c48975cc94ee5f5af1d4b134cb5e33325279e307c130839f16404c954f",
+   "byte_identical": true
+  },
+  "research/2d-ablation/entry_ablation.sh": {
+   "public_sha256": "66eb9bdfe9dc43a8d06dccb1a41ba22f55cea410e5dfe9bd106ac64ba5468b2a",
+   "executed_path": "ablation/entry_ablation.sh",
+   "executed_sha256": "66eb9bdfe9dc43a8d06dccb1a41ba22f55cea410e5dfe9bd106ac64ba5468b2a",
+   "byte_identical": true
+  },
+  "research/2d-ablation/src/ablation_bench.py": {
+   "public_sha256": "697757ffb8b44edfb8ae46f71fc2f1b0ceb93cf30d1367c9b79f85c5afa5d61f",
+   "executed_path": "source/experiments/contracted_jets/ablation_bench.py",
+   "executed_sha256": "697757ffb8b44edfb8ae46f71fc2f1b0ceb93cf30d1367c9b79f85c5afa5d61f",
+   "byte_identical": true
+  },
+  "research/2d-ablation/src/test_ablation_shapes.py": {
+   "public_sha256": "601d145bc25d99d53dccea58ad66058fa2d63aaa20e6f8a236729b92b4be7127",
+   "executed_path": "source/experiments/contracted_jets/test_ablation_shapes.py",
+   "executed_sha256": "601d145bc25d99d53dccea58ad66058fa2d63aaa20e6f8a236729b92b4be7127",
+   "byte_identical": true
+  }
+ },
+ "generated_results": {
+  "research/2d-ablation/2d-ablation-result-20261016.json": {
+   "public_sha256": "878822d70a4ff06b3d301606da113a68859be031193acc08bb1edc65f74be58c",
+   "change": "byte-identical to the registered reader output on the cluster"
+  },
+  "research/2d-ablation/2d-ablation-posthoc-20261016.json": {
+   "public_sha256": "b878df0d4b0778a7f4ff0fc4a3454b520429be8336c6f716ca794709d83710b8",
+   "generator": "research/2d-ablation/posthoc_ablation.py",
+   "change": "post-hoc, computed from the archived result reports"
+  }
+ }
+}
