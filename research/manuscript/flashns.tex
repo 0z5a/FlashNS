@@ -31,7 +31,9 @@ and 1.73--3.37$\times$ faster than matched adaptations of collapsed Taylor
 mode, explicit differentiation and exact STDE. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
-faster than internal full spatial-jet and naive baselines. A 36-channel
+faster than internal full spatial-jet and naive baselines, and
+1.90$\times$ and 1.08$\times$ faster than nested autograd and a public
+collapsed Taylor-mode package. A 36-channel
 curl-potential contract gives 1.32$\times$ objective-gradient throughput on
 H100 (1.40$\times$ when both arms fold exact zero-gate rows); with a larger L-BFGS budget its training passes the loss gate and most
 physical gates, but stratified pressure still fails.
@@ -114,6 +116,7 @@ GL8 & Two-dimensional consumer state $(z,\nabla z,\nabla^2 z,\nabla\Delta z)$ wi
 chunk-512 & GL8 executed in 512-point interior chunks that accumulate the globally weighted loss and gradient.\\
 C17 & Three-dimensional transient velocity--pressure consumer state: value, spatial gradient, packed spatial Hessian, gradient of the spatial Laplacian, time derivative and its spatial gradient (17 channels).\\
 A24 / Naive Q35 & Ethier--Steinman baselines: complete spatial third-order jet plus time channels (24), and all 35 monomials of $(x,y,z,t)$ through degree three; both with autograd parameter gradients.\\
+Nested AD / collapsed jet & External Ethier--Steinman baselines: nested scalar-coordinate PyTorch autograd, and the public collapsed Taylor-mode package \texttt{jet}; both with autograd parameter gradients.\\
 C36 & Three-dimensional transient consumer state for a curl potential (36 channels, Eq.~\eqref{eq:c36state}).\\
 Explicit / analytic transpose & Hand-written reverse rule for a derivative state, as opposed to framework autograd.\\
 Parameter AD & Internal control that executes the same derivative-state forward and obtains the parameter gradient with PyTorch autograd.\\
@@ -876,6 +879,68 @@ consistent with this picture, since a compiled Q10 gradient took 3.27
 milliseconds there. The H20 L-BFGS cost was not measured separately, the
 problem instances differ, and no H100 ratio is pooled with the H20
 campaign. All of this is one problem and one optimizer implementation.
+
+\subsection{Reduced precision on H100}\label{sec:precision}
+Most PINN codes train in FP32. A registered H100 study, whose protocol was
+committed before its batch ran, asks whether this objective needs FP64,
+and how the precision changes the speed of compiled Q10 (cell A) and native
+GL8 (cell C).
+\begin{itemize}
+\item \textbf{Arms.} Three precisions: FP64, FP32, and FP32 with TF32
+  matrix products.
+\item \textbf{Source change.} The pinned source accepted only FP64, so a
+  28-line patch relaxes only dtype checks in eight modules. It leaves FP64
+  gradients bit-identical, and the native kernels use their existing FP32
+  path.
+\item \textbf{Measurements.} Replays at 2,048, 16,384 and 65,536 points, and
+  complete solves at 2,048 and 65,536 points on the six formal seeds.
+\item \textbf{Acceptance.} Data and parameters are cast from the FP64
+  originals. Every stop check and the final acceptance evaluate the
+  parameters cast back to FP64 on the FP64 problem, with unchanged
+  thresholds.
+\item \textbf{Registered rule.} A reduced precision is sufficient when 6/6
+  solves pass, and faster when its optimization-only geometric mean exceeds
+  1.03 with at least five of six favourable pairs.
+\end{itemize}
+All 162 tasks ran.
+
+\begin{table}[t]
+\centering
+\caption{Reduced precision on H100. Replay is milliseconds per full gradient (median of five processes). Error is the relative $L_2$ gradient error against the FP64 dense-Q10 oracle. Solves: accepted out of six by the FP64 check, and the paired FP64/reduced optimization-only geometric mean (range); above one favours the reduced precision.}
+\label{tab:precision}
+\small
+\begin{tabular}{llrrrrl}
+\toprule
+Cell & Precision & 2,048 & 16,384 & 65,536 & Error & Solves (2,048 / 65,536)\\
+\midrule
+A & FP64 & 0.281 & 2.920 & 11.440 & -- & 6/6 / 6/6\\
+ & FP32 & 0.183 & 1.573 & 6.004 & $1.4$--$2.7\times10^{-7}$ & 6/6, 0.98 / 6/6, \textbf{1.53}\\
+ & TF32 & 0.187 & 1.534 & 5.829 & $1.5\times10^{-4}$ & 0/6 / 0/6\\
+C & FP64 & 0.164 & 1.165 & 4.343 & -- & 6/6 / 6/6\\
+ & FP32 & 0.136 & 0.662 & 2.399 & $1.5$--$2.7\times10^{-7}$ & 6/6, 0.97 / 6/6, \textbf{1.36}\\
+ & TF32 & 0.117 & 0.640 & 2.282 & $1.5$--$2.2\times10^{-4}$ & 0/6 / 0/6\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+FP32 suffices for this objective. Its gradients differ from the FP64
+oracle by $1.4$--$2.7\times10^{-7}$ in relative $L_2$, and all 24 FP32
+solves pass the FP64 acceptance in both cells and at both sizes
+(Table~\ref{tab:precision}). TF32 does not: its gradient error is
+$1.5$--$2.2\times10^{-4}$, and all 24 TF32 solves fail. A post-hoc look at
+these solves shows that L-BFGS makes only 500--850 iterations over its
+roughly 500 blocks, about one per block. The final metrics stay 10--22 times
+above their limits, with nearly every gate failing.
+
+In replay, FP32 makes cell A 1.54, 1.86 and 1.91 times faster than FP64 at
+the three sizes, and cell C 1.21, 1.76 and 1.81 times. Against FP32, TF32
+is 2.5--5\% faster at 16,384 and 65,536 points; at 2,048 points it is 2\%
+slower for A and 16\% faster for C. In whole solves the registered rule finds no gain at 2,048
+points (0.98 and 0.97), where the fixed L-BFGS cost dominates. At 65,536
+points FP32 shortens optimization by 1.53 (A) and 1.36 (C), with all six
+pairs favourable. Native GL8 keeps its advantage in FP32: C over A is 1.67
+in optimization alone at 65,536 points (1.88 in FP64) and no gain at 2,048
+points, as in FP64.
 
 \section{Three-dimensional transient extension: C36}\label{sec:c36}
 \subsection{Scientific problem and derivative contract}
@@ -1814,6 +1879,64 @@ on a node whose other GPUs carried another workload, so absolute times
 include that environment. The paired ratios compare arms of one seed on
 one GPU.
 
+\subsection{External derivative baselines}\label{sec:ethierext}
+The review asked for an external baseline on the three-dimensional C36
+objective. C36 has no accepted solve, so a later registered batch answers
+that request on this benchmark instead; the C36 request stays open. Its
+protocol was committed before the batch ran. Two public derivative methods
+compute the unchanged objective without FlashNS code:
+\begin{itemize}
+\item \textbf{Nested AD}, nested scalar-coordinate PyTorch autograd as an
+  ordinary PINN code writes it: four first-derivative passes, nine for the
+  three spatial Laplacians and one per residual for its spatial gradient;
+\item \textbf{collapsed jet}, the public collapsed Taylor-mode package of
+  Dangel et al.\ (\texttt{jet}, pinned snapshot) for the spatial first
+  derivatives and the spatial Laplacian, with a first-order jet for
+  $\partial_t$.
+\end{itemize}
+Both arms take the residual gradient and the parameter gradient by
+autograd, as the adapters of the two-dimensional comparison do. Each arm, including C17,
+replays its complete loss and gradient as a CUDA Graph. All 18 solves run once
+in one batch on one four-GPU H100 node with Torch 2.12. Data, seeds,
+initial parameter bytes, objective, optimizer, stop checks, qualification
+and acceptance are those of the formal protocol. Before the batch, both
+external arms matched independent scalar AD on CPU within the
+qualification budget.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{External derivative baselines on the Ethier--Steinman solves (one H100 batch, Torch 2.12). Columns as in Table~\ref{tab:ethier}. Adam and L-BFGS are the post-hoc time per evaluation in each optimizer phase, including that phase's optimizer step and stop checks.}
+\label{tab:ethierext}
+\begin{tabular}{lcrrrrr}\toprule
+Arm & Accepted & Setup + opt. s & Evaluations & Ratio (range) & Adam ms & L-BFGS ms\\\midrule
+FlashNS C17 & 6/6 & 47.2 & 6,728 & 1.000 & 2.4--2.7 & 8.4--9.3\\
+Collapsed jet & 6/6 & 52.6 & 6,610 & 1.085 (0.98--1.19) & 3.6--3.7 & 9.0--9.8\\
+Nested AD & 6/6 & 89.0 & 6,709 & 1.901 (1.67--2.14) & 8.3--10.1 & 14.2--15.5\\
+\bottomrule\end{tabular}
+\end{table}
+
+All 18 solves pass both validators (Table~\ref{tab:ethierext}). Pressure
+relative $L_2$ again binds, with largest values 0.03994, 0.03997 and 0.03983
+against 0.04; every other gate stays at or below 22\% of its limit. The
+independent reader passes 1,512 comparisons with maximum absolute
+discrepancy $1.78\times10^{-14}$.
+
+In setup plus optimization, the registered statistic, C17 is 1.90 times
+faster than nested autograd and 1.08 times faster than the collapsed jet.
+Optimization alone gives 1.90 and 1.08, and time per evaluation 1.91 and
+1.10.
+
+A post-hoc split by optimizer phase shows why the collapsed jet comes so
+close. In the Adam phase, where the gradient dominates each evaluation, the
+collapsed jet costs 1.37 times and nested autograd 3.62 times as much as
+C17 per evaluation. Each L-BFGS evaluation adds about 6\,ms in every arm,
+as in two dimensions (Section~\ref{sec:ablation}), which compresses the
+solve ratios to 1.07 and 1.70 in that phase. Against a strong public
+Taylor-mode implementation, the contracted state and explicit transpose
+therefore shorten this small problem's solve by only about 8\%, although
+an Adam-phase evaluation, which contains the gradient, is 1.37 times
+faster. Larger problems, where the gradient dominates, were not run.
+
 \section{Discussion and limitations}\label{sec:limits}
 \paragraph{Attribution of the two-dimensional gain.}
 The derivative consumer offers an execution opportunity even after
@@ -1874,13 +1997,17 @@ initializations provide a paired view of one fixed-data manufactured PDE,
 not variation across PDEs, sampled datasets, network families or hardware.
 No speed claim is extended to stochastic STDE++ constructions, variable
 viscosity, nonlinear coordinate maps, sample-coupled layers, second
-parameter derivatives, nonlocal losses or reduced precision; all
-measurements use FP64.
+parameter derivatives or nonlocal losses. Reduced precision is measured
+only for two 2D cells (Section~\ref{sec:precision}); every other
+measurement uses FP64.
 
 \paragraph{Three dimensions.}
 The Ethier--Steinman solves establish an accepted three-dimensional
-solve-level gain for a 17-channel transient contract, but only against
-internal baselines and on a small network. The C36 study establishes
+solve-level gain for a 17-channel transient contract on a small network:
+3.60 and 6.96 against internal baselines, and 1.90 and 1.08 against nested
+autograd and a public collapsed Taylor-mode package. Against the latter the
+fixed L-BFGS cost per evaluation absorbs most of a 1.37-fold faster
+gradient phase. The C36 study establishes
 derivative correctness for the full objective of a larger curl-potential
 model and a throughput gain for its gradient against an internal control,
 but no accepted solve. With 800 L-BFGS calls its training passes the loss
@@ -1893,10 +2020,10 @@ errors stall, so the gap is not a budget limit of this optimizer. A
 temporal-smoothness continuation changes where training meets the loss gate
 but not which test fails. The C36 throughput gains depend on compilation, the zero-gate
 folding gain depends on this instance's gate geometry, and the problem is a
-single constructed box instance. External three-dimensional baselines,
-accepted C36 solves, a second nonlinear PDE, reduced-precision measurements
-and device-traffic measurements remain open experiments rather than implied
-consequences of the implementation.
+single constructed box instance. External baselines on C36 itself (the
+external three-dimensional comparison uses Ethier--Steinman), accepted C36
+solves, a second nonlinear PDE and device-traffic measurements remain open
+experiments rather than implied consequences of the implementation.
 
 \section{Conclusion}
 FlashNS gives a concrete consumer contract for high-order PINN training:
@@ -1913,10 +2040,14 @@ pointwise execution at that size (1.57) and increasingly to the state at
 larger point counts (1.63--1.66 from 16,384 points on). In whole solves a
 fixed L-BFGS cost of about 6--7 milliseconds per evaluation absorbs the
 gain at the original size; a registered follow-up finds solve-level gains
-of 1.48 and 1.88 at 16,384 and 65,536 points. On the transient
+of 1.48 and 1.88 at 16,384 and 65,536 points. FP32 training passes the
+unchanged FP64 acceptance and shortens 65,536-point optimization by
+1.36--1.53$\times$, while TF32 training fails every gate. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
-faster than internal full spatial-jet and naive baselines. The C36 curl-potential
+faster than internal full spatial-jet and naive baselines, and
+1.90$\times$ and 1.08$\times$ faster than nested autograd and a public
+collapsed Taylor-mode package. The C36 curl-potential
 extension passes complete gradient qualification and improves
 objective-gradient throughput by 1.32$\times$ over an equally compiled
 parameter-AD control, and by 1.40$\times$ when both arms fold exact
