@@ -93,5 +93,7 @@ The batch ran once on one four-GPU H100 node in about 8 minutes. All 18 solves e
   | L-BFGS phase | 8.4–9.3 ms | 9.0–9.8 ms (1.07×) | 14.2–15.5 ms (1.70×) |
 
   - The L-BFGS phase adds about 6 ms per evaluation in every arm, as in 2D, and compresses the solve ratios.
-  - Against a strong public Taylor-mode implementation, C17 shortens this small problem's solve by only about 8%, although its Adam-phase evaluation, which contains the gradient, is 1.37× faster. Larger problems, where the gradient dominates, were not run.
+  - Against a strong public Taylor-mode implementation, C17 shortens this small problem's solve by only about 8%, although its Adam-phase evaluation, which contains the gradient, is 1.37× faster.
+  - One seed favours `jet`, and the protocol registered no gain rule, so 1.08× is a measured ratio, not a decided gain.
+  - No arm was compiled, whereas the 2D comparison let each baseline use its faster qualified default or compiled variant. Compiled external arms and larger problems, where the gradient dominates, were not run.
 - **Records.** [release-source-map-ext-20261016.json](release-source-map-ext-20261016.json): all 17 published files are byte-identical to their executed copies.

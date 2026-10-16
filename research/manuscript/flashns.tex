@@ -31,9 +31,9 @@ and 1.73--3.37$\times$ faster than matched adaptations of collapsed Taylor
 mode, explicit differentiation and exact STDE. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
-faster than internal full spatial-jet and naive baselines, and
-1.90$\times$ and 1.08$\times$ faster than nested autograd and a public
-collapsed Taylor-mode package. A 36-channel
+faster than internal full spatial-jet and naive baselines; against nested
+autograd and a public collapsed Taylor-mode package the paired ratios are
+1.90$\times$ and 1.08$\times$ (range 0.98--1.19). A 36-channel
 curl-potential contract gives 1.32$\times$ objective-gradient throughput on
 H100 (1.40$\times$ when both arms fold exact zero-gate rows); with a larger L-BFGS budget its training passes the loss gate and most
 physical gates, but stratified pressure still fails.
@@ -881,7 +881,7 @@ problem instances differ, and no H100 ratio is pooled with the H20
 campaign. All of this is one problem and one optimizer implementation.
 
 \subsection{Reduced precision on H100}\label{sec:precision}
-Most PINN codes train in FP32. A registered H100 study, whose protocol was
+Many PINN codes train in FP32. A registered H100 study, whose protocol was
 committed before its batch ran, asks whether this objective needs FP64,
 and how the precision changes the speed of compiled Q10 (cell A) and native
 GL8 (cell C).
@@ -923,10 +923,12 @@ C & FP64 & 0.164 & 1.165 & 4.343 & -- & 6/6 / 6/6\\
 \end{tabular}
 \end{table}
 
-FP32 suffices for this objective. Its gradients differ from the FP64
+FP32 suffices for this objective at these gates. Its gradients differ from the FP64
 oracle by $1.4$--$2.7\times10^{-7}$ in relative $L_2$, and all 24 FP32
 solves pass the FP64 acceptance in both cells and at both sizes
-(Table~\ref{tab:precision}). TF32 does not: its gradient error is
+(Table~\ref{tab:precision}). The stop rule ends every FP32 and FP64 solve
+at the gates, with its worst metric at 0.95--1.00 of the limit, so the study
+cannot show whether FP32 would reach tighter accuracy. TF32 does not: its gradient error is
 $1.5$--$2.2\times10^{-4}$, and all 24 TF32 solves fail. A post-hoc look at
 these solves shows that L-BFGS makes only 500--850 iterations over its
 roughly 500 blocks, about one per block. The final metrics stay 10--22 times
@@ -1896,7 +1898,9 @@ compute the unchanged objective without FlashNS code:
 \end{itemize}
 Both arms take the residual gradient and the parameter gradient by
 autograd, as the adapters of the two-dimensional comparison do. Each arm, including C17,
-replays its complete loss and gradient as a CUDA Graph. All 18 solves run once
+replays its complete loss and gradient as a CUDA Graph, and no arm is
+compiled; the two-dimensional comparison instead let every baseline run its
+faster qualified default or compiled variant. All 18 solves run once
 in one batch on one four-GPU H100 node with Torch 2.12. Data, seeds,
 initial parameter bytes, objective, optimizer, stop checks, qualification
 and acceptance are those of the formal protocol. Before the batch, both
@@ -1935,7 +1939,10 @@ solve ratios to 1.07 and 1.70 in that phase. Against a strong public
 Taylor-mode implementation, the contracted state and explicit transpose
 therefore shorten this small problem's solve by only about 8\%, although
 an Adam-phase evaluation, which contains the gradient, is 1.37 times
-faster. Larger problems, where the gradient dominates, were not run.
+faster. One of the six seeds favours the collapsed jet, and the protocol
+registered no gain rule, so the 1.08 is a measured ratio rather than a
+decided gain. Compiled variants of the external arms and larger problems,
+where the gradient dominates, were not run.
 
 \section{Discussion and limitations}\label{sec:limits}
 \paragraph{Attribution of the two-dimensional gain.}
@@ -2004,8 +2011,9 @@ measurement uses FP64.
 \paragraph{Three dimensions.}
 The Ethier--Steinman solves establish an accepted three-dimensional
 solve-level gain for a 17-channel transient contract on a small network:
-3.60 and 6.96 against internal baselines, and 1.90 and 1.08 against nested
-autograd and a public collapsed Taylor-mode package. Against the latter the
+3.60 and 6.96 against internal baselines, and 1.90 and 1.08 (range
+0.98--1.19) against uncompiled nested autograd and a public collapsed
+Taylor-mode package. Against the latter the
 fixed L-BFGS cost per evaluation absorbs most of a 1.37-fold faster
 gradient phase. The C36 study establishes
 derivative correctness for the full objective of a larger curl-potential
@@ -2042,12 +2050,14 @@ fixed L-BFGS cost of about 6--7 milliseconds per evaluation absorbs the
 gain at the original size; a registered follow-up finds solve-level gains
 of 1.48 and 1.88 at 16,384 and 65,536 points. FP32 training passes the
 unchanged FP64 acceptance and shortens 65,536-point optimization by
-1.36--1.53$\times$, while TF32 training fails every gate. On the transient
+1.36--1.53$\times$ at these 1--2\% gates, while every TF32 solve fails
+acceptance. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
-faster than internal full spatial-jet and naive baselines, and
-1.90$\times$ and 1.08$\times$ faster than nested autograd and a public
-collapsed Taylor-mode package. The C36 curl-potential
+faster than internal full spatial-jet and naive baselines; against nested
+autograd and a public collapsed Taylor-mode package the paired ratios are
+1.90$\times$ and 1.08$\times$ (range 0.98--1.19, all arms uncompiled).
+The C36 curl-potential
 extension passes complete gradient qualification and improves
 objective-gradient throughput by 1.32$\times$ over an equally compiled
 parameter-AD control, and by 1.40$\times$ when both arms fold exact
