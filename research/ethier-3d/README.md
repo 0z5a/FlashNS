@@ -49,3 +49,27 @@ Scope:
 - Both baselines are internal, and the problem is small (4,740 parameters, 512 interior points).
 - C17 is a velocity–pressure contract. It is not the C36 curl-potential contract, and this result says nothing about C36 training.
 - The two GPU lanes ran concurrently on one node whose other two GPUs carried another workload, so absolute times include that shared-node environment. Paired ratios compare arms of the same seed on the same GPU.
+
+## External derivative baselines (pre-registered 2026-10-16)
+
+The review asked for an external baseline on the three-dimensional C36 objective. C36 has no accepted solve, so this batch uses the accepted Ethier–Steinman benchmark instead; the C36 item stays open. [src/protocol-ext-20261016.json](src/protocol-ext-20261016.json) was committed before the batch ran. It keeps the v4 data, six formal seeds, initial parameter bytes, objective, optimizer program, stop checks and acceptance.
+
+| Arm | Derivatives | Parameter gradient |
+| --- | --- | --- |
+| `c17_graph` (FlashNS) | C17 contracted state | explicit transpose |
+| `torch_ad_graph` (external) | nested scalar-coordinate PyTorch autograd, as an ordinary PINN code and the 2D `torch_ad` adapter write it | autograd |
+| `jet_collapsed_graph` (external) | Dangel et al.'s public `jet` (collapsed Taylor mode, pinned snapshot): spatial first derivatives and spatial Laplacian; a first-order jet gives d/dt; residual gradient by autograd, as in the 2D adapter | autograd |
+
+- **Code.** [src/external.py](src/external.py) implements both external arms; neither uses FlashNS code.
+- **Execution.** [src/solve_ext.py](src/solve_ext.py) is `solve.py` with this protocol, the arm table and `warn_only` determinism.
+  - Every arm replays its complete loss/gradient as one CUDA Graph, as every v4 arm did; no arm is compiled.
+  - All arms, C17 included, run in one batch on the Torch 2.12 runtime: one exclusive four-GPU node, the three arms of a seed on the same GPU, arm orders permuted over seeds.
+  - [src/run_ext.py](src/run_ext.py) runs the batch once and stops starting cases 30 minutes before its deadline.
+- **Analysis.** [src/audit_ext.py](src/audit_ext.py) is the v4 NumPy audit.
+  - Its primary statistic is unchanged: baseline/C17 setup-plus-optimization geometric means over jointly accepted seeds.
+  - It adds optimization-only and per-evaluation ratios.
+- **Pre-submission checks.**
+  - On CPU in the batch runtime, both external arms match independent scalar-coordinate AD within the v4 budget on 7-point and full data: at most 1.4e-4 of the budget.
+  - The driver self-test runs all 18 cases as CPU smoke runs, every qualification passing at no more than 2.3e-4 of the budget. The audit then passes 1,512 comparisons, and the archive is verified.
+  - The self-test caught one bug before submission: a stale `jet` cache keyed on a reused object id. It was removed.
+- **Expectations** (not gates). Both external arms are expected to cost more per evaluation than C17; there is no numeric prediction. Pressure relative L2 was the binding gate in v4, so some external solves may fail acceptance. Ratios use jointly accepted pairs only.
