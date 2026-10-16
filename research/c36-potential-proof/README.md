@@ -742,5 +742,5 @@ The in-batch reader is the unchanged v2 reader, so [its output](c36-v5-budget-re
 Files:
 - [c36-v5-observations-20261015.json](c36-v5-observations-20261015.json): all 24 observations with all planes and reader results.
 - [c36-v5-training-curves-20261015.json](c36-v5-training-curves-20261015.json): loss curves with the v5 thresholds.
-- Archives: v5 training (446 members) is verified on cluster scratch and persistent project storage. The observation batch (431 members) is verified on cluster scratch.
+- Archives: v5 training (446 members) and the observation batch (431 members) are both verified on cluster scratch and persistent project storage.
 
