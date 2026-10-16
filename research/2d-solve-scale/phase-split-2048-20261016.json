@@ -1,0 +1,308 @@
+{
+ "scope": "post hoc; descriptive split of archived 2,048-point ablation solves, not part of either registered analysis",
+ "method": "read_solve_scale.phases: Adam = (last Adam progress row - first row) optimization wall time over its evaluation count; L-BFGS = (last row - last Adam row) over the evaluations between them",
+ "summary": {
+  "A": {
+   "solves": 6,
+   "replay_ms": 0.2823961639404297,
+   "adam_ms_per_evaluation": [
+    0.36396414451883174,
+    0.38857528648804873
+   ],
+   "lbfgs_ms_per_evaluation": [
+    6.379103394498281,
+    6.607408052382199
+   ],
+   "lbfgs_evaluations": [
+    2367,
+    3959
+   ]
+  },
+  "B": {
+   "solves": 6,
+   "replay_ms": 0.2585766410827637,
+   "adam_ms_per_evaluation": [
+    0.34666567025124095,
+    0.3508753547503147
+   ],
+   "lbfgs_ms_per_evaluation": [
+    6.369100144191119,
+    6.585097570692235
+   ],
+   "lbfgs_evaluations": [
+    2115,
+    4757
+   ]
+  },
+  "C": {
+   "solves": 6,
+   "replay_ms": 0.16509279251098632,
+   "adam_ms_per_evaluation": [
+    0.24980431448784657,
+    0.2538985817518551
+   ],
+   "lbfgs_ms_per_evaluation": [
+    6.321722459435839,
+    7.210909286424173
+   ],
+   "lbfgs_evaluations": [
+    2231,
+    5231
+   ]
+  }
+ },
+ "solves": {
+  "A-solve-s862101": {
+   "cell": "A",
+   "seed": 862101,
+   "converged": true,
+   "evaluations": 6709,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2420,
+   "progress_rows": 162,
+   "adam_ms_per_evaluation": 0.36396414451883174,
+   "lbfgs_ms_per_evaluation": 6.607408052382199,
+   "lbfgs_evaluations": 2709,
+   "adam_ms_per_evaluation_minus_replay": 0.08156798057840203,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.32501188844177
+  },
+  "A-solve-s862102": {
+   "cell": "A",
+   "seed": 862102,
+   "converged": true,
+   "evaluations": 7959,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3520,
+   "progress_rows": 217,
+   "adam_ms_per_evaluation": 0.38547662674682215,
+   "lbfgs_ms_per_evaluation": 6.5917039931869175,
+   "lbfgs_evaluations": 3959,
+   "adam_ms_per_evaluation_minus_replay": 0.10308046280639244,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.309307829246488
+  },
+  "A-solve-s862103": {
+   "cell": "A",
+   "seed": 862103,
+   "converged": true,
+   "evaluations": 6872,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2560,
+   "progress_rows": 169,
+   "adam_ms_per_evaluation": 0.3867094167508185,
+   "lbfgs_ms_per_evaluation": 6.379103394498281,
+   "lbfgs_evaluations": 2872,
+   "adam_ms_per_evaluation_minus_replay": 0.10431325281038878,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.096707230557851
+  },
+  "A-solve-s862104": {
+   "cell": "A",
+   "seed": 862104,
+   "converged": true,
+   "evaluations": 6525,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2260,
+   "progress_rows": 154,
+   "adam_ms_per_evaluation": 0.38836146201356314,
+   "lbfgs_ms_per_evaluation": 6.486015179019311,
+   "lbfgs_evaluations": 2525,
+   "adam_ms_per_evaluation_minus_replay": 0.10596529807313343,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.203619015078881
+  },
+  "A-solve-s862105": {
+   "cell": "A",
+   "seed": 862105,
+   "converged": true,
+   "evaluations": 6367,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2100,
+   "progress_rows": 146,
+   "adam_ms_per_evaluation": 0.38857528648804873,
+   "lbfgs_ms_per_evaluation": 6.540527203217476,
+   "lbfgs_evaluations": 2367,
+   "adam_ms_per_evaluation_minus_replay": 0.10617912254761902,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.258131039277046
+  },
+  "A-solve-s862106": {
+   "cell": "A",
+   "seed": 862106,
+   "converged": true,
+   "evaluations": 7945,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3500,
+   "progress_rows": 216,
+   "adam_ms_per_evaluation": 0.387641823006561,
+   "lbfgs_ms_per_evaluation": 6.532413053741804,
+   "lbfgs_evaluations": 3945,
+   "adam_ms_per_evaluation_minus_replay": 0.10524565906613131,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.250016889801374
+  },
+  "B-solve-s862101": {
+   "cell": "B",
+   "seed": 862101,
+   "converged": true,
+   "evaluations": 7065,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2720,
+   "progress_rows": 177,
+   "adam_ms_per_evaluation": 0.34773728548316285,
+   "lbfgs_ms_per_evaluation": 6.480127634278531,
+   "lbfgs_evaluations": 3065,
+   "adam_ms_per_evaluation_minus_replay": 0.08916064440039917,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.221550993195767
+  },
+  "B-solve-s862102": {
+   "cell": "B",
+   "seed": 862102,
+   "converged": true,
+   "evaluations": 8757,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 4240,
+   "progress_rows": 253,
+   "adam_ms_per_evaluation": 0.34754079626873136,
+   "lbfgs_ms_per_evaluation": 6.485979118757772,
+   "lbfgs_evaluations": 4757,
+   "adam_ms_per_evaluation_minus_replay": 0.08896415518596767,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.2274024776750085
+  },
+  "B-solve-s862103": {
+   "cell": "B",
+   "seed": 862103,
+   "converged": true,
+   "evaluations": 6899,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2580,
+   "progress_rows": 170,
+   "adam_ms_per_evaluation": 0.3508753547503147,
+   "lbfgs_ms_per_evaluation": 6.369100144191119,
+   "lbfgs_evaluations": 2899,
+   "adam_ms_per_evaluation_minus_replay": 0.09229871366755105,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.110523503108356
+  },
+  "B-solve-s862104": {
+   "cell": "B",
+   "seed": 862104,
+   "converged": true,
+   "evaluations": 6115,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 1900,
+   "progress_rows": 136,
+   "adam_ms_per_evaluation": 0.34830525500001386,
+   "lbfgs_ms_per_evaluation": 6.585097570692235,
+   "lbfgs_evaluations": 2115,
+   "adam_ms_per_evaluation_minus_replay": 0.08972861391725018,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.3265209296094715
+  },
+  "B-solve-s862105": {
+   "cell": "B",
+   "seed": 862105,
+   "converged": true,
+   "evaluations": 6359,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2120,
+   "progress_rows": 147,
+   "adam_ms_per_evaluation": 0.34666567025124095,
+   "lbfgs_ms_per_evaluation": 6.5564355688507545,
+   "lbfgs_evaluations": 2359,
+   "adam_ms_per_evaluation_minus_replay": 0.08808902916847727,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.297858927767991
+  },
+  "B-solve-s862106": {
+   "cell": "B",
+   "seed": 862106,
+   "converged": true,
+   "evaluations": 8739,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 4200,
+   "progress_rows": 251,
+   "adam_ms_per_evaluation": 0.34826192501350306,
+   "lbfgs_ms_per_evaluation": 6.410582746560075,
+   "lbfgs_evaluations": 4739,
+   "adam_ms_per_evaluation_minus_replay": 0.08968528393073938,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.152006105477311
+  },
+  "C-solve-s862101": {
+   "cell": "C",
+   "seed": 862101,
+   "converged": true,
+   "evaluations": 6578,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2300,
+   "progress_rows": 156,
+   "adam_ms_per_evaluation": 0.25088240002514794,
+   "lbfgs_ms_per_evaluation": 6.738649632666503,
+   "lbfgs_evaluations": 2578,
+   "adam_ms_per_evaluation_minus_replay": 0.08578960751416162,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.573556840155517
+  },
+  "C-solve-s862102": {
+   "cell": "C",
+   "seed": 862102,
+   "converged": true,
+   "evaluations": 9231,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 4700,
+   "progress_rows": 276,
+   "adam_ms_per_evaluation": 0.2538985817518551,
+   "lbfgs_ms_per_evaluation": 6.557880935562364,
+   "lbfgs_evaluations": 5231,
+   "adam_ms_per_evaluation_minus_replay": 0.08880578924086877,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.392788143051378
+  },
+  "C-solve-s862103": {
+   "cell": "C",
+   "seed": 862103,
+   "converged": true,
+   "evaluations": 7487,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3060,
+   "progress_rows": 194,
+   "adam_ms_per_evaluation": 0.24980431448784657,
+   "lbfgs_ms_per_evaluation": 6.321722459435839,
+   "lbfgs_evaluations": 3487,
+   "adam_ms_per_evaluation_minus_replay": 0.08471152197686024,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.156629666924853
+  },
+  "C-solve-s862104": {
+   "cell": "C",
+   "seed": 862104,
+   "converged": true,
+   "evaluations": 6278,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2020,
+   "progress_rows": 142,
+   "adam_ms_per_evaluation": 0.2519618302467279,
+   "lbfgs_ms_per_evaluation": 6.552606161100801,
+   "lbfgs_evaluations": 2278,
+   "adam_ms_per_evaluation_minus_replay": 0.08686903773574159,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.387513368589815
+  },
+  "C-solve-s862105": {
+   "cell": "C",
+   "seed": 862105,
+   "converged": true,
+   "evaluations": 6231,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2000,
+   "progress_rows": 141,
+   "adam_ms_per_evaluation": 0.25109367625555024,
+   "lbfgs_ms_per_evaluation": 7.210909286424173,
+   "lbfgs_evaluations": 2231,
+   "adam_ms_per_evaluation_minus_replay": 0.08600088374456391,
+   "lbfgs_ms_per_evaluation_minus_replay": 7.045816493913187
+  },
+  "C-solve-s862106": {
+   "cell": "C",
+   "seed": 862106,
+   "converged": true,
+   "evaluations": 8054,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3580,
+   "progress_rows": 220,
+   "adam_ms_per_evaluation": 0.2510189115128014,
+   "lbfgs_ms_per_evaluation": 6.985794616176011,
+   "lbfgs_evaluations": 4054,
+   "adam_ms_per_evaluation_minus_replay": 0.0859261190018151,
+   "lbfgs_ms_per_evaluation_minus_replay": 6.820701823665025
+  }
+ }
+}
