@@ -1,0 +1,693 @@
+{
+  "state": "C36_V2_DEVELOPMENT_READ",
+  "protocol_version": "C36-potential-20261015-v5-budget-development",
+  "protocol_sha256": "135aae3d7f49d77122c4a834463485ef93c422f40f52488afb04f0a0a1a2810e",
+  "runs": [
+    {
+      "seed": 361901,
+      "engine": "analytic",
+      "training_state": "COMPLETE",
+      "training_seconds": 20418.12144293601,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 4800,
+      "LBFGS_closures": 117986,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 180,
+        "check_points": 60,
+        "maximum_error_over_original_budget": 1.0889039431009319e-05
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.001417613006196916
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 170.95643285498954
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 336.85924023599364
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 500.9611575000454
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 666.776038942975
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 741.2984218350612
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 853.7436446020147
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1009.6143272090703
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1040.6720767599763
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1414.7474555220688
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2205.983870639
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3728.9165779050672
+        },
+        {
+          "tag": "LBFGS-call1200",
+          "training_seconds": 5389.441096376046
+        },
+        {
+          "tag": "LBFGS-call1600",
+          "training_seconds": 7057.987807263969
+        },
+        {
+          "tag": "LBFGS-call2000",
+          "training_seconds": 8726.857928531012
+        },
+        {
+          "tag": "LBFGS-call2400",
+          "training_seconds": 10395.326579445042
+        },
+        {
+          "tag": "LBFGS-call2800",
+          "training_seconds": 12063.685955082066
+        },
+        {
+          "tag": "LBFGS-call3200",
+          "training_seconds": 13732.200776105048
+        },
+        {
+          "tag": "LBFGS-call3600",
+          "training_seconds": 15400.592941361014
+        },
+        {
+          "tag": "LBFGS-call4000",
+          "training_seconds": 17069.096003682003
+        },
+        {
+          "tag": "LBFGS-call4400",
+          "training_seconds": 18747.953627333976
+        },
+        {
+          "tag": "LBFGS-call4800",
+          "training_seconds": 20416.41904643702
+        },
+        {
+          "tag": "final",
+          "training_seconds": 20418.286734372028
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 92,
+        "closure": 2049,
+        "loss": 9.991019259862346e-05,
+        "gradient_infinity": 0.0005337839427592701,
+        "training_seconds": 1009.6125211809995
+      },
+      "loss_curve": {
+        "evaluations": 121986,
+        "initial": 5.510437156722028,
+        "after_Adam": 0.0011217401536377596,
+        "minimum": 1.6066715658523605e-06,
+        "final_reported": 1.6066715658523605e-06,
+        "final_gradient_infinity": 4.1505260912113536e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 552,
+            "training_seconds": 95.72188556601759
+          },
+          "0.001": {
+            "evaluation": 4042,
+            "training_seconds": 673.7757030320354
+          },
+          "0.0003": {
+            "evaluation": 5153,
+            "training_seconds": 859.5987970560091
+          },
+          "0.0001": {
+            "evaluation": 6050,
+            "training_seconds": 1009.6125211809995
+          },
+          "3e-05": {
+            "evaluation": 8176,
+            "training_seconds": 1366.055910728057
+          },
+          "1e-05": {
+            "evaluation": 12487,
+            "training_seconds": 2130.443078086013
+          }
+        },
+        "mean_seconds_per_evaluation": 0.16736687875913667,
+        "per_LBFGS_call_end": {
+          "1": 0.0010739718769052632,
+          "20": 0.000545271914698979,
+          "50": 0.0003104900428027119,
+          "100": 8.49377637939093e-05,
+          "200": 2.763209457453398e-05,
+          "400": 8.873807696138895e-06,
+          "800": 1.8303176538637935e-06
+        }
+      },
+      "physical": {}
+    },
+    {
+      "seed": 361901,
+      "engine": "parameter_ad",
+      "training_state": "COMPLETE",
+      "training_seconds": 25724.986763221095,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 4800,
+      "LBFGS_closures": 118124,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 180,
+        "check_points": 60,
+        "maximum_error_over_original_budget": 3.010496264271918e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.003022426040843129
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 224.16379146801773
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 442.97023934707977
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 660.0708171180449
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 878.9916085490258
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 977.5740232240641
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 1123.894822276081
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1332.0378304420738
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1380.4421832250664
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1910.0199327350128
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2901.9727430620696
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 4922.656317267101
+        },
+        {
+          "tag": "LBFGS-call1200",
+          "training_seconds": 7124.131583052105
+        },
+        {
+          "tag": "LBFGS-call1600",
+          "training_seconds": 9315.282650904031
+        },
+        {
+          "tag": "LBFGS-call2000",
+          "training_seconds": 11506.24181425909
+        },
+        {
+          "tag": "LBFGS-call2400",
+          "training_seconds": 13697.058213698096
+        },
+        {
+          "tag": "LBFGS-call2800",
+          "training_seconds": 15888.093222530093
+        },
+        {
+          "tag": "LBFGS-call3200",
+          "training_seconds": 18078.835433938075
+        },
+        {
+          "tag": "LBFGS-call3600",
+          "training_seconds": 20269.78405131807
+        },
+        {
+          "tag": "LBFGS-call4000",
+          "training_seconds": 22111.029429189046
+        },
+        {
+          "tag": "LBFGS-call4400",
+          "training_seconds": 23916.874945579097
+        },
+        {
+          "tag": "LBFGS-call4800",
+          "training_seconds": 25723.294750040048
+        },
+        {
+          "tag": "final",
+          "training_seconds": 25725.166431253077
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 93,
+        "closure": 2058,
+        "loss": 9.987075280023207e-05,
+        "gradient_infinity": 0.0005973869528114514,
+        "training_seconds": 1332.0361442620633
+      },
+      "loss_curve": {
+        "evaluations": 122124,
+        "initial": 5.510437156722028,
+        "after_Adam": 0.001121686042759257,
+        "minimum": 1.62835695351901e-06,
+        "final_reported": 1.62835695351901e-06,
+        "final_gradient_infinity": 2.5364475103058854e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 552,
+            "training_seconds": 125.11569429107476
+          },
+          "0.001": {
+            "evaluation": 4042,
+            "training_seconds": 888.2101248340914
+          },
+          "0.0003": {
+            "evaluation": 5165,
+            "training_seconds": 1135.337162775104
+          },
+          "0.0001": {
+            "evaluation": 6059,
+            "training_seconds": 1332.0361442620633
+          },
+          "3e-05": {
+            "evaluation": 8156,
+            "training_seconds": 1805.2899248400936
+          },
+          "1e-05": {
+            "evaluation": 12209,
+            "training_seconds": 2733.2003543270985
+          }
+        },
+        "mean_seconds_per_evaluation": 0.21063256170852598,
+        "per_LBFGS_call_end": {
+          "1": 0.0010739330938910319,
+          "20": 0.000546876441065366,
+          "50": 0.0003148583128420291,
+          "100": 8.431210980676511e-05,
+          "200": 2.69928372184643e-05,
+          "400": 8.430233508993236e-06,
+          "800": 1.7489278343533437e-06
+        }
+      },
+      "physical": {}
+    },
+    {
+      "seed": 361902,
+      "engine": "analytic",
+      "training_state": "COMPLETE",
+      "training_seconds": 20463.71053945308,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 4800,
+      "LBFGS_closures": 118088,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 180,
+        "check_points": 60,
+        "maximum_error_over_original_budget": 8.306584395017717e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0015812090132385492
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 171.53530854010023
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 337.8798197490396
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 502.5242777960375
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 668.8964180910261
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 743.4486075040186
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 854.2719730850076
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 982.6663778200746
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1039.4085424210643
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1411.5630579281133
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2231.3829548750073
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3785.023936751066
+        },
+        {
+          "tag": "LBFGS-call1200",
+          "training_seconds": 5451.767076355056
+        },
+        {
+          "tag": "LBFGS-call1600",
+          "training_seconds": 7129.437613900052
+        },
+        {
+          "tag": "LBFGS-call2000",
+          "training_seconds": 8796.448995298008
+        },
+        {
+          "tag": "LBFGS-call2400",
+          "training_seconds": 10463.021904295078
+        },
+        {
+          "tag": "LBFGS-call2800",
+          "training_seconds": 12129.398031549063
+        },
+        {
+          "tag": "LBFGS-call3200",
+          "training_seconds": 13795.840651889099
+        },
+        {
+          "tag": "LBFGS-call3600",
+          "training_seconds": 15462.402948473115
+        },
+        {
+          "tag": "LBFGS-call4000",
+          "training_seconds": 17128.978859858005
+        },
+        {
+          "tag": "LBFGS-call4400",
+          "training_seconds": 18795.431464528083
+        },
+        {
+          "tag": "LBFGS-call4800",
+          "training_seconds": 20462.00199407409
+        },
+        {
+          "tag": "final",
+          "training_seconds": 20463.876178187085
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 85,
+        "closure": 1869,
+        "loss": 9.996543036791688e-05,
+        "gradient_infinity": 0.0006110576915853136,
+        "training_seconds": 982.6640457001049
+      },
+      "loss_curve": {
+        "evaluations": 122088,
+        "initial": 5.419907373709556,
+        "after_Adam": 0.0010975792511033768,
+        "minimum": 1.3378628296194728e-06,
+        "final_reported": 1.3378628296194728e-06,
+        "final_gradient_infinity": 4.588099533870463e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 564,
+            "training_seconds": 98.01921074907295
+          },
+          "0.001": {
+            "evaluation": 4030,
+            "training_seconds": 673.8964167380473
+          },
+          "0.0003": {
+            "evaluation": 5017,
+            "training_seconds": 839.3587678150507
+          },
+          "0.0001": {
+            "evaluation": 5870,
+            "training_seconds": 982.6640457001049
+          },
+          "3e-05": {
+            "evaluation": 7693,
+            "training_seconds": 1289.5345983890584
+          },
+          "1e-05": {
+            "evaluation": 10863,
+            "training_seconds": 1823.5047946880804
+          }
+        },
+        "mean_seconds_per_evaluation": 0.1676004104234816,
+        "per_LBFGS_call_end": {
+          "1": 0.001032082021213433,
+          "20": 0.0005185781200630051,
+          "50": 0.00027172983541693486,
+          "100": 6.706825037497747e-05,
+          "200": 2.37227335933392e-05,
+          "400": 6.010053985196727e-06,
+          "800": 1.3825307910321545e-06
+        }
+      },
+      "physical": {}
+    },
+    {
+      "seed": 361902,
+      "engine": "parameter_ad",
+      "training_state": "COMPLETE",
+      "training_seconds": 26652.202944632038,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 4800,
+      "LBFGS_closures": 118095,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 180,
+        "check_points": 60,
+        "maximum_error_over_original_budget": 2.351859177519258e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0013954690657556057
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 222.20993741811253
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 439.1059203100158
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 654.2032626500586
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 871.0910033570835
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 968.3074910920113
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 1112.3039298501099
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1266.9311017850414
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1351.7857182120206
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1838.0751319359988
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2877.513282382046
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 4894.280639994075
+        },
+        {
+          "tag": "LBFGS-call1200",
+          "training_seconds": 7065.640587990056
+        },
+        {
+          "tag": "LBFGS-call1600",
+          "training_seconds": 9237.191448528087
+        },
+        {
+          "tag": "LBFGS-call2000",
+          "training_seconds": 11447.0983620591
+        },
+        {
+          "tag": "LBFGS-call2400",
+          "training_seconds": 13618.235110688023
+        },
+        {
+          "tag": "LBFGS-call2800",
+          "training_seconds": 15789.447575177066
+        },
+        {
+          "tag": "LBFGS-call3200",
+          "training_seconds": 17960.880613464047
+        },
+        {
+          "tag": "LBFGS-call3600",
+          "training_seconds": 20132.021873185062
+        },
+        {
+          "tag": "LBFGS-call4000",
+          "training_seconds": 22304.683245925
+        },
+        {
+          "tag": "LBFGS-call4400",
+          "training_seconds": 24477.2736411551
+        },
+        {
+          "tag": "LBFGS-call4800",
+          "training_seconds": 26650.40952263004
+        },
+        {
+          "tag": "final",
+          "training_seconds": 26652.41901612701
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 83,
+        "closure": 1810,
+        "loss": 9.993383911544992e-05,
+        "gradient_infinity": 0.0007251853647390024,
+        "training_seconds": 1266.9290754860267
+      },
+      "loss_curve": {
+        "evaluations": 122095,
+        "initial": 5.419907373709556,
+        "after_Adam": 0.0010872026185219613,
+        "minimum": 1.4322708840721802e-06,
+        "final_reported": 1.4322708840721802e-06,
+        "final_gradient_infinity": 1.244143240344455e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 564,
+            "training_seconds": 126.63067906908691
+          },
+          "0.001": {
+            "evaluation": 4030,
+            "training_seconds": 877.6036540480563
+          },
+          "0.0003": {
+            "evaluation": 5017,
+            "training_seconds": 1092.8910298120463
+          },
+          "0.0001": {
+            "evaluation": 5811,
+            "training_seconds": 1266.9290754860267
+          },
+          "3e-05": {
+            "evaluation": 7561,
+            "training_seconds": 1650.2407041160623
+          },
+          "1e-05": {
+            "evaluation": 10980,
+            "training_seconds": 2470.3693906370318
+          }
+        },
+        "mean_seconds_per_evaluation": 0.21827598103257387,
+        "per_LBFGS_call_end": {
+          "1": 0.0010273112500180444,
+          "20": 0.0005123527878737554,
+          "50": 0.00027218968994208284,
+          "100": 6.211467590876586e-05,
+          "200": 2.174203382563784e-05,
+          "400": 6.145758109443841e-06,
+          "800": 1.4992629897029652e-06
+        }
+      },
+      "physical": {}
+    }
+  ],
+  "paired_development_parameter_ad_over_analytic": {
+    "361901": {
+      "per_evaluation_seconds_ratio": 1.2585080349837583,
+      "time_to_loss_ratio": {
+        "0.01": 1.3070751119375392,
+        "0.001": 1.318257872519129,
+        "0.0003": 1.3207756533204276,
+        "0.0001": 1.3193538276485588,
+        "3e-05": 1.3215344340320165,
+        "1e-05": 1.2829257831110896
+      }
+    },
+    "361902": {
+      "per_evaluation_seconds_ratio": 1.302359466072002,
+      "time_to_loss_ratio": {
+        "0.01": 1.2918965384577386,
+        "0.001": 1.3022827132633246,
+        "0.0003": 1.3020547014204307,
+        "0.0001": 1.289279974198502,
+        "3e-05": 1.2797180519061786,
+        "1e-05": 1.3547369866168082
+      }
+    }
+  },
+  "any_training_gate": true,
+  "all_training_gate": true,
+  "any_physical_acceptance": false,
+  "decision_rule_branch_mechanical": "b",
+  "decision_note": "Mechanical branch from the pre-registered rule; branch b additionally requires reading the physical-error trend across checkpoints.",
+  "formal_claim": false
+}

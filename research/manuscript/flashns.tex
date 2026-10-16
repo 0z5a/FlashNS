@@ -1191,7 +1191,9 @@ still falls by factors 0.53--0.83 and velocity by 0.48--0.61. The trend
 condition of branch (b) therefore does not hold at the end of this budget:
 the physical errors have not stopped falling; they fall more slowly than the
 loss. If the observed pressure slopes persisted, the pressure gate would need
-a loss 6--47 times below the final values; this extrapolation is not tested.
+a loss 6--47 times below the final values. Section~\ref{sec:c36v5} tests
+this with six times the L-BFGS budget: the loss and the errors stall
+instead.
 The two development engines, whose trajectories differ only by rounding, end
 at stratified pressures of 2.49 and $2.08\times10^{-3}$ (seed 361901) and
 2.49 and $3.28\times10^{-3}$ (seed 361902), which sets the scale of
@@ -1345,6 +1347,106 @@ problem moves the training trajectory, and C2 meets the training gate closer
 to the physical solution. Neither schedule changes which acceptance tests
 fail, however: the stratified pressure inside the moving box during the
 motion remains the binding gate.
+
+\subsection{A larger L-BFGS budget}\label{sec:c36v5}
+Section~\ref{sec:c36trend} leaves one direct question: does more optimizer
+budget reach the stratified pressure gate? Two further studies were
+registered to answer it.
+
+\paragraph{A cancelled resumed design.}
+The first design (protocol v4) resumed the final checkpoints of the C2 and
+baseline runs and added 4,000 L-BFGS calls with a fresh L-BFGS history. Its
+trainer verified each start checkpoint's hashes and refused a tampered
+start. Every qualification check passed, and each source run's final loss
+was reproduced bit for bit or within $4.2\times10^{-11}$ of the original
+budget.
+
+After 13.5 minutes, before any physical observation, the batch was
+cancelled on optimizer progress alone. A fresh history started at a loss of
+about $10^{-6}$ falls into a cycle: each trial step $t=1$ raises the loss to
+1.3--1.9$\times10^{-6}$, and the strong-Wolfe search then accepts a tiny
+step. Over 100 calls the loss fell by 0.2--0.7\%, against about 32\% over
+the last 100 calls of the source runs. Fresh histories started earlier at
+losses of $10^{-2}$ and $10^{-3}$ had behaved normally. The resumed design
+would therefore have measured the restart, not the budget; its partial
+outputs are archived. The source runs also showed that the continuation runs
+had already stalled at 1.1--1.4$\times10^{-6}$ by call 800 (0.02--0.46\% per
+10 calls), while the baseline runs were still falling by 3.4--3.7\% per 10
+calls. The smoothness arm was therefore dropped.
+
+\paragraph{Protocol v5.}
+The second design keeps the development recipe unchanged, trainer and driver
+included, and extends the L-BFGS budget from 800 to 4,800 calls in one
+continuous run per seed and engine, so the L-BFGS history never restarts.
+Both engines train both seeds on one four-GPU H100 node. A rule registered
+before the run, implemented as code and tested on synthetic outcomes,
+classifies the result from the physical observations at 1,600, 2,400, 3,200
+and 4,000 calls and at the end:
+\begin{itemize}
+\item E1: all four runs pass;
+\item E2: exactly one engine passes on both seeds;
+\item E3: some runs pass;
+\item E4: no run passes and the errors still fall;
+\item E5: no run passes and the errors have stopped falling, meaning a final
+  stratified pressure at least 0.95 times its value at 4,000 calls on both
+  seeds of an engine.
+\end{itemize}
+E1 or E2 would lead to a formal fresh-seed time-to-accuracy protocol. The
+runs do not reproduce the development runs bit for bit: the first
+difference appears in the last digit of the loss between Adam updates 3 and
+8, a reduction-order effect, so call 800 was observed anew.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{C36 with six times the L-BFGS budget (protocol v5). Loss and stratified corrected pressure at L-BFGS call 800 (the development budget) and at the end of 4,800 calls; plateau is the stratified region inside the box; velocity is the stratified relative L2 error; endpoint is the trajectory endpoint error. Physical values $\times10^{-3}$; limits: pressure 1, velocity 10, endpoint 1. Failed lists the failing acceptance tests at the end: S (stratified pressure) and T (trajectory endpoint).}
+\label{tab:c36v5}
+\begin{tabular}{llrrrrrrrl}\toprule
+ & & \multicolumn{2}{c}{Loss $\times10^{6}$} & \multicolumn{2}{c}{Press.~S} & & & & \\\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Engine & Seed & 800 & 4,800 & 800 & 4,800 & Plateau & Vel.~S & Endpoint & Failed\\\midrule
+Analytic & 361901 & 1.830 & 1.607 & 2.40 & 2.36 & 4.29 & 1.21 & 0.90 & S\\
+Analytic & 361902 & 1.383 & 1.338 & 2.57 & 2.52 & 4.52 & 1.16 & 1.00 & S\\
+Parameter AD & 361901 & 1.749 & 1.628 & 2.26 & 2.17 & 3.96 & 1.27 & 1.02 & S, T\\
+Parameter AD & 361902 & 1.499 & 1.432 & 3.03 & 2.97 & 5.89 & 1.19 & 0.86 & S
+\\\bottomrule\end{tabular}
+\end{table}
+
+All four runs complete the 4,800 calls within the time guard and pass all 60
+scheduled complete-gradient checks (at most $1.1\times10^{-5}$ of the
+original budget). The loss stalls soon after call 800
+(Table~\ref{tab:c36v5}). Between calls 800 and 4,800 it falls by only
+3--12\%, and after call 1,200 by about 0.2--0.3\% per 400 calls. No run
+reaches a loss of $10^{-6}$; the threshold $3\times10^{-6}$ is reached after
+16,077--18,924 evaluations.
+
+A separate run-once batch observes every run at calls 800, 1,600, 2,400,
+3,200, 4,000 and 4,800 on all planes (24 observations, chunk 512). The
+independent reader passes all 2,808 checks. The physical errors stall with
+the loss:
+\begin{itemize}
+\item Stratified corrected pressure changes by 1.5--3.8\% between calls 800
+  and 4,800 and ends at 2.2--3.0 times its limit.
+\item The plateau error inside the box stays at 4.0--5.9 times the limit.
+\item The uniform holdout passes at every checkpoint.
+\item The trajectory endpoint stays at 0.86--1.02 times its limit and passes
+  at 12 of the 24 checkpoints.
+\end{itemize}
+No checkpoint passes physical acceptance. The registered outcome is E5: no
+run passes, and both engines have stopped falling, with final stratified
+pressures 0.998 times their values at 4,000 calls. The rule therefore makes
+no formal claim.
+
+This answers the trend question of Section~\ref{sec:c36trend}. The errors
+were still falling at the development budget of 800 calls. With this
+optimizer, however, they stop shortly afterwards, together with the loss,
+at a point whose gradient infinity norm is $1.2$--$4.6\times10^{-6}$. The
+extrapolation in Section~\ref{sec:c36trend} does not hold, and the remaining
+stratified pressure error is not a budget limit of this optimizer at this
+scale. In the terms of the development rule this is branch (b): reaching the
+stratified pressure gate needs an explicitly changed problem definition,
+such as different sampling, weights or capacity, in a new protocol. As a
+development observation only, parameter AD needed 1.28--1.36 times the
+seconds of the analytic engine to each loss threshold from $10^{-3}$ to
+$3\times10^{-6}$, as at the shorter budget.
 
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
@@ -1529,9 +1631,11 @@ but no accepted solve. With 800 L-BFGS calls its training passes the loss
 gate, the uniform holdout and the initial and boundary tests, while
 stratified pressure stays 2--3 times above its limit inside the moving box
 and the trajectory endpoint is borderline. Seventy-two observations along
-the training trajectories show that error still falling, more slowly than
-the loss, and a temporal-smoothness continuation changes where training
-meets the loss gate but not which test fails. The C36 throughput gains depend on compilation, the zero-gate
+the training trajectories show that error still falling at that budget,
+more slowly than the loss. With six times the L-BFGS budget the loss and the
+errors stall, so the gap is not a budget limit of this optimizer. A
+temporal-smoothness continuation changes where training meets the loss gate
+but not which test fails. The C36 throughput gains depend on compilation, the zero-gate
 constant folding in the artifact is qualified on CPU only, and the problem
 is a single constructed box instance. External three-dimensional baselines,
 accepted C36 solves, a second nonlinear PDE, reduced-precision measurements
@@ -1556,8 +1660,9 @@ objective-gradient throughput by 1.32$\times$ over an equally compiled
 parameter-AD control. Its original training budget does not reach the
 training gate; a development run with 40 times more L-BFGS calls does, and
 passes most physical gates, but stratified pressure still fails.
-Observations of every checkpoint show this error still falling at the end of
-the budget, and a smoother-motion continuation does not remove it. Accepted
+Observations of every checkpoint show this error still falling at that
+budget. With six times the L-BFGS calls it stalls at 2.2--3.0 times its
+limit, and a smoother-motion continuation does not remove it either. Accepted
 C36 solves and external three-dimensional comparisons remain open.
 
 
@@ -1883,6 +1988,18 @@ runs. The executed continuation reader labels its output with the
 development reader's state name; that inherited label is kept. A NumPy check
 of the exact width-$w$ fields on the same holdouts supplies the field
 distances of Section~\ref{sec:c36v3}.
+
+The studies of Section~\ref{sec:c36v5} also ran from packets whose
+manifests list every source hash, and their published sources are
+byte-identical to the executed copies. The cancelled v4 attempt archived its
+partial outputs (157 members). The v5 training batch (446 members) used the
+unchanged development trainer and driver, so its in-batch reader labels its
+output with the development state name and applies the development
+branches; the registered v5 outcome comes from \texttt{decide\_c36\_v5}.
+Its observation batch archived 431 members. These archives are verified on
+cluster scratch; the two training archives are also verified on persistent
+project storage. The v5 training lanes took 20,418--26,652 seconds against a
+27,000-second guard, so no run was truncated.
 
 \subsection{Ethier--Steinman campaign}
 The 18 cases ran as one batch on two GPUs of an existing allocation,

@@ -1,9 +1,9 @@
 {
- "revision": "2026-10-15",
+ "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "51e852943b8ad63116395e2dc0683c9618dcd7d18223dc2c546ab03ebcd9000f",
- "previous_manuscript_sha256": "fa350a3428c89e5ae05a767b93677a626452a396350cc6248e5b88dba3b9252d",
+ "manuscript_sha256": "43fabae38f9a29d68b9964231bb170a8b5c6c570bb3ea749574ba89a904979a3",
+ "previous_manuscript_sha256": "51e852943b8ad63116395e2dc0683c9618dcd7d18223dc2c546ab03ebcd9000f",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -33,11 +33,17 @@
   "../c36-potential-proof/c36-v3-smoothness-batches-20261015.json": "211e9d33f7a4a9b0b8c93324e4155ab31714bf53f2ed1203e1caa596e75c8f8a",
   "../c36-potential-proof/c36-v3-baseline-curves-20261015.json": "9f623c6fad1038bd264c8d478f037e441bc36fb1104c95fb58b50c6e5600513f",
   "../c36-potential-proof/c36-schedule-field-distance-20261015.json": "64fc4c54b1530269eab5ea4317123ba04ea9b75c1d8a7c784fc35a461d114c2c",
-  "../c36-potential-proof/release-source-map-20261015.json": "11018f6a43212d4e3c798440cd433e65a93e323c604902fd3430a3a5f0ce6e7f",
+  "../c36-potential-proof/release-source-map-20261015.json": "a0bcd3ec684060b9c394280197f2aa1e1d6f4b73df6a568f49648c4055a0db7f",
   "../c36-potential-proof/tools/c36_publish_observations.py": "68a48ff8d78fbd6fc9e6b83a226e546014d7afbec8788346c6f13522bb55726c",
   "../c36-potential-proof/tools/c36_trend_figure.py": "1377bdfc228675127c9b13f7aa2c96809cb33380ad51b6d0d5dfdc2c9dcee88b",
   "../c36-potential-proof/c36-trend-correlations-20261015.json": "8cd58fb57bc87d5e6fc0c569c9b5fe6e264e3a1d964d0173adcfaa9f4e5f1372",
-  "../c36-potential-proof/tools/c36_rank_correlations.py": "f9a0690da687b3734d3fdc18c67c32e092e651dd5d76f3ea63d9df00ed6f89ae"
+  "../c36-potential-proof/tools/c36_rank_correlations.py": "f9a0690da687b3734d3fdc18c67c32e092e651dd5d76f3ea63d9df00ed6f89ae",
+  "../c36-potential-proof/protocol-v4-combination-development-20261015.json": "6ff1ce822cfb213c26d903f7e9e72a464c46ad550a8a728f780cf7c70e0e2619",
+  "../c36-potential-proof/protocol-v5-budget-development-20261015.json": "135aae3d7f49d77122c4a834463485ef93c422f40f52488afb04f0a0a1a2810e",
+  "../c36-potential-proof/c36-v5-observations-20261015.json": "3323f6c0f39e9be674464ebf9c93798ff36cd6fead9ac59c18cf106f3de99f45",
+  "../c36-potential-proof/c36-v5-decision-20261015.json": "0591d8180e94b4c5764cc9c18a3206fd2e04859d0157d54abc5ee7c436fca4d9",
+  "../c36-potential-proof/c36-v5-training-curves-20261015.json": "f2cb596650aa910ecdec053188259700eba5e8bb24a04f592a2eff474b5e66a0",
+  "../c36-potential-proof/c36-v5-budget-result-20261015.json": "53543c21c232c038bb991c387b661c55da2d1ea9c1542158a31411a7fb4e08e1"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -51,11 +57,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "b32cb5f53d568d13178fbff3fa786ca5d7105df9b2488e56a73ea5260f417fdc",
- "previous_pdf_sha256": "76a1762bb609f5c3ee2b0f99cfed314275951fa092bcfc1411195b44b1ebef2d",
- "pages": 31,
+ "pdf_sha256": "5184736e292e69404e0b10036cbe6ac996d5e074803151e70a677942a551e54d",
+ "previous_pdf_sha256": "b32cb5f53d568d13178fbff3fa786ca5d7105df9b2488e56a73ea5260f417fdc",
+ "pages": 33,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS: Figures 1-4, the Ethier-Steinman results page, the C36 v2 page, Sections 6.8-6.9 and the C36 appendix inspected at 90 dpi",
+ "pdf_visual_review": "PASS: Figures 1-4, the Ethier-Steinman results page, the C36 v2 page, Sections 6.8-6.10 and the C36 appendix inspected at 90 dpi",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -99,5 +105,12 @@
   "batch 4 first driver": "a5138cf5371cecea8d96bd95c8c6c45aa2f9f68d0612874822373bb854951fba",
   "batch 4 second driver": "e2609f369f2f2bea0c15d5ecdad108a51026bfdc1a6e9d414fb202fdcc039186"
  },
- "revision_note_20261015": "Adds Section 6.8 (72 all-plane observations along the C36 training trajectories, trend of physical errors against loss, Figure 4) and Section 6.9 (temporal-smoothness continuation, protocol v3, two schedules, registered-rule outcome, failed first attempt); revises Section 6.7, the discussion and the conclusion where the earlier text said the trend could not be evaluated or the metrics were not independently re-read; pins the new protocol, results, records, release map and generator scripts."
+ "revision_note_20261015": "Adds Section 6.8 (72 all-plane observations along the C36 training trajectories, trend of physical errors against loss, Figure 4) and Section 6.9 (temporal-smoothness continuation, protocol v3, two schedules, registered-rule outcome, failed first attempt); revises Section 6.7, the discussion and the conclusion where the earlier text said the trend could not be evaluated or the metrics were not independently re-read; pins the new protocol, results, records, release map and generator scripts.",
+ "C36_v4_combination": "attempt cancelled after 13.5 minutes on optimizer progress alone (fresh L-BFGS history at loss ~1e-6 stalls), before any physical observation; partial outputs archived (157 members)",
+ "C36_v5_budget_registered_outcome": "E5: no run passes physical acceptance and both engines stopped falling (final stratified pressure 0.998x its value at 4,000 calls); no formal claim",
+ "C36_v5_budget_archive_sha256": {
+  "training": "4a1902a85030784ac5765485a79a4bc16735d2160c176bbbc84fff3074c0baf6",
+  "observation": "406f71ebc0a6fba6f4dc64c97f6c91b4933f72990ba3394b6beeefd9d4aaaa8e"
+ },
+ "revision_note_20261016": "Adds Section 6.10: the cancelled v4 resumed design (fresh L-BFGS history at low loss stalls) and the pre-registered v5 budget study (4,800 L-BFGS calls, both engines, 24 all-plane observations, registered outcome E5); updates Section 6.8, the discussion, the conclusion and the C36 appendix; pins the v4/v5 protocols, v5 results, decision and the extended release map."
 }

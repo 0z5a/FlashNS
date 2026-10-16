@@ -92,6 +92,9 @@ The [October 14 research draft](research/manuscript/README.md) keeps the accepte
   - Another reaches loss thresholds in 8–36% fewer evaluations.
   - Neither changes which acceptance test fails. Under the registered rule, the continuation does not help: the slower schedule is harmful and the other fits no branch cleanly.
 
+**More optimizer budget does not close the gap ([details](research/c36-potential-proof/README.md#budget-study-v5-pre-registered-outcome-e5)).** The same recipe with six times the L-BFGS budget (4,800 calls, both engines, two seeds) stalls soon after call 800. Over the extra 4,000 calls the loss falls 3–12%, and stratified pressure changes by under 4%, ending at 2.2–3.0× its limit. The registered outcome is E5: no pass, and the errors stopped falling. The remaining gap therefore needs a changed problem definition, not more budget.
+- An earlier resumed design (v4) was cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls. It is recorded and archived.
+
 ### Naming
 
 | Name | Where | Meaning |

@@ -1,0 +1,202 @@
+{
+ "protocol_sha256": "135aae3d7f49d77122c4a834463485ef93c422f40f52488afb04f0a0a1a2810e",
+ "summary_sha256": [
+  "3ebbf7678faeb3124c68dfc661909cf63baaf47e3e60dca5ab7f78b336298a99"
+ ],
+ "outcome": {
+  "key": "E5_none_stopped",
+  "text": "no run passes and at least one engine has stopped falling"
+ },
+ "stopped_falling": {
+  "analytic": true,
+  "parameter_ad": true
+ },
+ "runs": {
+  "seed361901-analytic": {
+   "engine": "analytic",
+   "seed": 361901,
+   "observed_tags": [
+    "LBFGS-call800",
+    "LBFGS-call1600",
+    "LBFGS-call2400",
+    "LBFGS-call3200",
+    "LBFGS-call4000",
+    "final"
+   ],
+   "LBFGS_calls": {
+    "LBFGS-call800": 800,
+    "LBFGS-call1600": 1600,
+    "LBFGS-call2400": 2400,
+    "LBFGS-call3200": 3200,
+    "LBFGS-call4000": 4000,
+    "final": 4800
+   },
+   "acceptance": {
+    "LBFGS-call800": false,
+    "LBFGS-call1600": false,
+    "LBFGS-call2400": false,
+    "LBFGS-call3200": false,
+    "LBFGS-call4000": false,
+    "final": false
+   },
+   "stratified_pressure": {
+    "LBFGS-call800": 0.002394568925624592,
+    "LBFGS-call1600": 0.0023770110298654006,
+    "LBFGS-call2400": 0.0023745750055983207,
+    "LBFGS-call3200": 0.0023699579432173608,
+    "LBFGS-call4000": 0.0023648917286794363,
+    "final": 0.0023599899204028046
+   },
+   "stratified_velocity": {
+    "LBFGS-call800": 0.0012654342775760387,
+    "LBFGS-call1600": 0.0012202896307788181,
+    "LBFGS-call2400": 0.0012168108109970987,
+    "LBFGS-call3200": 0.0012142701111716332,
+    "LBFGS-call4000": 0.001212254421239467,
+    "final": 0.0012105869974857405
+   },
+   "first_pass_LBFGS_calls": null,
+   "missing_tags": []
+  },
+  "seed361902-analytic": {
+   "engine": "analytic",
+   "seed": 361902,
+   "observed_tags": [
+    "LBFGS-call800",
+    "LBFGS-call1600",
+    "LBFGS-call2400",
+    "LBFGS-call3200",
+    "LBFGS-call4000",
+    "final"
+   ],
+   "LBFGS_calls": {
+    "LBFGS-call800": 800,
+    "LBFGS-call1600": 1600,
+    "LBFGS-call2400": 2400,
+    "LBFGS-call3200": 3200,
+    "LBFGS-call4000": 4000,
+    "final": 4800
+   },
+   "acceptance": {
+    "LBFGS-call800": false,
+    "LBFGS-call1600": false,
+    "LBFGS-call2400": false,
+    "LBFGS-call3200": false,
+    "LBFGS-call4000": false,
+    "final": false
+   },
+   "stratified_pressure": {
+    "LBFGS-call800": 0.002571174273836842,
+    "LBFGS-call1600": 0.0025535920652064903,
+    "LBFGS-call2400": 0.0025434672007698693,
+    "LBFGS-call3200": 0.0025353510379227673,
+    "LBFGS-call4000": 0.0025284030772608885,
+    "final": 0.0025222409934653463
+   },
+   "stratified_velocity": {
+    "LBFGS-call800": 0.0011693192893080118,
+    "LBFGS-call1600": 0.0011662183599376067,
+    "LBFGS-call2400": 0.001164544592660091,
+    "LBFGS-call3200": 0.0011632693561657607,
+    "LBFGS-call4000": 0.0011621851309503925,
+    "final": 0.0011612032016373704
+   },
+   "first_pass_LBFGS_calls": null,
+   "missing_tags": []
+  },
+  "seed361901-parameter_ad": {
+   "engine": "parameter_ad",
+   "seed": 361901,
+   "observed_tags": [
+    "LBFGS-call800",
+    "LBFGS-call1600",
+    "LBFGS-call2400",
+    "LBFGS-call3200",
+    "LBFGS-call4000",
+    "final"
+   ],
+   "LBFGS_calls": {
+    "LBFGS-call800": 800,
+    "LBFGS-call1600": 1600,
+    "LBFGS-call2400": 2400,
+    "LBFGS-call3200": 3200,
+    "LBFGS-call4000": 4000,
+    "final": 4800
+   },
+   "acceptance": {
+    "LBFGS-call800": false,
+    "LBFGS-call1600": false,
+    "LBFGS-call2400": false,
+    "LBFGS-call3200": false,
+    "LBFGS-call4000": false,
+    "final": false
+   },
+   "stratified_pressure": {
+    "LBFGS-call800": 0.0022575941960955408,
+    "LBFGS-call1600": 0.002194642544111014,
+    "LBFGS-call2400": 0.002186882743669897,
+    "LBFGS-call3200": 0.00218095423784515,
+    "LBFGS-call4000": 0.002175970842793437,
+    "final": 0.002171599083759549
+   },
+   "stratified_velocity": {
+    "LBFGS-call800": 0.0013057738194581874,
+    "LBFGS-call1600": 0.001269809980772514,
+    "LBFGS-call2400": 0.0012682124516497232,
+    "LBFGS-call3200": 0.0012669451944313608,
+    "LBFGS-call4000": 0.0012658225277920356,
+    "final": 0.001264782991205208
+   },
+   "first_pass_LBFGS_calls": null,
+   "missing_tags": []
+  },
+  "seed361902-parameter_ad": {
+   "engine": "parameter_ad",
+   "seed": 361902,
+   "observed_tags": [
+    "LBFGS-call800",
+    "LBFGS-call1600",
+    "LBFGS-call2400",
+    "LBFGS-call3200",
+    "LBFGS-call4000",
+    "final"
+   ],
+   "LBFGS_calls": {
+    "LBFGS-call800": 800,
+    "LBFGS-call1600": 1600,
+    "LBFGS-call2400": 2400,
+    "LBFGS-call3200": 3200,
+    "LBFGS-call4000": 4000,
+    "final": 4800
+   },
+   "acceptance": {
+    "LBFGS-call800": false,
+    "LBFGS-call1600": false,
+    "LBFGS-call2400": false,
+    "LBFGS-call3200": false,
+    "LBFGS-call4000": false,
+    "final": false
+   },
+   "stratified_pressure": {
+    "LBFGS-call800": 0.003024812777492704,
+    "LBFGS-call1600": 0.0030016189652836123,
+    "LBFGS-call2400": 0.002990633233926503,
+    "LBFGS-call3200": 0.0029824732906179145,
+    "LBFGS-call4000": 0.0029758247893198397,
+    "final": 0.002970244273732622
+   },
+   "stratified_velocity": {
+    "LBFGS-call800": 0.00120461534834499,
+    "LBFGS-call1600": 0.0011986287870163809,
+    "LBFGS-call2400": 0.0011951292198582428,
+    "LBFGS-call3200": 0.00119228919821577,
+    "LBFGS-call4000": 0.0011897252660144208,
+    "final": 0.0011873292447685088
+   },
+   "first_pass_LBFGS_calls": null,
+   "missing_tags": []
+  }
+ },
+ "follow_up": "no formal claim",
+ "formal_claim": false
+}

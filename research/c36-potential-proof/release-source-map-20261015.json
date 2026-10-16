@@ -1,5 +1,5 @@
 {
- "scope": "Sources of the 2026-10-14/15 C36 development, smoothness-continuation and all-planes observation batches. Each executed packet carried a manifest of file hashes; every public file below is byte-identical to its executed copy except the attempt-1 trainer, which is preserved only in the failed attempt archive.",
+ "scope": "Sources of the 2026-10-14/15 C36 development, smoothness-continuation, combination (cancelled), budget and all-planes observation batches. Each executed packet carried a manifest of file hashes; every public file below is byte-identical to its executed copy except the attempt-1 trainer, which is preserved only in the failed attempt archive.",
  "executed_packets": {
   "c36-v2-development": {
    "label": "C36 v2 development training batch",
@@ -40,6 +40,21 @@
    "label": "all-planes observation batch 4, extra v3 checkpoints (second driver)",
    "manifest_sha256": "61945da882b86301ab529f1b9f9490b9def6e82424345c2ef8a1f65acb98dccd",
    "source_files": 65
+  },
+  "c36-v4-attempt1": {
+   "label": "C36 v4 combination training (resumed design), cancelled after 13.5 minutes",
+   "manifest_sha256": "19750f3f9d2e15041a47b7b7a871486d7e826324c4a2975385e2d43359ade6ad",
+   "source_files": 78
+  },
+  "c36-v5-budget": {
+   "label": "C36 v5 budget study training",
+   "manifest_sha256": "c428751b667834baafbfb9d35e85b09ef1c3a75921e92c3afedc7093b6fa8de0",
+   "source_files": 81
+  },
+  "observe-6": {
+   "label": "all-planes observation batch 6, v5 checkpoints",
+   "manifest_sha256": "4feef36ddf4ff9c2ee54ee7b8ad9eb3a50750864061968988bac11d3ad525340",
+   "source_files": 65
   }
  },
  "files": {
@@ -52,7 +67,10 @@
     "observe-2",
     "observe-3",
     "observe-4-v2",
-    "observe-4-v3"
+    "observe-4-v3",
+    "c36-v4-attempt1",
+    "c36-v5-budget",
+    "observe-6"
    ]
   },
   "research/c36-potential-proof/src/box376/entry_c36_v2.sh": {
@@ -65,14 +83,19 @@
     "observe-2",
     "observe-3",
     "observe-4-v2",
-    "observe-4-v3"
+    "observe-4-v3",
+    "c36-v4-attempt1",
+    "c36-v5-budget",
+    "observe-6"
    ]
   },
   "research/c36-potential-proof/src/box376/entry_c36_v3.sh": {
    "public_source_sha256": "4db4b8240dafefb1d5e21edca1df438c1c9079c2e2a0fa697dbc3b617488a168",
    "executed_byte_identical_in": [
     "c36-v3-attempt1",
-    "c36-v3-attempt2"
+    "c36-v3-attempt2",
+    "c36-v4-attempt1",
+    "c36-v5-budget"
    ]
   },
   "research/c36-potential-proof/src/box376/observer_calibration.py": {
@@ -84,7 +107,10 @@
     "observe-2",
     "observe-3",
     "observe-4-v2",
-    "observe-4-v3"
+    "observe-4-v3",
+    "c36-v4-attempt1",
+    "c36-v5-budget",
+    "observe-6"
    ]
   },
   "research/c36-potential-proof/src/box376/potential_train_v2.py": {
@@ -97,13 +123,18 @@
     "observe-2",
     "observe-3",
     "observe-4-v2",
-    "observe-4-v3"
+    "observe-4-v3",
+    "c36-v4-attempt1",
+    "c36-v5-budget",
+    "observe-6"
    ]
   },
   "research/c36-potential-proof/src/box376/potential_train_v3.py": {
    "public_source_sha256": "27a2065008db0b530186eaa818e81b2f21e4bc1c05616d1e3086c9ca4d155a0b",
    "executed_byte_identical_in": [
-    "c36-v3-attempt2"
+    "c36-v3-attempt2",
+    "c36-v4-attempt1",
+    "c36-v5-budget"
    ],
    "executed_other_versions": {
     "c36-v3-attempt1": {
@@ -122,14 +153,19 @@
     "observe-2",
     "observe-3",
     "observe-4-v2",
-    "observe-4-v3"
+    "observe-4-v3",
+    "c36-v4-attempt1",
+    "c36-v5-budget",
+    "observe-6"
    ]
   },
   "research/c36-potential-proof/src/box376/read_c36_v3.py": {
    "public_source_sha256": "4b5edf90f4f28d5e80e4d12709d9da3efb535a8e2968c37836da01d90dd87afa",
    "executed_byte_identical_in": [
     "c36-v3-attempt1",
-    "c36-v3-attempt2"
+    "c36-v3-attempt2",
+    "c36-v4-attempt1",
+    "c36-v5-budget"
    ]
   },
   "research/c36-potential-proof/src/box376/run_c36_observe.py": {
@@ -141,7 +177,10 @@
     "observe-2",
     "observe-3",
     "observe-4-v2",
-    "observe-4-v3"
+    "observe-4-v3",
+    "c36-v4-attempt1",
+    "c36-v5-budget",
+    "observe-6"
    ]
   },
   "research/c36-potential-proof/src/box376/run_c36_v2.py": {
@@ -154,28 +193,104 @@
     "observe-2",
     "observe-3",
     "observe-4-v2",
-    "observe-4-v3"
+    "observe-4-v3",
+    "c36-v4-attempt1",
+    "c36-v5-budget",
+    "observe-6"
    ]
   },
   "research/c36-potential-proof/src/box376/run_c36_v3.py": {
    "public_source_sha256": "23d3f2b9c3788cda907478c65d8e435d6b8eeeab40f0f5da74580a2a12a7dd17",
    "executed_byte_identical_in": [
     "c36-v3-attempt1",
-    "c36-v3-attempt2"
+    "c36-v3-attempt2",
+    "c36-v4-attempt1",
+    "c36-v5-budget"
    ]
   },
   "research/c36-potential-proof/src/box376/schedule_family.py": {
    "public_source_sha256": "569c0373f3bbe17101aef7fe2ea42a6b05acc1e14a5894a8f5d881f1355cce02",
    "executed_byte_identical_in": [
     "c36-v3-attempt1",
-    "c36-v3-attempt2"
+    "c36-v3-attempt2",
+    "c36-v4-attempt1",
+    "c36-v5-budget"
    ]
   },
   "research/c36-potential-proof/src/box376/test_schedule_family.py": {
    "public_source_sha256": "bfe8bf9e37cc365860833f06ffeca53308d8ad682de706812e76c68728795c51",
    "executed_byte_identical_in": [
     "c36-v3-attempt1",
-    "c36-v3-attempt2"
+    "c36-v3-attempt2",
+    "c36-v4-attempt1",
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/entry_c36_v4.sh": {
+   "public_source_sha256": "e3f2c774c6ea4474d85751085a1a3735faf7255482f5cea739e34217ef4e0057",
+   "executed_byte_identical_in": [
+    "c36-v4-attempt1",
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/potential_train_v4.py": {
+   "public_source_sha256": "a76b56decfe7f6ec2e28fc9faa7e7e9ad9e61ed9b1b9c981da1056fa43564b66",
+   "executed_byte_identical_in": [
+    "c36-v4-attempt1",
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/read_c36_v4.py": {
+   "public_source_sha256": "c66f7569790f1c2c5288656d9b82f9462b99f8ce5c00c3bf3ca4eeb03fa7f3fd",
+   "executed_byte_identical_in": [
+    "c36-v4-attempt1",
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/run_c36_v4.py": {
+   "public_source_sha256": "388945ecc4259bed2c3c8ece4352e8dcc19e30abd21c0baf30ed04604c3ef104",
+   "executed_byte_identical_in": [
+    "c36-v4-attempt1",
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/decide_c36_v4.py": {
+   "public_source_sha256": "526a6040eb746d0bc34fd990f897af65bf16b620a17734a3d3b622b72eb9b841",
+   "executed_byte_identical_in": [
+    "c36-v4-attempt1",
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/test_decide_c36_v4.py": {
+   "public_source_sha256": "38113d2a81160f2e1a65a3a8d46ee4fc65c0aa122b468040187999e0bc479f35",
+   "executed_byte_identical_in": [
+    "c36-v4-attempt1",
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/entry_c36_v5.sh": {
+   "public_source_sha256": "d8874577208d960f442b433abefc6773ef86357a5c17876d5a8c2ff594933869",
+   "executed_byte_identical_in": [
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/decide_c36_v5.py": {
+   "public_source_sha256": "394d892ba38fe6dee1bf43adae69c8e937f6341c780aff86827a47386d8497d0",
+   "executed_byte_identical_in": [
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/test_decide_c36_v5.py": {
+   "public_source_sha256": "4c0d0da56979a1855c790e5b093ec445090f48e9e36cc882191c58877a579fc7",
+   "executed_byte_identical_in": [
+    "c36-v5-budget"
+   ]
+  },
+  "research/c36-potential-proof/src/box376/schedule_field_distance.py": {
+   "public_source_sha256": "88366c724ffc4d19ebb7a0ba3cb3522c9b974571f7f48a30f8b7ce5171383bbe",
+   "executed_byte_identical_in": [
+    "c36-v4-attempt1",
+    "c36-v5-budget"
    ]
   }
  },
@@ -192,6 +307,24 @@
   },
   "research/c36-potential-proof/c36-v3-baseline-curves-20261015.json": {
    "change": "byte-identical to the cluster output (renamed)"
+  },
+  "research/c36-potential-proof/c36-v5-observations-20261015.json": {
+   "generated_sha256": "e2255efa4cb62c6173c87c0ce34f5997241a4111ff5b7c9b2f52c9f3d90e0fcd",
+   "public_sha256": "3323f6c0f39e9be674464ebf9c93798ff36cd6fead9ac59c18cf106f3de99f45",
+   "generator": "research/c36-potential-proof/tools/c36_publish_observations.py",
+   "change": "removed the scheduler job identifier of the batch; no measured value, check or outcome changed"
+  },
+  "research/c36-potential-proof/c36-v5-decision-20261015.json": {
+   "public_sha256": "0591d8180e94b4c5764cc9c18a3206fd2e04859d0157d54abc5ee7c436fca4d9",
+   "change": "byte-identical to the output of box376.decide_c36_v5 on the cluster"
+  },
+  "research/c36-potential-proof/c36-v5-training-curves-20261015.json": {
+   "public_sha256": "f2cb596650aa910ecdec053188259700eba5e8bb24a04f592a2eff474b5e66a0",
+   "change": "byte-identical to box376.read_c36_v4.read_seed output on the cluster (v5 protocol thresholds)"
+  },
+  "research/c36-potential-proof/c36-v5-budget-result-20261015.json": {
+   "public_sha256": "53543c21c232c038bb991c387b661c55da2d1ea9c1542158a31411a7fb4e08e1",
+   "change": "byte-identical to the unchanged v2 in-batch reader output; its branch letter follows the v2 rule, not the v5 decision"
   }
  }
 }

@@ -691,7 +691,7 @@ All four lanes passed every qualification check:
 - the v2 baseline runs still fall by 3.4–3.7% per 10 calls;
 - the continuation runs have stalled at 1.1–1.4e-6, falling 0.02–0.46% per 10 calls with 24–25 evaluations per call.
 
-## Budget study (v5, pre-registered; running)
+## Budget study (v5, pre-registered; outcome E5)
 
 [protocol-v5-budget-development-20261015.json](protocol-v5-budget-development-20261015.json) replaces the cancelled v4 design.
 
@@ -713,5 +713,34 @@ E1 or E2 leads to a formal fresh-seed time-to-accuracy protocol.
 
 **Reproduction diagnostic.** As a diagnostic only, never a gate, the parameters at call 800 are compared with the v2 runs.
 
-**Status.** Results are pending.
+**Training.** All four runs completed the 4,800 calls within the time guard, taking 20,418–26,652 s against a 27,000 s limit. All 60 complete-gradient checks pass, at most 1.1e-5 of the original budget.
+- **The loss stalls soon after call 800.** From call 800 to 4,800 it falls only 3–12% (for example 1.830e-6 → 1.607e-6). After call 1,200 it falls about 0.2–0.3% per 400 calls.
+- **No run reaches 1e-6.** The threshold 3e-6 is reached after 16,077–18,924 evaluations.
+- **Reproduction diagnostic.** The runs are not bit-identical to v2: the first difference is in the last digit of the loss at Adam updates 3–8, a reduction-order effect. Call 800 was therefore observed anew.
+- **Engine timing (development only).** Parameter AD needed 1.28–1.36× the seconds of the analytic engine to each threshold from 1e-3 to 3e-6.
+
+**Physics.** A separate observation batch covered 24 checkpoints (calls 800, 1,600, 2,400, 3,200, 4,000 and 4,800 for each run) on all planes. The independent reader passes all 2,808 checks.
+
+| Engine | Seed | Loss ×1e6 at 800 → 4,800 | Stratified pressure ×1e-3 at 800 → 4,800 | Plateau pressure ×1e-3 at 4,800 | Endpoint ×1e-3 at 4,800 | Failing tests at 4,800 |
+| --- | ---: | --- | --- | ---: | ---: | --- |
+| analytic | 361901 | 1.830 → 1.607 | 2.40 → 2.36 | 4.29 | 0.90 | stratified |
+| analytic | 361902 | 1.383 → 1.338 | 2.57 → 2.52 | 4.52 | 1.00 | stratified |
+| parameter AD | 361901 | 1.749 → 1.628 | 2.26 → 2.17 | 3.96 | 1.02 | stratified, trajectory |
+| parameter AD | 361902 | 1.499 → 1.432 | 3.03 → 2.97 | 5.89 | 0.86 | stratified |
+
+- **The errors stall with the loss.** Stratified pressure changes by only 1.5–3.8% and ends at 2.2–3.0× its limit.
+- **Other tests.** The uniform holdout passes at every checkpoint. The trajectory endpoint stays within 0.86–1.02× its limit and passes at 12 of the 24 checkpoints.
+- **Acceptance.** No checkpoint passes physical acceptance.
+
+**Registered outcome: E5.** [`box376.decide_c36_v5`](src/box376/decide_c36_v5.py) finds that no run passes and that both engines have stopped falling: the final pressure is 0.998× its value at 4,000 calls. No formal claim follows.
+- At 800 calls the errors were still falling, but with this optimizer they stop shortly afterwards, together with the loss. The gradient ∞-norm at the end is 1.2–4.6e-6.
+- So the stratified pressure gap is not a budget limit of this optimizer at this scale.
+- In the terms of the v2 rule this is branch (b): reaching the gate needs an explicitly changed problem definition (sampling, weights or capacity) in a new protocol.
+
+The in-batch reader is the unchanged v2 reader, so [its output](c36-v5-budget-result-20261015.json) carries the v2 state name and v2 branch letter. The registered v5 outcome is the one in [c36-v5-decision-20261015.json](c36-v5-decision-20261015.json).
+
+Files:
+- [c36-v5-observations-20261015.json](c36-v5-observations-20261015.json): all 24 observations with all planes and reader results.
+- [c36-v5-training-curves-20261015.json](c36-v5-training-curves-20261015.json): loss curves with the v5 thresholds.
+- Archives: v5 training (446 members) is verified on cluster scratch and persistent project storage. The observation batch (431 members) is verified on cluster scratch.
 
