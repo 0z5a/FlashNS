@@ -496,7 +496,7 @@ The subsequent [complete compiled H100 experiment](paired-analytic-vs-compiled-a
 
 `box376.fold_zero_gate.ZeroGateFoldedObjective` is an opt-in wrapper around either prepared Taylor-state engine. It evaluates the network only where at least one of the 36 gate channels is nonzero, using exact equality without a threshold. For every omitted network row, it retains the parameter-independent forcing, forcing-gradient or target loss at the original weight. Every family keeps its original full weight sum, normalization and coefficient. The original prepared engine remains usable; the default path is unchanged. Native-coordinate AD cannot select this wrapper.
 
-The [CPU qualification](zero-gate-folding-cpu-result-20261013.json) passes 12 full-objective/numerator/all-parameter-gradient comparisons against the preserved native H100 anchors, covering both original stored initializations. The NumPy-only reader verifies all 24 objective arrays and 15 folding arrays. Of the 4,999 canonical rows, 2,933 have active jets; the other 2,066 are represented by their constant loss. Four regression cases cover nonzero forcing/targets, changed parameters, empty active families, and a zero gate value with a nonzero derivative as small as `1e-30`. The same regressions also pass in the actual experiment runtime before GPU admission. The complete CPU archive is fully verified locally. This is numerical CPU qualification; the folded GPU comparison is pending and no new timing ratio is claimed.
+The [CPU qualification](zero-gate-folding-cpu-result-20261013.json) passes 12 full-objective/numerator/all-parameter-gradient comparisons against the preserved native H100 anchors, covering both original stored initializations. The NumPy-only reader verifies all 24 objective arrays and 15 folding arrays. Of the 4,999 canonical rows, 2,933 have active jets; the other 2,066 are represented by their constant loss. Four regression cases cover nonzero forcing/targets, changed parameters, empty active families, and a zero gate value with a nonzero derivative as small as `1e-30`. The same regressions also pass in the actual experiment runtime before GPU admission. The complete CPU archive is fully verified locally. This is the numerical CPU qualification; the GPU measurement follows below.
 
 To qualify and measure both equally folded compiled-forward arms, add `--fold-zero-gates` to `box376.packed_analytic_gpu_run`. Pass `--inputs` to the NumPy reader so it can verify the original family weight sums and physical normalization:
 
@@ -512,6 +512,34 @@ PYTHONPATH=src python -m box376.audit_packed_analytic_gpu \
 ```
 
 On the legacy legacy compiler runtime, select `--legacy-triton-target` explicitly for the GPU worker as described above. Use a new output directory for every attempt. Both arms use folding and the same packed forward; the complete objective, stored parameter bytes and original numerical/timing protocol are preserved.
+
+### Folded H100 timing (2026-10-16, pre-registered)
+
+[protocol-zero-gate-gpu-20261016.json](protocol-zero-gate-gpu-20261016.json) was committed before the batch ran.
+- **Design.** One exclusive H100 node; only one GPU is used, for timing isolation. The unchanged runner and graph-timing protocol run twice, one after the other, on the same GPU:
+  - first, the folded comparison: analytic candidate against parameter-AD control, both folded and compiled;
+  - then, an unfolded repeat.
+- **Driver.** `box376.run_zero_gate_gpu` runs the batch once, with an embedded start command. The reader is `box376.read_zero_gate_gpu`.
+- **Inputs.** The source is a git archive of the pre-registration commit. The data and the frozen native reference are the unchanged 2026-10-13 inputs. The batch prepared on 2026-10-13 was cancelled while pending and never ran.
+
+| Run | Analytic s | Parameter AD s | Ratio | 95% interval |
+| --- | ---: | ---: | ---: | --- |
+| Unfolded repeat | 0.166597 | 0.220791 | 1.325303 | 1.324919–1.325678 |
+| Folded (both arms) | **0.099377** | 0.139132 | **1.400047** | 1.399911–1.400178 |
+
+- **Checks.**
+  - Both runs pass all 78 full objective/numerator/gradient comparisons; the largest error is 3.0e-6 of the original budget.
+  - The NumPy reader checks 20 windows.
+  - The folding reader confirms the 2,933 active rows and that every original row is accounted for. The folded rows' constant loss is zero for this instance, and normalization is unchanged.
+- **Registered classification.** The folded interval's lower bound exceeds 1.03, so the outcome is **analytic advantage under folding**.
+- **Replication.** The unfolded repeat gives 1.325, against 1.324 on 2026-10-13.
+- **Folding factor (descriptive).** Folding shortens an evaluation by 1.68× for the analytic candidate and 1.59× for parameter AD; the row count bounds it at 1.70.
+  - Parameter AD gains less, which suggests it carries more cost that does not scale with rows.
+  - A folded analytic evaluation takes 99.4 ms, against 220.8 ms for unfolded parameter AD.
+- **Scope.** Objective/gradient throughput only. No training, solver or physical claim is made. The gain depends on this instance's gate geometry.
+- **Records.**
+  - [zero-gate-folding-gpu-result-20261016.json](zero-gate-folding-gpu-result-20261016.json): reader output.
+  - [release-source-map-zero-gate-20261016.json](release-source-map-zero-gate-20261016.json): 12 executed files byte-identical to the public files. The archive is `90ab9782…`, 133 members, verified.
 
 ## Development run with a larger L-BFGS budget (v2)
 

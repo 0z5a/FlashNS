@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "c359b0b2da4f88c56c920d3d268d981b3862d3326e8139a05f68d49f7052d3c1",
- "previous_manuscript_sha256": "277221259b9975b7e2147e9c97a1b0b28ddc034f8dd63c1c21a39189f615c8c7",
+ "manuscript_sha256": "43fbe772f2ef9c17803b1adac136f5d65c5947927da518b5fd640828552efa1b",
+ "previous_manuscript_sha256": "c359b0b2da4f88c56c920d3d268d981b3862d3326e8139a05f68d49f7052d3c1",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -60,7 +60,13 @@
   "../2d-solve-scale/read_solve_scale.py": "ffe3e5930e68834ce3059b8ef9d659de84ae6e3324e1cbc3db73d97f56db4e1e",
   "../2d-solve-scale/posthoc_solve_scale.py": "7e6393aa2839e1fde6de737cdd99fb8af3a933c19fc9ff6305966f7fa8c336e6",
   "../2d-solve-scale/phase_split_2048.py": "d13f33edb4cc738558a19b99343c58d8c349a7946d373bc27cf5b02d5a7750d6",
-  "../2d-solve-scale/src/scale_solve.py": "17d5924cafd0666cf0cacab756763252025b0151bedc0672e204a65c759ff1b6"
+  "../2d-solve-scale/src/scale_solve.py": "17d5924cafd0666cf0cacab756763252025b0151bedc0672e204a65c759ff1b6",
+  "../c36-potential-proof/zero-gate-folding-gpu-result-20261016.json": "f283bcb4721611b96eeaead1584f4c5ce0519a62b5462c7fa468f763250f3b51",
+  "../c36-potential-proof/release-source-map-zero-gate-20261016.json": "b3e860aade60688e42d3567ca2f47e903764adebbef6199da5487a2b1280194c",
+  "../c36-potential-proof/protocol-zero-gate-gpu-20261016.json": "e46472d4413fd4362661930aeb5120e365e1602cca28c1420498c3e81aa77990",
+  "../c36-potential-proof/src/box376/run_zero_gate_gpu.py": "92ec81469bdf00f1805f78c322c66de29acf3439230679534c677b7cbaf2eaf4",
+  "../c36-potential-proof/src/box376/read_zero_gate_gpu.py": "3c6800c8d9ff65bd81e0366c3847625cf17e7ca93f4dc4ea072c44bb6129fff7",
+  "../c36-potential-proof/src/box376/fold_zero_gate.py": "10831bebd6d1f9fdf0f70ccc28e87ff26f150ecd86e5b39c66fe6ec3e6f77613"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -74,11 +80,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "05703513f38e63a0932c6674305185359ce1df42d2589618b6ac438076b25215",
- "previous_pdf_sha256": "34d05e11a6dcde57557903aaddf5a04de2dab98350b70dc00229692517524da1",
- "pages": 36,
+ "pdf_sha256": "e246cbdc71d5103b8dcb9eb58eea886e7df7ec09ddd11bb1bdd0b6b5a26ae64e",
+ "previous_pdf_sha256": "05703513f38e63a0932c6674305185359ce1df42d2589618b6ac438076b25215",
+ "pages": 37,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS: Section 5.6 solve paragraphs and Table 10 (pages 14-15), the discussion and the conclusion (pages 28-29) inspected at 80 dpi; earlier review of Figures 1-4, Tables 8-9, the Ethier-Steinman, C36 and appendix pages unchanged",
+ "pdf_visual_review": "PASS: Section 6.3 with Table 11 and the zero-gate paragraphs (pages 17-18) inspected at 80 dpi; Section 5.6 solve paragraphs and Table 10, the discussion and the conclusion inspected in the previous revision; earlier review of Figures 1-4, Tables 8-9, the Ethier-Steinman, C36 and appendix pages unchanged",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -157,5 +163,14 @@
   "posthoc": "L-BFGS phase costs 5.9-7.1 ms per evaluation beyond gradient replay at 2,048, 16,384 and 65,536 points in every cell; Adam phase 0.05-0.12 ms beyond replay. The 2,048-point Q10 solve setups were warm-cache values (warm Q10 setup still slower than native); at larger sizes queue order decided which seeds paid a cold compile, widening setup-plus-optimization ranges.",
   "archive_sha256": "430ee078f28a37b74ef6ba7cbe326dff0cce0dde61059959cadf469fd806a7cd"
  },
- "revision_note_20261016_solve_scale": "Adds the 'Solves at larger point counts' paragraphs and Table 10 to Section 5.6 (pre-registered H100 solve-scale study: solve-level gains 1.48 and 1.88 for native GL8 over compiled Q10 at 16,384 and 65,536 points), the post-hoc phase split and setup cache-state check, and rewrites the 2,048-point solve explanation, the replay-versus-solve discussion and the conclusion in terms of problem size rather than device; pins the study's protocol, plan, wrapper, reader, results, post-hoc outputs and release map."
+ "revision_note_20261016_solve_scale": "Adds the 'Solves at larger point counts' paragraphs and Table 10 to Section 5.6 (pre-registered H100 solve-scale study: solve-level gains 1.48 and 1.88 for native GL8 over compiled Q10 at 16,384 and 65,536 points), the post-hoc phase split and setup cache-state check, and rewrites the 2,048-point solve explanation, the replay-versus-solve discussion and the conclusion in terms of problem size rather than device; pins the study's protocol, plan, wrapper, reader, results, post-hoc outputs and release map.",
+ "C36_zero_gate_folding_GPU": {
+  "pre_registration_commit": "c9b2c20",
+  "folded_ratio": "1.400047 (95% interval 1.399911-1.400178); registered classification: analytic advantage under folding",
+  "unfolded_repeat_ratio": "1.325303 (1.324919-1.325678), against 1.323962 on 2026-10-13",
+  "folding_factor": "analytic 1.676, parameter AD 1.587 (descriptive; row-count bound 1.704)",
+  "checks": "78 comparisons per run, largest error 3.0e-6 of the budget; NumPy and folding readers PASS",
+  "archive_sha256": "90ab9782a1454fe5a119514c4fde0f797cda35f354003d32c8ac387b352ab5be"
+ },
+ "revision_note_20261016_zero_gate": "Adds two rows to Table 11 and two paragraphs to Section 6.3 (pre-registered H100 zero-gate folding batch: folded analytic/parameter-AD ratio 1.400, unfolded repeat 1.325, folding factors 1.68 and 1.59); updates the abstract, the limitations and the conclusion; pins the protocol, driver, reader, result and release map."
 }

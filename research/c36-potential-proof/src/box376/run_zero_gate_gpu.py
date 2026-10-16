@@ -47,7 +47,8 @@ def main():
     control = root / 'control'
     control.mkdir(exist_ok=False)
     children, locks = [], []
-    cache = Path('/scratch/tmp') / ('tueb043681-' + root.name) if not args.self_test else root / 'selftest-cache'
+    cache = (Path(os.environ['NODE_LOCAL_SCRATCH']) / (os.environ['USER'] + '-' + root.name)
+             if not args.self_test else root / 'selftest-cache')
     cache_created = False
     state = {'state': 'STARTING', 'started': time.time(), 'job': args.job, 'node': args.node,
              'self_test': args.self_test, 'deadline_unix': args.deadline_unix, 'stages': [],
