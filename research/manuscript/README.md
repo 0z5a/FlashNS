@@ -31,7 +31,13 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - With folding, the analytic transpose is **1.400×** faster than parameter AD (interval 1.3999–1.4002); the registered classification is an analytic advantage.
   - An unfolded repeat gives 1.325× (1.324× before).
   - Folding itself shortens an evaluation by 1.68× (analytic) and 1.59× (parameter AD), against 1.70 for cost proportional to rows.
-  - Table 12 (the C36 timing table) gains two rows, and the abstract, the limitation and the conclusion are updated; the limitation no longer says the folding is qualified on CPU only.
+  - Table 13 (the C36 timing table) gains two rows, and the abstract, the limitation and the conclusion are updated; the limitation no longer says the folding is qualified on CPU only.
+- **Section 5.8: the H20 campaign on H100 (October 16).** The pre-registered, unchanged H20 campaign was run on one H100 node.
+  - All 78 solves pass, with a CPU scalar-AD recheck.
+  - GL8 still beats every baseline, but the ratios compress: Q10 1.66 → 1.22, collapsed Taylor 1.73 → 1.37, ED/torch AD/STDE 2.31–3.37 → 1.29–1.90.
+  - The supplementary phase split shows why: a fixed L-BFGS cost of 6.3–9.0 ms per evaluation.
+  - The chunk memory trade-off reproduces: an 85% lower setup peak at 16,384 points.
+  - Table 12 is new, and the abstract and conclusion now state the H100 ratios beside the H20 ones.
 - **Section 5.7: reduced precision on H100 (October 16).** A pre-registered study runs compiled Q10 and native GL8 in FP64, FP32 and FP32 with TF32 matrix products. The 2D source needed a 28-line patch that relaxes only its dtype checks.
   - FP32 suffices at these 1–2% gates: gradient error is 1.4–2.7e-7, and all 24 FP32 solves pass the unchanged FP64 acceptance. Every solve stops at the gates, so tighter accuracy was not tested.
   - TF32 does not: gradient error is 1.5–2.2e-4, and 0 of 24 solves pass, because L-BFGS stalls at about one iteration per block.
@@ -42,7 +48,7 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - All 18 solves pass.
   - C17's paired ratios are 1.90× against nested autograd and 1.08× (0.98–1.19) against collapsed `jet`. No arm was compiled, and no gain rule was registered.
   - Post hoc, the Adam-phase gap to `jet` is 1.37×; the fixed ~6 ms L-BFGS cost per evaluation compresses it.
-  - Table 22 is new; the abstract, the 3D discussion, the limitations and the conclusion are updated. The C36 external-baseline item stays open.
+  - Table 23 is new; the abstract, the 3D discussion, the limitations and the conclusion are updated. The C36 external-baseline item stays open.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
   - Protocol v5 runs the development recipe with 4,800 L-BFGS calls. The loss and the physical errors stall soon after call 800, and stratified pressure ends at 2.2–3.0× its limit.

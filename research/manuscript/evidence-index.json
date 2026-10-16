@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "f37175efa0fbda16ce96fdf831452a7c029ed47ffd8bedabb9f6c170aa972435",
- "previous_manuscript_sha256": "8b9abdf6aa18a993341caff605facd1d4a1d0e87429ec641054880881d07ba85",
+ "manuscript_sha256": "3aa34ae9470e7d0cc0195565f6a17d8caa0fb3ba92d98816e8915f522e389338",
+ "previous_manuscript_sha256": "f37175efa0fbda16ce96fdf831452a7c029ed47ffd8bedabb9f6c170aa972435",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -80,7 +80,14 @@
   "../ethier-3d/release-source-map-ext-20261016.json": "c678dd8902045d818a4fdaf1882ba6426b05c33486e0c93fe8ade572d6ac63ba",
   "../ethier-3d/src/protocol-ext-20261016.json": "e64cd90d720fb94b76de56dd4c13c6d3d01158b7ae9d8d081adeba98e07292f0",
   "../ethier-3d/src/external.py": "7f52f1da3b32fc3cf256634222dc04f0d4709629adbf125a91a28612d87d98e1",
-  "../ethier-3d/posthoc_ext_phase_split.py": "08ba5078350fc35cf3987d4db3defe754e8693353237ab023a8cdd6b1ea3f77c"
+  "../ethier-3d/posthoc_ext_phase_split.py": "08ba5078350fc35cf3987d4db3defe754e8693353237ab023a8cdd6b1ea3f77c",
+  "../2d-h100-retest/audit-h20-h100-20261016.json": "483cdca3ffae9daec9ce07a0c1ee83c4e6df1ec905cee33bd7a2fb104742dda3",
+  "../2d-h100-retest/h20-h100-supplement-20261016.json": "b101ecf7775ca384a196cf23b6275ecd8e86419d15cec4b7a1a35bee8bde2349",
+  "../2d-h100-retest/release-source-map-20261016.json": "99cb88eac5b971c413f9cf0163f30decc5888a147d6ea9c7eb7b92120532c198",
+  "../2d-h100-retest/protocol-2d-h100-retest-20261016.json": "244123f913fc1248a3f8f5f087b997511c758f419554579906f2d233d7194bb3",
+  "../2d-h100-retest/finite-plan.json": "3aeedcee119760b8b1953b8a7530db29219a012de3ae5c47cba5ca201e4d37b9",
+  "../2d-h100-retest/audit_h20.py": "316635bf72a0409c8de5e1d49966ad0ec400b458e4f6c9ad2103c17da04fc257",
+  "../2d-h100-retest/read_h20_h100_supplement.py": "3d996fed0a73e9682af532b6e39216af14634b71e17492a63656ad5e6829cf08"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -94,11 +101,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "debd6d6e629881c85cce58e32f24019271d80872824d462dcad711e36bf6c752",
- "previous_pdf_sha256": "9c249f450eceb430553b14675dc37f3aef8c0e14edac6bfd7a919f3b997d8418",
- "pages": 39,
+ "pdf_sha256": "3a29e5f002371f874b0074c808f3f65a0ed1826448b77ade4e133a90d3cf3de8",
+ "previous_pdf_sha256": "debd6d6e629881c85cce58e32f24019271d80872824d462dcad711e36bf6c752",
+ "pages": 40,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS: Section 5.7 with Table 11 (page 16) and Section 7.4 with Table 22 (pages 29-30) inspected at 80 dpi; no overfull boxes; earlier pages reviewed in previous revisions",
+ "pdf_visual_review": "PASS: abstract (page 1), Section 5.8 with Table 12 (pages 16-17), Sections 5.7 and 7.4 in the previous revision; no overfull boxes",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -215,5 +222,34 @@
   "archive_sha256": "575a586c38f7fb594b8175375a1a49570ea4fdced4c9ddb95ae48acc5f090c62",
   "note": "all arms uncompiled under CUDA Graph; no gain rule registered; 1.085 is a measured ratio (one seed favours the collapsed jet)"
  },
- "revision_note_20261016_precision_and_3d_external": "Adds Section 5.7 and Table 11 (pre-registered FP64/FP32/TF32 study: FP32 sufficient and 1.36-1.53x faster at 65,536 points, TF32 fails) and Section 7.4 and Table 22 (pre-registered external 3D derivative baselines on Ethier-Steinman: C17 1.90x over nested autograd, 1.08x over collapsed jet); updates the abstract, the 3D discussion, the scope and limitations paragraphs and the conclusion; pins protocols, wrappers, patch, results, post-hoc outputs and release maps."
+ "revision_note_20261016_precision_and_3d_external": "Adds Section 5.7 and Table 11 (pre-registered FP64/FP32/TF32 study: FP32 sufficient and 1.36-1.53x faster at 65,536 points, TF32 fails) and Section 7.4 and Table 22 (pre-registered external 3D derivative baselines on Ethier-Steinman: C17 1.90x over nested autograd, 1.08x over collapsed jet); updates the abstract, the 3D discussion, the scope and limitations paragraphs and the conclusion; pins protocols, wrappers, patch, results, post-hoc outputs and release maps.",
+ "h100_retest_h20_protocol": {
+  "pre_registration_commit": "83682ed",
+  "accepted": "78/78 solves, CPU scalar-AD rechecked",
+  "baseline_over_gl8_setup_plus_optimization_H100": {
+   "q10_compact": 1.219,
+   "collapsed_taylor": 1.373,
+   "cao_ed": 1.285,
+   "torch_ad": 1.9,
+   "stde_exact": 1.693,
+   "physicsnemo": 1.928,
+   "cueq_polynomial": 1.49,
+   "cudnn": 30.132,
+   "gl8_chunk512": 1.097
+  },
+  "same_on_H20": {
+   "q10_compact": 1.658,
+   "collapsed_taylor": 1.73,
+   "cao_ed": 2.312,
+   "torch_ad": 2.994,
+   "stde_exact": 3.368,
+   "physicsnemo": 3.108,
+   "cueq_polynomial": 1.555,
+   "cudnn": 22.865,
+   "gl8_chunk512": 1.423
+  },
+  "mechanism": "supplementary: L-BFGS phase 6.3-9.0 ms per evaluation in every backend except cuDNN; Adam phase 0.24-2.3 ms",
+  "archive_sha256": "c3672aa24cdb25d0c89b09d0c1ed78a587095323a979308c1905d8ba83dbcfe6"
+ },
+ "revision_note_20261016_h100_retest": "Adds Section 5.8 and Table 12 (pre-registered H20 campaign on H100: 78/78 accepted; ratios compress, e.g. Q10 1.66 to 1.22, collapsed Taylor 1.73 to 1.37) and states the H100 ratios beside the H20 ones in the abstract and conclusion; tables after 11 renumber by one; pins the audit, supplementary reader output, plan, drivers and release map."
 }
