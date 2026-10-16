@@ -1,0 +1,123 @@
+{
+ "version": "FlashNS-2D-precision-20261016-v1",
+ "scope": "Does the 2D Kovasznay objective need FP64 on H100? FP64, FP32 and FP32 with TF32 matrix products for compiled Q10 (cell A) and native GL8 (cell C): replay accuracy and speed, and complete solves with unchanged FP64 acceptance",
+ "motivation": "The external review asked for FP32/TF32 measurements, since most PINN users train in FP32 and the speedups may differ",
+ "source": {
+  "commit": "286d7e394c8bd39f9aa409715afe9f1bac915cec",
+  "patch": "src/fp32-dtype.patch",
+  "patch_scope": "dtype checks only: eight modules accept FP32 or FP64 consistently instead of FP64 only; the native extension is built for the data dtype (its existing FP32 code path). FP64 outputs are unchanged",
+  "wrapper": "src/precision_run.py (copied into experiments/contracted_jets)"
+ },
+ "cells": {
+  "A": {
+   "backend": "q10_compact",
+   "execution": "Inductor"
+  },
+  "C": {
+   "backend": "gl8_native",
+   "execution": "native CUDA pointwise islands"
+  }
+ },
+ "precisions": {
+  "fp64": {
+   "dtype": "float64",
+   "tf32": false
+  },
+  "fp32": {
+   "dtype": "float32",
+   "tf32": false
+  },
+  "tf32": {
+   "dtype": "float32",
+   "tf32": true,
+   "flags": "torch.backends.cuda.matmul.allow_tf32, torch.backends.cudnn.allow_tf32 and float32 matmul precision 'high'; other arms set them off and 'highest'"
+  }
+ },
+ "data_and_parameters": "FP64 problem data and formal initializations are built unchanged, verified against the frozen hashes, then cast to the arm's dtype",
+ "replay": {
+  "interior_counts": [
+   2048,
+   16384,
+   65536
+  ],
+  "replicates": 5,
+  "seed": 75101,
+  "timing": "bench_gpu replay measurement unchanged: 2 s warmup, 7 x 100 CUDA Graph replays timed with CUDA events, compile counters unchanged",
+  "correctness": "FP64 arms: bench_gpu's own dense-Q10 oracle check (atol 2e-12, rtol 2e-11). FP32 and TF32 arms: loss and gradient compared with the FP64 dense-Q10 oracle on the same parameters cast to FP64; reported, and the process fails only if a value is non-finite or the relative L2 gradient error is at least 0.1 (a sanity gate against broken kernels, not an accuracy claim)"
+ },
+ "solves": {
+  "interior_counts": [
+   2048,
+   65536
+  ],
+  "seeds": [
+   862101,
+   862102,
+   862103,
+   862104,
+   862105,
+   862106
+  ],
+  "optimizer": "solve.py program unchanged (4,000 Adam updates; strong-Wolfe L-BFGS blocks of 20 iterations / 25 evaluations, history 50, tolerances unchanged; 500-block extension of bench_gpu.complete_solve)",
+  "precision_scope": "the loss/gradient engine, parameters and optimizer state are in the arm's dtype",
+  "acceptance": "every stop check and the final acceptance evaluate the parameters cast to FP64 on the FP64 problem (solve.evaluate and solve.independent_metrics), with the unchanged thresholds; a solve is accepted only by this FP64 check"
+ },
+ "registered_statistics": {
+  "replay_accuracy": "per cell, precision and size: largest relative L2 gradient error and relative loss error against the FP64 oracle over processes",
+  "replay_speed": "per cell and size: FP64/FP32 and FP64/TF32 ratios of cell medians (median over processes of per-process medians) with percentile-bootstrap 95% intervals (10,000 resamples, seed 20261016); C/A within each precision",
+  "solves": "per cell, precision and size: accepted count and evaluations; paired over seeds and jointly accepted: FP64/FP32 and FP64/TF32 geometric means of optimization-only, per-evaluation and setup-plus-optimization time; C/A within each precision"
+ },
+ "decision_rules": {
+  "training_sufficiency": "for a cell, reduced precision and size: sufficient if 6/6 solves pass FP64 acceptance, insufficient if at most 4/6, otherwise unresolved",
+  "solve_speed": "reduced precision is faster at a size if the optimization-only geometric mean of FP64/reduced exceeds 1.03 and at least 5 jointly accepted pairs exist and at least 5 of them favour the reduced arm; slower under the mirrored rule; otherwise no gain. The same rule decides C/A within each precision",
+  "replay_speed": "a ratio counts as an effect when its bootstrap interval excludes [0.97, 1.03]"
+ },
+ "expectations": {
+  "note": "expectations, not gates",
+  "accuracy": "FP32 gradients near 1e-7 relative error (CPU check of the patch: 2.6e-7 to 3.2e-7); TF32 matrix products much larger, near the TF32 unit roundoff of about 5e-4 or above",
+  "replay_speed": "reduced precision helps most where pointwise work and memory traffic dominate (larger point counts); TF32 adds a GEMM speedup",
+  "solves": "at 2,048 points the fixed L-BFGS cost of about 6 ms per evaluation leaves little room for any precision gain; at 65,536 points the gradient dominates and reduced precision can shorten optimization. Acceptance gates are 1-2% relative errors, so FP32 training is expected to pass; TF32 is uncertain"
+ },
+ "frozen_inputs": {
+  "theta_sha256": {
+   "862101": "63cbb93b3769e5e5fe759d26d55db5a1e93e49acdf43e3441f22a28bc202b002",
+   "862102": "93e2c279cc80f0b12cdc896ef67deda0413979c1ccde88f590ed7944d148afd1",
+   "862103": "5ab8582d2b9d6fef199a52cda0dbb1f7b1b4b388553de5deb760cd22c9166456",
+   "862104": "6d1b8843f7104d22702bbdbf6e7f88dd87c307bea4475be5bd1de776cd172464",
+   "862105": "2baec98e9fa01390385ce3f201fe8b06057a2968269144aad92d95b10a1e1e99",
+   "862106": "e82f1373c1eb792bdfa6dc495cb5cb7b23c8b108dab84a8f5b87ce17833e4f0c"
+  },
+  "data_sha256": {
+   "2048": {
+    "training_points_sha256": "5b97f1f2212505b3ee6e6e05fe9ce157d5e971d51468c0aab2d9c588e14e24da",
+    "pde_weights_sha256": "d824609996144956ff7599343a6d9f93cb8ffec6aa3ca23951fd56703d72ed62",
+    "boundary_weights_sha256": "ecabbebfe40613f3ccd73050d48b0e1302f455ca41eacb9fd2a72164ebe51d5b",
+    "validation_points_sha256": "adccec9abab9b4a93f6023caf9725adc8651d260987b0e0074ece77bd248874b",
+    "validation_boundary_sha256": "253bd32f74fc69e41a2f1ef9478bf05b79c1877f642e7b16fa2db8edc884bcd4"
+   },
+   "16384": {
+    "training_points_sha256": "bccca794b6b41cf02833d978a1ec26e3f2dd346d80075555622c8e300a7e8f63",
+    "pde_weights_sha256": "ad6b774f783d96a183395f729d4a92085d862473aa2a7056097809ab1cb9b976",
+    "boundary_weights_sha256": "54bc4d69e19f02fc87139e4fb40b8fc330a9c88b26fae481e4e0af55cc794036",
+    "validation_points_sha256": "adccec9abab9b4a93f6023caf9725adc8651d260987b0e0074ece77bd248874b",
+    "validation_boundary_sha256": "253bd32f74fc69e41a2f1ef9478bf05b79c1877f642e7b16fa2db8edc884bcd4"
+   },
+   "65536": {
+    "training_points_sha256": "9801ecea56d8d49df9ac0d48b53175de3b3cf0b5720a77f76564a7b29d1029db",
+    "pde_weights_sha256": "c88f2d504b90a70e86d8f9a2adcdc0937a5849a6b66f2354e6f23d8f855b2a1a",
+    "boundary_weights_sha256": "7425ee1c0e530ce919e1edeb89f24894b3a1bedae598232725d93f25a34f8474",
+    "validation_points_sha256": "adccec9abab9b4a93f6023caf9725adc8651d260987b0e0074ece77bd248874b",
+    "validation_boundary_sha256": "253bd32f74fc69e41a2f1ef9478bf05b79c1877f642e7b16fa2db8edc884bcd4"
+   }
+  }
+ },
+ "randomization_seed": 20261018,
+ "tiers": {
+  "0": "solves and replays at 2,048 points",
+  "1": "solves and replays at 65,536 points",
+  "2": "replays at 16,384 points"
+ },
+ "default_task_estimate_seconds": 300,
+ "task_timeout_seconds": 2400,
+ "execution": "one exclusive ACC node, four H100 lanes pulling fresh-process tasks from one pre-randomized queue; a prebuild step compiles the FP64 and FP32 native extensions once before the queue starts; deadline and fail-fast guards; no retries"
+}
