@@ -1,0 +1,55 @@
+{
+  "state": "PASS",
+  "Torch": "2.4.0a0+gite3b9b71",
+  "meta": {
+    "workload_source_id": "pinn_kovasznay_solver",
+    "relationship_to_openai_ns_formal": "independent manufactured steady NS boundary-value problem",
+    "domain": [
+      [
+        -0.5,
+        1.0
+      ],
+      [
+        -0.5,
+        1.5
+      ]
+    ],
+    "viscosity": 0.07,
+    "lambda": -2.3702299358793253,
+    "network": [
+      2,
+      64,
+      64,
+      3
+    ],
+    "hidden_activation": "stable tanh",
+    "output_activation": "linear",
+    "coordinates": "physical x,y, no nonlinear coordinate transform",
+    "dtype": "float64",
+    "interior_count": 2048,
+    "boundary_count": 512,
+    "pressure_outflow_count": 128,
+    "validation_count": 8192,
+    "validation_boundary_count": 1028,
+    "data_seed": 642701,
+    "training_points_sha256": "5b97f1f2212505b3ee6e6e05fe9ce157d5e971d51468c0aab2d9c588e14e24da",
+    "pde_weights_sha256": "d824609996144956ff7599343a6d9f93cb8ffec6aa3ca23951fd56703d72ed62",
+    "boundary_weights_sha256": "ecabbebfe40613f3ccd73050d48b0e1302f455ca41eacb9fd2a72164ebe51d5b",
+    "validation_points_sha256": "adccec9abab9b4a93f6023caf9725adc8651d260987b0e0074ece77bd248874b",
+    "validation_boundary_sha256": "253bd32f74fc69e41a2f1ef9478bf05b79c1877f642e7b16fa2db8edc884bcd4",
+    "loss": "0.5 mean_interior(ru^2+rv^2+div^2+0.2*(|grad ru|^2+|grad rv|^2+|grad div|^2)) + 0.5*10*(mean_boundary(|uv-uv_exact|^2)+mean_outflow((p-p_exact)^2))",
+    "boundary_condition": "Dirichlet u,v on every edge; exact p at x=1 fixes pressure gauge"
+  },
+  "theta_hashes": {
+    "361902": "53c9d03e10721494bda8ba6cee3d5da72852043fadb6ad05712df177784e0b5a",
+    "862101": "63cbb93b3769e5e5fe759d26d55db5a1e93e49acdf43e3441f22a28bc202b002",
+    "862102": "93e2c279cc80f0b12cdc896ef67deda0413979c1ccde88f590ed7944d148afd1",
+    "862103": "5ab8582d2b9d6fef199a52cda0dbb1f7b1b4b388553de5deb760cd22c9166456",
+    "862104": "6d1b8843f7104d22702bbdbf6e7f88dd87c307bea4475be5bd1de776cd172464",
+    "862105": "2baec98e9fa01390385ce3f201fe8b06057a2968269144aad92d95b10a1e1e99",
+    "862106": "e82f1373c1eb792bdfa6dc495cb5cb7b23c8b108dab84a8f5b87ce17833e4f0c"
+  },
+  "five_original_data_hashes_verified": true,
+  "six_original_initializations_verified": true,
+  "raw_sha256": "053794321c7519061cb8b355a0b13da1cbdda772d5005bc45947e57382ca1e38"
+}
