@@ -533,10 +533,11 @@ On the legacy legacy compiler runtime, select `--legacy-triton-target` explicitl
   - The folding reader confirms the 2,933 active rows and that every original row is accounted for. The folded rows' constant loss is zero for this instance, and normalization is unchanged.
 - **Registered classification.** The folded interval's lower bound exceeds 1.03, so the outcome is **analytic advantage under folding**.
 - **Replication.** The unfolded repeat gives 1.325, against 1.324 on 2026-10-13.
-- **Folding factor (descriptive).** Folding shortens an evaluation by 1.68× for the analytic candidate and 1.59× for parameter AD; the row count bounds it at 1.70.
+- **Folding factor (descriptive).** Folding shortens an evaluation by 1.68× for the analytic candidate and 1.59× for parameter AD; cost proportional to rows would give 1.70 (1.74 counting 128-row chunks).
   - Parameter AD gains less, which suggests it carries more cost that does not scale with rows.
   - A folded analytic evaluation takes 99.4 ms, against 220.8 ms for unfolded parameter AD.
 - **Scope.** Objective/gradient throughput only. No training, solver or physical claim is made. The gain depends on this instance's gate geometry.
+- **Rerunning.** The public driver reads the node-local cache root from `NODE_LOCAL_SCRATCH` and the cache prefix from `USER`; set both before starting it.
 - **Records.**
   - [zero-gate-folding-gpu-result-20261016.json](zero-gate-folding-gpu-result-20261016.json): reader output.
   - [release-source-map-zero-gate-20261016.json](release-source-map-zero-gate-20261016.json): 12 executed files byte-identical to the public files. The archive is `90ab9782…`, 133 members, verified.

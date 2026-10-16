@@ -1029,8 +1029,8 @@ analytic advantage under folding, since the interval's lower bound exceeds
 1.03.
 
 Folding shortens an evaluation 1.68 times for the analytic candidate and
-1.59 times for parameter AD; the row count bounds this at 1.70. These
-factors compare sequential processes on the same GPU and are descriptive.
+1.59 times for parameter AD; cost proportional to rows would give 1.70
+(1.74 counting 128-row chunks). These factors compare sequential processes on the same GPU and are descriptive.
 That parameter AD gains less suggests it carries more cost that does not
 scale with rows. A folded analytic evaluation takes 99.4 milliseconds,
 against 220.8 for unfolded parameter AD. Folding depends on this
