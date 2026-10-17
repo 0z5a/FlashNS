@@ -150,3 +150,12 @@ The batch ran once on one four-GPU H100 node in about 20 minutes. The audit pass
   - [audit-ext2-20261017.json](audit-ext2-20261017.json) and [read-ext2-20261017.json](read-ext2-20261017.json).
   - [release-source-map-ext2-20261017.json](release-source-map-ext2-20261017.json): all 11 published files are byte-identical to their executed copies.
 - **Rule fixed now for any repair attempt of the compiled C17 variant.** The paper's abstract follows the latest registered decision, and §7.4 reports every batch, including this one.
+
+## Compiled batch, attempt 2 (pre-registered 2026-10-17)
+
+[src/protocol-ext3-20261017.json](src/protocol-ext3-20261017.json) was committed before the batch ran. It is identical to attempt 1 in arms, data, seeds, warm-up, selection rule, statistics and decision rule. Only the compiled C17 builder changes, to the route that survived capture in a [one-GPU diagnostic](diagnostics/README.md):
+- **Builder.** [src/external2.py](src/external2.py) compiles a function that takes the six parameter tensors as explicit arguments. The external methods still use `external.build_compiled` unchanged.
+- **Gate.** Formal cases of an arm whose warm-up failed on every lane are not started.
+- **Attempt 1 stays reported.** The abstract follows the latest registered decision, and §7.4 reports both attempts.
+- **Code.** [src/solve_ext3.py](src/solve_ext3.py), [src/run_ext3.py](src/run_ext3.py), [src/audit_ext3.py](src/audit_ext3.py) and [src/read_ext3.py](src/read_ext3.py) differ from their attempt-1 versions only in file names, the builder and the gate.
+- **Self-test** (login node, CPU smoke). 24 warm-up and 36 formal cases exit 0, the gate is empty, the audit and the reader pass, and the archive (314 members) is verified.
