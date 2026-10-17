@@ -159,3 +159,31 @@ The batch ran once on one four-GPU H100 node in about 20 minutes. The audit pass
 - **Attempt 1 stays reported.** The abstract follows the latest registered decision, and §7.4 reports both attempts.
 - **Code.** [src/solve_ext3.py](src/solve_ext3.py), [src/run_ext3.py](src/run_ext3.py), [src/audit_ext3.py](src/audit_ext3.py) and [src/read_ext3.py](src/read_ext3.py) differ from their attempt-1 versions only in file names, the builder and the gate.
 - **Self-test** (login node, CPU smoke). 24 warm-up and 36 formal cases exit 0, the gate is empty, the audit and the reader pass, and the archive (314 members) is verified.
+
+### Result of attempt 2 (2026-10-17)
+
+The batch ran once on one four-GPU H100 node in about 20 minutes. The gate was empty.
+- **Acceptance.** All 36 solves are accepted.
+- **Audit.** It passed 3,024 comparisons, with a maximum discrepancy of 1.8e-14. The registered reader exited 0.
+- **Archive.** `5b4833b8…` (316 members, compiler caches excluded) was verified.
+- **Selection.** The repaired compiled C17 qualified on every lane, and every method selected its compiled variant.
+
+| Method | Warm-up replay, graph / compiled | Setup s (compiled) | Adam ms per evaluation (compiled, post hoc) |
+| --- | --- | --- | --- |
+| C17 | 2.55 / **1.20** ms | 3.5–4.0 | 1.15–1.34 |
+| Collapsed jet | 3.48 / **0.86** ms | 10.7–10.9 | 0.99–1.00 |
+| Nested AD | 8.54 / **2.41** ms | 25.6–26.5 | 2.32–2.56 |
+
+| Compiled external / compiled C17 | Setup + optimization (primary) | Optimization only (secondary) |
+| --- | --- | --- |
+| Collapsed jet | **1.13** (0.99–1.20), 5/6: **C17 faster** | **0.96** (0.85–1.01), 5/6 favour the jet: **external faster** |
+| Nested AD | **1.68** (1.44–1.90), 6/6: **C17 faster** | **1.17** (0.96–1.31), 5/6: **C17 faster** |
+
+- **The two jet decisions differ because of setup.** Compiled C17 takes 3.5–4.0 s, because its explicit-argument builder reuses the compile cache across seeds. The jet builder captures the parameters as constants and recompiles part of its graph in every solve, taking 10.7–10.9 s.
+- **Per evaluation, the compiled jet is about 5% faster** (0.95), and its Adam-phase evaluation is about 1.3× faster.
+- **Compile factor.** Compiling makes C17's replay 2.1× faster and its evaluation 1.21× faster than graph-only C17.
+- **Reading.** With all methods compiled, the contracted state gives no per-evaluation advantage over collapsed Taylor mode on this small benchmark. C17's whole-solve lead over it rests on cheaper setup. C17 has no native execution layer; a native C17 is untested.
+- **Paper.** Under the rule fixed before this attempt, the abstract and conclusion now follow this decision. §7.4 reports both attempts and the uncompiled batch.
+- **Records.**
+  - [audit-ext3-20261017.json](audit-ext3-20261017.json), [read-ext3-20261017.json](read-ext3-20261017.json) and [ext3-phase-split-20261017.json](ext3-phase-split-20261017.json).
+  - [release-source-map-ext3-20261017.json](release-source-map-ext3-20261017.json): all 12 published files are byte-identical to their executed copies.
