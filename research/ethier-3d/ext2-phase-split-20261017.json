@@ -1,0 +1,471 @@
+{
+ "scope": "post hoc; not part of the registered analysis",
+ "per_arm_ms_per_evaluation": {
+  "c17_compiled": {
+   "adam_ms_per_evaluation": null,
+   "lbfgs_ms_per_evaluation": null
+  },
+  "c17_graph": {
+   "adam_ms_per_evaluation": [
+    2.270083618001081,
+    2.667820547998417
+   ],
+   "lbfgs_ms_per_evaluation": [
+    8.32644058100466,
+    8.801178869805025
+   ]
+  },
+  "jet_collapsed_compiled": {
+   "adam_ms_per_evaluation": [
+    0.8872751679737121,
+    1.0000253595062532
+   ],
+   "lbfgs_ms_per_evaluation": [
+    6.890455430739389,
+    7.1989412591355455
+   ]
+  },
+  "jet_collapsed_graph": {
+   "adam_ms_per_evaluation": [
+    3.574202706455253,
+    3.6171550165163353
+   ],
+   "lbfgs_ms_per_evaluation": [
+    9.229648805068653,
+    9.407053732004838
+   ]
+  },
+  "torch_ad_compiled": {
+   "adam_ms_per_evaluation": [
+    2.5012572950217873,
+    2.556785430992022
+   ],
+   "lbfgs_ms_per_evaluation": [
+    8.481380455659046,
+    8.953898264895722
+   ]
+  },
+  "torch_ad_graph": {
+   "adam_ms_per_evaluation": [
+    8.799511405988596,
+    9.9959400735097
+   ],
+   "lbfgs_ms_per_evaluation": [
+    14.371957763303175,
+    14.795179832504465
+   ]
+  }
+ },
+ "paired_over_c17": {
+  "jet_collapsed_compiled": {
+   "adam_ms_per_evaluation": {
+    "geometric_mean": 0.38747081149790663,
+    "range": [
+     0.33258427694449205,
+     0.4405235787687962
+    ],
+    "pairs": 6
+   },
+   "lbfgs_ms_per_evaluation": {
+    "geometric_mean": 0.8310864864700854,
+    "range": [
+     0.8098140948948085,
+     0.8479345812185867
+    ],
+    "pairs": 6
+   }
+  },
+  "jet_collapsed_graph": {
+   "adam_ms_per_evaluation": {
+    "geometric_mean": 1.4314905159114013,
+    "range": [
+     1.3457561318027715,
+     1.593401664957794
+    ],
+    "pairs": 6
+   },
+   "lbfgs_ms_per_evaluation": {
+    "geometric_mean": 1.0879531070154786,
+    "range": [
+     1.0539983423864758,
+     1.1228618017231458
+    ],
+    "pairs": 6
+   }
+  },
+  "torch_ad_compiled": {
+   "adam_ms_per_evaluation": {
+    "geometric_mean": 1.0101359723456245,
+    "range": [
+     0.9375657957572907,
+     1.126295705901528
+    ],
+    "pairs": 6
+   },
+   "lbfgs_ms_per_evaluation": {
+    "geometric_mean": 1.013549092342129,
+    "range": [
+     0.9917348421701492,
+     1.0253940027905777
+    ],
+    "pairs": 6
+   }
+  },
+  "torch_ad_graph": {
+   "adam_ms_per_evaluation": {
+    "geometric_mean": 3.7658038687489124,
+    "range": [
+     3.310645860717589,
+     4.403335627923526
+    ],
+    "pairs": 6
+   },
+   "lbfgs_ms_per_evaluation": {
+    "geometric_mean": 1.6941520318459877,
+    "range": [
+     1.6364060905670592,
+     1.731085683341222
+    ],
+    "pairs": 6
+   }
+  }
+ },
+ "solves": {
+  "torch_ad_compiled-642205": {
+   "arm": "torch_ad_compiled",
+   "seed": 642205,
+   "accepted": true,
+   "checks": 43,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.556785430992022,
+   "lbfgs_evaluations": 3688,
+   "lbfgs_ms_per_evaluation": 8.6125986074002
+  },
+  "torch_ad_graph-642204": {
+   "arm": "torch_ad_graph",
+   "seed": 642204,
+   "accepted": true,
+   "checks": 49,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 9.89732606348116,
+   "lbfgs_evaluations": 4358,
+   "lbfgs_ms_per_evaluation": 14.795179832504465
+  },
+  "c17_compiled-642203": {
+   "arm": "c17_compiled",
+   "seed": 642203,
+   "accepted": false,
+   "checks": 0
+  },
+  "c17_graph-642202": {
+   "arm": "c17_graph",
+   "seed": 642202,
+   "accepted": true,
+   "checks": 55,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.667820547998417,
+   "lbfgs_evaluations": 5100,
+   "lbfgs_ms_per_evaluation": 8.801178869805025
+  },
+  "torch_ad_graph-642203": {
+   "arm": "torch_ad_graph",
+   "seed": 642203,
+   "accepted": true,
+   "checks": 58,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 8.799511405988596,
+   "lbfgs_evaluations": 5436,
+   "lbfgs_ms_per_evaluation": 14.413782082968533
+  },
+  "c17_compiled-642202": {
+   "arm": "c17_compiled",
+   "seed": 642202,
+   "accepted": false,
+   "checks": 0
+  },
+  "jet_collapsed_graph-642205": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642205,
+   "accepted": true,
+   "checks": 42,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.6171550165163353,
+   "lbfgs_evaluations": 3612,
+   "lbfgs_ms_per_evaluation": 9.407053732004838
+  },
+  "torch_ad_compiled-642204": {
+   "arm": "torch_ad_compiled",
+   "seed": 642204,
+   "accepted": true,
+   "checks": 48,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.5349182640202343,
+   "lbfgs_evaluations": 4253,
+   "lbfgs_ms_per_evaluation": 8.481380455659046
+  },
+  "torch_ad_graph-642202": {
+   "arm": "torch_ad_graph",
+   "seed": 642202,
+   "accepted": true,
+   "checks": 55,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 9.233123785001226,
+   "lbfgs_evaluations": 5060,
+   "lbfgs_ms_per_evaluation": 14.402302706719048
+  },
+  "jet_collapsed_compiled-642205": {
+   "arm": "jet_collapsed_compiled",
+   "seed": 642205,
+   "accepted": true,
+   "checks": 43,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 1.0000253595062532,
+   "lbfgs_evaluations": 3689,
+   "lbfgs_ms_per_evaluation": 7.1923458991586395
+  },
+  "torch_ad_compiled-642203": {
+   "arm": "torch_ad_compiled",
+   "seed": 642203,
+   "accepted": true,
+   "checks": 58,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.525611414515879,
+   "lbfgs_evaluations": 5462,
+   "lbfgs_ms_per_evaluation": 8.537882236354271
+  },
+  "c17_graph-642205": {
+   "arm": "c17_graph",
+   "seed": 642205,
+   "accepted": true,
+   "checks": 43,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.270083618001081,
+   "lbfgs_evaluations": 3702,
+   "lbfgs_ms_per_evaluation": 8.482194332518377
+  },
+  "jet_collapsed_graph-642204": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642204,
+   "accepted": true,
+   "checks": 45,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.574202706455253,
+   "lbfgs_evaluations": 3924,
+   "lbfgs_ms_per_evaluation": 9.34190587005336
+  },
+  "torch_ad_compiled-642202": {
+   "arm": "torch_ad_compiled",
+   "seed": 642202,
+   "accepted": true,
+   "checks": 54,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.5012572950217873,
+   "lbfgs_evaluations": 4949,
+   "lbfgs_ms_per_evaluation": 8.953898264895722
+  },
+  "c17_compiled-642205": {
+   "arm": "c17_compiled",
+   "seed": 642205,
+   "accepted": false,
+   "checks": 0
+  },
+  "jet_collapsed_compiled-642204": {
+   "arm": "jet_collapsed_compiled",
+   "seed": 642204,
+   "accepted": true,
+   "checks": 60,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 0.9834717509802431,
+   "lbfgs_evaluations": 5604,
+   "lbfgs_ms_per_evaluation": 7.130779683808307
+  },
+  "jet_collapsed_graph-642203": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642203,
+   "accepted": true,
+   "checks": 58,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.5897117109852843,
+   "lbfgs_evaluations": 5446,
+   "lbfgs_ms_per_evaluation": 9.349442072727609
+  },
+  "torch_ad_graph-642205": {
+   "arm": "torch_ad_graph",
+   "seed": 642205,
+   "accepted": true,
+   "checks": 43,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 9.9959400735097,
+   "lbfgs_evaluations": 3739,
+   "lbfgs_ms_per_evaluation": 14.371957763303175
+  },
+  "c17_graph-642204": {
+   "arm": "c17_graph",
+   "seed": 642204,
+   "accepted": true,
+   "checks": 49,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.483759972965345,
+   "lbfgs_evaluations": 4355,
+   "lbfgs_ms_per_evaluation": 8.552064619510382
+  },
+  "jet_collapsed_graph-642202": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642202,
+   "accepted": true,
+   "checks": 53,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.5902358610183,
+   "lbfgs_evaluations": 4819,
+   "lbfgs_ms_per_evaluation": 9.276427939821373
+  },
+  "jet_collapsed_compiled-642203": {
+   "arm": "jet_collapsed_compiled",
+   "seed": 642203,
+   "accepted": true,
+   "checks": 58,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 0.992158543493133,
+   "lbfgs_evaluations": 5458,
+   "lbfgs_ms_per_evaluation": 6.890455430739389
+  },
+  "c17_compiled-642204": {
+   "arm": "c17_compiled",
+   "seed": 642204,
+   "accepted": false,
+   "checks": 0
+  },
+  "jet_collapsed_compiled-642202": {
+   "arm": "jet_collapsed_compiled",
+   "seed": 642202,
+   "accepted": true,
+   "checks": 54,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 0.8872751679737121,
+   "lbfgs_evaluations": 4944,
+   "lbfgs_ms_per_evaluation": 7.12731870045847
+  },
+  "c17_graph-642203": {
+   "arm": "c17_graph",
+   "seed": 642203,
+   "accepted": true,
+   "checks": 59,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.6579440315254033,
+   "lbfgs_evaluations": 5561,
+   "lbfgs_ms_per_evaluation": 8.32644058100466
+  },
+  "jet_collapsed_graph-642206": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642206,
+   "accepted": true,
+   "checks": 63,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.589769954967778,
+   "lbfgs_evaluations": 5976,
+   "lbfgs_ms_per_evaluation": 9.229648805068653
+  },
+  "jet_collapsed_compiled-642207": {
+   "arm": "jet_collapsed_compiled",
+   "seed": 642207,
+   "accepted": true,
+   "checks": 49,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 0.9857403655187227,
+   "lbfgs_evaluations": 4399,
+   "lbfgs_ms_per_evaluation": 7.1989412591355455
+  },
+  "c17_graph-642207": {
+   "arm": "c17_graph",
+   "seed": 642207,
+   "accepted": true,
+   "checks": 48,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.3518392679980025,
+   "lbfgs_evaluations": 4299,
+   "lbfgs_ms_per_evaluation": 8.541088406379792
+  },
+  "jet_collapsed_compiled-642206": {
+   "arm": "jet_collapsed_compiled",
+   "seed": 642206,
+   "accepted": true,
+   "checks": 60,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 0.9885833784937859,
+   "lbfgs_evaluations": 5631,
+   "lbfgs_ms_per_evaluation": 7.1731945894237805
+  },
+  "c17_compiled-642207": {
+   "arm": "c17_compiled",
+   "seed": 642207,
+   "accepted": false,
+   "checks": 0
+  },
+  "c17_graph-642206": {
+   "arm": "c17_graph",
+   "seed": 642206,
+   "accepted": true,
+   "checks": 60,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.6515061410027556,
+   "lbfgs_evaluations": 5624,
+   "lbfgs_ms_per_evaluation": 8.693466102066854
+  },
+  "torch_ad_graph-642207": {
+   "arm": "torch_ad_graph",
+   "seed": 642207,
+   "accepted": true,
+   "checks": 47,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 9.920565983979031,
+   "lbfgs_evaluations": 4161,
+   "lbfgs_ms_per_evaluation": 14.657037162717286
+  },
+  "c17_compiled-642206": {
+   "arm": "c17_compiled",
+   "seed": 642206,
+   "accepted": false,
+   "checks": 0
+  },
+  "torch_ad_graph-642206": {
+   "arm": "torch_ad_graph",
+   "seed": 642206,
+   "accepted": true,
+   "checks": 60,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 8.91692663001595,
+   "lbfgs_evaluations": 5592,
+   "lbfgs_ms_per_evaluation": 14.424728200288266
+  },
+  "torch_ad_compiled-642207": {
+   "arm": "torch_ad_compiled",
+   "seed": 642207,
+   "accepted": true,
+   "checks": 49,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.544602729496546,
+   "lbfgs_evaluations": 4395,
+   "lbfgs_ms_per_evaluation": 8.732596043003586
+  },
+  "jet_collapsed_graph-642207": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642207,
+   "accepted": true,
+   "checks": 49,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.586654777463991,
+   "lbfgs_evaluations": 4401,
+   "lbfgs_ms_per_evaluation": 9.304775759382853
+  },
+  "torch_ad_compiled-642206": {
+   "arm": "torch_ad_compiled",
+   "seed": 642206,
+   "accepted": true,
+   "checks": 61,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.542319270549342,
+   "lbfgs_evaluations": 5752,
+   "lbfgs_ms_per_evaluation": 8.775015738863958
+  }
+ }
+}

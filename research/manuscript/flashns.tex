@@ -24,17 +24,17 @@ that state into the parameter gradient. For the gradient-enhanced
 two-dimensional Navier--Stokes objective, an eight-channel state (GL8)
 replaces the ten-channel third-order jet; its transpose requires the fourth
 activation derivative. On an NVIDIA H20 in FP64, all 72 planned solves pass
-unchanged accuracy gates, and GL8 reaches them 1.66$\times$ faster than a
+unchanged gates, and GL8 reaches them 1.66$\times$ faster than a
 compiled full-jet control and 1.73--3.37$\times$ faster than matched
 adaptations of collapsed Taylor mode, explicit differentiation and exact
 STDE. On an H100 the same campaign passes all 78 solves, but a fixed L-BFGS
 cost per evaluation compresses these ratios to 1.22$\times$ and
 1.29--1.69$\times$. On the transient three-dimensional Ethier--Steinman
 benchmark, a 17-channel contract passes all gates in 18 of 18 H100 solves;
-it is 3.60$\times$ and 6.96$\times$ faster than internal baselines, and
-1.90$\times$ and 1.08$\times$ (range 0.98--1.19) against uncompiled nested
-autograd and collapsed Taylor mode. A 36-channel curl-potential contract
-gives 1.32$\times$ objective-gradient throughput on H100, but its training
+it is 3.60$\times$ and 6.96$\times$ faster than internal baselines and
+1.59$\times$ faster than compiled nested autograd, but compiled collapsed
+Taylor mode matches it in whole solves and optimizes 1.23$\times$ faster. A 36-channel curl-potential contract
+gives 1.32$\times$ objective-gradient throughput, but its training
 still fails a stratified pressure test.
 \end{abstract}
 
@@ -2004,12 +2004,68 @@ therefore shorten this small problem's solve by only about 8\%, although
 an Adam-phase evaluation, which contains the gradient, is 1.37 times
 faster. One of the six seeds favours the collapsed jet, and the protocol
 registered no gain rule, so the 1.08 is a measured ratio rather than a
-decided gain. Compiled variants of the external arms and larger problems,
-where the gradient dominates, were not run. In the two-dimensional campaign
-on H100 (Section~\ref{sec:h100retest}), compiling made the collapsed-Taylor,
-ED and torch-AD replays 3.2, 5.0 and 2.3 times faster, so a compiled
-collapsed jet could match or beat C17 here; C17 itself is uncompiled
-explicit code.
+decided gain. Larger problems, where the gradient dominates, were not run.
+
+\paragraph{Compiled variants.}
+In the two-dimensional campaign on H100 (Section~\ref{sec:h100retest}),
+compiling made the collapsed-Taylor, ED and torch-AD replays 3.2, 5.0 and
+2.3 times faster. A second registered batch therefore runs every method in
+two variants, graph-only and compiled. The compiled variant traces the
+whole loss and gradient with \texttt{make\_fx}, compiles it with
+\texttt{torch.compile} and captures it in one CUDA Graph. Everything else
+is unchanged from the batch above, and the 36 solves run in one batch.
+Each lane first runs every arm on a development seed without training, and
+each method's faster qualified variant on that warm-up replay is selected
+before any formal solve is read. The registered statistic is the selected
+external variant over the selected C17 variant, in setup plus optimization
+(primary) and in optimization alone (secondary), with the rule of the
+solve-scale study (Section~\ref{sec:ablation}): a ratio beyond 1.03 with at
+least five of six favourable pairs.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Compiled variants on the Ethier--Steinman solves (one H100 batch). Warm-up replay is the median over four lanes on the development seed. Medians are over the six formal seeds. Adam is the post-hoc time per evaluation in the Adam phase. Bold marks the variant selected for each method.}
+\label{tab:ethierext2}
+\begin{tabular}{llcrrrr}\toprule
+Method & Variant & Accepted & Replay ms & Setup + opt. s & Opt.\ s & Adam ms\\\midrule
+C17 & \textbf{graph} & 6/6 & 2.52 & 46.3 & 46.2 & 2.3--2.7\\
+ & compiled & \multicolumn{5}{l}{failed qualification (CUDA Graph capture), 10 of 10 attempts}\\
+Collapsed jet & graph & 6/6 & 3.45 & 50.2 & 50.0 & 3.6\\
+ & \textbf{compiled} & 6/6 & 0.85 & 49.1 & 38.3 & 0.9--1.0\\
+Nested AD & graph & 6/6 & 9.76 & 88.1 & 87.8 & 8.8--10.0\\
+ & \textbf{compiled} & 6/6 & 2.39 & 73.0 & 46.4 & 2.5--2.6\\
+\bottomrule\end{tabular}
+\end{table}
+
+The compiled C17 variant failed in all ten attempts. Its warm-up calls
+succeeded, but recompilation during CUDA Graph capture hit a generator that
+the compiler cannot trace; the cause was not found. C17 therefore runs as
+graph-only, and both external methods run compiled
+(Table~\ref{tab:ethierext2}). All 30 solves of the five qualified arms are
+accepted.
+
+Against compiled nested autograd, C17 is 1.59 times faster in setup plus
+optimization (1.50--1.75, six of six pairs), the registered ``C17 faster''.
+In optimization alone they are level (1.01). Against compiled collapsed jet,
+setup plus optimization gives 1.05 (0.95--1.24, three of six pairs), so
+there is no decided difference. In optimization alone the collapsed jet is
+faster: it needs 0.81 times C17's time (0.74--0.99), with all six pairs
+favouring it, the registered ``external faster''. Its compile adds
+10.6--11.1\,s of setup, which absorbs the gain in setup plus optimization.
+These compiled setups are below the warm-up setups, so the registered
+cache caveat does not apply. The graph-only arms reproduce the batch above:
+1.11 for the collapsed jet and 1.92 for nested autograd.
+
+A post-hoc phase split locates the difference. In the Adam phase the
+compiled collapsed jet costs 0.39 times as much per evaluation as
+graph-only C17, so it is about 2.6 times faster, while compiled nested
+autograd is level (1.01). The fixed L-BFGS cost then compresses the solve
+ratio, as elsewhere. On this benchmark, a public Taylor-mode package
+compiled by \texttt{torch.compile} therefore evaluates the gradient faster
+than the C17 contract in eager PyTorch. Unlike two-dimensional GL8, whose
+native pointwise kernels the ablation credits with 1.53--1.83
+(Section~\ref{sec:ablation}), C17 has no execution layer. Whether a compiled
+or native C17 would regain the lead is untested.
 
 \section{Discussion and limitations}\label{sec:limits}
 \paragraph{Attribution of the two-dimensional gain.}
@@ -2078,11 +2134,12 @@ measurement uses FP64.
 \paragraph{Three dimensions.}
 The Ethier--Steinman solves establish an accepted three-dimensional
 solve-level gain for a 17-channel transient contract on a small network:
-3.60 and 6.96 against internal baselines, and 1.90 and 1.08 (range
-0.98--1.19) against uncompiled nested autograd and a public collapsed
-Taylor-mode package. Against the latter the
-fixed L-BFGS cost per evaluation absorbs most of a 1.37-fold faster
-gradient phase. The C36 study establishes
+3.60 and 6.96 against internal baselines, and 1.59 against compiled
+nested autograd. Against compiled public collapsed Taylor mode there is no
+decided difference in whole solves, and that baseline optimizes 1.23 times
+faster: its compiled gradient phase is about 2.6 times faster than eager
+C17, whose own compiled variant failed to capture. Unlike two-dimensional
+GL8, C17 has no native execution layer. The C36 study establishes
 derivative correctness for the full objective of a larger curl-potential
 model and a throughput gain for its gradient against an internal control,
 but no accepted solve. With 800 L-BFGS calls its training passes the loss
@@ -2097,7 +2154,7 @@ but not which test fails. The C36 throughput gains depend on compilation, the ze
 folding gain depends on this instance's gate geometry, and the problem is a
 single constructed box instance. External baselines on C36 itself (the
 external three-dimensional comparison uses uncompiled Ethier--Steinman
-arms), compiled external three-dimensional arms, accepted C36 solves, a second nonlinear PDE and device-traffic measurements remain open
+arms), a compiled or native C17, accepted C36 solves, a second nonlinear PDE and device-traffic measurements remain open
 experiments rather than implied consequences of the implementation.
 
 \section{Conclusion}
@@ -2122,9 +2179,10 @@ unchanged FP64 acceptance and shortens 65,536-point optimization by
 acceptance. On the transient
 three-dimensional Ethier--Steinman benchmark, a 17-channel contract passes
 all gates in 18 of 18 H100 solves and is 3.60$\times$ and 6.96$\times$
-faster than internal full spatial-jet and naive baselines; against nested
-autograd and a public collapsed Taylor-mode package the paired ratios are
-1.90$\times$ and 1.08$\times$ (range 0.98--1.19, all arms uncompiled).
+faster than internal full spatial-jet and naive baselines and
+1.59$\times$ faster than compiled nested autograd; compiled public
+collapsed Taylor mode matches it in whole solves and optimizes
+1.23$\times$ faster than the eager C17 implementation.
 The C36 curl-potential
 extension passes complete gradient qualification and improves
 objective-gradient throughput by 1.32$\times$ over an equally compiled

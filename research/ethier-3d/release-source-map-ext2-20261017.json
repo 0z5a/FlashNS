@@ -1,0 +1,85 @@
+{
+ "scope": "Compiled Ethier external-baseline batch (protocol-ext2-20261017). The executed packet holds the public src/ files below, the unchanged v4 data and other source files of the earlier batch, the pinned jet snapshot and a runtime environment script.",
+ "executed_packet": {
+  "manifest_sha256": "cfae3d69e7f5698e47328b31241650e923473c6c98b6dd91238a6c6ce7e3fb34",
+  "files": 53,
+  "start_script_sha256": "41704bb32123112b733aa9ce8201475a38ed2587b1b795bc7098ead48bfcbf28",
+  "pre_registration_commit": "c9e3a39"
+ },
+ "archive": {
+  "name": "ethier-ext2-complete.tar.gz",
+  "sha256": "2d9140ed24b70d1c8a932b9bb33e57394b883c9dbf78c8b0a55752029f22f078",
+  "members": 293,
+  "bytes": 46163220,
+  "excluded": "per-lane compiler caches",
+  "persistent_tape_copy": false
+ },
+ "files": {
+  "research/ethier-3d/src/protocol-ext2-20261017.json": {
+   "public_sha256": "2870508c65ee712d33e18478b2148b48619dff9c87680f058d040d2bd7655d48",
+   "executed_path": "protocol-ext2-20261017.json",
+   "executed_sha256": "2870508c65ee712d33e18478b2148b48619dff9c87680f058d040d2bd7655d48",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/external.py": {
+   "public_sha256": "1c32f1a676773315d6ad2a5ffddd6771af07621fd915a736f9fb43236a731722",
+   "executed_path": "external.py",
+   "executed_sha256": "1c32f1a676773315d6ad2a5ffddd6771af07621fd915a736f9fb43236a731722",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/solve_ext2.py": {
+   "public_sha256": "74aabd9b00738938f3b9b160d175944759e7081c2f249ff592d34a158d417f64",
+   "executed_path": "solve_ext2.py",
+   "executed_sha256": "74aabd9b00738938f3b9b160d175944759e7081c2f249ff592d34a158d417f64",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/run_ext2.py": {
+   "public_sha256": "f9fd88a5a92b8e2da73a23f61a317f5b4a2c2cb004ad0c19dc112b7ee616d1cf",
+   "executed_path": "run_ext2.py",
+   "executed_sha256": "f9fd88a5a92b8e2da73a23f61a317f5b4a2c2cb004ad0c19dc112b7ee616d1cf",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/audit_ext2.py": {
+   "public_sha256": "d04bee91a589ad69ffe1ac093e0335cb99f9e907c32f87b7860a7e69f43b6ed9",
+   "executed_path": "audit_ext2.py",
+   "executed_sha256": "d04bee91a589ad69ffe1ac093e0335cb99f9e907c32f87b7860a7e69f43b6ed9",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/read_ext2.py": {
+   "public_sha256": "cb2924d81759919af5781a5cc4ad1ee2b89606a017c26dda8021f05e61a0f89b",
+   "executed_path": "read_ext2.py",
+   "executed_sha256": "cb2924d81759919af5781a5cc4ad1ee2b89606a017c26dda8021f05e61a0f89b",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/entry_ext2.sh": {
+   "public_sha256": "b8a78094d2d3afe5a0a4c57b62f64ddbd9b40ec201e3d27bf162f451c7817eb2",
+   "executed_path": "entry_ext2.sh",
+   "executed_sha256": "b8a78094d2d3afe5a0a4c57b62f64ddbd9b40ec201e3d27bf162f451c7817eb2",
+   "byte_identical": true
+  },
+  "research/ethier-3d/audit-ext2-20261017.json": {
+   "public_sha256": "66b6faffd86ea3327e26212b2c3ace9b15da96a8bc4a5f6b6c822dbb4e377073",
+   "executed_path": "audit-ext2.json",
+   "executed_sha256": "66b6faffd86ea3327e26212b2c3ace9b15da96a8bc4a5f6b6c822dbb4e377073",
+   "byte_identical": true
+  },
+  "research/ethier-3d/read-ext2-20261017.json": {
+   "public_sha256": "bcd9173a08bdf3d7645796e026b578d0bfa81ad56cf0f99116bcaa4512e2e0a9",
+   "executed_path": "read-ext2.json",
+   "executed_sha256": "bcd9173a08bdf3d7645796e026b578d0bfa81ad56cf0f99116bcaa4512e2e0a9",
+   "byte_identical": true
+  },
+  "research/ethier-3d/posthoc_ext2_phase_split.py": {
+   "public_sha256": "3d27fc4d3c7faa786e160c25de03828c22f664533bf7d471a1daf059654ddaff",
+   "executed_path": "posthoc/posthoc_ext2_phase_split.py",
+   "executed_sha256": "3d27fc4d3c7faa786e160c25de03828c22f664533bf7d471a1daf059654ddaff",
+   "byte_identical": true
+  },
+  "research/ethier-3d/ext2-phase-split-20261017.json": {
+   "public_sha256": "3c98b8a5950eeb534ad45228c2ed50b884e052de368bca9bf484746e1144384b",
+   "executed_path": "posthoc/ext2-phase-split-20261017.json",
+   "executed_sha256": "3c98b8a5950eeb534ad45228c2ed50b884e052de368bca9bf484746e1144384b",
+   "byte_identical": true
+  }
+ }
+}

@@ -49,6 +49,12 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - C17's paired ratios are 1.90× against nested autograd and 1.08× (0.98–1.19) against collapsed `jet`. No arm was compiled, and no gain rule was registered.
   - Post hoc, the Adam-phase gap to `jet` is 1.37×; the fixed ~6 ms L-BFGS cost per evaluation compresses it.
   - Table 23 is new; the abstract, the 3D discussion, the limitations and the conclusion are updated. The C36 external-baseline item stays open.
+- **Section 7.4: compiled variants (October 17).** A second pre-registered batch runs each method graph-only and compiled. Each method's variant is selected by its warm-up replay time.
+  - C17's compiled variant failed CUDA Graph capture in all ten attempts, so C17 runs graph-only.
+  - Against compiled nested AD, C17 is 1.59× faster (registered: C17 faster).
+  - Against compiled collapsed `jet`, there is no decided difference in setup plus optimization (1.05). In optimization alone the jet is faster: it takes 0.81× C17's time.
+  - The compiled jet's gradient phase is about 2.6× faster than eager C17.
+  - The abstract, the 3D discussion, the limitations and the conclusion now state this; Table 24 is new.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
   - Protocol v5 runs the development recipe with 4,800 L-BFGS calls. The loss and the physical errors stall soon after call 800, and stratified pressure ends at 2.2–3.0× its limit.
