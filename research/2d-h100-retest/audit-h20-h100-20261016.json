@@ -1,0 +1,4282 @@
+{
+  "state": "AUDITED",
+  "numerical_reader": "NumPy raw-array and timing recomputation",
+  "additional_acceptance_reader": "Complete CPU scalar coordinate AD for every accepted trained checkpoint",
+  "numerical_comparisons": [
+    {
+      "name": "qualify-ed_author-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-ed_author-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00024538881331915793
+    },
+    {
+      "name": "qualify-ed_author-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-ed_author-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.0002582320440621054
+    },
+    {
+      "name": "qualify-ed_author-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-ed_author-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0004047515834212953
+    },
+    {
+      "name": "qualify-ed_author-compiled",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-ed_author-compiled",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00024538881331915793
+    },
+    {
+      "name": "qualify-ed_author-compiled",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-ed_author-compiled",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.0002357770837088789
+    },
+    {
+      "name": "qualify-ed_author-compiled",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-ed_author-compiled",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0003928471250853748
+    },
+    {
+      "name": "qualify-torchjet_collapsed-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 6.751686843505819e-06
+    },
+    {
+      "name": "qualify-torchjet_collapsed-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00022435548646323013
+    },
+    {
+      "name": "qualify-torchjet_collapsed-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-torchjet_collapsed-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00026945952423871873
+    },
+    {
+      "name": "qualify-torchjet_collapsed-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-torchjet_collapsed-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.00041665604175721574
+    },
+    {
+      "name": "qualify-torchjet_collapsed-compiled",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-torchjet_collapsed-compiled",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00022435548646323013
+    },
+    {
+      "name": "qualify-torchjet_collapsed-compiled",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-torchjet_collapsed-compiled",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00024700456388549217
+    },
+    {
+      "name": "qualify-torchjet_collapsed-compiled",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-torchjet_collapsed-compiled",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0003928471250853748
+    },
+    {
+      "name": "qualify-stde_exact-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 6.751686843505819e-06
+    },
+    {
+      "name": "qualify-stde_exact-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00033302767521885723
+    },
+    {
+      "name": "qualify-stde_exact-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-stde_exact-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.0003648931057399316
+    },
+    {
+      "name": "qualify-stde_exact-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-stde_exact-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.000513246078814424
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 4.63159796188532e-05
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 4.986427259302143e-05
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 8.526855378734126e-05
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00018582016471847796
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00025156943935377915
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.00022160727488942169
+    },
+    {
+      "name": "qualify-torch_ad-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-torch_ad-default",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00022435548646323013
+    },
+    {
+      "name": "qualify-torch_ad-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-torch_ad-default",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00026945952423871873
+    },
+    {
+      "name": "qualify-torch_ad-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-torch_ad-default",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.00041665604175721574
+    },
+    {
+      "name": "qualify-torch_ad-compiled",
+      "lane": 0,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-torch_ad-compiled",
+      "lane": 0,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00022435548646323013
+    },
+    {
+      "name": "qualify-torch_ad-compiled",
+      "lane": 0,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-torch_ad-compiled",
+      "lane": 0,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00024139082379718551
+    },
+    {
+      "name": "qualify-torch_ad-compiled",
+      "lane": 0,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-torch_ad-compiled",
+      "lane": 0,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0003928471250853748
+    },
+    {
+      "name": "qualify-physicsnemo-default",
+      "lane": 1,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 6.751686843505819e-06
+    },
+    {
+      "name": "qualify-physicsnemo-default",
+      "lane": 1,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00021033326855927824
+    },
+    {
+      "name": "qualify-physicsnemo-default",
+      "lane": 1,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-physicsnemo-default",
+      "lane": 1,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.0002582320440621054
+    },
+    {
+      "name": "qualify-physicsnemo-default",
+      "lane": 1,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-physicsnemo-default",
+      "lane": 1,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.00042260827092517595
+    },
+    {
+      "name": "qualify-physicsnemo-compiled",
+      "lane": 1,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-physicsnemo-compiled",
+      "lane": 1,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00021033326855927824
+    },
+    {
+      "name": "qualify-physicsnemo-compiled",
+      "lane": 1,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-physicsnemo-compiled",
+      "lane": 1,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.0002357770837088789
+    },
+    {
+      "name": "qualify-physicsnemo-compiled",
+      "lane": 1,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-physicsnemo-compiled",
+      "lane": 1,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.00039879935425333503
+    },
+    {
+      "name": "qualify-cudnn-default",
+      "lane": 1,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-cudnn-default",
+      "lane": 1,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.0003084887938869414
+    },
+    {
+      "name": "qualify-cudnn-default",
+      "lane": 1,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-cudnn-default",
+      "lane": 1,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00031436944494517185
+    },
+    {
+      "name": "qualify-cudnn-default",
+      "lane": 1,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-cudnn-default",
+      "lane": 1,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0004107038125892559
+    },
+    {
+      "name": "qualify-cudnn-compiled",
+      "lane": 1,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-cudnn-compiled",
+      "lane": 1,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.0003084887938869414
+    },
+    {
+      "name": "qualify-cudnn-compiled",
+      "lane": 1,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-cudnn-compiled",
+      "lane": 1,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00031436944494517185
+    },
+    {
+      "name": "qualify-cudnn-compiled",
+      "lane": 1,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-cudnn-compiled",
+      "lane": 1,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0004047515834212957
+    },
+    {
+      "name": "qualify-cueq_polynomial-default",
+      "lane": 1,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 6.751686843505819e-06
+    },
+    {
+      "name": "qualify-cueq_polynomial-default",
+      "lane": 1,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.0001682666148474226
+    },
+    {
+      "name": "qualify-cueq_polynomial-default",
+      "lane": 1,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-cueq_polynomial-default",
+      "lane": 1,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00042103050662299803
+    },
+    {
+      "name": "qualify-cueq_polynomial-default",
+      "lane": 1,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-cueq_polynomial-default",
+      "lane": 1,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0005535573126203015
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 1,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 1,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00018582016471847796
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 1,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 1,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00025156943935377915
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 1,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 1,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.00022160727488942169
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 2,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 2,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 4.63159796188532e-05
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 2,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 2,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 4.986427259302143e-05
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 2,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 2,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 8.526855378734126e-05
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 2,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 2,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00018582016471847796
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 2,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 2,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00025156943935377915
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 2,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 2,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.00022160727488942169
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 2,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 2,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00019981660513131432
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 2,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 2,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.0001964809030907324
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 2,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 2,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0003154681459018919
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 3,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 3,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 4.63159796188532e-05
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 3,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 3,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 4.986427259302143e-05
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 3,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-q10_compact-default",
+      "lane": 3,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 8.526855378734126e-05
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 3,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 3,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00018582016471847796
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 3,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 3,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.00025156943935377915
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 3,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native-default",
+      "lane": 3,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.00022160727488942169
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 3,
+      "trial": 0,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 3,
+      "trial": 0,
+      "kind": "gradient",
+      "error_over_budget": 0.00019981660513131432
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 3,
+      "trial": 1,
+      "kind": "loss",
+      "error_over_budget": 0.0
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 3,
+      "trial": 1,
+      "kind": "gradient",
+      "error_over_budget": 0.0001964809030907324
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 3,
+      "trial": 2,
+      "kind": "loss",
+      "error_over_budget": 6.815942486172611e-06
+    },
+    {
+      "name": "qualify-gl8_native_chunked-default",
+      "lane": 3,
+      "trial": 2,
+      "kind": "gradient",
+      "error_over_budget": 0.0003154681459018919
+    }
+  ],
+  "attempts": [
+    {
+      "lane": 0,
+      "name": "qualify-ed_author-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-ed_author-default",
+        "kind": "adapter",
+        "backend": "ed_author",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 3.038679230182121
+    },
+    {
+      "lane": 0,
+      "name": "qualify-ed_author-compiled",
+      "exit": 0,
+      "case": {
+        "name": "qualify-ed_author-compiled",
+        "kind": "adapter",
+        "backend": "ed_author",
+        "seed": 361902,
+        "compiled": true,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.6076315650716424
+    },
+    {
+      "lane": 0,
+      "name": "qualify-torchjet_collapsed-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-torchjet_collapsed-default",
+        "kind": "adapter",
+        "backend": "torchjet_collapsed",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 2.3643188333759704
+    },
+    {
+      "lane": 0,
+      "name": "qualify-torchjet_collapsed-compiled",
+      "exit": 0,
+      "case": {
+        "name": "qualify-torchjet_collapsed-compiled",
+        "kind": "adapter",
+        "backend": "torchjet_collapsed",
+        "seed": 361902,
+        "compiled": true,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.747142433344076
+    },
+    {
+      "lane": 0,
+      "name": "qualify-stde_exact-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-stde_exact-default",
+        "kind": "adapter",
+        "backend": "stde_exact",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 2.0126982669656477
+    },
+    {
+      "lane": 0,
+      "name": "qualify-q10_compact-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-q10_compact-default",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.301374700696518
+    },
+    {
+      "lane": 0,
+      "name": "qualify-gl8_native-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-gl8_native-default",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.15815989657615623
+    },
+    {
+      "lane": 0,
+      "name": "qualify-torch_ad-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-torch_ad-default",
+        "kind": "adapter",
+        "backend": "torch_ad",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 4.905599433307846
+    },
+    {
+      "lane": 0,
+      "name": "qualify-torch_ad-compiled",
+      "exit": 0,
+      "case": {
+        "name": "qualify-torch_ad-compiled",
+        "kind": "adapter",
+        "backend": "torch_ad",
+        "seed": 361902,
+        "compiled": true,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 2.1106343677577875
+    },
+    {
+      "lane": 0,
+      "name": "862101-torchjet_collapsed",
+      "exit": 0,
+      "case": {
+        "name": "862101-torchjet_collapsed",
+        "kind": "adapter",
+        "backend": "torchjet_collapsed",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "torchjet_collapsed",
+      "setup_plus_optimization_seconds": 27.250546824070625,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.013673914102681532,
+        "boundary_uv_rms": 0.009505594793769721,
+        "outflow_p_rms": 0.0030060085302262528,
+        "relative_l2_u": 0.00940960883043438,
+        "relative_l2_v": 0.019940306079978848,
+        "relative_l2_p": 0.01013031221080232
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862101-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862101-q10_compact",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 24.823753078933805,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012844050344951927,
+        "boundary_uv_rms": 0.00963646260266834,
+        "outflow_p_rms": 0.0025124280096759655,
+        "relative_l2_u": 0.009667256280634688,
+        "relative_l2_v": 0.0196897451550225,
+        "relative_l2_p": 0.009277069301426808
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862101-torch_ad",
+      "exit": 0,
+      "case": {
+        "name": "862101-torch_ad",
+        "kind": "adapter",
+        "backend": "torch_ad",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "torch_ad",
+      "setup_plus_optimization_seconds": 39.88695815287065,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012888850671580798,
+        "boundary_uv_rms": 0.009641358245945713,
+        "outflow_p_rms": 0.002413548515648756,
+        "relative_l2_u": 0.009154688794030225,
+        "relative_l2_v": 0.01984762423023662,
+        "relative_l2_p": 0.009196661090752067
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862101-stde_exact",
+      "exit": 0,
+      "case": {
+        "name": "862101-stde_exact",
+        "kind": "adapter",
+        "backend": "stde_exact",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "stde_exact",
+      "setup_plus_optimization_seconds": 36.69092079496477,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012464206622115117,
+        "boundary_uv_rms": 0.00963728429562208,
+        "outflow_p_rms": 0.002356483725369616,
+        "relative_l2_u": 0.009074768523756232,
+        "relative_l2_v": 0.019783289649969005,
+        "relative_l2_p": 0.009790281048531779
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862101-ed_author",
+      "exit": 0,
+      "case": {
+        "name": "862101-ed_author",
+        "kind": "adapter",
+        "backend": "ed_author",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "ed_author",
+      "setup_plus_optimization_seconds": 28.231148616876453,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.013401243303904478,
+        "boundary_uv_rms": 0.009533863183645259,
+        "outflow_p_rms": 0.0024920502469276368,
+        "relative_l2_u": 0.009346289983287433,
+        "relative_l2_v": 0.019955577534290565,
+        "relative_l2_p": 0.009696438947363394
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862101-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862101-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 19.8974027329823,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.013016854692301481,
+        "boundary_uv_rms": 0.00963596930706796,
+        "outflow_p_rms": 0.0024418161605597706,
+        "relative_l2_u": 0.009261264268589474,
+        "relative_l2_v": 0.019785043708913676,
+        "relative_l2_p": 0.009712426519464142
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862102-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862102-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 31.564344670972787,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011530338622589769,
+        "boundary_uv_rms": 0.008029168685558866,
+        "outflow_p_rms": 0.0019169609246950574,
+        "relative_l2_u": 0.009198126598190014,
+        "relative_l2_v": 0.019665498324855268,
+        "relative_l2_p": 0.008744704848463156
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862102-ed_author",
+      "exit": 0,
+      "case": {
+        "name": "862102-ed_author",
+        "kind": "adapter",
+        "backend": "ed_author",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "ed_author",
+      "setup_plus_optimization_seconds": 40.690699905972,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.01101427590280709,
+        "boundary_uv_rms": 0.007352369545622721,
+        "outflow_p_rms": 0.001377137044371771,
+        "relative_l2_u": 0.008726972879784368,
+        "relative_l2_v": 0.01996389491104028,
+        "relative_l2_p": 0.008588313880934133
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862102-stde_exact",
+      "exit": 0,
+      "case": {
+        "name": "862102-stde_exact",
+        "kind": "adapter",
+        "backend": "stde_exact",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "stde_exact",
+      "setup_plus_optimization_seconds": 50.05851589993108,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012560982419528615,
+        "boundary_uv_rms": 0.008535939298612592,
+        "outflow_p_rms": 0.001668445692805683,
+        "relative_l2_u": 0.008933092118633282,
+        "relative_l2_v": 0.019786511009187446,
+        "relative_l2_p": 0.010174221348350382
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862102-torch_ad",
+      "exit": 0,
+      "case": {
+        "name": "862102-torch_ad",
+        "kind": "adapter",
+        "backend": "torch_ad",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "torch_ad",
+      "setup_plus_optimization_seconds": 58.21664518699981,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010412833035033556,
+        "boundary_uv_rms": 0.007190705282005563,
+        "outflow_p_rms": 0.0014166557784884434,
+        "relative_l2_u": 0.008075384872656865,
+        "relative_l2_v": 0.019422792395762507,
+        "relative_l2_p": 0.008630236538836497
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862102-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862102-q10_compact",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 35.464443843928166,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011777606659843277,
+        "boundary_uv_rms": 0.007235336858176837,
+        "outflow_p_rms": 0.0013307400022436375,
+        "relative_l2_u": 0.008514384489286127,
+        "relative_l2_v": 0.019946136776448867,
+        "relative_l2_p": 0.008883882366605474
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862102-torchjet_collapsed",
+      "exit": 0,
+      "case": {
+        "name": "862102-torchjet_collapsed",
+        "kind": "adapter",
+        "backend": "torchjet_collapsed",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "torchjet_collapsed",
+      "setup_plus_optimization_seconds": 40.5560025110608,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011331813019010803,
+        "boundary_uv_rms": 0.008219039578991604,
+        "outflow_p_rms": 0.0021919122229743008,
+        "relative_l2_u": 0.008664397113135755,
+        "relative_l2_v": 0.019932739406708266,
+        "relative_l2_p": 0.008867171004224498
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862103-ed_author",
+      "exit": 0,
+      "case": {
+        "name": "862103-ed_author",
+        "kind": "adapter",
+        "backend": "ed_author",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "ed_author",
+      "setup_plus_optimization_seconds": 27.761288072098978,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010080531544376952,
+        "boundary_uv_rms": 0.008767662603106815,
+        "outflow_p_rms": 0.0016548733629861978,
+        "relative_l2_u": 0.007545773750025251,
+        "relative_l2_v": 0.019763778430926214,
+        "relative_l2_p": 0.008898308207794338
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862103-stde_exact",
+      "exit": 0,
+      "case": {
+        "name": "862103-stde_exact",
+        "kind": "adapter",
+        "backend": "stde_exact",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "stde_exact",
+      "setup_plus_optimization_seconds": 37.7620296869427,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009960160522186741,
+        "boundary_uv_rms": 0.008910855005911489,
+        "outflow_p_rms": 0.0018645871953728136,
+        "relative_l2_u": 0.008595592869273996,
+        "relative_l2_v": 0.01993317847854633,
+        "relative_l2_p": 0.009842591017806266
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862103-torchjet_collapsed",
+      "exit": 0,
+      "case": {
+        "name": "862103-torchjet_collapsed",
+        "kind": "adapter",
+        "backend": "torchjet_collapsed",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "torchjet_collapsed",
+      "setup_plus_optimization_seconds": 28.865031099063344,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009196868112655923,
+        "boundary_uv_rms": 0.008491215554356741,
+        "outflow_p_rms": 0.001881454598392292,
+        "relative_l2_u": 0.007413540220111628,
+        "relative_l2_v": 0.019907868796594112,
+        "relative_l2_p": 0.00916278194806804
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862103-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862103-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 21.714513021172024,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.00976768226460711,
+        "boundary_uv_rms": 0.0084313013849883,
+        "outflow_p_rms": 0.001996600314715917,
+        "relative_l2_u": 0.007365431305225919,
+        "relative_l2_v": 0.019635411235120283,
+        "relative_l2_p": 0.009331170658865786
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862103-torch_ad",
+      "exit": 0,
+      "case": {
+        "name": "862103-torch_ad",
+        "kind": "adapter",
+        "backend": "torch_ad",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "torch_ad",
+      "setup_plus_optimization_seconds": 38.97333144710865,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010736675691547962,
+        "boundary_uv_rms": 0.00905337287101556,
+        "outflow_p_rms": 0.001694739541689495,
+        "relative_l2_u": 0.007794759034251424,
+        "relative_l2_v": 0.0193892421271736,
+        "relative_l2_p": 0.009517964798509955
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862103-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862103-q10_compact",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 25.69333806389477,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009457591705649653,
+        "boundary_uv_rms": 0.008714625250208838,
+        "outflow_p_rms": 0.0017932616037182885,
+        "relative_l2_u": 0.007483941378602648,
+        "relative_l2_v": 0.019663457544648783,
+        "relative_l2_p": 0.009593600794470539
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862104-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862104-q10_compact",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 24.171738576027565,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.014877121862857253,
+        "boundary_uv_rms": 0.009329693206946264,
+        "outflow_p_rms": 0.003130599637856001,
+        "relative_l2_u": 0.00900032134966864,
+        "relative_l2_v": 0.01976909272132027,
+        "relative_l2_p": 0.009373293452429272
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862104-torch_ad",
+      "exit": 0,
+      "case": {
+        "name": "862104-torch_ad",
+        "kind": "adapter",
+        "backend": "torch_ad",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "torch_ad",
+      "setup_plus_optimization_seconds": 33.92049307189882,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.015283685841074972,
+        "boundary_uv_rms": 0.008634937454963574,
+        "outflow_p_rms": 0.002135519206312302,
+        "relative_l2_u": 0.009011960439161124,
+        "relative_l2_v": 0.01970237840806735,
+        "relative_l2_p": 0.010733560365684734
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862104-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862104-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 17.372440670034848,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.016051505256739065,
+        "boundary_uv_rms": 0.009543836699513518,
+        "outflow_p_rms": 0.002844019689103663,
+        "relative_l2_u": 0.009580204059171494,
+        "relative_l2_v": 0.019669052183193675,
+        "relative_l2_p": 0.011667566742142343
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862104-torchjet_collapsed",
+      "exit": 0,
+      "case": {
+        "name": "862104-torchjet_collapsed",
+        "kind": "adapter",
+        "backend": "torchjet_collapsed",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "torchjet_collapsed",
+      "setup_plus_optimization_seconds": 28.247001218027435,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012011408682631505,
+        "boundary_uv_rms": 0.009975526846398563,
+        "outflow_p_rms": 0.003186615282177436,
+        "relative_l2_u": 0.007950992918275912,
+        "relative_l2_v": 0.019002709944090375,
+        "relative_l2_p": 0.008331891882274586
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862104-stde_exact",
+      "exit": 0,
+      "case": {
+        "name": "862104-stde_exact",
+        "kind": "adapter",
+        "backend": "stde_exact",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "stde_exact",
+      "setup_plus_optimization_seconds": 32.638482803013176,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.014658481461417319,
+        "boundary_uv_rms": 0.009577726418859926,
+        "outflow_p_rms": 0.002771443299186563,
+        "relative_l2_u": 0.009592737541439002,
+        "relative_l2_v": 0.01997295457508362,
+        "relative_l2_p": 0.009825624514611582
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862104-ed_author",
+      "exit": 0,
+      "case": {
+        "name": "862104-ed_author",
+        "kind": "adapter",
+        "backend": "ed_author",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "ed_author",
+      "setup_plus_optimization_seconds": 22.8410897529684,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.016834747787561343,
+        "boundary_uv_rms": 0.009837183575775772,
+        "outflow_p_rms": 0.0023705314087563837,
+        "relative_l2_u": 0.009591705723709203,
+        "relative_l2_v": 0.019630083310627988,
+        "relative_l2_p": 0.010901941243761612
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862105-torch_ad",
+      "exit": 0,
+      "case": {
+        "name": "862105-torch_ad",
+        "kind": "adapter",
+        "backend": "torch_ad",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "torch_ad",
+      "setup_plus_optimization_seconds": 35.14315642800648,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011249504433255994,
+        "boundary_uv_rms": 0.0075396634593758475,
+        "outflow_p_rms": 0.0016641428961078962,
+        "relative_l2_u": 0.008009215263938942,
+        "relative_l2_v": 0.01921943452006523,
+        "relative_l2_p": 0.008292848679495311
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862105-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862105-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 17.92734895006288,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010677282499608715,
+        "boundary_uv_rms": 0.00787135372300499,
+        "outflow_p_rms": 0.0019795113179347395,
+        "relative_l2_u": 0.008108881995195223,
+        "relative_l2_v": 0.019373774006554625,
+        "relative_l2_p": 0.008128518708980481
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862105-stde_exact",
+      "exit": 0,
+      "case": {
+        "name": "862105-stde_exact",
+        "kind": "adapter",
+        "backend": "stde_exact",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "stde_exact",
+      "setup_plus_optimization_seconds": 30.414359987014905,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011794451531110497,
+        "boundary_uv_rms": 0.008121623085663752,
+        "outflow_p_rms": 0.002003758663531618,
+        "relative_l2_u": 0.008048989283567745,
+        "relative_l2_v": 0.019762684395862012,
+        "relative_l2_p": 0.008546171037051097
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862105-torchjet_collapsed",
+      "exit": 0,
+      "case": {
+        "name": "862105-torchjet_collapsed",
+        "kind": "adapter",
+        "backend": "torchjet_collapsed",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "torchjet_collapsed",
+      "setup_plus_optimization_seconds": 23.2690580409253,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.01162759216888087,
+        "boundary_uv_rms": 0.00831421009010379,
+        "outflow_p_rms": 0.002153388496492218,
+        "relative_l2_u": 0.008041144244444897,
+        "relative_l2_v": 0.01966410801669836,
+        "relative_l2_p": 0.008272879812140322
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862105-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862105-q10_compact",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 20.655263739055954,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010879520204376207,
+        "boundary_uv_rms": 0.008251265667177666,
+        "outflow_p_rms": 0.001954068179369501,
+        "relative_l2_u": 0.007868449629261313,
+        "relative_l2_v": 0.01986924168609457,
+        "relative_l2_p": 0.008240771860948102
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862105-ed_author",
+      "exit": 0,
+      "case": {
+        "name": "862105-ed_author",
+        "kind": "adapter",
+        "backend": "ed_author",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "ed_author",
+      "setup_plus_optimization_seconds": 23.11144533602055,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010628440692769761,
+        "boundary_uv_rms": 0.00819689237723594,
+        "outflow_p_rms": 0.00198198050772603,
+        "relative_l2_u": 0.008249610631513173,
+        "relative_l2_v": 0.019841666240625846,
+        "relative_l2_p": 0.008322237615449495
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862106-ed_author",
+      "exit": 0,
+      "case": {
+        "name": "862106-ed_author",
+        "kind": "adapter",
+        "backend": "ed_author",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "ed_author",
+      "setup_plus_optimization_seconds": 33.52203124202788,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010614440156982022,
+        "boundary_uv_rms": 0.00936251951301931,
+        "outflow_p_rms": 0.0016159864431730484,
+        "relative_l2_u": 0.008843232687101805,
+        "relative_l2_v": 0.01964798225388655,
+        "relative_l2_p": 0.008613132263289702
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862106-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862106-q10_compact",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 36.41158135794103,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009382608761199833,
+        "boundary_uv_rms": 0.008837168559802891,
+        "outflow_p_rms": 0.00208708567725965,
+        "relative_l2_u": 0.008162972492510552,
+        "relative_l2_v": 0.01983432307401067,
+        "relative_l2_p": 0.008511463170554288
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862106-torchjet_collapsed",
+      "exit": 0,
+      "case": {
+        "name": "862106-torchjet_collapsed",
+        "kind": "adapter",
+        "backend": "torchjet_collapsed",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "torchjet_collapsed",
+      "setup_plus_optimization_seconds": 40.1395338489674,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009861593148036984,
+        "boundary_uv_rms": 0.009016255854858648,
+        "outflow_p_rms": 0.0016804344778286726,
+        "relative_l2_u": 0.0085461097441688,
+        "relative_l2_v": 0.019999407615537226,
+        "relative_l2_p": 0.00901846969902778
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862106-stde_exact",
+      "exit": 0,
+      "case": {
+        "name": "862106-stde_exact",
+        "kind": "adapter",
+        "backend": "stde_exact",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "stde_exact",
+      "setup_plus_optimization_seconds": 42.89792952197604,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011946877372063826,
+        "boundary_uv_rms": 0.009687726291542647,
+        "outflow_p_rms": 0.00195671247067654,
+        "relative_l2_u": 0.008921279258148179,
+        "relative_l2_v": 0.019696374101008746,
+        "relative_l2_p": 0.008425343444238577
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862106-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862106-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 29.537017846945673,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010501458388620554,
+        "boundary_uv_rms": 0.008335628982446976,
+        "outflow_p_rms": 0.0016330332144375871,
+        "relative_l2_u": 0.007750245413119495,
+        "relative_l2_v": 0.019938111063551475,
+        "relative_l2_p": 0.008580279557618555
+      }
+    },
+    {
+      "lane": 0,
+      "name": "862106-torch_ad",
+      "exit": 0,
+      "case": {
+        "name": "862106-torch_ad",
+        "kind": "adapter",
+        "backend": "torch_ad",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "torch_ad",
+      "setup_plus_optimization_seconds": 54.78021195100155,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009249780734373329,
+        "boundary_uv_rms": 0.00865198035856602,
+        "outflow_p_rms": 0.00182325464797078,
+        "relative_l2_u": 0.0086979917231542,
+        "relative_l2_v": 0.01979727074212799,
+        "relative_l2_p": 0.008625120672791715
+      }
+    },
+    {
+      "lane": 1,
+      "name": "qualify-physicsnemo-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-physicsnemo-default",
+        "kind": "adapter",
+        "backend": "physicsnemo",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 4.002081967579822
+    },
+    {
+      "lane": 1,
+      "name": "qualify-physicsnemo-compiled",
+      "exit": 0,
+      "case": {
+        "name": "qualify-physicsnemo-compiled",
+        "kind": "adapter",
+        "backend": "physicsnemo",
+        "seed": 361902,
+        "compiled": true,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 1.7181872972287238
+    },
+    {
+      "lane": 1,
+      "name": "qualify-cudnn-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-cudnn-default",
+        "kind": "adapter",
+        "backend": "cudnn",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 117.6633268982793
+    },
+    {
+      "lane": 1,
+      "name": "qualify-cudnn-compiled",
+      "exit": 0,
+      "case": {
+        "name": "qualify-cudnn-compiled",
+        "kind": "adapter",
+        "backend": "cudnn",
+        "seed": 361902,
+        "compiled": true,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 89.98893583581473
+    },
+    {
+      "lane": 1,
+      "name": "qualify-cueq_native-default",
+      "exit": 1,
+      "case": {
+        "name": "qualify-cueq_native-default",
+        "kind": "adapter",
+        "backend": "cueq_native",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "FAILED_OR_NOT_CONVERGED",
+      "converged": null,
+      "error": "Traceback (most recent call last):\n  File \"<batch>/run_baseline.py\", line 100, in main\n    engine=factory(problem,initial,args.backend,compiled=args.compiled)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/run_baseline.py\", line 35, in factory\n    return AdapterEngine(problem,initial,backend,compile_ops=compiled)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 130, in __init__\n    for _ in range(3): self.evaluation()\n                       ^^^^^^^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 185, in evaluate\n    value = sum(r.square() + .2*grad(r,self.x).square().sum(-1) for r in residuals)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 185, in <genexpr>\n    value = sum(r.square() + .2*grad(r,self.x).square().sum(-1) for r in residuals)\n                                ^^^^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 31, in grad\n    return torch.autograd.grad(value, coordinates, torch.ones_like(value),\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/autograd/__init__.py\", line 530, in grad\n    result = _engine_run_backward(\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/autograd/graph.py\", line 882, in _engine_run_backward\n    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/autograd/function.py\", line 317, in apply\n    return user_fn(self, *args)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/_library/autograd.py\", line 182, in new_backward\n    grad_inputs = orig_backward(ctx, *grads)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/_library/autograd.py\", line 84, in backward\n    raise RuntimeError(\nRuntimeError: Trying to backward through cuequivariance.fused_tensor_product_bwd_bwd.default but no autograd formula was registered. Please use register_autograd to add one.\n"
+    },
+    {
+      "lane": 1,
+      "name": "qualify-cueq_native-compiled",
+      "exit": 1,
+      "case": {
+        "name": "qualify-cueq_native-compiled",
+        "kind": "adapter",
+        "backend": "cueq_native",
+        "seed": 361902,
+        "compiled": true,
+        "timeout_seconds": 1200
+      },
+      "outcome": "FAILED_OR_NOT_CONVERGED",
+      "converged": null,
+      "error": "Traceback (most recent call last):\n  File \"<batch>/run_baseline.py\", line 100, in main\n    engine=factory(problem,initial,args.backend,compiled=args.compiled)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/run_baseline.py\", line 35, in factory\n    return AdapterEngine(problem,initial,backend,compile_ops=compiled)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 123, in __init__\n    self.traced = make_fx(lambda: self.evaluate())()\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/fx/experimental/proxy_tensor.py\", line 2965, in wrapped\n    return make_fx_tracer.trace(f, *args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/fx/experimental/proxy_tensor.py\", line 2867, in trace\n    return self._trace_inner(f, *args)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/fx/experimental/proxy_tensor.py\", line 2828, in _trace_inner\n    t = dispatch_trace(\n        ^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/_compile.py\", line 54, in inner\n    return disable_fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py\", line 1298, in _fn\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/fx/experimental/proxy_tensor.py\", line 1673, in dispatch_trace\n    graph = tracer.trace(root, concrete_args)  # type: ignore[arg-type]\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/fx/_symbolic_trace.py\", line 912, in trace\n    (self.create_arg(fn(*args)),),\n                     ^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/fx/experimental/proxy_tensor.py\", line 1743, in wrapped\n    out = f(*tensors)  # type:ignore[call-arg]\n          ^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 123, in <lambda>\n    self.traced = make_fx(lambda: self.evaluate())()\n                                  ^^^^^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 185, in evaluate\n    value = sum(r.square() + .2*grad(r,self.x).square().sum(-1) for r in residuals)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 185, in <genexpr>\n    value = sum(r.square() + .2*grad(r,self.x).square().sum(-1) for r in residuals)\n                                ^^^^^^^^^^^^^^\n  File \"<batch>/torch_adapters.py\", line 31, in grad\n    return torch.autograd.grad(value, coordinates, torch.ones_like(value),\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/autograd/__init__.py\", line 479, in grad\n    return handle_torch_function(\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/overrides.py\", line 1774, in handle_torch_function\n    result = mode.__torch_function__(public_api, types, args, kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/fx/experimental/proxy_tensor.py\", line 1798, in __torch_function__\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/autograd/__init__.py\", line 530, in grad\n    result = _engine_run_backward(\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/autograd/graph.py\", line 882, in _engine_run_backward\n    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/autograd/function.py\", line 317, in apply\n    return user_fn(self, *args)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/_library/autograd.py\", line 182, in new_backward\n    grad_inputs = orig_backward(ctx, *grads)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<batch>/runtime-cu130/lib/python3.12/site-packages/torch/_library/autograd.py\", line 84, in backward\n    raise RuntimeError(\nRuntimeError: Trying to backward through cuequivariance.fused_tensor_product_bwd_bwd.default but no autograd formula was registered. Please use register_autograd to add one.\n"
+    },
+    {
+      "lane": 1,
+      "name": "qualify-cueq_polynomial-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-cueq_polynomial-default",
+        "kind": "adapter",
+        "backend": "cueq_polynomial",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 1.303963700775057
+    },
+    {
+      "lane": 1,
+      "name": "qualify-gl8_native-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-gl8_native-default",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.16582473181188107
+    },
+    {
+      "lane": 1,
+      "name": "862101-cueq_polynomial",
+      "exit": 0,
+      "case": {
+        "name": "862101-cueq_polynomial",
+        "kind": "adapter",
+        "backend": "cueq_polynomial",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "cueq_polynomial",
+      "setup_plus_optimization_seconds": 29.36867109197192,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012644907398851955,
+        "boundary_uv_rms": 0.00941491630278222,
+        "outflow_p_rms": 0.0026697264928399467,
+        "relative_l2_u": 0.009217987365320215,
+        "relative_l2_v": 0.01981568300937456,
+        "relative_l2_p": 0.009045425975704449
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862101-cudnn",
+      "exit": 0,
+      "case": {
+        "name": "862101-cudnn",
+        "kind": "adapter",
+        "backend": "cudnn",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "cudnn",
+      "setup_plus_optimization_seconds": 676.358347882051,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010796045831108138,
+        "boundary_uv_rms": 0.008942005530138223,
+        "outflow_p_rms": 0.001903805233236449,
+        "relative_l2_u": 0.008943105982785164,
+        "relative_l2_v": 0.019641878582806062,
+        "relative_l2_p": 0.009055715283423577
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862101-physicsnemo",
+      "exit": 0,
+      "case": {
+        "name": "862101-physicsnemo",
+        "kind": "adapter",
+        "backend": "physicsnemo",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "physicsnemo",
+      "setup_plus_optimization_seconds": 49.65416425396688,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012229612609515848,
+        "boundary_uv_rms": 0.009672307324562954,
+        "outflow_p_rms": 0.002393724249570847,
+        "relative_l2_u": 0.008986102453973882,
+        "relative_l2_v": 0.019743834423470958,
+        "relative_l2_p": 0.00881113368379903
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862101-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862101-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 20.728762393118814,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.013016854692301481,
+        "boundary_uv_rms": 0.00963596930706796,
+        "outflow_p_rms": 0.0024418161605597706,
+        "relative_l2_u": 0.009261264268589474,
+        "relative_l2_v": 0.019785043708913676,
+        "relative_l2_p": 0.009712426519464142
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862102-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862102-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 31.206378204980865,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011530338622589769,
+        "boundary_uv_rms": 0.008029168685558866,
+        "outflow_p_rms": 0.0019169609246950574,
+        "relative_l2_u": 0.009198126598190014,
+        "relative_l2_v": 0.019665498324855268,
+        "relative_l2_p": 0.008744704848463156
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862102-physicsnemo",
+      "exit": 0,
+      "case": {
+        "name": "862102-physicsnemo",
+        "kind": "adapter",
+        "backend": "physicsnemo",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "physicsnemo",
+      "setup_plus_optimization_seconds": 49.24089938797988,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011579110530411607,
+        "boundary_uv_rms": 0.00825952498331264,
+        "outflow_p_rms": 0.001710889346631543,
+        "relative_l2_u": 0.008622067600765889,
+        "relative_l2_v": 0.019843773969565257,
+        "relative_l2_p": 0.009094934367262018
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862102-cudnn",
+      "exit": 0,
+      "case": {
+        "name": "862102-cudnn",
+        "kind": "adapter",
+        "backend": "cudnn",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "cudnn",
+      "setup_plus_optimization_seconds": 809.5030550900847,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010778152587118122,
+        "boundary_uv_rms": 0.007547426114784964,
+        "outflow_p_rms": 0.0018043734680794007,
+        "relative_l2_u": 0.008754875172107665,
+        "relative_l2_v": 0.019951548743380648,
+        "relative_l2_p": 0.008853036953667895
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862102-cueq_polynomial",
+      "exit": 0,
+      "case": {
+        "name": "862102-cueq_polynomial",
+        "kind": "adapter",
+        "backend": "cueq_polynomial",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "cueq_polynomial",
+      "setup_plus_optimization_seconds": 45.821510534966365,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011611446015894809,
+        "boundary_uv_rms": 0.007675992415677185,
+        "outflow_p_rms": 0.0018078165114937303,
+        "relative_l2_u": 0.008879730543520125,
+        "relative_l2_v": 0.01962679461175939,
+        "relative_l2_p": 0.008828321443803994
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862103-cueq_polynomial",
+      "exit": 0,
+      "case": {
+        "name": "862103-cueq_polynomial",
+        "kind": "adapter",
+        "backend": "cueq_polynomial",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "cueq_polynomial",
+      "setup_plus_optimization_seconds": 31.934539040899836,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009431774794348017,
+        "boundary_uv_rms": 0.00847213479199506,
+        "outflow_p_rms": 0.0018704299315213636,
+        "relative_l2_u": 0.007034492650368886,
+        "relative_l2_v": 0.019798927033218637,
+        "relative_l2_p": 0.009276460389570168
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862103-cudnn",
+      "exit": 0,
+      "case": {
+        "name": "862103-cudnn",
+        "kind": "adapter",
+        "backend": "cudnn",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "cudnn",
+      "setup_plus_optimization_seconds": 643.6508928580442,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010332202989957226,
+        "boundary_uv_rms": 0.008578297186322399,
+        "outflow_p_rms": 0.0022381672179941094,
+        "relative_l2_u": 0.008083252924234629,
+        "relative_l2_v": 0.019847544335278525,
+        "relative_l2_p": 0.009057852904140004
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862103-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862103-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 22.159494932973757,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.00976768226460711,
+        "boundary_uv_rms": 0.0084313013849883,
+        "outflow_p_rms": 0.001996600314715917,
+        "relative_l2_u": 0.007365431305225919,
+        "relative_l2_v": 0.019635411235120283,
+        "relative_l2_p": 0.009331170658865786
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862103-physicsnemo",
+      "exit": 0,
+      "case": {
+        "name": "862103-physicsnemo",
+        "kind": "adapter",
+        "backend": "physicsnemo",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "physicsnemo",
+      "setup_plus_optimization_seconds": 40.700266018975526,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009086594597225724,
+        "boundary_uv_rms": 0.008018235310021084,
+        "outflow_p_rms": 0.001571529634825423,
+        "relative_l2_u": 0.007405262808350476,
+        "relative_l2_v": 0.019966452220979442,
+        "relative_l2_p": 0.00886849584869291
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862104-physicsnemo",
+      "exit": 0,
+      "case": {
+        "name": "862104-physicsnemo",
+        "kind": "adapter",
+        "backend": "physicsnemo",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "physicsnemo",
+      "setup_plus_optimization_seconds": 34.29374431993347,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.01349797334609995,
+        "boundary_uv_rms": 0.009355047401662308,
+        "outflow_p_rms": 0.002382989442010967,
+        "relative_l2_u": 0.009934810059146301,
+        "relative_l2_v": 0.019026890054680754,
+        "relative_l2_p": 0.009619088333601457
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862104-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862104-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 17.012053982005455,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.016051505256739065,
+        "boundary_uv_rms": 0.009543836699513518,
+        "outflow_p_rms": 0.002844019689103663,
+        "relative_l2_u": 0.009580204059171494,
+        "relative_l2_v": 0.019669052183193675,
+        "relative_l2_p": 0.011667566742142343
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862104-cudnn",
+      "exit": 0,
+      "case": {
+        "name": "862104-cudnn",
+        "kind": "adapter",
+        "backend": "cudnn",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "cudnn",
+      "setup_plus_optimization_seconds": 607.4448360260576,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.01381396006819515,
+        "boundary_uv_rms": 0.008954037350440081,
+        "outflow_p_rms": 0.0015945177935189842,
+        "relative_l2_u": 0.009007454163189188,
+        "relative_l2_v": 0.019745019852997026,
+        "relative_l2_p": 0.010052874514807674
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862104-cueq_polynomial",
+      "exit": 0,
+      "case": {
+        "name": "862104-cueq_polynomial",
+        "kind": "adapter",
+        "backend": "cueq_polynomial",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "cueq_polynomial",
+      "setup_plus_optimization_seconds": 32.97973283997271,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011874628827648084,
+        "boundary_uv_rms": 0.009725947319609842,
+        "outflow_p_rms": 0.002699463853312541,
+        "relative_l2_u": 0.009044215561634848,
+        "relative_l2_v": 0.019906737421909557,
+        "relative_l2_p": 0.008120132469499415
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862105-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862105-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 17.994696386973374,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010677282499608715,
+        "boundary_uv_rms": 0.00787135372300499,
+        "outflow_p_rms": 0.0019795113179347395,
+        "relative_l2_u": 0.008108881995195223,
+        "relative_l2_v": 0.019373774006554625,
+        "relative_l2_p": 0.008128518708980481
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862105-physicsnemo",
+      "exit": 0,
+      "case": {
+        "name": "862105-physicsnemo",
+        "kind": "adapter",
+        "backend": "physicsnemo",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "physicsnemo",
+      "setup_plus_optimization_seconds": 43.708327931002714,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.01142978699835376,
+        "boundary_uv_rms": 0.007678002786012814,
+        "outflow_p_rms": 0.0021386080066660112,
+        "relative_l2_u": 0.00859572705810823,
+        "relative_l2_v": 0.019126856236889648,
+        "relative_l2_p": 0.007862347762488705
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862105-cudnn",
+      "exit": 0,
+      "case": {
+        "name": "862105-cudnn",
+        "kind": "adapter",
+        "backend": "cudnn",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "cudnn",
+      "setup_plus_optimization_seconds": 592.2015242240159,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011423455344499475,
+        "boundary_uv_rms": 0.007861274394394744,
+        "outflow_p_rms": 0.0022145219767674244,
+        "relative_l2_u": 0.008165091182209615,
+        "relative_l2_v": 0.019623539327962406,
+        "relative_l2_p": 0.00802937182198377
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862105-cueq_polynomial",
+      "exit": 0,
+      "case": {
+        "name": "862105-cueq_polynomial",
+        "kind": "adapter",
+        "backend": "cueq_polynomial",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "cueq_polynomial",
+      "setup_plus_optimization_seconds": 26.279479474993423,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012066685314598664,
+        "boundary_uv_rms": 0.008238834868459884,
+        "outflow_p_rms": 0.0019281267552076356,
+        "relative_l2_u": 0.007768466653826686,
+        "relative_l2_v": 0.01971156897032127,
+        "relative_l2_p": 0.008190268220582182
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862106-cueq_polynomial",
+      "exit": 0,
+      "case": {
+        "name": "862106-cueq_polynomial",
+        "kind": "adapter",
+        "backend": "cueq_polynomial",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "cueq_polynomial",
+      "setup_plus_optimization_seconds": 38.102518902975135,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011150281063067006,
+        "boundary_uv_rms": 0.009472523796280587,
+        "outflow_p_rms": 0.0018622338445320543,
+        "relative_l2_u": 0.008635643392533596,
+        "relative_l2_v": 0.019620965013452268,
+        "relative_l2_p": 0.008536291405479124
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862106-cudnn",
+      "exit": 0,
+      "case": {
+        "name": "862106-cudnn",
+        "kind": "adapter",
+        "backend": "cudnn",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "cudnn",
+      "setup_plus_optimization_seconds": 765.0703949219314,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.01042651219411636,
+        "boundary_uv_rms": 0.009005523074944705,
+        "outflow_p_rms": 0.001797813295366573,
+        "relative_l2_u": 0.00932636483246077,
+        "relative_l2_v": 0.019868726915388962,
+        "relative_l2_p": 0.008704709650997665
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862106-physicsnemo",
+      "exit": 0,
+      "case": {
+        "name": "862106-physicsnemo",
+        "kind": "adapter",
+        "backend": "physicsnemo",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": true
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "physicsnemo",
+      "setup_plus_optimization_seconds": 44.56988722609822,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011040155919071584,
+        "boundary_uv_rms": 0.009608724778744089,
+        "outflow_p_rms": 0.0022837746300120925,
+        "relative_l2_u": 0.008958636310691886,
+        "relative_l2_v": 0.019850585737759805,
+        "relative_l2_p": 0.009160925886537725
+      }
+    },
+    {
+      "lane": 1,
+      "name": "862106-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862106-gl8_native",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 3600,
+        "compiled": false
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 29.5327410150785,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010501458388620554,
+        "boundary_uv_rms": 0.008335628982446976,
+        "outflow_p_rms": 0.0016330332144375871,
+        "relative_l2_u": 0.007750245413119495,
+        "relative_l2_v": 0.019938111063551475,
+        "relative_l2_p": 0.008580279557618555
+      }
+    },
+    {
+      "lane": 2,
+      "name": "qualify-q10_compact-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-q10_compact-default",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.3018207343605657
+    },
+    {
+      "lane": 2,
+      "name": "qualify-gl8_native-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-gl8_native-default",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.16696519839266935
+    },
+    {
+      "lane": 2,
+      "name": "qualify-gl8_native_chunked-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-gl8_native_chunked-default",
+        "kind": "adapter",
+        "backend": "gl8_native_chunked",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.5190903010467688
+    },
+    {
+      "lane": 2,
+      "name": "862101-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862101-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 25.560003380058333,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012844050344951927,
+        "boundary_uv_rms": 0.00963646260266834,
+        "outflow_p_rms": 0.0025124280096759655,
+        "relative_l2_u": 0.009667256280634688,
+        "relative_l2_v": 0.0196897451550225,
+        "relative_l2_p": 0.009277069301426808
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862101-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862101-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 20.033666576840915,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.013016854692301481,
+        "boundary_uv_rms": 0.00963596930706796,
+        "outflow_p_rms": 0.0024418161605597706,
+        "relative_l2_u": 0.009261264268589474,
+        "relative_l2_v": 0.019785043708913676,
+        "relative_l2_p": 0.009712426519464142
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862101-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "862101-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 862101,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862101,
+      "backend": "gl8_native_chunked",
+      "setup_plus_optimization_seconds": 21.565279160859063,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.012948930128568922,
+        "boundary_uv_rms": 0.009708402464349397,
+        "outflow_p_rms": 0.002275021722521737,
+        "relative_l2_u": 0.00923881099375198,
+        "relative_l2_v": 0.01970077894554489,
+        "relative_l2_p": 0.009466257271807985
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862102-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862102-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 35.78183807095047,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011777606659843277,
+        "boundary_uv_rms": 0.007235336858176837,
+        "outflow_p_rms": 0.0013307400022436375,
+        "relative_l2_u": 0.008514384489286127,
+        "relative_l2_v": 0.019946136776448867,
+        "relative_l2_p": 0.008883882366605474
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862102-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "862102-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "gl8_native_chunked",
+      "setup_plus_optimization_seconds": 32.41369965206832,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010693252100622237,
+        "boundary_uv_rms": 0.007965954777804537,
+        "outflow_p_rms": 0.0016594618855216444,
+        "relative_l2_u": 0.00844122131303354,
+        "relative_l2_v": 0.019984269905861517,
+        "relative_l2_p": 0.00834207434503293
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862102-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862102-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 862102,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862102,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 30.54948052112013,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011530338622589769,
+        "boundary_uv_rms": 0.008029168685558866,
+        "outflow_p_rms": 0.0019169609246950574,
+        "relative_l2_u": 0.009198126598190014,
+        "relative_l2_v": 0.019665498324855268,
+        "relative_l2_p": 0.008744704848463156
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862103-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862103-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 21.258739157114178,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.00976768226460711,
+        "boundary_uv_rms": 0.0084313013849883,
+        "outflow_p_rms": 0.001996600314715917,
+        "relative_l2_u": 0.007365431305225919,
+        "relative_l2_v": 0.019635411235120283,
+        "relative_l2_p": 0.009331170658865786
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862103-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862103-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 25.379463077057153,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009457591705649653,
+        "boundary_uv_rms": 0.008714625250208838,
+        "outflow_p_rms": 0.0017932616037182885,
+        "relative_l2_u": 0.007483941378602648,
+        "relative_l2_v": 0.019663457544648783,
+        "relative_l2_p": 0.009593600794470539
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862103-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "862103-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 862103,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862103,
+      "backend": "gl8_native_chunked",
+      "setup_plus_optimization_seconds": 22.27084917097818,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.011128833873151988,
+        "boundary_uv_rms": 0.008965582920777069,
+        "outflow_p_rms": 0.0022879224197944682,
+        "relative_l2_u": 0.008642282831179965,
+        "relative_l2_v": 0.01988895247049422,
+        "relative_l2_p": 0.00907219193031466
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862104-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862104-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 17.01016573701054,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.016051505256739065,
+        "boundary_uv_rms": 0.009543836699513518,
+        "outflow_p_rms": 0.002844019689103663,
+        "relative_l2_u": 0.009580204059171494,
+        "relative_l2_v": 0.019669052183193675,
+        "relative_l2_p": 0.011667566742142343
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862104-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "862104-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "gl8_native_chunked",
+      "setup_plus_optimization_seconds": 22.254159379052,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.013905849908235852,
+        "boundary_uv_rms": 0.009684921847390825,
+        "outflow_p_rms": 0.0027102210060937163,
+        "relative_l2_u": 0.00906365573247318,
+        "relative_l2_v": 0.01980618841527629,
+        "relative_l2_p": 0.00923500321101427
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862104-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862104-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 862104,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862104,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 24.118931805947796,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.014877121862857253,
+        "boundary_uv_rms": 0.009329693206946264,
+        "outflow_p_rms": 0.003130599637856001,
+        "relative_l2_u": 0.00900032134966864,
+        "relative_l2_v": 0.01976909272132027,
+        "relative_l2_p": 0.009373293452429272
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862105-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "862105-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "gl8_native_chunked",
+      "setup_plus_optimization_seconds": 19.44074495905079,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.01190171153616556,
+        "boundary_uv_rms": 0.008147350969364598,
+        "outflow_p_rms": 0.002194993432218426,
+        "relative_l2_u": 0.008299238260566307,
+        "relative_l2_v": 0.019729566593511896,
+        "relative_l2_p": 0.008985048237651774
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862105-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862105-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 20.59681936306879,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010879520204376207,
+        "boundary_uv_rms": 0.008251265667177666,
+        "outflow_p_rms": 0.001954068179369501,
+        "relative_l2_u": 0.007868449629261313,
+        "relative_l2_v": 0.01986924168609457,
+        "relative_l2_p": 0.008240771860948102
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862105-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862105-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 862105,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862105,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 18.28129815403372,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010677282499608715,
+        "boundary_uv_rms": 0.00787135372300499,
+        "outflow_p_rms": 0.0019795113179347395,
+        "relative_l2_u": 0.008108881995195223,
+        "relative_l2_v": 0.019373774006554625,
+        "relative_l2_p": 0.008128518708980481
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862106-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "862106-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "gl8_native_chunked",
+      "setup_plus_optimization_seconds": 29.9183687469922,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.01091022666311435,
+        "boundary_uv_rms": 0.009291944446890995,
+        "outflow_p_rms": 0.001667752292094389,
+        "relative_l2_u": 0.009384797612194446,
+        "relative_l2_v": 0.01991601513933003,
+        "relative_l2_p": 0.008177200843166713
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862106-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "862106-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "gl8_native",
+      "setup_plus_optimization_seconds": 28.63828694296535,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.010501458388620554,
+        "boundary_uv_rms": 0.008335628982446976,
+        "outflow_p_rms": 0.0016330332144375871,
+        "relative_l2_u": 0.007750245413119495,
+        "relative_l2_v": 0.019938111063551475,
+        "relative_l2_p": 0.008580279557618555
+      }
+    },
+    {
+      "lane": 2,
+      "name": "862106-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "862106-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 862106,
+        "solve": true,
+        "timeout_seconds": 1800
+      },
+      "outcome": "ACCEPTED_CPU_RECHECKED",
+      "seed": 862106,
+      "backend": "q10_compact",
+      "setup_plus_optimization_seconds": 35.70728731411509,
+      "CPU_independent_metrics": {
+        "pde_rms": 0.009382608761199833,
+        "boundary_uv_rms": 0.008837168559802891,
+        "outflow_p_rms": 0.00208708567725965,
+        "relative_l2_u": 0.008162972492510552,
+        "relative_l2_v": 0.01983432307401067,
+        "relative_l2_p": 0.008511463170554288
+      }
+    },
+    {
+      "lane": 3,
+      "name": "qualify-q10_compact-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-q10_compact-default",
+        "kind": "adapter",
+        "backend": "q10_compact",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.30186523605758947
+    },
+    {
+      "lane": 3,
+      "name": "qualify-gl8_native-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-gl8_native-default",
+        "kind": "adapter",
+        "backend": "gl8_native",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.166571035515517
+    },
+    {
+      "lane": 3,
+      "name": "qualify-gl8_native_chunked-default",
+      "exit": 0,
+      "case": {
+        "name": "qualify-gl8_native_chunked-default",
+        "kind": "adapter",
+        "backend": "gl8_native_chunked",
+        "seed": 361902,
+        "compiled": false,
+        "timeout_seconds": 1200
+      },
+      "outcome": "QUALIFIED",
+      "median_ms": 0.5198394685673217
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r0-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r0-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 0,
+        "profile": true,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.2815878486633301,
+      "engine_setup_peak_allocated_bytes": 91395584
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r0-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r0-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 0,
+        "profile": true,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.15685824394226075,
+      "engine_setup_peak_allocated_bytes": 72991232
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r0-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r0-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 0,
+        "profile": true,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.4898543930053711,
+      "engine_setup_peak_allocated_bytes": 45007360
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r1-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r1-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 1,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.2980745506286621,
+      "engine_setup_peak_allocated_bytes": 91395584
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r1-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r1-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 1,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.5188470458984376,
+      "engine_setup_peak_allocated_bytes": 45007360
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r1-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r1-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 1,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.1650611114501953,
+      "engine_setup_peak_allocated_bytes": 72991232
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r2-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r2-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 2,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.157326078414917,
+      "engine_setup_peak_allocated_bytes": 72991232
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r2-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r2-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 2,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.28091648101806643,
+      "engine_setup_peak_allocated_bytes": 91395584
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r2-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r2-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 2,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.49856929779052733,
+      "engine_setup_peak_allocated_bytes": 45007360
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r3-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r3-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 3,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.1655423927307129,
+      "engine_setup_peak_allocated_bytes": 72991232
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r3-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r3-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 3,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.5194105529785156,
+      "engine_setup_peak_allocated_bytes": 45007360
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r3-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r3-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 3,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.2984048080444336,
+      "engine_setup_peak_allocated_bytes": 91395584
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r4-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r4-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 4,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.5166649627685547,
+      "engine_setup_peak_allocated_bytes": 45007360
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r4-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r4-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 4,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.2810044860839844,
+      "engine_setup_peak_allocated_bytes": 91395584
+    },
+    {
+      "lane": 3,
+      "name": "bench-n2048-r4-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n2048-r4-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 2048,
+        "repeat": 4,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 0.15694656372070312,
+      "engine_setup_peak_allocated_bytes": 72991232
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r0-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r0-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 0,
+        "profile": true,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 2.9382205200195313,
+      "engine_setup_peak_allocated_bytes": 517482496
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r0-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r0-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 0,
+        "profile": true,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 1.1659001922607422,
+      "engine_setup_peak_allocated_bytes": 327979520
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r0-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r0-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 0,
+        "profile": true,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 3.9861801147460936,
+      "engine_setup_peak_allocated_bytes": 48103936
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r1-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r1-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 1,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 2.938360290527344,
+      "engine_setup_peak_allocated_bytes": 478909952
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r1-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r1-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 1,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 3.9303350830078125,
+      "engine_setup_peak_allocated_bytes": 48103936
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r1-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r1-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 1,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 1.1646377563476562,
+      "engine_setup_peak_allocated_bytes": 327979520
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r2-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r2-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 2,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 1.1722598266601563,
+      "engine_setup_peak_allocated_bytes": 327979520
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r2-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r2-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 2,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 2.9381747436523438,
+      "engine_setup_peak_allocated_bytes": 478909952
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r2-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r2-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 2,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 3.782054138183594,
+      "engine_setup_peak_allocated_bytes": 48103936
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r3-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r3-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 3,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 1.171685104370117,
+      "engine_setup_peak_allocated_bytes": 327979520
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r3-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r3-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 3,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 3.9928439331054686,
+      "engine_setup_peak_allocated_bytes": 48103936
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r3-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r3-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 3,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 2.9382171630859375,
+      "engine_setup_peak_allocated_bytes": 478909952
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r4-gl8_native_chunked",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r4-gl8_native_chunked",
+        "kind": "representation",
+        "backend": "gl8_native_chunked",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 4,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 3.980896301269531,
+      "engine_setup_peak_allocated_bytes": 48103936
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r4-q10_compact",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r4-q10_compact",
+        "kind": "representation",
+        "backend": "q10_compact",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 4,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 2.9165219116210936,
+      "engine_setup_peak_allocated_bytes": 478909952
+    },
+    {
+      "lane": 3,
+      "name": "bench-n16384-r4-gl8_native",
+      "exit": 0,
+      "case": {
+        "name": "bench-n16384-r4-gl8_native",
+        "kind": "representation",
+        "backend": "gl8_native",
+        "seed": 361901,
+        "points": 16384,
+        "repeat": 4,
+        "profile": false,
+        "requires_qualification": true,
+        "timeout_seconds": 900
+      },
+      "outcome": "MEMORY_REPLAY_CHECKED",
+      "median_ms": 1.171965103149414,
+      "engine_setup_peak_allocated_bytes": 327979520
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "lane": 0,
+      "baseline": "ed_author",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.2848185343994474,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 28.231148616876453,
+          "candidate_seconds": 19.8974027329823,
+          "ratio": 1.4188358649483424
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 40.690699905972,
+          "candidate_seconds": 31.564344670972787,
+          "ratio": 1.2891349505314453
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 27.761288072098978,
+          "candidate_seconds": 21.714513021172024,
+          "ratio": 1.2784669886463143
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 22.8410897529684,
+          "candidate_seconds": 17.372440670034848,
+          "ratio": 1.314788761510422
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 23.11144533602055,
+          "candidate_seconds": 17.92734895006288,
+          "ratio": 1.2891725039992312
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 33.52203124202788,
+          "candidate_seconds": 29.537017846945673,
+          "ratio": 1.134915901657089
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 0,
+      "baseline": "q10_compact",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.2187896220853045,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 24.823753078933805,
+          "candidate_seconds": 19.8974027329823,
+          "ratio": 1.2475876078934411
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 35.464443843928166,
+          "candidate_seconds": 31.564344670972787,
+          "ratio": 1.1235602770661033
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 25.69333806389477,
+          "candidate_seconds": 21.714513021172024,
+          "ratio": 1.1832334457071787
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 24.171738576027565,
+          "candidate_seconds": 17.372440670034848,
+          "ratio": 1.3913841489020367
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 20.655263739055954,
+          "candidate_seconds": 17.92734895006288,
+          "ratio": 1.1521649852742732
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 36.41158135794103,
+          "candidate_seconds": 29.537017846945673,
+          "ratio": 1.2327439942183003
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 0,
+      "baseline": "stde_exact",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.6929404360814813,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 36.69092079496477,
+          "candidate_seconds": 19.8974027329823,
+          "ratio": 1.8440055361670509
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 50.05851589993108,
+          "candidate_seconds": 31.564344670972787,
+          "ratio": 1.5859196958385107
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 37.7620296869427,
+          "candidate_seconds": 21.714513021172024,
+          "ratio": 1.739022636617458
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 32.638482803013176,
+          "candidate_seconds": 17.372440670034848,
+          "ratio": 1.8787505695334001
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 30.414359987014905,
+          "candidate_seconds": 17.92734895006288,
+          "ratio": 1.696534165298781
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 42.89792952197604,
+          "candidate_seconds": 29.537017846945673,
+          "ratio": 1.4523446389971957
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 0,
+      "baseline": "torch_ad",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.9004111637882306,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 39.88695815287065,
+          "candidate_seconds": 19.8974027329823,
+          "ratio": 2.0046313927572714
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 58.21664518699981,
+          "candidate_seconds": 31.564344670972787,
+          "ratio": 1.84437997347485
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 38.97333144710865,
+          "candidate_seconds": 21.714513021172024,
+          "ratio": 1.7948056863678674
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 33.92049307189882,
+          "candidate_seconds": 17.372440670034848,
+          "ratio": 1.9525462032751195
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 35.14315642800648,
+          "candidate_seconds": 17.92734895006288,
+          "ratio": 1.9603097215265182
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 54.78021195100155,
+          "candidate_seconds": 29.537017846945673,
+          "ratio": 1.8546290703706296
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 0,
+      "baseline": "torchjet_collapsed",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.3733245237769998,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 27.250546824070625,
+          "candidate_seconds": 19.8974027329823,
+          "ratio": 1.3695529607439476
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 40.5560025110608,
+          "candidate_seconds": 31.564344670972787,
+          "ratio": 1.2848675597043813
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 28.865031099063344,
+          "candidate_seconds": 21.714513021172024,
+          "ratio": 1.3292967275351486
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 28.247001218027435,
+          "candidate_seconds": 17.372440670034848,
+          "ratio": 1.625966192922435
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 23.2690580409253,
+          "candidate_seconds": 17.92734895006288,
+          "ratio": 1.2979642503608257
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 40.1395338489674,
+          "candidate_seconds": 29.537017846945673,
+          "ratio": 1.358956887826714
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 1,
+      "baseline": "cudnn",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 30.131700519527115,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 676.358347882051,
+          "candidate_seconds": 20.728762393118814,
+          "ratio": 32.62897876173143
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 809.5030550900847,
+          "candidate_seconds": 31.206378204980865,
+          "ratio": 25.940307772110494
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 643.6508928580442,
+          "candidate_seconds": 22.159494932973757,
+          "ratio": 29.046279926726996
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 607.4448360260576,
+          "candidate_seconds": 17.012053982005455,
+          "ratio": 35.70673104309356
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 592.2015242240159,
+          "candidate_seconds": 17.994696386973374,
+          "ratio": 32.90978138718246
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 765.0703949219314,
+          "candidate_seconds": 29.5327410150785,
+          "ratio": 25.90583767796258
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 1,
+      "baseline": "cueq_polynomial",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.4901902452927107,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 29.36867109197192,
+          "candidate_seconds": 20.728762393118814,
+          "ratio": 1.416807744475919
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 45.821510534966365,
+          "candidate_seconds": 31.206378204980865,
+          "ratio": 1.468337986356032
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 31.934539040899836,
+          "candidate_seconds": 22.159494932973757,
+          "ratio": 1.441122152715702
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 32.97973283997271,
+          "candidate_seconds": 17.012053982005455,
+          "ratio": 1.9386096984442391
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 26.279479474993423,
+          "candidate_seconds": 17.994696386973374,
+          "ratio": 1.4604013821548847
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 38.102518902975135,
+          "candidate_seconds": 29.5327410150785,
+          "ratio": 1.2901788859869516
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 1,
+      "baseline": "physicsnemo",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.9276121302291747,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 49.65416425396688,
+          "candidate_seconds": 20.728762393118814,
+          "ratio": 2.39542348512086
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 49.24089938797988,
+          "candidate_seconds": 31.206378204980865,
+          "ratio": 1.5779113828762261
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 40.700266018975526,
+          "candidate_seconds": 22.159494932973757,
+          "ratio": 1.8366964654240716
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 34.29374431993347,
+          "candidate_seconds": 17.012053982005455,
+          "ratio": 2.015849723743398
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 43.708327931002714,
+          "candidate_seconds": 17.994696386973374,
+          "ratio": 2.4289561207958927
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 44.56988722609822,
+          "candidate_seconds": 29.5327410150785,
+          "ratio": 1.5091686614304516
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 2,
+      "baseline": "gl8_native_chunked",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.0966120508935597,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 21.565279160859063,
+          "candidate_seconds": 20.033666576840915,
+          "ratio": 1.0764519354529294
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 32.41369965206832,
+          "candidate_seconds": 30.54948052112013,
+          "ratio": 1.0610229404607838
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 22.27084917097818,
+          "candidate_seconds": 21.258739157114178,
+          "ratio": 1.0476091270692929
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 22.254159379052,
+          "candidate_seconds": 17.01016573701054,
+          "ratio": 1.3082858640601975
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 19.44074495905079,
+          "candidate_seconds": 18.28129815403372,
+          "ratio": 1.063422564155338
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 29.9183687469922,
+          "candidate_seconds": 28.63828694296535,
+          "ratio": 1.0446982672733254
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    },
+    {
+      "lane": 2,
+      "baseline": "q10_compact",
+      "candidate": "gl8_native",
+      "accepted_pairs": 6,
+      "paired_geometric_mean_ratio": 1.235310445952014,
+      "pairs": [
+        {
+          "seed": 862101,
+          "baseline_seconds": 25.560003380058333,
+          "candidate_seconds": 20.033666576840915,
+          "ratio": 1.275852489708794
+        },
+        {
+          "seed": 862102,
+          "baseline_seconds": 35.78183807095047,
+          "candidate_seconds": 30.54948052112013,
+          "ratio": 1.171274845286256
+        },
+        {
+          "seed": 862103,
+          "baseline_seconds": 25.379463077057153,
+          "candidate_seconds": 21.258739157114178,
+          "ratio": 1.1938367035546409
+        },
+        {
+          "seed": 862104,
+          "baseline_seconds": 24.118931805947796,
+          "candidate_seconds": 17.01016573701054,
+          "ratio": 1.4179128045454654
+        },
+        {
+          "seed": 862105,
+          "baseline_seconds": 20.59681936306879,
+          "candidate_seconds": 18.28129815403372,
+          "ratio": 1.1266606555795466
+        },
+        {
+          "seed": 862106,
+          "baseline_seconds": 35.70728731411509,
+          "candidate_seconds": 28.63828694296535,
+          "ratio": 1.2468374028526226
+        }
+      ],
+      "scope": "Setup plus optimization; matched seed and physical GPU; every attempt retained"
+    }
+  ],
+  "all_attempts_retained": true,
+  "Slurm_exit_is_scientific_pass": false
+}

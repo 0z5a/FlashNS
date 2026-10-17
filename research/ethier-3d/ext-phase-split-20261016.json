@@ -1,0 +1,255 @@
+{
+ "scope": "post hoc; not part of the registered analysis",
+ "per_arm_ms_per_evaluation": {
+  "c17_graph": {
+   "adam_ms_per_evaluation": [
+    2.387976986472495,
+    2.7027780354837887
+   ],
+   "lbfgs_ms_per_evaluation": [
+    8.418823754189004,
+    9.310388560336525
+   ]
+  },
+  "jet_collapsed_graph": {
+   "adam_ms_per_evaluation": [
+    3.5731437210342847,
+    3.657148664991837
+   ],
+   "lbfgs_ms_per_evaluation": [
+    9.043035971759876,
+    9.830364689979223
+   ]
+  },
+  "torch_ad_graph": {
+   "adam_ms_per_evaluation": [
+    8.320422897464596,
+    10.144905289984308
+   ],
+   "lbfgs_ms_per_evaluation": [
+    14.220832093271706,
+    15.503312356363146
+   ]
+  }
+ },
+ "paired_over_c17": {
+  "jet_collapsed_graph": {
+   "adam_ms_per_evaluation": {
+    "geometric_mean": 1.3714700330528444,
+    "range": [
+     1.3350212206136283,
+     1.500719337035306
+    ],
+    "pairs": 6
+   },
+   "lbfgs_ms_per_evaluation": {
+    "geometric_mean": 1.0659807018975505,
+    "range": [
+     1.0055911314602324,
+     1.1120907724215519
+    ],
+    "pairs": 6
+   }
+  },
+  "torch_ad_graph": {
+   "adam_ms_per_evaluation": {
+    "geometric_mean": 3.617753071822884,
+    "range": [
+     3.1087305744811893,
+     4.144106098601372
+    ],
+    "pairs": 6
+   },
+   "lbfgs_ms_per_evaluation": {
+    "geometric_mean": 1.6952247404891867,
+    "range": [
+     1.5274155317055524,
+     1.8411368744910797
+    ],
+    "pairs": 6
+   }
+  }
+ },
+ "solves": {
+  "c17_graph-642202": {
+   "arm": "c17_graph",
+   "seed": 642202,
+   "accepted": true,
+   "checks": 55,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.676469606522005,
+   "lbfgs_evaluations": 5100,
+   "lbfgs_ms_per_evaluation": 8.839534446072088
+  },
+  "c17_graph-642203": {
+   "arm": "c17_graph",
+   "seed": 642203,
+   "accepted": true,
+   "checks": 59,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.7027780354837887,
+   "lbfgs_evaluations": 5561,
+   "lbfgs_ms_per_evaluation": 9.310388560336525
+  },
+  "torch_ad_graph-642204": {
+   "arm": "torch_ad_graph",
+   "seed": 642204,
+   "accepted": true,
+   "checks": 49,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 10.144905289984308,
+   "lbfgs_evaluations": 4358,
+   "lbfgs_ms_per_evaluation": 15.503312356363146
+  },
+  "torch_ad_graph-642205": {
+   "arm": "torch_ad_graph",
+   "seed": 642205,
+   "accepted": true,
+   "checks": 43,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 10.069599286536686,
+   "lbfgs_evaluations": 3739,
+   "lbfgs_ms_per_evaluation": 15.500206853678801
+  },
+  "torch_ad_graph-642202": {
+   "arm": "torch_ad_graph",
+   "seed": 642202,
+   "accepted": true,
+   "checks": 55,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 8.320422897464596,
+   "lbfgs_evaluations": 5060,
+   "lbfgs_ms_per_evaluation": 14.428746966615673
+  },
+  "jet_collapsed_graph-642203": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642203,
+   "accepted": true,
+   "checks": 58,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.6107109814765863,
+   "lbfgs_evaluations": 5446,
+   "lbfgs_ms_per_evaluation": 9.362444166723211
+  },
+  "jet_collapsed_graph-642205": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642205,
+   "accepted": true,
+   "checks": 42,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.624331446015276,
+   "lbfgs_evaluations": 3612,
+   "lbfgs_ms_per_evaluation": 9.043035971759876
+  },
+  "c17_graph-642204": {
+   "arm": "c17_graph",
+   "seed": 642204,
+   "accepted": true,
+   "checks": 49,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.6914860985125415,
+   "lbfgs_evaluations": 4355,
+   "lbfgs_ms_per_evaluation": 8.837754623648998
+  },
+  "torch_ad_graph-642203": {
+   "arm": "torch_ad_graph",
+   "seed": 642203,
+   "accepted": true,
+   "checks": 58,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 8.903826735040639,
+   "lbfgs_evaluations": 5436,
+   "lbfgs_ms_per_evaluation": 14.220832093271706
+  },
+  "c17_graph-642205": {
+   "arm": "c17_graph",
+   "seed": 642205,
+   "accepted": true,
+   "checks": 43,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.6778728520148434,
+   "lbfgs_evaluations": 3702,
+   "lbfgs_ms_per_evaluation": 8.418823754189004
+  },
+  "jet_collapsed_graph-642204": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642204,
+   "accepted": true,
+   "checks": 45,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.657148664991837,
+   "lbfgs_evaluations": 3924,
+   "lbfgs_ms_per_evaluation": 9.055376499500857
+  },
+  "jet_collapsed_graph-642202": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642202,
+   "accepted": true,
+   "checks": 53,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.5731437210342847,
+   "lbfgs_evaluations": 4819,
+   "lbfgs_ms_per_evaluation": 9.830364689979223
+  },
+  "jet_collapsed_graph-642206": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642206,
+   "accepted": true,
+   "checks": 63,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.5836832399945706,
+   "lbfgs_evaluations": 5976,
+   "lbfgs_ms_per_evaluation": 9.245629691275104
+  },
+  "jet_collapsed_graph-642207": {
+   "arm": "jet_collapsed_graph",
+   "seed": 642207,
+   "accepted": true,
+   "checks": 49,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 3.6110170669853687,
+   "lbfgs_evaluations": 4401,
+   "lbfgs_ms_per_evaluation": 9.785541071356743
+  },
+  "c17_graph-642206": {
+   "arm": "c17_graph",
+   "seed": 642206,
+   "accepted": true,
+   "checks": 60,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.387976986472495,
+   "lbfgs_evaluations": 5624,
+   "lbfgs_ms_per_evaluation": 8.51743752259369
+  },
+  "torch_ad_graph-642207": {
+   "arm": "torch_ad_graph",
+   "seed": 642207,
+   "accepted": true,
+   "checks": 47,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 9.955090025498066,
+   "lbfgs_evaluations": 4161,
+   "lbfgs_ms_per_evaluation": 15.248885938467543
+  },
+  "torch_ad_graph-642206": {
+   "arm": "torch_ad_graph",
+   "seed": 642206,
+   "accepted": true,
+   "checks": 60,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 9.896029992960393,
+   "lbfgs_evaluations": 5592,
+   "lbfgs_ms_per_evaluation": 14.669485547405285
+  },
+  "c17_graph-642207": {
+   "arm": "c17_graph",
+   "seed": 642207,
+   "accepted": true,
+   "checks": 48,
+   "adam_evaluations": 2000,
+   "adam_ms_per_evaluation": 2.6709762574755587,
+   "lbfgs_evaluations": 4299,
+   "lbfgs_ms_per_evaluation": 8.910568486397622
+  }
+ }
+}

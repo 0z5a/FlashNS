@@ -78,4 +78,49 @@ The [tested source manifest](docs/tested-source-sha256.json) records the unchang
 
 ## Research manuscript
 
-The [October 13 research draft](research/manuscript/README.md) retains the accepted 2D H20 solves and adds the full C36 derivative qualifications, matched H100/CPU timing, and completed 3D training and physical acceptance failures. The new CPU analytic-transpose result is separate from GPU and complete-solver performance.
+The [October 14 research draft](research/manuscript/README.md) keeps the accepted 2D H20 solves as the main result. It adds the first accepted 3D solve comparison and reports the C36 extension (full derivative qualification, matched H100/CPU objective-gradient timing, and the failed 3D training and physical acceptance). It is restructured after an external review; no earlier measured value changed.
+
+**Accepted 3D solves ([research/ethier-3d](research/ethier-3d/README.md)).** On the transient Ethier–Steinman benchmark (FP64, H100), the 17-channel C17 contract passes all eight gates in 18 of 18 solves, together with the internal baselines. Paired setup-plus-optimization speedups are **3.602×** over the A24 full spatial-jet reference (range 3.353–4.284) and **6.957×** over a naive 35-monomial ablation (range 6.750–7.436), six seed pairs each. Both baselines are internal, and the network is small (4,740 parameters).
+
+**Representation versus execution on H100 ([details](research/2d-ablation/README.md)).** A pre-registered ablation separates GL8's derivative state from its execution on the same 2D objective (FP64, H100).
+- **Execution.** Native pointwise kernels make the same GL8 computation 1.53–1.83× faster at every size; the cuBLAS GEMM time is identical.
+- **Representation.** The GL8 state alone, against compiled Q10, is small and unresolved at the original 2,048 points (1.09, where the A/A control failed), and 1.63–1.66× from 16,384 points on.
+- **Explicit transpose.** Against generic autograd on the same state it gives no gain at 2,048 points and 1.31× from 16,384 points on.
+- **Whole solves ([details](research/2d-solve-scale/README.md)).** Each L-BFGS evaluation costs about 6–7 ms beyond the gradient at every measured size.
+  - At the original 2,048 points this cost absorbs the 1.71× faster gradient: optimization alone is 0.95×.
+  - A second pre-registered study ran 36 complete solves at 16,384 and 65,536 points, all accepted. Native GL8 shortens optimization by **1.48×** and **1.88×** over compiled Q10, and the registered rule finds a solve-level gain for every pair at both sizes.
+  - The H100 solve-level gain is therefore a matter of problem size.
+- **The H20 campaign on H100 ([details](research/2d-h100-retest/README.md)).** All 78 solves pass. GL8 still beats every baseline, but the ratios compress: Q10 1.66 → 1.22, collapsed Taylor 1.73 → 1.37, ED/torch AD/STDE 2.31–3.37 → 1.29–1.90. The cause is the same fixed L-BFGS cost per evaluation.
+- **Precision ([details](research/2d-precision/README.md)).** At these 1–2% gates, FP32 training passes the unchanged FP64 acceptance (24/24 solves). At 65,536 points it shortens optimization by 1.53× (Q10) and 1.36× (GL8), and GL8 stays 1.67× faster than Q10. TF32 training fails every solve (0/24).
+
+**External derivative baselines in 3D ([details](research/ethier-3d/README.md#external-derivative-baselines-pre-registered-2026-10-16)).** On Ethier–Steinman, all 18 solves are accepted. Against nested PyTorch autograd and the public collapsed Taylor-mode `jet` package, C17's paired ratios are 1.90× and 1.08× (range 0.98–1.19). No arm was compiled. A fixed L-BFGS cost per evaluation compresses a 1.37× faster gradient phase. The C36 external-baseline item stays open.
+
+**Compiled 3D variants (October 17, [details](research/ethier-3d/README.md#result-of-the-compiled-batch-2026-10-17)).** C17's compiled variant failed CUDA Graph capture, so it ran graph-only. Against compiled nested autograd, C17 is 1.59× faster. Against compiled collapsed Taylor mode there is no decided difference in whole solves (1.05×), and that baseline is faster in optimization alone (C17 takes 1/0.81 ≈ 1.23× as long). Its compiled gradient phase is about 2.6× faster than eager C17, which has no native execution layer.
+
+**Compiled C17, second attempt ([details](research/ethier-3d/README.md#result-of-attempt-2-2026-10-17)).** A repaired compile route lets every method run compiled. In whole solves C17 is 1.68× faster than nested AD and 1.13× faster than collapsed Taylor mode; both are registered "C17 faster". In optimization alone the jet is faster: C17 takes 1/0.96 ≈ 1.05× as long. C17's lead therefore rests on cheaper setup.
+
+**C36 development run ([details](research/c36-potential-proof/README.md#development-run-with-a-larger-l-bfgs-budget-v2)).** The C36 problem has the same data, model and gates as before; only the L-BFGS budget grows 40×. All four runs (two engines × two seeds) pass the training gate. In the two fully observed final checkpoints (analytic engine), every physical gate passes except stratified corrected pressure (about 2.5× over its limit) and, for one seed, the trajectory endpoint (7% over). Under its pre-registered rule the outcome is mechanically branch (b). The analytic engine reaches each loss threshold 1.30–1.33× sooner than parameter AD. These are development seeds, so no formal time-to-accuracy claim is made.
+
+**C36 checkpoints on every data plane, and a smoothness continuation ([details](research/c36-potential-proof/README.md#all-plane-observations-along-the-training-trajectory)).**
+- **Observations.** 72 observations cover every saved development checkpoint and 26 continuation checkpoints. Each is checked on all data planes and re-read by the independent reader (8,424 checks, all pass). No checkpoint passes physical acceptance.
+- **Errors still falling.** The physical errors fall with the loss and are still falling at the end of the budget. The remaining failure, stratified pressure inside the moving box, falls more slowly than the loss. So branch (b)'s "errors stop falling" does not hold either.
+- **Smoothness continuation.** A continuation that starts with a slower, smoother box motion (transition width w = 1, then 3/4, then the original 1/2) changes where training meets the loss gate:
+  - One schedule reaches the gate with 0.6–0.7× the baseline's stratified pressure error.
+  - Another reaches loss thresholds in 8–36% fewer evaluations.
+  - Neither changes which acceptance test fails. Under the registered rule, the continuation does not help: the slower schedule is harmful and the other fits no branch cleanly.
+
+**More optimizer budget does not close the gap ([details](research/c36-potential-proof/README.md#budget-study-v5-pre-registered-outcome-e5)).** The same recipe with six times the L-BFGS budget (4,800 calls, both engines, two seeds) stalls soon after call 800. Over the extra 4,000 calls the loss falls 3–12%, and stratified pressure changes by under 4%, ending at 2.2–3.0× its limit. The registered outcome is E5: no pass, and the errors stopped falling. The remaining gap therefore needs a changed problem definition, not more budget.
+- An earlier resumed design (v4) was cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls. It is recorded and archived.
+
+### Naming
+
+| Name | Where | Meaning |
+| --- | --- | --- |
+| Q10 / Q20 | paper, code | Complete third-order Taylor state in 2D (10 channels) / 3D (20 channels) |
+| GL8 | paper | 2D consumer state: value, gradient, packed Hessian, gradient of the Laplacian (8 channels) |
+| C36 | paper, `research/c36-potential-proof` | 3D transient curl-potential consumer state (36 channels) |
+| C17 / A24 | `research/c36-potential-proof/src` | Earlier 3D velocity-model contract (17 channels) and its full-spatial-third-order reference (24 channels) |
+| B1 | `docs/cuda-*` | Library GEMM plus separate native jet forward/VJP (the library-GEMM jet baseline) |
+| U / F | `docs/cuda-*` | Same CUTLASS main loop with a separate VJP (U) or fused dgrad/VJP (F) |
+| B1+ / F+ | `docs/cuda-h100-results.md` | B1 / F with a finite Torch/cuBLASLt GEMM plan search |
+| G1 / G2 | `docs/validation.md` | SM120 first-layer coordinate-gradient kernel (G1) and its fused VJP/wgrad variant (G2) |

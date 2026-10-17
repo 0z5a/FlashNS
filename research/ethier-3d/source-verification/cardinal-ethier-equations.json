@@ -1,0 +1,3 @@
+[
+  "\\begin{aligned} u &= -a\\left[ e^{ax}\\sin(ay+dz) +e^{az}\\cos(ax+dy) \\right]e^{-d^2t}, \\\\ v &= -a\\left[ e^{ay}\\sin(az+dx) +e^{ax}\\cos(ay+dz) \\right]e^{-d^2t}, \\\\ w &= -a\\left[ e^{az}\\sin(ax+dy) +e^{ay}\\cos(az+dx) \\right]e^{-d^2t}, \\\\ p &= -\\frac{a^2}{2} \\left[ e^{2ax}+e^{2ay}+e^{2az} +2\\sin(ax+dy)\\cos(az+dx)e^{a(y+z)} \\right. \\\\ &\\qquad\\left. +2\\sin(ay+dz)\\cos(ax+dy)e^{a(z+x)} +2\\sin(az+dx)\\cos(ay+dz)e^{a(x+y)} \\right]e^{-2d^2t}, \\end{aligned}"
+]

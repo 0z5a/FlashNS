@@ -1,0 +1,47 @@
+{
+ "version": "FlashNS-2D-H100-retest-H20-protocol-20261016-v1",
+ "scope": "H100 run of the original H20 two-dimensional Kovasznay solve campaign: the same 460 source, adapter and snapshot files (H20-expectations.json), frozen data and six formal initialization byte strings (frozen-H20-inputs.json), optimizer budget and acceptance; GL8 native is the candidate in every lane",
+ "prepared": "2026-10-13; that submission was cancelled while pending and never ran. This attempt changes only the Slurm job name in the batch configuration; plan, drivers, case wrapper, audit, inputs and runtime are unchanged and hash-checked at start",
+ "batch": {
+  "lanes": {
+   "0": {
+    "group": "papers",
+    "qualification": 9,
+    "execution": 36
+   },
+   "1": {
+    "group": "nvidia",
+    "qualification": 8,
+    "execution": 24
+   },
+   "2": {
+    "group": "representation-six-seed-solves",
+    "qualification": 3,
+    "execution": 18
+   },
+   "3": {
+    "group": "memory-and-replay",
+    "qualification": 3,
+    "execution": 30
+   }
+  },
+  "selection": "per backend, the faster of its GPU-qualified default/compiled variants (qualification at development seed 361902) runs the solves",
+  "execution": "one fresh process per case, no retries, per-case timeouts from the plan; science deadline 9,000 s after start; audit and archive afterwards",
+  "node": "one ACC node, four H100 lanes; matched seed and physical GPU for every pair"
+ },
+ "primary_analysis": "audit_h20.py, unchanged: NumPy recheck of qualification gradients (atol 2e-12, rtol 2e-11), complete CPU scalar-coordinate-AD recheck of every accepted checkpoint, and per lane the paired geometric mean of baseline/gl8_native setup-plus-optimization time over jointly accepted seeds",
+ "supplementary_analysis": {
+  "reader": "read_h20_h100_supplement.py, registered before the run and applied to the batch outputs afterwards",
+  "statistics": [
+   "optimization-only and per-evaluation paired geometric means for the same pairs",
+   "Adam/L-BFGS phase cost per evaluation for every solve",
+   "compiler-cache state: earlier cases of the same backend and compile mode on the lane"
+  ]
+ },
+ "expectations": {
+  "note": "expectations, not gates; no numeric predictions; H20 ratios are reported beside the H100 ones and never pooled",
+  "optimization": "At 2,048 points the H100 solve-scale study found a fixed L-BFGS cost of 5.9-7.1 ms per evaluation beyond the gradient. GL8's optimization-time advantage is therefore expected to compress toward 1 against baselines whose full gradient costs well under that, and to persist against baselines whose gradient costs several milliseconds or more.",
+  "setup": "Setup-plus-optimization ratios also contain compile and setup time, which depends on compiler-cache state and therefore on queue order"
+ },
+ "not_claimed": "no new method, no change to the H20 results, no 3D or C36 statement"
+}

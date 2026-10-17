@@ -1,0 +1,158 @@
+{
+ "protocol_version": "C36-zero-gate-folding-GPU-20261016-v1",
+ "protocol_sha256": "e46472d4413fd4362661930aeb5120e365e1602cca28c1420498c3e81aa77990",
+ "self_test": false,
+ "prerequisites_passed": true,
+ "runs": {
+  "folded": {
+   "driver": {
+    "science_ok": true,
+    "audit_ok": true
+   },
+   "runner_state": "COMPLETE",
+   "audit_state": "PASS",
+   "report_sha256": "9ee62b066515e0ee20aa02871523766f3cbf768e0d4c1d99c5b2e26ee5f7ead7",
+   "zero_gate_folding_flag": true,
+   "gpu": "NVIDIA H100",
+   "torch": "2.4.0a0+gite3b9b71",
+   "cuda": "11.8",
+   "setup_seconds": {
+    "eager": 26.957639445899986,
+    "dense_AD": 26.796636737999506,
+    "eager_folding": 0.008395758923143148,
+    "candidate": 26.647109458921477,
+    "baseline": 26.655832862947136,
+    "candidate_folding": 0.002054629963822663,
+    "baseline_folding": 0.001732153003104031
+   },
+   "folding_family_counts": {
+    "interior": {
+     "full": 4096,
+     "active": 2933,
+     "folded": 1163,
+     "original_W": 1.0000000000000004
+    },
+    "initial": {
+     "full": 512,
+     "active": 0,
+     "folded": 512,
+     "original_W": 1.0
+    },
+    "boundary": {
+     "full": 384,
+     "active": 0,
+     "folded": 384,
+     "original_W": 1.0
+    },
+    "gauge": {
+     "full": 7,
+     "active": 0,
+     "folded": 7,
+     "original_W": 0.9999999999999998
+    }
+   },
+   "ratio": 1.4000466599614751,
+   "interval": [
+    1.399911057615659,
+    1.4001781190358458
+   ],
+   "candidate_mean_seconds": 0.09937700649121288,
+   "baseline_mean_seconds": 0.13913244430438715,
+   "maximum_error_over_original_budget": 2.957796694871381e-06,
+   "paired_windows_checked": 20,
+   "gradient_and_objective_comparisons": 78,
+   "zero_gate_folding": {
+    "state": "PASS",
+    "reader": "NumPy only",
+    "saved_arrays": 15,
+    "counts": {
+     "interior": {
+      "full": 4096,
+      "active": 2933,
+      "folded": 1163,
+      "original_W": 1.0000000000000004
+     },
+     "initial": {
+      "full": 512,
+      "active": 0,
+      "folded": 512,
+      "original_W": 1.0
+     },
+     "boundary": {
+      "full": 384,
+      "active": 0,
+      "folded": 384,
+      "original_W": 1.0
+     },
+     "gauge": {
+      "full": 7,
+      "active": 0,
+      "folded": 7,
+      "original_W": 0.9999999999999998
+     }
+    },
+    "constant_numerators": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "normalization_unchanged": true,
+    "every_original_row_accounted_for": true,
+    "zero_threshold": 0.0
+   },
+   "usable": true
+  },
+  "unfolded": {
+   "driver": {
+    "science_ok": true,
+    "audit_ok": true
+   },
+   "runner_state": "COMPLETE",
+   "audit_state": "PASS",
+   "report_sha256": "2be70fca8bc3205ccc01fecc669e01ad22c35ce3fdc6d71e3eab479b02118b2f",
+   "zero_gate_folding_flag": false,
+   "gpu": "NVIDIA H100",
+   "torch": "2.4.0a0+gite3b9b71",
+   "cuda": "11.8",
+   "setup_seconds": {
+    "eager": 26.748874319018796,
+    "dense_AD": 26.582242355914786,
+    "candidate": 26.65603224898223,
+    "baseline": 26.622849561972544
+   },
+   "ratio": 1.3253025241061724,
+   "interval": [
+    1.3249192078318808,
+    1.325677838691919
+   ],
+   "candidate_mean_seconds": 0.16659701850866368,
+   "baseline_mean_seconds": 0.22079146447054776,
+   "maximum_error_over_original_budget": 2.351859177519258e-06,
+   "paired_windows_checked": 20,
+   "gradient_and_objective_comparisons": 78,
+   "usable": true
+  }
+ },
+ "primary": {
+  "ratio": 1.4000466599614751,
+  "interval": [
+   1.399911057615659,
+   1.4001781190358458
+  ],
+  "classification": "analytic advantage under folding"
+ },
+ "replication": {
+  "unfolded_ratio": 1.3253025241061724,
+  "interval": [
+   1.3249192078318808,
+   1.325677838691919
+  ],
+  "unfolded_20261013": 1.3239623727308008
+ },
+ "folding_factor": {
+  "analytic_candidate": 1.6764141363364022,
+  "parameter_AD_control": 1.5869157303634442,
+  "note": "descriptive: window means of sequential processes on the same GPU"
+ }
+}

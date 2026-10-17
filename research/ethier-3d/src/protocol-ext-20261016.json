@@ -1,0 +1,232 @@
+{
+ "state": "FROZEN_FORMAL_E2E_PROTOCOL",
+ "scientific_object": "Ethier--Steinman transient 3D zero-force local-domain benchmark",
+ "physical_dimension": 3,
+ "transient": true,
+ "parameters": {
+  "a": 0.5,
+  "d": 1.0,
+  "nu": 1.0
+ },
+ "domain": {
+  "space": [
+   -0.5,
+   0.5
+  ],
+  "time": [
+   0,
+   0.25
+  ]
+ },
+ "network": [
+  4,
+  64,
+  64,
+  4
+ ],
+ "parameters_count": 4740,
+ "activation": "tanh",
+ "dtype": "float64",
+ "diffusion_axes": [
+  0,
+  1,
+  2
+ ],
+ "coordinate_order": [
+  "x",
+  "y",
+  "z",
+  "t"
+ ],
+ "pressure_gauge": "p(x,t)-p(0,0,0,t); network pressure target0 at every gauge time",
+ "force_mode": "ZeroForce",
+ "lambda_g": 0.1,
+ "boundary_weight": 10.0,
+ "initial_weight": 10.0,
+ "gauge_weight": 1.0,
+ "interior_count": 512,
+ "boundary_count": 384,
+ "initial_count": 256,
+ "gauge_count": 64,
+ "validation_interior": 512,
+ "validation_boundary": 384,
+ "validation_initial": 256,
+ "validation_gauge": 64,
+ "scales": {
+  "U": 0.8233962619623054,
+  "L": 1.0,
+  "T": 1.0,
+  "P": 0.6779814042134975,
+  "R": 2.324773928138108
+ },
+ "acceptance": {
+  "normalized_momentum_rms": 0.01,
+  "normalized_divergence_rms": 0.01,
+  "normalized_spatial_residual_gradient_rms": 0.02,
+  "normalized_boundary_velocity_rms": 0.01,
+  "normalized_initial_velocity_rms": 0.01,
+  "normalized_pressure_gauge_rms": 0.01,
+  "velocity_relative_l2": 0.02,
+  "pressure_relative_l2": 0.04
+ },
+ "optimizer": {
+  "adam_steps": 2000,
+  "adam_lr": 0.001,
+  "lbfgs_blocks": 400,
+  "lbfgs_max_iter_per_block": 20,
+  "lbfgs_max_eval_per_block": 25,
+  "lbfgs_history": 50,
+  "lbfgs_lr": 1.0,
+  "line_search": "strong_wolfe",
+  "tolerance_grad": 1e-10,
+  "tolerance_change": 1e-12
+ },
+ "validation_every": {
+  "adam_steps": 200,
+  "lbfgs_blocks": 5
+ },
+ "accepted_step0_not_training_success": true,
+ "initialization_seeds": [
+  642202,
+  642203,
+  642204,
+  642205,
+  642206,
+  642207
+ ],
+ "initial_parameter_sha256": {
+  "642202": "67ca1a9184446f3121996af82e38eba0f5cf0d7848b8ce8b24a62c27b9bbf05e",
+  "642203": "e07013cd6570f3f23f7b5c8461b8a8a68e5beb5df9c2ca42e65f799eb97ab81c",
+  "642204": "c48ffa1d174223024d5baec97572fed2287850c8eccd801b73c5f7f2f2e1815e",
+  "642205": "1f837bbd97835730e4eeb1cd93f7e1529278d3ed9f4f59cb7ca1e3b95f845761",
+  "642206": "7ad524e6bf6fa912f273555ef86e3c0c275150a63dcb2a68a3b7d0738d3fbf34",
+  "642207": "3be1e8aa9e7429c2357bb1c656edff0d914e45d72b0e35174596b41e5a63c11e"
+ },
+ "data_file_sha256": "42904eadb3dfdd767a7a75b3ad2d91f673c8e8292e4ddf659f939a830bc59666",
+ "data_array_sha256": {
+  "interior": "4d3e0e41cb97e64661a0cc876879d3fde4d11aae00ea5febd7a55d6332110ea7",
+  "interior_target": "7290e682e512721b0a9a859863782c6ddf0b4abf79200efb0a4a07cca01e7994",
+  "boundary": "fdde6288e5815e5720986df859685994e26b0ed0a52a48a20a4003eb9460ad6c",
+  "boundary_target": "bcbf5407e262f1f80289e31fc812650e4b097d4c08a4f2bfd0c3cc1ba89b0bb7",
+  "initial": "9429041b74d931c27b02434ba4705034b4f4249223c46a41aaea8f29a12a644b",
+  "initial_target": "3fd9cbc1a85701f9e5c553311b9253dea022b7c2be059312df95e6cf47809ce2",
+  "gauge": "45de813d4abfad9f22261dfac017b2cca3506a6ae896fbd1faf7f08b73206416",
+  "gauge_target": "1d9d8ca3c9820b71ebd71347e161aabdb6bdbe19987cfc178c67962b239c2c10",
+  "validation": "5e0d10804bae17f1259c0f0d7fadef596221bccebde1c467462d54a0f80b0306",
+  "validation_target": "92d24fce8f788d9d7f0ba2717f738cb0e75768751da5f5ad6216f608bfc603f7",
+  "validation_boundary": "d6c974e52590ce6d38132ec6497b8a66eec3d33caf088bf3bdb4ca834fc54052",
+  "validation_boundary_target": "e4aa7ca1f2ae8ccc63dbf0af2176bf22643b2c239346b0745531c4d60d9e63e1",
+  "validation_initial": "5695153549c3e85e820ec2e6691c63a89b64bb3ba2bc8da63aa96609c1fa463a",
+  "validation_initial_target": "b365c4f589c654d3dabf44158a5546207d44b9bf5281008a1523531689f58360",
+  "validation_gauge": "45de813d4abfad9f22261dfac017b2cca3506a6ae896fbd1faf7f08b73206416",
+  "validation_gauge_target": "1d9d8ca3c9820b71ebd71347e161aabdb6bdbe19987cfc178c67962b239c2c10",
+  "642201_W0": "318c01ebd5c4646bd147e70fabd3d9003cf732dcdb5a884acd715110e63e7cab",
+  "642201_b0": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642201_W1": "388cdf97c51feb192aff48595b177c84fb54706114c7e9baa218b95f0627c71a",
+  "642201_b1": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642201_W2": "81c3b6e04a83e6ab8189bb75f424dedc8174fcd1068084fe9c2ee82c4fd8f1f6",
+  "642201_b2": "73aea05f65a570f70ebb2dc9eab99e50cdaab1b0d4573d4bb67b89654edc7b82",
+  "642202_W0": "ce9d90bdbf351a69e2326ee83121117544e2596ae653154db39ccb9c62c63c12",
+  "642202_b0": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642202_W1": "5dc136d823587dc275024d7a759ad483f077e0a37b46d62cf86ae79a6295b2f5",
+  "642202_b1": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642202_W2": "011daf1845a817e94638e5e9d0722a802341a14d63f8e50998c5be331a752be2",
+  "642202_b2": "73aea05f65a570f70ebb2dc9eab99e50cdaab1b0d4573d4bb67b89654edc7b82",
+  "642203_W0": "efa472ab09fb392bf9ed7cff9892cec9cc0d5508465fa588c7bccb80f964f127",
+  "642203_b0": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642203_W1": "38647d664500d21cce8031c45ae5e3faa9de02b3bf7565eea74417ee3027335e",
+  "642203_b1": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642203_W2": "999de031c638fcdf83f0763e8518f98dd9edb3e6cf2b833596a305825a3fb5d8",
+  "642203_b2": "73aea05f65a570f70ebb2dc9eab99e50cdaab1b0d4573d4bb67b89654edc7b82",
+  "642204_W0": "367136faae4b399c7155dc1d66fbc9d6886e5f997a1c539e9d44aab08e0df626",
+  "642204_b0": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642204_W1": "894e608224519295e7ae71f7591187339443dcc9d6245e7de608eef11ac0edae",
+  "642204_b1": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642204_W2": "92659d2b922fc29ef27f298c588b3c7222904204f5cd2e33c28a86488bf13eb7",
+  "642204_b2": "73aea05f65a570f70ebb2dc9eab99e50cdaab1b0d4573d4bb67b89654edc7b82",
+  "642205_W0": "8cd24417ca66035e54f03e881fb81dcce77b7aab8f20d30bceb70fe1cac8a90d",
+  "642205_b0": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642205_W1": "959ebf1b96240b54fa27fdf1d0cf16242e54efc91bb0549fdc39142cb5bb4096",
+  "642205_b1": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642205_W2": "e8a40c872169eb98db223a4e00ad04da1d2c5cbc2db024f6c0632cf7f4c77227",
+  "642205_b2": "73aea05f65a570f70ebb2dc9eab99e50cdaab1b0d4573d4bb67b89654edc7b82",
+  "642206_W0": "19e6a57000768f12e5596dde8d9285c5d055dd3e9ae00078d5adb90a0f554c8c",
+  "642206_b0": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642206_W1": "8233b395ebb6d76259ee29f7ac39993e0b72778166c8879fb14c5bc1e782a6d6",
+  "642206_b1": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642206_W2": "363e2c00a42b68dbac156349651fcbef7657f327e5fc06f2cc4604d1f634972a",
+  "642206_b2": "73aea05f65a570f70ebb2dc9eab99e50cdaab1b0d4573d4bb67b89654edc7b82",
+  "642207_W0": "88abb6275a36a98192bf15ba0bfccbe9b8b56cf7f3b34aed511e3b188ff04d6f",
+  "642207_b0": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642207_W1": "cc001ed8e16ca42f45e6a719ee9d347337bb323923ea823f929618fbabcf38d2",
+  "642207_b1": "426d138a66ab0211805d6a9528a632170e4f5c9b9be74895a1de04b893b8409e",
+  "642207_W2": "ee14d005f86ee04f3c8d56b9d61f2c554f4fc5f328f0d941dc7df70d2e8499f0",
+  "642207_b2": "73aea05f65a570f70ebb2dc9eab99e50cdaab1b0d4573d4bb67b89654edc7b82"
+ },
+ "arms": [
+  "c17_graph",
+  "torch_ad_graph",
+  "jet_collapsed_graph"
+ ],
+ "independent_acceptance": "scalar-coordinate Torch AD with fixed validation data; full final parameter/data tensors offbox for independent CPU replay",
+ "counterpart_reference": "A24 full spatial cubic + dt + grad dt, complete autograd parameter reverse (qualification reference only; not a timed arm here)",
+ "timing_scope": [
+  "qualification",
+  "setup/capture",
+  "optimization_including_stop_checks",
+  "final_independent_acceptance",
+  "total_worker_process"
+ ],
+ "source_specific_openai_fixture": false,
+ "full_openai_construction": false,
+ "arxiv_contribution_state": "generic3D training only if actually accepted; original n0/n1 stillpending",
+ "supersedes_protocol_sha256": "24e2bb79772058c13e317130305c6061b8480e97d2f96b7fcc4e14fe049a9062",
+ "protocol_version": "ethier-external-baselines-20261016-v1",
+ "arm_roles": {
+  "c17_graph": "FlashNS-3D candidate (rerun in this batch and runtime)",
+  "torch_ad_graph": "external baseline: nested scalar-coordinate PyTorch autograd (ordinary PINN implementation; same pattern as the 2D torch_ad adapter)",
+  "jet_collapsed_graph": "external baseline: Dangel et al. public `jet` (collapsed Taylor mode, pinned snapshot) for spatial first derivatives and Laplacian, first-order jet for d/dt; residual gradient and parameter gradient by torch autograd (as the 2D adapter)"
+ },
+ "external_baseline_scope": "Derivative-method baselines on the same PINN objective: nested PyTorch autograd and collapsed Taylor mode (jet). Numerical CFD solvers (the earlier CaNS-GPU/NekRS plan) are a different comparison and are not run here.",
+ "only_algorithm_change_from_v2": {
+  "key": "optimizer.lbfgs_blocks",
+  "old": 100,
+  "new": 400
+ },
+ "initializer": "numpy default_rng(seed).normal(size=(out,in))*sqrt(2/(in+out)), zero bias; seeds 642201-642203 regenerate bit-identically to data-v1",
+ "development_seed_excluded": {
+  "seed": 642201,
+  "reason": "observed in H20 r2 (protocol v2) and in a CPU development diagnostic under protocol v3 (C17 accepted at L-BFGS block 195, pressure relative L2 0.03996); never a formal seed"
+ },
+ "data_file": "data-v2.npz",
+ "data_v1_arrays_unchanged": true,
+ "hardware": "NVIDIA H100 (64 GB), one exclusive four-GPU node",
+ "execution_plan": {
+  "lanes": 4,
+  "lane_assignment": "seeds in protocol order on lanes 0,1,2,3,0,1; all three arms of one seed run on the same GPU",
+  "arm_order": "six permutations of the three arms, one per seed, so each arm occupies each position twice",
+  "process": "one fresh process per (seed, arm); no retries; nonconvergence and runtime failures retained"
+ },
+ "paired_statistic": "per-seed baseline/C17 setup-plus-optimization ratio for jointly accepted pairs, reported with all outcomes; geometric mean over accepted pairs",
+ "timing_caveat": "two lanes run concurrently on one node that may host other owners on its remaining GPUs; ratios are within-lane pairs",
+ "derived_from": "protocol-v4.json (same data, six formal seeds, initial parameter bytes, objective, optimizer program, stop checks and acceptance)",
+ "execution_mode": "every arm replays its complete loss/gradient as one CUDA Graph, as all v4 arms did; no compiled variant is attempted for any arm",
+ "runtime": "Torch 2.12.1+cu130 runtime shared with the 2D studies (read-only), FP64, TF32 disabled; deterministic algorithms requested with warn_only=True for every arm",
+ "lanes": {
+  "count": 4,
+  "seed_to_lane": "seeds in protocol order go to lanes 0,1,2,3,0,1",
+  "arm_order": "the six permutations of the three arms, one per seed in protocol order; the three arms of a seed run on the same GPU"
+ },
+ "qualification": "unchanged from v4: three small-data (7 points) updates against independent scalar-coordinate AD and three full-data CUDA Graph replays against the A24 reference, each within 2e-12 + 2e-11|reference|; CPU check before submission",
+ "statistics": {
+  "primary": "unchanged v4 statistic: per external arm, the geometric mean over jointly accepted seeds of baseline/C17 setup-plus-optimization time",
+  "supplementary": "optimization-only and per-evaluation (optimization time over closure evaluations) paired geometric means, evaluation counts and accepted counts per arm"
+ },
+ "expectations": {
+  "note": "expectations, not gates",
+  "per_evaluation": "both external arms are expected to cost more per complete evaluation than C17, because they build nested autograd graphs or general Taylor jets for derivatives the consumer does not need; no numeric prediction",
+  "acceptance": "pressure relative L2 was the binding gate in v4 (0.0397 against 0.04); some external solves may fail acceptance, and ratios use jointly accepted pairs only"
+ },
+ "scope_note": "The review asked for an external baseline on the 3D C36 objective. C36 has no accepted solve, so this study uses the accepted Ethier--Steinman benchmark instead; the C36 item stays open",
+ "deadline": "cases start only while at least 30 minutes remain before the driver deadline (allocation end minus 15 minutes); a running case is stopped at that deadline and kept as a runtime failure"
+}

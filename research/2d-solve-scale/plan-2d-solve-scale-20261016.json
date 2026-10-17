@@ -1,0 +1,299 @@
+{
+ "version": "FlashNS-2D-solve-scale-20261016-v1-plan",
+ "protocol": "protocol-2d-solve-scale-20261016.json",
+ "protocol_sha256": "9f7a605fafe86d97797b8201ba627397dccf0cf8ce02c4f48342a7ee7237b8a9",
+ "counts": {
+  "16384": 18,
+  "65536": 18
+ },
+ "tasks": [
+  {
+   "id": "B-n16384-s862106",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 16384,
+   "seed": 862106,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-s862105",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 16384,
+   "seed": 862105,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-s862104",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 16384,
+   "seed": 862104,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-s862101",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 16384,
+   "seed": 862101,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-s862104",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 16384,
+   "seed": 862104,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-s862101",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 16384,
+   "seed": 862101,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-s862105",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 16384,
+   "seed": 862105,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-s862106",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 16384,
+   "seed": 862106,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-s862104",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 16384,
+   "seed": 862104,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-s862102",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 16384,
+   "seed": 862102,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-s862106",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 16384,
+   "seed": 862106,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-s862102",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 16384,
+   "seed": 862102,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-s862102",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 16384,
+   "seed": 862102,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-s862105",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 16384,
+   "seed": 862105,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-s862103",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 16384,
+   "seed": 862103,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-s862103",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 16384,
+   "seed": 862103,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-s862101",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 16384,
+   "seed": 862101,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-s862103",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 16384,
+   "seed": 862103,
+   "tier": 0
+  },
+  {
+   "id": "A-n65536-s862104",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 65536,
+   "seed": 862104,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-s862101",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 65536,
+   "seed": 862101,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-s862102",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 65536,
+   "seed": 862102,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-s862103",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 65536,
+   "seed": 862103,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-s862103",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 65536,
+   "seed": 862103,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-s862106",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 65536,
+   "seed": 862106,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-s862101",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 65536,
+   "seed": 862101,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-s862105",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 65536,
+   "seed": 862105,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-s862102",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 65536,
+   "seed": 862102,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-s862101",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 65536,
+   "seed": 862101,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-s862103",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 65536,
+   "seed": 862103,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-s862104",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 65536,
+   "seed": 862104,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-s862102",
+   "cell": "B",
+   "backend": "gl8_compact_output",
+   "interior": 65536,
+   "seed": 862102,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-s862104",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 65536,
+   "seed": 862104,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-s862105",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 65536,
+   "seed": 862105,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-s862105",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 65536,
+   "seed": 862105,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-s862106",
+   "cell": "C",
+   "backend": "gl8_native",
+   "interior": 65536,
+   "seed": 862106,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-s862106",
+   "cell": "A",
+   "backend": "q10_compact",
+   "interior": 65536,
+   "seed": 862106,
+   "tier": 1
+  }
+ ]
+}

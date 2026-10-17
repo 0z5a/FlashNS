@@ -1,0 +1,224 @@
+{
+ "version": "C36-potential-20261015-v4-combination-development",
+ "scope": "Development study of a combination: the smoothness continuation C2 followed by a long L-BFGS budget on the original problem (w = 1/2). Both the C2 runs and the paired v2 analytic baseline runs resume from their final checkpoints (equal prior budgets: 4,000 Adam updates and 800 L-BFGS calls) and receive the same 4,000 additional L-BFGS calls with a fresh L-BFGS history. Primary question: does the additional budget reach physical acceptance? Secondary question: does the C2 start reach it sooner than the baseline start? The secondary comparison is underpowered (two seeds; final stratified pressures of rounding-equivalent engines already differ by up to 32%), so differences below 32% are not interpreted. Seeds 361901/361902 were observed before; this is not a formal time-to-accuracy study.",
+ "extends_protocol_sha256": {
+  "v2 development": "00d5db987788d2dfbca6f12ac6835a84a743fd447f93cadcee15845c95bc1aa7",
+  "v3 smoothness development": "ce2af6f91c7237161783a3133d1a07e5ea3fc012aabc4969e1753f685d2dff5b"
+ },
+ "topology": [
+  4,
+  128,
+  128,
+  128,
+  128,
+  4
+ ],
+ "seeds": [
+  361901,
+  361902
+ ],
+ "dtype": "float64",
+ "TF32": false,
+ "potential_scale": 0.01,
+ "pressure_scale": 0.1,
+ "family_counts": [
+  4096,
+  512,
+  384,
+  7
+ ],
+ "parameter_count": 50692,
+ "explicit_chunk": 128,
+ "taylor_ad_chunk": 128,
+ "coordinate_ad_chunk": 256,
+ "geometry_chunk": 256,
+ "atol": 1e-11,
+ "rtol": 1e-09,
+ "source_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
+ "calibration_sha256": "5aea51c47816fa006ab0124874ea12d1111fd3a436d70f9d05f29bc242316063",
+ "physical": {
+  "holdout_seed": 794701,
+  "state_observer": "native coordinate AD of the trained curl-potential network",
+  "independent_consumer": "NumPy physical equations",
+  "stratified_points": 4096,
+  "uniform_volume_points": 4096,
+  "time_slices": [
+   0,
+   0.25,
+   0.375,
+   0.5,
+   0.625,
+   0.75,
+   1
+  ],
+  "time_slice_points": 256,
+  "initial_points": 512,
+  "boundary_points": 384,
+  "particles": 27,
+  "gated_datasets": [
+   "stratified",
+   "uniform"
+  ],
+  "velocity_relative_l2_limit": 0.01,
+  "zero_reference_velocity_normalized_rms_limit": 0.001,
+  "normalized_divergence_rms_limit": 0.001,
+  "normalized_momentum_rms_limit": 0.01,
+  "normalized_momentum_gradient_rms_limit": 0.02,
+  "normalized_divergence_gradient_rms_limit": 0.02,
+  "normalized_corrected_pressure_rms_limit": 0.001,
+  "normalized_pressure_gauge_rms_limit": 0.001,
+  "initial_boundary_velocity_normalized_rms_limit": 0.001,
+  "trajectory_method": "DOP853 using observed trained velocity",
+  "trajectory_refinements": [
+   [
+    1e-09,
+    1e-11,
+    0.015625
+   ],
+   [
+    1e-11,
+    1e-13,
+    0.0078125
+   ]
+  ],
+  "maximum_trajectory_refinement_change": 1e-07,
+  "maximum_trajectory_endpoint_error": 0.001,
+  "exact_velocity_inserted_into_model_or_trajectory_rhs": false
+ },
+ "starts": {
+  "baseline:361901": {
+   "source": "v2 development analytic run, final checkpoint",
+   "source_protocol_sha256": "00d5db987788d2dfbca6f12ac6835a84a743fd447f93cadcee15845c95bc1aa7",
+   "checkpoint_sha256": "f2a40a132038e4ca26373304d865714718c05788c241df365594d09ea305a26c",
+   "theta_sha256": "8e9d2bf115721fcf8cdee57b7aa2d5c519b13f37616a854eeaf7906b832ee290",
+   "source_final_loss": 1.8375584223818301e-06,
+   "source_final_gradient_infinity": 2.9079011590260256e-05,
+   "source_Adam_updates": 4000,
+   "source_LBFGS_calls": 800,
+   "source_LBFGS_closures": 18085
+  },
+  "baseline:361902": {
+   "source": "v2 development analytic run, final checkpoint",
+   "source_protocol_sha256": "00d5db987788d2dfbca6f12ac6835a84a743fd447f93cadcee15845c95bc1aa7",
+   "checkpoint_sha256": "748229bd57b08500c6fdeb4e5779e6b4468c3121301e417098d71df0f0af95eb",
+   "theta_sha256": "0b914f7a0dc53d2d801f52ffbb305d80b7837decf55f5821d49d579e8f026d59",
+   "source_final_loss": 1.3460146575228013e-06,
+   "source_final_gradient_infinity": 1.8534086756870475e-05,
+   "source_Adam_updates": 4000,
+   "source_LBFGS_calls": 800,
+   "source_LBFGS_closures": 17918
+  },
+  "C2:361901": {
+   "source": "v3 smoothness run C2 (attempt 2), final checkpoint",
+   "source_protocol_sha256": "ce2af6f91c7237161783a3133d1a07e5ea3fc012aabc4969e1753f685d2dff5b",
+   "checkpoint_sha256": "16beed94c41179f918b59eebb8de224d5c4c7205a4768d062053024893c3566d",
+   "theta_sha256": "9eaa0be495079b1855acae8b39995026bbe1b057d77e04799d8ca56dbac1ced2",
+   "source_final_loss": 1.248560364079235e-06,
+   "source_final_gradient_infinity": 5.435128166943009e-06,
+   "source_Adam_updates": 4000,
+   "source_LBFGS_calls": 800,
+   "source_LBFGS_closures": 17992
+  },
+  "C2:361902": {
+   "source": "v3 smoothness run C2 (attempt 2), final checkpoint",
+   "source_protocol_sha256": "ce2af6f91c7237161783a3133d1a07e5ea3fc012aabc4969e1753f685d2dff5b",
+   "checkpoint_sha256": "8df5aa1106c2c16586079b25c211fcdd406d620168cf7c6309849f143da97dc5",
+   "theta_sha256": "fe123ca84a7173e5b785f1592cdc92e40a9564051300cb552a795e09b070ee4c",
+   "source_final_loss": 1.3228680143025967e-06,
+   "source_final_gradient_infinity": 9.374544653436694e-06,
+   "source_Adam_updates": 4000,
+   "source_LBFGS_calls": 800,
+   "source_LBFGS_closures": 18059
+  }
+ },
+ "training": {
+  "start": "resume from the start checkpoint (sha256-verified \u03b8); fresh L-BFGS history; counters (Adam updates, L-BFGS calls, closures) restart at zero, source counts are recorded separately",
+  "width": 0.5,
+  "Adam_updates_per_seed": 0,
+  "LBFGS_calls_per_seed": 4000,
+  "LBFGS_max_iter": 20,
+  "LBFGS_max_eval": 25,
+  "LBFGS_history_size": 20,
+  "LBFGS_lr": 1,
+  "LBFGS_line_search": "strong_wolfe",
+  "LBFGS_tolerance_grad": 0,
+  "LBFGS_tolerance_change": 0,
+  "loss_convergence_limit": 0.0001,
+  "gradient_infinity_convergence_limit": 0.001,
+  "supervised_interior_velocity_term": false,
+  "LBFGS_closure_cap_per_seed": 104000,
+  "maximum_training_seconds": 18500,
+  "maximum_training_seconds_reason": "worst case 4,000 calls x 25 evaluations x about 0.175 s = 17,500 s, plus 40 complete-gradient checks",
+  "checkpoint_LBFGS_calls": [
+   200,
+   400,
+   800,
+   1200,
+   1600,
+   2000,
+   2400,
+   2800,
+   3200,
+   3600,
+   4000
+  ],
+  "complete_gradient_check_every_LBFGS_calls": 100,
+  "loss_thresholds": [
+   1e-06,
+   3e-07,
+   1e-07,
+   3e-08,
+   1e-08
+  ],
+  "stop_rule": "none; the full budget runs unless the time guard fires",
+  "truncation": "if maximum_training_seconds is reached the run stops before the next call, saves its final checkpoint at the cut, records budget_truncated and the calls reached; scheduled checkpoints that were not reached are absent and the observation plan skips them",
+  "training_gate": "already met at the start checkpoint; recorded at the first resumed evaluation"
+ },
+ "qualification": {
+  "original_problem_native": "the original-problem engine is checked against the preserved native reference at the stored initial parameters of each seed (as v2/v3)",
+  "resume_point": "dense parameter AD at the start parameters, after a parameter change and after garbage collection and allocator churn (stage0-entry/changed/retained)",
+  "continuity": "the loss evaluated at the start parameters must match the source run final_loss within the original budget (atol + rtol |b|)",
+  "scheduled": "complete loss/gradient/numerator check against dense parameter AD every 100 L-BFGS calls and at the end"
+ },
+ "physical_observation": {
+  "separate_batch": true,
+  "checkpoints_per_run": [
+   "LBFGS-call800",
+   "LBFGS-call1600",
+   "LBFGS-call2400",
+   "LBFGS-call3200",
+   "final"
+  ],
+  "observations_planned": 20,
+  "observer": "unchanged box376.potential_physical, chunk chosen by the calibration rule of the earlier batches (fastest chunk agreeing with chunk 128 to 1e-10 of the maximum state magnitude within 60 GB), independent reader box376.audit_potential_run",
+  "call_0": "the start checkpoints are already observed (baseline finals at chunk 128 in observation batch 1, C2 finals at chunk 512 in observation batch 3)"
+ },
+ "decision_rule": {
+  "implementation": "box376.decide_c36_v4 (pre-registered with this protocol; standard library only)",
+  "acceptance": "a checkpoint passes when the unchanged observer reports physical_acceptance_pass",
+  "first_pass": "per run, the smallest observed extra-call count in (800, 1600, 2400, 3200, final) whose checkpoint passes; none if no observed checkpoint passes; resolution is limited to these points",
+  "count": "L-BFGS calls and evaluations from the resume point; seconds are secondary",
+  "stopped_falling": "for an arm, stratified corrected pressure at final >= 0.95 x its value at LBFGS-call3200 on both seeds",
+  "outcomes_in_order": {
+   "O1_both_arms_pass": "all four runs have a first pass; sub-result C2_sooner if C2 first_pass < baseline first_pass on both seeds, baseline_sooner if the reverse holds on both seeds, otherwise same_or_mixed",
+   "O2_only_C2_passes": "both C2 runs pass and at least one baseline run does not",
+   "O3_only_baseline_passes": "both baseline runs pass and at least one C2 run does not",
+   "O4_partial": "some run passes but none of O1-O3 holds",
+   "O5_none_still_falling": "no run passes and neither arm has stopped falling",
+   "O6_none_stopped": "no run passes and at least one arm has stopped falling"
+  },
+  "secondary": "stratified pressure and velocity at matched extra-call counts and first threshold evaluations; C2-versus-baseline differences below 32% are not interpreted",
+  "follow_up": "if any arm passes on both seeds, freeze a formal protocol with new seeds (fresh runs with the full schedule, both engines) for time to accepted accuracy; otherwise no formal claim"
+ },
+ "execution": {
+  "allocation": "one new ACC node, four H100 lanes, one (seed, start) per lane; training only, followed by a separate all-planes observation batch",
+  "walltime": "06:00:00",
+  "walltime_reason": "the worst-case training time (about 5.1 h) exceeds the default 3 h test window; the remainder covers compilation, the reader and the archive",
+  "deadline_reserve_seconds": 900
+ },
+ "test_matrix": {
+  "training_runs": 4,
+  "observations_planned": 20,
+  "planes_per_observation": 13
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "scope": "2D H100 solve-scale study. Complete solves run inside the pinned two-dimensional source tree (commit 286d7e394c8bd39f9aa409715afe9f1bac915cec, a clone of the preserved bundle; 263 tracked files, not published here) with the added wrapper src/scale_solve.py. Post-hoc scripts ran in a separate directory against the executed results and the 2D ablation's registered result, driver state and plan.",
+ "executed_packet": {
+  "manifest_sha256": "828b6d67e701d6f331b3fc0d20d3c5591380feceb4c69e2eb7a293537f2d120c",
+  "files": 271,
+  "source_commit": "286d7e394c8bd39f9aa409715afe9f1bac915cec",
+  "start_script_sha256": "a4d2294c902abd20aab69c6a471205573be72a9222da8e316bbcd50c5b692289",
+  "pre_registration_commit": "170412b"
+ },
+ "archive": {
+  "name": "2d-solve-scale-complete.tar.gz",
+  "sha256": "430ee078f28a37b74ef6ba7cbe326dff0cce0dde61059959cadf469fd806a7cd",
+  "members": 118,
+  "bytes": 2805050,
+  "persistent_tape_copy": false
+ },
+ "files": {
+  "research/2d-solve-scale/protocol-2d-solve-scale-20261016.json": {
+   "public_sha256": "9f7a605fafe86d97797b8201ba627397dccf0cf8ce02c4f48342a7ee7237b8a9",
+   "executed_path": "scale/protocol-2d-solve-scale-20261016.json",
+   "executed_sha256": "9f7a605fafe86d97797b8201ba627397dccf0cf8ce02c4f48342a7ee7237b8a9",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/plan-2d-solve-scale-20261016.json": {
+   "public_sha256": "a43c2230538df4bec0877ad2ee38d0216427be5037b1f39915c24f5db6cb297a",
+   "executed_path": "scale/plan-2d-solve-scale-20261016.json",
+   "executed_sha256": "a43c2230538df4bec0877ad2ee38d0216427be5037b1f39915c24f5db6cb297a",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/make_solve_scale_plan.py": {
+   "public_sha256": "29938c156eeb290228ba6e64693a5a80778104ee6c93a7d32ece63ce44c6d3fc",
+   "executed_path": "scale/make_solve_scale_plan.py",
+   "executed_sha256": "29938c156eeb290228ba6e64693a5a80778104ee6c93a7d32ece63ce44c6d3fc",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/run_solve_scale.py": {
+   "public_sha256": "8fed961097f9543aa07e32683d8dd036d33167ade369ae6b9b83274a2528c889",
+   "executed_path": "scale/run_solve_scale.py",
+   "executed_sha256": "8fed961097f9543aa07e32683d8dd036d33167ade369ae6b9b83274a2528c889",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/read_solve_scale.py": {
+   "public_sha256": "ffe3e5930e68834ce3059b8ef9d659de84ae6e3324e1cbc3db73d97f56db4e1e",
+   "executed_path": "scale/read_solve_scale.py",
+   "executed_sha256": "ffe3e5930e68834ce3059b8ef9d659de84ae6e3324e1cbc3db73d97f56db4e1e",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/entry_solve_scale.sh": {
+   "public_sha256": "ae514bb67ef446399513ac6ce763ed94ddebabf789c7466d2c0625a894ab0224",
+   "executed_path": "scale/entry_solve_scale.sh",
+   "executed_sha256": "ae514bb67ef446399513ac6ce763ed94ddebabf789c7466d2c0625a894ab0224",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/src/scale_solve.py": {
+   "public_sha256": "17d5924cafd0666cf0cacab756763252025b0151bedc0672e204a65c759ff1b6",
+   "executed_path": "source/experiments/contracted_jets/scale_solve.py",
+   "executed_sha256": "17d5924cafd0666cf0cacab756763252025b0151bedc0672e204a65c759ff1b6",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/solve-scale-result-20261016.json": {
+   "public_sha256": "9c6ae4069ddc7926efd591445bfaebe83fd2d2dc33c1ea9dae918de7359fb839",
+   "executed_path": "scale/solve-scale-result.json",
+   "executed_sha256": "9c6ae4069ddc7926efd591445bfaebe83fd2d2dc33c1ea9dae918de7359fb839",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/phase_split_2048.py": {
+   "public_sha256": "d13f33edb4cc738558a19b99343c58d8c349a7946d373bc27cf5b02d5a7750d6",
+   "executed_path": "posthoc/phase_split_2048.py",
+   "executed_sha256": "d13f33edb4cc738558a19b99343c58d8c349a7946d373bc27cf5b02d5a7750d6",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/posthoc_solve_scale.py": {
+   "public_sha256": "7e6393aa2839e1fde6de737cdd99fb8af3a933c19fc9ff6305966f7fa8c336e6",
+   "executed_path": "posthoc/posthoc_solve_scale.py",
+   "executed_sha256": "7e6393aa2839e1fde6de737cdd99fb8af3a933c19fc9ff6305966f7fa8c336e6",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/phase-split-2048-20261016.json": {
+   "public_sha256": "155f9604b374515452be0544645b3d7fdbad0a73bb01e56468f8c959659eff80",
+   "executed_path": "posthoc/phase-split-2048-20261016.json",
+   "executed_sha256": "155f9604b374515452be0544645b3d7fdbad0a73bb01e56468f8c959659eff80",
+   "byte_identical": true
+  },
+  "research/2d-solve-scale/solve-scale-posthoc-20261016.json": {
+   "public_sha256": "759916f37e43c3b7d646be953f080ed8e128775cac533b4dcc4dd72305a62b58",
+   "executed_path": "posthoc/solve-scale-posthoc-20261016.json",
+   "executed_sha256": "759916f37e43c3b7d646be953f080ed8e128775cac533b4dcc4dd72305a62b58",
+   "byte_identical": true
+  }
+ }
+}

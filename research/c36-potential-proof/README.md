@@ -244,8 +244,10 @@ Repeat physical acceptance for seed 361902. The NumPy-only reader reconstructs
 saved gradient comparisons, family-normalized losses, paired statistics,
 physical equations and acceptance decisions. It checks observed saved arrays;
 it does not independently replay every Adam update or reintegrate particle
-paths. GPU results for this protocol are pending; no speed, training convergence
-or physical acceptance is claimed by these new entry points alone.
+paths. The completed H100 training and physical-acceptance results for this
+protocol are reported below: both engines finish the frozen budget for both
+seeds and all four attempts fail the convergence and physical gates, so no
+solve speed or time to accepted accuracy is claimed.
 
 The prepared objective now constructs its affine transform and output-scale
 constants on the device during setup. Its default eager equations are unchanged;
@@ -494,7 +496,7 @@ The subsequent [complete compiled H100 experiment](paired-analytic-vs-compiled-a
 
 `box376.fold_zero_gate.ZeroGateFoldedObjective` is an opt-in wrapper around either prepared Taylor-state engine. It evaluates the network only where at least one of the 36 gate channels is nonzero, using exact equality without a threshold. For every omitted network row, it retains the parameter-independent forcing, forcing-gradient or target loss at the original weight. Every family keeps its original full weight sum, normalization and coefficient. The original prepared engine remains usable; the default path is unchanged. Native-coordinate AD cannot select this wrapper.
 
-The [CPU qualification](zero-gate-folding-cpu-result-20261013.json) passes 12 full-objective/numerator/all-parameter-gradient comparisons against the preserved native H100 anchors, covering both original stored initializations. The NumPy-only reader verifies all 24 objective arrays and 15 folding arrays. Of the 4,999 canonical rows, 2,933 have active jets; the other 2,066 are represented by their constant loss. Four regression cases cover nonzero forcing/targets, changed parameters, empty active families, and a zero gate value with a nonzero derivative as small as `1e-30`. The same regressions also pass in the actual experiment runtime before GPU admission. The complete CPU archive is fully verified locally. This is numerical CPU qualification; the folded GPU comparison is pending and no new timing ratio is claimed.
+The [CPU qualification](zero-gate-folding-cpu-result-20261013.json) passes 12 full-objective/numerator/all-parameter-gradient comparisons against the preserved native H100 anchors, covering both original stored initializations. The NumPy-only reader verifies all 24 objective arrays and 15 folding arrays. Of the 4,999 canonical rows, 2,933 have active jets; the other 2,066 are represented by their constant loss. Four regression cases cover nonzero forcing/targets, changed parameters, empty active families, and a zero gate value with a nonzero derivative as small as `1e-30`. The same regressions also pass in the actual experiment runtime before GPU admission. The complete CPU archive is fully verified locally. This is the numerical CPU qualification; the GPU measurement follows below.
 
 To qualify and measure both equally folded compiled-forward arms, add `--fold-zero-gates` to `box376.packed_analytic_gpu_run`. Pass `--inputs` to the NumPy reader so it can verify the original family weight sums and physical normalization:
 
@@ -510,3 +512,264 @@ PYTHONPATH=src python -m box376.audit_packed_analytic_gpu \
 ```
 
 On the legacy legacy compiler runtime, select `--legacy-triton-target` explicitly for the GPU worker as described above. Use a new output directory for every attempt. Both arms use folding and the same packed forward; the complete objective, stored parameter bytes and original numerical/timing protocol are preserved.
+
+### Folded H100 timing (2026-10-16, pre-registered)
+
+[protocol-zero-gate-gpu-20261016.json](protocol-zero-gate-gpu-20261016.json) was committed before the batch ran.
+- **Design.** One exclusive H100 node; only one GPU is used, for timing isolation. The unchanged runner and graph-timing protocol run twice, one after the other, on the same GPU:
+  - first, the folded comparison: analytic candidate against parameter-AD control, both folded and compiled;
+  - then, an unfolded repeat.
+- **Driver.** `box376.run_zero_gate_gpu` runs the batch once, with an embedded start command. The reader is `box376.read_zero_gate_gpu`.
+- **Inputs.** The source is a git archive of the pre-registration commit. The data and the frozen native reference are the unchanged 2026-10-13 inputs. The batch prepared on 2026-10-13 was cancelled while pending and never ran.
+
+| Run | Analytic s | Parameter AD s | Ratio | 95% interval |
+| --- | ---: | ---: | ---: | --- |
+| Unfolded repeat | 0.166597 | 0.220791 | 1.325303 | 1.324919–1.325678 |
+| Folded (both arms) | **0.099377** | 0.139132 | **1.400047** | 1.399911–1.400178 |
+
+- **Checks.**
+  - Both runs pass all 78 full objective/numerator/gradient comparisons; the largest error is 3.0e-6 of the original budget.
+  - The NumPy reader checks 20 windows.
+  - The folding reader confirms the 2,933 active rows and that every original row is accounted for. The folded rows' constant loss is zero for this instance, and normalization is unchanged.
+- **Registered classification.** The folded interval's lower bound exceeds 1.03, so the outcome is **analytic advantage under folding**.
+- **Replication.** The unfolded repeat gives 1.325, against 1.324 on 2026-10-13.
+- **Folding factor (descriptive).** Folding shortens an evaluation by 1.68× for the analytic candidate and 1.59× for parameter AD; cost proportional to rows would give 1.70 (1.74 counting 128-row chunks).
+  - Parameter AD gains less, which suggests it carries more cost that does not scale with rows.
+  - A folded analytic evaluation takes 99.4 ms, against 220.8 ms for unfolded parameter AD.
+- **Scope.** Objective/gradient throughput only. No training, solver or physical claim is made. The gain depends on this instance's gate geometry.
+- **Rerunning.** The public driver reads the node-local cache root from `NODE_LOCAL_SCRATCH` and the cache prefix from `USER`; set both before starting it.
+- **Records.**
+  - [zero-gate-folding-gpu-result-20261016.json](zero-gate-folding-gpu-result-20261016.json): reader output.
+  - [release-source-map-zero-gate-20261016.json](release-source-map-zero-gate-20261016.json): 12 executed files byte-identical to the public files. The archive is `90ab9782…`, 133 members, verified.
+
+## Development run with a larger L-BFGS budget (v2)
+
+[protocol-v2-development-20261014.json](protocol-v2-development-20261014.json) changes only the L-BFGS budget, from 20 to 800 calls (closure cap 520 to 20,800). Data, model, normalization, Adam schedule, L-BFGS settings, seeds, training limits and every physical gate stay as in v1. Seeds 361901 and 361902 were observed in v1, so this is a development reachability study, not a formal time-to-accuracy comparison.
+
+Each seed trains with both engines on one four-GPU H100 node, one lane per GPU: the compiled packed activation with its analytic transpose (`analytic`), and parameter AD over the same compiled packed forward (`parameter_ad`). Both replay CUDA Graphs. `box376.run_c36_v2` runs the batch once. Each lane runs a compiler smoke, the training (`box376.potential_train_v2`) and physical observations of its checkpoints within a time budget and the allocation deadline. Then `box376.read_c36_v2` rechecks every saved comparison, hash and event count from the raw files. Every complete loss/gradient check passes at 28 check points per run, with a maximum error of 1.16e-5 of the original budget.
+
+| Engine | Seed | First call meeting both training limits | Seconds to it | Final loss | Final physical outcome |
+| --- | ---: | ---: | ---: | ---: | --- |
+| analytic | 361901 | 92 | 1,014 | 1.84e-6 | fails stratified pressure (0.0025) and endpoint (0.00107) |
+| analytic | 361902 | 86 | 975 | 1.35e-6 | fails stratified pressure (0.0025) only |
+| parameter_ad | 361901 | 90 | 1,319 | 1.63e-6 | partial: stratified pressure 0.0021 fails, uniform passes |
+| parameter_ad | 361902 | 85 | 1,276 | 2.34e-6 | partial: stratified pressure 0.0033 fails, uniform passes |
+
+- **Training gate.** All four runs pass it after about 1,860–2,040 L-BFGS evaluations. On these seeds, the analytic engine reaches every loss threshold from 1e-2 to 1e-5 1.30–1.33× sooner than parameter AD.
+- **Physical observation.** One complete observation takes about 99 minutes, so this batch observed only the final checkpoints. The batch's own time guard stopped the parameter-AD observations after both holdouts, so that the reader and archive could finish within the allocation. [The later observation batches](#all-plane-observations-along-the-training-trajectory) reproduce both analytic rows exactly, complete both partial rows and re-read every observation with the independent reader.
+- **Comparison with v1.**
+  - Stratified velocity error falls from 0.018–0.021 to 0.0011–0.0015.
+  - Uniform velocity error falls from 0.034–0.044 to 0.0020–0.0025.
+  - The analytic trajectory endpoint error falls from 0.023–0.030 to 0.00097 and 0.00107.
+  - The uniform field gate passes in every run, but only 63 of its 4,096 points lie inside the box support.
+  - The initial and boundary values pass in both complete observations.
+- **Remaining failure.** Stratified corrected pressure fails in every run. It is largest in the plateau region inside the box, not in the cutoff layers.
+- **Outcome.** The registered conditions are (a) "Loss stays above 1e-4", (b) "Loss passes 1e-4 but physical errors stop falling" and (c) "Physical gates pass". The reader's mechanical classification is (b). This batch could not evaluate the trend condition of (b), because it observed only final checkpoints; every reported physical error fell 7–31× per seed relative to v1. The [later observations of every checkpoint](#all-plane-observations-along-the-training-trajectory) show the errors still falling at the end of the budget, so (b) does not apply either, and no registered branch applies cleanly. Budget alone reaches the training gate, but within 800 calls it does not reach the stratified pressure gate.
+- **Timing caveat.** Both arms' training times include the same scheduled dense-AD checks and checkpoint writes, which bias the 1.30–1.33× toward one.
+
+Files:
+- [c36-v2-development-result-20261014.json](c36-v2-development-result-20261014.json): public summary.
+- [c36-v2-development-reader-20261014.json](c36-v2-development-reader-20261014.json): independent reader output.
+- Complete archive: 295 members, sha256 `266aa8d2…b3b45c6e8`. It has verified copies on cluster scratch and persistent project storage.
+
+## All-plane observations along the training trajectory
+
+Four more run-once observation batches (one four-GPU H100 node each) observe every saved checkpoint of the v2 runs and 26 checkpoints of the v3 continuation runs below.
+- **Coverage.** The v2 runs saved 52 checkpoints, from the untrained parameters through Adam updates 1,000–4,000 and L-BFGS calls 20–800; they hold 46 distinct parameter vectors. In total there are 72 observations of 72 distinct parameter vectors.
+- **Planes.** Each observation uses the unchanged observer (`box376.potential_physical`) on every data plane: the stratified and uniform holdouts, seven time slices, the initial and boundary sets, and both trajectory refinements.
+- **What is gated.** Physical acceptance gates the two holdouts, the initial and boundary values, and the finer trajectory refinement. The time slices are diagnostic planes with the same field limits.
+- **Independent reader.** `box376.audit_potential_run` re-reads every observation: 117 saved-array checks each, 8,424 in total, all PASS.
+- **Reproduction.** Re-observing the two analytic v2 finals reproduces every metric of their earlier observation exactly.
+
+**Observer chunk.** `box376.observer_calibration` measures chunks on 512 points, and `box376.run_c36_observe` picks one by a rule fixed before the measurement: the fastest chunk whose states agree with chunk 128 to 1e-10 of their maximum magnitude, within a peak-memory limit.
+- Chunk 512 is 3.9× faster than chunk 128. It agrees to at most 1.8e-11 absolute (7.9e-12 relative) and peaks at 56.6 GB. Chunks 1,024 and 2,048 run out of device memory.
+- The first batch's 50 GB limit, set before this measurement, kept chunk 128 (about 100 minutes per observation). Its deadline guard stopped it after 8 of 46 planned observations.
+- Later batches use a corrected 60 GB limit and chunk 512 (median 31 minutes). Chunk equivalence rests on the calibration points; no full checkpoint was observed at both chunks.
+
+**Results.**
+- **Acceptance.** No observation passes physical acceptance; 171 of 360 acceptance tests pass.
+  - Initial and boundary values vanish identically, because the gate vanishes there.
+  - The uniform holdout passes from L-BFGS call 200 on (loss ≤ 2.8e-5).
+  - The trajectory endpoint passes only at three final checkpoints.
+  - The stratified holdout fails at every checkpoint. At the finals, only its corrected pressure fails, at 1.9–3.3× the limit.
+- **Diagnostic time slices.** The four slices at rest (t = 0, 1/4, 3/4, 1) always pass. The three inside the motion window always fail, by at least 2.2× on pressure.
+- **Trend.** Along every v2 run the physical errors fall with the loss.
+  - Rank correlation between log loss and log error is 0.95–0.96 for stratified pressure ([c36-trend-correlations-20261015.json](c36-trend-correlations-20261015.json), from [tools/c36_rank_correlations.py](tools/c36_rank_correlations.py)) and 0.99–1.00 for velocity.
+  - The L-BFGS-phase log–log slopes are 0.31–0.41 for pressure and 0.45–0.50 for velocity.
+  - From call 400 to call 800, pressure still falls by 0.53–0.83× and velocity by 0.48–0.61×.
+  - So the errors have not stopped falling; they fall more slowly than the loss. Extrapolating the pressure slopes would put the gate at a loss 6–47× below the final values; that extrapolation is untested.
+- **Trajectory sensitivity.** The two engines differ only by rounding, yet they end at stratified pressures of 2.49e-3 and 2.08e-3 (seed 361901) and 2.49e-3 and 3.28e-3 (seed 361902).
+
+Files:
+- [c36-observations-20261015.json](c36-observations-20261015.json): every observation with all planes, acceptance tests, reader result and trend statistics. It was generated on the cluster by [tools/c36_publish_observations.py](tools/c36_publish_observations.py); [tools/c36_trend_figure.py](tools/c36_trend_figure.py) draws the paper's Figure 4 from it.
+- Batches: four observation batches (the last runs two frozen drivers in sequence). The complete archives have 191, 581, 371, 131 and 161 members. They are verified on cluster scratch and on persistent project storage, and every owned GPU lock was released.
+
+## Temporal-smoothness continuation (v3)
+
+[protocol-v3-smoothness-development-20261015.json](protocol-v3-smoothness-development-20261015.json) keeps the v2 budget (4,000 Adam updates, 800 L-BFGS calls) but starts on a smoother problem.
+
+**Smoothness family.** `box376.schedule_family` replaces the motion schedule s(t) = σ(2t − 1/2) by s_w(t) = σ(t/w − 1/(2w) + 1/2). The box then moves for t in (1/2 − w/2, 1/2 + w/2), with the same displacement and dilation.
+- The k-th time derivatives scale as w⁻ᵏ, and w = 1/2 is the original problem bit for bit.
+- The model gate contains the schedule speed, so the geometry features, the gate and the forcing all change with w. The value targets stay zero, which is checked.
+- [`box376.test_schedule_family`](src/box376/test_schedule_family.py) has six CPU tests. They include agreement of both engines with native coordinate AD at w = 3/4; they run in CI.
+
+**Schedules.** Each schedule is paired with the v2 analytic run of the same seed, the w = 1/2 baseline.
+- **C1:** 1,000 Adam updates at w = 1, then 1,000 at w = 3/4, then 2,000 Adam updates and 800 L-BFGS calls at w = 1/2.
+- **C2:** 2,000 Adam updates at w = 1, then 2,000 Adam updates and 100 L-BFGS calls at w = 3/4, then 700 L-BFGS calls at w = 1/2.
+
+**Stage checks.** `box376.potential_train_v3` builds a fresh compiled engine and CUDA Graph for every stage. Each stage is checked against dense parameter AD at the entry parameters, after a parameter change, and again after garbage collection and allocator churn.
+
+**Attempt 1 failed in all four lanes** at the Adam-100 dense-AD check.
+- The graph-capture helper keeps the graph and its outputs but not the engine that owns the prepared data. The trainer held that engine only in a stage-local variable, so replays read released memory.
+- The repair keeps the engine with its replay, adds the post-churn check and a non-negative-loss guard, and gives the CPU self-test a weak-reference replay. A negative control without retention fails the self-test.
+- Attempt 2 changes only the trainer. Both attempts are archived: [c36-v3-smoothness-batches-20261015.json](c36-v3-smoothness-batches-20261015.json).
+
+**Training (attempt 2).** All four runs complete, pass all 32 complete-gradient checks per run (maximum 1.2e-5 of the original budget) and reach the training gate.
+
+Evaluations to the first original-problem loss at or below each threshold (seconds in parentheses):
+
+| Seed | Schedule | 1e-3 | 3e-4 | 1e-4 | 3e-5 | 1e-5 | Final loss |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 361901 | baseline | 4,042 (677) | 5,144 (864) | 6,039 (1,014) | 8,077 (1,359) | 12,129 (2,045) | 1.84e-6 |
+| 361901 | C1 | 2,577 (564) | 4,538 (889) | 5,128 (989) | 6,704 (1,254) | 9,975 (1,826) | 1.11e-6 |
+| 361901 | C2 | 6,239 (1,190) | 6,311 (1,202) | 6,571 (1,246) | 8,010 (1,488) | 12,192 (2,195) | 1.25e-6 |
+| 361902 | baseline | 4,030 (666) | 5,048 (834) | 5,891 (975) | 7,600 (1,262) | 10,955 (1,821) | 1.35e-6 |
+| 361902 | C1 | 2,764 (593) | 4,576 (896) | 5,200 (1,003) | 7,012 (1,309) | 9,903 (1,800) | 1.41e-6 |
+| 361902 | C2 | 6,237 (1,186) | 6,306 (1,197) | 6,585 (1,244) | 8,262 (1,529) | 11,622 (2,118) | 1.32e-6 |
+
+- **C1** reaches every registered threshold in 8–36% fewer evaluations on both seeds. It is not always faster in seconds: its two stage rebuilds (about 65 s each) precede every threshold.
+- **C2** is later at every threshold in seconds on both seeds, and later in nine of ten seed–threshold pairs in evaluations.
+
+**Physics on the original problem (stratified holdout and trajectory endpoint, ×1e-3).**
+
+| Seed | Schedule | Pressure at gate | Velocity at gate | Endpoint at gate | Final pressure | Final plateau pressure | Final endpoint |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 361901 | baseline | 9.73 | 9.02 | 11.1 | 2.49 | 4.65 | 1.07 |
+| 361901 | C1 | 13.1 | 8.27 | 8.29 | 2.09 | 3.11 | 1.12 |
+| 361901 | C2 | 5.95 | 6.00 | 5.01 | 1.93 | 3.14 | 1.01 |
+| 361902 | baseline | 9.41 | 7.69 | 10.2 | 2.49 | 4.17 | 0.97 |
+| 361902 | C1 | 11.1 | 8.09 | 10.8 | 2.77 | 4.35 | 1.12 |
+| 361902 | C2 | 6.48 | 5.97 | 4.07 | 2.74 | 4.39 | 0.89 |
+
+- **At the training gate** (loss ≤ 1e-4 and ‖g‖∞ ≤ 1e-3, matched by loss; reached at L-BFGS calls 86–92, 51–55 and 117–118), C2 is clearly closer to the physical solution: 0.61–0.69× the baseline's pressure and 0.40–0.45× its endpoint error.
+- **At the final checkpoints** both schedules are lower than the baseline on seed 361901 and higher on seed 361902. These are 10–22% changes, comparable to the 16–32% difference between the two engines.
+- **Every final checkpoint fails stratified pressure.** Only the trajectory endpoint test differs between the schedules.
+- **Transfer.** The w = 3/4 parameters, observed on the original problem, have stratified velocity error 0.049–0.059. The exact w = 3/4 and w = 1/2 fields differ by 0.81 in that norm ([c36-schedule-field-distance-20261015.json](c36-schedule-field-distance-20261015.json), from `box376.schedule_field_distance`). The gate carries the schedule speed and the potential is learned in moving-box features, so most of the width dependence lies outside the learned function.
+
+**Registered rule.** The protocol's clauses, quoted:
+- helps: "both schedules or one schedule reach every threshold sooner and the final physical errors (stratified pressure in particular) are lower than the baseline on both seeds";
+- no effect: "differences within the seed-to-seed spread of the baseline";
+- hurts: "thresholds reached later or final errors higher on both seeds".
+
+**Reading.**
+- **The continuation does not help:** neither schedule meets the helps clause.
+- **C2 meets the hurts clause through its thresholds:** later at all five in seconds on both seeds, and at nine of ten in evaluations.
+- **C1 fits no branch cleanly.**
+  - It is not helpful: its final pressure is higher on seed 361902, and it is not faster in seconds at every threshold.
+  - It is not harmful: its evaluation counts are all lower.
+  - The no-effect band is degenerate, because both baseline seeds end at the same pressure to three digits.
+  - The rule also did not say whether thresholds count evaluations or seconds.
+- **Bottom line.** Within this budget a smoother early problem moves the trajectory, but neither schedule changes which acceptance test fails.
+
+Files:
+- [c36-v3-smoothness-result-20261015.json](c36-v3-smoothness-result-20261015.json): reader output. Its state label is inherited from the v2 reader and is kept unchanged.
+- [c36-v3-baseline-curves-20261015.json](c36-v3-baseline-curves-20261015.json): the v3 reader's per-run function applied unchanged to the v2 analytic runs.
+- [release-source-map-20261015.json](release-source-map-20261015.json): every executed packet manifest. All published sources are byte-identical to the executed copies, except the attempt-1 trainer.
+- Complete training archive: sha256 `949dbee4…91b4077ac`, 292 members, verified on cluster scratch and persistent project storage.
+
+## Combination study (v4, pre-registered; attempt cancelled, superseded by v5)
+
+[protocol-v4-combination-development-20261015.json](protocol-v4-combination-development-20261015.json) tests the combination of the C2 continuation with a long L-BFGS budget.
+
+**Design.** Both the C2 runs and the paired v2 analytic baseline runs resume from their final checkpoints. Their prior budgets were equal: 4,000 Adam updates and 800 L-BFGS calls. Each run then gets 4,000 more L-BFGS calls on the original problem, with a fresh L-BFGS history.
+- `box376.potential_train_v4` verifies each start checkpoint's file and parameter hashes and refuses a mismatch.
+- It checks the original-problem engine against the preserved native reference.
+- At the resume point it checks dense parameter AD at entry, after a parameter change, and after allocator churn.
+- A continuity check requires the start loss to equal the source run's final loss.
+- Counters restart at zero, so the all-planes observer indexes the run's own event log.
+
+**Questions.**
+- Primary: does the extra budget reach physical acceptance?
+- Secondary: does the C2 start reach it sooner? This comparison is underpowered (two seeds, and rounding-equivalent engines already differ by up to 32%), so differences below 32% are not interpreted.
+
+**Decision.** [`box376.decide_c36_v4`](src/box376/decide_c36_v4.py) implements the registered rule mechanically; [six synthetic tests](src/box376/test_decide_c36_v4.py) cover its outcomes and run in CI. It reads the observations at 800, 1,600, 2,400 and 3,200 extra calls and at the final checkpoint. The six mutually exclusive outcomes are:
+- O1: both arms pass, with sub-result C2 sooner, baseline sooner, or same/mixed;
+- O2: only C2 passes;
+- O3: only the baseline passes;
+- O4: partial;
+- O5: no run passes, errors still falling;
+- O6: no run passes, errors stopped falling (final pressure ≥ 0.95× its value at 3,200 calls on both seeds).
+
+If any arm passes on both seeds, a formal fresh-seed protocol follows.
+
+**Status: the attempt was cancelled after 13.5 minutes, before any physical observation.** The cancellation was based on optimizer progress only. The partial outputs are archived (157 members, sha256 `6e1b6143…`).
+
+All four lanes passed every qualification check:
+- native reference ≤ 2.3e-6 of the original budget;
+- dense AD at the resume point, including after allocator churn, ≤ 6.0e-6;
+- the check at L-BFGS call 100 ≤ 6.8e-6;
+- the start loss reproduced the source final loss bit for bit or within 4.2e-11 of the budget.
+
+**Why it was cancelled: the design is flawed.** A fresh L-BFGS history started at a loss of about 1e-6 falls into an overshoot/backtrack cycle.
+- In each iteration the trial step t = 1 raises the loss (to 1.3–1.9e-6). The strong-Wolfe search then accepts a tiny step.
+- Over the first 100 calls the loss fell by only 0.2–0.7%. The source runs fell by about 32% over their last 100 calls.
+- Fresh histories started at higher loss behave normally: the C2 runs' w = 1/2 stage started at loss 1.6e-2, and the v2 runs' L-BFGS started at loss 1.1e-3.
+- The resumed study therefore measured the restart, not the extra budget, and is not continued.
+
+**What the source runs showed.** In the last 50 calls of the source runs:
+- the v2 baseline runs still fall by 3.4–3.7% per 10 calls;
+- the continuation runs have stalled at 1.1–1.4e-6, falling 0.02–0.46% per 10 calls with 24–25 evaluations per call.
+
+## Budget study (v5, pre-registered; outcome E5)
+
+[protocol-v5-budget-development-20261015.json](protocol-v5-budget-development-20261015.json) replaces the cancelled v4 design.
+
+**Design.** It is the v2 development recipe with the L-BFGS budget extended from 800 to 4,800 calls, in one continuous run per (seed, engine). That avoids any restart of the L-BFGS history.
+- Both engines (compiled analytic transpose and parameter AD over the same compiled forward) train both seeds on one four-GPU H100 node.
+- The trainer and driver are the unchanged v2 sources (`box376.potential_train_v2`, `box376.run_c36_v2`); only [`entry_c36_v5.sh`](src/box376/entry_c36_v5.sh) and the protocol are new.
+- The smoothness arm is dropped: its source runs had stalled at 1.1–1.4e-6 by call 800, while the baseline was still descending.
+
+**Primary question.** Does the extended budget reach physical acceptance?
+
+**Decision.** [`box376.decide_c36_v5`](src/box376/decide_c36_v5.py) applies the registered rule mechanically; [five synthetic tests](src/box376/test_decide_c36_v5.py) run in CI. It uses the separate all-planes observations at 1,600, 2,400, 3,200 and 4,000 total calls and at the final checkpoint, plus call 800 if its parameters differ from the v2 final. The five mutually exclusive outcomes are:
+- E1: all four runs pass;
+- E2: exactly one engine passes on both seeds;
+- E3: partial;
+- E4: no run passes, errors still falling;
+- E5: no run passes, errors stopped falling (final pressure ≥ 0.95× its value at 4,000 calls on both seeds of an engine).
+
+E1 or E2 leads to a formal fresh-seed time-to-accuracy protocol.
+
+**Reproduction diagnostic.** As a diagnostic only, never a gate, the parameters at call 800 are compared with the v2 runs.
+
+**Training.** All four runs completed the 4,800 calls within the time guard, taking 20,418–26,652 s against a 27,000 s limit. All 60 complete-gradient checks pass, at most 1.1e-5 of the original budget.
+- **The loss stalls soon after call 800.** From call 800 to 4,800 it falls only 3–12% (for example 1.830e-6 → 1.607e-6). After call 1,200 it falls about 0.2–0.3% per 400 calls.
+- **No run reaches 1e-6.** The threshold 3e-6 is reached after 16,077–18,924 evaluations.
+- **Reproduction diagnostic.** The runs are not bit-identical to v2: the first difference is in the last digit of the loss at Adam updates 3–8, a reduction-order effect. Call 800 was therefore observed anew.
+- **Engine timing (development only).** Parameter AD needed 1.28–1.36× the seconds of the analytic engine to each threshold from 1e-3 to 3e-6.
+
+**Physics.** A separate observation batch covered 24 checkpoints (calls 800, 1,600, 2,400, 3,200, 4,000 and 4,800 for each run) on all planes. The independent reader passes all 2,808 checks.
+
+| Engine | Seed | Loss ×1e6 at 800 → 4,800 | Stratified pressure ×1e-3 at 800 → 4,800 | Plateau pressure ×1e-3 at 4,800 | Endpoint ×1e-3 at 4,800 | Failing tests at 4,800 |
+| --- | ---: | --- | --- | ---: | ---: | --- |
+| analytic | 361901 | 1.830 → 1.607 | 2.40 → 2.36 | 4.29 | 0.90 | stratified |
+| analytic | 361902 | 1.383 → 1.338 | 2.57 → 2.52 | 4.52 | 1.00 | stratified |
+| parameter AD | 361901 | 1.749 → 1.628 | 2.26 → 2.17 | 3.96 | 1.02 | stratified, trajectory |
+| parameter AD | 361902 | 1.499 → 1.432 | 3.03 → 2.97 | 5.89 | 0.86 | stratified |
+
+- **The errors stall with the loss.** Stratified pressure changes by only 1.5–3.8% and ends at 2.2–3.0× its limit.
+- **Other tests.** The uniform holdout passes at every checkpoint. The trajectory endpoint stays within 0.86–1.02× its limit and passes at 12 of the 24 checkpoints.
+- **Acceptance.** No checkpoint passes physical acceptance.
+
+**Registered outcome: E5.** [`box376.decide_c36_v5`](src/box376/decide_c36_v5.py) finds that no run passes and that both engines have stopped falling: the final pressure is 0.998× its value at 4,000 calls. No formal claim follows.
+- At 800 calls the errors were still falling, but with this optimizer they stop shortly afterwards, together with the loss. The gradient ∞-norm at the end is 1.2–4.6e-6.
+- So the stratified pressure gap is not a budget limit of this optimizer at this scale.
+- In the terms of the v2 rule this is branch (b): reaching the gate needs an explicitly changed problem definition (sampling, weights or capacity) in a new protocol.
+
+The in-batch reader is the unchanged v2 reader, so [its output](c36-v5-budget-result-20261015.json) carries the v2 state name and v2 branch letter. The registered v5 outcome is the one in [c36-v5-decision-20261015.json](c36-v5-decision-20261015.json).
+
+Files:
+- [c36-v5-observations-20261015.json](c36-v5-observations-20261015.json): all 24 observations with all planes and reader results.
+- [c36-v5-training-curves-20261015.json](c36-v5-training-curves-20261015.json): loss curves with the v5 thresholds.
+- Archives: v5 training (446 members) and the observation batch (431 members) are both verified on cluster scratch and persistent project storage.
+
