@@ -124,3 +124,29 @@ The uncompiled batch above left one question open. In the 2D H100 retest, compil
   - On CPU in the batch runtime, all three compiled paths match scalar-coordinate AD on 7 points within 2e-4 of the budget, before and after an in-place parameter update.
   - None of them grew the home-directory caches.
   - The driver self-test on the login node passed. It ran 24 warm-up and 36 formal CPU smoke cases, all of which exited 0. The audit passed 3,024 comparisons and the reader exited 0. The archive (313 members, caches excluded) was verified, and the home caches were unchanged.
+
+### Result of the compiled batch (2026-10-17)
+
+The batch ran once on one four-GPU H100 node in about 20 minutes. The audit passed 2,520 comparisons, with a maximum discrepancy of 1.8e-14. The registered reader exited 0. The archive `2d9140ed…` (293 members, compiler caches excluded) was verified.
+
+- **The compiled C17 variant failed qualification in all ten attempts** (4 warm-ups, 6 formal solves). Its warm-up calls succeeded, but recompilation during CUDA Graph capture reached a generator that the compiler cannot trace (`Attempt to trace generator`). The cause was not found.
+- **Selection** by warm-up replay: C17 graph (2.52 ms); collapsed jet compiled (0.85 ms, against 3.45 ms graph); nested AD compiled (2.39 ms, against 9.76 ms graph).
+- **Acceptance.** All 30 solves of the five qualified arms are accepted.
+
+| Selected external / selected C17 | Setup + optimization (primary) | Optimization only (secondary) |
+| --- | --- | --- |
+| Compiled collapsed jet / C17 graph | 1.05 (0.95–1.24), 3/6 favour C17: **no decided difference** | **0.81** (0.74–0.99), 0/6 favour C17: **external faster** |
+| Compiled nested AD / C17 graph | **1.59** (1.50–1.75), 6/6: **C17 faster** | 1.01 (0.97–1.05): no decided difference |
+
+- **Cache state.** Compiled setups in formal solves (jet 10.6–11.1 s, nested AD 25.8–26.8 s) are below their warm-up setups (22.7 s and 55.1 s). The registered cache caveat therefore does not apply.
+- **Replication.** The graph-only arms reproduce the uncompiled batch: 1.11 for jet and 1.92 for nested AD, against 1.085 and 1.90.
+- **Phase split** (post hoc, [ext2-phase-split-20261017.json](ext2-phase-split-20261017.json)).
+  - In the Adam phase the compiled jet costs 0.39× graph-only C17's time per evaluation, about 2.6× faster. Compiled nested AD is level (1.01×).
+  - In the L-BFGS phase the compiled jet costs 0.83× C17's time.
+- **Reading.** On this benchmark, a public Taylor-mode package compiled by `torch.compile` evaluates the gradient faster than the C17 contract in eager PyTorch.
+  - Unlike 2D GL8, whose native pointwise kernels the ablation credits with 1.53–1.83×, C17 has no execution layer.
+  - Whether a compiled or native C17 would regain the lead is untested.
+- **Records.**
+  - [audit-ext2-20261017.json](audit-ext2-20261017.json) and [read-ext2-20261017.json](read-ext2-20261017.json).
+  - [release-source-map-ext2-20261017.json](release-source-map-ext2-20261017.json): all 11 published files are byte-identical to their executed copies.
+- **Rule fixed now for any repair attempt of the compiled C17 variant.** The paper's abstract follows the latest registered decision, and §7.4 reports every batch, including this one.
