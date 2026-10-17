@@ -98,3 +98,29 @@ The batch ran once on one four-GPU H100 node in about 8 minutes. All 18 solves e
   - No arm was compiled, whereas the 2D comparison let each baseline use its faster qualified default or compiled variant. Compiled external arms and larger problems, where the gradient dominates, were not run.
   - In the 2D H100 retest, compiling made the collapsed-Taylor, ED and torch-AD replays 3.2×, 5.0× and 2.3× faster ([details](../2d-h100-retest/README.md)). A compiled `jet` could therefore match or beat C17 here; C17 itself is uncompiled explicit code.
 - **Records.** [release-source-map-ext-20261016.json](release-source-map-ext-20261016.json): all 17 published files are byte-identical to their executed copies.
+
+## Compiled external baselines (pre-registered 2026-10-17)
+
+The uncompiled batch above left one question open. In the 2D H100 retest, compiling made the public packages' replays 2.3–5.0× faster, and the uncompiled collapsed jet was already within 8% of C17. [src/protocol-ext2-20261017.json](src/protocol-ext2-20261017.json), committed before this batch ran, asks whether compiling changes the comparison.
+
+- **Arms.** Six arms on the six formal seeds, one fresh process each, 36 solves: C17, nested torch AD and collapsed jet, each in two variants.
+  - *Graph*: the arm exactly as in the uncompiled batch.
+  - *Compiled*: [`external.build_compiled`](src/external.py) traces the whole loss/gradient with `make_fx`, over a model that aliases the solver's parameters. It then compiles with `torch.compile(fullgraph=True, dynamic=False)` and captures one CUDA Graph.
+  - Data, seeds, objective, optimizer, stop checks, qualification and acceptance are unchanged.
+  - The full-data qualification replays each arm itself, compiled arms included, through three in-place parameter updates.
+- **Warm-up and selection.** Each lane first runs every arm on development seed 642201 in warm-only mode: setup, capture, qualification and 200 timed replays, with no training.
+  - Each method's *selected variant* is the one with the lower median warm-up replay time among qualified variants, fixed before any formal solve is read. This is the 2D rule.
+- **Registered statistics.** The selected external variant over the selected C17 variant, as paired geometric means of setup-plus-optimization time (primary) and optimization-only time (secondary).
+  - C17 is faster if the ratio exceeds 1.03 and at least 5 of the jointly accepted pairs favour it.
+  - The external method is faster under the mirrored condition.
+  - Otherwise there is no decided difference; with fewer than 5 pairs, the result is not decidable.
+  - If formal compiled solves still show cold-cache setup, the reading leans on the optimization-only decision.
+- **Supplementary.** Every arm against `c17_graph`, which also replicates the uncompiled batch, plus the compile factor per method and each solve's cache state.
+- **Code and caches.**
+  - [src/solve_ext2.py](src/solve_ext2.py) is `solve_ext.py` with the six-arm table, the compiled builder and warm-only mode.
+  - [src/run_ext2.py](src/run_ext2.py) adds the warm-up stage and a cyclic arm order. It points every compiler and JIT cache (Inductor, Triton, XDG, TMPDIR, CUDA) to the batch root, and leaves them out of the archive.
+  - [src/read_ext2.py](src/read_ext2.py) applies the registered rules after the unchanged [audit](src/audit_ext2.py).
+- **Pre-submission checks.**
+  - On CPU in the batch runtime, all three compiled paths match scalar-coordinate AD on 7 points within 2e-4 of the budget, before and after an in-place parameter update.
+  - None of them grew the home-directory caches.
+  - The driver self-test on the login node passed. It ran 24 warm-up and 36 formal CPU smoke cases, all of which exited 0. The audit passed 3,024 comparisons and the reader exited 0. The archive (313 members, caches excluded) was verified, and the home caches were unchanged.
