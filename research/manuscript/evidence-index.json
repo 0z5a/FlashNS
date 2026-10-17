@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "11bffcb5b1e67123a5a5d77d0641eac3a7add89f6dc06b1e8b2f2157aa9dc653",
- "previous_manuscript_sha256": "5c3e12913e7cda2f3cddaf3a3566474a2756096e435e3316d5c0d3556627f984",
+ "manuscript_sha256": "b3b2792864fbf871e42e8ae6a6928195ec43e8f294e3572b3bcbe86225b7f7ea",
+ "previous_manuscript_sha256": "11bffcb5b1e67123a5a5d77d0641eac3a7add89f6dc06b1e8b2f2157aa9dc653",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -94,7 +94,15 @@
   "../ethier-3d/release-source-map-ext2-20261017.json": "a19190e78595d5c2dccaed5535986e6f6698a7cbe48ecba63622bc04013f139b",
   "../ethier-3d/src/protocol-ext2-20261017.json": "2870508c65ee712d33e18478b2148b48619dff9c87680f058d040d2bd7655d48",
   "../ethier-3d/src/read_ext2.py": "cb2924d81759919af5781a5cc4ad1ee2b89606a017c26dda8021f05e61a0f89b",
-  "../ethier-3d/posthoc_ext2_phase_split.py": "3d27fc4d3c7faa786e160c25de03828c22f664533bf7d471a1daf059654ddaff"
+  "../ethier-3d/posthoc_ext2_phase_split.py": "3d27fc4d3c7faa786e160c25de03828c22f664533bf7d471a1daf059654ddaff",
+  "../ethier-3d/audit-ext3-20261017.json": "fb172a904d06d42d5379db78a9cddb8dc1fd861fb333109c5fcb208402c10717",
+  "../ethier-3d/read-ext3-20261017.json": "bd6678c6c2d05f0cd88045b27647fd202803d9594634c12b87802a4ed56676f8",
+  "../ethier-3d/ext3-phase-split-20261017.json": "17c32a80ba60f4a3221b92365bea631cd8415d1c559f3455a8b6a4927edf47ed",
+  "../ethier-3d/release-source-map-ext3-20261017.json": "ddb589e9fc9bb2423df2394dbc3959c33fe304a9fd8ff9ec65123ad8e7ef49b3",
+  "../ethier-3d/src/protocol-ext3-20261017.json": "966f0d9e1eb75b9cc284efc948bcc0e0cb4ade756d54ab51260abbd728295c02",
+  "../ethier-3d/src/external2.py": "13b3fe8c3e1ec312c46a40de544ac3e57b5e58e0a47dc6adca3175dbcd167f30",
+  "../ethier-3d/diagnostics/c17-compile-route-R1-20261017.json": "ccbb802ba9009c8188d69235124c5573b3ce8fb7ea9f6c8484f03d017d69e8ec",
+  "../ethier-3d/diagnostics/c17-compile-route-R0-20261017.json": "44adf80348f4ca99fffe9b7db64e49109ef4a1d0c91cd6ea7b301152b61267b0"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -108,11 +116,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "0d7bfdafd43a48942051c897072e4f055aa4fac76619e1124646b08f45d066db",
- "previous_pdf_sha256": "1198aeeaba01376cc9ed2fa5e8248f85ebf427c7135b6ccd425ef50bc9d6db0a",
+ "pdf_sha256": "a65bc9da56e327f3fd7fe8fc07ae039683de0008a78d113f7c3beef11287a876",
+ "previous_pdf_sha256": "0d7bfdafd43a48942051c897072e4f055aa4fac76619e1124646b08f45d066db",
  "pages": 41,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS: abstract (199 words), Section 7.4 compiled variants with Table 24 (pages 31-32); no overfull boxes or undefined references",
+ "pdf_visual_review": "PASS: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -277,5 +285,21 @@
   "posthoc_adam_phase": "compiled jet 0.39x graph C17 per evaluation; compiled torch AD 1.01x",
   "archive_sha256": "2d9140ed24b70d1c8a932b9bb33e57394b883c9dbf78c8b0a55752029f22f078"
  },
- "revision_note_20261017_compiled_3d": "Adds the compiled-variants paragraphs and Table 24 to Section 7.4 (pre-registered: C17 compiled failed capture; compiled collapsed jet no decided difference in setup+opt and faster in optimization alone; compiled nested AD slower than C17); rewrites the abstract, 3D discussion, limitations and conclusion accordingly; pins audit, reader, post-hoc output, protocol and release map."
+ "revision_note_20261017_compiled_3d": "Adds the compiled-variants paragraphs and Table 24 to Section 7.4 (pre-registered: C17 compiled failed capture; compiled collapsed jet no decided difference in setup+opt and faster in optimization alone; compiled nested AD slower than C17); rewrites the abstract, 3D discussion, limitations and conclusion accordingly; pins audit, reader, post-hoc output, protocol and release map.",
+ "ethier_compiled_attempt2_H100": {
+  "pre_registration_commit": "994ab0e",
+  "accepted": "36/36",
+  "selected": "all compiled (C17 1.20 ms, jet 0.86, nested AD 2.41 replay)",
+  "primary_setup_plus_optimization": {
+   "jet_collapsed": "1.127 (0.99-1.20), 5/6: C17 faster",
+   "torch_ad": "1.682 (1.44-1.90), 6/6: C17 faster"
+  },
+  "secondary_optimization_only": {
+   "jet_collapsed": "0.956 (0.85-1.01), 5/6 favour jet: external faster",
+   "torch_ad": "1.170 (0.96-1.31), 5/6: C17 faster"
+  },
+  "setup_note": "compiled C17 setup 3.5-4.0 s (cache reused across seeds), compiled jet 10.7-10.9 s (recompiles part of its graph per solve)",
+  "archive_sha256": "5b4833b8178921ffd79ef96d226764480a908d6265630d244133e5fa1b717bd3"
+ },
+ "revision_note_20261017_compiled_attempt2": "Adds the second compiled attempt to Section 7.4 (Table 25): repaired compiled C17; with every method compiled C17 is 1.68x and 1.13x faster than nested AD and collapsed Taylor in setup+optimization (registered C17 faster), collapsed Taylor 1.05x faster in optimization alone (registered external faster); abstract and conclusion follow this latest decision; pins diagnostic, protocol, builder, audit, reader, post-hoc output and release map."
 }

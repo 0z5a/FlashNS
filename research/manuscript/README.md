@@ -55,6 +55,11 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - Against compiled collapsed `jet`, there is no decided difference in setup plus optimization (1.05). In optimization alone the jet is faster: it takes 0.81× C17's time.
   - The compiled jet's gradient phase is about 2.6× faster than eager C17.
   - The abstract, the 3D discussion, the limitations and the conclusion now state this; Table 24 is new.
+- **Section 7.4: compiled C17, second attempt (October 17).** A one-GPU diagnostic found a compile route for C17 that survives CUDA Graph capture. A second pre-registered attempt then ran with every method compiled.
+  - All 36 solves are accepted.
+  - C17 is 1.68× faster than nested AD and 1.13× faster than collapsed `jet` in setup plus optimization; both are registered "C17 faster".
+  - In optimization alone the jet is faster: C17 takes 1/0.96 ≈ 1.05× as long (registered "external faster"). C17's lead over it rests on cheaper setup, 3.5–4.0 s against 10.7–10.9 s.
+  - Table 25 is new, and the abstract and conclusion follow this latest decision.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
   - Protocol v5 runs the development recipe with 4,800 L-BFGS calls. The loss and the physical errors stall soon after call 800, and stratified pressure ends at 2.2–3.0× its limit.
