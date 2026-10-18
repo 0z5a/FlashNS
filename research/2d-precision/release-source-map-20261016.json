@@ -6,7 +6,7 @@
   "source_commit": "286d7e394c8bd39f9aa409715afe9f1bac915cec",
   "patch_sha256": "6625052647da21bfd322d34a64ac15d4f032ac35a8cc158a515c83a68390ba17",
   "start_script_sha256": "a0f12d229283557d9c0b8f8f4908ac36272e18fcf563e4080fa1c171e23438f3",
-  "pre_registration_commit": "0763e8d"
+  "pre_registration_commit": "dbb6d33"
  },
  "archive": {
   "name": "2d-precision-complete.tar.gz",

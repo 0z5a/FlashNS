@@ -1,7 +1,7 @@
 {
- "scope": "C36 zero-gate folding GPU batch (one H100). The executed packet's src/ and protocols are a git archive of public commit c9b2c20 (research/c36-potential-proof); data and the frozen native reference are the unchanged inputs of the 2026-10-13 graph-timing runs. The FP64 runtime and the Triton compiler runtime were verified against the 317-file runtime manifest of the prepared 2026-10-13 batch.",
+ "scope": "C36 zero-gate folding GPU batch (one H100). The executed packet's src/ and protocols are a git archive of the pre-registration commit (research/c36-potential-proof). On 2026-10-18 the branch history was rewritten to remove an account-specific path from that commit; the rewritten pre-registration commit is c5de0ad, which differs from the archived commit only in the driver line normalized below and keeps its author and committer dates; data and the frozen native reference are the unchanged inputs of the 2026-10-13 graph-timing runs. The FP64 runtime and the Triton compiler runtime were verified against the 317-file runtime manifest of the prepared 2026-10-13 batch.",
  "executed_packet": {
-  "source_commit": "c9b2c20",
+  "source_commit": "c5de0ad",
   "manifest_sha256": "5b71a9d4974380324a7f51657e75cf0597eb3438075ba42c73a05eb5dac60bba",
   "files": 91,
   "runtime_manifest_sha256": "b38fadb851b26f0f076243ab744e05454512a080ca79583624f107c8656364c3",

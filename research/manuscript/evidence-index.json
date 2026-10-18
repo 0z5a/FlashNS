@@ -62,14 +62,14 @@
   "../2d-solve-scale/phase_split_2048.py": "d13f33edb4cc738558a19b99343c58d8c349a7946d373bc27cf5b02d5a7750d6",
   "../2d-solve-scale/src/scale_solve.py": "17d5924cafd0666cf0cacab756763252025b0151bedc0672e204a65c759ff1b6",
   "../c36-potential-proof/zero-gate-folding-gpu-result-20261016.json": "f283bcb4721611b96eeaead1584f4c5ce0519a62b5462c7fa468f763250f3b51",
-  "../c36-potential-proof/release-source-map-zero-gate-20261016.json": "b3e860aade60688e42d3567ca2f47e903764adebbef6199da5487a2b1280194c",
+  "../c36-potential-proof/release-source-map-zero-gate-20261016.json": "ea352251fbff591ee2905083a3ad21f3e1f5b2fbc9e8430609e8fee9b7b84933",
   "../c36-potential-proof/protocol-zero-gate-gpu-20261016.json": "e46472d4413fd4362661930aeb5120e365e1602cca28c1420498c3e81aa77990",
   "../c36-potential-proof/src/box376/run_zero_gate_gpu.py": "92ec81469bdf00f1805f78c322c66de29acf3439230679534c677b7cbaf2eaf4",
   "../c36-potential-proof/src/box376/read_zero_gate_gpu.py": "3c6800c8d9ff65bd81e0366c3847625cf17e7ca93f4dc4ea072c44bb6129fff7",
   "../c36-potential-proof/src/box376/fold_zero_gate.py": "10831bebd6d1f9fdf0f70ccc28e87ff26f150ecd86e5b39c66fe6ec3e6f77613",
   "../2d-precision/precision-result-20261016.json": "4c88fe317404a6905a584380447251628049cfc973f13b5db50e8f7b97ee0577",
   "../2d-precision/precision-posthoc-20261016.json": "521256fdadc00bb5bd34ed4ec1280096b7f7ff4a073d49b2dece90b2aaf9a4de",
-  "../2d-precision/release-source-map-20261016.json": "57f209068b481154e50f031031c7551acd1c125d31d4a8ad80634f2fe635264e",
+  "../2d-precision/release-source-map-20261016.json": "8beb8d6ee01b6a9f4d651225002e813d7a2c22825210848a82c1edb275ee13d2",
   "../2d-precision/protocol-2d-precision-20261016.json": "80bf2e147a83c4e068b3091cd66dbc3cfc62400f83a59952b0a89b9acb366d4c",
   "../2d-precision/read_precision.py": "abf5cd79784fc73a5f3c273775ff957111cb3ae97d2155f194f577260de46bb4",
   "../2d-precision/posthoc_precision.py": "d8f156302f82eae39a212d97e8b1422b533fb1aeac0efeafa51dbade75569ecf",
@@ -77,13 +77,13 @@
   "../2d-precision/src/precision_run.py": "ef2dd1ba3d0c453be55cb043d5d60a1e109a208bede95a37950b5f1c0b9266ff",
   "../ethier-3d/audit-ext-20261016.json": "e47016bce2a7b96100eb50d08fec8aeb30a7740df6a2bedaea6f560ca9ceb41a",
   "../ethier-3d/ext-phase-split-20261016.json": "749a9598aa7fa933deca70f3bea65bf81963e266d03a3657e93a403e5c20c28e",
-  "../ethier-3d/release-source-map-ext-20261016.json": "c678dd8902045d818a4fdaf1882ba6426b05c33486e0c93fe8ade572d6ac63ba",
+  "../ethier-3d/release-source-map-ext-20261016.json": "29924b303f0c2b757d0c8258f76e7aa01f1e194d9513e1039a16291705ae538d",
   "../ethier-3d/src/protocol-ext-20261016.json": "e64cd90d720fb94b76de56dd4c13c6d3d01158b7ae9d8d081adeba98e07292f0",
   "../ethier-3d/src/external.py": "1c32f1a676773315d6ad2a5ffddd6771af07621fd915a736f9fb43236a731722",
   "../ethier-3d/posthoc_ext_phase_split.py": "08ba5078350fc35cf3987d4db3defe754e8693353237ab023a8cdd6b1ea3f77c",
   "../2d-h100-retest/audit-h20-h100-20261016.json": "483cdca3ffae9daec9ce07a0c1ee83c4e6df1ec905cee33bd7a2fb104742dda3",
   "../2d-h100-retest/h20-h100-supplement-20261016.json": "b101ecf7775ca384a196cf23b6275ecd8e86419d15cec4b7a1a35bee8bde2349",
-  "../2d-h100-retest/release-source-map-20261016.json": "99cb88eac5b971c413f9cf0163f30decc5888a147d6ea9c7eb7b92120532c198",
+  "../2d-h100-retest/release-source-map-20261016.json": "1c2fe6274d77d59bf7b4b87fe0976d2aa7b4f453326f392314a78e3a528a4a07",
   "../2d-h100-retest/protocol-2d-h100-retest-20261016.json": "244123f913fc1248a3f8f5f087b997511c758f419554579906f2d233d7194bb3",
   "../2d-h100-retest/finite-plan.json": "3aeedcee119760b8b1953b8a7530db29219a012de3ae5c47cba5ca201e4d37b9",
   "../2d-h100-retest/audit_h20.py": "316635bf72a0409c8de5e1d49966ad0ec400b458e4f6c9ad2103c17da04fc257",
@@ -91,14 +91,14 @@
   "../ethier-3d/audit-ext2-20261017.json": "66b6faffd86ea3327e26212b2c3ace9b15da96a8bc4a5f6b6c822dbb4e377073",
   "../ethier-3d/read-ext2-20261017.json": "bcd9173a08bdf3d7645796e026b578d0bfa81ad56cf0f99116bcaa4512e2e0a9",
   "../ethier-3d/ext2-phase-split-20261017.json": "3c98b8a5950eeb534ad45228c2ed50b884e052de368bca9bf484746e1144384b",
-  "../ethier-3d/release-source-map-ext2-20261017.json": "a19190e78595d5c2dccaed5535986e6f6698a7cbe48ecba63622bc04013f139b",
+  "../ethier-3d/release-source-map-ext2-20261017.json": "067e8eb1ef001250fb401eadecce1e3e2185d51a5cab9e74f4e6f12559c1e817",
   "../ethier-3d/src/protocol-ext2-20261017.json": "2870508c65ee712d33e18478b2148b48619dff9c87680f058d040d2bd7655d48",
   "../ethier-3d/src/read_ext2.py": "cb2924d81759919af5781a5cc4ad1ee2b89606a017c26dda8021f05e61a0f89b",
   "../ethier-3d/posthoc_ext2_phase_split.py": "3d27fc4d3c7faa786e160c25de03828c22f664533bf7d471a1daf059654ddaff",
   "../ethier-3d/audit-ext3-20261017.json": "fb172a904d06d42d5379db78a9cddb8dc1fd861fb333109c5fcb208402c10717",
   "../ethier-3d/read-ext3-20261017.json": "bd6678c6c2d05f0cd88045b27647fd202803d9594634c12b87802a4ed56676f8",
   "../ethier-3d/ext3-phase-split-20261017.json": "17c32a80ba60f4a3221b92365bea631cd8415d1c559f3455a8b6a4927edf47ed",
-  "../ethier-3d/release-source-map-ext3-20261017.json": "ddb589e9fc9bb2423df2394dbc3959c33fe304a9fd8ff9ec65123ad8e7ef49b3",
+  "../ethier-3d/release-source-map-ext3-20261017.json": "bec356d04d0fd39201b6279b6fa93178a042839019ac7c96c8a402b7c795dd1c",
   "../ethier-3d/src/protocol-ext3-20261017.json": "966f0d9e1eb75b9cc284efc948bcc0e0cb4ade756d54ab51260abbd728295c02",
   "../ethier-3d/src/external2.py": "13b3fe8c3e1ec312c46a40de544ac3e57b5e58e0a47dc6adca3175dbcd167f30",
   "../ethier-3d/diagnostics/c17-compile-route-R1-20261017.json": "ccbb802ba9009c8188d69235124c5573b3ce8fb7ea9f6c8484f03d017d69e8ec",
@@ -203,7 +203,7 @@
  },
  "revision_note_20261016_solve_scale": "Adds the 'Solves at larger point counts' paragraphs and Table 10 to Section 5.6 (pre-registered H100 solve-scale study: solve-level gains 1.48 and 1.88 for native GL8 over compiled Q10 at 16,384 and 65,536 points), the post-hoc phase split and setup cache-state check, and rewrites the 2,048-point solve explanation, the replay-versus-solve discussion and the conclusion in terms of problem size rather than device; pins the study's protocol, plan, wrapper, reader, results, post-hoc outputs and release map.",
  "C36_zero_gate_folding_GPU": {
-  "pre_registration_commit": "c9b2c20",
+  "pre_registration_commit": "c5de0ad",
   "folded_ratio": "1.400047 (95% interval 1.399911-1.400178); registered classification: analytic advantage under folding",
   "unfolded_repeat_ratio": "1.325303 (1.324919-1.325678), against 1.323962 on 2026-10-13",
   "folding_factor": "analytic 1.676, parameter AD 1.587 (descriptive; cost proportional to rows would give 1.704, 1.74 by 128-row chunks)",
@@ -212,7 +212,7 @@
  },
  "revision_note_20261016_zero_gate": "Adds two rows to Table 11 and two paragraphs to Section 6.3 (pre-registered H100 zero-gate folding batch: folded analytic/parameter-AD ratio 1.400, unfolded repeat 1.325, folding factors 1.68 and 1.59); updates the abstract, the limitations and the conclusion; pins the protocol, driver, reader, result and release map.",
  "precision_2d_H100": {
-  "pre_registration_commit": "0763e8d",
+  "pre_registration_commit": "dbb6d33",
   "tasks": "138/162 passed; the 24 failures are the 24 TF32 solves",
   "training_sufficiency": "FP32 sufficient (24/24 FP64-accepted), TF32 insufficient (0/24)",
   "solve_speed_fp64_over_fp32_optimization_only": {
@@ -225,7 +225,7 @@
   "scope_note": "FP32 sufficiency holds at the 1-2% gates; every FP32/FP64 solve stops at the gates, so tighter accuracy was not tested"
  },
  "ethier_external_baselines_H100": {
-  "pre_registration_commit": "53c7a5b",
+  "pre_registration_commit": "e2e5108",
   "accepted": "18/18",
   "baseline_over_c17_setup_plus_optimization": {
    "collapsed_jet": "1.085 (0.98-1.19)",
@@ -241,7 +241,7 @@
  },
  "revision_note_20261016_precision_and_3d_external": "Adds Section 5.7 and Table 11 (pre-registered FP64/FP32/TF32 study: FP32 sufficient and 1.36-1.53x faster at 65,536 points, TF32 fails) and Section 7.4 and Table 22 (pre-registered external 3D derivative baselines on Ethier-Steinman: C17 1.90x over nested autograd, 1.08x over collapsed jet); updates the abstract, the 3D discussion, the scope and limitations paragraphs and the conclusion; pins protocols, wrappers, patch, results, post-hoc outputs and release maps.",
  "h100_retest_h20_protocol": {
-  "pre_registration_commit": "83682ed",
+  "pre_registration_commit": "ffd597e",
   "accepted": "78/78 solves, CPU scalar-AD rechecked",
   "baseline_over_gl8_setup_plus_optimization_H100": {
    "q10_compact": 1.219,
@@ -270,7 +270,7 @@
  },
  "revision_note_20261016_h100_retest": "Adds Section 5.8 and Table 12 (pre-registered H20 campaign on H100: 78/78 accepted; ratios compress, e.g. Q10 1.66 to 1.22, collapsed Taylor 1.73 to 1.37) and states the H100 ratios beside the H20 ones in the abstract and conclusion; tables after 11 renumber by one; pins the audit, supplementary reader output, plan, drivers and release map.",
  "ethier_compiled_variants_H100": {
-  "pre_registration_commit": "c9e3a39",
+  "pre_registration_commit": "7e803c0",
   "c17_compiled": "failed CUDA Graph capture in 10/10 attempts; C17 selected graph",
   "selected": {
    "jet_collapsed": "compiled (0.85 ms replay vs 3.45 graph)",
@@ -289,7 +289,7 @@
  },
  "revision_note_20261017_compiled_3d": "Adds the compiled-variants paragraphs and Table 24 to Section 7.4 (pre-registered: C17 compiled failed capture; compiled collapsed jet no decided difference in setup+opt and faster in optimization alone; compiled nested AD slower than C17); rewrites the abstract, 3D discussion, limitations and conclusion accordingly; pins audit, reader, post-hoc output, protocol and release map.",
  "ethier_compiled_attempt2_H100": {
-  "pre_registration_commit": "994ab0e",
+  "pre_registration_commit": "b391841",
   "accepted": "36/36",
   "selected": "all compiled (C17 1.20 ms, jet 0.86, nested AD 2.41 replay)",
   "primary_setup_plus_optimization": {
@@ -311,5 +311,6 @@
   "rest_slices_vanish": true,
   "fraction_uniform_space_time_points_with_nonzero_exact_velocity": 0.008895
  },
- "revision_note_20261018_source_structure": "Section 6.1 states two verified properties of the single-box instance: U and f vanish identically outside t in (1/4, 3/4), and during the motion the plateau velocity is affine with a gradient force, the rotational forcing lying in the cutoff layers; the rest-slice sentence of Section 6.8 now notes that the exact velocity and force vanish there. Pins the CPU check and its output."
+ "revision_note_20261018_source_structure": "Section 6.1 states two verified properties of the single-box instance: U and f vanish identically outside t in (1/4, 3/4), and during the motion the plateau velocity is affine with a gradient force, the rotational forcing lying in the cutoff layers; the rest-slice sentence of Section 6.8 now notes that the exact velocity and force vanish there. Pins the CPU check and its output.",
+ "history_rewrite_20261018": "The branch history from the C36 zero-gate pre-registration onward was rewritten to remove an account-specific path from one line of the pre-registered driver. Every rewritten commit keeps its author, committer dates and tree, except that line in the pre-registration commit itself; commit messages cite the rewritten SHAs. The six pre_registration_commit fields and release maps now cite the rewritten commits."
 }

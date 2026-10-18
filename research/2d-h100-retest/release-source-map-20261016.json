@@ -3,7 +3,7 @@
  "executed_packet": {
   "config_sha256": "bc9e2e5f45a47f1412882dd2ec5119e171a63ab3cdb6250b81dc94147e9249e2",
   "start_script_sha256": "0a5c734210f0dc2dc7afa2c89258e8f67b58d7592826dc92d08e487b2c211b20",
-  "pre_registration_commit": "83682ed",
+  "pre_registration_commit": "ffd597e",
   "verified_at_start": "533 ready files, 765 runtime-critical files, 460-file original source manifest"
  },
  "archive": {

@@ -4,7 +4,7 @@
   "manifest_sha256": "9cd4c6589226a51eda85efbf05857738015eb4873bec4474d33a1f6d7276bb71",
   "files": 54,
   "start_script_sha256": "d2de555d68f6d8d3d94e084e84ee5bac1dacf741eb351999b51402b4a5a31b28",
-  "pre_registration_commit": "994ab0e"
+  "pre_registration_commit": "b391841"
  },
  "archive": {
   "name": "ethier-ext3-complete.tar.gz",

@@ -4,7 +4,7 @@
   "manifest_sha256": "c53d13998569edbbc565b90fe5052f441a5e93464f1c1091f890a527d225fbed",
   "files": 52,
   "start_script_sha256": "6df086295a5763c869300d8e3a16b1fdaa94f5b90157922abf763b8fe979bf9d",
-  "pre_registration_commit": "53c7a5b",
+  "pre_registration_commit": "e2e5108",
   "data_sha256": "42904eadb3dfdd767a7a75b3ad2d91f673c8e8292e4ddf659f939a830bc59666"
  },
  "archive": {
