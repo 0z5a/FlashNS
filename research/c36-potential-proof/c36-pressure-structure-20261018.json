@@ -1,6 +1,7 @@
 {
  "scope": "Post-hoc structure of the stratified corrected-pressure error in saved C36 observations.",
  "holdout_seed": 794701,
+ "eta": 0.03125,
  "pressure_scale": 0.141864656295504,
  "time_bins": [
   0.25,

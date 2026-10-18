@@ -1,6 +1,6 @@
 # FlashNS research manuscript
 
-[PDF](flashns.pdf) and [editable standalone LaTeX](flashns.tex), updated October 15, 2026. Author and the original accepted 2D H20 experiment are retained from the October 6 release. Equations, tables, bibliography, the method figure and both original plot datasets are embedded in the source; no external TeX inputs are needed. The PDF is built directly with pdfLaTeX (three passes) and needs only standard TeX Live packages: TikZ, booktabs, longtable, hyperref and Latin Modern.
+[PDF](flashns.pdf) and [editable standalone LaTeX](flashns.tex), updated October 18, 2026. Author and the original accepted 2D H20 experiment are retained from the October 6 release. Equations, tables, bibliography, the method figure and both original plot datasets are embedded in the source; no external TeX inputs are needed. The PDF is built directly with pdfLaTeX (three passes) and needs only standard TeX Live packages: TikZ, booktabs, longtable, hyperref and Latin Modern.
 
 The October 14 revision restructures the paper after an external review without changing any measured value, gate, seed or evidence file: a shorter abstract, an explicit contribution list, a terminology table, a related-work section with five additional verified references (Forward Laplacian, Taylor-mode AD in JAX, Griewank and Walther, NSFnets, Neural Conservation Laws), a method figure, a paragraph on what the 2D solve times measure, a diagnosis of the failed 3D acceptance, and an appendix that now holds the execution and provenance records. Section 7 adds the first accepted three-dimensional solve comparison. On the transient Ethier–Steinman benchmark (protocol v4, six formal seeds, H100 FP64), all 18 solves pass all eight gates. C17 is 3.602× faster than the A24 reference and 6.957× faster than the naive Q35 ablation (paired geometric means); the [result](../ethier-3d/result-v4-20261014.json), [audit](../ethier-3d/audit-v4-20261014.json) and frozen protocol are pinned in the evidence index. Two further clarifications come from the raw protocol rather than new runs: the 2D closure counts include the 4,000 Adam evaluations (every accepted 2D solve stops during L-BFGS after 2,208–5,259 L-BFGS evaluations), and the relative L2 error of v is the binding 2D acceptance criterion for all nine methods.
 
@@ -48,22 +48,29 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - All 18 solves pass.
   - C17's paired ratios are 1.90× against nested autograd and 1.08× (0.98–1.19) against collapsed `jet`. No arm was compiled, and no gain rule was registered.
   - Post hoc, the Adam-phase gap to `jet` is 1.37×; the fixed ~6 ms L-BFGS cost per evaluation compresses it.
-  - Table 23 is new; the abstract, the 3D discussion, the limitations and the conclusion are updated. The C36 external-baseline item stays open.
+  - Table 24 is new; the abstract, the 3D discussion, the limitations and the conclusion are updated. The C36 external-baseline item stays open.
 - **Section 7.4: compiled variants (October 17).** A second pre-registered batch runs each method graph-only and compiled. Each method's variant is selected by its warm-up replay time.
   - C17's compiled variant failed CUDA Graph capture in all ten attempts, so C17 runs graph-only.
   - Against compiled nested AD, C17 is 1.59× faster (registered: C17 faster).
   - Against compiled collapsed `jet`, there is no decided difference in setup plus optimization (1.05). In optimization alone the jet is faster: it takes 0.81× C17's time.
   - The compiled jet's gradient phase is about 2.6× faster than eager C17.
-  - The abstract, the 3D discussion, the limitations and the conclusion now state this; Table 24 is new.
+  - The abstract, the 3D discussion, the limitations and the conclusion now state this; Table 25 is new.
 - **Section 7.4: compiled C17, second attempt (October 17).** A one-GPU diagnostic found a compile route for C17 that survives CUDA Graph capture. A second pre-registered attempt then ran with every method compiled.
   - All 36 solves are accepted.
   - C17 is 1.68× faster than nested AD and 1.13× faster than collapsed `jet` in setup plus optimization; both are registered "C17 faster".
   - In optimization alone the jet is faster: C17 takes 1/0.96 ≈ 1.05× as long (registered "external faster"). C17's lead over it rests on cheaper setup, 3.5–4.0 s against 10.7–10.9 s.
-  - Table 25 is new, and the abstract and conclusion follow this latest decision.
+  - Table 26 is new, and the abstract and conclusion follow this latest decision.
 - **Section 6.10: a larger L-BFGS budget (also October 15–16).**
   - A resumed design (v4) is reported as cancelled before any physical observation, because a fresh L-BFGS history at loss ~1e-6 stalls.
   - Protocol v5 runs the development recipe with 4,800 L-BFGS calls. The loss and the physical errors stall soon after call 800, and stratified pressure ends at 2.2–3.0× its limit.
   - The registered outcome is E5, so no formal claim follows.
+- **Sections 6.1, 6.8 and 6.10: what the source does and where the pressure error lies (October 18, CPU only).**
+  - A check of the frozen source shows two properties. Outside the motion window the exact velocity and force vanish, so the four resting time slices that always pass carry no flow. Inside the moving box the force is a gradient.
+  - A post-hoc decomposition of the v5 finals puts the plateau pressure at 4.4–6.6× its limit. The cutoff layers alone would still leave 1.5–1.9× its limit, so plateau-only weighting cannot pass.
+- **Section 6.11: a wider cutoff (protocol v6, October 18).** A pre-registered batch runs the development recipe on a different instance with the cutoff width doubled to 1/16. That instance's layer forcing is 4–5× smaller.
+  - All four runs reach the training gate after 110–152 L-BFGS calls.
+  - At the final checkpoints stratified pressure stays at 2.0–2.9× its limit, about where it was at 1/32. The layers alone would still leave 1.7–2.2×.
+  - The registered outcome is F3 (fail), so no formal claim follows. Table 22 is new, and the later tables move up by one.
 
 [Evidence index](evidence-index.json) pins the source reports and their SHA256 values. [C36 reproduction instructions](../c36-potential-proof/README.md) describe the independent readers and protocols. The complete historical H20 artifacts remain preserved separately.
 

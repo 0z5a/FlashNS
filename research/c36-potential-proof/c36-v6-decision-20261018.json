@@ -1,0 +1,83 @@
+{
+ "protocol_sha256": "9ba666fd9902f76c5743f751b820b1960ecf29eed3e8322319d88bdf0f4490ca",
+ "reader_sha256": "ae9b0823485b41945ccfb44a11e4c8a486b7b9b4865e3003d1c4a06c407560ce",
+ "outcome": {
+  "key": "F3_fail",
+  "best_final_worst_over_limit": 2.042947619089137,
+  "text": "no pass and no near miss, with complete final observations of all four runs"
+ },
+ "runs": {
+  "analytic:361901": {
+   "engine": "analytic",
+   "seed": 361901,
+   "training_state": "COMPLETE",
+   "training_gate_reached": true,
+   "observed_tags": [
+    "final",
+    "gate-first"
+   ],
+   "passing_tags": [],
+   "final_worst_over_limit": 2.8904283534885336,
+   "final_worst_test": "stratified:normalized_corrected_pressure_rms",
+   "final_failing_tests": {
+    "stratified:normalized_corrected_pressure_rms": 2.8904283534885336
+   },
+   "final_stratified_pressure_over_limit": 2.8904283534885336
+  },
+  "parameter_ad:361901": {
+   "engine": "parameter_ad",
+   "seed": 361901,
+   "training_state": "COMPLETE",
+   "training_gate_reached": true,
+   "observed_tags": [
+    "final",
+    "gate-first"
+   ],
+   "passing_tags": [],
+   "final_worst_over_limit": 2.5842578330574297,
+   "final_worst_test": "stratified:normalized_corrected_pressure_rms",
+   "final_failing_tests": {
+    "stratified:normalized_corrected_pressure_rms": 2.5842578330574297
+   },
+   "final_stratified_pressure_over_limit": 2.5842578330574297
+  },
+  "analytic:361902": {
+   "engine": "analytic",
+   "seed": 361902,
+   "training_state": "COMPLETE",
+   "training_gate_reached": true,
+   "observed_tags": [
+    "final",
+    "gate-first"
+   ],
+   "passing_tags": [],
+   "final_worst_over_limit": 2.163502793805827,
+   "final_worst_test": "stratified:normalized_corrected_pressure_rms",
+   "final_failing_tests": {
+    "stratified:normalized_corrected_pressure_rms": 2.163502793805827
+   },
+   "final_stratified_pressure_over_limit": 2.163502793805827
+  },
+  "parameter_ad:361902": {
+   "engine": "parameter_ad",
+   "seed": 361902,
+   "training_state": "COMPLETE",
+   "training_gate_reached": true,
+   "observed_tags": [
+    "final",
+    "gate-first"
+   ],
+   "passing_tags": [],
+   "final_worst_over_limit": 2.042947619089137,
+   "final_worst_test": "stratified:normalized_corrected_pressure_rms",
+   "final_failing_tests": {
+    "stratified:normalized_corrected_pressure_rms": 2.042947619089137,
+    "trajectory:maximum_endpoint_error": 1.0926666186245242
+   },
+   "final_stratified_pressure_over_limit": 2.042947619089137
+  }
+ },
+ "runs_without_complete_final_observation": [],
+ "follow_up": "no formal claim; the wider cutoff alone does not reach acceptance with this recipe",
+ "formal_claim": false
+}

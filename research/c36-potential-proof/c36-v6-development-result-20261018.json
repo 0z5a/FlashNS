@@ -1,0 +1,2425 @@
+{
+  "state": "C36_V2_DEVELOPMENT_READ",
+  "protocol_version": "C36-potential-20261018-v6-eta16-development",
+  "protocol_sha256": "9ba666fd9902f76c5743f751b820b1960ecf29eed3e8322319d88bdf0f4490ca",
+  "runs": [
+    {
+      "seed": 361901,
+      "engine": "analytic",
+      "training_state": "COMPLETE",
+      "training_seconds": 3715.9065583939664,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18250,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 87,
+        "check_points": 29,
+        "maximum_error_over_original_budget": 1.2754077570837523e-05
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.001708118012174964
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 170.28182159201242
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 335.1961521769408
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 498.3164162429748
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 663.2215249029687
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 739.0073459899286
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 850.3715866459534
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1040.7484135779087
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1229.6450429980177
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1423.9108390419278
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2188.07140775898
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3714.1614054329693
+        },
+        {
+          "tag": "final",
+          "training_seconds": 3716.046915809973
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 149,
+        "closure": 3387,
+        "loss": 9.985576565230666e-05,
+        "gradient_infinity": 0.0004682053760660694,
+        "training_seconds": 1229.6427997059654
+      },
+      "loss_curve": {
+        "evaluations": 22250,
+        "initial": 5.353273559035106,
+        "after_Adam": 0.0011575742185245498,
+        "minimum": 4.226977758338717e-06,
+        "final_reported": 4.226977758338717e-06,
+        "final_gradient_infinity": 6.696215471576052e-05,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 696,
+            "training_seconds": 118.86336152395234
+          },
+          "0.001": {
+            "evaluation": 4066,
+            "training_seconds": 674.1639611679129
+          },
+          "0.0003": {
+            "evaluation": 5792,
+            "training_seconds": 962.7589372969232
+          },
+          "0.0001": {
+            "evaluation": 7387,
+            "training_seconds": 1229.4762578679947
+          },
+          "3e-05": {
+            "evaluation": 10261,
+            "training_seconds": 1711.2414112759288
+          },
+          "1e-05": {
+            "evaluation": 16185,
+            "training_seconds": 2702.5311279579764
+          }
+        },
+        "mean_seconds_per_evaluation": 0.16692840987469562,
+        "per_LBFGS_call_end": {
+          "1": 0.0011098420063177525,
+          "20": 0.0006059452553969255,
+          "50": 0.00038873240660430906,
+          "100": 0.00023819864647411175,
+          "200": 5.303643135734093e-05,
+          "400": 1.755833047565114e-05,
+          "800": 4.226977758338717e-06
+        }
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0018109113564671805,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0017846030669709126,
+                "normalized_divergence_rms": 1.1837098209876856e-14,
+                "normalized_divergence_gradient_rms": 8.720352514649828e-13,
+                "normalized_momentum_rms": 0.001508524395007885,
+                "normalized_momentum_gradient_rms": 0.0015296161016050192,
+                "normalized_corrected_pressure_rms": 0.0028904283534885336,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0005246903328238487,
+                  0.0005792085198424779,
+                  0.0005183259181659663
+                ],
+                "velocity_component_relative_l2": [
+                  0.0014809961446992528,
+                  0.0022729336285744737,
+                  0.0018592576122631076
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 0.001971991539617802,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0003438648985451495,
+                "normalized_divergence_rms": 1.794341066846681e-15,
+                "normalized_divergence_gradient_rms": 1.558282513457073e-13,
+                "normalized_momentum_rms": 0.0003373105446987221,
+                "normalized_momentum_gradient_rms": 0.0002813164827252144,
+                "normalized_corrected_pressure_rms": 0.000591600591523234,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.00011387287216012336,
+                  0.00011186091331994511,
+                  8.468425494393808e-05
+                ],
+                "velocity_component_relative_l2": [
+                  0.0024142426841663785,
+                  0.002435559374275854,
+                  0.0013286828471603803
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0026025765190435582,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0025754564826113396,
+                "normalized_divergence_rms": 9.632763281612874e-15,
+                "normalized_divergence_gradient_rms": 8.053707323151417e-13,
+                "normalized_momentum_rms": 0.00157052741457286,
+                "normalized_momentum_gradient_rms": 0.0014989187167515749,
+                "normalized_corrected_pressure_rms": 0.004505113989649083,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0007407183411856491,
+                  0.0008202243928969776,
+                  0.0007811403119633874
+                ],
+                "velocity_component_relative_l2": [
+                  0.0022734643585744607,
+                  0.003429949535335644,
+                  0.0023871918705527604
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0012313544642170906,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.002063561649048414,
+                "normalized_divergence_rms": 1.8402668483935812e-14,
+                "normalized_divergence_gradient_rms": 1.469397580434872e-12,
+                "normalized_momentum_rms": 0.0016496716081297927,
+                "normalized_momentum_gradient_rms": 0.0018869958722957942,
+                "normalized_corrected_pressure_rms": 0.003397708606489344,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006028755705902162,
+                  0.000718769695962203,
+                  0.0005438591950384384
+                ],
+                "velocity_component_relative_l2": [
+                  0.0009556633056619632,
+                  0.001659337242048204,
+                  0.0012479538101727906
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.002629439484341382,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.002494077716660765,
+                "normalized_divergence_rms": 1.1758503880483743e-14,
+                "normalized_divergence_gradient_rms": 7.117995021996624e-13,
+                "normalized_momentum_rms": 0.0018593435529888898,
+                "normalized_momentum_gradient_rms": 0.00188431469242788,
+                "normalized_corrected_pressure_rms": 0.003969878394930757,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0008138100308024561,
+                  0.0007781528157392017,
+                  0.0006707326058507451
+                ],
+                "velocity_component_relative_l2": [
+                  0.0024551001430158,
+                  0.002966528936143988,
+                  0.002539594946756979
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.0007950642034782655,
+            "maximum_endpoint_error": 0.0007950642034782655,
+            "maximum_refinement_change": 6.325014848361928e-11
+          },
+          "observation_seconds": 1817.2366893291473
+        },
+        "gate-first": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.008653759512321451,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.008528040707992245,
+                "normalized_divergence_rms": 1.1908504700997307e-14,
+                "normalized_divergence_gradient_rms": 7.985979633752093e-13,
+                "normalized_momentum_rms": 0.006241356699837369,
+                "normalized_momentum_gradient_rms": 0.006340267625991666,
+                "normalized_corrected_pressure_rms": 0.011476416997778665,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.002826961151490659,
+                  0.002729712453263845,
+                  0.0021540027392209678
+                ],
+                "velocity_component_relative_l2": [
+                  0.007979408623824997,
+                  0.010711954363256414,
+                  0.007726501510676592
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.009451655648640278,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.001648127056028491,
+                "normalized_divergence_rms": 2.0664160703000603e-15,
+                "normalized_divergence_gradient_rms": 2.1055505351497442e-13,
+                "normalized_momentum_rms": 0.001231964608750268,
+                "normalized_momentum_gradient_rms": 0.0013931085379896265,
+                "normalized_corrected_pressure_rms": 0.0023297205425897166,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0005365765674902451,
+                  0.0005367914905317863,
+                  0.00041715517512451965
+                ],
+                "velocity_component_relative_l2": [
+                  0.011376072527062076,
+                  0.01168761730969248,
+                  0.0065451001034261295
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.010648976044316206,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.010538008848472214,
+                "normalized_divergence_rms": 1.2142952023044182e-14,
+                "normalized_divergence_gradient_rms": 7.964813211684713e-13,
+                "normalized_momentum_rms": 0.0075094080788906635,
+                "normalized_momentum_gradient_rms": 0.006471260266001472,
+                "normalized_corrected_pressure_rms": 0.014882159458370379,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0035687477419190494,
+                  0.0029910702803536224,
+                  0.002997078543981281
+                ],
+                "velocity_component_relative_l2": [
+                  0.010953449300322575,
+                  0.01250782128293001,
+                  0.009159175920158578
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.007395440655611524,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.012393626821693857,
+                "normalized_divergence_rms": 2.0740802236908867e-14,
+                "normalized_divergence_gradient_rms": 1.4608808660319607e-12,
+                "normalized_momentum_rms": 0.007957152855300059,
+                "normalized_momentum_gradient_rms": 0.010682880417735099,
+                "normalized_corrected_pressure_rms": 0.016403017111983283,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.003973781688794366,
+                  0.004268022059097634,
+                  0.002899703370097405
+                ],
+                "velocity_component_relative_l2": [
+                  0.006299139540476567,
+                  0.009853069755623617,
+                  0.006653736669521933
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.010004374677663956,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.009489356230206894,
+                "normalized_divergence_rms": 1.0685146868741427e-14,
+                "normalized_divergence_gradient_rms": 6.842962790624605e-13,
+                "normalized_momentum_rms": 0.007823669279204894,
+                "normalized_momentum_gradient_rms": 0.008368365808069576,
+                "normalized_corrected_pressure_rms": 0.011192409494133543,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.002982242279596062,
+                  0.0031935373050672286,
+                  0.0024027331462113215
+                ],
+                "velocity_component_relative_l2": [
+                  0.008996821334242469,
+                  0.012174627698465267,
+                  0.00909746880246584
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.008449609275552604,
+            "maximum_endpoint_error": 0.00844960927549435,
+            "maximum_refinement_change": 6.641951841143268e-11
+          },
+          "observation_seconds": 1823.0127396583557
+        }
+      }
+    },
+    {
+      "seed": 361901,
+      "engine": "parameter_ad",
+      "training_state": "COMPLETE",
+      "training_seconds": 4725.197844692972,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18223,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 87,
+        "check_points": 29,
+        "maximum_error_over_original_budget": 3.1602179535937553e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.009242377011105418
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 225.48207790101878
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 445.60845423000865
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 663.9114511950174
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 884.0670704729855
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 982.9274566490203
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 1132.2899658899987
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1387.316481198999
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1646.1446133169811
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1892.5584115530364
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2903.668130069971
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 4723.435230414965
+        },
+        {
+          "tag": "final",
+          "training_seconds": 4725.379306040006
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 152,
+        "closure": 3418,
+        "loss": 9.991848008778721e-05,
+        "gradient_infinity": 0.0008290699738767842,
+        "training_seconds": 1646.1429622200085
+      },
+      "loss_curve": {
+        "evaluations": 22223,
+        "initial": 5.353273559035106,
+        "after_Adam": 0.0011120627712428762,
+        "minimum": 3.4895418921648687e-06,
+        "final_reported": 3.4895418921648687e-06,
+        "final_gradient_infinity": 3.60243150261152e-05,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 695,
+            "training_seconds": 157.10299905599095
+          },
+          "0.001": {
+            "evaluation": 4048,
+            "training_seconds": 894.6321502960054
+          },
+          "0.0003": {
+            "evaluation": 5785,
+            "training_seconds": 1280.8027957539307
+          },
+          "0.0001": {
+            "evaluation": 7419,
+            "training_seconds": 1646.1429622200085
+          },
+          "3e-05": {
+            "evaluation": 10281,
+            "training_seconds": 2282.0801289370283
+          },
+          "1e-05": {
+            "evaluation": 15547,
+            "training_seconds": 3454.5608927329304
+          }
+        },
+        "mean_seconds_per_evaluation": 0.21254694238149824,
+        "per_LBFGS_call_end": {
+          "1": 0.0010681097044744387,
+          "20": 0.0005967533595360761,
+          "50": 0.0003879289831277535,
+          "100": 0.00023983090804555784,
+          "200": 5.497347596140009e-05,
+          "400": 1.6487498766985866e-05,
+          "800": 3.4895418921648687e-06
+        }
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0015887693417513174,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0015656882540789037,
+                "normalized_divergence_rms": 1.1891269815824206e-14,
+                "normalized_divergence_gradient_rms": 8.955262281630865e-13,
+                "normalized_momentum_rms": 0.001350250186666888,
+                "normalized_momentum_gradient_rms": 0.0014037392478516658,
+                "normalized_corrected_pressure_rms": 0.00258425783305743,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.00047296033847577293,
+                  0.000519329203554779,
+                  0.00042839583823657117
+                ],
+                "velocity_component_relative_l2": [
+                  0.0013349825488655083,
+                  0.0020379548480769557,
+                  0.00153667450418357
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 0.001697873740976349,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0002960657639517366,
+                "normalized_divergence_rms": 2.3034809993220915e-15,
+                "normalized_divergence_gradient_rms": 1.5505730338680047e-13,
+                "normalized_momentum_rms": 0.00030513790134149355,
+                "normalized_momentum_gradient_rms": 0.00025678017020316966,
+                "normalized_corrected_pressure_rms": 0.0004923270321696137,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  9.328880126497277e-05,
+                  0.00010016217605289457,
+                  7.395629001787166e-05
+                ],
+                "velocity_component_relative_l2": [
+                  0.001977835472981783,
+                  0.0021808415432452823,
+                  0.0011603627386391566
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0022646922612613424,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0022410931331727888,
+                "normalized_divergence_rms": 1.2572632101609913e-14,
+                "normalized_divergence_gradient_rms": 7.441061130697513e-13,
+                "normalized_momentum_rms": 0.0013977671968568792,
+                "normalized_momentum_gradient_rms": 0.0014024578237029244,
+                "normalized_corrected_pressure_rms": 0.0043399462380074765,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006329068411199493,
+                  0.000740445569520715,
+                  0.0006618672741149388
+                ],
+                "velocity_component_relative_l2": [
+                  0.0019425617884403362,
+                  0.0030963367574925378,
+                  0.0020226893324462726
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0010676954606595732,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.001789294203664605,
+                "normalized_divergence_rms": 2.2702854071944024e-14,
+                "normalized_divergence_gradient_rms": 1.4145509726827176e-12,
+                "normalized_momentum_rms": 0.0014859217388602107,
+                "normalized_momentum_gradient_rms": 0.0017779975404107135,
+                "normalized_corrected_pressure_rms": 0.002853965116008338,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0005804092900903444,
+                  0.0006023920827926186,
+                  0.0004293281554212217
+                ],
+                "velocity_component_relative_l2": [
+                  0.0009200503186115557,
+                  0.0013906702284584634,
+                  0.0009851478328586542
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0022316204540560004,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.002116738141208666,
+                "normalized_divergence_rms": 1.2107658713259466e-14,
+                "normalized_divergence_gradient_rms": 7.827108678481757e-13,
+                "normalized_momentum_rms": 0.0017315263214152565,
+                "normalized_momentum_gradient_rms": 0.0017516596529524996,
+                "normalized_corrected_pressure_rms": 0.003994051739787907,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006227352312613608,
+                  0.000747709732410125,
+                  0.0005388749490196551
+                ],
+                "velocity_component_relative_l2": [
+                  0.0018786661474585135,
+                  0.0028504716710740685,
+                  0.002040342284729739
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.0006199783153695244,
+            "maximum_endpoint_error": 0.0006199783153694951,
+            "maximum_refinement_change": 6.358225947939837e-11
+          },
+          "observation_seconds": 1848.4000301361084
+        },
+        "gate-first": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.008483711922626841,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.00836046351045783,
+                "normalized_divergence_rms": 1.1940568005036097e-14,
+                "normalized_divergence_gradient_rms": 8.610631895212649e-13,
+                "normalized_momentum_rms": 0.006502429130888166,
+                "normalized_momentum_gradient_rms": 0.006526164448971269,
+                "normalized_corrected_pressure_rms": 0.009104063929279654,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.002905911355085271,
+                  0.002550059031012598,
+                  0.0020866579717933997
+                ],
+                "velocity_component_relative_l2": [
+                  0.008202254252631533,
+                  0.010006957300999108,
+                  0.007484932900855112
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.009266740812345211,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0016158826370517138,
+                "normalized_divergence_rms": 1.7756632685056631e-15,
+                "normalized_divergence_gradient_rms": 1.4359551803208046e-13,
+                "normalized_momentum_rms": 0.0013053668424573858,
+                "normalized_momentum_gradient_rms": 0.0013134667692081933,
+                "normalized_corrected_pressure_rms": 0.0015852490532031185,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0005489081175518035,
+                  0.0005209890908331255,
+                  0.00038507899632652407
+                ],
+                "velocity_component_relative_l2": [
+                  0.0116375163104303,
+                  0.011343550007005218,
+                  0.006041829824912603
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.010262295320552227,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.010155357514522283,
+                "normalized_divergence_rms": 1.0640441405632235e-14,
+                "normalized_divergence_gradient_rms": 7.923461750234643e-13,
+                "normalized_momentum_rms": 0.007628302386526576,
+                "normalized_momentum_gradient_rms": 0.00680255673066473,
+                "normalized_corrected_pressure_rms": 0.0112774427647804,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0035571837684634784,
+                  0.0028353614392650993,
+                  0.0027902617905260075
+                ],
+                "velocity_component_relative_l2": [
+                  0.010917956347019083,
+                  0.011856690358558302,
+                  0.00852713675257087
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.006908259712122798,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.011577186113234042,
+                "normalized_divergence_rms": 1.7155460911951936e-14,
+                "normalized_divergence_gradient_rms": 1.4451653221427834e-12,
+                "normalized_momentum_rms": 0.008086834062072142,
+                "normalized_momentum_gradient_rms": 0.011801718897247437,
+                "normalized_corrected_pressure_rms": 0.011957077344250307,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.004041799990868396,
+                  0.003682136704203659,
+                  0.0026677222878696886
+                ],
+                "velocity_component_relative_l2": [
+                  0.006406960455067522,
+                  0.00850050662669988,
+                  0.006121426692794179
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.010039383926021016,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.009522563226117756,
+                "normalized_divergence_rms": 1.277260038120126e-14,
+                "normalized_divergence_gradient_rms": 7.563483686972674e-13,
+                "normalized_momentum_rms": 0.007794750091720348,
+                "normalized_momentum_gradient_rms": 0.008833829921944278,
+                "normalized_corrected_pressure_rms": 0.010299008756084013,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0029884103076751435,
+                  0.003244543354550809,
+                  0.0023626789350372907
+                ],
+                "velocity_component_relative_l2": [
+                  0.00901542902651206,
+                  0.012369076550478603,
+                  0.008945811537847126
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.009031289432331852,
+            "maximum_endpoint_error": 0.009031289432273932,
+            "maximum_refinement_change": 6.727412521044855e-11
+          },
+          "observation_seconds": 1878.3967254161835
+        }
+      }
+    },
+    {
+      "seed": 361902,
+      "engine": "analytic",
+      "training_state": "COMPLETE",
+      "training_seconds": 3688.6275014539715,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18070,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 87,
+        "check_points": 29,
+        "maximum_error_over_original_budget": 1.7175003546905873e-05
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0014847059501335025
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 170.09581344004255
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 334.94347892701626
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 498.0216314420104
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 662.9306476439815
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 737.8228481550468
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 850.5986013209913
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1039.46595582203
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1076.9160396719817
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1416.4237594390288
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2173.7395394219784
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3686.8866624230286
+        },
+        {
+          "tag": "final",
+          "training_seconds": 3688.795018558041
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 110,
+        "closure": 2470,
+        "loss": 9.9952624366923e-05,
+        "gradient_infinity": 0.0009762969667889507,
+        "training_seconds": 1076.9142307320144
+      },
+      "loss_curve": {
+        "evaluations": 22070,
+        "initial": 5.308249296028209,
+        "after_Adam": 0.0009856221038199522,
+        "minimum": 2.7674718427807716e-06,
+        "final_reported": 2.7674718427807716e-06,
+        "final_gradient_infinity": 6.637047291103358e-05,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 704,
+            "training_seconds": 120.05860323400702
+          },
+          "0.001": {
+            "evaluation": 3934,
+            "training_seconds": 650.4220223879674
+          },
+          "0.0003": {
+            "evaluation": 5071,
+            "training_seconds": 840.8003914939472
+          },
+          "0.0001": {
+            "evaluation": 6471,
+            "training_seconds": 1076.9142307320144
+          },
+          "3e-05": {
+            "evaluation": 9406,
+            "training_seconds": 1567.2254248539684
+          },
+          "1e-05": {
+            "evaluation": 14547,
+            "training_seconds": 2428.7681264119456
+          }
+        },
+        "mean_seconds_per_evaluation": 0.16705404339334157,
+        "per_LBFGS_call_end": {
+          "1": 0.0009435905713909968,
+          "20": 0.000495403676938495,
+          "50": 0.00028764421419491727,
+          "100": 0.00011810725734884106,
+          "200": 3.792125326196372e-05,
+          "400": 1.3669257553093904e-05,
+          "800": 2.7674718427807716e-06
+        }
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.001461496031551847,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0014402639262042268,
+                "normalized_divergence_rms": 1.2505506881556268e-14,
+                "normalized_divergence_gradient_rms": 8.228725659837266e-13,
+                "normalized_momentum_rms": 0.0011969491048397609,
+                "normalized_momentum_gradient_rms": 0.0011750871503312331,
+                "normalized_corrected_pressure_rms": 0.002163502793805827,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.00044752754076628687,
+                  0.0004564030381583993,
+                  0.0004052450133683245
+                ],
+                "velocity_component_relative_l2": [
+                  0.0012631956814499231,
+                  0.001791019603606504,
+                  0.0014536314884710595
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 0.0017757800552975994,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0003096506330203409,
+                "normalized_divergence_rms": 2.1015401972936223e-15,
+                "normalized_divergence_gradient_rms": 1.4944195308918913e-13,
+                "normalized_momentum_rms": 0.00027512706340171813,
+                "normalized_momentum_gradient_rms": 0.00017306682727406895,
+                "normalized_corrected_pressure_rms": 0.0003843936421762127,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  9.426374046048092e-05,
+                  8.080138194307354e-05,
+                  0.00010517839957378424
+                ],
+                "velocity_component_relative_l2": [
+                  0.0019985053636731574,
+                  0.0017592969465841748,
+                  0.0016502328029925162
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0018234655913394356,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.001804464246745657,
+                "normalized_divergence_rms": 1.1615027494916572e-14,
+                "normalized_divergence_gradient_rms": 7.076727326266543e-13,
+                "normalized_momentum_rms": 0.0012743087580168423,
+                "normalized_momentum_gradient_rms": 0.001229036205970059,
+                "normalized_corrected_pressure_rms": 0.002534502525364466,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0004908308667763869,
+                  0.0005593345458633376,
+                  0.0005876717297147533
+                ],
+                "velocity_component_relative_l2": [
+                  0.001506492305723325,
+                  0.0023389809938535876,
+                  0.0017959451768691874
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.001200140509815812,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0020112518381130403,
+                "normalized_divergence_rms": 1.5678419568677994e-14,
+                "normalized_divergence_gradient_rms": 1.648162554339149e-12,
+                "normalized_momentum_rms": 0.001383570694861223,
+                "normalized_momentum_gradient_rms": 0.0014158649033365342,
+                "normalized_corrected_pressure_rms": 0.0029700036916393995,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006156157775982964,
+                  0.0007225898195917008,
+                  0.0004646433144583216
+                ],
+                "velocity_component_relative_l2": [
+                  0.0009758587637931327,
+                  0.001668156302511192,
+                  0.0010661829384140398
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0020949110033749107,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0019870664006604918,
+                "normalized_divergence_rms": 1.1986543560915934e-14,
+                "normalized_divergence_gradient_rms": 8.543330285088655e-13,
+                "normalized_momentum_rms": 0.001469136015037499,
+                "normalized_momentum_gradient_rms": 0.0014566335422209864,
+                "normalized_corrected_pressure_rms": 0.002495539752801952,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006195209094770579,
+                  0.0007202241446758322,
+                  0.00043333646960963263
+                ],
+                "velocity_component_relative_l2": [
+                  0.001868969189232821,
+                  0.0027456891788803614,
+                  0.0016407419273590839
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.0008024592741839852,
+            "maximum_endpoint_error": 0.00080240801425485,
+            "maximum_refinement_change": 6.297482391650387e-11
+          },
+          "observation_seconds": 1839.269095659256
+        },
+        "gate-first": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.008373721013866142,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.008252070511312808,
+                "normalized_divergence_rms": 1.1846456758407593e-14,
+                "normalized_divergence_gradient_rms": 8.26411873505021e-13,
+                "normalized_momentum_rms": 0.006362729592640542,
+                "normalized_momentum_gradient_rms": 0.006612211546208531,
+                "normalized_corrected_pressure_rms": 0.009285672167336391,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.002990172563190555,
+                  0.0022572748066675614,
+                  0.002183484904908687
+                ],
+                "velocity_component_relative_l2": [
+                  0.008440090775519259,
+                  0.008858011650802335,
+                  0.007832255321280642
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.010424703062460069,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0018178016431200823,
+                "normalized_divergence_rms": 2.6917255425379356e-15,
+                "normalized_divergence_gradient_rms": 1.244408918475138e-13,
+                "normalized_momentum_rms": 0.0015705688095526383,
+                "normalized_momentum_gradient_rms": 0.0015920087884805302,
+                "normalized_corrected_pressure_rms": 0.002242141072424327,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0005957892643903467,
+                  0.0005451122561859283,
+                  0.0005102514562765286
+                ],
+                "velocity_component_relative_l2": [
+                  0.012631453352969547,
+                  0.011868786211220523,
+                  0.008005766339233273
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.010936394118921144,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.010822431895419933,
+                "normalized_divergence_rms": 1.30160244288905e-14,
+                "normalized_divergence_gradient_rms": 7.247207288087964e-13,
+                "normalized_momentum_rms": 0.006968320646627827,
+                "normalized_momentum_gradient_rms": 0.00604072889761335,
+                "normalized_corrected_pressure_rms": 0.011952917374505956,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.004023060739118608,
+                  0.0027504440262725825,
+                  0.0029313182068680574
+                ],
+                "velocity_component_relative_l2": [
+                  0.012347858415556653,
+                  0.011501589432814227,
+                  0.00895821005044572
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.006507624288543328,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.010905782452165164,
+                "normalized_divergence_rms": 2.1226308252106882e-14,
+                "normalized_divergence_gradient_rms": 1.7767699660224302e-12,
+                "normalized_momentum_rms": 0.008276154832595816,
+                "normalized_momentum_gradient_rms": 0.013277252404534753,
+                "normalized_corrected_pressure_rms": 0.01505563376529769,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0036173972503704887,
+                  0.003295088823149678,
+                  0.0029832053370893296
+                ],
+                "velocity_component_relative_l2": [
+                  0.005734207824671243,
+                  0.007606975684735282,
+                  0.006845342509443661
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.009678790947918426,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.009180533330839418,
+                "normalized_divergence_rms": 1.0667983925434578e-14,
+                "normalized_divergence_gradient_rms": 8.059843102061854e-13,
+                "normalized_momentum_rms": 0.007220905288610864,
+                "normalized_momentum_gradient_rms": 0.007497862268975902,
+                "normalized_corrected_pressure_rms": 0.0073803598419545455,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0032194969791787226,
+                  0.0027081561116230443,
+                  0.0023609709973728857
+                ],
+                "velocity_component_relative_l2": [
+                  0.009712570741143,
+                  0.010324223348203482,
+                  0.008939344773261563
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.005226441321844632,
+            "maximum_endpoint_error": 0.0051934797948390305,
+            "maximum_refinement_change": 6.545506939284607e-11
+          },
+          "observation_seconds": 1849.9382872581482
+        }
+      }
+    },
+    {
+      "seed": 361902,
+      "engine": "parameter_ad",
+      "training_state": "COMPLETE",
+      "training_seconds": 4633.977347205044,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18043,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 87,
+        "check_points": 29,
+        "maximum_error_over_original_budget": 4.322929133729666e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0013259680708870292
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 222.62149231601506
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 439.8174109531101
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 655.1790481280768
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 872.3544352550525
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 970.6873299990548
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 1117.5389335100772
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1361.7727653310867
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1413.5284391200403
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1853.5778909480432
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2847.1624322480056
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 4632.234663957031
+        },
+        {
+          "tag": "final",
+          "training_seconds": 4634.155008152011
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 111,
+        "closure": 2460,
+        "loss": 9.98937354867056e-05,
+        "gradient_infinity": 0.0005791045354741912,
+        "training_seconds": 1413.5266292730812
+      },
+      "loss_curve": {
+        "evaluations": 22043,
+        "initial": 5.308249296028209,
+        "after_Adam": 0.0009712547752374107,
+        "minimum": 3.0015070611350023e-06,
+        "final_reported": 3.0015070611350023e-06,
+        "final_gradient_infinity": 5.7273423310221435e-05,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 704,
+            "training_seconds": 157.07381949108094
+          },
+          "0.001": {
+            "evaluation": 3865,
+            "training_seconds": 841.4371699190233
+          },
+          "0.0003": {
+            "evaluation": 5080,
+            "training_seconds": 1108.3719497020356
+          },
+          "0.0001": {
+            "evaluation": 6461,
+            "training_seconds": 1413.5266292730812
+          },
+          "3e-05": {
+            "evaluation": 8969,
+            "training_seconds": 1964.2542625340866
+          },
+          "1e-05": {
+            "evaluation": 14391,
+            "training_seconds": 3154.6399304640945
+          }
+        },
+        "mean_seconds_per_evaluation": 0.21014524791630423,
+        "per_LBFGS_call_end": {
+          "1": 0.000925197196505062,
+          "20": 0.00048737103068975744,
+          "50": 0.00028989507402926376,
+          "100": 0.00011856630527149226,
+          "200": 3.472295700963122e-05,
+          "400": 1.3397942333664573e-05,
+          "800": 3.0015070611350023e-06
+        }
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0015572624066229322,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.001534639040731067,
+                "normalized_divergence_rms": 1.1745666907852578e-14,
+                "normalized_divergence_gradient_rms": 8.487645213675663e-13,
+                "normalized_momentum_rms": 0.0012855910703190136,
+                "normalized_momentum_gradient_rms": 0.001267286393416793,
+                "normalized_corrected_pressure_rms": 0.002042947619089137,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0004883994908698951,
+                  0.0004876430374777755,
+                  0.00041713999734105384
+                ],
+                "velocity_component_relative_l2": [
+                  0.0013785612537561807,
+                  0.0019136118006773703,
+                  0.0014962993133355751
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 0.0019869395476042983,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0003464714489012048,
+                "normalized_divergence_rms": 2.168005611565447e-15,
+                "normalized_divergence_gradient_rms": 1.3722746328853172e-13,
+                "normalized_momentum_rms": 0.00029608433225988216,
+                "normalized_momentum_gradient_rms": 0.00019895772347333125,
+                "normalized_corrected_pressure_rms": 0.0003490286784711471,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  9.861631581828926e-05,
+                  0.00010779039949797768,
+                  0.00010864736734271257
+                ],
+                "velocity_component_relative_l2": [
+                  0.002090785228188171,
+                  0.0023469316507666047,
+                  0.0017046603701356478
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.001816491007599223,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0017975623413546689,
+                "normalized_divergence_rms": 1.0318193707596637e-14,
+                "normalized_divergence_gradient_rms": 7.220175378607723e-13,
+                "normalized_momentum_rms": 0.0013636641879922003,
+                "normalized_momentum_gradient_rms": 0.0013309721213410207,
+                "normalized_corrected_pressure_rms": 0.0022159970954664385,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0005224758058370552,
+                  0.0006026134728654908,
+                  0.000506101930645321
+                ],
+                "velocity_component_relative_l2": [
+                  0.0016036191582439899,
+                  0.002519961390006602,
+                  0.0015466650434041288
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0013154895272854984,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.002204559139643963,
+                "normalized_divergence_rms": 1.8959540930545546e-14,
+                "normalized_divergence_gradient_rms": 1.504510142358841e-12,
+                "normalized_momentum_rms": 0.0013904691191077986,
+                "normalized_momentum_gradient_rms": 0.0015127086282407862,
+                "normalized_corrected_pressure_rms": 0.0025520034747224607,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006862750465222525,
+                  0.0007704877478237911,
+                  0.0005267111965516498
+                ],
+                "velocity_component_relative_l2": [
+                  0.0010878660731114004,
+                  0.001778732494828347,
+                  0.0012086055556178362
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0020600437103745935,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0019539940523405396,
+                "normalized_divergence_rms": 1.2448776246618867e-14,
+                "normalized_divergence_gradient_rms": 7.572876771083965e-13,
+                "normalized_momentum_rms": 0.0015001164108017708,
+                "normalized_momentum_gradient_rms": 0.001477632516400652,
+                "normalized_corrected_pressure_rms": 0.0025743876485051806,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006306616894054392,
+                  0.0006783114604080945,
+                  0.0004432573767802295
+                ],
+                "velocity_component_relative_l2": [
+                  0.0019025786673176593,
+                  0.0025859066937992028,
+                  0.0016783054593805158
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.0010926666186245242,
+            "maximum_endpoint_error": 0.0010926666186245242,
+            "maximum_refinement_change": 6.303811339545609e-11
+          },
+          "observation_seconds": 1802.1377935409546
+        },
+        "gate-first": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.008399331329379566,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.00827730876908182,
+                "normalized_divergence_rms": 1.1104887713699482e-14,
+                "normalized_divergence_gradient_rms": 8.196184318027075e-13,
+                "normalized_momentum_rms": 0.006408661786200124,
+                "normalized_momentum_gradient_rms": 0.006660959071280622,
+                "normalized_corrected_pressure_rms": 0.009321697633245942,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.002978174873191316,
+                  0.002294547833760026,
+                  0.0021874070136565413
+                ],
+                "velocity_component_relative_l2": [
+                  0.00840622597656529,
+                  0.009004278692489273,
+                  0.007846324095945384
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.010501367336427618,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.001831169932111321,
+                "normalized_divergence_rms": 2.0163749975058845e-15,
+                "normalized_divergence_gradient_rms": 1.4125083258723137e-13,
+                "normalized_momentum_rms": 0.001588140139075105,
+                "normalized_momentum_gradient_rms": 0.0015229153023227123,
+                "normalized_corrected_pressure_rms": 0.0022057691113402922,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0005859720072888116,
+                  0.0005661592078028536,
+                  0.0005118978823750046
+                ],
+                "velocity_component_relative_l2": [
+                  0.012423315622829273,
+                  0.012327043691775107,
+                  0.008031598509777969
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.011417578412735172,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.011298602029041796,
+                "normalized_divergence_rms": 1.2499662891556037e-14,
+                "normalized_divergence_gradient_rms": 7.850470735515758e-13,
+                "normalized_momentum_rms": 0.00697977568621775,
+                "normalized_momentum_gradient_rms": 0.006110051468874428,
+                "normalized_corrected_pressure_rms": 0.012575034142723313,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.004176787668226456,
+                  0.0029005674020237517,
+                  0.0030647018769592808
+                ],
+                "velocity_component_relative_l2": [
+                  0.012819687820672195,
+                  0.012129363499715717,
+                  0.009365835169812474
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.006574014733629091,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.01101704267846348,
+                "normalized_divergence_rms": 1.9371557747503125e-14,
+                "normalized_divergence_gradient_rms": 1.4193402993495324e-12,
+                "normalized_momentum_rms": 0.008731956976956091,
+                "normalized_momentum_gradient_rms": 0.014168496033025647,
+                "normalized_corrected_pressure_rms": 0.014414269248001524,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0034984299114880057,
+                  0.0035548973477792685,
+                  0.0029393736311278235
+                ],
+                "velocity_component_relative_l2": [
+                  0.0055456237687093535,
+                  0.008206764411418255,
+                  0.006744765108233833
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.009851899983451115,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.009344730830209843,
+                "normalized_divergence_rms": 9.90638061414675e-15,
+                "normalized_divergence_gradient_rms": 7.248971588874269e-13,
+                "normalized_momentum_rms": 0.007455505102907579,
+                "normalized_momentum_gradient_rms": 0.007962872946836922,
+                "normalized_corrected_pressure_rms": 0.00734305797692521,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.003373069215174011,
+                  0.0026571627525104466,
+                  0.002382288702295663
+                ],
+                "velocity_component_relative_l2": [
+                  0.010175867093221031,
+                  0.010129822875315645,
+                  0.009020060001992201
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.00476437688631095,
+            "maximum_endpoint_error": 0.00476437599821755,
+            "maximum_refinement_change": 6.542922991887793e-11
+          },
+          "observation_seconds": 1789.238972902298
+        }
+      }
+    }
+  ],
+  "paired_development_parameter_ad_over_analytic": {
+    "361901": {
+      "per_evaluation_seconds_ratio": 1.2732820167702192,
+      "time_to_loss_ratio": {
+        "0.01": 1.3217108875415144,
+        "0.001": 1.3270245842660533,
+        "0.0003": 1.3303463059506453,
+        "0.0001": 1.3388977230634331,
+        "3e-05": 1.3335816407314927,
+        "1e-05": 1.2782686782013812
+      }
+    },
+    "361902": {
+      "per_evaluation_seconds_ratio": 1.2579476895479933,
+      "time_to_loss_ratio": {
+        "0.01": 1.308309569326967,
+        "0.001": 1.2936787823231453,
+        "0.0003": 1.318234340653271,
+        "0.0001": 1.31257122334827,
+        "3e-05": 1.2533323103261376,
+        "1e-05": 1.298864183928702
+      }
+    }
+  },
+  "any_training_gate": true,
+  "all_training_gate": true,
+  "any_physical_acceptance": false,
+  "decision_rule_branch_mechanical": "b",
+  "decision_note": "Mechanical branch from the pre-registered rule; branch b additionally requires reading the physical-error trend across checkpoints.",
+  "formal_claim": false
+}

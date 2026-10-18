@@ -1847,8 +1847,74 @@ reach the gate. The layer forcing sets this scale. With $\eta=1/32$ the
 layer force and force-gradient component RMS are 196--234 and
 7.0--7.2$\times10^{4}$, against 2.0 and 10.6 in the plateau; with
 $\eta=1/16$ they are four to five and nine to eleven times smaller. A wider
-cutoff defines a different, easier instance rather than a repair of this
-one.
+cutoff defines a different instance rather than a repair of this one;
+Section~\ref{sec:c36v6} tests it.
+
+\subsection{A wider cutoff (protocol v6)}\label{sec:c36v6}
+The post-hoc above motivated one more registered development study, on a
+different instance: the same single-box construction with the cutoff width
+doubled to $\eta=1/16$. Every other element follows the development
+recipe: the box motion, the sampler seeds and point counts, the model and
+its features, the rule that derives the scales from the calibration, the
+physical limits, the Adam schedule, the L-BFGS settings with 800 calls, the
+stored initial parameters, both engines and the observer. The registered
+decision applies within this instance only. F1: some run passes physical
+acceptance. F2 (near miss): some complete final observation exceeds no
+limit by more than 1.5 times. F0: a run lacks a complete final observation,
+with no scientific reading. F3: otherwise.
+
+The calibration and training generators are the originals with the cutoff
+width as an argument; at $\eta=1/32$ they reproduce the frozen inputs to
+$2.8\times10^{-14}$ of each array's maximum. At $\eta=1/16$ ten calibration
+points pass the 80- and 160-digit source checks, and the prepared geometry
+agrees with native coordinate AD. The scales follow the instance. The
+stratified velocity RMS falls from 0.377 to 0.303, so the absolute
+corrected-pressure tolerance tightens from $1.42\times10^{-4}$ to
+$9.2\times10^{-5}$, while the force and force-gradient scales fall from 164
+to 38.1 and from 50,451 to 5,252. The preserved full native reference
+belongs to the $\eta=1/32$ data, so it supplies only the stored initial
+parameters. Instead, the eager engine is checked against fresh native
+coordinate AD on a 131-point interior subset that covers every region, plus
+every value point, and the compiled and graph engines against dense
+parameter AD. All start-up checks pass within $10^{-6}$ of the original
+budget and all 116 saved checks within $1.7\times10^{-5}$.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{C36 on the wider-cutoff instance ($\eta=1/16$, protocol v6; 800 L-BFGS calls). Gate is the L-BFGS call of the first closure meeting the training gate. Pressure columns are the final stratified corrected pressure, its plateau region and, post hoc, the value the cutoff layers alone would leave with the plateau error set to zero, all over the limit; velocity is the stratified relative L2 error $\times10^{-3}$ (limit 10) and endpoint the trajectory endpoint error $\times10^{-3}$ (limit 1). Failed lists the failing acceptance tests: S (stratified pressure) and T (trajectory endpoint).}
+\label{tab:c36v6}
+\begin{tabular}{llrrrrrrrl}\toprule
+ & & & & \multicolumn{3}{c}{Pressure / limit} & & & \\\cmidrule(lr){5-7}
+Engine & Seed & Gate & Loss $\times10^{6}$ & S & Plateau & Layers & Vel.~S & Endpoint & Failed\\\midrule
+Analytic & 361901 & 149 & 4.227 & 2.89 & 4.84 & 2.20 & 1.81 & 0.80 & S\\
+Analytic & 361902 & 110 & 2.767 & 2.16 & 3.37 & 1.73 & 1.46 & 0.80 & S\\
+Parameter AD & 361901 & 152 & 3.490 & 2.58 & 4.10 & 2.04 & 1.59 & 0.62 & S\\
+Parameter AD & 361902 & 111 & 3.002 & 2.04 & 3.02 & 1.67 & 1.56 & 1.09 & S, T
+\\\bottomrule\end{tabular}
+\end{table}
+
+The batch ran once on one four-GPU H100 node, and every run trained, was
+observed at its final and first training-gate checkpoints, and was read
+independently. All four runs reach the training gate after 110--152 L-BFGS
+calls and end at losses of 2.8--4.2$\times10^{-6}$
+(Table~\ref{tab:c36v6}). At the final checkpoints the stratified corrected
+pressure, 2.0--2.9 times its limit, is the only failing test in three runs.
+The fourth also misses the trajectory endpoint by 9\%. Velocity, momentum,
+divergence, the uniform holdout and the initial and boundary values pass.
+The first training-gate checkpoints fail more widely (stratified pressure
+9.1--11.5 times its limit, trajectory endpoint 4.8--9.0 times). The
+registered outcome is F3: no run passes, the best final observation is 2.04
+times its worst limit, and all four final observations are complete.
+
+Doubling the cutoff lowered the layer forcing four- to fivefold, but not
+the normalized pressure error. That error stays where it was at
+$\eta=1/32$ after 800 calls (2.3--3.0 times its limit), and the cutoff
+layers alone still leave 1.7--2.2 times the limit. Its absolute size is
+somewhat smaller, but so is the tolerance. The remaining stratified pressure
+error is therefore not set by the magnitude of the layer forcing alone. As a
+development observation only, parameter AD needed 1.25--1.34 times the
+seconds of the analytic engine to each loss threshold from $10^{-2}$ to
+$10^{-5}$, and 1.26--1.27 times per evaluation.
 
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
@@ -2215,7 +2281,10 @@ stratified pressure stays 2--3 times above its limit inside the moving box
 and the trajectory endpoint is borderline. Seventy-two observations along
 the training trajectories show that error still falling at that budget,
 more slowly than the loss. With six times the L-BFGS budget the loss and the
-errors stall, so the gap is not a budget limit of this optimizer. A
+errors stall, so the gap is not a budget limit of this optimizer. On an
+instance with twice the cutoff width, whose layer forcing is four to five
+times smaller, stratified pressure still ends 2.0--2.9 times above its
+limit, so the gap is not set by the layer forcing alone either. A
 temporal-smoothness continuation changes where training meets the loss gate
 but not which test fails. The C36 throughput gains depend on compilation, the zero-gate
 folding gain depends on this instance's gate geometry, and the problem is a
@@ -2259,7 +2328,8 @@ training gate; a development run with 40 times more L-BFGS calls does, and
 passes most physical gates, but stratified pressure still fails.
 Observations of every checkpoint show this error still falling at that
 budget. With six times the L-BFGS calls it stalls at 2.2--3.0 times its
-limit, and a smoother-motion continuation does not remove it either. Accepted
+limit; neither a smoother-motion continuation nor an instance with twice the
+cutoff width (2.0--2.9 times) removes it. Accepted
 C36 solves and external three-dimensional comparisons remain open.
 
 
@@ -2596,6 +2666,20 @@ branches; the registered v5 outcome comes from \texttt{decide\_c36\_v5}.
 Its observation batch archived 431 members. These archives are verified on
 cluster scratch and on persistent project storage. The v5 training lanes took 20,418--26,652 seconds against a
 27,000-second guard, so no run was truncated.
+
+The v6 batch of Section~\ref{sec:c36v6} ran once from the git archive of its
+pre-registration commit, so every executed source is byte-identical to the
+published one; the inputs are the published $\eta=1/16$ data. Each lane
+spent about 8 minutes on start-up qualification, mostly the 131-point
+native subset. Training took 3,688--4,725 seconds against a 5,700-second
+guard, and each observation took about 30 minutes at chunk 512; the
+call-200 observations were skipped by the per-lane observation budget. The
+unchanged development reader reads the batch and labels it with the
+development state name, and the registered outcome comes from
+\texttt{decide\_c36\_v6}. The archive (396 members) is verified on
+cluster project storage; the login-node CPU self-test of the trainer was
+ended by the node's process limits, so the v6 additions were self-tested
+as components and the driver's control flow end to end.
 
 \subsection{Ethier--Steinman campaign}
 The 18 cases ran as one batch on two GPUs of an existing allocation,

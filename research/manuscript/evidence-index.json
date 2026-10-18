@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "498e6dd397a392431c9f4cd650b17e917a8c379699e5c9c8c5eb29b2d2997b40",
- "previous_manuscript_sha256": "f4185c9765cfc73324b156d9fe81e5060c420a7dca84018d3b37b627e6b06c6e",
+ "manuscript_sha256": "1fae9c85435886dd8978b5397de7176545c39a4cd75f5d819b5b04d0bb8531be",
+ "previous_manuscript_sha256": "498e6dd397a392431c9f4cd650b17e917a8c379699e5c9c8c5eb29b2d2997b40",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -105,8 +105,8 @@
   "../ethier-3d/diagnostics/c17-compile-route-R0-20261017.json": "44adf80348f4ca99fffe9b7db64e49109ef4a1d0c91cd6ea7b301152b61267b0",
   "../c36-potential-proof/source-structure-check-20261018.json": "eac651197ea02524d65cb143c6a69e1368eece87373e148932c682c0392042b4",
   "../c36-potential-proof/src/box376/check_source_structure.py": "b69861ad24b036359b0b07a9e816d3a94fa98f808a4e863d34ca26d43d82ac13",
-  "../c36-potential-proof/c36-pressure-structure-20261018.json": "8b3e05c91dfb5d1fecac0b56cdb99458ded40ab7b988c13a1306a858e26904ef",
-  "../c36-potential-proof/tools/c36_pressure_structure.py": "2f9df1f6f15b92d962bd119e5769da2a4581cb0270f588dbe7971f34efe5ec03",
+  "../c36-potential-proof/c36-pressure-structure-20261018.json": "e19efc6c7c6f4b103e75a5fb13cf6708dc38ca76e278f0166ef47aeaa1067514",
+  "../c36-potential-proof/tools/c36_pressure_structure.py": "65a97fdd64d4827297ff6a7e865846454277e8ba76a381711eb77fd322c9e555",
   "../c36-potential-proof/protocol-v6-eta16-development-20261018.json": "9ba666fd9902f76c5743f751b820b1960ecf29eed3e8322319d88bdf0f4490ca",
   "../c36-potential-proof/src/box376/decide_c36_v6.py": "1bd1d84033a81936e846705fdb4b9d79e72a2092a45feec93afdca5d275052e9",
   "../c36-potential-proof/src/box376/test_decide_c36_v6.py": "67dd9260f7d2e470ebcc56173f00cc4de4f92ff88422190786386ce8bd5f9b9d",
@@ -117,7 +117,13 @@
   "../c36-potential-proof/data-eta16/calibration.npz": "25b60923dda2221baf3c1722fd8cf32b61ebfe62969605a38a3fc091609af72f",
   "../c36-potential-proof/v6-generator-reproduction-20261018.json": "338211238553cd4e7e3d647c58d555b036cf7343382a46f52756522a6ebffb47",
   "../c36-potential-proof/v6-geometry-eta16-20261018.json": "899132bc7cfbea74f5cfd8503900b8ad1c2f97b6e5ead25c905590464488cb31",
-  "../c36-potential-proof/v6-selftest-20261018.json": "5c78ced82131f8b168f5269e97657d031357dcd8c3235904004594cb67e0a010"
+  "../c36-potential-proof/v6-selftest-20261018.json": "5c78ced82131f8b168f5269e97657d031357dcd8c3235904004594cb67e0a010",
+  "../c36-potential-proof/c36-v6-observations-20261018.json": "895e416e27f1f99dbffed3789286d5f94a4f34a94c15cc4318cc4abc902e4bc0",
+  "../c36-potential-proof/c36-v6-development-result-20261018.json": "ae9b0823485b41945ccfb44a11e4c8a486b7b9b4865e3003d1c4a06c407560ce",
+  "../c36-potential-proof/c36-v6-decision-20261018.json": "7f33a5df19c60c582a523aea338458020b63fe8709b6abd67a7f4b5084e7c47a",
+  "../c36-potential-proof/c36-v6-pressure-structure-20261018.json": "1c89bb246f485a84a5ac5a31442257b94052edcd1ffd2d1b962c2abffa2fb89c",
+  "../c36-potential-proof/release-source-map-v6-20261018.json": "849c1e12c9e70d515fc5d1c31ae2983520fada1c82f9ad44b7724bb4ec6bb34c",
+  "../c36-potential-proof/tools/c36_v6_publish.py": "166049a04d8dfb6a14c1d1879dcfed1aaec7448170567f2945988a8223c96f6a"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -131,11 +137,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "5a8baf0b87e49ec630f86e56b5887342cb696b5e6911036341e1536316f286dd",
- "previous_pdf_sha256": "2b5955191183b8d4a346effae56c93f68b48a900fa4ca6c85e3600c1cdea58db",
- "pages": 42,
+ "pdf_sha256": "0cfade8a177076edc361a3f506e54f5ff3ee10596e8ea3c1187026f55eb29353",
+ "previous_pdf_sha256": "5a8baf0b87e49ec630f86e56b5887342cb696b5e6911036341e1536316f286dd",
+ "pages": 43,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS (2026-10-18): Section 6.10 diagnosis paragraph (page 28) rendered and read; Section 6.1 source-structure paragraph (page 17) and Section 6.8 rest-slice sentence (page 23) rendered and read; earlier: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
+ "pdf_visual_review": "PASS (2026-10-18): Section 6.11 with Table 22 (pages 29-30) rendered and read; Section 6.10 diagnosis paragraph (page 28) rendered and read; Section 6.1 source-structure paragraph (page 17) and Section 6.8 rest-slice sentence (page 23) rendered and read; earlier: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -349,5 +355,30 @@
   "status": "pre-registered before submission",
   "instance": "cutoff width 1/16, otherwise the v2 recipe",
   "decision": "F1 pass / F2 near miss (<= 1.5x) / F0 incomplete (no scientific reading) / F3 fail, within this instance only"
- }
+ },
+ "C36_v6_eta16": {
+  "protocol": "protocol-v6-eta16-development-20261018.json",
+  "pre_registration_commit": "7671c3f",
+  "registered_outcome": "F3_fail",
+  "best_final_worst_over_limit": 2.043,
+  "training_gate_LBFGS_calls": [
+   110,
+   152
+  ],
+  "final_stratified_pressure_over_limit": [
+   2.04,
+   2.89
+  ],
+  "layers_only_floor_over_limit": [
+   1.67,
+   2.2
+  ],
+  "archive_sha256": "3a51e22cb5164de187903bbea6749115075a7afcc705da473e347d373aebf532",
+  "archive_members": 396,
+  "development_parameter_ad_over_analytic_time_to_loss": [
+   1.25,
+   1.34
+  ]
+ },
+ "revision_note_20261018_c36v6": "Adds Section 6.11 and Table 22: the pre-registered wider-cutoff instance (eta 1/16, protocol v6) reaches the training gate in all four runs but fails stratified pressure at 2.0-2.9x its limit (layers alone 1.7-2.2x); registered outcome F3. Section 6.10, the discussion, the conclusion and the C36 appendix are updated; later tables move up by one. 43 pages."
 }

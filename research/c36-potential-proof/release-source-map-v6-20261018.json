@@ -1,0 +1,53 @@
+{
+ "scope": "C36 v6 cutoff-width batch (one node, four H100 lanes, run once). The executed packet is the git archive of the pre-registration commit 7671c3f (research/c36-potential-proof) with data-eta16/ as data/; the frozen native reference supplied only the stored initial parameters.",
+ "executed_packet": {
+  "source_commit": "7671c3f",
+  "manifest_sha256": "1fef5544106c9751ec0bcb533fa0bd5d9a82f274d5e67ab4400e2062c2bcb111",
+  "files": 102,
+  "all_byte_identical_to_repository": true,
+  "frozen_reference_sha256": "172174ea49a82a21e0616571ae303560d275317d8b5319c22ea49dbd628d8b66",
+  "runtime": "FP64 Torch 2.4.0a0 environment with the Triton 3.0.0 compiler runtime (as v2 and v5)"
+ },
+ "outputs": {
+  "c36-v6-development-result-20261018.json": {
+   "executed_name": "c36-v6-development-result.json",
+   "sha256": "ae9b0823485b41945ccfb44a11e4c8a486b7b9b4865e3003d1c4a06c407560ce",
+   "byte_identical": true
+  },
+  "c36-v6-decision-20261018.json": {
+   "executed_name": "c36-v6-decision.json",
+   "sha256": "7f33a5df19c60c582a523aea338458020b63fe8709b6abd67a7f4b5084e7c47a",
+   "byte_identical": true
+  },
+  "c36-v6-observations-20261018.json": {
+   "generator": "tools/c36_v6_publish.py on the executed run reports"
+  },
+  "c36-v6-pressure-structure-20261018.json": {
+   "generator": "tools/c36_pressure_structure.py --runs (eta 1/16, pressure scale of data-eta16/calibration.json)"
+  }
+ },
+ "archive": {
+  "name": "c36-v6-development-complete.tar.gz",
+  "sha256": "3a51e22cb5164de187903bbea6749115075a7afcc705da473e347d373aebf532",
+  "members": 396,
+  "bytes": 214411118,
+  "members_match_sources": true,
+  "whole_file_sha_reread": true,
+  "excluded": "compiler and temporary caches",
+  "location": "cluster project storage",
+  "persistent_tape_copy": false
+ },
+ "driver": {
+  "state": "COMPLETE",
+  "reader_exit": 0,
+  "decision_exit": 0,
+  "lanes": 4,
+  "training_exits": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "observations": "final and gate-first for every run; call 200 not run (observation budget)"
+ }
+}

@@ -794,7 +794,7 @@ Files:
 - Archives: v5 training (446 members) and the observation batch (431 members) are both verified on cluster scratch and persistent project storage.
 
 
-## Wider-cutoff instance (v6, pre-registered)
+## Wider-cutoff instance (v6, pre-registered; outcome F3)
 
 [protocol-v6-eta16-development-20261018.json](protocol-v6-eta16-development-20261018.json) studies a different single-box instance. The cutoff width doubles from 1/32 to 1/16; every other element of the v2 recipe is kept:
 - the Math376 construction and box motion;
@@ -839,3 +839,22 @@ Pressure is normalized by the squared velocity RMS, so the absolute pressure tol
 - **F3:** no pass and no near miss, with complete final observations of all four runs.
 
 **Execution.** One ACC node for 3 h runs four concurrent single-GPU lanes (two seeds × two engines), the smallest count that runs all four at once. The start command is embedded in the batch script. The work root is on project storage, with every cache inside the batch directory.
+
+**Results (paper Section 6.11, Table 22; registered outcome F3).** The batch ran once on one four-GPU H100 node, from the git archive of `7671c3f`; the [release map](release-source-map-v6-20261018.json) has the hashes. Start-up qualification passes in every lane: subset native 2.0–2.8e-7, dense AD, compiled and graph at most 9.8e-7 of the budget. All 116 saved checks are within 1.7e-5.
+
+| Engine | Seed | Gate (L-BFGS call) | Final loss ×1e6 | Stratified pressure / limit | Plateau | Layers alone | Stratified velocity ×1e-3 | Endpoint ×1e-3 | Failing |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| analytic | 361901 | 149 | 4.227 | 2.89 | 4.84 | 2.20 | 1.81 | 0.80 | stratified |
+| analytic | 361902 | 110 | 2.767 | 2.16 | 3.37 | 1.73 | 1.46 | 0.80 | stratified |
+| parameter AD | 361901 | 152 | 3.490 | 2.58 | 4.10 | 2.04 | 1.59 | 0.62 | stratified |
+| parameter AD | 361902 | 111 | 3.002 | 2.04 | 3.02 | 1.67 | 1.56 | 1.09 | stratified, trajectory |
+
+- **Final checkpoints.** Stratified pressure (2.0–2.9×) is the only failing test in three runs; the fourth also misses the endpoint by 9%. Velocity, momentum, divergence, the uniform holdout and the initial and boundary values pass. The first training-gate checkpoints fail more widely (pressure 9.1–11.5×, endpoint 4.8–9.0×).
+- **Registered outcome F3** ([decision](c36-v6-decision-20261018.json)): no pass and no near miss (best final 2.04× its worst limit), all four finals complete. No formal claim follows.
+- **Interpretation.** Doubling the cutoff lowered the layer forcing 4–5× but not the normalized pressure error, which stays where it was at 1/32 after 800 calls (2.3–3.0×). The layers alone still leave 1.7–2.2× ([decomposition](c36-v6-pressure-structure-20261018.json)), so the remaining error is not set by the layer forcing alone.
+- **Engine timing (development only).** Parameter AD needed 1.25–1.34× the analytic engine's seconds to each loss threshold, 1.26–1.27× per evaluation.
+
+Files:
+- [c36-v6-observations-20261018.json](c36-v6-observations-20261018.json): training and all observations, from [`tools/c36_v6_publish.py`](tools/c36_v6_publish.py).
+- [c36-v6-development-result-20261018.json](c36-v6-development-result-20261018.json): the unchanged in-batch reader, byte-identical to the executed output; it carries the development state name.
+- Archive: 396 members, verified on cluster project storage.

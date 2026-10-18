@@ -1,6 +1,7 @@
 """Post-hoc structure of the stratified corrected-pressure error in saved C36 observations.
 
     PYTHONPATH=src python tools/c36_pressure_structure.py --observations OBS_DIR --output OUT.json [--tags final,LBFGS-call800]
+    PYTHONPATH=src python tools/c36_pressure_structure.py --runs RUNS --eta 0.0625 --pressure-scale S --output OUT.json
 
 Reads each observation's saved native state (`stratified-fields.npz`) and rebuilds the frozen
 stratified holdout (seed 794701). The exact pressure is zero, so the corrected-pressure error is
@@ -11,7 +12,8 @@ plateau it also fits a per-bin offset plus a linear term in y = x - c(t), and co
 the learned pressure gradient times the plateau half-width with the dp RMS. It reproduces each
 observation's recorded regional and global corrected-pressure RMS from the saved state (point-order
 check), and reports the layers-only floor: the global stratified value with the plateau error set
-to zero. With --eta-comparison it also reports the frozen source's force and force-gradient RMS per
+to zero. --runs reads a v2/v6 batch layout (RUNS/<run>/physical-<tag>/) instead of an observation
+batch, and --eta selects the instance (default 1/32). With --eta-comparison it also reports the frozen source's force and force-gradient RMS per
 region on the stratified holdout geometry at eta = 1/32 and 1/16. No observation is rerun.
 """
 import argparse
@@ -43,14 +45,18 @@ def explained(dp, weights, design):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--observations', type=Path, required=True)
+    parser.add_argument('--observations', type=Path)
+    parser.add_argument('--runs', type=Path)
+    parser.add_argument('--eta', type=float, default=1 / 32)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--tags', default='final')
     parser.add_argument('--holdout-seed', type=int, default=794701)
     parser.add_argument('--pressure-scale', type=float, default=0.141864656295504)
     parser.add_argument('--eta-comparison', action='store_true')
     args = parser.parse_args()
-    datasets, _, _ = make_holdouts(seed=args.holdout_seed)
+    if (args.observations is None) == (args.runs is None):
+        parser.error('give exactly one of --observations and --runs')
+    datasets, _, _ = make_holdouts(seed=args.holdout_seed, eta=args.eta)
     holdout = datasets['stratified']
     points, regions, times = holdout['points'], holdout['regions'], holdout['time_regions']
     weights = np.asarray(holdout['weights'])
@@ -58,11 +64,15 @@ def main():
     y = points[:, :3] - m['c']
     tbin = np.clip(np.digitize(points[:, 3], BINS) - 1, 0, len(BINS) - 2)
     tags = args.tags.split(',')
-    result = {'scope': __doc__.strip().splitlines()[0], 'holdout_seed': args.holdout_seed,
+    result = {'scope': __doc__.strip().splitlines()[0], 'holdout_seed': args.holdout_seed, 'eta': args.eta,
               'pressure_scale': args.pressure_scale, 'time_bins': BINS.tolist(), 'observations': {}}
-    for path in sorted(args.observations.iterdir()):
-        if not any(path.name.endswith('__' + tag) for tag in tags):
-            continue
+    if args.runs is not None:
+        found = [(f'{run.name}__{tag}', run / f'physical-{tag}') for run in sorted(args.runs.iterdir()) for tag in tags
+                 if (run / f'physical-{tag}' / 'stratified-fields.npz').is_file()]
+    else:
+        found = [(path.name, path) for path in sorted(args.observations.iterdir())
+                 if any(path.name.endswith('__' + tag) for tag in tags)]
+    for label, path in found:
         with np.load(path / 'stratified-fields.npz', allow_pickle=False) as raw:
             state, gauge = raw['state'], raw['gauge']
         fields = fields_from_state(state)
@@ -78,7 +88,7 @@ def main():
             if index == 0:
                 affine = np.concatenate([design] + [design * y[sel, k:k + 1] for k in range(3)], 1)
                 rest2, r2a = explained(dp[sel], weights[sel], affine)
-                half = m['h'][sel] + 1 / 32
+                half = m['h'][sel] + args.eta
                 grad = fields['grad_p'][sel]
                 row.update(offset_plus_linear_R2=r2a, normalized_rms_after_offset_and_linear=wrms(rest2, weights[sel]) / args.pressure_scale,
                            gradient_times_half_width_normalized_rms=wrms(np.linalg.norm(grad * half, axis=1), weights[sel]) / args.pressure_scale)
@@ -91,7 +101,7 @@ def main():
         entry['reproduction'] = {'max_relative_difference': max(abs(reproduced[k] - expected[k]) / max(abs(expected[k]), 1e-300)
                                                                 for k in expected if expected[k] != 0),
                                  'zero_regions_match': all(reproduced[k] == 0.0 for k in expected if expected[k] == 0)}
-        assert entry['reproduction']['max_relative_difference'] < 1e-9 and entry['reproduction']['zero_regions_match'], path.name
+        assert entry['reproduction']['max_relative_difference'] < 1e-9 and entry['reproduction']['zero_regions_match'], label
         layers = (regions >= 1) & (regions <= 3)
         entry['global_normalized_rms'] = reproduced['global']
         entry['layers_only_floor_normalized_rms'] = float(np.sqrt(np.sum(weights[layers] * dp[layers] ** 2) / np.sum(weights))) / args.pressure_scale
@@ -100,7 +110,7 @@ def main():
         entry['per_bin_plateau_mean_normalized'] = [
             float(np.average(dp[(regions == 0) & (times == 0) & (tbin == b)], weights=weights[(regions == 0) & (times == 0) & (tbin == b)])) / args.pressure_scale
             if np.any((regions == 0) & (times == 0) & (tbin == b)) else None for b in range(len(BINS) - 1)]
-        result['observations'][path.name] = entry
+        result['observations'][label] = entry
     if args.eta_comparison:
         result['eta_comparison'] = {}
         for eta in (1 / 32, 1 / 16):
