@@ -1024,7 +1024,15 @@ p&=0,\qquad f=\partial_t U+(U\cdot\nabla)U-\nu\Delta U.
 \end{align}
 The prescribed motion determines the fixed external force and its spatial
 derivative; both are independent of learned parameters. The cutoff curl
-term is retained at box faces, edges and corners. Numerical choices belong
+term is retained at box faces, edges and corners. Two properties of this
+instance matter for the diagnostics below. The motion is confined to
+$t\in(\tfrac14,\tfrac34)$; at all other times $\dot c$, $L$ and their
+derivatives vanish, so $U$, $f$ and their derivatives vanish identically.
+During the motion the plateau $\chi=1$ carries the affine velocity
+$U=\dot c+Ly$ with $\Delta U=0$, and because $L$ is diagonal its force
+$f=\ddot c+(\dot L+L^2)y$ is a gradient; the rotational part of the forcing
+lies in the cutoff layers. A CPU check of the frozen source confirms both
+properties to rounding~\cite{flashns3dartifact}. Numerical choices belong
 to this project's single-box instance, which is a constructed forced-flow
 problem under stated conditions rather than a general formula for arbitrary
 Navier--Stokes data or a fluid regularity theorem.
@@ -1551,8 +1559,9 @@ before; the trajectory endpoint passes only at three final checkpoints. The
 stratified holdout fails at every checkpoint; at the final checkpoints only
 its corrected pressure fails, 1.9--3.3 times the limit, while velocity,
 momentum and divergence pass. The diagnostic time slices split the same way.
-The four slices at which the box is at rest ($t=0,\tfrac14,\tfrac34,1$) pass at
-every checkpoint. The three inside the motion window fail at every
+The four slices at which the box is at rest ($t=0,\tfrac14,\tfrac34,1$), where
+the exact velocity and force vanish identically, pass at every checkpoint.
+The three inside the motion window fail at every
 checkpoint, by at least 2.2 times on pressure.
 
 Along each development run the physical errors fall with the loss

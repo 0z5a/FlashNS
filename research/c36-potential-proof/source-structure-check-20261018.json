@@ -1,0 +1,82 @@
+{
+ "source": "src/box376/source.py",
+ "source_sha256": "52ced2e79d12317fac039ea626d81277955d974e8c440ddd20db65bbf64c893a",
+ "numpy": "2.4.6",
+ "rng_seed": 20261018,
+ "eta": 0.03125,
+ "nu": 0.01,
+ "a_plateau_motion_window": {
+  "points": 4000,
+  "max_abs_f": 8.03117412324417,
+  "max_abs_f_minus_gradient_form": 2.6645352591003757e-15,
+  "max_abs_df": 46.679049572789786,
+  "max_abs_antisymmetric_df": 0.0,
+  "max_abs_U_minus_affine": 2.220446049250313e-16,
+  "max_abs_laplacian_U": 0.0
+ },
+ "a_cutoff_layer_motion_window": {
+  "points": 3464,
+  "max_abs_df": 1116889.1319897594,
+  "max_abs_antisymmetric_df": 1385334.8638805621
+ },
+ "b_rest_slices": {
+  "0.0": {
+   "U": 0.0,
+   "G": 0.0,
+   "H": 0.0,
+   "Ut": 0.0,
+   "lap": 0.0,
+   "f": 0.0,
+   "df": 0.0,
+   "points": 20000,
+   "max_chi": 1.0
+  },
+  "0.25": {
+   "U": 0.0,
+   "G": 0.0,
+   "H": 0.0,
+   "Ut": 0.0,
+   "lap": 0.0,
+   "f": 0.0,
+   "df": 0.0,
+   "points": 20000,
+   "max_chi": 1.0
+  },
+  "0.75": {
+   "U": 0.0,
+   "G": 0.0,
+   "H": 0.0,
+   "Ut": 0.0,
+   "lap": 0.0,
+   "f": 0.0,
+   "df": 0.0,
+   "points": 20000,
+   "max_chi": 1.0
+  },
+  "1.0": {
+   "U": 0.0,
+   "G": 0.0,
+   "H": 0.0,
+   "Ut": 0.0,
+   "lap": 0.0,
+   "f": 0.0,
+   "df": 0.0,
+   "points": 20000,
+   "max_chi": 1.0
+  }
+ },
+ "c_uniform_space_time": {
+  "points": 200000,
+  "fraction_nonzero_U": 0.008895,
+  "fraction_nonzero_U_inside_motion_window": 0.017807986065926585,
+  "nonzero_U_time_range": [
+   0.2509774639027633,
+   0.7488089988689678
+  ]
+ },
+ "passed": {
+  "plateau_force_is_gradient": true,
+  "plateau_velocity_affine": true,
+  "rest_slices_vanish": true
+ }
+}

@@ -17,6 +17,18 @@ for arbitrary Navier--Stokes data or a regularity theorem. The original
 mathematical-source hash, implementation hash and frozen-data linkage are
 recorded in [math376-provenance.json](math376-provenance.json).
 
+Two properties of this instance matter for the diagnostics. The motion is
+confined to `t in (1/4, 3/4)`; at every other time `U`, `f` and their
+derivatives vanish identically. During the motion the box plateau
+(`chi = 1`) carries the affine velocity `U = c_dot + L y` with zero
+Laplacian, and because `L` is diagonal its force `f = c_ddot + (L_dot + L^2) y`
+is a gradient; the rotational part of the forcing lies in the cutoff layers.
+The CPU check `PYTHONPATH=src python -m box376.check_source_structure --output
+source-structure-check-20261018.json` confirms both to rounding on the frozen
+source. Its output is [source-structure-check-20261018.json](source-structure-check-20261018.json).
+It also records that only 0.89% of uniform space-time points carry a nonzero
+exact velocity. It reruns no training or observation.
+
 This research snapshot compares the complete 50,692-parameter C36 gradient with independent native automatic differentiation. It uses two seeds and 17 fixed interior points from the full physical source cache, float64, and the unchanged `atol=1e-11`, `rtol=1e-9` budget.
 
 Run from this directory with NumPy and PyTorch installed. First produce the CPU reference:
@@ -592,7 +604,7 @@ Four more run-once observation batches (one four-GPU H100 node each) observe eve
   - The uniform holdout passes from L-BFGS call 200 on (loss ≤ 2.8e-5).
   - The trajectory endpoint passes only at three final checkpoints.
   - The stratified holdout fails at every checkpoint. At the finals, only its corrected pressure fails, at 1.9–3.3× the limit.
-- **Diagnostic time slices.** The four slices at rest (t = 0, 1/4, 3/4, 1) always pass. The three inside the motion window always fail, by at least 2.2× on pressure.
+- **Diagnostic time slices.** The four slices at rest (t = 0, 1/4, 3/4, 1), where the exact velocity and force vanish identically, always pass. The three inside the motion window always fail, by at least 2.2× on pressure.
 - **Trend.** Along every v2 run the physical errors fall with the loss.
   - Rank correlation between log loss and log error is 0.95–0.96 for stratified pressure ([c36-trend-correlations-20261015.json](c36-trend-correlations-20261015.json), from [tools/c36_rank_correlations.py](tools/c36_rank_correlations.py)) and 0.99–1.00 for velocity.
   - The L-BFGS-phase log–log slopes are 0.31–0.41 for pressure and 0.45–0.50 for velocity.

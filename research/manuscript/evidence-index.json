@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "b3b2792864fbf871e42e8ae6a6928195ec43e8f294e3572b3bcbe86225b7f7ea",
- "previous_manuscript_sha256": "11bffcb5b1e67123a5a5d77d0641eac3a7add89f6dc06b1e8b2f2157aa9dc653",
+ "manuscript_sha256": "f4185c9765cfc73324b156d9fe81e5060c420a7dca84018d3b37b627e6b06c6e",
+ "previous_manuscript_sha256": "b3b2792864fbf871e42e8ae6a6928195ec43e8f294e3572b3bcbe86225b7f7ea",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -102,7 +102,9 @@
   "../ethier-3d/src/protocol-ext3-20261017.json": "966f0d9e1eb75b9cc284efc948bcc0e0cb4ade756d54ab51260abbd728295c02",
   "../ethier-3d/src/external2.py": "13b3fe8c3e1ec312c46a40de544ac3e57b5e58e0a47dc6adca3175dbcd167f30",
   "../ethier-3d/diagnostics/c17-compile-route-R1-20261017.json": "ccbb802ba9009c8188d69235124c5573b3ce8fb7ea9f6c8484f03d017d69e8ec",
-  "../ethier-3d/diagnostics/c17-compile-route-R0-20261017.json": "44adf80348f4ca99fffe9b7db64e49109ef4a1d0c91cd6ea7b301152b61267b0"
+  "../ethier-3d/diagnostics/c17-compile-route-R0-20261017.json": "44adf80348f4ca99fffe9b7db64e49109ef4a1d0c91cd6ea7b301152b61267b0",
+  "../c36-potential-proof/source-structure-check-20261018.json": "eac651197ea02524d65cb143c6a69e1368eece87373e148932c682c0392042b4",
+  "../c36-potential-proof/src/box376/check_source_structure.py": "b69861ad24b036359b0b07a9e816d3a94fa98f808a4e863d34ca26d43d82ac13"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -116,11 +118,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "a65bc9da56e327f3fd7fe8fc07ae039683de0008a78d113f7c3beef11287a876",
- "previous_pdf_sha256": "0d7bfdafd43a48942051c897072e4f055aa4fac76619e1124646b08f45d066db",
+ "pdf_sha256": "2b5955191183b8d4a346effae56c93f68b48a900fa4ca6c85e3600c1cdea58db",
+ "previous_pdf_sha256": "a65bc9da56e327f3fd7fe8fc07ae039683de0008a78d113f7c3beef11287a876",
  "pages": 41,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
+ "pdf_visual_review": "PASS (2026-10-18): Section 6.1 source-structure paragraph (page 17) and Section 6.8 rest-slice sentence (page 23) rendered and read; earlier: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -301,5 +303,13 @@
   "setup_note": "compiled C17 setup 3.5-4.0 s (cache reused across seeds), compiled jet 10.7-10.9 s (recompiles part of its graph per solve)",
   "archive_sha256": "5b4833b8178921ffd79ef96d226764480a908d6265630d244133e5fa1b717bd3"
  },
- "revision_note_20261017_compiled_attempt2": "Adds the second compiled attempt to Section 7.4 (Table 25): repaired compiled C17; with every method compiled C17 is 1.68x and 1.13x faster than nested AD and collapsed Taylor in setup+optimization (registered C17 faster), collapsed Taylor 1.05x faster in optimization alone (registered external faster); abstract and conclusion follow this latest decision; pins diagnostic, protocol, builder, audit, reader, post-hoc output and release map."
+ "revision_note_20261017_compiled_attempt2": "Adds the second compiled attempt to Section 7.4 (Table 25): repaired compiled C17; with every method compiled C17 is 1.68x and 1.13x faster than nested AD and collapsed Taylor in setup+optimization (registered C17 faster), collapsed Taylor 1.05x faster in optimization alone (registered external faster); abstract and conclusion follow this latest decision; pins diagnostic, protocol, builder, audit, reader, post-hoc output and release map.",
+ "C36_source_structure_check": {
+  "kind": "CPU documentation check of the frozen source; no training or observation rerun",
+  "plateau_force_is_gradient": true,
+  "plateau_velocity_affine": true,
+  "rest_slices_vanish": true,
+  "fraction_uniform_space_time_points_with_nonzero_exact_velocity": 0.008895
+ },
+ "revision_note_20261018_source_structure": "Section 6.1 states two verified properties of the single-box instance: U and f vanish identically outside t in (1/4, 3/4), and during the motion the plateau velocity is affine with a gradient force, the rotational forcing lying in the cutoff layers; the rest-slice sentence of Section 6.8 now notes that the exact velocity and force vanish there. Pins the CPU check and its output."
 }
