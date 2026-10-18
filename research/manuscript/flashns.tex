@@ -1833,6 +1833,23 @@ development observation only, parameter AD needed 1.28--1.36 times the
 seconds of the analytic engine to each loss threshold from $10^{-3}$ to
 $3\times10^{-6}$, as at the shorter budget.
 
+\paragraph{Where the remaining pressure error lies.}
+A post-hoc decomposition of the saved native states of the four final
+checkpoints (CPU only) splits the stratified corrected-pressure error by
+region; it reproduces every recorded regional and global value exactly.
+Within the motion window the plateau error is 4.4--6.6 times its limit. A
+per-time offset explains 27--70\% of its variance, and an offset plus a
+term linear in $y$ explains 64--76\%. The cutoff layers carry 1.2--3.4 times
+the limit, at most about 30\% of it a per-time offset. With the plateau error set
+to zero, the layers alone would leave a stratified value of 1.5--1.9 times
+the limit, so changing only the weight or sampling of the plateau cannot
+reach the gate. The layer forcing sets this scale. With $\eta=1/32$ the
+layer force and force-gradient component RMS are 196--234 and
+7.0--7.2$\times10^{4}$, against 2.0 and 10.6 in the plateau; with
+$\eta=1/16$ they are four to five and nine to eleven times smaller. A wider
+cutoff defines a different, easier instance rather than a repair of this
+one.
+
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
 The C36 study qualifies derivatives and throughput but yields no accepted

@@ -29,6 +29,14 @@ source. Its output is [source-structure-check-20261018.json](source-structure-ch
 It also records that only 0.89% of uniform space-time points carry a nonzero
 exact velocity. It reruns no training or observation.
 
+The post-hoc tool `tools/c36_pressure_structure.py` decomposes the stratified
+corrected-pressure error of saved observations. It reproduces every recorded
+regional and global value exactly. For the four v5 finals
+([c36-pressure-structure-20261018.json](c36-pressure-structure-20261018.json)):
+- **Plateau.** Within the motion window the error is 4.4–6.6× the limit, 27–70% of it a per-time offset.
+- **Cutoff layers.** They carry 1.2–3.4× the limit. On their own, with the plateau error set to zero, they would leave 1.5–1.9× the limit, so plateau-only weighting or sampling cannot pass.
+- **A wider cutoff.** At `eta = 1/16` the layer force RMS is four to five times smaller and the force-gradient RMS nine to eleven times smaller.
+
 This research snapshot compares the complete 50,692-parameter C36 gradient with independent native automatic differentiation. It uses two seeds and 17 fixed interior points from the full physical source cache, float64, and the unchanged `atol=1e-11`, `rtol=1e-9` budget.
 
 Run from this directory with NumPy and PyTorch installed. First produce the CPU reference:

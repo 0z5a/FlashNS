@@ -2,8 +2,8 @@
  "revision": "2026-10-16",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "f4185c9765cfc73324b156d9fe81e5060c420a7dca84018d3b37b627e6b06c6e",
- "previous_manuscript_sha256": "b3b2792864fbf871e42e8ae6a6928195ec43e8f294e3572b3bcbe86225b7f7ea",
+ "manuscript_sha256": "498e6dd397a392431c9f4cd650b17e917a8c379699e5c9c8c5eb29b2d2997b40",
+ "previous_manuscript_sha256": "f4185c9765cfc73324b156d9fe81e5060c420a7dca84018d3b37b627e6b06c6e",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -104,7 +104,9 @@
   "../ethier-3d/diagnostics/c17-compile-route-R1-20261017.json": "ccbb802ba9009c8188d69235124c5573b3ce8fb7ea9f6c8484f03d017d69e8ec",
   "../ethier-3d/diagnostics/c17-compile-route-R0-20261017.json": "44adf80348f4ca99fffe9b7db64e49109ef4a1d0c91cd6ea7b301152b61267b0",
   "../c36-potential-proof/source-structure-check-20261018.json": "eac651197ea02524d65cb143c6a69e1368eece87373e148932c682c0392042b4",
-  "../c36-potential-proof/src/box376/check_source_structure.py": "b69861ad24b036359b0b07a9e816d3a94fa98f808a4e863d34ca26d43d82ac13"
+  "../c36-potential-proof/src/box376/check_source_structure.py": "b69861ad24b036359b0b07a9e816d3a94fa98f808a4e863d34ca26d43d82ac13",
+  "../c36-potential-proof/c36-pressure-structure-20261018.json": "8b3e05c91dfb5d1fecac0b56cdb99458ded40ab7b988c13a1306a858e26904ef",
+  "../c36-potential-proof/tools/c36_pressure_structure.py": "2f9df1f6f15b92d962bd119e5769da2a4581cb0270f588dbe7971f34efe5ec03"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -118,11 +120,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "2b5955191183b8d4a346effae56c93f68b48a900fa4ca6c85e3600c1cdea58db",
- "previous_pdf_sha256": "a65bc9da56e327f3fd7fe8fc07ae039683de0008a78d113f7c3beef11287a876",
- "pages": 41,
+ "pdf_sha256": "5a8baf0b87e49ec630f86e56b5887342cb696b5e6911036341e1536316f286dd",
+ "previous_pdf_sha256": "2b5955191183b8d4a346effae56c93f68b48a900fa4ca6c85e3600c1cdea58db",
+ "pages": 42,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2020), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS (2026-10-18): Section 6.1 source-structure paragraph (page 17) and Section 6.8 rest-slice sentence (page 23) rendered and read; earlier: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
+ "pdf_visual_review": "PASS (2026-10-18): Section 6.10 diagnosis paragraph (page 28) rendered and read; Section 6.1 source-structure paragraph (page 17) and Section 6.8 rest-slice sentence (page 23) rendered and read; earlier: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -312,5 +314,23 @@
   "fraction_uniform_space_time_points_with_nonzero_exact_velocity": 0.008895
  },
  "revision_note_20261018_source_structure": "Section 6.1 states two verified properties of the single-box instance: U and f vanish identically outside t in (1/4, 3/4), and during the motion the plateau velocity is affine with a gradient force, the rotational forcing lying in the cutoff layers; the rest-slice sentence of Section 6.8 now notes that the exact velocity and force vanish there. Pins the CPU check and its output.",
- "history_rewrite_20261018": "The branch history from the C36 zero-gate pre-registration onward was rewritten to remove an account-specific path from one line of the pre-registered driver. Every rewritten commit keeps its author, committer dates and tree, except that line in the pre-registration commit itself; commit messages cite the rewritten SHAs. The six pre_registration_commit fields and release maps now cite the rewritten commits."
+ "history_rewrite_20261018": "The branch history from the C36 zero-gate pre-registration onward was rewritten to remove an account-specific path from one line of the pre-registered driver. Every rewritten commit keeps its author, committer dates and tree, except that line in the pre-registration commit itself; commit messages cite the rewritten SHAs. The six pre_registration_commit fields and release maps now cite the rewritten commits.",
+ "C36_pressure_structure_v5_finals": {
+  "kind": "CPU post-hoc of saved observation states; reproduces recorded regional and global values exactly",
+  "plateau_motion_window_over_limit": [
+   4.43,
+   6.58
+  ],
+  "plateau_per_time_offset_R2": [
+   0.275,
+   0.703
+  ],
+  "layers_only_floor_over_limit": [
+   1.54,
+   1.9
+  ],
+  "eta_1_16_layer_force_rms_reduction": "4-5x",
+  "eta_1_16_layer_force_gradient_rms_reduction": "9-11x"
+ },
+ "revision_note_20261018_pressure_structure": "Section 6.10 gains a paragraph locating the remaining stratified pressure error: plateau 4.4-6.6x the limit in the motion window, cutoff layers alone 1.5-1.9x, so plateau-only weighting or sampling cannot pass; eta = 1/16 lowers layer forcing 4-5x (force) and 9-11x (force gradient). Pins the post-hoc tool and its output. 42 pages."
 }
