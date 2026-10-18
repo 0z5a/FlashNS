@@ -1,0 +1,53 @@
+{
+ "eta": 0.0625,
+ "training_source_sha256": "1d4466ad7ef4f5dc3b71dcfd203d34b740d2f84a3cf50ea5afe6b7023a74b26b",
+ "atol": 1e-11,
+ "rtol": 1e-09,
+ "torch": "2.12.1+cu130",
+ "numpy": "2.4.6",
+ "subset": {
+  "points": 88,
+  "per_region_motion_window": 16,
+  "resting_times": 8,
+  "indices_sha256": "21c19d2b738fd7313d253c6f1f8c7f7bdef0f82b2405cecbe07053794fe948a6"
+ },
+ "native_feature_states_over_budget": 2.7119790186233853e-06,
+ "native_gate_states_over_budget": 0.0,
+ "chunk13_vs_chunk64_over_budget": 0.0,
+ "gate_nonzero_points_in_subset": 64,
+ "gate_zero": {
+  "initial": {
+   "points": 512,
+   "max_abs_gate": 0.0
+  },
+  "boundary": {
+   "points": 384,
+   "max_abs_gate": 0.0
+  },
+  "gauge": {
+   "points": 7,
+   "max_abs_gate": 0.0
+  },
+  "gauge_position_2001_times": {
+   "points": 2001,
+   "max_abs_gate": 0.0
+  }
+ },
+ "support": {
+  "minimum_coordinate": 0.1875,
+  "maximum_coordinate": 0.75,
+  "gauge_coordinate": 0.0625
+ },
+ "support_feature_max_abs": [
+  2.995683422980737,
+  2.9971042843070217,
+  6.9914210268686325
+ ],
+ "interior_points_with_nonzero_gate": 2933,
+ "passed": {
+  "native_states": true,
+  "chunking": true,
+  "gate_exactly_zero": true,
+  "support_inside_cube_and_away_from_gauge": true
+ }
+}

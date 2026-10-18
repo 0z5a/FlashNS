@@ -106,7 +106,18 @@
   "../c36-potential-proof/source-structure-check-20261018.json": "eac651197ea02524d65cb143c6a69e1368eece87373e148932c682c0392042b4",
   "../c36-potential-proof/src/box376/check_source_structure.py": "b69861ad24b036359b0b07a9e816d3a94fa98f808a4e863d34ca26d43d82ac13",
   "../c36-potential-proof/c36-pressure-structure-20261018.json": "8b3e05c91dfb5d1fecac0b56cdb99458ded40ab7b988c13a1306a858e26904ef",
-  "../c36-potential-proof/tools/c36_pressure_structure.py": "2f9df1f6f15b92d962bd119e5769da2a4581cb0270f588dbe7971f34efe5ec03"
+  "../c36-potential-proof/tools/c36_pressure_structure.py": "2f9df1f6f15b92d962bd119e5769da2a4581cb0270f588dbe7971f34efe5ec03",
+  "../c36-potential-proof/protocol-v6-eta16-development-20261018.json": "9ba666fd9902f76c5743f751b820b1960ecf29eed3e8322319d88bdf0f4490ca",
+  "../c36-potential-proof/src/box376/decide_c36_v6.py": "1bd1d84033a81936e846705fdb4b9d79e72a2092a45feec93afdca5d275052e9",
+  "../c36-potential-proof/src/box376/test_decide_c36_v6.py": "67dd9260f7d2e470ebcc56173f00cc4de4f92ff88422190786386ce8bd5f9b9d",
+  "../c36-potential-proof/src/box376/potential_train_v6.py": "1bfa14ae01240e187afa24deff1afa91dfeb5477f590ef1ebdab9bd9c22c2222",
+  "../c36-potential-proof/src/box376/run_c36_v6.py": "6b071efb466880c60ea9ac324ac2e2b09705f24944ff9db355bd6dc5a4454dea",
+  "../c36-potential-proof/src/box376/potential_physical_eta.py": "c4b7a1070abf3c87d8c47f9eeac8970fda9ebcdb321fe2d99ce344e504d847a0",
+  "../c36-potential-proof/data-eta16/training-source.npz": "1d4466ad7ef4f5dc3b71dcfd203d34b740d2f84a3cf50ea5afe6b7023a74b26b",
+  "../c36-potential-proof/data-eta16/calibration.npz": "25b60923dda2221baf3c1722fd8cf32b61ebfe62969605a38a3fc091609af72f",
+  "../c36-potential-proof/v6-generator-reproduction-20261018.json": "338211238553cd4e7e3d647c58d555b036cf7343382a46f52756522a6ebffb47",
+  "../c36-potential-proof/v6-geometry-eta16-20261018.json": "899132bc7cfbea74f5cfd8503900b8ad1c2f97b6e5ead25c905590464488cb31",
+  "../c36-potential-proof/v6-selftest-20261018.json": "5c78ced82131f8b168f5269e97657d031357dcd8c3235904004594cb67e0a010"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -332,5 +343,11 @@
   "eta_1_16_layer_force_rms_reduction": "4-5x",
   "eta_1_16_layer_force_gradient_rms_reduction": "9-11x"
  },
- "revision_note_20261018_pressure_structure": "Section 6.10 gains a paragraph locating the remaining stratified pressure error: plateau 4.4-6.6x the limit in the motion window, cutoff layers alone 1.5-1.9x, so plateau-only weighting or sampling cannot pass; eta = 1/16 lowers layer forcing 4-5x (force) and 9-11x (force gradient). Pins the post-hoc tool and its output. 42 pages."
+ "revision_note_20261018_pressure_structure": "Section 6.10 gains a paragraph locating the remaining stratified pressure error: plateau 4.4-6.6x the limit in the motion window, cutoff layers alone 1.5-1.9x, so plateau-only weighting or sampling cannot pass; eta = 1/16 lowers layer forcing 4-5x (force) and 9-11x (force gradient). Pins the post-hoc tool and its output. 42 pages.",
+ "C36_v6_eta16_preregistration": {
+  "protocol": "protocol-v6-eta16-development-20261018.json",
+  "status": "pre-registered before submission",
+  "instance": "cutoff width 1/16, otherwise the v2 recipe",
+  "decision": "F1 pass / F2 near miss (<= 1.5x) / F0 incomplete (no scientific reading) / F3 fail, within this instance only"
+ }
 }
