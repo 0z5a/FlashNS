@@ -886,7 +886,9 @@ Files:
 - **fresh:** the unchanged 4,000 Adam updates, then SSBroyden, on both seeds;
 - **continue:** SSBroyden from the two v5 analytic final checkpoints. Their file and parameter hashes are in the protocol, and the start loss must reproduce the source final loss within the original budget.
 
-[`box376.potential_train_v7`](src/box376/potential_train_v7.py) is the v2 trainer with these changes. Complete-gradient checks against dense parameter AD, and the carried-product check, run every 1,000 iterations. The training guard is 6,600 s.
+[`box376.potential_train_v7`](src/box376/potential_train_v7.py) is the v2 trainer with these changes. Complete-gradient checks against dense parameter AD, and the carried-product check, run every 1,000 iterations. The training guard is 4,000 s.
+
+**Amendment before any run (2026-10-19).** The allocation behind the regular QoS is exhausted. At the user's instruction the batch uses the 2 h interactive QoS on one node. So the training guard falls from 6,600 to 4,000 s, and the deadline reserve from 900 to 400 s; v6's reader, decision and archive took about 25 s. That leaves the optimizer about 60% of the planned budget (roughly 11,000–13,000 iterations), which is registered as a further caveat.
 
 **Decision** ([`box376.decide_c36_v7`](src/box376/decide_c36_v7.py), [tests](src/box376/test_decide_c36_v7.py)). It uses the v6 outcomes in order:
 - F1: a pass;

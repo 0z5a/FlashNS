@@ -127,7 +127,7 @@
   "../c36-potential-proof/tools/c36_pressure_attribution.py": "71ffa38fc269e3bdf8aac4b52083ae0b96e3c5521eb890f7738eccda058ff68b",
   "../c36-potential-proof/c36-pressure-attribution-v5-20261019.json": "7962a17962621057ebac3e384349f92c6f894467b4c9c7ee8ab60cad4cf8f7f7",
   "../c36-potential-proof/c36-pressure-attribution-v6-20261019.json": "ba52e72e8edd11e9d41a40b7b6cbcbcb91070934050973bcc1ff8a4309315789",
-  "../c36-potential-proof/protocol-v7-ssbroyden-development-20261019.json": "d79d3fd290757f8a46ac1dd3507352e92e81e7c7107b7761b250cfa16999f9d2",
+  "../c36-potential-proof/protocol-v7-ssbroyden-development-20261019.json": "f9bddbb1448d627ea0770516dc6a8f5e24e21e5cba6e2e8a003220c69b0c20a9",
   "../c36-potential-proof/src/box376/ssbroyden.py": "c5a12200be96e5ab2d9d58e1322ef4ac45593d8cd4aa21c74b94f0ffe1bedc81",
   "../c36-potential-proof/src/box376/test_ssbroyden.py": "ab082ebb4f8d8115ec5e0be97d125a627fe737bc014b3ce07cfe27b982831a36",
   "../c36-potential-proof/src/box376/potential_train_v7.py": "ff2dbcd9b717707b7054ed852a606e0539f2e5768d3f05ccc0241eecbf84ef6c",
@@ -425,6 +425,7 @@
   "status": "pre-registered before submission",
   "instance": "original eta 1/32, v2 recipe with the L-BFGS phase replaced by dense SSBroyden",
   "arms": "fresh (Adam then SSBroyden) and continue (from v5 analytic finals), two seeds each",
-  "decision": "F1 pass / F2 near miss (<= 1.5x) / F0 incomplete / F3 fail"
+  "decision": "F1 pass / F2 near miss (<= 1.5x) / F0 incomplete / F3 fail",
+  "amendment_20261019": "2 h acc_interactive allocation; training guard 4,000 s; deadline reserve 400 s; before any run"
  }
 }
