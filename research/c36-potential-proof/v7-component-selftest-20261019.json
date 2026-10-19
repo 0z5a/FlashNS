@@ -1,0 +1,99 @@
+{
+ "loss_start": 5.910978276103265e-07,
+ "loss_end": 4.646688518892052e-07,
+ "iterations": 6,
+ "records": [
+  {
+   "iteration": 1,
+   "step_length": 21948320.30986509,
+   "line_search_evaluations": 10,
+   "loss_before": 5.910978276103265e-07,
+   "loss": 5.310398462964564e-07,
+   "tau": 4.499573192640873e-08,
+   "phi": 2.9939849841884283,
+   "b": 22269434.04235349,
+   "h": 5.981265644699414e-08,
+   "theta": -0.9999999550954013,
+   "sigma": 0.6680060072637726,
+   "stop": false
+  },
+  {
+   "iteration": 2,
+   "step_length": 0.4547317007538998,
+   "line_search_evaluations": 2,
+   "loss_before": 5.310398462964564e-07,
+   "loss": 5.204337037888458e-07,
+   "tau": 0.9953434973625997,
+   "phi": 0.0,
+   "b": 0.45725912635855487,
+   "h": 5.536227093237602,
+   "theta": 1.0,
+   "sigma": 2.5314903639763875,
+   "stop": false
+  },
+  {
+   "iteration": 3,
+   "step_length": 1.0,
+   "line_search_evaluations": 1,
+   "loss_before": 5.204337037888458e-07,
+   "loss": 5.027328779165443e-07,
+   "tau": 0.44532708895732775,
+   "phi": 2.933817108046577,
+   "b": 1.4419781841942791,
+   "h": 1.948469798056171,
+   "theta": -0.30650823225958806,
+   "sigma": 0.44532708895732775,
+   "stop": false
+  },
+  {
+   "iteration": 4,
+   "step_length": 0.035918518541989686,
+   "line_search_evaluations": 2,
+   "loss_before": 5.027328779165443e-07,
+   "loss": 4.949556085064342e-07,
+   "tau": 0.9985177266472559,
+   "phi": 0.0,
+   "b": 0.1567666860477368,
+   "h": 8.569315719585438,
+   "theta": 1.0,
+   "sigma": 1.343383227056186,
+   "stop": false
+  },
+  {
+   "iteration": 5,
+   "step_length": 0.19414007385422027,
+   "line_search_evaluations": 2,
+   "loss_before": 4.949556085064342e-07,
+   "loss": 4.828877024487588e-07,
+   "tau": 0.9966064702115652,
+   "phi": 0.0,
+   "b": 0.25549805481930793,
+   "h": 7.698314092362134,
+   "theta": 1.0,
+   "sigma": 1.9669042759865911,
+   "stop": false
+  },
+  {
+   "iteration": 6,
+   "step_length": 0.6659029933642397,
+   "line_search_evaluations": 2,
+   "loss_before": 4.828877024487588e-07,
+   "loss": 4.646688518892052e-07,
+   "tau": 0.9945107597466997,
+   "phi": 0.1875156799364661,
+   "b": 0.6947942043265392,
+   "h": 7.960392151959287,
+   "theta": 0.4392751030059259,
+   "sigma": 2.990282717605581,
+   "stop": false
+  }
+ ],
+ "parameters_equal_optimizer_point_and_loss": true,
+ "carried_product_relative_difference": 3.8621012910733495e-16,
+ "start_checkpoint": {
+  "file_hash_matches": true,
+  "theta_hash_matches": true,
+  "modified_copy_rejected": true
+ },
+ "passed": true
+}

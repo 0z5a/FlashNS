@@ -863,3 +863,50 @@ Files:
 - [c36-v6-observations-20261018.json](c36-v6-observations-20261018.json): training and all observations, from [`tools/c36_v6_publish.py`](tools/c36_v6_publish.py).
 - [c36-v6-development-result-20261018.json](c36-v6-development-result-20261018.json): the unchanged in-batch reader, byte-identical to the executed output; it carries the development state name.
 - Archive: 396 members, verified on cluster project storage.
+
+## Optimizer study (v7, pre-registered): dense self-scaled Broyden
+
+[protocol-v7-ssbroyden-development-20261019.json](protocol-v7-ssbroyden-development-20261019.json) keeps the original instance (`eta = 1/32`) and the v2 recipe and replaces only the L-BFGS phase.
+
+**Motivation.** The [pressure attribution](c36-pressure-attribution-v5-20261019.json) shows that the remaining pressure error is an independent component weighted at about one percent of the residual energy. L-BFGS stalls before resolving it, near a loss of 1.3–1.6e-6 (v5). Self-scaled quasi-Newton methods reach much lower PINN losses than L-BFGS (Urbán, Stefanou and Pons, J. Comput. Phys. 523, 113656, 2025; Kiyani et al., arXiv:2501.16371). Those studies use networks of 1–3 thousand parameters; this one has 50,692.
+
+**Optimizer** ([`box376.ssbroyden`](src/box376/ssbroyden.py)).
+- **Update.** The self-scaled Broyden update with a dense FP64 inverse Hessian on the GPU (20.6 GB), following Eqs. (10) and (13)–(23) of Urbán et al. They agree with Kiyani et al., Eq. (15); both were taken verbatim from the two papers and checked against each other.
+- **Settings.** H0 = I. The strong-Wolfe line search uses c1 = 1e-4 and c2 = 0.9, and its tolerance on parameter change is 0, as in the L-BFGS runs.
+- **Cost per iteration.** One dense matrix-vector product: `H y = H g_{k+1} + d_k`, and the next `H g` is carried in O(n).
+- **Safeguards.** The update is skipped when there is no curvature. H is reset on a non-descent direction or on a line search without decrease. Two consecutive resets end the phase.
+- **Tests** ([`test_ssbroyden`](src/box376/test_ssbroyden.py), CPU, both runtimes):
+  - with τ = φ = 1 the update equals the textbook inverse BFGS update;
+  - τ, θ and φ match a separately written implementation of Kiyani et al.'s definitions in both θ branches;
+  - the secant equation holds within its rounding amplification;
+  - positive definiteness is preserved, and the carried product matches an explicit one;
+  - all three modes converge on a convex quadratic and on extended Rosenbrock.
+
+**Arms.** There are four lanes on one node, all with the compiled analytic engine:
+- **fresh:** the unchanged 4,000 Adam updates, then SSBroyden, on both seeds;
+- **continue:** SSBroyden from the two v5 analytic final checkpoints. Their file and parameter hashes are in the protocol, and the start loss must reproduce the source final loss within the original budget.
+
+[`box376.potential_train_v7`](src/box376/potential_train_v7.py) is the v2 trainer with these changes. Complete-gradient checks against dense parameter AD, and the carried-product check, run every 1,000 iterations. The training guard is 6,600 s.
+
+**Decision** ([`box376.decide_c36_v7`](src/box376/decide_c36_v7.py), [tests](src/box376/test_decide_c36_v7.py)). It uses the v6 outcomes in order:
+- F1: a pass;
+- F2: a near miss within 1.5×;
+- F0: incomplete, with no scientific reading;
+- F3: fail with all four finals complete.
+
+There are three secondary readouts, which do not change the outcome:
+- for the fresh runs, the first evaluation at each loss threshold against the v5 analytic L-BFGS run of the same seed;
+- for the continue runs, the final loss over the start loss;
+- post hoc, the pressure attribution of the finals.
+
+**Caveats (registered).**
+- A dense quasi-Newton update adds at most rank two per iteration, so about 20,000 iterations see fewer directions than there are parameters. A failure within 3 h does not exclude SSBroyden at a longer budget; seconds per iteration are recorded.
+- A failed continuation does not by itself reject the optimizer, because restarting the curvature at a loss near 1e-6 can measure the restart (v4).
+
+**Self-tests.** The full trainer does not fit the login node, so the integration was tested as a component ([result](v7-component-selftest-20261019.json)). The optimizer drives a 200-parameter slice of the real eager C36 objective through the trainer's own callbacks:
+- the parameters equal the optimizer's point after every iteration;
+- the loss falls over six iterations;
+- the carried product agrees to 4e-16;
+- the start-checkpoint hash logic accepts the v5 bytes and rejects a modified copy.
+
+A short driver self-test with one fresh and one continue lane ([record](v7-selftest-20261019.json)) imports every GPU-path module under Torch 2.4. The continue lane receives the packet's start checkpoint, and its start loss reproduces the v5 final loss to 1e-8 of the budget on CPU. The fresh lane reaches the optimizer phase. The login node then ends both CPU trainers. Even so, the driver's reader, decision (F0, as registered for incomplete lanes) and archive complete.
