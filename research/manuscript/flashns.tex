@@ -1916,6 +1916,29 @@ development observation only, parameter AD needed 1.25--1.34 times the
 seconds of the analytic engine to each loss threshold from $10^{-2}$ to
 $10^{-5}$, and 1.26--1.27 times per evaluation.
 
+\paragraph{What drives the pressure error (post hoc).}
+Because the exact pressure vanishes, every learned pressure gradient is
+error. Pointwise, $\nabla p = R - \delta I$, where $R$ is the observed
+momentum residual and $\delta I$ the inertia error of the learned velocity,
+which vanishes for the exact field. A CPU decomposition of the saved native
+states of the v5 and v6 final checkpoints reproduces the observer's
+regional values. It checks this identity and its divergence to within
+$4\times10^{-12}$ of the largest value, and gives three findings. First,
+the pressure gradient is not forced by the velocity error: its cosine with
+$-\delta I$ lies between $-0.05$ and $0.07$ in every region, at the sampling
+noise floor of 0.02--0.03. Second, $\delta I$ dominates the residual at 3--15
+times the pressure gradient, so the pressure carries 4--11\% of the residual
+energy in the plateau and 0.5--1.3\% in the cutoff layers. The plateau
+itself holds 0.6--2.5\% of the stratified momentum energy. Third, in the
+Poisson balance $\Delta p = \nabla\cdot R - \nabla\cdot\delta I$ the velocity
+term is 0.3--0.7 times $\Delta p$ in the plateau. In the layers both
+divergences are large and nearly cancel, so the balance is not
+interpretable there. The remaining pressure error is therefore an
+independent component that the loss weights at about one percent. A more
+accurate velocity would not by itself remove it. Reaching the gate needs a
+term that weights pressure on its own scale, or an optimizer that resolves
+such a small component.
+
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
 The C36 study qualifies derivatives and throughput but yields no accepted

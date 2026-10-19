@@ -853,6 +853,11 @@ Pressure is normalized by the squared velocity RMS, so the absolute pressure tol
 - **Registered outcome F3** ([decision](c36-v6-decision-20261018.json)): no pass and no near miss (best final 2.04× its worst limit), all four finals complete. No formal claim follows.
 - **Interpretation.** Doubling the cutoff lowered the layer forcing 4–5× but not the normalized pressure error, which stays where it was at 1/32 after 800 calls (2.3–3.0×). The layers alone still leave 1.7–2.2× ([decomposition](c36-v6-pressure-structure-20261018.json)), so the remaining error is not set by the layer forcing alone.
 - **Engine timing (development only).** Parameter AD needed 1.25–1.34× the analytic engine's seconds to each loss threshold, 1.26–1.27× per evaluation.
+- **What drives the pressure error (CPU post-hoc, paper Section 6.11).** The exact pressure vanishes, so `grad p = R − dI` pointwise: `R` is the observed momentum residual and `dI` the inertia error of the learned velocity. [`tools/c36_pressure_attribution.py`](tools/c36_pressure_attribution.py) decomposes the saved states of the v5 and v6 finals ([v5](c36-pressure-attribution-v5-20261019.json), [v6](c36-pressure-attribution-v6-20261019.json)). It reproduces the observer's regional values and checks the identity and its divergence to 4e-12.
+  - **Not forced by the velocity error.** The cosine between `grad p` and `−dI` is −0.05 to 0.07 in every region, at the noise floor of 0.02–0.03.
+  - **A small share of the residual.** `dI` dominates the residual at 3–15× `grad p`. The pressure therefore carries 4–11% of the residual energy in the plateau and 0.5–1.3% in the layers, and the plateau holds 0.6–2.5% of the stratified momentum energy.
+  - **Poisson balance.** In the plateau the velocity term is 0.3–0.7× `Δp`. In the layers both divergences are large and nearly cancel, so the balance is not interpretable there.
+  - **Reading.** The pressure error is an independent component that the loss weights at about one percent; a more accurate velocity would not by itself remove it.
 
 Files:
 - [c36-v6-observations-20261018.json](c36-v6-observations-20261018.json): training and all observations, from [`tools/c36_v6_publish.py`](tools/c36_v6_publish.py).
