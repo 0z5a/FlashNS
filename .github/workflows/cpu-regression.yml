@@ -38,7 +38,7 @@ jobs:
           python -m pip install "numpy>=2,<3" "scipy>=1.14,<2" "sympy>=1.13,<2" "mpmath>=1.3,<2" "pytest>=8,<10"
       - name: Package CPU tests
         run: PYTHONPATH=src python -m pytest -q
-      - name: C36 CPU regression (49 tests)
+      - name: C36 CPU regression
         working-directory: research/c36-potential-proof
         run: >
           PYTHONPATH=src python -m unittest -v
@@ -47,4 +47,4 @@ jobs:
           box376.test_potential_ad_objective box376.test_potential_audit
           box376.test_fold_zero_gate box376.test_schedule_family
           box376.test_decide_c36_v4 box376.test_decide_c36_v5 box376.test_decide_c36_v6
-          box376.test_decide_c36_v7 box376.test_ssbroyden
+          box376.test_decide_c36_v7 box376.test_ssbroyden box376.test_tta_control

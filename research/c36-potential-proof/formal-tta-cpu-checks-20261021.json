@@ -1,0 +1,16 @@
+{
+  "state": "PASS_CPU_CONTROL_REGRESSION",
+  "tests": 17,
+  "runtime": "Arrhenius login CPU: Python 3.13.5 / Torch 2.14.1+cpu / NumPy 2.5.4 / SciPy 1.18.1",
+  "raw_receipt_sha256": "c90729b6f8db20703100311ee105e8bc8ddc973113b2b0a9278346967bddffc9",
+  "tested_files": {
+    "src/box376/potential_train_tta.py": "f818284da6a94247bfb473cd4db4ae722ecb9189bc75d9d1f9163898d03156f7",
+    "src/box376/run_c36_tta.py": "b72f9b3698f78e450302379140f3e94088220ecca49bf5ec1b84b065886936e0",
+    "src/box376/tta_control.py": "8b0ef0b26d07c5afead6f6a75e2ad00760f2211c0a11a8f584f57f1fc59096d2",
+    "src/box376/finalize_c36_tta.py": "89dea3550738a662cde587538fac7516e5eaef3eac9d187790f2cf4baef1a609",
+    "src/box376/audit_c36_tta.py": "1328c33c98d3681f0c91178ba636eafee7872460bd4777f09c7fa73e5c992dd6",
+    "src/box376/test_tta_control.py": "37e57efc8ea06a89cb57ba38d857121cc0fae442b7ba67a1e3d88e6fd81cf0f2"
+  },
+  "gpu_science_evidence": false,
+  "note": "Sixteen initial tests plus admission-failure outer archival regression passed. The audit module compiled; physical audit arithmetic is reused from the independently validated prior development readback. No formal GPU result yet."
+}

@@ -1,0 +1,40 @@
+{
+  "state": "PRE_RUN_SEED_REGISTRATION",
+  "time_utc": "2026-10-21T15:40:53.391944+00:00",
+  "baseline_commit": "c34ed33cd83e0fbfe4f7ed0aa2559b61df6df220",
+  "seeds": [
+    1212382065,
+    392322075,
+    422010988,
+    1127789372,
+    949592700
+  ],
+  "holdout_seed": 562507784,
+  "baseline_search": [
+    {
+      "seed": 1212382065,
+      "baseline_tracked_content_matches": 0
+    },
+    {
+      "seed": 392322075,
+      "baseline_tracked_content_matches": 0
+    },
+    {
+      "seed": 422010988,
+      "baseline_tracked_content_matches": 0
+    },
+    {
+      "seed": 1127789372,
+      "baseline_tracked_content_matches": 0
+    },
+    {
+      "seed": 949592700,
+      "baseline_tracked_content_matches": 0
+    },
+    {
+      "seed": 562507784,
+      "baseline_tracked_content_matches": 0
+    }
+  ],
+  "scope": "No occurrence in baseline tracked C36 project; not a claim about unknown external experiments. No formal model initialization or GPU run occurred before registration. Tiny CPU fixtures use topology [4,3,4] and cannot enter the formal denominator."
+}
