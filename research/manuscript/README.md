@@ -71,6 +71,15 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - All four runs reach the training gate after 110–152 L-BFGS calls.
   - At the final checkpoints stratified pressure stays at 2.0–2.9× its limit, about where it was at 1/32. The layers alone would still leave 1.7–2.2×.
   - The registered outcome is F3 (fail), so no formal claim follows. Table 22 is new, and the later tables move up by one.
+- **Section 6.12: a dense quasi-Newton optimizer (protocol v7, October 21).** Only the L-BFGS phase is replaced, by self-scaled Broyden with a dense FP64 inverse Hessian (20.6 GB); everything else is the original eta = 1/32 recipe. The registered four-lane H100 batch could not be completed, so its two continuation arms were never run. A separate registration ran the two fresh runs on GH200.
+  - Both runs train for the 4,000 s guard and reach losses of 1.7–2.9e-13.
+  - Both final observations pass every acceptance test. Stratified pressure is about 1e-3 of its limit, and it is still the tightest test. The registered outcome is F1. These are development runs on seeds seen before.
+  - The registered secondary readout counts evaluations to each loss threshold, against v5: 0.26–0.30 of v5's count at 3e-6. v5 never reaches 1e-6. This is a count, not a time ratio.
+- **Section 6.13: a prospective five-seed time-to-accuracy cohort (October 21).** Five new seeds run as independent one-GPU jobs. Each is inspected first after 1,000 active training seconds.
+  - Four of the five pass physical acceptance at that first inspection (stratified pressure 0.21–0.27 of its limit). Their candidate TTAs are 5,228–5,581 s, about 3,100–3,200 s of which is the observation itself. The fifth run was cancelled during its observation.
+  - All four frozen CPU audits fail, at a relative tolerance on the spatial residual gradient. The registered outcome is therefore not qualified: 0/5, with no median.
+  - A post-hoc diagnosis shows that the failing differences are at most 4 ulp of terms up to 1.4e5 that cancel to about 1e-2. All of them are within the standard rounding bound. The cause is the auditor's tolerance, not the physics. A qualified cohort needs a new registration.
+  - Tables 23–24 are new, and the Ethier–Steinman tables move up by two (now 25–28). The abstract, the Ethier introduction, the 3D discussion and the conclusion are updated.
 
 [Evidence index](evidence-index.json) pins the source reports and their SHA256 values. [C36 reproduction instructions](../c36-potential-proof/README.md) describe the independent readers and protocols. The complete historical H20 artifacts remain preserved separately.
 

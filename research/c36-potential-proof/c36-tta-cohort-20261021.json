@@ -1,0 +1,891 @@
+{
+ "protocol_version": "C36-formal-new-seed-TTA-20261021-v1",
+ "protocol_sha256": "896eec80e7c430d3feb7142317e6e39b38a64a9eb45babc70fd7dc611d16d1fe",
+ "eta": 0.03125,
+ "holdout_seed": 562507784,
+ "seeds": {
+  "1212382065": {
+   "archive_sha256": "89029d615f9dbe88687d8ad02cb645699aa0c6dd265666618c90c4d8f52b702b",
+   "archive_members": 180,
+   "training_state": "COMPLETE",
+   "stop_reason": "physical acceptance confirmed",
+   "setup_seconds": {
+    "eager_and_dense_AD": 95.16198968800018,
+    "compile_and_warmup": 111.0689970099993,
+    "graph_capture": 4.637189584000225
+   },
+   "Adam_updates": 4000,
+   "SSBroyden_iterations": 1985,
+   "SSBroyden_evaluations": 2977,
+   "resets": 0,
+   "skipped_updates": 0,
+   "training_gate_first": {
+    "phase": "SSBroyden",
+    "iteration": 178,
+    "evaluation": 261,
+    "loss": 9.541869930983614e-05,
+    "gradient_infinity": 0.0009960479942179778,
+    "training_seconds": 594.0853615659998
+   },
+   "training_seconds": 1006.7547002690026,
+   "final_loss": 9.691825065541046e-09,
+   "final_gradient_infinity": 1.4478756772798033e-05,
+   "wall_seconds": 5494.837272274002,
+   "observer_seconds_excluded": 3216.7892125169983,
+   "inspections": [
+    {
+     "tag": "tta-first",
+     "active_training_seconds": 1003.2732445069996
+    }
+   ],
+   "candidate_tta": {
+    "state": "PHYSICALLY_CONFIRMED",
+    "first_passing_tag": "tta-first",
+    "checkpoint_sha256": "5695a3eec05b3096e742c80f08a0dce9d32a58fd6a32f5e9d07f3d3b84a02bea",
+    "active_training_seconds_at_checkpoint": 1003.2731841559998,
+    "time_to_verified_accuracy_s": 5491.3506320060005,
+    "confirmation_unix": 1792602900.85214,
+    "earliest_physical_crossing_known": false
+   },
+   "checks": {
+    "fresh-native-subset": 3.2440731912189206e-07,
+    "eager-fresh-denseAD": 9.047093393061986e-07,
+    "eager-changed-denseAD": 7.627223625994585e-07,
+    "compiled-fresh-denseAD": 1.055494229190565e-06,
+    "graph-fresh-denseAD": 1.055494229190565e-06,
+    "graph-changed-denseAD": 8.213933135686476e-07,
+    "Adam0": 1.055494229190565e-06,
+    "Adam100": 1.3420924223659613e-06,
+    "Adam500": 4.460047186311266e-06,
+    "Adam1000": 4.151000849801562e-06,
+    "Adam2000": 2.1965486175418336e-06,
+    "Adam4000": 2.188853598013197e-06,
+    "SSBroyden-iteration1000": 6.719046584147751e-06,
+    "tta-first": 1.131514981540543e-05,
+    "final": 1.131514981540543e-05
+   },
+   "observations": {
+    "tta-first": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": true,
+     "seconds": 3195.047847509384,
+     "phase": "COMPLETE",
+     "observer_chunk": 512,
+     "worst_over_limit": 0.2672912497362033,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {},
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 8.020724727365477e-05,
+        "normalized_corrected_pressure_rms": 0.0002672912497362033,
+        "normalized_momentum_rms": 7.168549895450375e-05,
+        "normalized_momentum_gradient_rms": 7.380258881925468e-05,
+        "normalized_divergence_rms": 1.9133008180810606e-14
+       }
+      },
+      "uniform": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.0001283997031451822,
+        "normalized_corrected_pressure_rms": 2.3263918135439754e-05,
+        "normalized_momentum_rms": 5.161288576527727e-06,
+        "normalized_momentum_gradient_rms": 2.990690931648581e-06,
+        "normalized_divergence_rms": 3.534297971481059e-16
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.00010020444935758229,
+        "normalized_corrected_pressure_rms": 0.00040135626325319416,
+        "normalized_momentum_rms": 9.359786622499151e-05,
+        "normalized_momentum_gradient_rms": 9.842541793617215e-05,
+        "normalized_divergence_rms": 1.706763827036349e-14
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 5.419346284062528e-05,
+        "normalized_corrected_pressure_rms": 0.00038864911619472195,
+        "normalized_momentum_rms": 7.647078240928798e-05,
+        "normalized_momentum_gradient_rms": 7.921610118152809e-05,
+        "normalized_divergence_rms": 3.075888068221953e-14
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 9.781426680853656e-05,
+        "normalized_corrected_pressure_rms": 0.0003428912389370466,
+        "normalized_momentum_rms": 0.00010459215722076596,
+        "normalized_momentum_gradient_rms": 0.00010330263716933138,
+        "normalized_divergence_rms": 2.017921265006279e-14
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 2.9373915410289652e-05,
+       "maximum_endpoint_error": 2.937391445445267e-05
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 2.9373896644696267e-05,
+       "maximum_endpoint_error": 2.9373896588562533e-05,
+       "maximum_refinement_change": 6.37863416295089e-11
+      }
+     ]
+    }
+   },
+   "frozen_audit": {
+    "state": "FROZEN_INDEPENDENT_READBACK_FAILED",
+    "exit": 1,
+    "failure": "AssertionError: ('stratified', 'spatial_residual_gradient')",
+    "frozen_audit_script_sha256": "1328c33c98d3681f0c91178ba636eafee7872460bd4777f09c7fa73e5c992dd6"
+   }
+  },
+  "392322075": {
+   "archive_sha256": "59806f0aed869255961c2e038ba0141e66760e9132fe404726afbc6446248bf6",
+   "archive_members": 180,
+   "training_state": "COMPLETE",
+   "stop_reason": "physical acceptance confirmed",
+   "setup_seconds": {
+    "eager_and_dense_AD": 108.49250751899672,
+    "compile_and_warmup": 120.63946715700149,
+    "graph_capture": 5.2858836890009115
+   },
+   "Adam_updates": 4000,
+   "SSBroyden_iterations": 1942,
+   "SSBroyden_evaluations": 2947,
+   "resets": 0,
+   "skipped_updates": 0,
+   "training_gate_first": {
+    "phase": "SSBroyden",
+    "iteration": 170,
+    "evaluation": 261,
+    "loss": 9.429614356184448e-05,
+    "gradient_infinity": 0.0008924231924849258,
+    "training_seconds": 597.254725437997
+   },
+   "training_seconds": 1008.0210745399963,
+   "final_loss": 8.54256016685734e-09,
+   "final_gradient_infinity": 8.215179000632503e-06,
+   "wall_seconds": 5585.223507032002,
+   "observer_seconds_excluded": 3155.8236191510005,
+   "inspections": [
+    {
+     "tag": "tta-first",
+     "active_training_seconds": 1003.9369721459952
+    }
+   ],
+   "candidate_tta": {
+    "state": "PHYSICALLY_CONFIRMED",
+    "first_passing_tag": "tta-first",
+    "checkpoint_sha256": "569b90c9458ba776de9452a8c16a39c80e5421f7f8e324708ae6a748f6c2c6a5",
+    "active_training_seconds_at_checkpoint": 1003.9368870609978,
+    "time_to_verified_accuracy_s": 5581.144290429002,
+    "confirmation_unix": 1792602990.6438308,
+    "earliest_physical_crossing_known": false
+   },
+   "checks": {
+    "fresh-native-subset": 5.289571252852933e-07,
+    "eager-fresh-denseAD": 1.1989190018933174e-06,
+    "eager-changed-denseAD": 2.6745380693850213e-06,
+    "compiled-fresh-denseAD": 1.1989190018933174e-06,
+    "graph-fresh-denseAD": 1.1989190018933174e-06,
+    "graph-changed-denseAD": 2.6745380693850213e-06,
+    "Adam0": 1.1989190018933174e-06,
+    "Adam100": 1.1576799014945192e-06,
+    "Adam500": 3.2853763670563305e-06,
+    "Adam1000": 1.974805527704391e-06,
+    "Adam2000": 1.8818114191529311e-06,
+    "Adam4000": 1.503631505431114e-06,
+    "SSBroyden-iteration1000": 8.895675742792475e-06,
+    "tta-first": 6.151161063175084e-06,
+    "final": 6.151161063175084e-06
+   },
+   "observations": {
+    "tta-first": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": true,
+     "seconds": 3133.964682817459,
+     "phase": "COMPLETE",
+     "observer_chunk": 512,
+     "worst_over_limit": 0.22885918407934003,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {},
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 8.523279427035641e-05,
+        "normalized_corrected_pressure_rms": 0.00022885918407934003,
+        "normalized_momentum_rms": 6.846465386776531e-05,
+        "normalized_momentum_gradient_rms": 6.969254519714586e-05,
+        "normalized_divergence_rms": 1.959890926919112e-14
+       }
+      },
+      "uniform": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.0001492721832589432,
+        "normalized_corrected_pressure_rms": 2.6519616318969934e-05,
+        "normalized_momentum_rms": 3.3906157667099826e-06,
+        "normalized_momentum_gradient_rms": 2.236901994977465e-06,
+        "normalized_divergence_rms": 3.821709651942164e-16
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.00011670682701384165,
+        "normalized_corrected_pressure_rms": 0.00030364248499655704,
+        "normalized_momentum_rms": 8.557975231819718e-05,
+        "normalized_momentum_gradient_rms": 9.430828830942427e-05,
+        "normalized_divergence_rms": 1.9496318394189032e-14
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 4.931740613795158e-05,
+        "normalized_corrected_pressure_rms": 0.0003344334751686753,
+        "normalized_momentum_rms": 7.946508494088344e-05,
+        "normalized_momentum_gradient_rms": 7.629346232220268e-05,
+        "normalized_divergence_rms": 3.320213134820965e-14
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.00010432960791439552,
+        "normalized_corrected_pressure_rms": 0.000405431792748506,
+        "normalized_momentum_rms": 9.029318230177811e-05,
+        "normalized_momentum_gradient_rms": 9.547350127097751e-05,
+        "normalized_divergence_rms": 1.9651818828707056e-14
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 5.046124745704124e-05,
+       "maximum_endpoint_error": 5.0461247178426195e-05
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 5.046124774073394e-05,
+       "maximum_endpoint_error": 5.046124772440723e-05,
+       "maximum_refinement_change": 6.383819714799066e-11
+      }
+     ]
+    }
+   },
+   "frozen_audit": {
+    "state": "FROZEN_INDEPENDENT_READBACK_FAILED",
+    "exit": 1,
+    "failure": "AssertionError: ('stratified', 'spatial_residual_gradient')",
+    "frozen_audit_script_sha256": "1328c33c98d3681f0c91178ba636eafee7872460bd4777f09c7fa73e5c992dd6"
+   }
+  },
+  "422010988": {
+   "archive_sha256": "be5d180f6031d8f17f48b15da8bc17803405bfeece78f05300fd74409e8c8327",
+   "archive_members": 175,
+   "training_state": "RUNNING",
+   "stop_reason": null,
+   "setup_seconds": {
+    "eager_and_dense_AD": 109.7990148230001,
+    "compile_and_warmup": 110.02975883399995,
+    "graph_capture": 5.128486087000056
+   },
+   "Adam_updates": 4000,
+   "SSBroyden_iterations": 1975,
+   "SSBroyden_evaluations": 2916,
+   "resets": 0,
+   "skipped_updates": 0,
+   "training_gate_first": {
+    "phase": "SSBroyden",
+    "iteration": 176,
+    "evaluation": 268,
+    "loss": 9.40437830781607e-05,
+    "gradient_infinity": 0.0006710981650559267,
+    "training_seconds": 600.0029713080003
+   },
+   "training_seconds": null,
+   "final_loss": null,
+   "final_gradient_infinity": null,
+   "wall_seconds": 2423.750160486001,
+   "observer_seconds_excluded": null,
+   "inspections": [
+    {
+     "tag": "tta-first",
+     "active_training_seconds": 1003.5956110719999
+    }
+   ],
+   "candidate_tta": {
+    "state": "NOT_YET_CONFIRMED",
+    "time_to_verified_accuracy_s": null
+   },
+   "checks": {
+    "fresh-native-subset": 3.5742652412001073e-07,
+    "eager-fresh-denseAD": 8.932151936839821e-07,
+    "eager-changed-denseAD": 4.881650151923122e-07,
+    "compiled-fresh-denseAD": 7.815632944734843e-07,
+    "graph-fresh-denseAD": 7.815632944734843e-07,
+    "graph-changed-denseAD": 6.781210263057044e-07,
+    "Adam0": 7.815632944734843e-07,
+    "Adam100": 1.8205703752619534e-06,
+    "Adam500": 1.503901345831512e-06,
+    "Adam1000": 1.2038892451905418e-06,
+    "Adam2000": 4.011074719004813e-06,
+    "Adam4000": 1.4562423294172739e-06,
+    "SSBroyden-iteration1000": 5.657112033654036e-06,
+    "tta-first": 7.542249342525603e-06
+   },
+   "observations": {
+    "tta-first": {
+     "state": "RUNNING",
+     "physical_acceptance_pass": false,
+     "seconds": null,
+     "phase": "time-0.625-complete",
+     "observer_chunk": 512
+    }
+   },
+   "frozen_audit": {
+    "state": "NOT_RUN"
+   }
+  },
+  "1127789372": {
+   "archive_sha256": "3bc2a02571041c4117994513cfe58bdc3ce42d8c5e908d3271c1e91632b25880",
+   "archive_members": 180,
+   "training_state": "COMPLETE",
+   "stop_reason": "physical acceptance confirmed",
+   "setup_seconds": {
+    "eager_and_dense_AD": 87.26730371000122,
+    "compile_and_warmup": 112.15476515999944,
+    "graph_capture": 4.259498870000243
+   },
+   "Adam_updates": 4000,
+   "SSBroyden_iterations": 1903,
+   "SSBroyden_evaluations": 2998,
+   "resets": 0,
+   "skipped_updates": 0,
+   "training_gate_first": {
+    "phase": "SSBroyden",
+    "iteration": 163,
+    "evaluation": 270,
+    "loss": 9.858019305352128e-05,
+    "gradient_infinity": 0.0008196916034402178,
+    "training_seconds": 593.5479810910001
+   },
+   "training_seconds": 1006.4413315820002,
+   "final_loss": 6.698960611753515e-09,
+   "final_gradient_infinity": 7.4987899309924785e-06,
+   "wall_seconds": 5231.440771561001,
+   "observer_seconds_excluded": 3091.6994220529996,
+   "inspections": [
+    {
+     "tag": "tta-first",
+     "active_training_seconds": 1003.2614017159995
+    }
+   ],
+   "candidate_tta": {
+    "state": "PHYSICALLY_CONFIRMED",
+    "first_passing_tag": "tta-first",
+    "checkpoint_sha256": "0fea53d00db810261e91b291470c24b9eb72d9da4fc1c60ec3665ec47b099459",
+    "active_training_seconds_at_checkpoint": 1003.2613279899997,
+    "time_to_verified_accuracy_s": 5228.254405994001,
+    "confirmation_unix": 1792602637.7787616,
+    "earliest_physical_crossing_known": false
+   },
+   "checks": {
+    "fresh-native-subset": 4.890064484412109e-07,
+    "eager-fresh-denseAD": 7.362139995052697e-07,
+    "eager-changed-denseAD": 1.976576715100741e-06,
+    "compiled-fresh-denseAD": 6.969429497471902e-07,
+    "graph-fresh-denseAD": 6.969429497471902e-07,
+    "graph-changed-denseAD": 1.976576715100741e-06,
+    "Adam0": 6.969429497471902e-07,
+    "Adam100": 1.3999833772989784e-06,
+    "Adam500": 1.6245320384722597e-06,
+    "Adam1000": 2.0281553225726763e-06,
+    "Adam2000": 2.639373801938144e-06,
+    "Adam4000": 4.429146369759503e-06,
+    "SSBroyden-iteration1000": 2.287109745358902e-06,
+    "tta-first": 4.908185157663049e-06,
+    "final": 4.908185157663049e-06
+   },
+   "observations": {
+    "tta-first": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": true,
+     "seconds": 3073.0073113441467,
+     "phase": "COMPLETE",
+     "observer_chunk": 512,
+     "worst_over_limit": 0.21538666067999182,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {},
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 7.477867564061744e-05,
+        "normalized_corrected_pressure_rms": 0.00021538666067999184,
+        "normalized_momentum_rms": 5.864846816574248e-05,
+        "normalized_momentum_gradient_rms": 6.118692946362001e-05,
+        "normalized_divergence_rms": 1.9138336053448666e-14
+       }
+      },
+      "uniform": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.00012542865189435877,
+        "normalized_corrected_pressure_rms": 2.949326140237426e-05,
+        "normalized_momentum_rms": 3.520545083757301e-06,
+        "normalized_momentum_gradient_rms": 2.78208197256854e-06,
+        "normalized_divergence_rms": 5.249986671910347e-16
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.00010869512420177735,
+        "normalized_corrected_pressure_rms": 0.00032241902769318054,
+        "normalized_momentum_rms": 8.669922504791129e-05,
+        "normalized_momentum_gradient_rms": 8.681466451761841e-05,
+        "normalized_divergence_rms": 1.461277585405589e-14
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 4.449042526207948e-05,
+        "normalized_corrected_pressure_rms": 0.00024801864764654075,
+        "normalized_momentum_rms": 8.139671557686247e-05,
+        "normalized_momentum_gradient_rms": 9.233325865843622e-05,
+        "normalized_divergence_rms": 3.168171195566396e-14
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 9.687634342448018e-05,
+        "normalized_corrected_pressure_rms": 0.00021513251665086292,
+        "normalized_momentum_rms": 0.00010410685341767852,
+        "normalized_momentum_gradient_rms": 9.1813046598737e-05,
+        "normalized_divergence_rms": 2.3561981378637807e-14
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 4.5783955348594476e-05,
+       "maximum_endpoint_error": 4.578392384445585e-05
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 4.5783939072191047e-05,
+       "maximum_endpoint_error": 4.5783939072191047e-05,
+       "maximum_refinement_change": 6.395051223216887e-11
+      }
+     ]
+    }
+   },
+   "frozen_audit": {
+    "state": "FROZEN_INDEPENDENT_READBACK_FAILED",
+    "exit": 1,
+    "failure": "AssertionError: ('stratified', 'spatial_residual_gradient')",
+    "frozen_audit_script_sha256": "1328c33c98d3681f0c91178ba636eafee7872460bd4777f09c7fa73e5c992dd6"
+   }
+  },
+  "949592700": {
+   "archive_sha256": "4a8c8baa81039df49afdb82505d75015aeb8a828c41df0f167e4699a203239c6",
+   "archive_members": 182,
+   "training_state": "COMPLETE",
+   "stop_reason": "physical acceptance confirmed",
+   "setup_seconds": {
+    "eager_and_dense_AD": 85.0350186579999,
+    "compile_and_warmup": 110.22927474399876,
+    "graph_capture": 4.134468668000409
+   },
+   "Adam_updates": 4000,
+   "SSBroyden_iterations": 2069,
+   "SSBroyden_evaluations": 3061,
+   "resets": 0,
+   "skipped_updates": 0,
+   "training_gate_first": {
+    "phase": "SSBroyden",
+    "iteration": 200,
+    "evaluation": 306,
+    "loss": 9.552174461437296e-05,
+    "gradient_infinity": 0.0007531785072885753,
+    "training_seconds": 590.3366314679988
+   },
+   "training_seconds": 1006.329538259999,
+   "final_loss": 1.0601777898999857e-08,
+   "final_gradient_infinity": 1.180994383667503e-05,
+   "wall_seconds": 5321.952272617,
+   "observer_seconds_excluded": 3184.5815070009994,
+   "inspections": [
+    {
+     "tag": "tta-first",
+     "active_training_seconds": 1003.0465190759987
+    }
+   ],
+   "candidate_tta": {
+    "state": "PHYSICALLY_CONFIRMED",
+    "first_passing_tag": "tta-first",
+    "checkpoint_sha256": "1a7368208b11d0d14e4955068114b75299ac510444592cb85359514648647068",
+    "active_training_seconds_at_checkpoint": 1003.0464645809989,
+    "time_to_verified_accuracy_s": 5318.665211621999,
+    "confirmation_unix": 1792602728.2017088,
+    "earliest_physical_crossing_known": false
+   },
+   "checks": {
+    "fresh-native-subset": 5.905865450253796e-07,
+    "eager-fresh-denseAD": 7.198521688561714e-07,
+    "eager-changed-denseAD": 1.0162471919928832e-06,
+    "compiled-fresh-denseAD": 7.512779013835783e-07,
+    "graph-fresh-denseAD": 7.512779013835783e-07,
+    "graph-changed-denseAD": 8.606991524021357e-07,
+    "Adam0": 7.512779013835783e-07,
+    "Adam100": 1.167075879458311e-06,
+    "Adam500": 1.2675811606857596e-06,
+    "Adam1000": 1.571591431424121e-06,
+    "Adam2000": 3.1330561263295572e-06,
+    "Adam4000": 2.8093043944276966e-06,
+    "SSBroyden-iteration1000": 6.423322128125413e-06,
+    "SSBroyden-iteration2000": 3.972066456405126e-06,
+    "tta-first": 5.9642446451698755e-06,
+    "final": 5.9642446451698755e-06
+   },
+   "observations": {
+    "tta-first": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": true,
+     "seconds": 3172.7919793128967,
+     "phase": "COMPLETE",
+     "observer_chunk": 512,
+     "worst_over_limit": 0.2062458993819476,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {},
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 8.11900153391438e-05,
+        "normalized_corrected_pressure_rms": 0.0002062458993819476,
+        "normalized_momentum_rms": 7.225896902243529e-05,
+        "normalized_momentum_gradient_rms": 7.597692716771117e-05,
+        "normalized_divergence_rms": 1.8750331837081463e-14
+       }
+      },
+      "uniform": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.00012665523552282817,
+        "normalized_corrected_pressure_rms": 1.3994255642174295e-05,
+        "normalized_momentum_rms": 5.0091253951879125e-06,
+        "normalized_momentum_gradient_rms": 3.522879855723097e-06,
+        "normalized_divergence_rms": 6.005252815972284e-16
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.00012445570895037333,
+        "normalized_corrected_pressure_rms": 0.0002960699424725334,
+        "normalized_momentum_rms": 9.991789511837874e-05,
+        "normalized_momentum_gradient_rms": 0.00010853649291728016,
+        "normalized_divergence_rms": 1.6209480191723798e-14
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 4.790579469793318e-05,
+        "normalized_corrected_pressure_rms": 0.0003029276076568919,
+        "normalized_momentum_rms": 8.22559482121859e-05,
+        "normalized_momentum_gradient_rms": 8.925539677496923e-05,
+        "normalized_divergence_rms": 3.2591854165857485e-14
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 9.432687901582232e-05,
+        "normalized_corrected_pressure_rms": 0.00024635259830466707,
+        "normalized_momentum_rms": 9.789812524537671e-05,
+        "normalized_momentum_gradient_rms": 8.748337306595888e-05,
+        "normalized_divergence_rms": 1.978717275511373e-14
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 3.648560048342934e-05,
+       "maximum_endpoint_error": 3.647891531674691e-05
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 3.648563043720122e-05,
+       "maximum_endpoint_error": 3.6478933413695477e-05,
+       "maximum_refinement_change": 6.380095342606696e-11
+      }
+     ]
+    }
+   },
+   "frozen_audit": {
+    "state": "FROZEN_INDEPENDENT_READBACK_FAILED",
+    "exit": 1,
+    "failure": "AssertionError: ('stratified', 'spatial_residual_gradient')",
+    "frozen_audit_script_sha256": "1328c33c98d3681f0c91178ba636eafee7872460bd4777f09c7fa73e5c992dd6"
+   }
+  }
+ },
+ "registered_cohort_result": {
+  "state": "COHORT_NOT_FULLY_QUALIFIED",
+  "denominator": 5,
+  "passes": 0,
+  "entries": [
+   {
+    "seed": 1212382065,
+    "state": "INCOMPLETE_OR_INVALID",
+    "time_s": null
+   },
+   {
+    "seed": 392322075,
+    "state": "INCOMPLETE_OR_INVALID",
+    "time_s": null
+   },
+   {
+    "seed": 422010988,
+    "state": "INCOMPLETE_OR_INVALID",
+    "time_s": null
+   },
+   {
+    "seed": 1127789372,
+    "state": "INCOMPLETE_OR_INVALID",
+    "time_s": null
+   },
+   {
+    "seed": 949592700,
+    "state": "INCOMPLETE_OR_INVALID",
+    "time_s": null
+   }
+  ],
+  "success_fraction_wilson95": [
+   0.0,
+   0.43448246478317476
+  ],
+  "cohort_median_tta_s": null,
+  "cohort_range_tta_s": null,
+  "speedup_claim": false
+ }
+}

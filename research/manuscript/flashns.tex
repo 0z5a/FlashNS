@@ -35,8 +35,10 @@ it is 3.60$\times$ and 6.96$\times$ faster than internal baselines; with all
 methods compiled, its solves are 1.68$\times$ and 1.13$\times$ faster than
 nested autograd and collapsed Taylor mode, which optimizes 1.05$\times$
 faster. A 36-channel curl-potential contract
-gives 1.32$\times$ objective-gradient throughput, but its training
-still fails a stratified pressure test.
+gives 1.32$\times$ objective-gradient throughput. Its L-BFGS training fails
+a stratified pressure test; a dense self-scaled Broyden optimizer passes
+every test in two GH200 development runs, but a five-seed time-to-accuracy
+cohort is not qualified.
 \end{abstract}
 
 \section{Introduction}
@@ -94,14 +96,16 @@ unchanged accuracy gates, with an independent scalar-AD final check, pinned
 public sources and every attempt retained. Ratios are reported only for
 jointly accepted pairs. We apply it to eight baselines in two dimensions
 and to two internal baselines on a three-dimensional benchmark, and report
-the C36 extension, including its failed acceptance.
+the C36 extension, including its failed acceptance under L-BFGS, the
+development runs that pass with a dense quasi-Newton optimizer and an
+unqualified prospective cohort.
 \end{enumerate}
 
 The paper does not claim the first residual-aware derivative method, a
 globally minimal state, or superiority across PDEs, precisions or GPU
 families. Representation and execution are separated for one problem on one
 device (Section~\ref{sec:ablation}). The
-two-dimensional H20 campaign, the C36 study (H100 and CPU) and the
+two-dimensional H20 campaign, the C36 study (H100, GH200 and CPU) and the
 Ethier--Steinman solves (H100) use different models, data, seeds, gates and
 hardware; their timings are never pooled. Table~\ref{tab:terms} defines the names used throughout.
 
@@ -1939,10 +1943,161 @@ accurate velocity would not by itself remove it. Reaching the gate needs a
 term that weights pressure on its own scale, or an optimizer that resolves
 such a small component.
 
+\subsection{A dense quasi-Newton optimizer (protocol v7)}\label{sec:c36v7}
+Protocol v7 tests the second of these options on the original instance
+($\eta=1/32$). It keeps the development recipe, including the stored
+initial parameters, the data, the 4,000 Adam updates, the objective and
+every numerical and physical limit, and replaces only the L-BFGS phase by a
+self-scaled Broyden update (SSBroyden) with a dense FP64 inverse Hessian on
+the GPU (20.6 GB)~\cite{ssbroyden,kiyani}. Each iteration costs one dense
+matrix--vector product, and a strong-Wolfe line search from a unit step
+keeps the L-BFGS settings. The update is skipped without curvature, and the
+inverse Hessian is reset after a non-descent direction or a failed line
+search. Unit tests check it against the textbook inverse BFGS update and an
+independently written implementation of the second paper's definitions.
+The training guard is 4,000 seconds. The decision reuses the v6 outcomes
+in order (F1 pass, F2 near miss, F0 incomplete, F3 fail).
+
+The registered batch had four H100 lanes: two fresh runs from the stored
+initializations and two continuations of the v5 analytic final checkpoints.
+Its outcome could not be retrieved, and the continuation start checkpoints
+became unavailable. Those two arms were never run elsewhere, and v7 as
+registered remains unresolved. A separate registration then ran the two
+fresh runs on NVIDIA GH200 (ARM host, one GPU per seed, Torch 2.14.1). The
+optimizer, the trainer, the guard, the reader and the rules were unchanged,
+and the decision applies to these two runs. A qualification batch first
+compared eager, compiled and graph objectives at both stored
+initializations with the preserved full native reference, and a changed
+parameter vector with dense parameter AD. All 32 comparisons were within
+$2.3\times10^{-6}$ of the original budget. It also allocated the full
+inverse Hessian.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{C36 with dense SSBroyden after the unchanged 4,000 Adam updates
+(protocol v7, fresh arm, GH200; 4,000-second training guard). Iterations
+and evaluations count the SSBroyden phase only. Physical values are the
+final observation over each limit; S is stratified, U uniform. Endpoint is
+the trajectory endpoint error over its limit. Every other acceptance test
+is further below its limit.}
+\label{tab:c36v7}
+\begin{tabular}{lrrrrrrrr}\toprule
+ & & & & & \multicolumn{3}{c}{Pressure / velocity / limit} & \\\cmidrule(lr){6-8}
+Seed & Iter. & Eval. & Loss & $\|g\|_\infty$ & Press.~S & Press.~U & Vel.~S & Endpoint\\\midrule
+361901 & 14,412 & 23,051 & $2.9\times10^{-13}$ & $5.4\times10^{-8}$ & $9.9\times10^{-4}$ & $1.1\times10^{-4}$ & $5.9\times10^{-5}$ & $3.2\times10^{-4}$\\
+361902 & 14,637 & 23,187 & $1.7\times10^{-13}$ & $3.7\times10^{-8}$ & $9.5\times10^{-4}$ & $1.3\times10^{-4}$ & $4.6\times10^{-5}$ & $2.1\times10^{-4}$
+\\\bottomrule\end{tabular}
+\end{table}
+
+Both runs trained for the full guard without a reset or a skipped update,
+and every saved complete-gradient check is within $5.3\times10^{-5}$ of the
+original budget (78 comparisons per run). The carried inverse-Hessian
+product agrees with an explicit product to $1.5\times10^{-10}$ at all 14
+checks. The loss falls to $1.7$--$2.9\times10^{-13}$, against
+$1.3$--$1.6\times10^{-6}$ after 4,800 L-BFGS calls in v5. Both final
+observations pass every acceptance test (Table~\ref{tab:c36v7}). Stratified
+pressure, the test that every earlier C36 run failed, is now about $10^{-3}$
+of its limit, and it is still the tightest test. The registered outcome is
+F1 for both runs; the in-batch reader and a separate CPU readback of the
+archive both recompute it.
+
+The registered secondary readout counts evaluations to each loss threshold,
+including the Adam phase, against the v5 analytic run of the same seed. The
+ratio v7/v5 is 1.00 at $10^{-3}$, 0.71--0.73 at $10^{-4}$, 0.38--0.43 at
+$10^{-5}$ and 0.26--0.30 at $3\times10^{-6}$. v5 never reaches $10^{-6}$; v7
+reaches $10^{-7}$ after 5,684--5,718 evaluations. These are evaluation
+counts on different hardware, not a time ratio. Each SSBroyden iteration
+takes 0.23--0.24 seconds on GH200 with 1.58--1.60 line-search evaluations.
+The training gate (loss $10^{-4}$, gradient $10^{-3}$) is met after about
+600 training seconds. The gate-first observation was skipped by the
+observation budget, because each final observation took 2,994--3,307
+seconds, so this batch does not show when physical acceptance was first
+reached. Both seeds were seen before. These are development runs, and this
+batch makes no formal claim.
+
+\subsection{Prospective time to verified accuracy}\label{sec:c36tta}
+A formal cohort followed, registered before any of its runs and committed
+publicly. It uses five previously unused seeds from a fixed SHA-256 rule
+and a new common physical holdout seed. The v7 fresh recipe is unchanged,
+and each seed runs as an independent single-GPU job on GH200. For each new
+initialization the run checks the eager objective against fresh native
+coordinate AD on the fixed 131-point subset. It also checks the eager,
+compiled and graph objectives against fresh dense parameter AD. The first
+physical inspection comes at the first optimizer boundary after 1,000
+active training seconds. A pass stops the run; otherwise training continues
+from the same optimizer state to the guard and is inspected again. The time
+to verified accuracy (TTA) runs from trainer entry, through every import,
+check, compilation and observation, to the first passing physical report.
+A pass becomes valid only after an independent CPU audit of the sealed
+archive. The cohort qualifies only if all five audits pass, and the record
+reports a median TTA only in that case. There is no paired baseline and no
+speedup claim.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Formal C36 TTA cohort (five new seeds, one GH200 each). Gate is
+the active training second at which the training gate is first met. At
+inspection: active training seconds and SSBroyden iterations at the first
+physical inspection, and its loss. Observation is the duration of that
+inspection. Candidate TTA is the recorded time to a passing physical
+report; it is not qualified, because no audit passed. S press.\ is the
+stratified corrected pressure over its limit, the tightest test.}
+\label{tab:c36tta}
+\begin{tabular}{rrrrrrrrl}\toprule
+Seed & Gate (s) & Insp.~(s) & Iter. & Loss & Obs.~(s) & Cand.~TTA (s) & S press. & Audit\\\midrule
+1212382065 & 594 & 1,003 & 1,985 & $9.7\times10^{-9}$ & 3,195 & 5,491 & 0.267 & failed\\
+392322075 & 597 & 1,004 & 1,942 & $8.5\times10^{-9}$ & 3,134 & 5,581 & 0.229 & failed\\
+422010988 & 600 & 1,004 & 1,975 & -- & stopped & -- & -- & not run\\
+1127789372 & 594 & 1,003 & 1,903 & $6.7\times10^{-9}$ & 3,073 & 5,228 & 0.215 & failed\\
+949592700 & 590 & 1,003 & 2,069 & $1.1\times10^{-8}$ & 3,173 & 5,319 & 0.206 & failed
+\\\bottomrule\end{tabular}
+\end{table}
+
+All five runs passed their start-up checks, within $1.2\times10^{-5}$ of
+the original budget for every saved check. They met the training gate after
+590--600 active seconds, and were first inspected after about 1,003 seconds
+and 1,903--2,069 iterations (Table~\ref{tab:c36tta}). Four inspections
+completed, and all four pass physical acceptance at the first inspection:
+stratified pressure is 0.21--0.27 of its limit, stratified velocity
+$7.5$--$8.5\times10^{-5}$ in relative L2, and the trajectory endpoint
+0.03--0.05 of its limit. Their candidate TTAs are 5,228--5,581 seconds.
+About 1,006 of those seconds are training and 3,092--3,217 the observation,
+including moving the inverse Hessian to host memory and back;
+1,128--1,417 seconds go to imports, compilation, and the native-subset and
+dense-AD checks of the new initialization. The fifth run was cancelled by
+the operator during its first observation and stays in the denominator. The five jobs used 7.66 allocated GPU-hours.
+
+All four frozen audits fail at the same assertion. The auditor recomputes
+the physical consumer's raw arrays from the saved native states on an x86
+CPU and requires agreement within a relative tolerance of $10^{-10}$
+against the values saved on the GPU host. The spatial residual gradient
+fails this test in 2--5 of 36,864 stratified elements, and in up to four
+time-slice elements. The stratified global metrics, recomputed just before
+the failing assertion, agree with the report. The audit stops there, so
+the remaining checks of these four runs never ran. The registered outcome is therefore
+\emph{not qualified}: 0 of 5 qualified runs (Wilson 95\% interval 0--0.43),
+no median and no range.
+
+\paragraph{Why the audits fail (post hoc).}
+The spatial residual gradient is a sum of terms that reach $1.4\times10^5$
+and cancel to about $10^{-2}$. A tolerance relative to the result is
+therefore far below the rounding error of its terms. On every dataset of
+the four observations, the ARM--x86 difference is at most four units in
+the last place of the largest term. It is at most 0.13 of the standard
+bound $2\gamma_{10}\sum|\text{terms}|$ for two independently rounded
+evaluations, and no element exceeds that bound. On the four resting time
+slices this array agrees bit for bit. The failure thus comes from the auditor's
+tolerance, not from the observer or the physics. The auditor's CPU
+regression tests ran producer and consumer on the same x86 host and could
+not expose it. This diagnosis does not change the registered outcome. A
+qualified cohort needs a new registration with fresh seeds and a tolerance
+scaled by the size of the summed terms.
+
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
-The C36 study qualifies derivatives and throughput but yields no accepted
-solve. We therefore also train on the transient three-dimensional
+The C36 study qualifies derivatives and throughput, but its solves pass
+only in development runs with a changed optimizer and no qualified cohort.
+We therefore also train on the transient three-dimensional
 Ethier--Steinman flow~\cite{ethier}, which NSFnets also uses as a PINN
 benchmark~\cite{nsfnets}. With $a=0.5$, $d=1$ and $\nu=1$,
 \begin{equation}
@@ -2309,11 +2464,20 @@ instance with twice the cutoff width, whose layer forcing is four to five
 times smaller, stratified pressure still ends 2.0--2.9 times above its
 limit, so the gap is not set by the layer forcing alone either. A
 temporal-smoothness continuation changes where training meets the loss gate
-but not which test fails. The C36 throughput gains depend on compilation, the zero-gate
+but not which test fails. The optimizer does: a dense self-scaled Broyden
+phase after the same Adam updates passes every physical test in two
+development runs on GH200, with stratified pressure about $10^{-3}$ of its
+limit after 4,000 training seconds. In a registered five-seed cohort, four
+runs pass at their first inspection, but the cohort is not qualified. The
+frozen auditor's relative tolerance rejects ARM--x86 rounding in a
+cancelled sum, and one run was cancelled. The dense inverse Hessian costs
+$8n^2$ bytes (20.6 GB here), so on one 96 GB GPU this optimizer does not
+reach beyond about $10^5$ parameters. The C36 throughput gains depend on compilation, the zero-gate
 folding gain depends on this instance's gate geometry, and the problem is a
 single constructed box instance. External baselines on C36 itself (the
 external three-dimensional comparison uses uncompiled Ethier--Steinman
-arms), a native C17, accepted C36 solves, a second nonlinear PDE and device-traffic measurements remain open
+arms), a native C17, a qualified C36 time-to-accuracy cohort, a second
+nonlinear PDE and device-traffic measurements remain open
 experiments rather than implied consequences of the implementation.
 
 \section{Conclusion}
@@ -2352,8 +2516,11 @@ passes most physical gates, but stratified pressure still fails.
 Observations of every checkpoint show this error still falling at that
 budget. With six times the L-BFGS calls it stalls at 2.2--3.0 times its
 limit; neither a smoother-motion continuation nor an instance with twice the
-cutoff width (2.0--2.9 times) removes it. Accepted
-C36 solves and external three-dimensional comparisons remain open.
+cutoff width (2.0--2.9 times) removes it. A dense self-scaled Broyden
+optimizer does: two development runs on GH200 pass every physical test.
+A registered five-seed time-to-accuracy cohort is not qualified, because
+its frozen auditor rejects cross-architecture rounding. A qualified C36
+cohort and external three-dimensional comparisons on C36 remain open.
 
 
 \begin{thebibliography}{99}
@@ -2434,6 +2601,16 @@ NVIDIA. CUDA Deep Neural Network library (cuDNN).
 NVIDIA. cuEquivariance public implementation.
 Source commit \texttt{70674ada7a00372e88ebe99969c700a6dcddd08f}.
 \url{https://github.com/NVIDIA/cuEquivariance}.
+\bibitem{ssbroyden}
+Jorge F. Urbán, Petros Stefanou, and José A. Pons.
+Unveiling the optimization process of physics informed neural networks: How accurate and competitive can PINNs be?
+\emph{Journal of Computational Physics}, 523:113656, 2025.
+\url{https://doi.org/10.1016/j.jcp.2024.113656}.
+\bibitem{kiyani}
+Elham Kiyani, Khemraj Shukla, Jorge F. Urbán, Jérôme Darbon, and George Em Karniadakis.
+Optimizing the optimizer for physics-informed neural networks and Kolmogorov--Arnold networks.
+arXiv:2501.16371, 2025.
+\url{https://arxiv.org/abs/2501.16371}.
 \bibitem{math376}
 OpenAI. Incompressible Box Transport and Finite Computation.
 September 27, 2026. Mathematical geometry source pinned at commit
@@ -2703,6 +2880,22 @@ development state name, and the registered outcome comes from
 cluster project storage; the login-node CPU self-test of the trainer was
 ended by the node's process limits, so the v6 additions were self-tested
 as components and the driver's control flow end to end.
+
+The GH200 batches of Sections~\ref{sec:c36v7} and~\ref{sec:c36tta} ran on
+an ARM host with Python 3.13.5, Torch 2.14.1 (CUDA 13.0), Triton 3.8.0 and
+NumPy 2.5.4. They are not the H100 runtime, and no timing is compared
+across the two. Each batch was frozen from the git archive of its
+registration commit. The manifests list 113 and 133 files, and each driver
+verified every hash before starting. A small driver adapter disables the
+earlier per-process compiler-target shim, which the newer runtime does not
+need, through a frozen protocol field. The v7 batch (one node, two GPUs,
+7,645 seconds) archived 246 members. Its in-batch reader output and
+decision are published byte-identical. The TTA cohort ran as five
+independent one-GPU jobs. Each archive (175--182 members) is sealed and
+read back member by member. The cohort record and the post-hoc rounding
+diagnosis are generated from those archives by two published scripts.
+The frozen audits' failure records are kept unchanged. Full raw outputs
+stay on cluster project storage.
 
 \subsection{Ethier--Steinman campaign}
 The 18 cases ran as one batch on two GPUs of an existing allocation,

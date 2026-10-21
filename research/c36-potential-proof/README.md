@@ -916,7 +916,7 @@ A short driver self-test with one fresh and one continue lane ([record](v7-selft
 
 ## GH200 fresh-arm continuation (pre-registered 2026-10-21)
 
-[protocol-v7-gh200-fresh-development-20261021.json](protocol-v7-gh200-fresh-development-20261021.json) registers an independent two-run development batch after the MN5 route was retired. The exact v5 continuation checkpoints are unavailable. Their original two tasks remain unexecuted here; this batch does not complete the earlier four-task protocol or pool results with its unknown execution state.
+[protocol-v7-gh200-fresh-development-20261021.json](protocol-v7-gh200-fresh-development-20261021.json) registers an independent two-run development batch after the registered four-lane H100 batch could not be completed or retrieved. The exact v5 continuation checkpoints are unavailable. Their original two tasks remain unexecuted here; this batch does not complete the earlier four-task protocol or pool results with its unknown execution state.
 
 - **Runs:** fresh starts for the previously observed seeds 361901 and 361902, one allocated GH200 per seed. The stored initial parameter bytes, eta=1/32 data, 4,000 Adam updates, SSBroyden algorithm, **4,000-second training cap**, objective and all numerical/physical gates are unchanged.
 - **Allocation:** one node, two GPUs, three hours (at most six allocated GPU-hours). The additional wall time covers setup and physical observation on the new platform; it does not increase training time.
@@ -925,6 +925,43 @@ A short driver self-test with one fresh and one continue lane ([record](v7-selft
 - **Decision:** the existing ordered F1/F2/F0/F3 rules apply only to these **two** registered fresh runs. F3 requires both complete final observations; missing observations remain F0. Results are development evidence because both seeds were seen before. The unavailable original continuation arms remain a separate unresolved historical scope.
 - **Lifecycle:** immutable source/data/reference hashes, single execution, bounded cluster-side workload, complete success/failure archives and resource release without an online desktop.
 
+**Results (paper Section 6.12, Table 23; registered outcome F1).** The batch ran once, from the git archive of `c34ed33`, on one node with two GH200 GPUs.
+
+| Seed | SSBroyden iterations | Evaluations | Final loss | Gradient inf-norm | Stratified pressure / limit | Uniform pressure / limit | Stratified velocity / limit | Endpoint / limit |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 361901 | 14,412 | 23,051 | 2.9e-13 | 5.4e-8 | 9.9e-4 | 1.1e-4 | 5.9e-5 | 3.2e-4 |
+| 361902 | 14,637 | 23,187 | 1.7e-13 | 3.7e-8 | 9.5e-4 | 1.3e-4 | 4.6e-5 | 2.1e-4 |
+
+- **Training.** Both runs stop at the 4,000 s guard, with no reset and no skipped update. All 78 saved complete-gradient comparisons per run are within 5.3e-5 of the original budget. The carried inverse-Hessian product agrees with an explicit product to 1.5e-10 at all 14 checks.
+- **Physical acceptance.** Both final observations pass every test. Stratified pressure, which every L-BFGS run failed, is now about 1e-3 of its limit and still the tightest test. The [decision](c36-v7-gh200-decision-20261021.json) is F1. A separate CPU readback of the 246-member archive recomputes it.
+- **Secondary readout (registered).** Evaluations to each loss threshold, including Adam, relative to the v5 analytic run of the same seed: 1.00 at 1e-3, 0.71–0.73 at 1e-4, 0.38–0.43 at 1e-5 and 0.26–0.30 at 3e-6. v5 never reaches 1e-6, while v7 reaches 1e-7 after 5,684–5,718 evaluations. These are counts on different hardware, not a time ratio.
+- **Limits.** Each final observation took 2,994–3,307 s, so the observation budget skipped the gate-first observations, and this batch does not show when physical acceptance was first reached. Both seeds were seen before. These are development runs, and no formal claim follows.
+
+Files: [c36-v7-gh200-development-result-20261021.json](c36-v7-gh200-development-result-20261021.json) (the in-batch reader, byte-identical to its executed output) and [c36-v7-gh200-decision-20261021.json](c36-v7-gh200-decision-20261021.json).
+
 ## Prospective new-seed TTA protocol (2026-10-21)
 
 The next five-seed GH200 cohort is preregistered in [FORMAL-TTA-20261021.md](FORMAL-TTA-20261021.md) and [protocol-formal-tta-20261021.json](protocol-formal-tta-20261021.json). Each seed uses an independent single-GPU allocation and stops after confirmed physical acceptance or its frozen budget. This is a prospective absolute time-to-verified-accuracy validation; no result or speedup is claimed by the registration itself.
+
+**Results (paper Section 6.13, Table 24; registered outcome: not qualified).** Five independent one-GPU jobs ran once from the git archive of `5083508`.
+
+| Seed | Training gate (active s) | First inspection (active s) | Iterations | Loss | Observation (s) | Candidate TTA (s) | Stratified pressure / limit | Frozen audit |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 1212382065 | 594 | 1,003 | 1,985 | 9.7e-9 | 3,195 | 5,491 | 0.267 | failed |
+| 392322075 | 597 | 1,004 | 1,942 | 8.5e-9 | 3,134 | 5,581 | 0.229 | failed |
+| 422010988 | 600 | 1,004 | 1,975 | – | cancelled | – | – | not run |
+| 1127789372 | 594 | 1,003 | 1,903 | 6.7e-9 | 3,073 | 5,228 | 0.215 | failed |
+| 949592700 | 590 | 1,003 | 2,069 | 1.1e-8 | 3,173 | 5,319 | 0.206 | failed |
+
+- **Physical.** Four inspections completed, and all four pass physical acceptance at the first inspection. Stratified velocity is 7.5–8.5e-5 in relative L2, and the trajectory endpoint is 0.03–0.05 of its limit.
+- **Time.** Of the 5,228–5,581 s candidate TTA, about 1,006 s is training and 3,092–3,217 s the observation, including the inverse-Hessian spill and restore. The remaining 1,128–1,417 s is imports, compilation, and the native-subset and dense-AD checks of each new initialization.
+- **Fifth seed.** It was cancelled by the operator during its first observation and stays in the denominator. The five jobs used 7.66 allocated GPU-hours.
+- **Frozen audits.** All four fail at `audit_c36_tta.py` line 206: `np.allclose(rtol=1e-10, atol=1e-13)` between the spatial residual gradient recomputed on x86 and the value saved on the ARM GPU host. The audit stops there, and the remaining checks never ran.
+- **Registered outcome.** [`box376.tta_control.cohort_result`](src/box376/tta_control.py) gives `COHORT_NOT_FULLY_QUALIFIED`: 0/5 qualified, Wilson 95% interval 0–0.43, no median and no range. The candidate TTAs are unqualified observations.
+- **Why the audits fail (CPU post-hoc; [tool](tools/c36_tta_audit_rounding.py), [result](c36-tta-audit-rounding-20261021.json)).** The spatial residual gradient sums terms up to 1.4e5 that cancel to about 1e-2.
+  - Every difference is at most 4 ulp of the largest term, and at most 0.13 of the standard bound `2*gamma_10*sum|terms|` for two independently rounded evaluations; no element exceeds it.
+  - The resting time slices agree bit for bit.
+  - The cause is the auditor's tolerance, not the observer or the physics. Its CPU fixtures ran producer and consumer on one x86 host, so they could not expose it.
+  - This does not change the registered outcome. A qualified cohort needs a new registration with fresh seeds and a tolerance scaled by the summed terms.
+
+Files: [c36-tta-cohort-20261021.json](c36-tta-cohort-20261021.json), generated from the sealed archives by [`tools/c36_tta_publish.py`](tools/c36_tta_publish.py).
