@@ -2884,8 +2884,8 @@ as components and the driver's control flow end to end.
 The GH200 batches of Sections~\ref{sec:c36v7} and~\ref{sec:c36tta} ran on
 an ARM host with Python 3.13.5, Torch 2.14.1 (CUDA 13.0), Triton 3.8.0 and
 NumPy 2.5.4. They are not the H100 runtime, and no timing is compared
-across the two. Each batch was frozen from the git archive of its
-registration commit. The manifests list 113 and 133 files, and each driver
+across the two. Each batch was frozen from the committed files of
+its registration commit. The manifests list 113 and 133 files, and each driver
 verified every hash before starting. A small driver adapter disables the
 earlier per-process compiler-target shim, which the newer runtime does not
 need, through a frozen protocol field. The v7 batch (one node, two GPUs,

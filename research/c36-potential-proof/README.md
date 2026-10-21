@@ -925,7 +925,7 @@ A short driver self-test with one fresh and one continue lane ([record](v7-selft
 - **Decision:** the existing ordered F1/F2/F0/F3 rules apply only to these **two** registered fresh runs. F3 requires both complete final observations; missing observations remain F0. Results are development evidence because both seeds were seen before. The unavailable original continuation arms remain a separate unresolved historical scope.
 - **Lifecycle:** immutable source/data/reference hashes, single execution, bounded cluster-side workload, complete success/failure archives and resource release without an online desktop.
 
-**Results (paper Section 6.12, Table 23; registered outcome F1).** The batch ran once, from the git archive of `c34ed33`, on one node with two GH200 GPUs.
+**Results (paper Section 6.12, Table 23; registered outcome F1).** The batch ran once, from the committed files of `c34ed33`, on one node with two GH200 GPUs.
 
 | Seed | SSBroyden iterations | Evaluations | Final loss | Gradient inf-norm | Stratified pressure / limit | Uniform pressure / limit | Stratified velocity / limit | Endpoint / limit |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -943,7 +943,7 @@ Files: [c36-v7-gh200-development-result-20261021.json](c36-v7-gh200-development-
 
 The next five-seed GH200 cohort is preregistered in [FORMAL-TTA-20261021.md](FORMAL-TTA-20261021.md) and [protocol-formal-tta-20261021.json](protocol-formal-tta-20261021.json). Each seed uses an independent single-GPU allocation and stops after confirmed physical acceptance or its frozen budget. This is a prospective absolute time-to-verified-accuracy validation; no result or speedup is claimed by the registration itself.
 
-**Results (paper Section 6.13, Table 24; registered outcome: not qualified).** Five independent one-GPU jobs ran once from the git archive of `5083508`.
+**Results (paper Section 6.13, Table 24; registered outcome: not qualified).** Five independent one-GPU jobs ran once from the committed files of `5083508`.
 
 | Seed | Training gate (active s) | First inspection (active s) | Iterations | Loss | Observation (s) | Candidate TTA (s) | Stratified pressure / limit | Frozen audit |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
