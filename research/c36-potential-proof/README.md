@@ -912,3 +912,15 @@ There are three secondary readouts, which do not change the outcome:
 - the start-checkpoint hash logic accepts the v5 bytes and rejects a modified copy.
 
 A short driver self-test with one fresh and one continue lane ([record](v7-selftest-20261019.json)) imports every GPU-path module under Torch 2.4. The continue lane receives the packet's start checkpoint, and its start loss reproduces the v5 final loss to 1e-8 of the budget on CPU. The fresh lane reaches the optimizer phase. The login node then ends both CPU trainers. Even so, the driver's reader, decision (F0, as registered for incomplete lanes) and archive complete.
+
+
+## GH200 fresh-arm continuation (pre-registered 2026-10-21)
+
+[protocol-v7-gh200-fresh-development-20261021.json](protocol-v7-gh200-fresh-development-20261021.json) registers an independent two-run development batch after the MN5 route was retired. The exact v5 continuation checkpoints are unavailable. Their original two tasks remain unexecuted here; this batch does not complete the earlier four-task protocol or pool results with its unknown execution state.
+
+- **Runs:** fresh starts for the previously observed seeds 361901 and 361902, one allocated GH200 per seed. The stored initial parameter bytes, eta=1/32 data, 4,000 Adam updates, SSBroyden algorithm, **4,000-second training cap**, objective and all numerical/physical gates are unchanged.
+- **Allocation:** one node, two GPUs, three hours (at most six allocated GPU-hours). The additional wall time covers setup and physical observation on the new platform; it does not increase training time.
+- **Runtime:** ARM Python 3.13.5, Torch 2.14.1+cu130, Triton 3.8.0, NumPy 2.5.4 and SciPy 1.18.1. The [driver adapter](src/box376/run_c36_v7_gh200.py) disables the old Torch target-tuple shim through the frozen execution field. Scientific child commands and the reader are inherited from v7.
+- **Qualification:** [independent archive audit](gh200-platform-qualification-20261021.json): seven optimizer/decision tests pass; 32 raw-array comparisons pass the unchanged numerical budget (maximum 2.25e-6 of that budget), including the complete 50,692-parameter gradient, in-place parameter changes and CUDA Graph replay. The full 20.56 GB inverse Hessian allocates and passes identity-product/reset checks. The 149-member archive was verified independently. This establishes the tested platform paths only, not training convergence, physical acceptance or a speedup.
+- **Decision:** the existing ordered F1/F2/F0/F3 rules apply only to these **two** registered fresh runs. F3 requires both complete final observations; missing observations remain F0. Results are development evidence because both seeds were seen before. The unavailable original continuation arms remain a separate unresolved historical scope.
+- **Lifecycle:** immutable source/data/reference hashes, single execution, bounded cluster-side workload, complete success/failure archives and resource release without an online desktop.

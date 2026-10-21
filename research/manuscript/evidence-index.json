@@ -136,7 +136,10 @@
   "../c36-potential-proof/src/box376/decide_c36_v7.py": "b0946f229a35b49550bcd8618c614b8b3eac14cd34b43f0d0d99d047f406e395",
   "../c36-potential-proof/src/box376/test_decide_c36_v7.py": "cc554ccf8bcc02af973be659e7368183586effb28a497a39c922c05fc4483dae",
   "../c36-potential-proof/v7-component-selftest-20261019.json": "1eef9950ea45651177748c12d652bf5146cb7c2d957311901245fa38502ab847",
-  "../c36-potential-proof/v7-selftest-20261019.json": "23839015d411b011f026a3634f03e6b269af5638c0883548935fb34e8ca06034"
+  "../c36-potential-proof/v7-selftest-20261019.json": "23839015d411b011f026a3634f03e6b269af5638c0883548935fb34e8ca06034",
+  "../c36-potential-proof/protocol-v7-gh200-fresh-development-20261021.json": "30cf5ce38049b324a9bff62065e330416b5015413b79d5bfeb7d8dd5148a52e5",
+  "../c36-potential-proof/src/box376/run_c36_v7_gh200.py": "9cce669c918f107a341ed55861e069f630b8bf25a79926e27ee51eed845c2f4c",
+  "../c36-potential-proof/gh200-platform-qualification-20261021.json": "8207719870481295645b02538758e777f44ffa4aefde3abb1ef198edb61dbfaf"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
