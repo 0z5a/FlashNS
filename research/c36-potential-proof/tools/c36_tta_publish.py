@@ -2,7 +2,7 @@
 
     PYTHONPATH=src python3 tools/c36_tta_publish.py --root ROOT --output OUT.json
 
-ROOT holds packet/protocol-formal-tta-20261021.json, archives/seed{seed}-job*.tar.gz with their
+ROOT holds packet/PROTOCOL (default protocol-formal-tta-20261021.json), archives/seed{seed}-job*.tar.gz with their
 receipts, and audit/ with the frozen auditor's outputs. Every archive member read is checked
 against its receipt. For each registered seed the record gives the training summary, every
 physical observation (box376.decide_c36_v6.over_limit) and the frozen audit's state; the
@@ -62,8 +62,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--protocol-name', default='protocol-formal-tta-20261021.json')
     args = parser.parse_args()
-    protocol_path = args.root / 'packet' / 'protocol-formal-tta-20261021.json'
+    protocol_path = args.root / 'packet' / args.protocol_name
     protocol = json.loads(protocol_path.read_text())
     record = {'protocol_version': protocol['version'], 'protocol_sha256': sha(protocol_path),
               'eta': protocol['instance']['eta'], 'holdout_seed': protocol['physical']['holdout_seed'], 'seeds': {}}

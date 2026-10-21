@@ -2,8 +2,8 @@
  "revision": "2026-10-21",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "16c8a0e40b2655ad2b87cfddf6a7dd256a5a2b41167aa810f99e2f0a0c680ddf",
- "previous_manuscript_sha256": "a24fd4c0205823c334ff0ef0aa9672f8d266aecbfc27473ce413b2d022f918c0",
+ "manuscript_sha256": "6bd0fd4c3b83c59a145698620383b6b3197ed7ca658e9dbd5f317a5dbcb8833b",
+ "previous_manuscript_sha256": "16c8a0e40b2655ad2b87cfddf6a7dd256a5a2b41167aa810f99e2f0a0c680ddf",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -148,7 +148,7 @@
   "../c36-potential-proof/c36-v7-gh200-decision-20261021.json": "c5f7ccd33c656503acbf508103f3be3728181b6c98567630ad46f10239e8bca4",
   "../c36-potential-proof/c36-tta-cohort-20261021.json": "9630ff797f930885052d4fc2f94a7e5feae3a9a8fd8cc044d35cc3e575861a7f",
   "../c36-potential-proof/c36-tta-audit-rounding-20261021.json": "dca9fea81f536f6e1249d663c8b760a7866f4f93c57099be8b4918dc399ba2ba",
-  "../c36-potential-proof/tools/c36_tta_publish.py": "0edad83c7b937472aafbc644bae640c6d96bab80cffc1ff890e82d27064fa2f2",
+  "../c36-potential-proof/tools/c36_tta_publish.py": "a8bec6a00125e6e4f72f6e77b9044f54118e33f771525fc7f9ec01d6d6ceadc0",
   "../c36-potential-proof/tools/c36_tta_audit_rounding.py": "9928cf36875b5950623f4fe0106d1efb8178b67a999f10827c66d41aebd078e5",
   "../c36-potential-proof/protocol-formal-tta-v2-20261021.json": "27f88cac819807696d18368996a745a1a8245bb6928952584bd5163ed1df2860",
   "../c36-potential-proof/FORMAL-TTA-V2-20261021.md": "3dada38e50790d81d5764ea53a4cf0c4b3daec1143bfaf25966a821dc510bd52",
@@ -157,7 +157,8 @@
   "../c36-potential-proof/src/box376/audit_c36_tta_v2.py": "f72507a5d724d29ea60cbe3cd12e0174f4691c5cd77e9d71785d55661e73460b",
   "../c36-potential-proof/src/box376/run_c36_tta_v2.py": "d36d246ebe188ed71f27862507755a6ba65264ecc00ecb5685e95a55a7280855",
   "../c36-potential-proof/src/box376/start_c36_tta_v2.sbatch": "2daf11c62a0588f5e1fedadd1010a8d0e9a6bf1b32cfa4eb4d31b69a22e950e8",
-  "../c36-potential-proof/src/box376/test_audit_tta_v2.py": "8db4662b7368db251dd913d3c26e384540f5ce16ad56fd153dc15335da66bbed"
+  "../c36-potential-proof/src/box376/test_audit_tta_v2.py": "8db4662b7368db251dd913d3c26e384540f5ce16ad56fd153dc15335da66bbed",
+  "../c36-potential-proof/c36-tta-v2-cohort-20261021.json": "cd8fc9e0aa05f2b0b4321c7758443670b3c998ced015c55eec1accb415132bb4"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -171,11 +172,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "5061addb9aaaf90640152f5f4e65b402a0da01ed45338dd3c2db7cadf8576726",
- "previous_pdf_sha256": "8105ab769aafbb4a7521a1ddae51d06345b2b13ea4af0871ffebca2b7baf382b",
- "pages": 46,
+ "pdf_sha256": "cccd0b12f2056ffe8d3b65445aab8294e3143da0ddd4b0d7c9a3cf4934dadb5c",
+ "previous_pdf_sha256": "5061addb9aaaf90640152f5f4e65b402a0da01ed45338dd3c2db7cadf8576726",
+ "pages": 47,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2026 via TinyTeX v2026.10, with microtype), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS (2026-10-21): rendered with Ghostscript 9.54 and read: page 1 (abstract), pages 30-32 (Sections 6.12-6.13, Tables 23-24); no overfull boxes or undefined references. Earlier: PASS (2026-10-19): Section 6.11 attribution paragraph (page 30) rendered and read; Section 6.11 with Table 22 (pages 29-30) rendered and read; Section 6.10 diagnosis paragraph (page 28) rendered and read; Section 6.1 source-structure paragraph (page 17) and Section 6.8 rest-slice sentence (page 23) rendered and read; earlier: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
+ "pdf_visual_review": "PASS (2026-10-21): rendered with Ghostscript 9.54 and read: page 1 (abstract), pages 30-33 (Sections 6.12-6.14, Tables 23-25); no overfull boxes or undefined references. Earlier: PASS (2026-10-19): Section 6.11 attribution paragraph (page 30) rendered and read; Section 6.11 with Table 22 (pages 29-30) rendered and read; Section 6.10 diagnosis paragraph (page 28) rendered and read; Section 6.1 source-structure paragraph (page 17) and Section 6.8 rest-slice sentence (page 23) rendered and read; earlier: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -489,5 +490,20 @@
   "status": "pre-registered before any v2 run",
   "changes_from_v1": "seeds, holdout seed, independent auditor revision 2 (a-priori rounding bound on cancelled raw arrays)",
   "auditor_development_validation": "4/4 v1 archives pass end to end; v1 outcome unchanged"
- }
+ },
+ "C36_formal_tta_v2_cohort": {
+  "protocol": "protocol-formal-tta-v2-20261021.json",
+  "pre_registration_commit": "1fd2bc6",
+  "registered_outcome": "FORMAL_COHORT_PASS (5/5; Wilson 95% 0.566-1)",
+  "median_tta_s": 5073.9,
+  "range_tta_s": [
+   4824.6,
+   6018.5
+  ],
+  "all_pass_at_first_inspection": true,
+  "independent_audits": "5/5 PASS (auditor revision 2)",
+  "allocated_gpu_hours": 7.484,
+  "scope": "absolute time to verified accuracy under the registered inspection policy on one GH200; no baseline, no speedup"
+ },
+ "revision_note_20261021_tta_v2": "Adds Section 6.14 and Table 25: the second pre-registered TTA cohort passes 5/5 (median 5,074 s, range 4,825-6,019 s); abstract, contributions, Ethier introduction, discussion, conclusion and C36 appendix updated; Ethier tables move up by one (now 26-29). 47 pages."
 }

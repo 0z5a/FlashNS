@@ -974,3 +974,20 @@ Files: [c36-tta-cohort-20261021.json](c36-tta-cohort-20261021.json), generated f
 - **Tests.** [`test_audit_tta_v2`](src/box376/test_audit_tta_v2.py) adds five CPU tests.
 - **v1 unchanged.** The v1 outcome stays not qualified, and the two cohorts are never pooled.
 
+**Results (paper Section 6.14, Table 25; registered outcome: qualified, 5/5).** The five one-GPU jobs ran once from the committed files of `1fd2bc6`.
+
+| Seed | Training gate (active s) | First inspection (active s) | Iterations | Loss | Observation (s) | TTA (s) | Stratified pressure / limit | Independent audit |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 2013091829 | 602 | 1,003 | 1,984 | 1.0e-8 | 3,750 | 6,019 | 0.220 | pass |
+| 1342776288 | 593 | 1,003 | 1,986 | 1.2e-8 | 2,963 | 5,074 | 0.297 | pass |
+| 8730574 | 598 | 1,003 | 2,005 | 8.3e-9 | 3,460 | 5,772 | 0.223 | pass |
+| 1790307490 | 597 | 1,003 | 1,891 | 1.7e-8 | 2,590 | 4,825 | 0.250 | pass |
+| 2126574302 | 592 | 1,003 | 1,956 | 6.8e-9 | 2,957 | 5,074 | 0.191 | pass |
+
+- **Physical.** All five pass physical acceptance at the first inspection. Stratified velocity is 7.3–9.6e-5 in relative L2, and the trajectory endpoint is 0.04–0.05 of its limit. Every saved check is within 1.7e-5 of the budget.
+- **Registered outcome.** `FORMAL_COHORT_PASS`: 5/5, Wilson 95% interval 0.57–1. The median TTA is 5,074 s, with a range of 4,825–6,019 s.
+- **Time.** About 1,006 s of each TTA is training. The native-AD observation takes 2,612–3,757 s, including the inverse-Hessian spill, and imports, compilation and the new-seed checks take 1,091–1,297 s.
+- **Scope.** TTA is confirmation latency under the registered inspection policy; the first physical crossing is not measured. There is no baseline, so this is an absolute time, not a speedup. The five jobs used 7.48 allocated GPU-hours.
+
+Files: [c36-tta-v2-cohort-20261021.json](c36-tta-v2-cohort-20261021.json), generated from the sealed archives by [`tools/c36_tta_publish.py`](tools/c36_tta_publish.py) with `--protocol-name protocol-formal-tta-v2-20261021.json`.
+

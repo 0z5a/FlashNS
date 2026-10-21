@@ -36,9 +36,9 @@ methods compiled, its solves are 1.68$\times$ and 1.13$\times$ faster than
 nested autograd and collapsed Taylor mode, which optimizes 1.05$\times$
 faster. A 36-channel curl-potential contract
 gives 1.32$\times$ objective-gradient throughput. Its L-BFGS training fails
-a stratified pressure test; a dense self-scaled Broyden optimizer passes
-every test in two GH200 development runs, but a five-seed time-to-accuracy
-cohort is not qualified.
+a stratified pressure test. With a dense self-scaled Broyden optimizer, all
+five new seeds of a second registered cohort on GH200 pass every test and an
+independent audit, in a median of 5,074 seconds to verified accuracy.
 \end{abstract}
 
 \section{Introduction}
@@ -96,9 +96,10 @@ unchanged accuracy gates, with an independent scalar-AD final check, pinned
 public sources and every attempt retained. Ratios are reported only for
 jointly accepted pairs. We apply it to eight baselines in two dimensions
 and to two internal baselines on a three-dimensional benchmark, and report
-the C36 extension, including its failed acceptance under L-BFGS, the
-development runs that pass with a dense quasi-Newton optimizer and an
-unqualified prospective cohort.
+the C36 extension, including its failed acceptance under L-BFGS, and two
+prospective time-to-accuracy cohorts with a dense quasi-Newton optimizer:
+one not qualified because of its auditor's tolerance, and one that passes
+5 of 5.
 \end{enumerate}
 
 The paper does not claim the first residual-aware derivative method, a
@@ -2093,11 +2094,66 @@ not expose it. This diagnosis does not change the registered outcome. A
 qualified cohort needs a new registration with fresh seeds and a tolerance
 scaled by the size of the summed terms.
 
+\subsection{A second, qualified cohort}\label{sec:c36tta2}
+That registration followed, before any of its runs. It changes three
+things: five new seeds from the same rule under a new label, excluding
+every seed seen before; a new holdout seed; and a second revision of the
+auditor. The revised auditor requires the four summed raw arrays to agree
+within the a-priori bound $2\gamma_{16}\sum|\text{terms}|$, and the scalar
+metrics built from them within the bound that the triangle inequality
+implies. Every other check, and every other element of the protocol, is
+the first cohort's. Before registration, the revised auditor ran end to
+end on the four complete archives of the first cohort and passed. Every
+check after the first auditor's failure point therefore ran on
+ARM-produced data before any new run. The largest differences were 0.08 of
+the array bound and 0.0014 of the metric bound. That validation does not
+change the first cohort's outcome, and the two cohorts are not pooled.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Second formal C36 TTA cohort (five new seeds, one GH200 each;
+columns as in Table~\ref{tab:c36tta}). All five runs pass physical
+acceptance at the first inspection, and all five independent audits pass,
+so each TTA is qualified.}
+\label{tab:c36tta2}
+\begin{tabular}{rrrrrrrrl}\toprule
+Seed & Gate (s) & Insp.~(s) & Iter. & Loss & Obs.~(s) & TTA (s) & S press. & Audit\\\midrule
+2013091829 & 602 & 1,003 & 1,984 & $1.0\times10^{-8}$ & 3,750 & 6,019 & 0.220 & pass\\
+1342776288 & 593 & 1,003 & 1,986 & $1.2\times10^{-8}$ & 2,963 & 5,074 & 0.297 & pass\\
+8730574 & 598 & 1,003 & 2,005 & $8.3\times10^{-9}$ & 3,460 & 5,772 & 0.223 & pass\\
+1790307490 & 597 & 1,003 & 1,891 & $1.7\times10^{-8}$ & 2,590 & 4,825 & 0.250 & pass\\
+2126574302 & 592 & 1,003 & 1,956 & $6.8\times10^{-9}$ & 2,957 & 5,074 & 0.191 & pass
+\\\bottomrule\end{tabular}
+\end{table}
+
+All five jobs completed, and every saved check is within
+$1.7\times10^{-5}$ of the original budget. Each run met the training gate
+after 592--602 active seconds. Each passed physical acceptance at its first
+inspection, after about 1,003 active training seconds and 1,891--2,005
+SSBroyden iterations (Table~\ref{tab:c36tta2}). At that point stratified
+pressure is 0.19--0.30 of its limit, the tightest test in every run,
+stratified velocity $7.3$--$9.6\times10^{-5}$ in relative L2, and the
+trajectory endpoint 0.04--0.05 of its limit. All five independent audits
+pass. The registered outcome is a qualified cohort: 5 of 5, Wilson 95\%
+interval 0.57--1. The median time to verified accuracy is 5,074 seconds
+(84.6 minutes), with a range of 4,825--6,019 seconds on one GH200. Of the
+median run's time, about 1,006 seconds are training. The physical
+observation itself takes 2,612--3,757 seconds across runs, including the
+host spill of the inverse Hessian, and imports, compilation and the
+new-seed checks take 1,091--1,297. Training to the
+gate therefore takes about a tenth of the time to verified accuracy; the
+complete native-AD physical observation dominates it. The TTA is the
+latency of confirmation under the registered inspection policy. The first
+physical crossing lies somewhere before the first inspection and is not
+measured. There is no paired baseline, so this cohort supports an
+absolute time to verified accuracy for this instance and policy, not a
+speedup. The five jobs used 7.48 allocated GPU-hours.
+
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
-The C36 study qualifies derivatives and throughput, but its solves pass
-only in development runs with a changed optimizer and no qualified cohort.
-We therefore also train on the transient three-dimensional
+The C36 study qualifies derivatives and throughput, and its solves pass only
+with a changed optimizer and without a baseline comparison. We therefore
+also train on the transient three-dimensional
 Ethier--Steinman flow~\cite{ethier}, which NSFnets also uses as a PINN
 benchmark~\cite{nsfnets}. With $a=0.5$, $d=1$ and $\nu=1$,
 \begin{equation}
@@ -2467,16 +2523,18 @@ temporal-smoothness continuation changes where training meets the loss gate
 but not which test fails. The optimizer does: a dense self-scaled Broyden
 phase after the same Adam updates passes every physical test in two
 development runs on GH200, with stratified pressure about $10^{-3}$ of its
-limit after 4,000 training seconds. In a registered five-seed cohort, four
-runs pass at their first inspection, but the cohort is not qualified. The
-frozen auditor's relative tolerance rejects ARM--x86 rounding in a
-cancelled sum, and one run was cancelled. The dense inverse Hessian costs
+limit after 4,000 training seconds. A first registered five-seed cohort is
+not qualified: its frozen auditor's relative tolerance rejects ARM--x86
+rounding in a cancelled sum, and one run was cancelled. A second cohort
+with a rounding-bounded auditor passes 5 of 5, with a median of 5,074
+seconds to verified accuracy, mostly spent in the physical observation.
+It has no baseline, so it gives no solve speedup. The dense inverse Hessian costs
 $8n^2$ bytes (20.6 GB here), so on one 96 GB GPU this optimizer does not
 reach beyond about $10^5$ parameters. The C36 throughput gains depend on compilation, the zero-gate
 folding gain depends on this instance's gate geometry, and the problem is a
 single constructed box instance. External baselines on C36 itself (the
 external three-dimensional comparison uses uncompiled Ethier--Steinman
-arms), a native C17, a qualified C36 time-to-accuracy cohort, a second
+arms), a native C17, a C36 time-to-accuracy baseline, a second
 nonlinear PDE and device-traffic measurements remain open
 experiments rather than implied consequences of the implementation.
 
@@ -2518,9 +2576,11 @@ budget. With six times the L-BFGS calls it stalls at 2.2--3.0 times its
 limit; neither a smoother-motion continuation nor an instance with twice the
 cutoff width (2.0--2.9 times) removes it. A dense self-scaled Broyden
 optimizer does: two development runs on GH200 pass every physical test.
-A registered five-seed time-to-accuracy cohort is not qualified, because
-its frozen auditor rejects cross-architecture rounding. A qualified C36
-cohort and external three-dimensional comparisons on C36 remain open.
+A first registered five-seed cohort is not qualified, because its frozen
+auditor rejects cross-architecture rounding. A second cohort, with a
+rounding-bounded auditor, passes 5 of 5 with a median of 5,074 seconds to
+verified accuracy on one GH200. A baseline for that time and external
+three-dimensional comparisons on C36 remain open.
 
 
 \begin{thebibliography}{99}
@@ -2894,6 +2954,9 @@ decision are published byte-identical. The TTA cohort ran as five
 independent one-GPU jobs. Each archive (175--182 members) is sealed and
 read back member by member. The cohort record and the post-hoc rounding
 diagnosis are generated from those archives by two published scripts.
+The second cohort (Section~\ref{sec:c36tta2}) ran the same way from its
+own registration commit (141 files); its five archives hold 188--190
+members, and the same publishing script generates its record.
 The frozen audits' failure records are kept unchanged. Full raw outputs
 stay on cluster project storage.
 

@@ -80,6 +80,10 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - All four frozen CPU audits fail, at a relative tolerance on the spatial residual gradient. The registered outcome is therefore not qualified: 0/5, with no median.
   - A post-hoc diagnosis shows that the failing differences are at most 4 ulp of terms up to 1.4e5 that cancel to about 1e-2. All of them are within the standard rounding bound. The cause is the auditor's tolerance, not the physics. A qualified cohort needs a new registration.
   - Tables 23–24 are new, and the Ethier–Steinman tables move up by two (now 25–28). The abstract, the Ethier introduction, the 3D discussion and the conclusion are updated.
+- **Section 6.14: a second, qualified cohort (October 21).** It was pre-registered in `1fd2bc6` with new seeds, a new holdout and an auditor that bounds the cancelled arrays by the a-priori rounding bound. The auditor was first validated on the v1 archives.
+  - All five runs pass physical acceptance at the first inspection, and all five audits pass. The registered outcome is a qualified cohort, 5/5.
+  - The median time to verified accuracy is 5,074 s (range 4,825–6,019 s) on one GH200, mostly spent in the physical observation. There is no baseline and no speedup claim.
+  - Table 25 is new, and the Ethier–Steinman tables are now 26–29. The abstract, the contributions, the discussion and the conclusion now report this cohort.
 
 [Evidence index](evidence-index.json) pins the source reports and their SHA256 values. [C36 reproduction instructions](../c36-potential-proof/README.md) describe the independent readers and protocols. The complete historical H20 artifacts remain preserved separately.
 
