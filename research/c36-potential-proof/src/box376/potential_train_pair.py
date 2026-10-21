@@ -399,13 +399,12 @@ def main():
         report.update(final_loss=float(loss), final_gradient_infinity=float(gradient.abs().max()))
         report["training_converged"] = (report["final_loss"] <= loss_limit
                                         and report["final_gradient_infinity"] <= gradient_limit)
-        reached = report["pair"]["state"] == "THRESHOLD_REACHED"
-        tag = "threshold" if reached else "final"
-        checkpoint(tag)
-        full_check(tag)
-        if reached:
+        if report["pair"]["state"] == "THRESHOLD_REACHED":
+            # inspect() saves the threshold checkpoint and its complete check exactly once.
             report["pair"]["physical_acceptance_pass"] = inspect("threshold")
         else:
+            checkpoint("final")
+            full_check("final")
             report["pair"]["state"] = "NOT_REACHED_WITHIN_BUDGET"
         report["training_seconds"] = training_clock.elapsed()
         report["observer_seconds_excluded"] = training_clock.excluded

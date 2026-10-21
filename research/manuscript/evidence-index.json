@@ -158,7 +158,19 @@
   "../c36-potential-proof/src/box376/run_c36_tta_v2.py": "d36d246ebe188ed71f27862507755a6ba65264ecc00ecb5685e95a55a7280855",
   "../c36-potential-proof/src/box376/start_c36_tta_v2.sbatch": "2daf11c62a0588f5e1fedadd1010a8d0e9a6bf1b32cfa4eb4d31b69a22e950e8",
   "../c36-potential-proof/src/box376/test_audit_tta_v2.py": "8db4662b7368db251dd913d3c26e384540f5ce16ad56fd153dc15335da66bbed",
-  "../c36-potential-proof/c36-tta-v2-cohort-20261021.json": "cd8fc9e0aa05f2b0b4321c7758443670b3c998ced015c55eec1accb415132bb4"
+  "../c36-potential-proof/c36-tta-v2-cohort-20261021.json": "cd8fc9e0aa05f2b0b4321c7758443670b3c998ced015c55eec1accb415132bb4",
+  "../c36-potential-proof/protocol-formal-pair-20261021.json": "23a532caa14346b44e57e13642e445b33bede4a0c7a07fd276a36c72653b560d",
+  "../c36-potential-proof/protocol-pair-qualification-20261021.json": "31594a6be0965cd04dcf6a2f61c3612080457e5d5c2ff242698e4a2972021bf5",
+  "../c36-potential-proof/FORMAL-PAIR-20261021.md": "24ec31cd5b0ee27347948cdb840cbf05f611ff6e80d672fa62ab8d9f9513b1a3",
+  "../c36-potential-proof/pair-gh200-qualification-20261021.json": "e17882123b292fa199f50b4038db3fdfc20fa59ccf4c79049071ac561675d482",
+  "../c36-potential-proof/src/box376/potential_train_pair.py": "d5c66443223f99c357868c59551acc7dfa050758177bcccd9da1a7bb1c8c39e6",
+  "../c36-potential-proof/src/box376/run_c36_pair.py": "ab88d34aa1d6d1eae78a94f562a560cbe6cec0e78f7875302c3f030020dc8a4b",
+  "../c36-potential-proof/src/box376/finalize_c36_pair.py": "57e4f8061abaa3ad023d471880f65afd3c26866abcc25f2c9f45181be8d87095",
+  "../c36-potential-proof/src/box376/start_c36_pair.sbatch": "a36f7ae8f33caf8050cabde006ae11a63c0a7128d12ffb1bb00092a7afb04523",
+  "../c36-potential-proof/src/box376/audit_c36_pair.py": "8f6ac65d254e90e48209bd5004ed0e7cd2c8577d0afd8f404bfc223b03684371",
+  "../c36-potential-proof/src/box376/decide_c36_pair.py": "c4ca67318da5e9c8ceb1b2d458197253e8402ac437b748223496fd5a17610779",
+  "../c36-potential-proof/src/box376/test_pair_control.py": "7d86afbc7bc8ce5636807677dcbf48c586f25455d0fe1231ad341052139b5ace",
+  "../c36-potential-proof/src/box376/test_decide_c36_pair.py": "b5eacf8f498f53b11af814c4fbacf1fd7db17ee7a3c6908dbca901d76e8acd14"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -505,5 +517,11 @@
   "allocated_gpu_hours": 7.484,
   "scope": "absolute time to verified accuracy under the registered inspection policy on one GH200; no baseline, no speedup"
  },
- "revision_note_20261021_tta_v2": "Adds Section 6.14 and Table 25: the second pre-registered TTA cohort passes 5/5 (median 5,074 s, range 4,825-6,019 s); abstract, contributions, Ethier introduction, discussion, conclusion and C36 appendix updated; Ethier tables move up by one (now 26-29). 47 pages."
+ "revision_note_20261021_tta_v2": "Adds Section 6.14 and Table 25: the second pre-registered TTA cohort passes 5/5 (median 5,074 s, range 4,825-6,019 s); abstract, contributions, Ethier introduction, discussion, conclusion and C36 appendix updated; Ethier tables move up by one (now 26-29). 47 pages.",
+ "C36_pair_preregistration": {
+  "protocol": "protocol-formal-pair-20261021.json",
+  "status": "registered before any pair seed run",
+  "prediction": "1.23 (1.18-1.28)",
+  "qualification": "pair-gh200-qualification-20261021.json"
+ }
 }

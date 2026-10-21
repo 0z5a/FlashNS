@@ -991,3 +991,11 @@ Files: [c36-tta-cohort-20261021.json](c36-tta-cohort-20261021.json), generated f
 
 Files: [c36-tta-v2-cohort-20261021.json](c36-tta-v2-cohort-20261021.json), generated from the sealed archives by [`tools/c36_tta_publish.py`](tools/c36_tta_publish.py) with `--protocol-name protocol-formal-tta-v2-20261021.json`.
 
+## Paired engine cohort: analytic vs parameter AD (registered 2026-10-21)
+
+[FORMAL-PAIR-20261021.md](FORMAL-PAIR-20261021.md) and [protocol-formal-pair-20261021.json](protocol-formal-pair-20261021.json) register five new seeds.
+- **Design.** Each seed runs both engines one after the other on one GH200, in alternating order. Each arm stops at a training loss of 1e-8, and its threshold checkpoint is verified physically.
+- **Primary ratio.** Parameter-AD over analytic active training seconds to the threshold, over jointly accepted pairs. Decision: [`decide_c36_pair`](src/box376/decide_c36_pair.py).
+- **Prediction.** About 1.23 (1.18–1.28), from the [GH200 qualification](pair-gh200-qualification-20261021.json): 1.25 per Adam evaluation and 1.21 per SSBroyden evaluation on development seed 361901.
+- **Code.** [`potential_train_pair`](src/box376/potential_train_pair.py), [`run_c36_pair`](src/box376/run_c36_pair.py) and [`audit_c36_pair`](src/box376/audit_c36_pair.py). CPU tests are in [`test_pair_control`](src/box376/test_pair_control.py) and [`test_decide_c36_pair`](src/box376/test_decide_c36_pair.py).
+

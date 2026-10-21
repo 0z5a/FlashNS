@@ -1,5 +1,4 @@
 {
- "state": "DRAFT_PENDING_GH200_QUALIFICATION_NOT_REGISTERED",
  "version": "C36-formal-pair-20261021-v1",
  "scope": "Prospective paired engine comparison on GH200: five previously unused seeds, each run once with the analytic engine and once with the parameter-AD engine, sequentially on one GPU in one job. Primary measurement: active training seconds to a registered loss threshold; the threshold checkpoint of each arm is then verified physically. The instance, data, FP64 network, Adam4000 and dense SSBroyden, numerical tolerances, physical gates, observer and auditor (revision 2) are those of the second TTA cohort. No pooling with earlier cohorts.",
  "source_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
@@ -414,7 +413,7 @@
    4095
   ],
   "native_subset_scope": "131 fixed interior points plus all value families, complete 50692 parameter gradient; not a new full-coordinate-AD objective proof",
-  "parameter_ad_GH200": "PENDING: protocol-pair-qualification-20261021.json"
+  "parameter_ad_GH200": "pair-gh200-qualification-20261021.json"
  },
  "time_to_accuracy": {
   "observer_timeout_seconds": 4200,
@@ -467,7 +466,14 @@
    "setup seconds excluding the native subset"
   ],
   "not_reached": "an arm that misses the threshold within the guard is recorded as NOT_REACHED and its pair is not jointly accepted; it is not observed",
-  "prediction": "PENDING_QUALIFICATION"
+  "prediction": {
+   "primary_ratio": 1.23,
+   "range": [
+    1.18,
+    1.28
+   ],
+   "basis": "GH200 qualification on development seed 361901: parameter-AD/analytic seconds per evaluation 1.251 in Adam and 1.213 in SSBroyden; weighted by about 4,000 Adam and 3,000 SSBroyden evaluations to the threshold, assuming equal evaluation counts. Rounding differences change the optimizer trajectory, so evaluation counts can differ between arms."
+  }
  },
  "independent_audit": {
   "module": "box376.audit_c36_pair",

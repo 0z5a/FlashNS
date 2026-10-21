@@ -36,7 +36,13 @@ class PairTrainer(unittest.TestCase):
             with patch.object(sys, 'argv', argv), patch.object(trainer, '_cpu_problem', return_value=(data, calibration)), \
                     patch.object(trainer, 'run_observer', side_effect=observer), contextlib.redirect_stdout(io.StringIO()):
                 trainer.main()
-            return json.loads((d/engine/'train/report.json').read_text()), calls
+            report = json.loads((d/engine/'train/report.json').read_text())
+            # Every recorded check and checkpoint must still match its file, as the reader requires.
+            self.assertEqual(len({c['tag'] for c in report['checks']}), len(report['checks']))
+            self.assertEqual(len({c['tag'] for c in report['checkpoints']}), len(report['checkpoints']))
+            from box376.read_c36_v7 import read_run
+            read_run(d/engine, protocol)
+            return report, calls
 
     def test_threshold_stops_and_observes_once(self):
         for engine in ('analytic', 'parameter_ad'):
