@@ -47,4 +47,4 @@ jobs:
           box376.test_potential_ad_objective box376.test_potential_audit
           box376.test_fold_zero_gate box376.test_schedule_family
           box376.test_decide_c36_v4 box376.test_decide_c36_v5 box376.test_decide_c36_v6
-          box376.test_decide_c36_v7 box376.test_ssbroyden box376.test_tta_control box376.test_audit_tta_v2
+          box376.test_decide_c36_v7 box376.test_ssbroyden box376.test_tta_control box376.test_audit_tta_v2 box376.test_decide_c36_pair box376.test_pair_control
