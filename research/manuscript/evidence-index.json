@@ -149,7 +149,15 @@
   "../c36-potential-proof/c36-tta-cohort-20261021.json": "9630ff797f930885052d4fc2f94a7e5feae3a9a8fd8cc044d35cc3e575861a7f",
   "../c36-potential-proof/c36-tta-audit-rounding-20261021.json": "dca9fea81f536f6e1249d663c8b760a7866f4f93c57099be8b4918dc399ba2ba",
   "../c36-potential-proof/tools/c36_tta_publish.py": "0edad83c7b937472aafbc644bae640c6d96bab80cffc1ff890e82d27064fa2f2",
-  "../c36-potential-proof/tools/c36_tta_audit_rounding.py": "9928cf36875b5950623f4fe0106d1efb8178b67a999f10827c66d41aebd078e5"
+  "../c36-potential-proof/tools/c36_tta_audit_rounding.py": "9928cf36875b5950623f4fe0106d1efb8178b67a999f10827c66d41aebd078e5",
+  "../c36-potential-proof/protocol-formal-tta-v2-20261021.json": "27f88cac819807696d18368996a745a1a8245bb6928952584bd5163ed1df2860",
+  "../c36-potential-proof/FORMAL-TTA-V2-20261021.md": "3dada38e50790d81d5764ea53a4cf0c4b3daec1143bfaf25966a821dc510bd52",
+  "../c36-potential-proof/formal-tta-v2-seed-registration-20261021.json": "9a75806f6cf0116d7e64a2fbcdd7260868f49de1e220b0d8618f2358538439f3",
+  "../c36-potential-proof/audit-v2-development-validation-20261021.json": "e177170626bb1c4e08bcd2be7193b35869294979982b3d722660bc3f2159456e",
+  "../c36-potential-proof/src/box376/audit_c36_tta_v2.py": "f72507a5d724d29ea60cbe3cd12e0174f4691c5cd77e9d71785d55661e73460b",
+  "../c36-potential-proof/src/box376/run_c36_tta_v2.py": "d36d246ebe188ed71f27862507755a6ba65264ecc00ecb5685e95a55a7280855",
+  "../c36-potential-proof/src/box376/start_c36_tta_v2.sbatch": "2daf11c62a0588f5e1fedadd1010a8d0e9a6bf1b32cfa4eb4d31b69a22e950e8",
+  "../c36-potential-proof/src/box376/test_audit_tta_v2.py": "8db4662b7368db251dd913d3c26e384540f5ce16ad56fd153dc15335da66bbed"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -475,5 +483,11 @@
   "posthoc_rounding": "all differences <= 4 ulp of the largest summand and <= 0.13 of 2*gamma_10*sum|terms|; auditor tolerance defect",
   "allocated_gpu_hours": 7.655
  },
- "revision_note_20261021_c36v7_tta": "Adds Section 6.12 and Table 23 (dense SSBroyden, two GH200 fresh development runs, registered F1: both finals pass every physical test) and Section 6.13 and Table 24 (prospective five-seed TTA cohort: four physical passes at the first inspection, four frozen audits failed on a cross-architecture rounding tolerance, one run cancelled; registered outcome not qualified), with a post-hoc rounding diagnosis; abstract, contributions, Ethier introduction, 3D discussion, conclusion and the C36 appendix updated; two new references; the Ethier tables move up by two. 46 pages."
+ "revision_note_20261021_c36v7_tta": "Adds Section 6.12 and Table 23 (dense SSBroyden, two GH200 fresh development runs, registered F1: both finals pass every physical test) and Section 6.13 and Table 24 (prospective five-seed TTA cohort: four physical passes at the first inspection, four frozen audits failed on a cross-architecture rounding tolerance, one run cancelled; registered outcome not qualified), with a post-hoc rounding diagnosis; abstract, contributions, Ethier introduction, 3D discussion, conclusion and the C36 appendix updated; two new references; the Ethier tables move up by two. 46 pages.",
+ "C36_formal_tta_v2_preregistration": {
+  "protocol": "protocol-formal-tta-v2-20261021.json",
+  "status": "pre-registered before any v2 run",
+  "changes_from_v1": "seeds, holdout seed, independent auditor revision 2 (a-priori rounding bound on cancelled raw arrays)",
+  "auditor_development_validation": "4/4 v1 archives pass end to end; v1 outcome unchanged"
+ }
 }

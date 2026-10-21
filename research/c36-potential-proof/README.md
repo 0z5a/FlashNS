@@ -965,3 +965,12 @@ The next five-seed GH200 cohort is preregistered in [FORMAL-TTA-20261021.md](FOR
   - This does not change the registered outcome. A qualified cohort needs a new registration with fresh seeds and a tolerance scaled by the summed terms.
 
 Files: [c36-tta-cohort-20261021.json](c36-tta-cohort-20261021.json), generated from the sealed archives by [`tools/c36_tta_publish.py`](tools/c36_tta_publish.py).
+
+## Second prospective TTA cohort (v2, pre-registered 2026-10-21)
+
+[FORMAL-TTA-V2-20261021.md](FORMAL-TTA-V2-20261021.md) and [protocol-formal-tta-v2-20261021.json](protocol-formal-tta-v2-20261021.json) register a second five-seed cohort.
+- **What changes.** Only the seeds, the physical holdout seed and the independent auditor change. Revision 2, [`box376.audit_c36_tta_v2`](src/box376/audit_c36_tta_v2.py), bounds the cancelled raw arrays by the a-priori rounding bound `2*gamma_16*sum|terms|`.
+- **Auditor validation.** Before registration, revision 2 passed end to end on the four complete v1 archives ([record](audit-v2-development-validation-20261021.json)). The largest raw-array difference is 0.08 of the bound and the largest metric difference 0.0014 of its bound.
+- **Tests.** [`test_audit_tta_v2`](src/box376/test_audit_tta_v2.py) adds five CPU tests.
+- **v1 unchanged.** The v1 outcome stays not qualified, and the two cohorts are never pooled.
+
