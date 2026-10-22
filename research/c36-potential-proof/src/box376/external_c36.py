@@ -56,8 +56,8 @@ def axis_diagonals(inputs):
 
 def _features(d, F0, Jd, v, Kd):
     # d = (d_s, d_t); feature a < 3 depends on d_a and d_t, the time feature on d_t only.
-    mask = d.new_tensor([1., 1., 1., 0.])
-    lifted, time = d * mask, d[..., 3:4]
+    # Built on the device: a host-to-device copy is not allowed during CUDA Graph capture.
+    lifted, time = torch.cat((d[..., :3], torch.zeros_like(d[..., 3:4])), -1), d[..., 3:4]
     return F0 + lifted * Jd + v * time + lifted * Kd * time
 
 

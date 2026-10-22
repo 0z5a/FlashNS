@@ -355,7 +355,7 @@
   ],
   "engine_descriptions": {
    "analytic": "compiled packed activation with analytic transpose, CUDA Graph replay (the trainers' engine)",
-   "func_jacfwd": "torch.func jacfwd backend of box376.external_c36: complete evaluation with one parameter gradient per chunk traced with make_fx and captured in a CUDA Graph (the variant selected in the throughput comparison)"
+   "func_jacfwd": "torch.func jacfwd backend of box376.external_c36: the eager evaluation (one parameter gradient per chunk) captured directly in a CUDA Graph; make_fx-traced versions held about 92 GB in the graph pool in a development diagnostic and left no room for the inverse Hessian"
   },
   "threshold_loss": 1e-08,
   "threshold_basis": "informed by development data: all nine audited passing first inspections of the TTA cohorts lie at losses 6.7e-9 to 1.7e-8; the threshold is evaluated at accepted SSBroyden iterates",
@@ -380,10 +380,10 @@
   "not_reached": "an arm that misses the threshold within the guard is NOT_REACHED; its pair is not jointly accepted and it is not observed",
   "prediction": "not applicable",
   "func_chunk": 1024,
-  "func_chunk_basis": "PENDING_QUALIFICATION: the throughput comparison selected the graph variant at chunk 4096, where it peaks at 92.5 GB, leaving no room for the 20.6 GB inverse Hessian"
+  "func_chunk_basis": "PENDING_QUALIFICATION: eager torch.func at chunk 1024 peaks at 9.8 GB in development"
  },
  "independent_audit": {
-  "module": "box376.audit_c36_pair",
-  "basis": "unchanged auditor of the earlier paired cohort, applied to the arms analytic and func_jacfwd"
+  "module": "box376.audit_c36_pair_func",
+  "basis": "box376.audit_c36_pair with the torch.func arm's start-up checks (no compiled stage); every other check unchanged"
  }
 }

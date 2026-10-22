@@ -1,9 +1,8 @@
 """Paired C36 engine trainer: one arm (analytic engine or torch.func backend) of one seed.
 
 Derived from box376.potential_train_pair (unchanged); the torch.func arm evaluates through
-box376.external_c36 (eager PreparedPotentialExternalObjective for the start-up checks, and the
-make_fx-traced evaluation, one traced piece per family and chunk shape, captured in a CUDA Graph for
-training, at the protocol's func_chunk).
+box376.external_c36: the eager PreparedPotentialExternalObjective is checked at start-up and then
+captured directly in a CUDA Graph for training, at the protocol's func_chunk.
 The rest of this docstring describes the trainer it is derived from.
 
 Derived from box376.potential_train_tta (unchanged). The optimizer recipe, checks and observer are
@@ -38,7 +37,7 @@ from box376.data import initialize, flatten, views
 from box376.potential_ad_objective import PreparedPotentialADObjective
 from box376.potential_objective import PreparedPotentialNormalizedObjective
 from box376.potential_run import capture, cpu, load_problem, sha, write_json
-from box376.external_c36 import PreparedPotentialExternalObjective, build_chunked_traced_external
+from box376.external_c36 import PreparedPotentialExternalObjective
 from box376.ssbroyden import SSBroyden
 from box376.tta_control import ActiveClock, run_observer
 
@@ -187,14 +186,14 @@ def main():
             engine, evaluate = (lambda p, c: eager(p, engine_chunk)), None
         elif args.engine == "func_jacfwd":
             t = time.perf_counter()
-            # The traced module owns the geometry its CUDA Graph reads; it stays alive in this scope.
-            traced = build_chunked_traced_external(data, calibration, "func_jacfwd", theta, topology, engine_chunk)
+            # The eager torch.func evaluation is captured directly; make_fx-traced versions hold
+            # about 92 GB in the graph pool (development diagnostic). `eager` and `params` own what
+            # the graph reads and stay alive in this scope.
             for _ in range(2):
-                traced()
+                eager(params, engine_chunk)
             sync()
-            report["setup_seconds"]["trace_and_warmup"] = time.perf_counter() - t
-            check("compiled-fresh-denseAD", traced(), native, "fresh full dense parameter AD")
-            replay, report["setup_seconds"]["graph_capture"] = capture(traced)
+            report["setup_seconds"]["warmup"] = time.perf_counter() - t
+            replay, report["setup_seconds"]["graph_capture"] = capture(lambda: eager(params, engine_chunk))
             check("graph-fresh-denseAD", replay(), native, "fresh full dense parameter AD")
             with torch.no_grad():
                 theta.add_(.001)
