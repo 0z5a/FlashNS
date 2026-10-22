@@ -172,7 +172,13 @@
   "../c36-potential-proof/src/box376/test_pair_control.py": "7d86afbc7bc8ce5636807677dcbf48c586f25455d0fe1231ad341052139b5ace",
   "../c36-potential-proof/src/box376/test_decide_c36_pair.py": "b5eacf8f498f53b11af814c4fbacf1fd7db17ee7a3c6908dbca901d76e8acd14",
   "../c36-potential-proof/c36-pair-cohort-20261021.json": "3726c2171a782b9fe018e25688cdd63a53ed423208cf272ea71b84e29225bf4a",
-  "../c36-potential-proof/tools/c36_pair_publish.py": "e0c2d6b736bccec31d6c355a16ae5f7e9cd3cb7f8d0d4b5b18a775d722ff887f"
+  "../c36-potential-proof/tools/c36_pair_publish.py": "e0c2d6b736bccec31d6c355a16ae5f7e9cd3cb7f8d0d4b5b18a775d722ff887f",
+  "../c36-potential-proof/protocol-external-throughput-20261022.json": "2abd13f6e3df79440645c0afd8e2e8c710a9e7a6e4af62ac78c43ef6d0fec732",
+  "../c36-potential-proof/EXTERNAL-THROUGHPUT-20261022.md": "8bd7d91d4a69f877aef955cd232374ac5850c668641d04e647bec62de2a6028e",
+  "../c36-potential-proof/src/box376/external_c36.py": "24b71d3463d7f9aacbf7bddf9786c479aa3ba02256ba9d9fc329281af5be824d",
+  "../c36-potential-proof/src/box376/test_external_c36.py": "296546a29aeb8264750c2b0bd834db32eda9acdf9b71483655062713b1dac318",
+  "../c36-potential-proof/src/box376/test_external_compile.py": "09747e9b2854cefd1932d3b31054646f4504b6155106c4384fa01a940b648283",
+  "../c36-potential-proof/tools/c36_external_throughput.py": "b64232356eb87661406158811dafb791b52fc7fae19f1488e26ce08a6473ffd7"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -543,5 +549,14 @@
   "allocated_gpu_hours": 14.19,
   "scope": "parameter-AD/analytic active training seconds to a verified loss of 1e-8 on one GH200 per seed; observation excluded"
  },
- "revision_note_20261022_pair": "Adds Section 6.15 and Table 26: the registered paired engine cohort (analytic faster, geometric mean 1.257, 5/5 pairs, inside the predicted 1.18-1.28); abstract, contributions, Ethier introduction, discussion, conclusion and C36 appendix updated; Ethier tables move up by one (now 27-30). 48 pages."
+ "revision_note_20261022_pair": "Adds Section 6.15 and Table 26: the registered paired engine cohort (analytic faster, geometric mean 1.257, 5/5 pairs, inside the predicted 1.18-1.28); abstract, contributions, Ethier introduction, discussion, conclusion and C36 appendix updated; Ethier tables move up by one (now 27-30). 48 pages.",
+ "C36_external_throughput_preregistration": {
+  "protocol": "protocol-external-throughput-20261022.json",
+  "status": "registered before its run",
+  "predictions_matched_eager": {
+   "func_jacfwd": 1.0,
+   "jet_collapsed": 8.6,
+   "nested_ad": 91.0
+  }
+ }
 }

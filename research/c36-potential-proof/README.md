@@ -1017,3 +1017,10 @@ Files: [c36-tta-v2-cohort-20261021.json](c36-tta-v2-cohort-20261021.json), gener
 
 Files: [c36-pair-cohort-20261021.json](c36-pair-cohort-20261021.json), generated from the sealed archives by [`tools/c36_pair_publish.py`](tools/c36_pair_publish.py).
 
+## External derivative backends: throughput comparison (registered 2026-10-22)
+
+[EXTERNAL-THROUGHPUT-20261022.md](EXTERNAL-THROUGHPUT-20261022.md) registers a per-evaluation comparison of the analytic engine with nested PyTorch autograd, torch.func and the collapsed `jet` package on the complete C36 objective.
+- **Matched backends.** All three backends produce the same 36-channel network state from one exact per-point surrogate of the geometry. Gate, curl and consumer are shared.
+- **Ratios.** Two ratios are reported: matched eager, and best variant against best variant.
+- **Development probes.** These are on a development initialization and are not results. Analytic eager 3.83 s and graph 0.133 s; torch.func eager 3.8–5.7 s; jet eager 33 s; nested AD eager 350 s.
+
