@@ -999,3 +999,21 @@ Files: [c36-tta-v2-cohort-20261021.json](c36-tta-v2-cohort-20261021.json), gener
 - **Prediction.** About 1.23 (1.18–1.28), from the [GH200 qualification](pair-gh200-qualification-20261021.json): 1.25 per Adam evaluation and 1.21 per SSBroyden evaluation on development seed 361901.
 - **Code.** [`potential_train_pair`](src/box376/potential_train_pair.py), [`run_c36_pair`](src/box376/run_c36_pair.py) and [`audit_c36_pair`](src/box376/audit_c36_pair.py). CPU tests are in [`test_pair_control`](src/box376/test_pair_control.py) and [`test_decide_c36_pair`](src/box376/test_decide_c36_pair.py).
 
+**Results (paper Section 6.15, Table 26; registered outcome: analytic faster).** The five jobs ran once from the committed files of `aaea603`.
+
+| Seed | Analytic (s) | Evaluations | Stratified pressure | Parameter AD (s) | Evaluations | Stratified pressure | Ratio |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1344954027 | 1,025 | 3,104 | 0.235 | 1,280 | 3,101 | 0.220 | 1.249 |
+| 164034124 | 1,010 | 3,015 | 0.248 | 1,262 | 2,976 | 0.242 | 1.250 |
+| 2110545488 | 967 | 2,743 | 0.284 | 1,210 | 2,759 | 0.289 | 1.252 |
+| 911819800 | 991 | 2,977 | 0.225 | 1,254 | 3,005 | 0.255 | 1.266 |
+| 1176150139 | 1,028 | 3,245 | 0.235 | 1,305 | 3,259 | 0.225 | 1.269 |
+
+- **Acceptance.** All ten arms reach the 1e-8 threshold, pass physical acceptance and pass the independent audit.
+- **Registered outcome.** `ANALYTIC_FASTER`: 5/5 pairs, geometric mean 1.257, range 1.249–1.269, inside the predicted 1.18–1.28.
+- **Where the gain comes from.** Evaluations to the threshold match (0.99–1.01). Parameter AD takes 1.26–1.28× as long per Adam evaluation and 1.24–1.25× per SSBroyden evaluation, which includes the shared dense-update and line-search work.
+- **What is excluded.** The physical observation (2,673–3,813 s, identical in both arms) is excluded from the ratio. The five jobs used 14.19 allocated GPU-hours.
+- **Audit note.** The first audit submission passed the three frozen hashes as one argument and stopped at argument parsing before any check. Its logs are kept. The audits then ran once with correct arguments.
+
+Files: [c36-pair-cohort-20261021.json](c36-pair-cohort-20261021.json), generated from the sealed archives by [`tools/c36_pair_publish.py`](tools/c36_pair_publish.py).
+

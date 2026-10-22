@@ -84,6 +84,10 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - All five runs pass physical acceptance at the first inspection, and all five audits pass. The registered outcome is a qualified cohort, 5/5.
   - The median time to verified accuracy is 5,074 s (range 4,825–6,019 s) on one GH200, mostly spent in the physical observation. There is no baseline and no speedup claim.
   - Table 25 is new, and the Ethier–Steinman tables are now 26–29. The abstract, the contributions, the discussion and the conclusion now report this cohort.
+- **Section 6.15: paired engines to verified accuracy (October 22).** A registered cohort (`aaea603`) runs the analytic and parameter-AD engines on five new seeds, both arms on one GH200 per seed. Each arm stops at a training loss of 1e-8 and is verified physically.
+  - All ten arms reach the threshold and pass physical acceptance, and all audits pass. The registered outcome is analytic faster: the geometric mean ratio is 1.257 (range 1.249–1.269), inside the predicted 1.18–1.28.
+  - Evaluation counts match (0.99–1.01), so the gain is per evaluation.
+  - Table 26 is new, and the Ethier–Steinman tables are now 27–30. The abstract, contributions, discussion, conclusion and appendix are updated (48 pages).
 
 [Evidence index](evidence-index.json) pins the source reports and their SHA256 values. [C36 reproduction instructions](../c36-potential-proof/README.md) describe the independent readers and protocols. The complete historical H20 artifacts remain preserved separately.
 

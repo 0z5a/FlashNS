@@ -38,7 +38,9 @@ faster. A 36-channel curl-potential contract
 gives 1.32$\times$ objective-gradient throughput. Its L-BFGS training fails
 a stratified pressure test. With a dense self-scaled Broyden optimizer, all
 five new seeds of a second registered cohort on GH200 pass every test and an
-independent audit, in a median of 5,074 seconds to verified accuracy.
+independent audit (median 5,074 seconds to verified accuracy). In five
+paired seeds, the analytic engine reaches a verified training loss
+1.26$\times$ sooner than parameter AD.
 \end{abstract}
 
 \section{Introduction}
@@ -97,9 +99,9 @@ public sources and every attempt retained. Ratios are reported only for
 jointly accepted pairs. We apply it to eight baselines in two dimensions
 and to two internal baselines on a three-dimensional benchmark, and report
 the C36 extension, including its failed acceptance under L-BFGS, and two
-prospective time-to-accuracy cohorts with a dense quasi-Newton optimizer:
-one not qualified because of its auditor's tolerance, and one that passes
-5 of 5.
+prospective time-to-accuracy cohorts with a dense quasi-Newton optimizer
+(one not qualified because of its auditor's tolerance, one that passes 5
+of 5) and a paired engine cohort with physically verified solves.
 \end{enumerate}
 
 The paper does not claim the first residual-aware derivative method, a
@@ -1116,7 +1118,7 @@ tensor bytes come from the original checkpoints: regeneration under a newer
 Torch version was rejected after 1,804 of 50,692 entries differed by one
 ULP. No tolerance or scientific data was changed.
 
-\subsection{Paired complete-objective throughput}
+\subsection{Paired complete-objective throughput}\label{sec:c36throughput}
 Each reported ratio is the geometric mean of matched baseline/candidate
 mean evaluation times. Two frozen initializations each have five
 alternating AB/BA pairs, for ten pairs per comparison. Candidate and
@@ -2149,11 +2151,76 @@ measured. There is no paired baseline, so this cohort supports an
 absolute time to verified accuracy for this instance and policy, not a
 speedup. The five jobs used 7.48 allocated GPU-hours.
 
+\subsection{Paired engines to verified accuracy}\label{sec:c36pair}
+A third registration supplies the baseline: the parameter-AD engine, the
+internal control of Sections~\ref{sec:c36v2}--\ref{sec:c36v6}, on five
+further new seeds. Each seed runs both engines one after the other on the
+same GH200 in one job. The order alternates across seeds, so both arms
+see the same device and node. Each arm stops at the first accepted
+SSBroyden iterate with a loss of at most $10^{-8}$, and its threshold
+checkpoint is then observed once. The threshold is informed by development
+data: the nine audited passes above lie at losses of
+$6.7\times10^{-9}$--$1.7\times10^{-8}$. The primary ratio is the
+parameter-AD arm's active training seconds to the threshold over the
+analytic arm's, recorded before any check of the threshold iterate. A pair
+counts only if both arms reach the threshold, pass physical acceptance and
+pass the independent audit. The registered rule calls the analytic engine
+faster if at least four such pairs give a geometric mean ratio above 1.03,
+with at least four ratios above 1.
+
+A qualification run of both engines on development seed 361901 preceded
+the registration. The parameter-AD engine's eager, compiled and graph
+objectives agree with dense parameter AD within $8.7\times10^{-7}$ of the
+original budget. With the dense inverse Hessian resident, both engines
+peak at 20.9 GB. Per evaluation, parameter AD takes 1.25 times as long in
+the Adam phase and 1.21 times in the SSBroyden phase. From these figures
+the registered prediction for the primary ratio is 1.23 (1.18--1.28).
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Paired C36 engine cohort (five new seeds, both engines on one
+GH200 per seed). Seconds are active training seconds to the loss
+threshold $10^{-8}$; evaluations count the SSBroyden phase after the
+4,000 Adam updates; S press.\ is the stratified corrected pressure of the
+threshold checkpoint over its limit. Ratio is parameter AD over analytic.
+Every arm passes physical acceptance and every audit passes.}
+\label{tab:c36pair}
+\begin{tabular}{rrrrrrrr}\toprule
+ & \multicolumn{3}{c}{Analytic} & \multicolumn{3}{c}{Parameter AD} & \\\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Seed & Seconds & Eval. & S press. & Seconds & Eval. & S press. & Ratio\\\midrule
+1344954027 & 1,025 & 3,104 & 0.235 & 1,280 & 3,101 & 0.220 & 1.249\\
+164034124 & 1,010 & 3,015 & 0.248 & 1,262 & 2,976 & 0.242 & 1.250\\
+2110545488 & 967 & 2,743 & 0.284 & 1,210 & 2,759 & 0.289 & 1.252\\
+911819800 & 991 & 2,977 & 0.225 & 1,254 & 3,005 & 0.255 & 1.266\\
+1176150139 & 1,028 & 3,245 & 0.235 & 1,305 & 3,259 & 0.225 & 1.269
+\\\bottomrule\end{tabular}
+\end{table}
+
+All ten arms reach the threshold, pass physical acceptance and pass the
+independent audit (Table~\ref{tab:c36pair}). At the threshold, stratified
+pressure is 0.22--0.29 of its limit in both engines. The analytic engine
+reaches the threshold after 967--1,028 active seconds and the parameter-AD
+engine after 1,210--1,305. The registered outcome is \emph{analytic
+faster}: all five ratios favour the analytic engine, with a geometric mean
+of 1.257 (range 1.249--1.269), inside the predicted 1.18--1.28. The two
+engines need nearly the same number of evaluations (ratio 0.99--1.01), so
+the gain comes from cheaper evaluations: parameter AD takes 1.26--1.28
+times as long per Adam evaluation and 1.24--1.25 times per SSBroyden
+evaluation, which includes the engine-independent optimizer work. This is
+the first solve-level C36 comparison with verified physical accuracy. It
+is smaller than the 1.32 gradient-throughput gain measured on H100
+(Section~\ref{sec:c36throughput}), because the
+dense SSBroyden update and the line search add work that both engines
+share. The physical observation is excluded from the ratio, because it is
+the same native-AD observer in both arms. Including it would pull the
+ratio toward 1: one observation takes 2,673--3,813 seconds, about three
+times the training. The five jobs used 14.19 allocated GPU-hours.
+
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
 The C36 study qualifies derivatives and throughput, and its solves pass only
-with a changed optimizer and without a baseline comparison. We therefore
-also train on the transient three-dimensional
+with a changed optimizer, against an internal parameter-AD baseline. We
+therefore also train on the transient three-dimensional
 Ethier--Steinman flow~\cite{ethier}, which NSFnets also uses as a PINN
 benchmark~\cite{nsfnets}. With $a=0.5$, $d=1$ and $\nu=1$,
 \begin{equation}
@@ -2528,13 +2595,17 @@ not qualified: its frozen auditor's relative tolerance rejects ARM--x86
 rounding in a cancelled sum, and one run was cancelled. A second cohort
 with a rounding-bounded auditor passes 5 of 5, with a median of 5,074
 seconds to verified accuracy, mostly spent in the physical observation.
-It has no baseline, so it gives no solve speedup. The dense inverse Hessian costs
+In a registered paired cohort the analytic engine reaches the verified loss
+threshold 1.257 times sooner than the parameter-AD control (1.249--1.269,
+5 of 5 pairs). The two engines need the same number of evaluations, so the
+gain is per evaluation; dense SSBroyden work shared by both engines keeps
+it below the 1.32 gradient-throughput gain. The dense inverse Hessian costs
 $8n^2$ bytes (20.6 GB here), so on one 96 GB GPU this optimizer does not
 reach beyond about $10^5$ parameters. The C36 throughput gains depend on compilation, the zero-gate
 folding gain depends on this instance's gate geometry, and the problem is a
 single constructed box instance. External baselines on C36 itself (the
 external three-dimensional comparison uses uncompiled Ethier--Steinman
-arms), a native C17, a C36 time-to-accuracy baseline, a second
+arms), a native C17, external baselines for the C36 solves, a second
 nonlinear PDE and device-traffic measurements remain open
 experiments rather than implied consequences of the implementation.
 
@@ -2579,8 +2650,10 @@ optimizer does: two development runs on GH200 pass every physical test.
 A first registered five-seed cohort is not qualified, because its frozen
 auditor rejects cross-architecture rounding. A second cohort, with a
 rounding-bounded auditor, passes 5 of 5 with a median of 5,074 seconds to
-verified accuracy on one GH200. A baseline for that time and external
-three-dimensional comparisons on C36 remain open.
+verified accuracy on one GH200. In a paired cohort the analytic engine
+reaches the verified loss threshold 1.26$\times$ sooner than the
+parameter-AD control in all five pairs. External baselines for the C36
+solves remain open.
 
 
 \begin{thebibliography}{99}
@@ -2956,7 +3029,14 @@ read back member by member. The cohort record and the post-hoc rounding
 diagnosis are generated from those archives by two published scripts.
 The second cohort (Section~\ref{sec:c36tta2}) ran the same way from its
 own registration commit (141 files); its five archives hold 188--190
-members, and the same publishing script generates its record.
+members, and the same publishing script generates its record. The paired
+cohort (Section~\ref{sec:c36pair}) also ran from its registration commit
+(151 files), after a 16-minute qualification job on development seed
+361901. Its five archives hold 233--237 members, and a published script
+generates its record. The first submission of its audits failed at argument
+parsing, before any check ran: the generated wrapper passed the three
+frozen hashes as one argument. That record is kept, and the audits were then run once with
+correct arguments.
 The frozen audits' failure records are kept unchanged. Full raw outputs
 stay on cluster project storage.
 

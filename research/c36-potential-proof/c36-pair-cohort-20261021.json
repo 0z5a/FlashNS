@@ -1,0 +1,700 @@
+{
+ "protocol_version": "C36-formal-pair-20261021-v1",
+ "protocol_sha256": "23a532caa14346b44e57e13642e445b33bede4a0c7a07fd276a36c72653b560d",
+ "threshold_loss": 1e-08,
+ "prediction": {
+  "primary_ratio": 1.23,
+  "range": [
+   1.18,
+   1.28
+  ],
+  "basis": "GH200 qualification on development seed 361901: parameter-AD/analytic seconds per evaluation 1.251 in Adam and 1.213 in SSBroyden; weighted by about 4,000 Adam and 3,000 SSBroyden evaluations to the threshold, assuming equal evaluation counts. Rounding differences change the optimizer trajectory, so evaluation counts can differ between arms."
+ },
+ "seeds": {
+  "1344954027": {
+   "archive_sha256": "d4a13531542c7f0bf343c9d79d70d626b958dcaca81b16eb77ece6a1790282d0",
+   "archive_members": 237,
+   "arm_order": [
+    "analytic",
+    "parameter_ad"
+   ],
+   "arms": {
+    "analytic": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "analytic",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": true,
+      "active_training_seconds": 1024.6526119040063,
+      "loss": 9.981480483938129e-09,
+      "SSBroyden_iterations": 2006,
+      "SSBroyden_evaluations": 3104,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 100.67278029299632,
+      "compile_and_warmup": 107.87900306399388,
+      "graph_capture": 4.385496178991161
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 2006,
+     "SSBroyden_evaluations": 3104,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.13758104058039491,
+     "SSBroyden_seconds_per_evaluation": 0.1507089431015131,
+     "checks": {
+      "fresh-native-subset": 5.002005263624707e-07,
+      "eager-fresh-denseAD": 9.032746048180699e-07,
+      "eager-changed-denseAD": 7.075702110890563e-07,
+      "compiled-fresh-denseAD": 8.840559962049195e-07,
+      "graph-fresh-denseAD": 8.840559962049195e-07,
+      "graph-changed-denseAD": 7.075702110890563e-07,
+      "Adam0": 8.840559962049195e-07,
+      "Adam100": 8.533769405082718e-07,
+      "Adam500": 4.174314845837901e-06,
+      "Adam1000": 3.4472836512827016e-06,
+      "Adam2000": 3.010603806926236e-06,
+      "Adam4000": 2.275894733764784e-06,
+      "SSBroyden-iteration1000": 1.368850110240733e-05,
+      "SSBroyden-iteration2000": 1.194544509675833e-05,
+      "threshold": 1.0580728130319553e-05
+     },
+     "peak_allocated_bytes": 20940260864,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 3011.0520622730255,
+      "worst_over_limit": 0.23523830919401206,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 8.590755482251355e-05,
+      "stratified_corrected_pressure_over_limit": 0.23523830919401206,
+      "trajectory_endpoint_over_limit": 0.04258721169997559
+     }
+    },
+    "parameter_ad": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "parameter_ad",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": false,
+      "active_training_seconds": 1279.6292930459895,
+      "loss": 9.975463516212279e-09,
+      "SSBroyden_iterations": 2064,
+      "SSBroyden_evaluations": 3101,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 97.86030028499954,
+      "compile_and_warmup": 114.19396627300011,
+      "graph_capture": 5.936755720002111
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 2064,
+     "SSBroyden_evaluations": 3101,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.17333059907326842,
+     "SSBroyden_seconds_per_evaluation": 0.18681544820516138,
+     "checks": {
+      "eager-fresh-denseAD": 3.482587716250429e-07,
+      "eager-changed-denseAD": 3.2273624028384657e-07,
+      "compiled-fresh-denseAD": 5.535187412593096e-07,
+      "graph-fresh-denseAD": 5.535187412593096e-07,
+      "graph-changed-denseAD": 4.1417561136731026e-07,
+      "Adam0": 5.535187412593096e-07,
+      "Adam100": 7.903008468951387e-07,
+      "Adam500": 7.439230167194276e-07,
+      "Adam1000": 3.1488501184458983e-07,
+      "Adam2000": 4.90968502119146e-07,
+      "Adam4000": 9.651749157178528e-07,
+      "SSBroyden-iteration1000": 5.09993413202871e-07,
+      "SSBroyden-iteration2000": 1.174148731144445e-06,
+      "threshold": 3.435025879668616e-07
+     },
+     "peak_allocated_bytes": 20940241920,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 3217.0289940834045,
+      "worst_over_limit": 0.22012378334716945,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 8.532545694798551e-05,
+      "stratified_corrected_pressure_over_limit": 0.22012378334716945,
+      "trajectory_endpoint_over_limit": 0.03801023625417813
+     }
+    }
+   },
+   "audit": {
+    "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+    "output_sha256": "cb9b6da972a2573b3ec5848161ea7719b2d0abf9d2b42417a5d3f2c4a8b292d4"
+   }
+  },
+  "164034124": {
+   "archive_sha256": "70259b26d06c8d55c1f8df3a379241a97dfc24a9dbf425bb7d9f3826e3416433",
+   "archive_members": 237,
+   "arm_order": [
+    "parameter_ad",
+    "analytic"
+   ],
+   "arms": {
+    "parameter_ad": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "parameter_ad",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": false,
+      "active_training_seconds": 1262.0389860380092,
+      "loss": 9.999116573464787e-09,
+      "SSBroyden_iterations": 2022,
+      "SSBroyden_evaluations": 2976,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 110.53023386000132,
+      "compile_and_warmup": 121.83719457699044,
+      "graph_capture": 6.3722659289924195
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 2022,
+     "SSBroyden_evaluations": 2976,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.17406911062390637,
+     "SSBroyden_seconds_per_evaluation": 0.1875978007653783,
+     "checks": {
+      "eager-fresh-denseAD": 3.328395815873617e-07,
+      "eager-changed-denseAD": 3.16962810234638e-07,
+      "compiled-fresh-denseAD": 7.079889201736693e-07,
+      "graph-fresh-denseAD": 7.079889201736693e-07,
+      "graph-changed-denseAD": 5.099565362925679e-07,
+      "Adam0": 7.079889201736693e-07,
+      "Adam100": 1.0427038062443896e-06,
+      "Adam500": 3.697691802865922e-07,
+      "Adam1000": 6.54529998789721e-07,
+      "Adam2000": 2.922587257390247e-07,
+      "Adam4000": 1.3570503339321308e-06,
+      "SSBroyden-iteration1000": 2.0412298842819907e-07,
+      "SSBroyden-iteration2000": 5.151458783873147e-07,
+      "threshold": 6.891360546315056e-07
+     },
+     "peak_allocated_bytes": 20940241920,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 2974.818036556244,
+      "worst_over_limit": 0.24158675782706124,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 7.934391753087372e-05,
+      "stratified_corrected_pressure_over_limit": 0.24158675782706124,
+      "trajectory_endpoint_over_limit": 0.03616397498006769
+     }
+    },
+    "analytic": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "analytic",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": true,
+      "active_training_seconds": 1009.6939396060043,
+      "loss": 9.992223294793194e-09,
+      "SSBroyden_iterations": 2011,
+      "SSBroyden_evaluations": 3015,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 94.83186698499776,
+      "compile_and_warmup": 106.40384943599929,
+      "graph_capture": 4.50691432399617
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 2011,
+     "SSBroyden_evaluations": 3015,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.13702909407251818,
+     "SSBroyden_seconds_per_evaluation": 0.15085277118182147,
+     "checks": {
+      "fresh-native-subset": 5.586371763745534e-07,
+      "eager-fresh-denseAD": 1.0524159624203193e-06,
+      "eager-changed-denseAD": 6.649198955279897e-07,
+      "compiled-fresh-denseAD": 1.3203036619454913e-06,
+      "graph-fresh-denseAD": 1.3203036619454913e-06,
+      "graph-changed-denseAD": 5.853127412201758e-07,
+      "Adam0": 1.3203036619454913e-06,
+      "Adam100": 9.203220092122025e-07,
+      "Adam500": 1.2565584636369037e-06,
+      "Adam1000": 1.1510268460601201e-06,
+      "Adam2000": 5.3523797932388765e-06,
+      "Adam4000": 6.419013407213496e-06,
+      "SSBroyden-iteration1000": 3.2719127710756127e-06,
+      "SSBroyden-iteration2000": 3.3264394195721394e-06,
+      "threshold": 1.1741947398430448e-05
+     },
+     "peak_allocated_bytes": 20940260864,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 3324.327328681946,
+      "worst_over_limit": 0.24830263782290787,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 7.882242252594266e-05,
+      "stratified_corrected_pressure_over_limit": 0.24830263782290787,
+      "trajectory_endpoint_over_limit": 0.030676221961850818
+     }
+    }
+   },
+   "audit": {
+    "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+    "output_sha256": "d6b82500b64d7a1f1e0928ee81933243890d1440b55ec4077fff8420bd7afd95"
+   }
+  },
+  "2110545488": {
+   "archive_sha256": "36e2abefb67a879dfe7cb49cd0fb6b220f72153dc1038e3e2e28626441e3b5e1",
+   "archive_members": 233,
+   "arm_order": [
+    "analytic",
+    "parameter_ad"
+   ],
+   "arms": {
+    "analytic": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "analytic",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": true,
+      "active_training_seconds": 967.0178323980072,
+      "loss": 9.995670702114558e-09,
+      "SSBroyden_iterations": 1788,
+      "SSBroyden_evaluations": 2743,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 91.23271012501209,
+      "compile_and_warmup": 112.59288523100258,
+      "graph_capture": 4.365842461003922
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 1788,
+     "SSBroyden_evaluations": 2743,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.1372690560337603,
+     "SSBroyden_seconds_per_evaluation": 0.14987415209992783,
+     "checks": {
+      "fresh-native-subset": 6.040590506865494e-07,
+      "eager-fresh-denseAD": 1.242465461303093e-06,
+      "eager-changed-denseAD": 1.1473205420923785e-06,
+      "compiled-fresh-denseAD": 9.809772353658008e-07,
+      "graph-fresh-denseAD": 9.809772353658008e-07,
+      "graph-changed-denseAD": 1.2996197290957917e-06,
+      "Adam0": 9.809772353658008e-07,
+      "Adam100": 1.4068797874986482e-06,
+      "Adam500": 1.476340177662868e-06,
+      "Adam1000": 6.525134896149873e-07,
+      "Adam2000": 4.427780307330007e-06,
+      "Adam4000": 3.1732829331570878e-06,
+      "SSBroyden-iteration1000": 9.996476201513794e-06,
+      "threshold": 1.8558152615750967e-05
+     },
+     "peak_allocated_bytes": 20940260864,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 3313.794232606888,
+      "worst_over_limit": 0.2840852571737392,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 8.261318855607884e-05,
+      "stratified_corrected_pressure_over_limit": 0.2840852571737392,
+      "trajectory_endpoint_over_limit": 0.025406636310417084
+     }
+    },
+    "parameter_ad": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "parameter_ad",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": false,
+      "active_training_seconds": 1210.2666882060003,
+      "loss": 9.988969679274435e-09,
+      "SSBroyden_iterations": 1740,
+      "SSBroyden_evaluations": 2759,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 88.49814185599098,
+      "compile_and_warmup": 108.16994466300821,
+      "graph_capture": 5.291425674993661
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 1740,
+     "SSBroyden_evaluations": 2759,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.17303847769091996,
+     "SSBroyden_seconds_per_evaluation": 0.18546945547208032,
+     "checks": {
+      "eager-fresh-denseAD": 3.731664895452465e-07,
+      "eager-changed-denseAD": 3.392925184014305e-07,
+      "compiled-fresh-denseAD": 7.454792767818559e-07,
+      "graph-fresh-denseAD": 7.454792767818559e-07,
+      "graph-changed-denseAD": 1.4519189160992047e-06,
+      "Adam0": 7.454792767818559e-07,
+      "Adam100": 7.098223593102456e-07,
+      "Adam500": 5.399585039969068e-07,
+      "Adam1000": 6.097728328093775e-07,
+      "Adam2000": 4.2955314739501833e-07,
+      "Adam4000": 3.827009160394519e-07,
+      "SSBroyden-iteration1000": 2.1548754682171275e-07,
+      "threshold": 2.4266074690396207e-07
+     },
+     "peak_allocated_bytes": 20940241920,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 3160.9835293293,
+      "worst_over_limit": 0.28852996215039994,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 8.227272700548576e-05,
+      "stratified_corrected_pressure_over_limit": 0.28852996215039994,
+      "trajectory_endpoint_over_limit": 0.028741199811838314
+     }
+    }
+   },
+   "audit": {
+    "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+    "output_sha256": "5a6b546bbc41cd7414995306b16c16e33d6c899e9923e3854e58c7875ae39293"
+   }
+  },
+  "911819800": {
+   "archive_sha256": "52a706ecd90055b42843fea8a01f453d08b13378d6f368bdf1a5a18ba6b2a659",
+   "archive_members": 237,
+   "arm_order": [
+    "parameter_ad",
+    "analytic"
+   ],
+   "arms": {
+    "parameter_ad": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "parameter_ad",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": false,
+      "active_training_seconds": 1254.0943674680002,
+      "loss": 9.987206813942338e-09,
+      "SSBroyden_iterations": 2026,
+      "SSBroyden_evaluations": 3005,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 84.55397022500074,
+      "compile_and_warmup": 109.35721721100163,
+      "graph_capture": 5.256310733000646
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 2026,
+     "SSBroyden_evaluations": 3005,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.1721250414566141,
+     "SSBroyden_seconds_per_evaluation": 0.18621026115113168,
+     "checks": {
+      "eager-fresh-denseAD": 3.537175353010886e-07,
+      "eager-changed-denseAD": 3.179282792264795e-07,
+      "compiled-fresh-denseAD": 4.372941051604141e-07,
+      "graph-fresh-denseAD": 4.372941051604141e-07,
+      "graph-changed-denseAD": 4.1569070738814047e-07,
+      "Adam0": 4.372941051604141e-07,
+      "Adam100": 1.0233755387353417e-06,
+      "Adam500": 5.989664713253692e-07,
+      "Adam1000": 2.898145147286394e-07,
+      "Adam2000": 6.913683347193608e-07,
+      "Adam4000": 6.922980874415086e-07,
+      "SSBroyden-iteration1000": 7.859474997238804e-07,
+      "SSBroyden-iteration2000": 5.515341536519452e-07,
+      "threshold": 3.6158338990308133e-07
+     },
+     "peak_allocated_bytes": 20940241920,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 2672.703170776367,
+      "worst_over_limit": 0.25546093344420595,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 8.647942771340744e-05,
+      "stratified_corrected_pressure_over_limit": 0.25546093344420595,
+      "trajectory_endpoint_over_limit": 0.04963995811863263
+     }
+    },
+    "analytic": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "analytic",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": true,
+      "active_training_seconds": 990.7883374480007,
+      "loss": 9.967542937866947e-09,
+      "SSBroyden_iterations": 2050,
+      "SSBroyden_evaluations": 2977,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 95.68567167299989,
+      "compile_and_warmup": 106.61957871699997,
+      "graph_capture": 4.6394461630006845
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 2050,
+     "SSBroyden_evaluations": 2977,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.13502234179119774,
+     "SSBroyden_seconds_per_evaluation": 0.14924840166196235,
+     "checks": {
+      "fresh-native-subset": 3.001622331431999e-07,
+      "eager-fresh-denseAD": 1.511712044461449e-06,
+      "eager-changed-denseAD": 7.218773048413133e-07,
+      "compiled-fresh-denseAD": 1.511712044461449e-06,
+      "graph-fresh-denseAD": 1.511712044461449e-06,
+      "graph-changed-denseAD": 7.27292453114213e-07,
+      "Adam0": 1.511712044461449e-06,
+      "Adam100": 1.0044399971244446e-06,
+      "Adam500": 1.8117907646540334e-06,
+      "Adam1000": 8.953465337349136e-07,
+      "Adam2000": 2.959920512925531e-06,
+      "Adam4000": 4.73791508014205e-06,
+      "SSBroyden-iteration1000": 5.225936632833536e-06,
+      "SSBroyden-iteration2000": 4.1872894764935535e-06,
+      "threshold": 2.607544387362679e-06
+     },
+     "peak_allocated_bytes": 20940260864,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 2903.6901593208313,
+      "worst_over_limit": 0.22536567381874983,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 8.45397684454106e-05,
+      "stratified_corrected_pressure_over_limit": 0.22536567381874983,
+      "trajectory_endpoint_over_limit": 0.04079240233360233
+     }
+    }
+   },
+   "audit": {
+    "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+    "output_sha256": "2fdac1c314b54b59e34900a2841c7e5ab060f05768c0cca65987bc02bfd3f4a6"
+   }
+  },
+  "1176150139": {
+   "archive_sha256": "77da43cf5a271b003e5880107d6d16cfb79bf5829a12d8ca81b965ec74ec07ad",
+   "archive_members": 237,
+   "arm_order": [
+    "analytic",
+    "parameter_ad"
+   ],
+   "arms": {
+    "analytic": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "analytic",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": true,
+      "active_training_seconds": 1028.382331942994,
+      "loss": 9.98639248276335e-09,
+      "SSBroyden_iterations": 2111,
+      "SSBroyden_evaluations": 3245,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 94.7266380739893,
+      "compile_and_warmup": 114.53487941999629,
+      "graph_capture": 4.504267898999387
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 2111,
+     "SSBroyden_evaluations": 3245,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.13484160367266898,
+     "SSBroyden_seconds_per_evaluation": 0.14859558055795383,
+     "checks": {
+      "fresh-native-subset": 3.6338576048702007e-07,
+      "eager-fresh-denseAD": 6.461451027805506e-07,
+      "eager-changed-denseAD": 5.778588449229464e-07,
+      "compiled-fresh-denseAD": 6.558943698684859e-07,
+      "graph-fresh-denseAD": 6.558943698684859e-07,
+      "graph-changed-denseAD": 6.487948058580088e-07,
+      "Adam0": 6.558943698684859e-07,
+      "Adam100": 8.985563115587446e-07,
+      "Adam500": 1.4535688348389524e-06,
+      "Adam1000": 1.683767592675022e-06,
+      "Adam2000": 2.5591015043149664e-06,
+      "Adam4000": 3.2394584585601102e-06,
+      "SSBroyden-iteration1000": 1.3314569249794709e-06,
+      "SSBroyden-iteration2000": 1.1353652516840947e-05,
+      "threshold": 2.071423714189566e-05
+     },
+     "peak_allocated_bytes": 20940260864,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 3813.0332255363464,
+      "worst_over_limit": 0.23472327696300604,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 8.285401798906636e-05,
+      "stratified_corrected_pressure_over_limit": 0.23472327696300604,
+      "trajectory_endpoint_over_limit": 0.03199424626480466
+     }
+    },
+    "parameter_ad": {
+     "training_state": "COMPLETE",
+     "stop_reason": "loss threshold",
+     "pair": {
+      "engine": "parameter_ad",
+      "threshold_loss": 1e-08,
+      "state": "THRESHOLD_REACHED",
+      "native_subset_checked": false,
+      "active_training_seconds": 1304.6710910260008,
+      "loss": 9.990303051223817e-09,
+      "SSBroyden_iterations": 2132,
+      "SSBroyden_evaluations": 3259,
+      "Adam_updates": 4000,
+      "physical_acceptance_pass": true
+     },
+     "setup_seconds": {
+      "eager_and_dense_AD": 91.87989010800084,
+      "compile_and_warmup": 111.79109304399753,
+      "graph_capture": 5.2205176150018815
+     },
+     "Adam_updates": 4000,
+     "SSBroyden_iterations": 2132,
+     "SSBroyden_evaluations": 3259,
+     "resets": 0,
+     "skipped_updates": 0,
+     "Adam_seconds_per_evaluation": 0.17307707219405047,
+     "SSBroyden_seconds_per_evaluation": 0.18599083631706353,
+     "checks": {
+      "eager-fresh-denseAD": 3.675836595912519e-07,
+      "eager-changed-denseAD": 3.340545053012462e-07,
+      "compiled-fresh-denseAD": 3.881906408886494e-07,
+      "graph-fresh-denseAD": 3.881906408886494e-07,
+      "graph-changed-denseAD": 3.896481053291725e-07,
+      "Adam0": 3.881906408886494e-07,
+      "Adam100": 7.21851652172164e-07,
+      "Adam500": 7.714468554292866e-07,
+      "Adam1000": 4.5587124836354346e-07,
+      "Adam2000": 8.494562157088562e-07,
+      "Adam4000": 3.0012955546261885e-07,
+      "SSBroyden-iteration1000": 1.6445977821337282e-06,
+      "SSBroyden-iteration2000": 3.114367002490062e-07,
+      "threshold": 6.053236168199933e-07
+     },
+     "peak_allocated_bytes": 20940241920,
+     "observation": {
+      "state": "COMPLETE",
+      "physical_acceptance_pass": true,
+      "seconds": 3509.3949813842773,
+      "worst_over_limit": 0.22462916631498245,
+      "worst_test": "stratified:normalized_corrected_pressure_rms",
+      "failing_tests": {},
+      "stratified_velocity_relative_l2": 8.195986617730827e-05,
+      "stratified_corrected_pressure_over_limit": 0.22462916631498245,
+      "trajectory_endpoint_over_limit": 0.028573375348667853
+     }
+    }
+   },
+   "audit": {
+    "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+    "output_sha256": "787db0a96c8ec22aeacce63be72679f0e9150073049ebf436874aaa24bd982a7"
+   }
+  }
+ },
+ "registered_decision": {
+  "denominator": 5,
+  "jointly_accepted_pairs": 5,
+  "rows": [
+   {
+    "seed": 1344954027,
+    "jointly_accepted": true,
+    "analytic_seconds": 1024.6526119040063,
+    "parameter_ad_seconds": 1279.6292930459895,
+    "ratio": 1.2488420740646786
+   },
+   {
+    "seed": 164034124,
+    "jointly_accepted": true,
+    "analytic_seconds": 1009.6939396060043,
+    "parameter_ad_seconds": 1262.0389860380092,
+    "ratio": 1.249922314608002
+   },
+   {
+    "seed": 2110545488,
+    "jointly_accepted": true,
+    "analytic_seconds": 967.0178323980072,
+    "parameter_ad_seconds": 1210.2666882060003,
+    "ratio": 1.2515453672708243
+   },
+   {
+    "seed": 911819800,
+    "jointly_accepted": true,
+    "analytic_seconds": 990.7883374480007,
+    "parameter_ad_seconds": 1254.0943674680002,
+    "ratio": 1.2657540668052307
+   },
+   {
+    "seed": 1176150139,
+    "jointly_accepted": true,
+    "analytic_seconds": 1028.382331942994,
+    "parameter_ad_seconds": 1304.6710910260008,
+    "ratio": 1.26866346348152
+   }
+  ],
+  "margin": 1.03,
+  "minimum_pairs": 4,
+  "minimum_agreeing": 4,
+  "outcome": "ANALYTIC_FASTER",
+  "geometric_mean_ratio": 1.256916944208322,
+  "range": [
+   1.2488420740646786,
+   1.26866346348152
+  ],
+  "pairs_favouring_analytic": 5,
+  "pairs_favouring_parameter_ad": 0
+ }
+}

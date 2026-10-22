@@ -2,8 +2,8 @@
  "revision": "2026-10-21",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "6bd0fd4c3b83c59a145698620383b6b3197ed7ca658e9dbd5f317a5dbcb8833b",
- "previous_manuscript_sha256": "16c8a0e40b2655ad2b87cfddf6a7dd256a5a2b41167aa810f99e2f0a0c680ddf",
+ "manuscript_sha256": "540475c3808f1fab387792e8949365d0c2da83f9fb40ef0afac9a814528d3e9f",
+ "previous_manuscript_sha256": "6bd0fd4c3b83c59a145698620383b6b3197ed7ca658e9dbd5f317a5dbcb8833b",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -170,7 +170,9 @@
   "../c36-potential-proof/src/box376/audit_c36_pair.py": "8f6ac65d254e90e48209bd5004ed0e7cd2c8577d0afd8f404bfc223b03684371",
   "../c36-potential-proof/src/box376/decide_c36_pair.py": "c4ca67318da5e9c8ceb1b2d458197253e8402ac437b748223496fd5a17610779",
   "../c36-potential-proof/src/box376/test_pair_control.py": "7d86afbc7bc8ce5636807677dcbf48c586f25455d0fe1231ad341052139b5ace",
-  "../c36-potential-proof/src/box376/test_decide_c36_pair.py": "b5eacf8f498f53b11af814c4fbacf1fd7db17ee7a3c6908dbca901d76e8acd14"
+  "../c36-potential-proof/src/box376/test_decide_c36_pair.py": "b5eacf8f498f53b11af814c4fbacf1fd7db17ee7a3c6908dbca901d76e8acd14",
+  "../c36-potential-proof/c36-pair-cohort-20261021.json": "3726c2171a782b9fe018e25688cdd63a53ed423208cf272ea71b84e29225bf4a",
+  "../c36-potential-proof/tools/c36_pair_publish.py": "e0c2d6b736bccec31d6c355a16ae5f7e9cd3cb7f8d0d4b5b18a775d722ff887f"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -184,11 +186,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "cccd0b12f2056ffe8d3b65445aab8294e3143da0ddd4b0d7c9a3cf4934dadb5c",
- "previous_pdf_sha256": "5061addb9aaaf90640152f5f4e65b402a0da01ed45338dd3c2db7cadf8576726",
- "pages": 47,
+ "pdf_sha256": "d8d146cd30775ee98a5a906d0a7265da8114a8d391fe32894d9990a29940f521",
+ "previous_pdf_sha256": "cccd0b12f2056ffe8d3b65445aab8294e3143da0ddd4b0d7c9a3cf4934dadb5c",
+ "pages": 48,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2026 via TinyTeX v2026.10, with microtype), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS (2026-10-21): rendered with Ghostscript 9.54 and read: page 1 (abstract), pages 30-33 (Sections 6.12-6.14, Tables 23-25); no overfull boxes or undefined references. Earlier: PASS (2026-10-19): Section 6.11 attribution paragraph (page 30) rendered and read; Section 6.11 with Table 22 (pages 29-30) rendered and read; Section 6.10 diagnosis paragraph (page 28) rendered and read; Section 6.1 source-structure paragraph (page 17) and Section 6.8 rest-slice sentence (page 23) rendered and read; earlier: abstract (200 words), Section 7.4 second compiled attempt with Table 25 (page 32); no overfull boxes or undefined references",
+ "pdf_visual_review": "PASS (2026-10-22): rendered with Ghostscript 9.54 and read: page 1 (abstract), page 34 (Table 26, Section 6.15); earlier pages 30-33 (Sections 6.12-6.14); no overfull boxes or undefined references.",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -523,5 +525,23 @@
   "status": "registered before any pair seed run",
   "prediction": "1.23 (1.18-1.28)",
   "qualification": "pair-gh200-qualification-20261021.json"
- }
+ },
+ "C36_pair_cohort": {
+  "protocol": "protocol-formal-pair-20261021.json",
+  "pre_registration_commit": "aaea603",
+  "registered_outcome": "ANALYTIC_FASTER (5/5 jointly accepted pairs)",
+  "geometric_mean_ratio": 1.2569,
+  "range": [
+   1.2488,
+   1.2687
+  ],
+  "prediction": "1.23 (1.18-1.28)",
+  "evaluation_count_ratio": [
+   0.987,
+   1.009
+  ],
+  "allocated_gpu_hours": 14.19,
+  "scope": "parameter-AD/analytic active training seconds to a verified loss of 1e-8 on one GH200 per seed; observation excluded"
+ },
+ "revision_note_20261022_pair": "Adds Section 6.15 and Table 26: the registered paired engine cohort (analytic faster, geometric mean 1.257, 5/5 pairs, inside the predicted 1.18-1.28); abstract, contributions, Ethier introduction, discussion, conclusion and C36 appendix updated; Ethier tables move up by one (now 27-30). 48 pages."
 }
