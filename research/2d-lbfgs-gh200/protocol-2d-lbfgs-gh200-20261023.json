@@ -1,5 +1,5 @@
 {
- "version": "FlashNS-2D-lbfgs-gh200-20261023-v1",
+ "version": "FlashNS-2D-lbfgs-gh200-20261023-v2",
  "scope": "Execution study on one GH200 node (four GPUs, one solve per GPU at a time): complete solves of the 2D Kovasznay objective with the unchanged solve.py optimizer program, where torch.optim.LBFGS either runs as installed (cell stock) or with only its two-loop recursion replaced by a device-side, CUDA-Graph-replayed version (cell light). Native GL8 (gl8_native) in FP64 at 2,048, 16,384 and 65,536 interior points on the six formal initializations. GH200 numbers only; nothing is pooled with the H100 or H20 campaigns.",
  "motivation": "Post hoc, the H100 solve-scale archives put 93% of the 2,048-point optimization time into the L-BFGS phase outside the gradient; torch.optim.LBFGS converts each two-loop coefficient to a host number (about 109 device synchronizations per iteration). A development run on GH200 (three stock/light pairs) gave bitwise-identical final parameters and 2.83x, 2.40x (2,048 points) and 1.49x (65,536 points) shorter optimization.",
  "source": {
@@ -90,6 +90,14 @@
  },
  "frozen_inputs": {
   "theta_sha256": {
+   "862101": "90ea44ef9045ded07e0c2fc9b3e7f4d6e56911c1cb9ab4fb90f6561b771ca837",
+   "862102": "e970a0e89717d4210471a80bc6894f1dd4130206e34753083f0cdb41551478ed",
+   "862103": "1ec6debc404d78eeb7bbbb764f9729bbae2d46c5317248ed4929d4cd32838a4c",
+   "862104": "56f94ea83dbca52753718798350356573bef41393c2195236e4f647c8254d96c",
+   "862105": "4070ebd701a9ac37bed4142826f5746667f1aaf42c5eb801c4c140b64d333d43",
+   "862106": "6e4a083e9b53745824944760ae09982dc959de107167448b474d3fc8fd5afa07"
+  },
+  "theta_sha256_x86_h100_studies": {
    "862101": "63cbb93b3769e5e5fe759d26d55db5a1e93e49acdf43e3441f22a28bc202b002",
    "862102": "93e2c279cc80f0b12cdc896ef67deda0413979c1ccde88f590ed7944d148afd1",
    "862103": "5ab8582d2b9d6fef199a52cda0dbb1f7b1b4b388553de5deb760cd22c9166456",
@@ -119,7 +127,8 @@
     "validation_points_sha256": "adccec9abab9b4a93f6023caf9725adc8651d260987b0e0074ece77bd248874b",
     "validation_boundary_sha256": "253bd32f74fc69e41a2f1ef9478bf05b79c1877f642e7b16fa2db8edc884bcd4"
    }
-  }
+  },
+  "platform_note": "problem.parameters(seed) draws torch.randn on the CPU; torch's CPU normal sampler is not bitwise identical between x86-64 (the H20/H100 studies) and aarch64 (the GH200 node's Grace CPU), so the GH200 formal initializations of the six seeds are the aarch64 draws, pinned here from a dedicated check job on a GH200 node (torch 2.14.1+cu130). The collocation data (torch.rand) are bitwise identical on both platforms, as the data hashes show. Attempt 1 (v1 protocol, x86 hashes) was refused at admission before any GPU work."
  },
  "randomization_seed": 20261023,
  "task_timeout_seconds": 900,

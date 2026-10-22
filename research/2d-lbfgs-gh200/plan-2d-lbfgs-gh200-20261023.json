@@ -1,7 +1,7 @@
 {
  "protocol": "protocol-2d-lbfgs-gh200-20261023.json",
- "protocol_sha256": "7259fae1d62d2a85477fece884e4c90b9e4431908fa7293556fe75aa0ae4edcf",
- "version": "FlashNS-2D-lbfgs-gh200-20261023-v1",
+ "protocol_sha256": "1d4846fe7c249549b01ffbe97bfa42d9769d4887456b100aa7567e302af3dfff",
+ "version": "FlashNS-2D-lbfgs-gh200-20261023-v2",
  "tasks": [
   {
    "id": "light-n65536-s862102",

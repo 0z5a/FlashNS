@@ -6,7 +6,7 @@ On H100, the [solve-scale study](../2d-solve-scale/README.md) found that at the 
 
 The cause is in the optimizer, not the model. `torch.optim.LBFGS` keeps the two-loop coefficients as device tensors and passes each one as `alpha=`, which converts it to a host number: about 109 device synchronizations and 555 small operators per iteration (history 50). This study asks whether replacing only the two-loop recursion by a device-side version, replayed as a CUDA Graph, shortens complete solves **without changing them**.
 
-[protocol-2d-lbfgs-gh200-20261023.json](protocol-2d-lbfgs-gh200-20261023.json) was committed before the GPU batch ran.
+[protocol-2d-lbfgs-gh200-20261023.json](protocol-2d-lbfgs-gh200-20261023.json) was committed before the GPU batch ran. Its v1 pinned the x86 initialization hashes of the H100 studies; the first attempt was refused at admission (before any GPU work) because `problem.parameters(seed)` draws `torch.randn` on the CPU and torch's CPU normal sampler is not bitwise identical between x86-64 and aarch64 (the GH200 node's Grace CPU), while the `torch.rand` collocation data are. v2 pins the aarch64 draws from a dedicated check job and keeps the x86 hashes for reference; the GH200 and H100 studies therefore share the data but not the initial parameters bitwise.
 
 ## Cells
 
