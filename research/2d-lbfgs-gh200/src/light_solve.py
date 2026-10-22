@@ -20,11 +20,13 @@ from pathlib import Path
 from time import perf_counter
 
 import torch
-import torch.optim.lbfgs
+import torch.optim.lbfgs as lbfgs_module  # torch.optim deletes the submodule name, so bind it here
 
 import bench_gpu
 import problem
 import solve as solve_module
+
+LBFGS_MODULE_SHA256 = hashlib.sha256(inspect.getsource(lbfgs_module).encode()).hexdigest()
 
 
 def main():
@@ -56,7 +58,6 @@ def main():
         return configuration
     solve_module.protocol = protocol
     created = []
-    lbfgs_module_sha256 = hashlib.sha256(inspect.getsource(torch.optim.lbfgs).encode()).hexdigest()
     if args.optimizer == "light":
         import lbfgs_light
 
@@ -70,7 +71,7 @@ def main():
               "environment": bench_gpu.evidence(), "progress": [],
               "wrapper": {"optimizer": args.optimizer, "interior_count_override": args.interior_count,
                           "frozen_template_interior_count": template()["interior_count"],
-                          "torch_optim_lbfgs_module_sha256": lbfgs_module_sha256}}
+                          "torch_optim_lbfgs_module_sha256": LBFGS_MODULE_SHA256}}
     started = perf_counter()
     try:
         task = problem.Problem(interior_count=args.interior_count, device="cuda")

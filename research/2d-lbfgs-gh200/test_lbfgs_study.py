@@ -40,6 +40,29 @@ class Rewrite(unittest.TestCase):
             lbfgs_light.rewrite('def step(self, closure):\n    return closure()\n')
 
 
+class Wrapper(unittest.TestCase):
+    def test_light_solve_imports_outside_the_source_tree(self):
+        """light_solve.py's module level (imports and the lbfgs module hash) with the 2D modules stubbed."""
+        import importlib
+        import types
+        stubs = {name: types.ModuleType(name) for name in ('bench_gpu', 'problem', 'solve')}
+        stubs['bench_gpu'].BACKENDS = ('gl8_native',)
+        saved = {name: sys.modules.get(name) for name in stubs}
+        sys.modules.update(stubs)
+        try:
+            sys.modules.pop('light_solve', None)
+            module = importlib.import_module('light_solve')
+            self.assertEqual(len(module.LBFGS_MODULE_SHA256), 64)
+            self.assertEqual(module.LBFGS_MODULE_SHA256, lbfgs_light.module_source_sha256())
+        finally:
+            for name, old in saved.items():
+                if old is None:
+                    sys.modules.pop(name, None)
+                else:
+                    sys.modules[name] = old
+            sys.modules.pop('light_solve', None)
+
+
 class Plan(unittest.TestCase):
     def test_tasks(self):
         tasks = make_lbfgs_plan.build(PROTOCOL)
