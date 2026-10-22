@@ -1,0 +1,23 @@
+{
+ "state": "COMPLETE",
+ "kind": "development probe, not a result",
+ "seed": 361901,
+ "variants": {
+  "func_traced": {
+   "chunk": 1024,
+   "build_and_warmup_seconds": 159.13459715701174,
+   "oom_chunks": [
+    4096,
+    1024
+   ]
+  },
+  "func_functional_compiled": {
+   "failure": "\n    state = c36.curl_pressure(c36.multiply(gate[sl], raw_func_jacfwd(physical, inputs[sl]) * scale))\n                                                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"src/box376/external_c36.py\", line 77, in raw_func_jacfwd\n    first, second, third, fourth = vmap(d1)(*args), vmap(d2)(*args), vmap(d3)(*args), vmap(d4)(*args)\n                                   ~~~~~~~~^^^^^^^\n  File \"site-packages/torch/_functorch/apis.py\", line 246, in wrapped\n    return vmap_impl(\n    \n  File \"site-packages/torch/_functorch/vmap.py\", line 316, in vmap_impl\n    return _flat_vmap(\n    \n  File \"site-packages/torch/_functorch/vmap.py\", line 507, in _flat_vmap\n    batched_outputs = func(*batched_inputs, **kwargs)\n  File \"site-packages/torch/_functorch/eager_transforms.py\", line 1392, in wrapper_fn\n    results = vmap(push_jvp, randomness=randomness)(basis)\n  File \"site-packages/torch/_functorch/apis.py\", line 246, in wrapped\n    return vmap_impl(\n    \n  File \"site-packages/torch/_functorch/vmap.py\", line 316, in vmap_impl\n    return _flat_vmap(\n    \n  File \"site-packages/torch/_functorch/vmap.py\", line 507, in _flat_vmap\n    batched_outputs = func(*batched_inputs, **kwargs)\n  File \"site-packages/torch/_functorch/eager_transforms.py\", line 1381, in push_jvp\n    output = _jvp_with_argnums(\n    \n  File \"site-packages/torch/_functorch/eager_transforms.py\", line 1214, in _jvp_with_argnums\n    result_duals = func(*duals)\n  File \"src/box376/external_c36.py\", line 66, in g\n    return mlp(parameters, _features(d, f0, j, vv, k))\n                           ~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"src/box376/external_c36.py\", line 51, in _features\n    return F0 + torch.einsum('...ai,...i->...a', J, spatial) + v * time + torch.einsum('...ai,...i->...a', K, spatial) * time\n                ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\n\n"
+  },
+  "jet_traced": {
+   "oom_chunks": [
+    128
+   ]
+  }
+ }
+}

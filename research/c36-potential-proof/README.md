@@ -1024,3 +1024,21 @@ Files: [c36-pair-cohort-20261021.json](c36-pair-cohort-20261021.json), generated
 - **Ratios.** Two ratios are reported: matched eager, and best variant against best variant.
 - **Development probes.** These are on a development initialization and are not results. Analytic eager 3.83 s and graph 0.133 s; torch.func eager 3.8–5.7 s; jet eager 33 s; nested AD eager 350 s.
 
+**Results (paper Section 6.16, Table 27; post-hoc rerun r3).** The registered run did not complete.
+- **Analytic graph failure.** Its driver returned only the CUDA Graph replay closure. The engine that owns the geometry the graph reads was then garbage-collected, and an evaluation between two replays overwrote that memory. The analytic graph therefore failed its changed-parameter check. [Diagnostic](c36-graph-diagnostic-20261022.json); the trainers keep their engine alive.
+- **Host-memory failure.** The job then ran out of host memory while tracing the jet adapter, before nested AD and the timing phase ([registered record](c36-external-throughput-registered-20261022.json)).
+- **Revisions.** [`tools/c36_external_throughput_r2.py`](tools/c36_external_throughput_r2.py) keeps every captured object alive; a [first rerun](c36-external-throughput-r2-partial-20261022.json) confirmed the fix and was cancelled at the same jet tracing step. [r3](protocol-external-throughput-20261022-r3.json) times the jet adapter eager only and otherwise follows the registration.
+
+| Method | Eager (s) | Fastest (s) | Eager ratio | Fastest ratio |
+| --- | ---: | ---: | ---: | ---: |
+| Analytic | 1.71–1.74 | 0.134 (graph) | 1 | 1 |
+| torch.func | 1.71–1.72 | 0.496 (graph) | 0.99 | 3.72 |
+| Collapsed jet + autograd | 65.0–66.2 | eager only | 38.0 | 491 |
+| Nested autograd | 430–435 | eager only | 251 | 3,242 |
+
+- **Checks.** Every variant passes the dense-AD checks, including after an in-place parameter change.
+- **torch.func.** It matches the analytic engine in eager mode, as predicted, so the advantage over it is execution.
+- **Jet and nested autograd.** Both exceed their predictions (8.6, 91). Nested autograd of the third and fourth spatial derivatives dominates both.
+- **Feasibility.** A torch.func solve fits one job (about 3.1 h with observations). The jet adapter and nested autograd project to about 5.5 and 35 days.
+- **Cost.** The three runs used 7.17 allocated GPU-hours. [Result](c36-external-throughput-r3-20261022.json).
+

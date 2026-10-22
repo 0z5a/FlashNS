@@ -40,7 +40,8 @@ a stratified pressure test. With a dense self-scaled Broyden optimizer, all
 five new seeds of a second registered cohort on GH200 pass every test and an
 independent audit (median 5,074 seconds to verified accuracy). In five
 paired seeds, the analytic engine reaches a verified training loss
-1.26$\times$ sooner than parameter AD.
+1.26$\times$ sooner than parameter AD, and its graph replay evaluates
+3.7$\times$ faster than \texttt{torch.func}, which equals it in eager mode.
 \end{abstract}
 
 \section{Introduction}
@@ -2216,6 +2217,70 @@ the same native-AD observer in both arms. Including it would pull the
 ratio toward 1: one observation takes 2,673--3,813 seconds, about three
 times the training. The five jobs used 14.19 allocated GPU-hours.
 
+\subsection{External derivative backends}\label{sec:c36external}
+The paired cohort compares the analytic engine with an internal control. A
+further registration asks how public automatic-differentiation tools fare on
+the same objective. Three external backends produce the same 36-channel
+network state: nested PyTorch autograd over the batch, as an ordinary PINN
+code writes it; \texttt{torch.func} with \texttt{jacfwd} nested to third
+order plus the Hessian of the spatial Laplacian, vectorized with
+\texttt{vmap}; and the collapsed Taylor-mode package \texttt{jet}~\cite{cmtad}
+at a pinned commit. The jet adapter uses collapsed Taylor mode for the value,
+the first derivatives and the spatial Laplacian, and autograd for the rest,
+as the Ethier--Steinman and two-dimensional adapters do; no Taylor producer of
+order three or more is implemented. The prepared geometry features are affine
+in space and the state needs one time derivative. A per-point polynomial built
+from the prepared geometry state therefore has exactly the derivatives the
+state uses, and every backend differentiates that same function. Gate, curl,
+consumer and loss are the C36 code in every method, and every external
+parameter gradient is autograd. On six training points each backend
+reproduces the analytic state within $7.2\times10^{-4}$ of the original budget
+and the complete parameter gradient within 0.09.
+
+\begin{table}[htbp]\centering\small
+\caption{C36 objective and complete parameter gradient on one GH200 (seconds
+per evaluation; median window time, two stored initializations). Graph is a
+CUDA Graph replay of the compiled (analytic) or traced (external) evaluation.
+Ratios are against the analytic engine in the same mode (eager) and against
+its fastest variant (graph). Post-hoc rerun; see text.}
+\label{tab:c36external}
+\begin{tabular}{lrrrr}\toprule
+Method & Eager (s) & Fastest (s) & Eager ratio & Fastest ratio\\\midrule
+Analytic (C36) & 1.71--1.74 & 0.134 (graph) & 1 & 1\\
+\texttt{torch.func} & 1.71--1.72 & 0.496 (graph) & 0.99 & 3.72\\
+Collapsed \texttt{jet} + autograd & 65.0--66.2 & eager only & 38.0 & 491\\
+Nested autograd & 430--435 & eager only & 251 & 3,242
+\\\bottomrule\end{tabular}
+\end{table}
+
+The registration selects each method's fastest variant on a development
+initialization (eager, compiled or traced, and the CUDA Graph of either). Each
+variant is checked against dense parameter AD, also after an in-place parameter
+change, and then timed on the two stored initializations. The registered run
+did not complete. Its driver dropped the analytic CUDA Graph after a failed
+changed-parameter check, and the job then ran out of host memory while tracing
+the jet adapter, before nested AD and the timing phase. A diagnostic traced
+the graph failure to the driver. It returned only the replay closure, so the
+engine owning the geometry the graph reads was garbage-collected, and the next
+evaluation between two replays overwrote that memory. The trainers keep their
+engine alive and never showed this. A post-hoc rerun (r3) keeps every captured
+object alive and times the jet adapter eager only; everything else follows the
+registration. Every variant in it passes the dense-AD checks
+(Table~\ref{tab:c36external}).
+
+In eager mode, \texttt{torch.func} matches the analytic engine (0.99, as
+predicted). The analytic advantage over it is therefore execution, not
+representation. Replayed as a CUDA Graph, the analytic evaluation is 3.72
+times faster than the fastest \texttt{torch.func} variant. The jet adapter and
+nested autograd are 38 and 251 times slower in eager mode, well above the
+registered predictions of 8.6 and 91. In both, nested autograd for the third
+and fourth spatial derivatives dominates; the eager analytic evaluation in
+this run (1.7 seconds) was also faster than in development (3.8). Against the
+analytic graph they are 491 and 3,242 times slower. By the registered
+feasibility rule, a full solve with \texttt{torch.func} (about 3.1 hours with
+observations) fits one job, while the jet adapter and nested autograd would
+need about 5.5 and 35 days. The three runs used 7.17 allocated GPU-hours.
+
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
 The C36 study qualifies derivatives and throughput, and its solves pass only
@@ -2601,12 +2666,17 @@ threshold 1.257 times sooner than the parameter-AD control (1.249--1.269,
 gain is per evaluation; dense SSBroyden work shared by both engines keeps
 it below the 1.32 gradient-throughput gain. The dense inverse Hessian costs
 $8n^2$ bytes (20.6 GB here), so on one 96 GB GPU this optimizer does not
-reach beyond about $10^5$ parameters. The C36 throughput gains depend on compilation, the zero-gate
+reach beyond about $10^5$ parameters. Against public tools on the same
+objective, per evaluation, \texttt{torch.func} equals the analytic engine
+in eager mode and is 3.72 times slower as a CUDA Graph replay, so the C36
+advantage over it is execution rather than representation; collapsed
+\texttt{jet} with autograd for the higher orders, and nested autograd, are
+38 and 251 times slower in eager mode. These are post-hoc measurements after
+a driver bug and a host-memory failure ended the registered run. The C36 throughput gains depend on compilation, the zero-gate
 folding gain depends on this instance's gate geometry, and the problem is a
-single constructed box instance. External baselines on C36 itself (the
-external three-dimensional comparison uses uncompiled Ethier--Steinman
-arms), a native C17, external baselines for the C36 solves, a second
-nonlinear PDE and device-traffic measurements remain open
+single constructed box instance. A solve-level comparison with
+\texttt{torch.func}, a higher-order Taylor-mode producer for the jet
+adapter, a native C17, a second nonlinear PDE and device-traffic measurements remain open
 experiments rather than implied consequences of the implementation.
 
 \section{Conclusion}
@@ -2652,8 +2722,11 @@ auditor rejects cross-architecture rounding. A second cohort, with a
 rounding-bounded auditor, passes 5 of 5 with a median of 5,074 seconds to
 verified accuracy on one GH200. In a paired cohort the analytic engine
 reaches the verified loss threshold 1.26$\times$ sooner than the
-parameter-AD control in all five pairs. External baselines for the C36
-solves remain open.
+parameter-AD control in all five pairs. Per evaluation, \texttt{torch.func}
+equals the analytic engine in eager mode and is 3.72$\times$ slower as a CUDA
+Graph replay; a collapsed-\texttt{jet} adapter and nested autograd are 38$\times$
+and 251$\times$ slower in eager mode. A solve-level comparison with
+\texttt{torch.func} remains open.
 
 
 \begin{thebibliography}{99}

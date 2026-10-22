@@ -1,0 +1,26 @@
+{
+ "state": "COMPLETE",
+ "kind": "development probe, not a result",
+ "seed": 361901,
+ "methods": {
+  "analytic": {
+   "graph_seconds": 0.13229131290136137
+  },
+  "func_jacfwd": {
+   "eager_seconds": 3.8122514510178007,
+   "eager_error": 1.3111930510127575e-06,
+   "compiled_chunk": 4096,
+   "compile_and_warmup_seconds": 1147.7211166390043,
+   "failure": "Traceback (most recent call last):\n  File \"tools/c36_external_probe2.py\", line 92, in main\n    value, row['compiled_seconds'] = timed(compiled, 3)\n                                     ~~~~~^^^^^^^^^^^^^\n  File \"tools/c36_external_probe2.py\", line 27, in timed\n    result = function()\n  File \"site-packages/torch/_dynamo/eval_frame.py\", line 563, in __call__\n    return super().__call__(*args, **kwargs)\n           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"site-packages/torch/nn/modules/module.py\", line 1783, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"site-packages/torch/nn/modules/module.py\", line 1794, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"site-packages/torch/_dynamo/eval_frame.py\", line 1272, in compile_wrapper\n    raise e.with_traceback(\n    ^^^^^^^^^^^^^^^^^^^^^^^\n        None\n        ^^^^\n    ) from e.__cause__  # User compiler error\n    ^^^^^^^^^^^^^^^^^^\ntorch._dynamo.exc.Unsupported: Attempt to trace generator\n  Explanation: Generators cannot be compiled directly with `torch.compile`.\n  Hint: Call a generator from inside of a non-generator Python function and compile that function instead.\n  Hint: This graph break is fundamental - it is unlikely that Dynamo will ever be able to trace through your code. Consider finding a workaround.\n\n  Developer debug context: \n\n For more details about this graph break, please visit: https://meta-pytorch.github.io/compile-graph-break-site/gb/gb0003.html\n"
+  },
+  "jet_collapsed": {
+   "eager_seconds": 32.97242070300854,
+   "eager_error": 2.244763941852984e-06,
+   "oom_chunks": [
+    4096,
+    1024,
+    512
+   ]
+  }
+ }
+}

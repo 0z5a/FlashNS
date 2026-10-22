@@ -1,0 +1,94 @@
+{
+ "state": "RUNNING",
+ "protocol_version": "C36-external-throughput-20261022-v1",
+ "gpu": "NVIDIA GH200 120GB",
+ "torch": "2.14.1+cu130",
+ "selection": {
+  "analytic": {
+   "eager": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 51.14061152700742,
+    "error_over_budget": 8.511194005216778e-07,
+    "peak_bytes": 203260928,
+    "state": "PASS",
+    "seconds_per_evaluation": 1.7063388906681212,
+    "repeats": 3
+   },
+   "compiled": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 118.86069092000253,
+    "error_over_budget": 8.511194005216778e-07,
+    "changed_error_over_budget": 1.1818040894266748e-06,
+    "peak_bytes": 306322944,
+    "state": "PASS",
+    "seconds_per_evaluation": 0.9688957750040572,
+    "repeats": 1
+   },
+   "graph": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 53.019445458994596,
+    "error_over_budget": 8.511194005216778e-07,
+    "changed_error_over_budget": 3322308583.251133,
+    "peak_bytes": 365028864,
+    "state": "CHECK_FAILED"
+   }
+  },
+  "func_jacfwd": {
+   "eager": {
+    "oom_chunks": [],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 47.603019696005504,
+    "error_over_budget": 1.840829585736898e-06,
+    "peak_bytes": 38769773568,
+    "state": "PASS",
+    "seconds_per_evaluation": 1.6358944990012485,
+    "repeats": 3
+   },
+   "traced": {
+    "oom_chunks": [
+     4096,
+     1024,
+     512,
+     256
+    ],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 114.76225757900102,
+    "error_over_budget": 1.840829585736898e-06,
+    "state": "OUT_OF_MEMORY"
+   },
+   "graph": {
+    "oom_chunks": [],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 123.8569659430068,
+    "error_over_budget": 1.840829585736898e-06,
+    "changed_error_over_budget": 1.1993772543587345e-06,
+    "peak_bytes": 92531636736,
+    "state": "PASS",
+    "seconds_per_evaluation": 0.4954478679865133,
+    "repeats": 1
+   }
+  },
+  "jet_collapsed": {
+   "eager": {
+    "oom_chunks": [
+     512
+    ],
+    "chunk": 256,
+    "build_and_first_call_seconds": 103.66575792201911,
+    "error_over_budget": 1.148240236647768e-06,
+    "peak_bytes": 98516717056,
+    "state": "PASS",
+    "seconds_per_evaluation": 56.36962144402787,
+    "repeats": 1
+   }
+  }
+ },
+ "selected": {
+  "analytic": "compiled",
+  "func_jacfwd": "graph"
+ },
+ "timing": {}
+}

@@ -88,6 +88,10 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - All ten arms reach the threshold and pass physical acceptance, and all audits pass. The registered outcome is analytic faster: the geometric mean ratio is 1.257 (range 1.249–1.269), inside the predicted 1.18–1.28.
   - Evaluation counts match (0.99–1.01), so the gain is per evaluation.
   - Table 26 is new, and the Ethier–Steinman tables are now 27–30. The abstract, contributions, discussion, conclusion and appendix are updated (48 pages).
+- **Section 6.16: external derivative backends (October 22).** Nested PyTorch autograd, `torch.func` and a collapsed-`jet` adapter produce the same C36 state as the analytic engine. Per evaluation:
+  - `torch.func` equals the analytic engine in eager mode (0.99) and is 3.72× slower as a CUDA Graph replay. The C36 advantage over it is therefore execution, not representation.
+  - The jet adapter and nested autograd are 38× and 251× slower in eager mode.
+  - The registered run did not complete: a driver bug dropped the analytic graph, and the job ran out of host memory while tracing the jet adapter. Table 27 reports a post-hoc rerun. The Ethier–Steinman tables are now 28–31 (49 pages).
 
 [Evidence index](evidence-index.json) pins the source reports and their SHA256 values. [C36 reproduction instructions](../c36-potential-proof/README.md) describe the independent readers and protocols. The complete historical H20 artifacts remain preserved separately.
 

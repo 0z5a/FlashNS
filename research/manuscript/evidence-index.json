@@ -2,8 +2,8 @@
  "revision": "2026-10-21",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
  "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "540475c3808f1fab387792e8949365d0c2da83f9fb40ef0afac9a814528d3e9f",
- "previous_manuscript_sha256": "6bd0fd4c3b83c59a145698620383b6b3197ed7ca658e9dbd5f317a5dbcb8833b",
+ "manuscript_sha256": "5a3d29047184e4f02c5640f20a95581aa48b3a345ca5fd2c738c57fa8834a10a",
+ "previous_manuscript_sha256": "540475c3808f1fab387792e8949365d0c2da83f9fb40ef0afac9a814528d3e9f",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -178,7 +178,17 @@
   "../c36-potential-proof/src/box376/external_c36.py": "24b71d3463d7f9aacbf7bddf9786c479aa3ba02256ba9d9fc329281af5be824d",
   "../c36-potential-proof/src/box376/test_external_c36.py": "296546a29aeb8264750c2b0bd834db32eda9acdf9b71483655062713b1dac318",
   "../c36-potential-proof/src/box376/test_external_compile.py": "09747e9b2854cefd1932d3b31054646f4504b6155106c4384fa01a940b648283",
-  "../c36-potential-proof/tools/c36_external_throughput.py": "b64232356eb87661406158811dafb791b52fc7fae19f1488e26ce08a6473ffd7"
+  "../c36-potential-proof/tools/c36_external_throughput.py": "b64232356eb87661406158811dafb791b52fc7fae19f1488e26ce08a6473ffd7",
+  "../c36-potential-proof/c36-external-throughput-registered-20261022.json": "1a955694c8d8b1f6686a09e7370a7d204208048118d8b81b7fd889021dc59fb4",
+  "../c36-potential-proof/c36-external-throughput-r2-partial-20261022.json": "a4b72e80ef98d1558e18119cfdec9906da9affc71ffea8d81b88d5ed6cac2b04",
+  "../c36-potential-proof/c36-external-throughput-r3-20261022.json": "21dfc91674dbaa6b48bc1aeb878cf205f5655189909195446193b9fd6507c3ee",
+  "../c36-potential-proof/c36-graph-diagnostic-20261022.json": "1fe7a4a699c29e185f6ed8895dd86d5b3df3f1c6bc9f39376c21aab36f12e44f",
+  "../c36-potential-proof/c36-external-probe1-20261022.json": "ba68d7f71b15e9b6b56fe77243758ad11b5e4d277e1a64ea87582fc87195769c",
+  "../c36-potential-proof/c36-external-probe2-20261022.json": "3a8413ace7dfb07510641e8f25be96ec7086e3324278c1a6d8d5e011c80635b9",
+  "../c36-potential-proof/c36-external-probe3-20261022.json": "17af9730a587e7366423dc09213676453c24c797029a43d0589e6a8f34685186",
+  "../c36-potential-proof/protocol-external-throughput-20261022-r3.json": "db818f3aec6148436a24e3ffe1ef38206b9b7240303ba56a7f83594ddcd616a4",
+  "../c36-potential-proof/tools/c36_external_throughput_r2.py": "5172bccdb952f7ba96220a1afdf309eb9366bafdd72586da7526fd3644311e5b",
+  "../c36-potential-proof/tools/c36_graph_diagnostic.py": "bc32d7282bb381afc06763233326a50f00e08c4bf3d15f3d5f068552365c9758"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -192,11 +202,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "d8d146cd30775ee98a5a906d0a7265da8114a8d391fe32894d9990a29940f521",
- "previous_pdf_sha256": "cccd0b12f2056ffe8d3b65445aab8294e3143da0ddd4b0d7c9a3cf4934dadb5c",
- "pages": 48,
+ "pdf_sha256": "0d4f642b2b6d5ca512b52ce774c77ae3bcd5471470c8e9b4f06ec9ec34f5870f",
+ "previous_pdf_sha256": "d8d146cd30775ee98a5a906d0a7265da8114a8d391fe32894d9990a29940f521",
+ "pages": 49,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2026 via TinyTeX v2026.10, with microtype), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS (2026-10-22): rendered with Ghostscript 9.54 and read: page 1 (abstract), page 34 (Table 26, Section 6.15); earlier pages 30-33 (Sections 6.12-6.14); no overfull boxes or undefined references.",
+ "pdf_visual_review": "PASS (2026-10-22): rendered with Ghostscript 9.54 and read: page 1 (abstract), page 35 (Table 27, Section 6.16); earlier pages 30-34; no overfull boxes or undefined references.",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -558,5 +568,27 @@
    "jet_collapsed": 8.6,
    "nested_ad": 91.0
   }
- }
+ },
+ "C36_external_throughput": {
+  "registered_run": "incomplete: analytic graph dropped by a driver bug (owner garbage-collected), then host OOM while tracing jet; no timing phase",
+  "posthoc_r3": {
+   "matched_eager": {
+    "func_jacfwd": 0.992,
+    "jet_collapsed": 37.99,
+    "nested_ad": 250.7
+   },
+   "best_vs_best": {
+    "func_jacfwd": 3.716,
+    "jet_collapsed": 491.3,
+    "nested_ad": 3242
+   },
+   "feasible_solve": {
+    "func_jacfwd": true,
+    "jet_collapsed": false,
+    "nested_ad": false
+   }
+  },
+  "allocated_gpu_hours": 7.17
+ },
+ "revision_note_20261022_external": "Adds Section 6.16 and Table 27 (external derivative backends on C36: torch.func 0.99 eager / 3.72 graph, collapsed jet adapter 38 / 491, nested autograd 251 / 3,242; post-hoc rerun after an incomplete registered run); abstract, discussion and conclusion updated; Ethier tables now 28-31. 49 pages."
 }
