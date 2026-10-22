@@ -261,3 +261,69 @@ def build_compiled_external(data, calibration, backend, theta, topology, chunk, 
     traced = make_fx(run)()
     return torch.compile(traced, fullgraph=True, dynamic=False) if compile else traced
 
+
+
+def build_chunked_traced_external(data, calibration, backend, theta, topology, chunk):
+    """Zero-argument loss/gradient whose memory follows the chunk size.
+
+    build_compiled_external traces the whole evaluation as one graph, whose generated code keeps
+    every intermediate until it returns, so its memory does not fall with the chunk size. Here one
+    function per family and chunk shape is traced with make_fx, with the chunk's data as explicit
+    arguments and the parameter leaf read in place; the evaluation calls these pieces chunk by chunk
+    and accumulates. Each piece's intermediates are released when it returns. The returned callable
+    owns everything the pieces read, so it may be captured in a CUDA Graph.
+    """
+    from torch.fx.experimental.proxy_tensor import make_fx
+    from box376.data import FAMILIES, views
+    objective = PreparedPotentialExternalObjective(data, calibration, backend)
+    base = objective._base
+    alpha, origin, scale = base._model_constants
+
+    def piece(name, index):
+        factor = base._consumer.coefficients[index] / base._consumer.denominators[index]
+
+        def run(inputs, gate, weights, *extra):
+            with torch.enable_grad():
+                leaves = views(theta, topology)
+                weight, bias = leaves[0]
+                physical = [(weight * alpha, bias - (weight * alpha) @ origin)] + list(leaves[1:])
+                state = c36.curl_pressure(c36.multiply(gate, RAW[backend](physical, inputs) * scale))
+                if name == 'interior':
+                    numerator = base.independent.independent_interior(state, extra[0], extra[1], weights, base._data['nu'], base._data['lambda_g'])
+                else:
+                    components = slice(3, 4) if name == 'gauge' else slice(0, 3)
+                    inverse = base._consumer.pressure_inverse_square if name == 'gauge' else base._consumer.velocity_inverse_square
+                    difference = state[:, components, 0] - extra[0][:, components]
+                    numerator = (weights * difference.square().sum(-1) * inverse).sum()
+                gradient = torch.autograd.grad(numerator * factor, theta)[0]
+            return numerator.detach(), gradient.detach()
+        return run
+
+    traced, calls = {}, []
+    for index, name in enumerate(FAMILIES):
+        family = base._data['families'][name]
+        inputs, gate = base._geometry[name]
+        for begin in range(0, len(inputs), chunk):
+            sl = slice(begin, begin + chunk)
+            extra = (family['force'][sl], family['force_gradient'][sl]) if name == 'interior' else (family['target'][sl],)
+            args = (inputs[sl], gate[sl], family['weights'][sl]) + extra
+            key = (name, args[0].shape[0])
+            if key not in traced:
+                traced[key] = make_fx(piece(name, index))(*args)
+            calls.append((index, traced[key], args))
+    coefficients, denominators = base._consumer.coefficients, base._consumer.denominators
+
+    class Evaluation:
+        owners = (objective, traced, calls)
+
+        def __call__(self):
+            gradient = torch.zeros_like(theta)
+            numerators = [theta.new_zeros(()) for _ in FAMILIES]
+            for index, function, args in calls:
+                numerator, contribution = function(*args)
+                numerators[index] = numerators[index] + numerator
+                gradient = gradient + contribution
+            numerators = torch.stack(numerators)
+            return (numerators * coefficients / denominators).sum(), gradient, numerators
+
+    return Evaluation()

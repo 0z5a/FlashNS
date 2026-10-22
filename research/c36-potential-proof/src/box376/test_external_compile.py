@@ -7,7 +7,7 @@ from pathlib import Path
 import torch
 
 from box376.data import flatten, initialize, make_data, torch_data, views
-from box376.external_c36 import PreparedPotentialExternalObjective, build_compiled_external
+from box376.external_c36 import PreparedPotentialExternalObjective, build_chunked_traced_external, build_compiled_external
 from box376.normalized_objective import normalization_key
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -41,6 +41,17 @@ class ExternalCompile(unittest.TestCase):
             with torch.no_grad():
                 theta.add_(1e-3)
             self.assertTrue(close(traced(), eager(views(initial + 1e-3, TOPOLOGY), 2)), backend)
+
+
+    def test_chunked_traced_matches_eager_and_reads_parameters_in_place(self):
+        data, calibration, initial = tiny()
+        eager = PreparedPotentialExternalObjective(data, calibration, 'func_jacfwd')
+        theta = initial.clone().requires_grad_(True)
+        evaluation = build_chunked_traced_external(data, calibration, 'func_jacfwd', theta, TOPOLOGY, 2)
+        self.assertTrue(close(evaluation(), eager(views(initial, TOPOLOGY), 2)))
+        with torch.no_grad():
+            theta.add_(1e-3)
+        self.assertTrue(close(evaluation(), eager(views(initial + 1e-3, TOPOLOGY), 2)))
 
 
 if __name__ == '__main__':
