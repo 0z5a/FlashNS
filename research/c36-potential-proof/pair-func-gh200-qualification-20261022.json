@@ -1,0 +1,45 @@
+{
+ "state": "PASS_PAIR_FUNC_GH200_QUALIFICATION",
+ "kind": "qualification on development seed 361901; not a result, no physical observation",
+ "protocol": "protocol-pair-func-qualification-20261022.json",
+ "source_commit": "92a527b",
+ "archive_members": 210,
+ "allocation": {
+  "gpus": 1,
+  "elapsed_seconds": 1000,
+  "gpu_hours": 0.278
+ },
+ "arms": {
+  "analytic": {
+   "Adam_seconds_per_evaluation": 0.1413,
+   "SSBroyden_seconds_per_evaluation": 0.155,
+   "max_check_over_budget": 6.69e-06,
+   "free_bytes_before_inverse_hessian": 100738727936,
+   "peak_allocated_bytes": 20940233728
+  },
+  "func_jacfwd": {
+   "chunk": 1024,
+   "Adam_seconds_per_evaluation": 0.5619,
+   "SSBroyden_seconds_per_evaluation": 0.565,
+   "max_check_over_budget": 6.8e-06,
+   "free_bytes_before_inverse_hessian": 90775158784,
+   "peak_allocated_bytes": 20932621824,
+   "peak_reserved_bytes": 31010586624,
+   "setup_seconds": {
+    "eager_and_dense_AD": 89.1,
+    "warmup": 5.1,
+    "graph_capture": 10.1
+   }
+  }
+ },
+ "per_evaluation_ratio_func_over_analytic": {
+  "Adam": 3.98,
+  "SSBroyden": 3.65
+ },
+ "auditor_development_check": "box376.audit_c36_pair_func passes on this archive (not-reached path, 210 members)",
+ "earlier_attempts": [
+  "make_fx-traced graph at chunk 1024 (two attempts): 92.5 GB peak, 8.7 GB free for the inverse Hessian, trainer refused to start (archived)",
+  "one attempt ended by a cancellation of every job on the account, unrelated to this cohort (archived)"
+ ],
+ "closure": "driver COMPLETE, both arm processes exit 0"
+}

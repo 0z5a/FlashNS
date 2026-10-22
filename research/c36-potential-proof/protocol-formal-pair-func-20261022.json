@@ -1,5 +1,4 @@
 {
- "state": "DRAFT_PENDING_GH200_QUALIFICATION_NOT_REGISTERED",
  "version": "C36-formal-pair-func-20261022-v1",
  "scope": "Prospective paired comparison on GH200 of the analytic engine and the torch.func jacfwd backend (box376.external_c36), each as a CUDA Graph replay: five previously unused seeds, both arms sequentially on one GPU in one job. Primary measurement: active training seconds to the registered loss threshold, each threshold checkpoint verified physically. Instance, data, network, Adam4000 and dense SSBroyden, tolerances, physical gates, observer and auditor are those of the earlier paired cohort.",
  "source_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
@@ -416,7 +415,8 @@
    4095
   ],
   "native_subset_scope": "131 fixed interior points plus all value families, complete 50692 parameter gradient; not a new full-coordinate-AD objective proof",
-  "parameter_ad_GH200": "pair-gh200-qualification-20261021.json"
+  "parameter_ad_GH200": "pair-gh200-qualification-20261021.json",
+  "torch_func_GH200": "pair-func-gh200-qualification-20261022.json"
  },
  "time_to_accuracy": {
   "observer_timeout_seconds": 4200,
@@ -469,9 +469,16 @@
    "setup seconds excluding the native subset"
   ],
   "not_reached": "an arm that misses the threshold within the guard is NOT_REACHED; its pair is not jointly accepted and it is not observed",
-  "prediction": "PENDING_QUALIFICATION",
+  "prediction": {
+   "primary_ratio": 3.83,
+   "range": [
+    3.6,
+    4.1
+   ],
+   "basis": "qualification: torch.func/analytic seconds per evaluation 3.98 (Adam) and 3.65 (SSBroyden), weighted by about 4,000 Adam and 3,000 SSBroyden evaluations to the threshold, assuming equal evaluation counts"
+  },
   "func_chunk": 1024,
-  "func_chunk_basis": "PENDING_QUALIFICATION: eager torch.func at chunk 1024 peaks at 9.8 GB in development"
+  "func_chunk_basis": "qualification on development seed 361901 (pair-func-gh200-qualification-20261022.json): eager torch.func captured at chunk 1024 leaves 90.8 GB free before the inverse Hessian"
  },
  "independent_audit": {
   "module": "box376.audit_c36_pair_func",

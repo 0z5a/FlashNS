@@ -1042,3 +1042,10 @@ Files: [c36-pair-cohort-20261021.json](c36-pair-cohort-20261021.json), generated
 - **Feasibility.** A torch.func solve fits one job (about 3.1 h with observations). The jet adapter and nested autograd project to about 5.5 and 35 days.
 - **Cost.** The three runs used 7.17 allocated GPU-hours. [Result](c36-external-throughput-r3-20261022.json).
 
+## Paired cohort: analytic engine vs torch.func (registered 2026-10-22)
+
+[FORMAL-PAIR-FUNC-20261022.md](FORMAL-PAIR-FUNC-20261022.md) registers five new seeds. Each runs both engines on one GH200 as CUDA Graph replays to a training loss of 1e-8, and every threshold checkpoint is verified physically.
+- **Prediction.** The registered prediction is 3.83 (3.6–4.1), from the [qualification](pair-func-gh200-qualification-20261022.json).
+- **Code.** [`potential_train_pair_func`](src/box376/potential_train_pair_func.py), [`run_c36_pair_func`](src/box376/run_c36_pair_func.py), [`audit_c36_pair_func`](src/box376/audit_c36_pair_func.py) and [`decide_c36_pair_func`](src/box376/decide_c36_pair_func.py).
+- **Memory diagnostic.** [`tools/c36_func_memory_diagnostic.py`](tools/c36_func_memory_diagnostic.py) records why the traced variant was not used.
+
