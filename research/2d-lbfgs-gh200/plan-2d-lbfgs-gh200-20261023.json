@@ -1,0 +1,731 @@
+{
+ "protocol": "protocol-2d-lbfgs-gh200-20261023.json",
+ "protocol_sha256": "7259fae1d62d2a85477fece884e4c90b9e4431908fa7293556fe75aa0ae4edcf",
+ "version": "FlashNS-2D-lbfgs-gh200-20261023-v1",
+ "tasks": [
+  {
+   "id": "light-n65536-s862102",
+   "tier": 0,
+   "cell": "light",
+   "interior": 65536,
+   "seed": 862102,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862102"
+   ]
+  },
+  {
+   "id": "stock-n16384-s862105",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 16384,
+   "seed": 862105,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862105"
+   ]
+  },
+  {
+   "id": "stock-n2048-s862106",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 2048,
+   "seed": 862106,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862106"
+   ]
+  },
+  {
+   "id": "stock-n2048-s862104",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 2048,
+   "seed": 862104,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862104"
+   ]
+  },
+  {
+   "id": "light-n2048-s862102",
+   "tier": 0,
+   "cell": "light",
+   "interior": 2048,
+   "seed": 862102,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862102"
+   ]
+  },
+  {
+   "id": "light-n65536-s862105",
+   "tier": 0,
+   "cell": "light",
+   "interior": 65536,
+   "seed": 862105,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862105"
+   ]
+  },
+  {
+   "id": "stock-n65536-s862106",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 65536,
+   "seed": 862106,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862106"
+   ]
+  },
+  {
+   "id": "stock-n65536-s862103",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 65536,
+   "seed": 862103,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862103"
+   ]
+  },
+  {
+   "id": "stock-n2048-s862105",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 2048,
+   "seed": 862105,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862105"
+   ]
+  },
+  {
+   "id": "light-n16384-s862104",
+   "tier": 0,
+   "cell": "light",
+   "interior": 16384,
+   "seed": 862104,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862104"
+   ]
+  },
+  {
+   "id": "light-n16384-s862101",
+   "tier": 0,
+   "cell": "light",
+   "interior": 16384,
+   "seed": 862101,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862101"
+   ]
+  },
+  {
+   "id": "light-n2048-s862104",
+   "tier": 0,
+   "cell": "light",
+   "interior": 2048,
+   "seed": 862104,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862104"
+   ]
+  },
+  {
+   "id": "stock-n16384-s862102",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 16384,
+   "seed": 862102,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862102"
+   ]
+  },
+  {
+   "id": "light-n16384-s862103",
+   "tier": 0,
+   "cell": "light",
+   "interior": 16384,
+   "seed": 862103,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862103"
+   ]
+  },
+  {
+   "id": "light-n16384-s862105",
+   "tier": 0,
+   "cell": "light",
+   "interior": 16384,
+   "seed": 862105,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862105"
+   ]
+  },
+  {
+   "id": "light-n16384-s862102",
+   "tier": 0,
+   "cell": "light",
+   "interior": 16384,
+   "seed": 862102,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862102"
+   ]
+  },
+  {
+   "id": "stock-n2048-s862102",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 2048,
+   "seed": 862102,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862102"
+   ]
+  },
+  {
+   "id": "light-n65536-s862103",
+   "tier": 0,
+   "cell": "light",
+   "interior": 65536,
+   "seed": 862103,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862103"
+   ]
+  },
+  {
+   "id": "light-n2048-s862103",
+   "tier": 0,
+   "cell": "light",
+   "interior": 2048,
+   "seed": 862103,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862103"
+   ]
+  },
+  {
+   "id": "stock-n16384-s862103",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 16384,
+   "seed": 862103,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862103"
+   ]
+  },
+  {
+   "id": "light-n65536-s862101",
+   "tier": 0,
+   "cell": "light",
+   "interior": 65536,
+   "seed": 862101,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862101"
+   ]
+  },
+  {
+   "id": "light-n2048-s862106",
+   "tier": 0,
+   "cell": "light",
+   "interior": 2048,
+   "seed": 862106,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862106"
+   ]
+  },
+  {
+   "id": "light-n16384-s862106",
+   "tier": 0,
+   "cell": "light",
+   "interior": 16384,
+   "seed": 862106,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862106"
+   ]
+  },
+  {
+   "id": "stock-n16384-s862104",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 16384,
+   "seed": 862104,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862104"
+   ]
+  },
+  {
+   "id": "stock-n16384-s862101",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 16384,
+   "seed": 862101,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862101"
+   ]
+  },
+  {
+   "id": "light-n65536-s862104",
+   "tier": 0,
+   "cell": "light",
+   "interior": 65536,
+   "seed": 862104,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862104"
+   ]
+  },
+  {
+   "id": "stock-n2048-s862103",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 2048,
+   "seed": 862103,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862103"
+   ]
+  },
+  {
+   "id": "stock-n65536-s862102",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 65536,
+   "seed": 862102,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862102"
+   ]
+  },
+  {
+   "id": "stock-n2048-s862101",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 2048,
+   "seed": 862101,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862101"
+   ]
+  },
+  {
+   "id": "stock-n16384-s862106",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 16384,
+   "seed": 862106,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862106"
+   ]
+  },
+  {
+   "id": "light-n2048-s862101",
+   "tier": 0,
+   "cell": "light",
+   "interior": 2048,
+   "seed": 862101,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862101"
+   ]
+  },
+  {
+   "id": "stock-n65536-s862104",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 65536,
+   "seed": 862104,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862104"
+   ]
+  },
+  {
+   "id": "light-n2048-s862105",
+   "tier": 0,
+   "cell": "light",
+   "interior": 2048,
+   "seed": 862105,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862105"
+   ]
+  },
+  {
+   "id": "stock-n65536-s862101",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 65536,
+   "seed": 862101,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862101"
+   ]
+  },
+  {
+   "id": "light-n65536-s862106",
+   "tier": 0,
+   "cell": "light",
+   "interior": 65536,
+   "seed": 862106,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862106"
+   ]
+  },
+  {
+   "id": "stock-n65536-s862105",
+   "tier": 0,
+   "cell": "stock",
+   "interior": 65536,
+   "seed": 862105,
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862105"
+   ]
+  },
+  {
+   "id": "drift-light-n65536-s862102",
+   "tier": 1,
+   "cell": "light",
+   "interior": 65536,
+   "seed": 862102,
+   "repeat_of": "light-n65536-s862102",
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "light",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "65536",
+    "--seed",
+    "862102"
+   ]
+  },
+  {
+   "id": "drift-stock-n16384-s862105",
+   "tier": 1,
+   "cell": "stock",
+   "interior": 16384,
+   "seed": 862105,
+   "repeat_of": "stock-n16384-s862105",
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "16384",
+    "--seed",
+    "862105"
+   ]
+  },
+  {
+   "id": "drift-stock-n2048-s862106",
+   "tier": 1,
+   "cell": "stock",
+   "interior": 2048,
+   "seed": 862106,
+   "repeat_of": "stock-n2048-s862106",
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862106"
+   ]
+  },
+  {
+   "id": "drift-stock-n2048-s862104",
+   "tier": 1,
+   "cell": "stock",
+   "interior": 2048,
+   "seed": 862104,
+   "repeat_of": "stock-n2048-s862104",
+   "argv": [
+    "light_solve.py",
+    "--optimizer",
+    "stock",
+    "--backend",
+    "gl8_native",
+    "--interior-count",
+    "2048",
+    "--seed",
+    "862104"
+   ]
+  }
+ ]
+}

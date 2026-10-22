@@ -48,3 +48,6 @@ jobs:
           box376.test_fold_zero_gate box376.test_schedule_family
           box376.test_decide_c36_v4 box376.test_decide_c36_v5 box376.test_decide_c36_v6
           box376.test_decide_c36_v7 box376.test_ssbroyden box376.test_tta_control box376.test_audit_tta_v2 box376.test_decide_c36_pair box376.test_pair_control box376.test_external_c36 box376.test_decide_c36_pair_func box376.test_pair_func_control
+      - name: 2D L-BFGS GH200 study CPU checks
+        working-directory: research/2d-lbfgs-gh200
+        run: PYTHONPATH=src python -m unittest -v test_lbfgs_study
