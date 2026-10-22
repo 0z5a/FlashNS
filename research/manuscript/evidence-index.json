@@ -1,9 +1,9 @@
 {
- "revision": "2026-10-21",
+ "revision": "2026-10-23",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
- "evidence_snapshot_commit": "37ced2805131fcfaba6f7f89f8b0b1d17e5cef28",
- "manuscript_sha256": "5a3d29047184e4f02c5640f20a95581aa48b3a345ca5fd2c738c57fa8834a10a",
- "previous_manuscript_sha256": "540475c3808f1fab387792e8949365d0c2da83f9fb40ef0afac9a814528d3e9f",
+ "evidence_snapshot_commit": "3dca6ac1cc222dad0e4797653992e53eabc8aef2",
+ "manuscript_sha256": "83bf08fcb3c8dea67956d9d8ddac686b3fdc83ed2e905e63c6c4b69e44f0478d",
+ "previous_manuscript_sha256": "5a3d29047184e4f02c5640f20a95581aa48b3a345ca5fd2c738c57fa8834a10a",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -199,7 +199,20 @@
   "../c36-potential-proof/src/box376/start_c36_pair_func.sbatch": "3520eb7454cb49d8f679542d1135fa866114456ebbad0294fa264e2f3b6bf89f",
   "../c36-potential-proof/src/box376/audit_c36_pair_func.py": "ea85fc37a5560d960463fb0a41aeac1ec1a76e4d84670d67ef9b9266224849ad",
   "../c36-potential-proof/src/box376/decide_c36_pair_func.py": "1f9387a489bef25a522c6e805c5bd05a3f6cecbfc6cff98e85ac5f35f9200cc8",
-  "../c36-potential-proof/tools/c36_func_memory_diagnostic.py": "decafb5e226a349c66da728a1b5a9ad7f7960a5f0206c99b8572194d93eb5658"
+  "../c36-potential-proof/tools/c36_func_memory_diagnostic.py": "decafb5e226a349c66da728a1b5a9ad7f7960a5f0206c99b8572194d93eb5658",
+  "../2d-lbfgs-gh200/protocol-2d-lbfgs-gh200-20261023.json": "1d4846fe7c249549b01ffbe97bfa42d9769d4887456b100aa7567e302af3dfff",
+  "../2d-lbfgs-gh200/plan-2d-lbfgs-gh200-20261023.json": "786d44ea2cb54f6d2c56441f9a2d475ff4ee1ea8c86a5c73a66d8bf01ebea11e",
+  "../2d-lbfgs-gh200/lbfgs-result-20261023.json": "124988ad50df6d9f1822d891f363b5a46df3c55ea66dc83e1d07776f20d1f5ee",
+  "../2d-lbfgs-gh200/driver-state-20261023.json": "70f0c72ab23361d9f7b7bb2743714c602d5757f266474803f7fec7cf81e25d93",
+  "../2d-lbfgs-gh200/release-source-map-20261023.json": "238aed6cb9fa41844f12034aa2b1ca83a5fe1cb9d09a25720bf94f1d971bca50",
+  "../2d-lbfgs-gh200/read_lbfgs_study.py": "1c50ea88e27dbe9aa300b4cb41be18121c2ad4df450b30e2eaa644b1c907719f",
+  "../2d-lbfgs-gh200/run_lbfgs_study.py": "ad71f9f2e5a207aafa4bb85d905f70dc87bb0872023b7b53584b126f900882b5",
+  "../2d-lbfgs-gh200/make_lbfgs_plan.py": "2b7873d7de65be996bab1b8bcc2249226d2e44d19a67a867c7ce0eabefad16b1",
+  "../2d-lbfgs-gh200/src/lbfgs_light.py": "9930fbb8d1f5c3c3856d019b31db487b617d636997e3120e9312d7491696dd8a",
+  "../2d-lbfgs-gh200/src/light_solve.py": "9a4bd4f75995f84e7ba47343dd1eef17c3aba6b6c6d5f56611ae5489268060e3",
+  "../2d-lbfgs-gh200/entry_lbfgs_study.sh": "23a4a0ddbc5fa00a48abc4f032ed847b3498e5eb5fbc3f6dd8faea6532894fc6",
+  "../2d-lbfgs-gh200/start_lbfgs_study.sbatch": "7d3080d10c55713613a0fdbc00d3ea9c0b37eb0dd9f7a36cfb3b91f3424c0549",
+  "../2d-lbfgs-gh200/test_lbfgs_study.py": "3ea4b10cce3e579ce0be189d327837807520d4abb0f39c347aebff6a59fc36d9"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -213,11 +226,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "0d4f642b2b6d5ca512b52ce774c77ae3bcd5471470c8e9b4f06ec9ec34f5870f",
- "previous_pdf_sha256": "d8d146cd30775ee98a5a906d0a7265da8114a8d391fe32894d9990a29940f521",
- "pages": 49,
- "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2026 via TinyTeX v2026.10, with microtype), three passes, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS (2026-10-22): rendered with Ghostscript 9.54 and read: page 1 (abstract), page 35 (Table 27, Section 6.16); earlier pages 30-34; no overfull boxes or undefined references.",
+ "pdf_sha256": "72a50bfc4ca21cd2a2cb6c8d3746392a811e38a65ffcbe075de9640e6b578db9",
+ "previous_pdf_sha256": "0d4f642b2b6d5ca512b52ce774c77ae3bcd5471470c8e9b4f06ec9ec34f5870f",
+ "pages": 51,
+ "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2026 via TinyTeX v2026.10, with microtype), three passes with BibTeX, no errors, undefined references or overfull boxes",
+ "pdf_visual_review": "PASS (2026-10-23): rendered pages 1 (abstract) and 18 (Table 13, Section 5.9) read after the build; no overfull boxes or undefined references.",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -607,5 +620,14 @@
   "status": "registered before any run",
   "prediction": "3.83 (3.6-4.1)",
   "qualification": "pair-func-gh200-qualification-20261022.json"
+ },
+ "revision_note_20261023_lbfgs_gh200": "Adds Section 5.9 and Table 13 (registered GH200 optimizer-execution study: replacing only the L-BFGS two-loop by a device-side version leaves all 36 solves bitwise identical and shortens optimization 2.21/1.82/1.48x at 2,048/16,384/65,536 points; the registered drift rule marks the timing NOT_VALID on one 5.7% stock repeat), a platform note on x86/aarch64 torch.randn, and two development measurements (single-program two-loop, four-GPU symmetric-buffer split); abstract, contributions and conclusion updated; later tables move up by one (C36 from 14, Ethier 29-32). 51 pages.",
+ "lbfgs_execution_2d_GH200": {
+  "protocol": "FlashNS-2D-lbfgs-gh200-20261023-v2",
+  "pairs_identical": "36/36",
+  "optimization_stock_over_light_gm": "2.21 / 1.82 / 1.48 at 2048 / 16384 / 65536 points",
+  "registered_decision": "EXECUTION_GAIN_IDENTICAL at every size with timing NOT_VALID (one drift repeat 0.943)",
+  "archive_sha256": "321d7f77ff5545fc39b825dc130a85ca7c040813156a28a6e975f857b0c7fa44",
+  "earlier_attempts": "admission refused (x86 initialization hashes); prebuild failed (wrapper import); no scored task in either"
  }
 }

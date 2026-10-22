@@ -1,0 +1,469 @@
+{
+ "state": "COMPLETE",
+ "started_unix": 1792710291.5721364,
+ "self_test": false,
+ "checks": {
+  "job_and_node": true,
+  "manifest": {
+   "verified": 14,
+   "mismatches": []
+  },
+  "plan_protocol": true,
+  "source_commit": "286d7e394c8bd39f9aa409715afe9f1bac915cec",
+  "source_status": "?? experiments/contracted_jets/lbfgs_light.py\n?? experiments/contracted_jets/light_solve.py\n",
+  "source_only_new_files": true,
+  "runtime": {
+   "observed": {
+    "torch": "2.14.1+cu130",
+    "triton": "3.8.0",
+    "lbfgs": "9feb016749bd7b7a6c0233745a6811c6867e27a932313faa62aae107c746eaba"
+   },
+   "stderr_tail": "",
+   "match": true
+  },
+  "frozen_inputs": {
+   "exit": 0,
+   "stderr_tail": "",
+   "theta_match": {
+    "862101": true,
+    "862102": true,
+    "862103": true,
+    "862104": true,
+    "862105": true,
+    "862106": true
+   },
+   "data_match": {
+    "2048:training_points_sha256": true,
+    "2048:pde_weights_sha256": true,
+    "2048:boundary_weights_sha256": true,
+    "2048:validation_points_sha256": true,
+    "2048:validation_boundary_sha256": true,
+    "16384:training_points_sha256": true,
+    "16384:pde_weights_sha256": true,
+    "16384:boundary_weights_sha256": true,
+    "16384:validation_points_sha256": true,
+    "16384:validation_boundary_sha256": true,
+    "65536:training_points_sha256": true,
+    "65536:pde_weights_sha256": true,
+    "65536:boundary_weights_sha256": true,
+    "65536:validation_points_sha256": true,
+    "65536:validation_boundary_sha256": true
+   }
+  },
+  "gpus": {
+   "rows": "GPU-d47e3be6-7355-7922-5d53-44f2d0ce9cd7, NVIDIA GH200 120GB, 2\nGPU-cc37f790-27a2-9ff2-ab2a-2f59dc017a20, NVIDIA GH200 120GB, 3\nGPU-afb2971a-7649-eaab-6aa2-efdd60dddbae, NVIDIA GH200 120GB, 3\nGPU-a0f46bf5-afdb-0f17-9ed6-b2ca747a695d, NVIDIA GH200 120GB, 3\n",
+   "apps": "",
+   "idle": true
+  },
+  "prebuild": {
+   "build": 0,
+   "light_solve": 0
+  },
+  "gpus_idle_after": true
+ },
+ "tasks": {
+  "light-n65536-s862102": {
+   "lane": 0,
+   "tier": 0,
+   "started_unix": 1792710413.8987522,
+   "exit": 0,
+   "finished_unix": 1792710448.2043102,
+   "seconds": 34.30555820465088,
+   "state": "COMPLETE"
+  },
+  "stock-n16384-s862105": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710413.8999295,
+   "exit": 0,
+   "finished_unix": 1792710442.148437,
+   "seconds": 28.248507738113403,
+   "state": "COMPLETE"
+  },
+  "stock-n2048-s862106": {
+   "lane": 2,
+   "tier": 0,
+   "started_unix": 1792710413.9013333,
+   "exit": 0,
+   "finished_unix": 1792710451.910649,
+   "seconds": 38.009315967559814,
+   "state": "COMPLETE"
+  },
+  "stock-n2048-s862104": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710413.9012995,
+   "exit": 0,
+   "finished_unix": 1792710440.4488058,
+   "seconds": 26.54750657081604,
+   "state": "COMPLETE"
+  },
+  "light-n2048-s862102": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710440.4500515,
+   "exit": 0,
+   "finished_unix": 1792710459.5381398,
+   "seconds": 19.088088274002075,
+   "state": "COMPLETE"
+  },
+  "light-n65536-s862105": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710442.1497598,
+   "exit": 0,
+   "finished_unix": 1792710469.0965395,
+   "seconds": 26.94678020477295,
+   "state": "COMPLETE"
+  },
+  "stock-n65536-s862106": {
+   "lane": 0,
+   "tier": 0,
+   "started_unix": 1792710448.20557,
+   "exit": 0,
+   "finished_unix": 1792710500.281502,
+   "seconds": 52.075932025909424,
+   "state": "COMPLETE"
+  },
+  "stock-n65536-s862103": {
+   "lane": 2,
+   "tier": 0,
+   "started_unix": 1792710451.9119503,
+   "exit": 0,
+   "finished_unix": 1792710499.0322065,
+   "seconds": 47.120256423950195,
+   "state": "COMPLETE"
+  },
+  "stock-n2048-s862105": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710459.539693,
+   "exit": 0,
+   "finished_unix": 1792710485.6857302,
+   "seconds": 26.146037340164185,
+   "state": "COMPLETE"
+  },
+  "light-n16384-s862104": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710469.0982597,
+   "exit": 0,
+   "finished_unix": 1792710490.5393517,
+   "seconds": 21.441092014312744,
+   "state": "COMPLETE"
+  },
+  "light-n16384-s862101": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710485.6870177,
+   "exit": 0,
+   "finished_unix": 1792710504.524602,
+   "seconds": 18.837584495544434,
+   "state": "COMPLETE"
+  },
+  "light-n2048-s862104": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710490.5407145,
+   "exit": 0,
+   "finished_unix": 1792710505.1735034,
+   "seconds": 14.632789134979248,
+   "state": "COMPLETE"
+  },
+  "stock-n16384-s862102": {
+   "lane": 2,
+   "tier": 0,
+   "started_unix": 1792710499.0336356,
+   "exit": 0,
+   "finished_unix": 1792710528.9834974,
+   "seconds": 29.949861764907837,
+   "state": "COMPLETE"
+  },
+  "light-n16384-s862103": {
+   "lane": 0,
+   "tier": 0,
+   "started_unix": 1792710500.2828975,
+   "exit": 0,
+   "finished_unix": 1792710519.8209848,
+   "seconds": 19.538087606430054,
+   "state": "COMPLETE"
+  },
+  "light-n16384-s862105": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710504.5259223,
+   "exit": 0,
+   "finished_unix": 1792710523.413486,
+   "seconds": 18.887564182281494,
+   "state": "COMPLETE"
+  },
+  "light-n16384-s862102": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710505.1748357,
+   "exit": 0,
+   "finished_unix": 1792710524.7133684,
+   "seconds": 19.538532733917236,
+   "state": "COMPLETE"
+  },
+  "stock-n2048-s862102": {
+   "lane": 0,
+   "tier": 0,
+   "started_unix": 1792710519.8224123,
+   "exit": 0,
+   "finished_unix": 1792710556.5805094,
+   "seconds": 36.75809717178345,
+   "state": "COMPLETE"
+  },
+  "light-n65536-s862103": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710523.4148529,
+   "exit": 0,
+   "finished_unix": 1792710555.4169936,
+   "seconds": 32.00214099884033,
+   "state": "COMPLETE"
+  },
+  "light-n2048-s862103": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710524.7146823,
+   "exit": 0,
+   "finished_unix": 1792710539.8983219,
+   "seconds": 15.183639526367188,
+   "state": "COMPLETE"
+  },
+  "stock-n16384-s862103": {
+   "lane": 2,
+   "tier": 0,
+   "started_unix": 1792710528.9848502,
+   "exit": 0,
+   "finished_unix": 1792710562.0887632,
+   "seconds": 33.10391330718994,
+   "state": "COMPLETE"
+  },
+  "light-n65536-s862101": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710539.8997436,
+   "exit": 0,
+   "finished_unix": 1792710566.9964888,
+   "seconds": 27.096745252609253,
+   "state": "COMPLETE"
+  },
+  "light-n2048-s862106": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710555.418402,
+   "exit": 0,
+   "finished_unix": 1792710574.5071974,
+   "seconds": 19.08879566192627,
+   "state": "COMPLETE"
+  },
+  "light-n16384-s862106": {
+   "lane": 0,
+   "tier": 0,
+   "started_unix": 1792710556.5818548,
+   "exit": 0,
+   "finished_unix": 1792710578.6730344,
+   "seconds": 22.091179609298706,
+   "state": "COMPLETE"
+  },
+  "stock-n16384-s862104": {
+   "lane": 2,
+   "tier": 0,
+   "started_unix": 1792710562.0905573,
+   "exit": 0,
+   "finished_unix": 1792710593.192693,
+   "seconds": 31.102136373519897,
+   "state": "COMPLETE"
+  },
+  "stock-n16384-s862101": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710566.9978402,
+   "exit": 0,
+   "finished_unix": 1792710593.0434165,
+   "seconds": 26.045576333999634,
+   "state": "COMPLETE"
+  },
+  "light-n65536-s862104": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710574.508515,
+   "exit": 0,
+   "finished_unix": 1792710604.2584121,
+   "seconds": 29.749897480010986,
+   "state": "COMPLETE"
+  },
+  "stock-n2048-s862103": {
+   "lane": 0,
+   "tier": 0,
+   "started_unix": 1792710578.6744723,
+   "exit": 0,
+   "finished_unix": 1792710605.2697818,
+   "seconds": 26.595309734344482,
+   "state": "COMPLETE"
+  },
+  "stock-n65536-s862102": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710593.044954,
+   "exit": 0,
+   "finished_unix": 1792710640.6670556,
+   "seconds": 47.62210178375244,
+   "state": "COMPLETE"
+  },
+  "stock-n2048-s862101": {
+   "lane": 2,
+   "tier": 0,
+   "started_unix": 1792710593.1944735,
+   "exit": 0,
+   "finished_unix": 1792710625.247054,
+   "seconds": 32.05258059501648,
+   "state": "COMPLETE"
+  },
+  "stock-n16384-s862106": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710604.2600427,
+   "exit": 0,
+   "finished_unix": 1792710645.673853,
+   "seconds": 41.41381025314331,
+   "state": "COMPLETE"
+  },
+  "light-n2048-s862101": {
+   "lane": 0,
+   "tier": 0,
+   "started_unix": 1792710605.2711346,
+   "exit": 0,
+   "finished_unix": 1792710621.1042814,
+   "seconds": 15.833147048950195,
+   "state": "COMPLETE"
+  },
+  "stock-n65536-s862104": {
+   "lane": 0,
+   "tier": 0,
+   "started_unix": 1792710621.1056814,
+   "exit": 0,
+   "finished_unix": 1792710660.9674957,
+   "seconds": 39.86181426048279,
+   "state": "COMPLETE"
+  },
+  "light-n2048-s862105": {
+   "lane": 2,
+   "tier": 0,
+   "started_unix": 1792710625.2486243,
+   "exit": 0,
+   "finished_unix": 1792710640.1315656,
+   "seconds": 14.882941484451294,
+   "state": "COMPLETE"
+  },
+  "stock-n65536-s862101": {
+   "lane": 2,
+   "tier": 0,
+   "started_unix": 1792710640.132904,
+   "exit": 0,
+   "finished_unix": 1792710676.9405332,
+   "seconds": 36.807629346847534,
+   "state": "COMPLETE"
+  },
+  "light-n65536-s862106": {
+   "lane": 1,
+   "tier": 0,
+   "started_unix": 1792710640.668938,
+   "exit": 0,
+   "finished_unix": 1792710675.9264328,
+   "seconds": 35.25749492645264,
+   "state": "COMPLETE"
+  },
+  "stock-n65536-s862105": {
+   "lane": 3,
+   "tier": 0,
+   "started_unix": 1792710645.67552,
+   "exit": 0,
+   "finished_unix": 1792710680.682638,
+   "seconds": 35.00711798667908,
+   "state": "COMPLETE"
+  },
+  "drift-light-n65536-s862102": {
+   "lane": 0,
+   "tier": 1,
+   "started_unix": 1792710660.9690945,
+   "exit": 0,
+   "finished_unix": 1792710692.5208144,
+   "seconds": 31.551719903945923,
+   "state": "COMPLETE"
+  },
+  "drift-stock-n16384-s862105": {
+   "lane": 1,
+   "tier": 1,
+   "started_unix": 1792710675.927961,
+   "exit": 0,
+   "finished_unix": 1792710701.0238872,
+   "seconds": 25.09592628479004,
+   "state": "COMPLETE"
+  },
+  "drift-stock-n2048-s862106": {
+   "lane": 2,
+   "tier": 1,
+   "started_unix": 1792710676.9420555,
+   "exit": 0,
+   "finished_unix": 1792710710.2951906,
+   "seconds": 33.35313534736633,
+   "state": "COMPLETE"
+  },
+  "drift-stock-n2048-s862104": {
+   "lane": 3,
+   "tier": 1,
+   "started_unix": 1792710680.6841795,
+   "exit": 0,
+   "finished_unix": 1792710704.1274042,
+   "seconds": 23.443224906921387,
+   "state": "COMPLETE"
+  }
+ },
+ "lanes": [
+  {
+   "uuid": "GPU-d47e3be6-7355-7922-5d53-44f2d0ce9cd7",
+   "lock_path": "<root>/locks/GPU-d47e3be6-7355-7922-5d53-44f2d0ce9cd7.lock",
+   "lock_inode": 180146066761466336,
+   "acquired_unix": 1792710297.5830057,
+   "released_unix": 1792710710.5044503
+  },
+  {
+   "uuid": "GPU-cc37f790-27a2-9ff2-ab2a-2f59dc017a20",
+   "lock_path": "<root>/locks/GPU-cc37f790-27a2-9ff2-ab2a-2f59dc017a20.lock",
+   "lock_inode": 180146066761466337,
+   "acquired_unix": 1792710297.5834582,
+   "released_unix": 1792710710.504642
+  },
+  {
+   "uuid": "GPU-afb2971a-7649-eaab-6aa2-efdd60dddbae",
+   "lock_path": "<root>/locks/GPU-afb2971a-7649-eaab-6aa2-efdd60dddbae.lock",
+   "lock_inode": 180146066761466338,
+   "acquired_unix": 1792710297.5839043,
+   "released_unix": 1792710710.5048084
+  },
+  {
+   "uuid": "GPU-a0f46bf5-afdb-0f17-9ed6-b2ca747a695d",
+   "lock_path": "<root>/locks/GPU-a0f46bf5-afdb-0f17-9ed6-b2ca747a695d.lock",
+   "lock_inode": 180146066761466339,
+   "acquired_unix": 1792710297.58433,
+   "released_unix": 1792710710.504985
+  }
+ ],
+ "counts": {
+  "COMPLETE": 40
+ },
+ "reader_exit": 0,
+ "archive": {
+  "path": "<root>/lbfgs/durable/2d-lbfgs-gh200-complete.tar.gz",
+  "sha256": "321d7f77ff5545fc39b825dc130a85ca7c040813156a28a6e975f857b0c7fa44",
+  "bytes": 3243160,
+  "members": 162,
+  "members_match_sources": true,
+  "whole_file_sha_reread": true
+ },
+ "finished_unix": 1792710711.6866815
+}

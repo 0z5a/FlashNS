@@ -29,7 +29,11 @@ compiled full-jet control and 1.73--3.37$\times$ faster than matched
 adaptations of collapsed Taylor mode, explicit differentiation and exact
 STDE. On an H100 the same campaign passes all 78 solves, but a fixed L-BFGS
 cost per evaluation compresses these ratios to 1.22$\times$ and
-1.29--1.69$\times$. On the transient three-dimensional Ethier--Steinman
+1.29--1.69$\times$. That cost is the optimizer's execution: a registered
+GH200 study that replaces only the two-loop recursion of L-BFGS by a
+device-side version leaves all 36 solves bitwise unchanged and shortens
+optimization 2.21$\times$ at 2,048 points (1.82$\times$ and 1.48$\times$
+at 16,384 and 65,536; its timing flag failed on one 5.7\% drift repeat). On the transient three-dimensional Ethier--Steinman
 benchmark, a 17-channel contract passes all gates in 18 of 18 H100 solves;
 it is 3.60$\times$ and 6.96$\times$ faster than internal baselines; with all
 methods compiled, its solves are 1.68$\times$ and 1.13$\times$ faster than
@@ -92,7 +96,9 @@ transpose is faster than generic autograd on the same state only from
 \item \emph{Execution.} Library GEMMs, explicit pointwise derivative kernels
 and CUDA Graph replay of the complete loss/gradient program are combined
 with value-only boundary rows and a chunked mode that accumulates the
-globally weighted gradient in a bounded workspace.
+globally weighted gradient in a bounded workspace. On GH200 a device-side
+L-BFGS two-loop leaves solves bitwise unchanged and halves the fixed
+optimizer cost (Section~\ref{sec:lbfgsgh200}).
 \item \emph{A solve-level comparison protocol.} Every method trains from
 identical data and initial parameter bytes under one optimizer program and
 unchanged accuracy gates, with an independent scalar-AD final check, pinned
@@ -1015,6 +1021,100 @@ size the shared optimizer cost compresses them; at larger point counts
 reproduces the chunk trade-off at 16,384 points: chunk-512 allocates an 85\%
 lower setup peak than GL8 (45.9 against 312.8\,MiB) at 3.4 times its replay
 time. No H100 ratio is pooled with H20.
+
+
+\subsection{Optimizer execution on GH200}\label{sec:lbfgsgh200}
+The phase splits above put most of a 2,048-point solve outside the
+gradient: on H100 the L-BFGS phase costs 5.9--7.1\,ms per evaluation in
+every cell against 0.17--0.28\,ms of gradient replay, and post hoc it is
+93\% of the optimization time. The cause is in the optimizer's execution,
+not in the problem. \texttt{torch.optim.LBFGS} keeps the two-loop
+coefficients as device tensors and passes each one as \texttt{alpha=},
+which converts it to a host number: about 109 device synchronizations and
+555 small operators per iteration at history 50. A registered GH200 study,
+whose protocol was committed before the batch ran, asks whether replacing
+only the two-loop recursion by a device-side version shortens complete
+solves \emph{without changing them}.
+\begin{itemize}
+\item \textbf{Cells.} \emph{stock}: \texttt{torch.optim.LBFGS} as
+  installed (torch 2.14.1). \emph{light}: the installed \texttt{step}
+  source with exactly its two-loop block replaced. The coefficients stay on
+  the device; one Triton kernel per history entry computes
+  $\alpha_i = \rho_i\, s_i^\top q$ and the update $q \leftarrow q - \alpha_i
+  y_i$ with a single rounding, which reproduces \texttt{add\_(alpha=)}
+  bitwise (0 of 909,400 elements differ in a development check; a
+  round-twice form differs in 25\%). Once the history is full, the rows
+  are mirrored into a ring buffer and one captured CUDA Graph per ring
+  position replays the whole two-loop. The memory update, the strong-Wolfe
+  line search and the stop tests are the runtime's own code.
+\item \textbf{Solves.} Native GL8 in FP64, the unchanged \texttt{solve.py}
+  program and acceptance, at 2,048, 16,384 and 65,536 interior points on
+  the six formal initializations: 36 solves plus four drift repeats, one
+  fresh process each, four lanes on one GH200 node, every timed task
+  starting with a warm native and Triton cache.
+\item \textbf{Registered rule.} Per size, \texttt{EXECUTION\_GAIN\_IDENTICAL}
+  requires all six pairs to be identical (final parameter SHA-256,
+  evaluation and iteration counts, acceptance), a stock/light
+  optimization-only geometric mean above 1.03 and at least five favourable
+  pairs; any non-identical pair blocks the claim. A drift repeat that is
+  not identical or whose time is outside 5\% marks the timing
+  \texttt{NOT\_VALID}; identity results stand.
+\item \textbf{Platform note.} \texttt{torch.randn} on the CPU is not
+  bitwise identical between x86-64 and the GH200 node's aarch64 CPU, while
+  \texttt{torch.rand} is. The GH200 formal initializations are therefore
+  the aarch64 draws, pinned by hash in the protocol beside the x86 hashes of
+  the H100 studies; the two platforms share the collocation data but not
+  the initial parameters bitwise. A first attempt with the x86 hashes was
+  refused at admission before any GPU work, and a second failed in the
+  prebuild on a wrapper import; neither ran a scored task.
+\end{itemize}
+
+\begin{table}[t]
+\centering
+\caption{Optimizer execution on GH200 (native GL8, FP64, six formal seeds per size). Identical: pairs with the same final parameters, evaluation and iteration counts and acceptance. Ratios are paired stock/light geometric means (range) of optimization-only seconds; above one favours light. Phase costs are median milliseconds per evaluation.}
+\label{tab:lbfgsgh200}
+\small
+\begin{tabular}{rrlrrr}
+\toprule
+Points & Identical & Stock / light & Favour & Adam ms (both) & L-BFGS ms stock / light\\
+\midrule
+2,048 & 6/6 & \textbf{2.21} (1.96--2.38) & 6/6 & 0.22 & 6.64 / 2.93\\
+16,384 & 6/6 & \textbf{1.82} (1.68--2.15) & 6/6 & 0.70 & 6.97 / 3.43\\
+65,536 & 6/6 & \textbf{1.48} (1.33--1.59) & 6/6 & 2.24 & 8.49 / 4.91\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All 36 pairs are identical (Table~\ref{tab:lbfgsgh200}): the light
+optimizer changes execution only. Optimization is 2.21 (1.96--2.38) times
+shorter at 2,048 points, 1.82 at 16,384 and 1.48 at 65,536, with all six
+pairs favourable at every size; the Adam phase is unchanged and the L-BFGS
+phase falls from 6.6--8.5 to 2.9--4.9\,ms per evaluation. By identity,
+geometric mean and favour counts the registered outcome is
+\texttt{EXECUTION\_GAIN\_IDENTICAL} at every size, but the registered drift
+rule marks the timing \texttt{NOT\_VALID}: the four repeats are identical
+to their first runs and three are within 5\% in time (1.005, 0.976, 0.995),
+while one stock repeat at 16,384 points ran 5.7\% faster the second time
+(0.943). The variance is on the stock side, whose host-bound L-BFGS phase
+ran beside three other lanes; the light repeat was within 0.5\%. We report
+the decision with that label; a re-run with one lane per node would be
+needed to validate the timing under the registered rule, and the ranges
+above lie well outside the 5\% drift. The 2,048-point ratio (2.21) is below
+the 2.4--2.9 predicted from three development pairs run one at a time; the
+other two sizes are inside their predicted ranges.
+
+Two development measurements, not registered results, locate the next
+costs. A single-program version of the two-loop (one thread block, $q$ and
+$r$ in registers, one block reduction per history entry) takes 0.147\,ms
+against 0.498\,ms for the graph replay, and lowers the optimizer's cost per
+iteration from 1.27 to 0.92\,ms on a synthetic problem; the remaining cost
+is the line search's host round trips, during which the GPU is idle for most
+of each evaluation at 2,048 points. Splitting the 65,536-point problem over
+the four GPUs of one node, with each rank's loss and gradient summed through
+symmetric buffers in a fixed rank order (17\,$\mu$s per all-reduce, all
+ranks bitwise equal, so the replicated optimizer never diverges), shortens
+one light solve from 21.8 to 11.4\,s; at 2,048 points the same split is
+slower, because every evaluation then waits for the slowest of four hosts.
 
 \section{Three-dimensional transient extension: C36}\label{sec:c36}
 \subsection{Scientific problem and derivative contract}
@@ -2695,7 +2795,11 @@ pointwise execution at that size (1.57) and increasingly to the state at
 larger point counts (1.63--1.66 from 16,384 points on). In whole solves a
 fixed L-BFGS cost of about 6--7 milliseconds per evaluation absorbs the
 gain at the original size; a registered follow-up finds solve-level gains
-of 1.48 and 1.88 at 16,384 and 65,536 points. FP32 training passes the
+of 1.48 and 1.88 at 16,384 and 65,536 points. That fixed cost is the
+optimizer's host-side execution: on GH200 a device-side two-loop leaves all
+36 solves bitwise unchanged and shortens optimization 2.21 times at 2,048
+points (Section~\ref{sec:lbfgsgh200}; the timing flag failed on one drift
+repeat). FP32 training passes the
 unchanged FP64 acceptance and shortens 65,536-point optimization by
 1.36--1.53$\times$ at these 1--2\% gates, while every TF32 solve fails
 acceptance. On the transient
