@@ -1,0 +1,1199 @@
+{
+  "scope": "H100 supplement of original H20 2D Kovasznay; unmodified 460 source files and matched original inputs; no C36 mixing",
+  "seeds": [
+    862101,
+    862102,
+    862103,
+    862104,
+    862105,
+    862106
+  ],
+  "source_commit": "286d7e394c8bd39f9aa409715afe9f1bac915cec",
+  "original_public_protocol_sha256": "1e7007ae88ade4a3d3d5d8bbac033f0a34d4615ae6ffbed1e6ab3ef21e468be4",
+  "atol": 2e-12,
+  "rtol": 2e-11,
+  "parameters": 4547,
+  "formal_points": 2048,
+  "boundary_coordinates": 512,
+  "optimizer": {
+    "Adam_updates": 4000,
+    "LBFGS_blocks": 500,
+    "LBFGS_max_iter": 20,
+    "LBFGS_max_eval": 25,
+    "history": 50,
+    "line_search": "strong_wolfe"
+  },
+  "lanes": {
+    "0": {
+      "group": "papers",
+      "qualification": [
+        {
+          "name": "qualify-ed_author-default",
+          "kind": "adapter",
+          "backend": "ed_author",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-ed_author-compiled",
+          "kind": "adapter",
+          "backend": "ed_author",
+          "seed": 361902,
+          "compiled": true,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-torchjet_collapsed-default",
+          "kind": "adapter",
+          "backend": "torchjet_collapsed",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-torchjet_collapsed-compiled",
+          "kind": "adapter",
+          "backend": "torchjet_collapsed",
+          "seed": 361902,
+          "compiled": true,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-stde_exact-default",
+          "kind": "adapter",
+          "backend": "stde_exact",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-q10_compact-default",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-gl8_native-default",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-torch_ad-default",
+          "kind": "adapter",
+          "backend": "torch_ad",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-torch_ad-compiled",
+          "kind": "adapter",
+          "backend": "torch_ad",
+          "seed": 361902,
+          "compiled": true,
+          "timeout_seconds": 1200
+        }
+      ],
+      "execution": [
+        {
+          "name": "862101-torchjet_collapsed",
+          "kind": "adapter",
+          "backend": "torchjet_collapsed",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862101-q10_compact",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862101-torch_ad",
+          "kind": "adapter",
+          "backend": "torch_ad",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862101-stde_exact",
+          "kind": "adapter",
+          "backend": "stde_exact",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862101-ed_author",
+          "kind": "adapter",
+          "backend": "ed_author",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862101-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-ed_author",
+          "kind": "adapter",
+          "backend": "ed_author",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-stde_exact",
+          "kind": "adapter",
+          "backend": "stde_exact",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-torch_ad",
+          "kind": "adapter",
+          "backend": "torch_ad",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-q10_compact",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-torchjet_collapsed",
+          "kind": "adapter",
+          "backend": "torchjet_collapsed",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-ed_author",
+          "kind": "adapter",
+          "backend": "ed_author",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-stde_exact",
+          "kind": "adapter",
+          "backend": "stde_exact",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-torchjet_collapsed",
+          "kind": "adapter",
+          "backend": "torchjet_collapsed",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-torch_ad",
+          "kind": "adapter",
+          "backend": "torch_ad",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-q10_compact",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-q10_compact",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-torch_ad",
+          "kind": "adapter",
+          "backend": "torch_ad",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-torchjet_collapsed",
+          "kind": "adapter",
+          "backend": "torchjet_collapsed",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-stde_exact",
+          "kind": "adapter",
+          "backend": "stde_exact",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-ed_author",
+          "kind": "adapter",
+          "backend": "ed_author",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-torch_ad",
+          "kind": "adapter",
+          "backend": "torch_ad",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-stde_exact",
+          "kind": "adapter",
+          "backend": "stde_exact",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-torchjet_collapsed",
+          "kind": "adapter",
+          "backend": "torchjet_collapsed",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-q10_compact",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-ed_author",
+          "kind": "adapter",
+          "backend": "ed_author",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-ed_author",
+          "kind": "adapter",
+          "backend": "ed_author",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-q10_compact",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-torchjet_collapsed",
+          "kind": "adapter",
+          "backend": "torchjet_collapsed",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-stde_exact",
+          "kind": "adapter",
+          "backend": "stde_exact",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-torch_ad",
+          "kind": "adapter",
+          "backend": "torch_ad",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        }
+      ]
+    },
+    "1": {
+      "group": "nvidia",
+      "qualification": [
+        {
+          "name": "qualify-physicsnemo-default",
+          "kind": "adapter",
+          "backend": "physicsnemo",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-physicsnemo-compiled",
+          "kind": "adapter",
+          "backend": "physicsnemo",
+          "seed": 361902,
+          "compiled": true,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-cudnn-default",
+          "kind": "adapter",
+          "backend": "cudnn",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-cudnn-compiled",
+          "kind": "adapter",
+          "backend": "cudnn",
+          "seed": 361902,
+          "compiled": true,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-cueq_native-default",
+          "kind": "adapter",
+          "backend": "cueq_native",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-cueq_native-compiled",
+          "kind": "adapter",
+          "backend": "cueq_native",
+          "seed": 361902,
+          "compiled": true,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-cueq_polynomial-default",
+          "kind": "adapter",
+          "backend": "cueq_polynomial",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-gl8_native-default",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        }
+      ],
+      "execution": [
+        {
+          "name": "862101-cueq_polynomial",
+          "kind": "adapter",
+          "backend": "cueq_polynomial",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862101-cudnn",
+          "kind": "adapter",
+          "backend": "cudnn",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862101-physicsnemo",
+          "kind": "adapter",
+          "backend": "physicsnemo",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862101-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-physicsnemo",
+          "kind": "adapter",
+          "backend": "physicsnemo",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-cudnn",
+          "kind": "adapter",
+          "backend": "cudnn",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862102-cueq_polynomial",
+          "kind": "adapter",
+          "backend": "cueq_polynomial",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-cueq_polynomial",
+          "kind": "adapter",
+          "backend": "cueq_polynomial",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-cudnn",
+          "kind": "adapter",
+          "backend": "cudnn",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862103-physicsnemo",
+          "kind": "adapter",
+          "backend": "physicsnemo",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-physicsnemo",
+          "kind": "adapter",
+          "backend": "physicsnemo",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-cudnn",
+          "kind": "adapter",
+          "backend": "cudnn",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862104-cueq_polynomial",
+          "kind": "adapter",
+          "backend": "cueq_polynomial",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-physicsnemo",
+          "kind": "adapter",
+          "backend": "physicsnemo",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-cudnn",
+          "kind": "adapter",
+          "backend": "cudnn",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862105-cueq_polynomial",
+          "kind": "adapter",
+          "backend": "cueq_polynomial",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-cueq_polynomial",
+          "kind": "adapter",
+          "backend": "cueq_polynomial",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-cudnn",
+          "kind": "adapter",
+          "backend": "cudnn",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-physicsnemo",
+          "kind": "adapter",
+          "backend": "physicsnemo",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        },
+        {
+          "name": "862106-gl8_native",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 3600
+        }
+      ]
+    },
+    "2": {
+      "group": "representation-six-seed-solves",
+      "qualification": [
+        {
+          "name": "qualify-q10_compact-default",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-gl8_native-default",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-gl8_native_chunked-default",
+          "kind": "adapter",
+          "backend": "gl8_native_chunked",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        }
+      ],
+      "execution": [
+        {
+          "name": "862101-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862101-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862101-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 862101,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862102-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862102-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862102-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 862102,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862103-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862103-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862103-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 862103,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862104-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862104-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862104-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 862104,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862105-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862105-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862105-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 862105,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862106-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862106-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 1800
+        },
+        {
+          "name": "862106-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 862106,
+          "solve": true,
+          "timeout_seconds": 1800
+        }
+      ]
+    },
+    "3": {
+      "group": "memory-and-replay",
+      "qualification": [
+        {
+          "name": "qualify-q10_compact-default",
+          "kind": "adapter",
+          "backend": "q10_compact",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-gl8_native-default",
+          "kind": "adapter",
+          "backend": "gl8_native",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        },
+        {
+          "name": "qualify-gl8_native_chunked-default",
+          "kind": "adapter",
+          "backend": "gl8_native_chunked",
+          "seed": 361902,
+          "compiled": false,
+          "timeout_seconds": 1200
+        }
+      ],
+      "execution": [
+        {
+          "name": "bench-n2048-r0-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 0,
+          "profile": true,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r0-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 0,
+          "profile": true,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r0-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 0,
+          "profile": true,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r1-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 1,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r1-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 1,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r1-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 1,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r2-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 2,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r2-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 2,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r2-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 2,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r3-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 3,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r3-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 3,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r3-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 3,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r4-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 4,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r4-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 4,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n2048-r4-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 2048,
+          "repeat": 4,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r0-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 0,
+          "profile": true,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r0-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 0,
+          "profile": true,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r0-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 0,
+          "profile": true,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r1-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 1,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r1-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 1,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r1-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 1,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r2-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 2,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r2-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 2,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r2-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 2,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r3-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 3,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r3-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 3,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r3-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 3,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r4-gl8_native_chunked",
+          "kind": "representation",
+          "backend": "gl8_native_chunked",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 4,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r4-q10_compact",
+          "kind": "representation",
+          "backend": "q10_compact",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 4,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        },
+        {
+          "name": "bench-n16384-r4-gl8_native",
+          "kind": "representation",
+          "backend": "gl8_native",
+          "seed": 361901,
+          "points": 16384,
+          "repeat": 4,
+          "profile": false,
+          "requires_qualification": true,
+          "timeout_seconds": 900
+        }
+      ]
+    }
+  },
+  "peak_GPUs": 4,
+  "nodes": 1,
+  "allocation_hours": 3,
+  "allocated_GPU_hours": 12,
+  "reason": "Four independent frozen lanes cover public paper methods, NVIDIA methods with matched GL8 controls, representation solves, and original memory/replay study. Four H100s fit one ACC node; no cross-node computation. Each speed ratio uses matched seed and physical GPU."
+}

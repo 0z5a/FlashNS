@@ -1,0 +1,76 @@
+{
+  "scope": "Public copy of the executed Ethier v4 packet. Qualified hashes identify the bytes that ran; only the listed files differ.",
+  "executed_manifest_sha256": "108214f102192101418e64ae85007b54543df7708109ea6f9b6d6f15ffab1f08",
+  "files": {
+    "solve.py": {
+      "qualified_source_sha256": "2f520a0f3d85d4d50cb2cf50cb0dc5937648f7f8c66942a4f1d8e9f9c1a5ff6a",
+      "public_source_sha256": "2f520a0f3d85d4d50cb2cf50cb0dc5937648f7f8c66942a4f1d8e9f9c1a5ff6a",
+      "change": "byte-identical"
+    },
+    "objective.py": {
+      "qualified_source_sha256": "72a1fff405d8a6e90082e509848a380a3e6590831ebc0b55decd594b9e0fe258",
+      "public_source_sha256": "72a1fff405d8a6e90082e509848a380a3e6590831ebc0b55decd594b9e0fe258",
+      "change": "byte-identical"
+    },
+    "c17.py": {
+      "qualified_source_sha256": "0569b104560ac2f451e1f892a2f94e74ec20b7a0ddc07c586b9cc87fac474dd2",
+      "public_source_sha256": "0569b104560ac2f451e1f892a2f94e74ec20b7a0ddc07c586b9cc87fac474dd2",
+      "change": "byte-identical"
+    },
+    "torch_c17.py": {
+      "qualified_source_sha256": "7a0854c66bb0a5e2aedc18b43cf622d6321f8421f45e8f109a7885a757a2f2c3",
+      "public_source_sha256": "7a0854c66bb0a5e2aedc18b43cf622d6321f8421f45e8f109a7885a757a2f2c3",
+      "change": "byte-identical"
+    },
+    "a24.py": {
+      "qualified_source_sha256": "b4712ed6543570e2b2a3133f6cb42d6ed34201b54605cd25453bf58a6a66320e",
+      "public_source_sha256": "b4712ed6543570e2b2a3133f6cb42d6ed34201b54605cd25453bf58a6a66320e",
+      "change": "byte-identical"
+    },
+    "naive_q35.py": {
+      "qualified_source_sha256": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682",
+      "public_source_sha256": "acbde8d4eae56f545053848ff3f082f4ecdcb00c89f6dc3ed0d4e21f8d142682",
+      "change": "byte-identical"
+    },
+    "taylor_oracle.py": {
+      "qualified_source_sha256": "c4ffe646284b749efe060551f7a9da885524cf1ed6591c6c207ebfa8becbd42d",
+      "public_source_sha256": "c4ffe646284b749efe060551f7a9da885524cf1ed6591c6c207ebfa8becbd42d",
+      "change": "byte-identical"
+    },
+    "torch_references.py": {
+      "qualified_source_sha256": "fbae909ee5011f8ca7af7a2ab3c74a28f915c0a0fb2f7506f523a3873511df65",
+      "public_source_sha256": "fbae909ee5011f8ca7af7a2ab3c74a28f915c0a0fb2f7506f523a3873511df65",
+      "change": "byte-identical"
+    },
+    "ethier_source.py": {
+      "qualified_source_sha256": "613948acb61bb5c945eb4222c98d2fea215aa71d39e9447b413ce30b9bb987d0",
+      "public_source_sha256": "613948acb61bb5c945eb4222c98d2fea215aa71d39e9447b413ce30b9bb987d0",
+      "change": "byte-identical"
+    },
+    "audit.py": {
+      "qualified_source_sha256": "acdb2f520ed2bf8078246ff475a1dc5595d7cd3935a1d3984acd2f7353637eb8",
+      "public_source_sha256": "acdb2f520ed2bf8078246ff475a1dc5595d7cd3935a1d3984acd2f7353637eb8",
+      "change": "byte-identical"
+    },
+    "run_v4.py": {
+      "qualified_source_sha256": "caa87f565f6d78fdfbfe3333ebe9bb1bee6a6cf6161208f00ad541e7dd8555f7",
+      "public_source_sha256": "caa87f565f6d78fdfbfe3333ebe9bb1bee6a6cf6161208f00ad541e7dd8555f7",
+      "change": "byte-identical"
+    },
+    "entry.sh": {
+      "qualified_source_sha256": "f27d61a2f117eaa25a12305fe79ce6d32d2b04c0b49f51c852a3c67249980be4",
+      "public_source_sha256": "8cc0edc9bb39e900bd63db61591176f99034db30c054eb14bfd7c4a47e045088",
+      "change": "site-specific activation path replaced by FLASHNS_ACTIVATE"
+    },
+    "protocol-v4.json": {
+      "qualified_source_sha256": "87f311b07aee772775a445ed23dd98758c694caf9302e8f75a79d33de3531066",
+      "public_source_sha256": "768252cbb63ce5471bbc905f1e1d85216ef74e12aca74f6f43516db42e05d5e7",
+      "change": "hardware site label removed; scientific fields unchanged"
+    },
+    "data-v2.npz": {
+      "qualified_source_sha256": "42904eadb3dfdd767a7a75b3ad2d91f673c8e8292e4ddf659f939a830bc59666",
+      "public_source_sha256": "42904eadb3dfdd767a7a75b3ad2d91f673c8e8292e4ddf659f939a830bc59666",
+      "change": "byte-identical"
+    }
+  }
+}

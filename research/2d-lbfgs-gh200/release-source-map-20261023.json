@@ -1,0 +1,103 @@
+{
+ "scope": "2D L-BFGS execution study on GH200 (attempt 3, the first that ran). Solves ran inside the pinned two-dimensional source tree (commit 286d7e394c8bd39f9aa409715afe9f1bac915cec, a clone of the preserved bundle; 263 tracked files, not published here) plus the two new files. The public result files are the executed reader output and driver state with the work-directory prefix and host identifiers normalized.",
+ "executed_packet": {
+  "manifest_sha256": "357d078feada0562428a9b95bd97b7aec7447be149c07ecf07e8df2c5ec08086",
+  "pre_registration_commit": "3dca6ac1cc222dad0e4797653992e53eabc8aef2",
+  "protocol_sha256": "1d4846fe7c249549b01ffbe97bfa42d9769d4887456b100aa7567e302af3dfff"
+ },
+ "archive": {
+  "name": "2d-lbfgs-gh200-complete.tar.gz",
+  "sha256": "321d7f77ff5545fc39b825dc130a85ca7c040813156a28a6e975f857b0c7fa44",
+  "members": 162,
+  "bytes": 3243160,
+  "persistent_tape_copy": false
+ },
+ "earlier_attempts": [
+  {
+   "state": "ADMISSION_REFUSED_FROZEN_INPUTS",
+   "protocol": "v1 (x86 initialization hashes)"
+  },
+  {
+   "state": "PREBUILD_FAILED",
+   "cause": "wrapper read torch.optim.lbfgs through a deleted attribute; no scored task ran"
+  }
+ ],
+ "files": {
+  "research/2d-lbfgs-gh200/entry_lbfgs_study.sh": {
+   "public_sha256": "23a4a0ddbc5fa00a48abc4f032ed847b3498e5eb5fbc3f6dd8faea6532894fc6",
+   "executed_path": "lbfgs/entry_lbfgs_study.sh",
+   "executed_sha256": "23a4a0ddbc5fa00a48abc4f032ed847b3498e5eb5fbc3f6dd8faea6532894fc6",
+   "byte_identical": true
+  },
+  "research/2d-lbfgs-gh200/make_lbfgs_plan.py": {
+   "public_sha256": "2b7873d7de65be996bab1b8bcc2249226d2e44d19a67a867c7ce0eabefad16b1",
+   "executed_path": "lbfgs/make_lbfgs_plan.py",
+   "executed_sha256": "2b7873d7de65be996bab1b8bcc2249226d2e44d19a67a867c7ce0eabefad16b1",
+   "byte_identical": true
+  },
+  "research/2d-lbfgs-gh200/plan-2d-lbfgs-gh200-20261023.json": {
+   "public_sha256": "786d44ea2cb54f6d2c56441f9a2d475ff4ee1ea8c86a5c73a66d8bf01ebea11e",
+   "executed_path": "lbfgs/plan-2d-lbfgs-gh200-20261023.json",
+   "executed_sha256": "786d44ea2cb54f6d2c56441f9a2d475ff4ee1ea8c86a5c73a66d8bf01ebea11e",
+   "byte_identical": true
+  },
+  "research/2d-lbfgs-gh200/protocol-2d-lbfgs-gh200-20261023.json": {
+   "public_sha256": "1d4846fe7c249549b01ffbe97bfa42d9769d4887456b100aa7567e302af3dfff",
+   "executed_path": "lbfgs/protocol-2d-lbfgs-gh200-20261023.json",
+   "executed_sha256": "1d4846fe7c249549b01ffbe97bfa42d9769d4887456b100aa7567e302af3dfff",
+   "byte_identical": true
+  },
+  "research/2d-lbfgs-gh200/read_lbfgs_study.py": {
+   "public_sha256": "1c50ea88e27dbe9aa300b4cb41be18121c2ad4df450b30e2eaa644b1c907719f",
+   "executed_path": "lbfgs/read_lbfgs_study.py",
+   "executed_sha256": "1c50ea88e27dbe9aa300b4cb41be18121c2ad4df450b30e2eaa644b1c907719f",
+   "byte_identical": true
+  },
+  "research/2d-lbfgs-gh200/run_lbfgs_study.py": {
+   "public_sha256": "ad71f9f2e5a207aafa4bb85d905f70dc87bb0872023b7b53584b126f900882b5",
+   "executed_path": "lbfgs/run_lbfgs_study.py",
+   "executed_sha256": "ad71f9f2e5a207aafa4bb85d905f70dc87bb0872023b7b53584b126f900882b5",
+   "byte_identical": true
+  },
+  "research/2d-lbfgs-gh200/src/lbfgs_light.py": {
+   "public_sha256": "9930fbb8d1f5c3c3856d019b31db487b617d636997e3120e9312d7491696dd8a",
+   "executed_path": "lbfgs/src/lbfgs_light.py",
+   "executed_sha256": "9930fbb8d1f5c3c3856d019b31db487b617d636997e3120e9312d7491696dd8a",
+   "byte_identical": true,
+   "source_tree_copy": {
+    "executed_path": "source/experiments/contracted_jets/lbfgs_light.py",
+    "executed_sha256": "9930fbb8d1f5c3c3856d019b31db487b617d636997e3120e9312d7491696dd8a",
+    "byte_identical": true
+   }
+  },
+  "research/2d-lbfgs-gh200/src/light_solve.py": {
+   "public_sha256": "9a4bd4f75995f84e7ba47343dd1eef17c3aba6b6c6d5f56611ae5489268060e3",
+   "executed_path": "lbfgs/src/light_solve.py",
+   "executed_sha256": "9a4bd4f75995f84e7ba47343dd1eef17c3aba6b6c6d5f56611ae5489268060e3",
+   "byte_identical": true,
+   "source_tree_copy": {
+    "executed_path": "source/experiments/contracted_jets/light_solve.py",
+    "executed_sha256": "9a4bd4f75995f84e7ba47343dd1eef17c3aba6b6c6d5f56611ae5489268060e3",
+    "byte_identical": true
+   }
+  },
+  "research/2d-lbfgs-gh200/src/two_loop_bench.py": {
+   "public_sha256": "09f2407bd5a25bf0e0ef66c16b36e95790a5dd417d4bf13ce74b367127c256d0",
+   "executed_path": "lbfgs/src/two_loop_bench.py",
+   "executed_sha256": "09f2407bd5a25bf0e0ef66c16b36e95790a5dd417d4bf13ce74b367127c256d0",
+   "byte_identical": true
+  },
+  "research/2d-lbfgs-gh200/start_lbfgs_study.sbatch": {
+   "public_sha256": "7d3080d10c55713613a0fdbc00d3ea9c0b37eb0dd9f7a36cfb3b91f3424c0549",
+   "executed_path": "lbfgs/start_lbfgs_study.sbatch",
+   "executed_sha256": "7d3080d10c55713613a0fdbc00d3ea9c0b37eb0dd9f7a36cfb3b91f3424c0549",
+   "byte_identical": true
+  },
+  "research/2d-lbfgs-gh200/test_lbfgs_study.py": {
+   "public_sha256": "3ea4b10cce3e579ce0be189d327837807520d4abb0f39c347aebff6a59fc36d9",
+   "executed_path": "lbfgs/test_lbfgs_study.py",
+   "executed_sha256": "3ea4b10cce3e579ce0be189d327837807520d4abb0f39c347aebff6a59fc36d9",
+   "byte_identical": true
+  }
+ }
+}

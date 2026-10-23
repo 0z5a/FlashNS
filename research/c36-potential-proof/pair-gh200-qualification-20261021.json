@@ -1,0 +1,51 @@
+{
+ "state": "PASS_PAIR_ENGINE_GH200_QUALIFICATION",
+ "kind": "platform qualification and per-evaluation timing on development seed 361901; not a result, no physical observation",
+ "protocol": "protocol-pair-qualification-20261021.json",
+ "source_commit": "023fdab",
+ "archive_sha256": "89cc9a5285342afbd3e9f15a2e8c94ccf269b10eac12f4fb28c14b58ca55f3de",
+ "archive_members": 198,
+ "allocation": {
+  "gpus": 1,
+  "elapsed_seconds": 986,
+  "gpu_hours": 0.274
+ },
+ "arms": {
+  "analytic": {
+   "setup_seconds": {
+    "eager_and_dense_AD": 92.5,
+    "compile_and_warmup": 109.1,
+    "graph_capture": 4.3
+   },
+   "SSBroyden_iterations_in_guard": 800,
+   "max_check_over_budget": 1.2e-05,
+   "Adam_seconds_per_evaluation": 0.1445,
+   "SSBroyden_seconds_per_evaluation": 0.157,
+   "free_bytes_before_inverse_hessian": 100733550592,
+   "peak_allocated_bytes": 20940233728,
+   "inverse_hessian_product_max_relative": 8.7e-14
+  },
+  "parameter_ad": {
+   "setup_seconds": {
+    "eager_and_dense_AD": 89.7,
+    "compile_and_warmup": 98.7,
+    "graph_capture": 5.8
+   },
+   "SSBroyden_iterations_in_guard": 588,
+   "max_check_over_budget": 8.73e-07,
+   "Adam_seconds_per_evaluation": 0.1808,
+   "SSBroyden_seconds_per_evaluation": 0.1905,
+   "free_bytes_before_inverse_hessian": 100664934400,
+   "peak_allocated_bytes": 20940241920,
+   "inverse_hessian_product_max_relative": 1.4e-14
+  }
+ },
+ "per_evaluation_ratio_parameter_ad_over_analytic": {
+  "Adam": 1.251,
+  "SSBroyden": 1.213
+ },
+ "checks": "eager, compiled and graph objectives of both engines against dense parameter AD at the initialization and after a parameter change, plus periodic checks; all within the original budget",
+ "memory": "with the 20.6 GB inverse Hessian resident, both engines peak at 20.9 GB allocated; more than 40 GB stays free for the observer after the Hessian is moved to host memory",
+ "auditor_development_check": "box376.audit_c36_pair passes on this archive (both arms, not-reached path, 198 members); the threshold path is covered by CPU fixtures",
+ "closure": "driver COMPLETE, both arm processes exit 0, GPU lock released, no GPU process left"
+}

@@ -1,0 +1,143 @@
+{
+ "protocol_sha256": "30cf5ce38049b324a9bff62065e330416b5015413b79d5bfeb7d8dd5148a52e5",
+ "reader_sha256": "02ca2c15571133b9f7c0960ef72e3cc4355121b1d9820d9a8a5a4287d061665f",
+ "outcome": {
+  "key": "F1_pass",
+  "runs": [
+   "fresh:361901",
+   "fresh:361902"
+  ],
+  "text": "at least one run passes physical acceptance at an observed checkpoint"
+ },
+ "runs": {
+  "fresh:361901": {
+   "arm": "fresh",
+   "seed": 361901,
+   "training_state": "COMPLETE",
+   "training_gate_reached": true,
+   "observed_tags": [
+    "final"
+   ],
+   "passing_tags": [
+    "final"
+   ],
+   "final_worst_over_limit": 0.0009858523621294082,
+   "final_worst_test": "stratified:normalized_corrected_pressure_rms",
+   "final_failing_tests": {},
+   "final_stratified_pressure_over_limit": 0.0009858523621294082,
+   "first_evaluation_versus_v5": {
+    "0.001": {
+     "v7": 4045,
+     "v5": 4042,
+     "v7_over_v5": 1.0007422068283027
+    },
+    "0.0003": {
+     "v7": 4218,
+     "v5": 5153,
+     "v7_over_v5": 0.8185522996312827
+    },
+    "0.0001": {
+     "v7": 4320,
+     "v5": 6050,
+     "v7_over_v5": 0.7140495867768595
+    },
+    "3e-05": {
+     "v7": 4471,
+     "v5": 8176,
+     "v7_over_v5": 0.5468444227005871
+    },
+    "1e-05": {
+     "v7": 4684,
+     "v5": 12487,
+     "v7_over_v5": 0.37511011451909987
+    },
+    "3e-06": {
+     "v7": 4920,
+     "v5": 18924,
+     "v7_over_v5": 0.25998731769181993
+    },
+    "1e-06": {
+     "v7": 5115,
+     "v5": null,
+     "v7_over_v5": null
+    },
+    "3e-07": {
+     "v7": 5399,
+     "v5": null,
+     "v7_over_v5": null
+    },
+    "1e-07": {
+     "v7": 5718,
+     "v5": null,
+     "v7_over_v5": null
+    }
+   }
+  },
+  "fresh:361902": {
+   "arm": "fresh",
+   "seed": 361902,
+   "training_state": "COMPLETE",
+   "training_gate_reached": true,
+   "observed_tags": [
+    "final"
+   ],
+   "passing_tags": [
+    "final"
+   ],
+   "final_worst_over_limit": 0.0009463357856770737,
+   "final_worst_test": "stratified:normalized_corrected_pressure_rms",
+   "final_failing_tests": {},
+   "final_stratified_pressure_over_limit": 0.0009463357856770737,
+   "first_evaluation_versus_v5": {
+    "0.001": {
+     "v7": 4036,
+     "v5": 4030,
+     "v7_over_v5": 1.0014888337468983
+    },
+    "0.0003": {
+     "v7": 4202,
+     "v5": 5017,
+     "v7_over_v5": 0.8375523221048435
+    },
+    "0.0001": {
+     "v7": 4304,
+     "v5": 5870,
+     "v7_over_v5": 0.7332197614991482
+    },
+    "3e-05": {
+     "v7": 4456,
+     "v5": 7693,
+     "v7_over_v5": 0.5792278694917458
+    },
+    "1e-05": {
+     "v7": 4661,
+     "v5": 10863,
+     "v7_over_v5": 0.42907115898002396
+    },
+    "3e-06": {
+     "v7": 4887,
+     "v5": 16211,
+     "v7_over_v5": 0.3014619702671026
+    },
+    "1e-06": {
+     "v7": 5090,
+     "v5": null,
+     "v7_over_v5": null
+    },
+    "3e-07": {
+     "v7": 5340,
+     "v5": null,
+     "v7_over_v5": null
+    },
+    "1e-07": {
+     "v7": 5684,
+     "v5": null,
+     "v7_over_v5": null
+    }
+   }
+  }
+ },
+ "runs_without_complete_final_observation": [],
+ "follow_up": "register a formal fresh-seed time-to-accuracy protocol on the original instance with this optimizer",
+ "formal_claim": false
+}

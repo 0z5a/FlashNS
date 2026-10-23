@@ -1,0 +1,41 @@
+{
+ "state": "COMPLETE",
+ "kind": "development probe, not a result",
+ "seed": 361901,
+ "gpu": "NVIDIA GH200 120GB",
+ "torch": "2.14.1+cu130",
+ "interior_points": 4096,
+ "methods": {
+  "analytic": {
+   "eager_seconds": 3.8297697713326975,
+   "eager_error": 1.1335690554980574e-06,
+   "compiled_seconds": 1.031298502199934,
+   "graph_seconds": 0.1333785810500558,
+   "graph_error": 1.1335690554980574e-06
+  },
+  "nested_ad": {
+   "chunk": 512,
+   "first_chunk_seconds": 34.11220917200262,
+   "first_chunk_peak_bytes": 78613475840,
+   "projected_interior_seconds": 272.897673376021,
+   "eager_seconds": 350.3312778160034,
+   "eager_error": 2.351657462893602e-06,
+   "peak_bytes": 95991425024,
+   "complete_evaluation": true
+  },
+  "func_jacfwd": {
+   "chunk": 512,
+   "first_chunk_seconds": 0.48471425799652934,
+   "first_chunk_peak_bytes": 3990377472,
+   "projected_interior_seconds": 3.8777140639722347,
+   "eager_seconds": 5.69086658199376,
+   "eager_error": 1.3111930510127575e-06,
+   "peak_bytes": 5017566720,
+   "complete_evaluation": true
+  },
+  "jet_collapsed": {
+   "failure": "Traceback (most recent call last):\n  File \"tools/c36_external_probe.py\", line 108, in main\n    _, seconds = timed(first_chunk, 1)\n                 ~~~~~^^^^^^^^^^^^^^^^\n  File \"tools/c36_external_probe.py\", line 34, in timed\n    result = function()\n  File \"tools/c36_external_probe.py\", line 106, in first_chunk\n    raw = RAW[backend](physical, inputs[:size])\n  File \"src/box376/external_c36.py\", line 97, in raw_jet_collapsed\n    jet = _jet_module()\n  File \"src/box376/external_c36.py\", line 88, in _jet_module\n    from jet import jet\nModuleNotFoundError: No module named 'jet'\n"
+  }
+ },
+ "dense_ad_seconds": 7.782549671988818
+}

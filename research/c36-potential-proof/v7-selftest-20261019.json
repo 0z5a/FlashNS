@@ -1,0 +1,40 @@
+{
+ "scope": "Login-node checks of the v7 GPU-path modules before submission (production FP64 environment, Torch 2.4)",
+ "packet": {
+  "built_from": "git archive of the pre-registration commit with tools/make_c36_v7_packet.py",
+  "files": 112,
+  "start_checkpoints_verified": true
+ },
+ "imports": [
+  "box376.potential_train_v7",
+  "box376.run_c36_v7",
+  "box376.read_c36_v7",
+  "box376.decide_c36_v7",
+  "box376.ssbroyden",
+  "box376.potential_physical_eta"
+ ],
+ "trainer_cli": "usage printed; --arm {fresh,continue}, optional --start-checkpoint",
+ "driver_self_test": {
+  "lanes": [
+   "361901:fresh",
+   "361901:continue"
+  ],
+  "driver_state": "COMPLETE",
+  "reader_exit": 0,
+  "decision_exit": 0,
+  "decision": "F0_incomplete, as registered for lanes without complete final observations",
+  "archive_members": 135,
+  "archive_members_match_sources": true,
+  "continue_lane_argv_has_start_checkpoint": true,
+  "fresh_lane_argv_has_start_checkpoint": false,
+  "continue_lane_start_continuity_over_budget": 1.0183934966858988e-08,
+  "fresh_lane_reached": "SSBroyden-started (the dense inverse Hessian is not allocated in the CPU self-test by design)",
+  "training_exits": [
+   -9,
+   -9
+  ],
+  "note": "both CPU trainers were ended by the login node after 121-122 s, as in v6"
+ },
+ "component_self_test": "v7-component-selftest-20261019.json",
+ "unit_tests": "test_ssbroyden 5/5 and test_decide_c36_v7 2/2 in Torch 2.12 and 2.4"
+}

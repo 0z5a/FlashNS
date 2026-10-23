@@ -1,0 +1,139 @@
+{
+ "scope": "CPU self-tests of the C36 v6 additions on the login node, before submission",
+ "components": {
+  "observer": {
+   "part": "observer",
+   "torch": "2.4.0a0+gite3b9b71",
+   "numpy": "1.26.4",
+   "make_holdouts_bound_eta": 0.0625,
+   "native_field_bound_eta": 0.0625,
+   "holdout_metadata_eta": 0.0625,
+   "stratified_points": 4096,
+   "refuses_other_width_calibration": true,
+   "passed": true
+  },
+  "trainer": {
+   "part": "trainer",
+   "torch": "2.4.0a0+gite3b9b71",
+   "numpy": "1.26.4",
+   "interior_points": 3,
+   "value_points": 903,
+   "canonical_denominators_kept": true,
+   "comparisons": [
+    {
+     "parameters": "original",
+     "engine": "analytic",
+     "kind": "loss",
+     "over_budget": 3.383553642831142e-10
+    },
+    {
+     "parameters": "original",
+     "engine": "analytic",
+     "kind": "gradient",
+     "over_budget": 1.9055884903305474e-10
+    },
+    {
+     "parameters": "original",
+     "engine": "analytic",
+     "kind": "numerators",
+     "over_budget": 3.383553642831142e-10
+    },
+    {
+     "parameters": "original",
+     "engine": "parameter_ad",
+     "kind": "loss",
+     "over_budget": 0.0
+    },
+    {
+     "parameters": "original",
+     "engine": "parameter_ad",
+     "kind": "gradient",
+     "over_budget": 1.9056296724636003e-10
+    },
+    {
+     "parameters": "original",
+     "engine": "parameter_ad",
+     "kind": "numerators",
+     "over_budget": 0.0
+    },
+    {
+     "parameters": "changed",
+     "engine": "analytic",
+     "kind": "loss",
+     "over_budget": 1.6917784074297996e-10
+    },
+    {
+     "parameters": "changed",
+     "engine": "analytic",
+     "kind": "gradient",
+     "over_budget": 2.0115937584696935e-10
+    },
+    {
+     "parameters": "changed",
+     "engine": "analytic",
+     "kind": "numerators",
+     "over_budget": 1.6917784074297996e-10
+    },
+    {
+     "parameters": "changed",
+     "engine": "parameter_ad",
+     "kind": "loss",
+     "over_budget": 0.0
+    },
+    {
+     "parameters": "changed",
+     "engine": "parameter_ad",
+     "kind": "gradient",
+     "over_budget": 2.117355947159721e-10
+    },
+    {
+     "parameters": "changed",
+     "engine": "parameter_ad",
+     "kind": "numerators",
+     "over_budget": 0.0
+    }
+   ],
+   "native_seconds_original": 120.03128179803025,
+   "native_seconds_changed": 132.08356231905054,
+   "passed": true
+  }
+ },
+ "driver_control_flow": [
+  {
+   "environment": "runtime-cu130 (Torch 2.12), two lanes",
+   "driver_state": "COMPLETE",
+   "reader_exit": 0,
+   "decision_exit": 0,
+   "archive_members": 112,
+   "archive_members_match_sources": true,
+   "lanes": [
+    {
+     "engine": "analytic",
+     "training_exit": -9,
+     "training_seconds_before_exit": 201
+    },
+    {
+     "engine": "parameter_ad",
+     "training_exit": -9,
+     "training_seconds_before_exit": 201
+    }
+   ]
+  },
+  {
+   "environment": "production FP64 environment (Torch 2.4), one lane",
+   "driver_state": "COMPLETE",
+   "reader_exit": 0,
+   "decision_exit": 0,
+   "archive_members": 110,
+   "archive_members_match_sources": true,
+   "lanes": [
+    {
+     "engine": "analytic",
+     "training_exit": -9,
+     "training_seconds_before_exit": 303
+    }
+   ]
+  }
+ ],
+ "note": "The complete CPU trainer self-test (full 4,999-point eager and dense objectives) was ended by the login node (SIGKILL after 191-303 s) in all three attempts; the driver still sealed the batch, ran the reader and the registered decision and verified its archive. The v6 trainer additions run in the component test; the training loop, checkpoints and observation calls are the unchanged v2 code run on H100 in v2 and v5."
+}

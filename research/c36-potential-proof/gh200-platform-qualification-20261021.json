@@ -1,0 +1,489 @@
+{
+ "state": "PASS_PLATFORM_QUALIFICATION_ONLY",
+ "scope": "Independent archive readback; no training, physical acceptance or performance claim",
+ "archive_sha256": "4bca15b4d7bf4c17a047344ee765c320c2397fa739bd995e848d43be214ffc94",
+ "archive_bytes": 9083793,
+ "archive_members": 149,
+ "workload_exit": 0,
+ "checks": [
+  {
+   "file": "outputs/job4185495/compiler-smoke/raw.npz",
+   "kind": "forward",
+   "entries": 1008,
+   "finite": true,
+   "error_over_budget": 6.413096443197911e-07
+  },
+  {
+   "file": "outputs/job4185495/compiler-smoke/raw.npz",
+   "kind": "vjp",
+   "entries": 1008,
+   "finite": true,
+   "error_over_budget": 1.0499756275650441e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-compiled-native.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-compiled-native.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 2.2488348771603744e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-compiled-native.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-eager-native.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-eager-native.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 2.2488348771603744e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-eager-native.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-changed-dense-ad.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 1.6094893706033848e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-changed-dense-ad.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 1.8882171016646944e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-changed-dense-ad.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 1.609489370603384e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-native.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-native.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 2.2488348771603744e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-native.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-restored-native.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-restored-native.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 2.2488348771603744e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361901-graph-restored-native.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-compiled-native.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 1.6357155998654678e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-compiled-native.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 1.7716238260408299e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-compiled-native.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 1.635715599865467e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-eager-native.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 1.6357155998654678e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-eager-native.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 1.7716238260408299e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-eager-native.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 1.635715599865467e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-changed-dense-ad.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-changed-dense-ad.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 7.071802950683023e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-changed-dense-ad.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 0.0
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-native.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 1.6357155998654678e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-native.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 1.7716238260408299e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-native.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 1.635715599865467e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-restored-native.npz",
+   "kind": "loss",
+   "entries": 1,
+   "finite": true,
+   "error_over_budget": 1.6357155998654678e-07
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-restored-native.npz",
+   "kind": "gradient",
+   "entries": 50692,
+   "finite": true,
+   "error_over_budget": 1.7716238260408299e-06
+  },
+  {
+   "file": "outputs/job4185495/objective/361902-graph-restored-native.npz",
+   "kind": "numerators",
+   "entries": 4,
+   "finite": true,
+   "error_over_budget": 1.635715599865467e-07
+  }
+ ],
+ "failures": [],
+ "missing": [],
+ "objective_report": {
+  "state": "PASS",
+  "scope": "GH200 runtime and frozen C36 objective/gradient qualification only",
+  "training_performed": false,
+  "physical_acceptance_evaluated": false,
+  "solver_speedup": null,
+  "checks": [
+   {
+    "tag": "361901-eager-native",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 0.0
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 2.2488348771603744e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 0.0
+     }
+    ]
+   },
+   {
+    "tag": "361901-compiled-native",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 0.0
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 2.2488348771603744e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 0.0
+     }
+    ]
+   },
+   {
+    "tag": "361901-graph-native",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 0.0
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 2.2488348771603744e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 0.0
+     }
+    ]
+   },
+   {
+    "tag": "361901-graph-changed-dense-ad",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 1.6094893706033848e-07
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 1.8882171016646944e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 1.609489370603384e-07
+     }
+    ]
+   },
+   {
+    "tag": "361901-graph-restored-native",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 0.0
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 2.2488348771603744e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 0.0
+     }
+    ]
+   },
+   {
+    "tag": "361902-eager-native",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 1.6357155998654678e-07
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 1.7716238260408299e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 1.635715599865467e-07
+     }
+    ]
+   },
+   {
+    "tag": "361902-compiled-native",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 1.6357155998654678e-07
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 1.7716238260408299e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 1.635715599865467e-07
+     }
+    ]
+   },
+   {
+    "tag": "361902-graph-native",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 1.6357155998654678e-07
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 1.7716238260408299e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 1.635715599865467e-07
+     }
+    ]
+   },
+   {
+    "tag": "361902-graph-changed-dense-ad",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 0.0
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 7.071802950683023e-07
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 0.0
+     }
+    ]
+   },
+   {
+    "tag": "361902-graph-restored-native",
+    "comparisons": [
+     {
+      "kind": "loss",
+      "entries": 1,
+      "maximum_error_over_original_budget": 1.6357155998654678e-07
+     },
+     {
+      "kind": "gradient",
+      "entries": 50692,
+      "maximum_error_over_original_budget": 1.7716238260408299e-06
+     },
+     {
+      "kind": "numerators",
+      "entries": 4,
+      "maximum_error_over_original_budget": 1.635715599865467e-07
+     }
+    ]
+   }
+  ],
+  "started_unix": 1792587465.9436958,
+  "torch": "2.14.1+cu130",
+  "numpy": "2.5.4",
+  "cuda": "13.0",
+  "architecture": "aarch64",
+  "gpu": "NVIDIA GH200 120GB",
+  "total_memory": 102005473280,
+  "dense_hessian": {
+   "dimension": 50692,
+   "bytes": 20557430912,
+   "identity_matvec_and_reset": "PASS",
+   "free_before": 100927275008,
+   "total": 102005473280,
+   "matrix_and_objective_co_resident": true
+  },
+  "peak_allocated_bytes": 20653747712,
+  "peak_reserved_bytes": 20659044352,
+  "finished_unix": 1792587692.3264983
+ },
+ "compiler_report": {
+  "state": "PASS",
+  "torch": "2.14.1+cu130",
+  "points": 7,
+  "width": 4,
+  "channels": 36,
+  "checks": [
+   {
+    "name": "forward",
+    "maximum_error_over_original_budget": 6.413096443197911e-07
+   },
+   {
+    "name": "vjp",
+    "maximum_error_over_original_budget": 1.0499756275650441e-06
+   }
+  ],
+  "raw_sha256": "9b328bac3181e75908ae1ed591f54a7dffdf9c4a33318bed291c22d6a0453ea0",
+  "atol": 1e-11,
+  "rtol": 1e-09,
+  "scope": "Small compiler/activation check; no full objective or performance claim"
+ },
+ "source_commit": "72474fbd0fa386ea6906d0d95db026d9de4ce67e",
+ "slurm_job_id": "4185495",
+ "elapsed_allocation_seconds": 313,
+ "allocated_GPU_hours": 0.08694444444444445,
+ "unit_tests_passed": 7
+}

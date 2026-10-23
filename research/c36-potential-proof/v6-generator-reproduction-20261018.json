@@ -1,0 +1,181 @@
+{
+ "numpy": "2.4.6",
+ "arrays": {
+  "calibration": {
+   "stratified_points": {
+    "identical": false,
+    "differing_entries": 74,
+    "max_abs_difference_over_max_abs": 1.1118276427461029e-16
+   },
+   "stratified_weights": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "stratified_regions": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "stratified_time_active": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "uniform_points": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "uniform_weights": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "stratified_U": {
+    "identical": false,
+    "differing_entries": 1462,
+    "max_abs_difference_over_max_abs": 9.147162235636519e-15
+   },
+   "stratified_G": {
+    "identical": false,
+    "differing_entries": 4017,
+    "max_abs_difference_over_max_abs": 2.0729162431991623e-14
+   },
+   "stratified_f": {
+    "identical": false,
+    "differing_entries": 2268,
+    "max_abs_difference_over_max_abs": 1.2543125372927316e-14
+   },
+   "stratified_df": {
+    "identical": false,
+    "differing_entries": 6056,
+    "max_abs_difference_over_max_abs": 1.853421504072095e-14
+   },
+   "uniform_U": {
+    "identical": false,
+    "differing_entries": 13,
+    "max_abs_difference_over_max_abs": 1.5296675123718285e-16
+   },
+   "uniform_G": {
+    "identical": false,
+    "differing_entries": 31,
+    "max_abs_difference_over_max_abs": 7.06487498752104e-16
+   },
+   "uniform_f": {
+    "identical": false,
+    "differing_entries": 26,
+    "max_abs_difference_over_max_abs": 1.5251425470271405e-14
+   },
+   "uniform_df": {
+    "identical": false,
+    "differing_entries": 50,
+    "max_abs_difference_over_max_abs": 2.8174406961109886e-14
+   }
+  },
+  "training-source": {
+   "interior_points": {
+    "identical": false,
+    "differing_entries": 60,
+    "max_abs_difference_over_max_abs": 1.1104140337914253e-16
+   },
+   "interior_weights": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "interior_ids": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "interior_target": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "interior_force": {
+    "identical": false,
+    "differing_entries": 2141,
+    "max_abs_difference_over_max_abs": 1.6018016291371542e-14
+   },
+   "interior_force_gradient": {
+    "identical": false,
+    "differing_entries": 5741,
+    "max_abs_difference_over_max_abs": 2.6744570405310595e-14
+   },
+   "initial_points": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "initial_weights": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "initial_ids": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "initial_target": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "boundary_points": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "boundary_weights": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "boundary_ids": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "boundary_target": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "gauge_points": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "gauge_weights": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "gauge_ids": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   },
+   "gauge_target": {
+    "identical": true,
+    "differing_entries": 0,
+    "max_abs_difference_over_max_abs": 0.0
+   }
+  }
+ },
+ "scales_relative_difference": {
+  "domain_length": 0.0,
+  "velocity": 0.0,
+  "pressure": 0.0,
+  "momentum_residual": 1.7315384231360857e-16,
+  "momentum_residual_gradient": 2.884384655838406e-16,
+  "continuity_residual": 0.0,
+  "continuity_residual_gradient": 0.0
+ },
+ "max_relative_difference": 2.8174406961109886e-14,
+ "exact_arrays_identical": true,
+ "passed": true
+}

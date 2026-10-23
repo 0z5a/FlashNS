@@ -1,0 +1,229 @@
+{
+ "kind": "development profile on seed 361901 (GH200), not a result; produced by tools/c36_engine_profile.py on the paired torch.func protocol inputs",
+ "analytic": {
+  "128": {
+   "error": 1.1335690554980574e-06,
+   "replay_seconds": 0.13174166310054716,
+   "peak_bytes": 233319424
+  },
+  "256": {
+   "error": 1.2752651874353147e-06,
+   "replay_seconds": 0.08297664470010205,
+   "peak_bytes": 389487616
+  },
+  "512": {
+   "error": 1.2722535921340687e-06,
+   "replay_seconds": 0.057538354900316335,
+   "peak_bytes": 626296832
+  },
+  "1024": {
+   "error": 1.667470551700711e-06,
+   "replay_seconds": 0.04726553085056366,
+   "peak_bytes": 1025330176
+  },
+  "2048": {
+   "error": 3.858474008931192e-06,
+   "replay_seconds": 0.04159163849981269,
+   "peak_bytes": 1746898944
+  },
+  "4096": {
+   "failure": "us-20261021/ext-prep/profile1/src-c36/src/box376/potential_model.py\", line 69, in forward\n    raw, tape = c36.forward(physical, inputs, activation=activation)\n                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<root>/ext-prep/profile1/src-c36/src/torch_c36.py\", line 152, in forward\n    state = nonlinear(z) if index < len(parameters) - 1 else z\n            ~~~~~~~~~^^^\n  File \"<root>/runtime/site/torch/_dynamo/eval_frame.py\", line 1261, in compile_wrapper\n    result = fn(*args, **kwargs)\n  File \"<root>/runtime/site/torch/_dynamo/convert_frame.py\", line 2649, in __call__\n    result = self._torchdynamo_orig_backend(\n        frame, cache_entry, self.hooks, frame_state, skip=1\n    )\n  File \"<root>/runtime/site/torch/_dynamo/convert_frame.py\", line 778, in __call__\n    result = _compile(\n        frame.f_code,\n    ...<18 lines>...\n        convert_frame_box=self._box,\n    )\n  File \"<root>/runtime/site/torch/_dynamo/convert_frame.py\", line 2045, in _compile\n    raise FailOnRecompileLimitHit(\n        \"Hard failure due to fullgraph=True\"\n    ) from e\ntorch._dynamo.exc.FailOnRecompileLimitHit: Hard failure due to fullgraph=True\n"
+  }
+ },
+ "func_eager_graph": {
+  "512": {
+   "error": 1.3111930510127575e-06,
+   "replay_seconds": 0.6241417051991448,
+   "peak_bytes": 5065699840
+  },
+  "1024": {
+   "error": 1.3896157735280375e-06,
+   "replay_seconds": 0.5490024205995724,
+   "peak_bytes": 9835297792
+  },
+  "2048": {
+   "error": 1.8420497151843433e-06,
+   "replay_seconds": 0.5151920449978207,
+   "peak_bytes": 19507559424
+  }
+ },
+ "profiles": {
+  "128": {
+   "device_microseconds_by_kind": {
+    "elementwise_index": 52545.68100000082,
+    "copy": 19716.176999999137,
+    "other": 435.6670000001377,
+    "gemm": 5325.487000000325,
+    "triton": 30236.22099999997,
+    "reduction": 6631.393000000633
+   },
+   "kernel_launches": 60702,
+   "top": [
+    {
+     "kernel": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::T",
+     "microseconds": 16589.611999998997,
+     "count": 10472
+    },
+    {
+     "kernel": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<double> >(at:",
+     "microseconds": 13980.25400000082,
+     "count": 10280
+    },
+    {
+     "kernel": "triton_per_fused_abs_add_div_exp_index_select_mul_pow_reciprocal_rsub_select_sign_slice_sub_sum_tanh_unsqueeze_7",
+     "microseconds": 12749.15099999999,
+     "count": 160
+    },
+    {
+     "kernel": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<double, double,",
+     "microseconds": 12603.124999999292,
+     "count": 9007
+    },
+    {
+     "kernel": "void at::native::vectorized_elementwise_kernel<2, at::native::CUDAFunctor_add<double>, std::array<char*, 3ul>, false>(in",
+     "microseconds": 9167.241000000455,
+     "count": 6787
+    },
+    {
+     "kernel": "void at::native::vectorized_elementwise_kernel<2, at::native::FillFunctor<double>, std::array<char*, 1ul>, false>(int, a",
+     "microseconds": 8270.034999999969,
+     "count": 9122
+    },
+    {
+     "kernel": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<double, at::native::func_wrapper_t<double, at::native::sum_f",
+     "microseconds": 5072.600000000542,
+     "count": 1537
+    },
+    {
+     "kernel": "void at::native::(anonymous namespace)::indexSelectSmallIndex<double, long, unsigned int, 2, 2, -2>(at::cuda::detail::Te",
+     "microseconds": 2201.2219999999434,
+     "count": 480
+    },
+    {
+     "kernel": "triton_poi_fused__unsafe_view_abs_add_clone_div_exp_index_add_index_select_mul_new_zeros_pow_select_slice_tanh_unsqueeze",
+     "microseconds": 2117.8829999999525,
+     "count": 160
+    },
+    {
+     "kernel": "void at::native::(anonymous namespace)::indexSelectSmallIndex<double, long, unsigned int, -1, -1, -1>(at::cuda::detail::",
+     "microseconds": 1791.9509999999918,
+     "count": 240
+    },
+    {
+     "kernel": "void at::native::(anonymous namespace)::CatArrayBatchedCopy<at::native::(anonymous namespace)::OpaqueType<8u>, unsigned ",
+     "microseconds": 1757.9019999999437,
+     "count": 560
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_index_select_mul_pow_select_slice_sub_sum_tanh_unsqueeze_view_4",
+     "microseconds": 1753.070000000147,
+     "count": 160
+    },
+    {
+     "kernel": "triton_poi_fused_new_zeros_1",
+     "microseconds": 1498.5850000002847,
+     "count": 1760
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_index_add_index_select_mul_new_zeros_pow_select_slice_sub_tanh_unsqueeze_12",
+     "microseconds": 1492.630999999912,
+     "count": 160
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_index_add_index_select_mul_new_zeros_pow_select_slice_sub_sum_tanh_unsqueeze_15",
+     "microseconds": 1485.9320000000498,
+     "count": 160
+    }
+   ]
+  },
+  "2048": {
+   "device_microseconds_by_kind": {
+    "elementwise_index": 6180.871999999618,
+    "copy": 4718.670000000003,
+    "other": 75.99900000000275,
+    "gemm": 2280.669000000007,
+    "triton": 25704.851999999966,
+    "reduction": 1001.9249999999879
+   },
+   "kernel_launches": 6837,
+   "top": [
+    {
+     "kernel": "triton_per_fused_abs_add_div_exp_index_select_mul_pow_reciprocal_rsub_select_sign_slice_sub_sum_tanh_unsqueeze_7",
+     "microseconds": 13752.337999999992,
+     "count": 20
+    },
+    {
+     "kernel": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::T",
+     "microseconds": 4275.448999999936,
+     "count": 1257
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_index_select_mul_pow_select_slice_sub_sum_tanh_unsqueeze_view_4",
+     "microseconds": 2166.8799999999924,
+     "count": 20
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_index_add_index_select_mul_new_zeros_pow_select_slice_sub_tanh_unsqueeze_12",
+     "microseconds": 1746.956000000011,
+     "count": 20
+    },
+    {
+     "kernel": "triton_poi_fused__unsafe_view_abs_add_clone_div_exp_index_add_index_select_mul_new_zeros_pow_select_slice_tanh_unsqueeze",
+     "microseconds": 1524.181999999997,
+     "count": 20
+    },
+    {
+     "kernel": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<double> >(at:",
+     "microseconds": 1480.854999999926,
+     "count": 915
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_index_add_index_select_mul_new_zeros_pow_select_slice_sub_sum_tanh_unsqueeze_15",
+     "microseconds": 1468.5020000000095,
+     "count": 20
+    },
+    {
+     "kernel": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<double, double,",
+     "microseconds": 1379.4699999999002,
+     "count": 867
+    },
+    {
+     "kernel": "void at::native::vectorized_elementwise_kernel<2, at::native::CUDAFunctor_add<double>, std::array<char*, 3ul>, false>(in",
+     "microseconds": 1183.5209999998663,
+     "count": 835
+    },
+    {
+     "kernel": "void at::native::vectorized_elementwise_kernel<2, at::native::FillFunctor<double>, std::array<char*, 1ul>, false>(int, a",
+     "microseconds": 1079.0089999999777,
+     "count": 1142
+    },
+    {
+     "kernel": "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<double, at::native::func_wrapper_t<double, at::native::sum_f",
+     "microseconds": 816.3290000000084,
+     "count": 187
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_index_add_index_select_mul_new_zeros_pow_select_slice_sub_sum_tanh_unsqueeze_2",
+     "microseconds": 760.3919999999998,
+     "count": 20
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_mul_pow_select_slice_sum_tanh_unsqueeze_16",
+     "microseconds": 578.6389999999992,
+     "count": 20
+    },
+    {
+     "kernel": "sm90_xmma_gemm_f64f64_f64f64_f64_tn_n_tilesize64x128x16_stage3_warpsize2x2x1_tensor16x8x8_execute_kernel__5x_cublas",
+     "microseconds": 485.8439999999964,
+     "count": 11
+    },
+    {
+     "kernel": "triton_poi_fused_abs_add_div_exp_index_select_mul_pow_select_slice_sub_tanh_unsqueeze_0",
+     "microseconds": 458.4180000000101,
+     "count": 20
+    }
+   ]
+  }
+ },
+ "analytic_best_chunk": "2048"
+}

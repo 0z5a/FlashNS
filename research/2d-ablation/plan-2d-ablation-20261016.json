@@ -1,0 +1,4227 @@
+{
+ "version": "FlashNS-2D-ablation-20261016-v1-plan",
+ "protocol": "protocol-2d-ablation-20261016.json",
+ "protocol_sha256": "12e3fa7206533785f7d7f36be7d22f0b47a97c13079ca7267d01b083ac12813c",
+ "tiers": [
+  "core decomposition (2k, 16k) with A/A label control and profiles",
+  "point sweep",
+  "width/depth",
+  "development solves",
+  "endpoint drift repeats"
+ ],
+ "counts": {
+  "0": 70,
+  "1": 80,
+  "2": 72,
+  "3": 18,
+  "4": 4
+ },
+ "tasks": [
+  {
+   "id": "C-n16384-h64x64-r4",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n2048-h64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "B-n2048-h64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "B-n2048-h64x64-r4",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "D-n2048-h64x64-r3",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n16384-h64x64-r2",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-h64x64-r4",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-h64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "B-n2048-h64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n2048-h64x64-r4",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n2048-h64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n16384-h64x64-r3",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n2048-h64x64-r4",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "C-n2048-h64x64-r3",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n16384-h64x64-r3",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "B-n2048-h64x64-r3",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n2048-h64x64-r0",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "A-n2048-h64x64-r4",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n16384-h64x64-r0",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "F-n2048-h64x64-r3",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n16384-h64x64-r3",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n2048-h64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "D-n2048-h64x64-r0",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-h64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-h64x64-r4",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n2048-h64x64-r1",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n16384-h64x64-r2",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "D-n2048-h64x64-r4",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "D-n2048-h64x64-r1",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n2048-h64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "C-n2048-h64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n16384-h64x64-r1",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n2048-h64x64-r2",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "B-n2048-h64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n2048-h64x64-r4",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n2048-h64x64-r0",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "E-n2048-h64x64-r3",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n2048-h64x64-r1",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-h64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "F-n16384-h64x64-r4",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n2048-h64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-h64x64-r3",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n2048-h64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-h64x64-r3",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n16384-h64x64-r0",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "D-n16384-h64x64-r3",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-h64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "D-n16384-h64x64-r0",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n16384-h64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-h64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "B-n16384-h64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "D-n16384-h64x64-r1",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-h64x64-r3",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-h64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "C-n2048-h64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "A-n2048-h64x64-r3",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n16384-h64x64-r4",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n16384-h64x64-r4",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "C-n2048-h64x64-r4",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n2048-h64x64-r3",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "D-n16384-h64x64-r4",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n16384-h64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "C-n16384-h64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": true,
+   "tier": 0
+  },
+  {
+   "id": "C-n2048-h64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n2048-h64x64-r2",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "E-n16384-h64x64-r1",
+   "kind": "replay",
+   "cell": "E",
+   "label": "E",
+   "backend": "gl8_compact_output",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n16384-h64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "D-n16384-h64x64-r2",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A_AA-n16384-h64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "D-n2048-h64x64-r2",
+   "kind": "replay",
+   "cell": "D",
+   "label": "D",
+   "backend": "q10_compact",
+   "eager": true,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 0
+  },
+  {
+   "id": "A-n32768-h64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n32768-h64x64-r3",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n32768-h64x64-r3",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n32768-h64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n8192-h64x64-r0",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n8192-h64x64-r4",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-h64x64-r3",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n8192-h64x64-r2",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n4096-h64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n8192-h64x64-r3",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n4096-h64x64-r3",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n4096-h64x64-r4",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n4096-h64x64-r3",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n8192-h64x64-r4",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n32768-h64x64-r3",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n8192-h64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n65536-h64x64-r3",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n32768-h64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n8192-h64x64-r1",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n8192-h64x64-r4",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n32768-h64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-h64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-h64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n4096-h64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n4096-h64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-h64x64-r4",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n8192-h64x64-r3",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n4096-h64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-h64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n32768-h64x64-r1",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n4096-h64x64-r2",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-h64x64-r4",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n65536-h64x64-r1",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-h64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n4096-h64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n8192-h64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n65536-h64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n4096-h64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n8192-h64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n8192-h64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n32768-h64x64-r4",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n8192-h64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-h64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n4096-h64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-h64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n8192-h64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n4096-h64x64-r3",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n8192-h64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n32768-h64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n32768-h64x64-r0",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n8192-h64x64-r3",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n32768-h64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n8192-h64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-h64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n4096-h64x64-r4",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n8192-h64x64-r3",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n32768-h64x64-r2",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n8192-h64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n4096-h64x64-r0",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n65536-h64x64-r4",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n4096-h64x64-r4",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-h64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n32768-h64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n65536-h64x64-r2",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n32768-h64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n4096-h64x64-r1",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-h64x64-r3",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n32768-h64x64-r4",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n65536-h64x64-r4",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n65536-h64x64-r3",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n65536-h64x64-r0",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 65536,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n4096-h64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n32768-h64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n4096-h64x64-r3",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n4096-h64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n32768-h64x64-r4",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n32768-h64x64-r4",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "C-n4096-h64x64-r4",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 4096,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "A-n32768-h64x64-r3",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 32768,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 3,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "F-n8192-h64x64-r4",
+   "kind": "replay",
+   "cell": "F",
+   "label": "F",
+   "backend": "gl8_compact_autograd",
+   "eager": false,
+   "interior": 8192,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 1
+  },
+  {
+   "id": "B-n16384-h64x64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h128x128-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h64x64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h32x32-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h128x128-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h64x64x64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h64x64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h128x128-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h128x128-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h32x32-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h64x64x64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h128x128-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h128x128-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h32x32-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h32x32-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h64x64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h64x64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h64x64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h128x128-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h64x64x64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h64x64x64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h32x32-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h128x128-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h64x64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h64x64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h64x64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h64x64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h128x128-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h128x128-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h64x64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h32x32-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h32x32-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h64x64x64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h128x128-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h64x64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h64x64x64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h64x64x64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h32x32-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h64x64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h32x32-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h64x64x64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h32x32-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h64x64x64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h64x64x64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h32x32-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h64x64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h64x64x64x64-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h64x64x64x64-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h64x64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h32x32-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h128x128-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h128x128-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h32x32-r0",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h128x128-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h64x64x64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h64x64x64x64-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h64x64x64x64-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h64x64x64x64-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h64x64x64-r0",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h128x128-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h64x64x64-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h64x64x64x64-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n16384-h64x64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n16384-h32x32-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h32x32-r0",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h32x32-r2",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h64x64x64x64-r2",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64,
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n2048-h128x128-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h128x128-r2",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "A-n2048-h32x32-r1",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "B-n16384-h32x32-r1",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    32,
+    32
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-n2048-h128x128-r1",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    128,
+    128
+   ],
+   "replicate": 1,
+   "seed": 361901,
+   "profile": false,
+   "tier": 2
+  },
+  {
+   "id": "C-solve-s862104",
+   "kind": "solve",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862104,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "A-solve-s862105",
+   "kind": "solve",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862105,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "B-solve-s862103",
+   "kind": "solve",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862103,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "A-solve-s862104",
+   "kind": "solve",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862104,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "C-solve-s862105",
+   "kind": "solve",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862105,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "B-solve-s862102",
+   "kind": "solve",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862102,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "B-solve-s862101",
+   "kind": "solve",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862101,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "A-solve-s862103",
+   "kind": "solve",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862103,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "B-solve-s862106",
+   "kind": "solve",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862106,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "C-solve-s862103",
+   "kind": "solve",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862103,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "C-solve-s862102",
+   "kind": "solve",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862102,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "B-solve-s862105",
+   "kind": "solve",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862105,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "B-solve-s862104",
+   "kind": "solve",
+   "cell": "B",
+   "label": "B",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862104,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "A-solve-s862101",
+   "kind": "solve",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862101,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "C-solve-s862106",
+   "kind": "solve",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862106,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "C-solve-s862101",
+   "kind": "solve",
+   "cell": "C",
+   "label": "C",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862101,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "A-solve-s862106",
+   "kind": "solve",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862106,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "A-solve-s862102",
+   "kind": "solve",
+   "cell": "A",
+   "label": "A",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 862102,
+   "profile": false,
+   "tier": 3
+  },
+  {
+   "id": "C-n16384-h64x64-r4-drift",
+   "kind": "replay",
+   "cell": "C",
+   "label": "C_DRIFT",
+   "backend": "gl8_native",
+   "eager": false,
+   "interior": 16384,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 4,
+   "drift_of": "C-n16384-h64x64-r4"
+  },
+  {
+   "id": "A_AA-n2048-h64x64-r2-drift",
+   "kind": "replay",
+   "cell": "A",
+   "label": "A_AA_DRIFT",
+   "backend": "q10_compact",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 2,
+   "seed": 361901,
+   "profile": false,
+   "tier": 4,
+   "drift_of": "A_AA-n2048-h64x64-r2"
+  },
+  {
+   "id": "B-n2048-h64x64-r0-drift",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B_DRIFT",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 0,
+   "seed": 361901,
+   "profile": false,
+   "tier": 4,
+   "drift_of": "B-n2048-h64x64-r0"
+  },
+  {
+   "id": "B-n2048-h64x64-r4-drift",
+   "kind": "replay",
+   "cell": "B",
+   "label": "B_DRIFT",
+   "backend": "gl8_compact_output",
+   "eager": false,
+   "interior": 2048,
+   "hidden": [
+    64,
+    64
+   ],
+   "replicate": 4,
+   "seed": 361901,
+   "profile": false,
+   "tier": 4,
+   "drift_of": "B-n2048-h64x64-r4"
+  }
+ ]
+}

@@ -1,0 +1,505 @@
+{
+ "scope": "Post-hoc attribution of the C36 pressure error to velocity error or unpenalized residual.",
+ "eta": 0.0625,
+ "nu": 0.01,
+ "holdout_seed": 794701,
+ "scales": {
+  "domain_length": 1.0,
+  "velocity": 0.30339043536469446,
+  "pressure": 0.09204575627077885,
+  "momentum_residual": 38.13646516033965,
+  "momentum_residual_gradient": 5251.719964854889,
+  "continuity_residual": 0.30339043536469446,
+  "continuity_residual_gradient": 0.30339043536469446
+ },
+ "observations": {
+  "seed361901-analytic__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "share_of_stratified_momentum_energy": 0.025401966507675136,
+     "gradient": {
+      "pressure_term_rms": 0.0053312660846834775,
+      "residual_term_rms": 0.02646889556456117,
+      "velocity_term_rms": 0.02607760606322272,
+      "residual_term_over_loss_scale": 0.000694057392400587,
+      "velocity_over_pressure_term": 4.891447106371726,
+      "cosine_pressure_velocity": 0.028273367960743354,
+      "cosine_noise_floor": 0.026028960314767677,
+      "pressure_fraction_of_residual_energy": 0.04056851182777325
+     },
+     "poisson": {
+      "pressure_term_rms": 0.2513474346427718,
+      "residual_term_rms": 0.3005218891201709,
+      "velocity_term_rms": 0.1670253843061753,
+      "residual_term_over_loss_scale": 5.722351746309738e-05,
+      "velocity_over_pressure_term": 0.6645199484274051,
+      "cosine_pressure_velocity": 0.009046935428737836,
+      "cosine_noise_floor": 0.045083481733371615,
+      "pressure_fraction_of_residual_energy": 0.6995144553974136,
+      "interpretable": true
+     },
+     "velocity_relative_l2": 0.0034944494712242985,
+     "velocity_gradient_relative_l2": 0.01601818178275634,
+     "corrected_pressure_over_limit": 5.407004274229563
+    },
+    "face": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.34999187726532527,
+     "gradient": {
+      "pressure_term_rms": 0.008073715458362316,
+      "residual_term_rms": 0.07610387294015548,
+      "velocity_term_rms": 0.07571146876521721,
+      "residual_term_over_loss_scale": 0.0019955670411556754,
+      "velocity_over_pressure_term": 9.377525026200841,
+      "cosine_pressure_velocity": 0.004590345657426019,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.011254685450900246
+     },
+     "poisson": {
+      "pressure_term_rms": 0.9328607759542293,
+      "residual_term_rms": 1.3321286490756428,
+      "velocity_term_rms": 1.0706956858838357,
+      "residual_term_over_loss_scale": 0.0002536556895627337,
+      "velocity_over_pressure_term": 1.1477550707270483,
+      "cosine_pressure_velocity": 0.12117006206079313,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.49038968714564113,
+      "interpretable": true
+     },
+     "velocity_relative_l2": 0.002137776757235652,
+     "velocity_gradient_relative_l2": 0.002051416134874206,
+     "corrected_pressure_over_limit": 3.5763374219310937
+    },
+    "edge": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.3656830109922136,
+     "gradient": {
+      "pressure_term_rms": 0.008087955525403416,
+      "residual_term_rms": 0.07779114576956542,
+      "velocity_term_rms": 0.0772657816405058,
+      "residual_term_over_loss_scale": 0.002039810072656262,
+      "velocity_over_pressure_term": 9.553190716469956,
+      "cosine_pressure_velocity": -0.012838656476101143,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.010809787897180458
+     },
+     "poisson": {
+      "pressure_term_rms": 1.2143077266468798,
+      "residual_term_rms": 4.664976954931042,
+      "velocity_term_rms": 4.673592944148884,
+      "residual_term_over_loss_scale": 0.0008882760288342869,
+      "velocity_over_pressure_term": 3.848771478259697,
+      "cosine_pressure_velocity": 0.1370004357724356,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.06775767751551147,
+      "interpretable": false
+     },
+     "velocity_relative_l2": 0.0013719731790972146,
+     "velocity_gradient_relative_l2": 0.0013556056639800415,
+     "corrected_pressure_over_limit": 2.8219377143759794
+    },
+    "corner": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.258923145234786,
+     "gradient": {
+      "pressure_term_rms": 0.0063935165835279344,
+      "residual_term_rms": 0.06545807253469169,
+      "velocity_term_rms": 0.06519256434270151,
+      "residual_term_over_loss_scale": 0.0017164168797365463,
+      "velocity_over_pressure_term": 10.196667747865344,
+      "cosine_pressure_velocity": 0.007423338890352167,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.009540105248353518
+     },
+     "poisson": {
+      "pressure_term_rms": 1.139300878753107,
+      "residual_term_rms": 5.233418613644335,
+      "velocity_term_rms": 4.958311931945456,
+      "residual_term_over_loss_scale": 0.0009965151700141992,
+      "velocity_over_pressure_term": 4.352065397660376,
+      "cosine_pressure_velocity": -0.13328060206675313,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.04739209585757035,
+      "interpretable": false
+     },
+     "velocity_relative_l2": 0.0010143586100948392,
+     "velocity_gradient_relative_l2": 0.0012082035044687584,
+     "corrected_pressure_over_limit": 1.8649239611865798
+    }
+   },
+   "identity_checks": {
+    "gradient_identity_over_max": 3.791086215080579e-13,
+    "poisson_identity_over_max": 6.939199986635293e-13,
+    "exact_inertia_minus_force_over_force": 0.0
+   },
+   "reproduction_max_relative_difference": 1.3477787288108686e-13
+  },
+  "seed361901-parameter_ad__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "share_of_stratified_momentum_energy": 0.023077755895137823,
+     "gradient": {
+      "pressure_term_rms": 0.0043571436870116,
+      "residual_term_rms": 0.022581919077319178,
+      "velocity_term_rms": 0.021995192414459387,
+      "residual_term_over_loss_scale": 0.0005921345615640184,
+      "velocity_over_pressure_term": 5.048075986115816,
+      "cosine_pressure_velocity": -0.03740693874445964,
+      "cosine_noise_floor": 0.026028960314767677,
+      "pressure_fraction_of_residual_energy": 0.03722905997821492
+     },
+     "poisson": {
+      "pressure_term_rms": 0.21368605406060798,
+      "residual_term_rms": 0.2441776418540389,
+      "velocity_term_rms": 0.133782008155265,
+      "residual_term_over_loss_scale": 4.6494794750691885e-05,
+      "velocity_over_pressure_term": 0.626068035854695,
+      "cosine_pressure_velocity": 0.06885273912331888,
+      "cosine_noise_floor": 0.045083481733371615,
+      "pressure_fraction_of_residual_energy": 0.7658444482499752,
+      "interpretable": true
+     },
+     "velocity_relative_l2": 0.0029437773972410407,
+     "velocity_gradient_relative_l2": 0.013310867357919597,
+     "corrected_pressure_over_limit": 4.581695595605836
+    },
+    "face": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.34344936164838874,
+     "gradient": {
+      "pressure_term_rms": 0.006772338005478566,
+      "residual_term_rms": 0.06747937338549481,
+      "velocity_term_rms": 0.06710868687158289,
+      "residual_term_over_loss_scale": 0.0017694186679805496,
+      "velocity_over_pressure_term": 9.909234715883127,
+      "cosine_pressure_velocity": -0.004428569796538862,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.010072451127908893
+     },
+     "poisson": {
+      "pressure_term_rms": 0.8354681421675666,
+      "residual_term_rms": 1.2519428788772748,
+      "velocity_term_rms": 0.9467329662082719,
+      "residual_term_over_loss_scale": 0.0002383872116669243,
+      "velocity_over_pressure_term": 1.133176620896682,
+      "cosine_pressure_velocity": 0.017035738618318176,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.4453390310586406,
+      "interpretable": true
+     },
+     "velocity_relative_l2": 0.0018635822814195128,
+     "velocity_gradient_relative_l2": 0.001859119108661335,
+     "corrected_pressure_over_limit": 3.204301814312302
+    },
+    "edge": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.3636280287853825,
+     "gradient": {
+      "pressure_term_rms": 0.007337329632441584,
+      "residual_term_rms": 0.0694333884773349,
+      "velocity_term_rms": 0.06904237575972004,
+      "residual_term_over_loss_scale": 0.0018206561144409044,
+      "velocity_over_pressure_term": 9.409741584247914,
+      "cosine_pressure_velocity": -0.000305356202195146,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.011167072621412174
+     },
+     "poisson": {
+      "pressure_term_rms": 1.1198644873429626,
+      "residual_term_rms": 4.282895431329646,
+      "velocity_term_rms": 4.295847466014791,
+      "residual_term_over_loss_scale": 0.0008155224307448363,
+      "velocity_over_pressure_term": 3.8360422306160444,
+      "cosine_pressure_velocity": 0.14189095416906647,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.06836849239728465,
+      "interpretable": false
+     },
+     "velocity_relative_l2": 0.0012720732232056346,
+     "velocity_gradient_relative_l2": 0.0012592337412491489,
+     "corrected_pressure_over_limit": 2.5805281837982625
+    },
+    "corner": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.269844853671091,
+     "gradient": {
+      "pressure_term_rms": 0.005994774354130337,
+      "residual_term_rms": 0.05981316095515129,
+      "velocity_term_rms": 0.05990559679542615,
+      "residual_term_over_loss_scale": 0.0015683981382038131,
+      "velocity_over_pressure_term": 9.992969419132818,
+      "cosine_pressure_velocity": 0.06544268414227285,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.010045051621668463
+     },
+     "poisson": {
+      "pressure_term_rms": 1.1392196421667844,
+      "residual_term_rms": 5.077425455213405,
+      "velocity_term_rms": 4.928397088499404,
+      "residual_term_over_loss_scale": 0.0009668119186080211,
+      "velocity_over_pressure_term": 4.3261166732743845,
+      "cosine_pressure_velocity": -0.017216945098173352,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.05034169298945212,
+      "interpretable": false
+     },
+     "velocity_relative_l2": 0.0009299313933025678,
+     "velocity_gradient_relative_l2": 0.0010962809288426185,
+     "corrected_pressure_over_limit": 1.9672585482174934
+    }
+   },
+   "identity_checks": {
+    "gradient_identity_over_max": 4.0705949931719613e-13,
+    "poisson_identity_over_max": 9.552915271467317e-13,
+    "exact_inertia_minus_force_over_force": 0.0
+   },
+   "reproduction_max_relative_difference": 9.813746584175864e-14
+  },
+  "seed361902-analytic__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "share_of_stratified_momentum_energy": 0.02519763712706606,
+     "gradient": {
+      "pressure_term_rms": 0.004269394485685568,
+      "residual_term_rms": 0.020917289446745337,
+      "velocity_term_rms": 0.020446739199160256,
+      "residual_term_over_loss_scale": 0.0005484852714797085,
+      "velocity_over_pressure_term": 4.789142644867817,
+      "cosine_pressure_velocity": -0.007080141339571773,
+      "cosine_noise_floor": 0.026028960314767677,
+      "pressure_fraction_of_residual_energy": 0.04166023903591204
+     },
+     "poisson": {
+      "pressure_term_rms": 0.22278100389214395,
+      "residual_term_rms": 0.2445012796775452,
+      "velocity_term_rms": 0.12184571284550821,
+      "residual_term_over_loss_scale": 4.655641986125988e-05,
+      "velocity_over_pressure_term": 0.5469304416300143,
+      "cosine_pressure_velocity": 0.0865148867811642,
+      "cosine_noise_floor": 0.045083481733371615,
+      "pressure_fraction_of_residual_energy": 0.830221622900931,
+      "interpretable": true
+     },
+     "velocity_relative_l2": 0.002746863188384351,
+     "velocity_gradient_relative_l2": 0.013034425237814161,
+     "corrected_pressure_over_limit": 3.7635548772091236
+    },
+    "face": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.35601229886812047,
+     "gradient": {
+      "pressure_term_rms": 0.005527590429711252,
+      "residual_term_rms": 0.060902290053928776,
+      "velocity_term_rms": 0.06057855009565714,
+      "residual_term_over_loss_scale": 0.0015969568704879509,
+      "velocity_over_pressure_term": 10.959305119648963,
+      "cosine_pressure_velocity": -0.013101174725691734,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.008237671434646954
+     },
+     "poisson": {
+      "pressure_term_rms": 0.6923020684331065,
+      "residual_term_rms": 1.3315485479955194,
+      "velocity_term_rms": 1.0156990939280806,
+      "residual_term_over_loss_scale": 0.00025354523030671753,
+      "velocity_over_pressure_term": 1.4671328315209595,
+      "cosine_pressure_velocity": -0.18636639416294015,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.27031942044399393,
+      "interpretable": true
+     },
+     "velocity_relative_l2": 0.0018352204165268343,
+     "velocity_gradient_relative_l2": 0.0016130472596390358,
+     "corrected_pressure_over_limit": 2.764021540929999
+    },
+    "edge": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.3682085147660114,
+     "gradient": {
+      "pressure_term_rms": 0.0054623169436089575,
+      "residual_term_rms": 0.06193669627757532,
+      "velocity_term_rms": 0.061882576511782035,
+      "residual_term_over_loss_scale": 0.0016240806801881297,
+      "velocity_over_pressure_term": 11.328997777067137,
+      "cosine_pressure_velocity": 0.03422235756497006,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.007777816975809413
+     },
+     "poisson": {
+      "pressure_term_rms": 0.7723357380052666,
+      "residual_term_rms": 3.6777911968608192,
+      "velocity_term_rms": 3.59314879159165,
+      "residual_term_over_loss_scale": 0.0007003022288836836,
+      "velocity_over_pressure_term": 4.652314550239223,
+      "cosine_pressure_velocity": -0.0034101905371285678,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.04409995279751988,
+      "interpretable": false
+     },
+     "velocity_relative_l2": 0.0010717878766300596,
+     "velocity_gradient_relative_l2": 0.001078449888889133,
+     "corrected_pressure_over_limit": 1.9909495482610646
+    },
+    "corner": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.2505815492388021,
+     "gradient": {
+      "pressure_term_rms": 0.005712520439928902,
+      "residual_term_rms": 0.051094678120068696,
+      "velocity_term_rms": 0.0508799822380362,
+      "residual_term_over_loss_scale": 0.0013397853709107015,
+      "velocity_over_pressure_term": 8.90674839120041,
+      "cosine_pressure_velocity": 0.01847452528919935,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.012499832657340991
+     },
+     "poisson": {
+      "pressure_term_rms": 1.0289310350997816,
+      "residual_term_rms": 3.880706444113223,
+      "velocity_term_rms": 3.8987886212681144,
+      "residual_term_over_loss_scale": 0.0007389400939279615,
+      "velocity_over_pressure_term": 3.789164179395197,
+      "cosine_pressure_velocity": 0.14948821962224043,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.07029929181805797,
+      "interpretable": false
+     },
+     "velocity_relative_l2": 0.0007410361452994419,
+     "velocity_gradient_relative_l2": 0.0009191639983585009,
+     "corrected_pressure_over_limit": 1.8169808263499545
+    }
+   },
+   "identity_checks": {
+    "gradient_identity_over_max": 5.48975553951391e-13,
+    "poisson_identity_over_max": 1.2382413110557228e-12,
+    "exact_inertia_minus_force_over_force": 0.0
+   },
+   "reproduction_max_relative_difference": 7.201834152273311e-14
+  },
+  "seed361902-parameter_ad__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "share_of_stratified_momentum_energy": 0.022326624231800908,
+     "gradient": {
+      "pressure_term_rms": 0.004301143579710191,
+      "residual_term_rms": 0.02114775117396678,
+      "velocity_term_rms": 0.020633032846249545,
+      "residual_term_over_loss_scale": 0.0005545283519343993,
+      "velocity_over_pressure_term": 4.797103947792366,
+      "cosine_pressure_velocity": -0.016933222286532514,
+      "cosine_noise_floor": 0.026028960314767677,
+      "pressure_fraction_of_residual_energy": 0.041365616087792906
+     },
+     "poisson": {
+      "pressure_term_rms": 0.22707457421527194,
+      "residual_term_rms": 0.2594634436280606,
+      "velocity_term_rms": 0.12413532190551714,
+      "residual_term_over_loss_scale": 4.9405422483380615e-05,
+      "velocity_over_pressure_term": 0.5466720452278994,
+      "cosine_pressure_velocity": -0.006187712582393451,
+      "cosine_noise_floor": 0.045083481733371615,
+      "pressure_fraction_of_residual_energy": 0.7659222068143737,
+      "interpretable": true
+     },
+     "velocity_relative_l2": 0.0030313557336327066,
+     "velocity_gradient_relative_l2": 0.013862788439884116,
+     "corrected_pressure_over_limit": 3.380248429550167
+    },
+    "face": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.32969165328572964,
+     "gradient": {
+      "pressure_term_rms": 0.005428130875955433,
+      "residual_term_rms": 0.06294804718268662,
+      "velocity_term_rms": 0.06268067508597275,
+      "residual_term_over_loss_scale": 0.001650599942024779,
+      "velocity_over_pressure_term": 11.547377268227713,
+      "cosine_pressure_velocity": -0.006061931748357338,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.007435943772475236
+     },
+     "poisson": {
+      "pressure_term_rms": 0.6838520176849141,
+      "residual_term_rms": 1.320772613207509,
+      "velocity_term_rms": 0.9575504107439553,
+      "residual_term_over_loss_scale": 0.0002514933435229354,
+      "velocity_over_pressure_term": 1.4002304387221216,
+      "cosine_pressure_velocity": -0.2747949027974411,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.2680823088173003,
+      "interpretable": true
+     },
+     "velocity_relative_l2": 0.0018605387026126366,
+     "velocity_gradient_relative_l2": 0.001667059988812547,
+     "corrected_pressure_over_limit": 2.652879875510972
+    },
+    "edge": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.3842123919222215,
+     "gradient": {
+      "pressure_term_rms": 0.005515145982149326,
+      "residual_term_rms": 0.06795383470880507,
+      "velocity_term_rms": 0.06786948636380345,
+      "residual_term_over_loss_scale": 0.0017818598137793395,
+      "velocity_over_pressure_term": 12.306018115109586,
+      "cosine_pressure_velocity": 0.025327077190016794,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.006586976072868832
+     },
+     "poisson": {
+      "pressure_term_rms": 0.8037037681044537,
+      "residual_term_rms": 3.6152851764558287,
+      "velocity_term_rms": 3.4832166924316246,
+      "residual_term_over_loss_scale": 0.0006884002194804237,
+      "velocity_over_pressure_term": 4.333955905976202,
+      "cosine_pressure_velocity": -0.052072031056690164,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.04942047190366954,
+      "interpretable": false
+     },
+     "velocity_relative_l2": 0.0011611131361208508,
+     "velocity_gradient_relative_l2": 0.0011432012780015067,
+     "corrected_pressure_over_limit": 2.122292942943641
+    },
+    "corner": {
+     "points": 820,
+     "share_of_stratified_momentum_energy": 0.2637693305602479,
+     "gradient": {
+      "pressure_term_rms": 0.004726145935326923,
+      "residual_term_rms": 0.05630415357156176,
+      "velocity_term_rms": 0.056143472184014755,
+      "residual_term_over_loss_scale": 0.001476386270590064,
+      "velocity_over_pressure_term": 11.879335287629269,
+      "cosine_pressure_velocity": 0.00804284840451551,
+      "cosine_noise_floor": 0.020161945963637795,
+      "pressure_fraction_of_residual_energy": 0.007045849906995373
+     },
+     "poisson": {
+      "pressure_term_rms": 0.9091029288937413,
+      "residual_term_rms": 4.46126493021468,
+      "velocity_term_rms": 4.466099933100882,
+      "residual_term_over_loss_scale": 0.0008494864463585216,
+      "velocity_over_pressure_term": 4.91264497248462,
+      "cosine_pressure_velocity": 0.10709372090034827,
+      "cosine_noise_floor": 0.03492151478847891,
+      "pressure_fraction_of_residual_energy": 0.04152504245288401,
+      "interpretable": false
+     },
+     "velocity_relative_l2": 0.0008317332594528768,
+     "velocity_gradient_relative_l2": 0.0010365426625685702,
+     "corrected_pressure_over_limit": 1.5718232199788114
+    }
+   },
+   "identity_checks": {
+    "gradient_identity_over_max": 4.853296898896509e-13,
+    "poisson_identity_over_max": 7.197977456516289e-13,
+    "exact_inertia_minus_force_over_force": 0.0
+   },
+   "reproduction_max_relative_difference": 8.775693702066287e-14
+  }
+ }
+}

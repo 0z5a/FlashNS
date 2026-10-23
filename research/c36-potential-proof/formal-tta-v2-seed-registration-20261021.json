@@ -1,0 +1,52 @@
+{
+ "state": "PRE_RUN_SEED_REGISTRATION",
+ "time_utc": "2026-10-21T18:24:35.868131+00:00",
+ "baseline_commit": "1a059c3cb5a00ce477cc3290d36136423f9422bb",
+ "rule": "SHA256 UTF-8 flashns-c36-formal-tta-v2-20261021-seed-{i}, i=1..5, and ...-holdout; first four bytes big endian masked with 0x7fffffff. The same rule reproduces the v1 seeds and holdout from the v1 label.",
+ "seeds": [
+  2013091829,
+  1342776288,
+  8730574,
+  1790307490,
+  2126574302
+ ],
+ "holdout_seed": 1005993036,
+ "excluded_seen_seeds": [
+  361901,
+  361902,
+  642201,
+  1212382065,
+  392322075,
+  422010988,
+  1127789372,
+  949592700,
+  562507784
+ ],
+ "baseline_search": [
+  {
+   "seed": 2013091829,
+   "baseline_tracked_content_matches": 0
+  },
+  {
+   "seed": 1342776288,
+   "baseline_tracked_content_matches": 0
+  },
+  {
+   "seed": 8730574,
+   "baseline_tracked_content_matches": 0
+  },
+  {
+   "seed": 1790307490,
+   "baseline_tracked_content_matches": 0
+  },
+  {
+   "seed": 2126574302,
+   "baseline_tracked_content_matches": 0
+  },
+  {
+   "seed": 1005993036,
+   "baseline_tracked_content_matches": 0
+  }
+ ],
+ "scope": "No occurrence in the tracked C36 project at the baseline commit; not a claim about unknown external experiments. No v2 initialization or GPU run occurred before this registration."
+}

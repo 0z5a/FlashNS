@@ -1,0 +1,784 @@
+{
+  "state": "C36_V7_DEVELOPMENT_READ",
+  "protocol_version": "C36-potential-20261021-v7-gh200-fresh-development",
+  "protocol_sha256": "30cf5ce38049b324a9bff62065e330416b5015413b79d5bfeb7d8dd5148a52e5",
+  "runs": [
+    {
+      "seed": 361901,
+      "arm": "fresh",
+      "training_state": "COMPLETE",
+      "training_seconds": 4000.539334414003,
+      "Adam_updates": 4000,
+      "SSBroyden_iterations": 14412,
+      "SSBroyden_evaluations": 23051,
+      "resets": 0,
+      "skipped_updates": 0,
+      "stop_reason": "training time guard",
+      "budget_truncated": true,
+      "continuity": null,
+      "inverse_hessian_memory": {
+        "free_bytes": 100740694016,
+        "total_bytes": 102005473280,
+        "needed_bytes": 20557430912,
+        "margin_bytes": 4000000000
+      },
+      "final_loss": 2.8619046059018863e-13,
+      "final_gradient_infinity": 5.434499118706992e-08,
+      "gradient_checks": {
+        "saved_comparisons": 78,
+        "check_points": 26,
+        "maximum_error_over_original_budget": 5.233536300663664e-05
+      },
+      "inverse_hessian_product_checks": {
+        "count": 14,
+        "maximum_relative_difference": 1.1949897855311982e-10
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0037469750095624477
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 145.59704636900278
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 282.2697458650073
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 415.9791078840062
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 552.6002674920019
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 601.6451014600025
+        },
+        {
+          "tag": "SSBroyden-iteration1000",
+          "training_seconds": 776.0894373629999
+        },
+        {
+          "tag": "SSBroyden-iteration2000",
+          "training_seconds": 1001.6625439860072
+        },
+        {
+          "tag": "SSBroyden-iteration5000",
+          "training_seconds": 1697.1588329960068
+        },
+        {
+          "tag": "SSBroyden-iteration10000",
+          "training_seconds": 2937.1311904080067
+        },
+        {
+          "tag": "final",
+          "training_seconds": 4000.8603987940005
+        }
+      ],
+      "events_sealed": true,
+      "optimizer": {
+        "iterations": 14412,
+        "line_search_evaluations_mean": 1.5994310296974743,
+        "seconds_per_iteration_mean": 0.236196529754967,
+        "tau_range": [
+          0.2665350301392033,
+          0.9999999592032643
+        ],
+        "phi_range": [
+          0.0,
+          3.7641824203683205
+        ],
+        "resets": 0,
+        "skipped_updates": 0,
+        "step_length_median": 0.4971796913138424
+      },
+      "training_gate_first": {
+        "phase": "SSBroyden",
+        "iteration": 215,
+        "evaluation": 327,
+        "loss": 9.111904670287035e-05,
+        "gradient_infinity": 0.0007855837131180935,
+        "training_seconds": 601.6420533430064
+      },
+      "loss_curve": {
+        "evaluations": 27051,
+        "initial": 5.510437156722028,
+        "after_Adam": 0.0011216731880966046,
+        "first_SSBroyden": 0.0011214643316374913,
+        "minimum": 2.8619046059018863e-13,
+        "final_reported": 2.8619046059018863e-13,
+        "first_evaluation_at_or_below": {
+          "0.001": {
+            "evaluation": 4045,
+            "training_seconds": 559.6090103340102
+          },
+          "0.0003": {
+            "evaluation": 4218,
+            "training_seconds": 585.2794948100054
+          },
+          "0.0001": {
+            "evaluation": 4320,
+            "training_seconds": 600.5727333420073
+          },
+          "3e-05": {
+            "evaluation": 4471,
+            "training_seconds": 623.1125189340091
+          },
+          "1e-05": {
+            "evaluation": 4684,
+            "training_seconds": 654.7709688270115
+          },
+          "3e-06": {
+            "evaluation": 4920,
+            "training_seconds": 689.9462905270047
+          },
+          "1e-06": {
+            "evaluation": 5115,
+            "training_seconds": 719.0717394660023
+          },
+          "3e-07": {
+            "evaluation": 5399,
+            "training_seconds": 761.1277341250097
+          },
+          "1e-07": {
+            "evaluation": 5718,
+            "training_seconds": 811.5188609020115
+          }
+        },
+        "mean_seconds_per_evaluation": 0.14787759664470812
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": true,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 5.89517846303086e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 5.792890733614971e-07,
+                "normalized_divergence_rms": 2.1425492750872394e-14,
+                "normalized_divergence_gradient_rms": 3.0672012609815363e-12,
+                "normalized_momentum_rms": 5.273024283826392e-07,
+                "normalized_momentum_gradient_rms": 5.438171316872392e-07,
+                "normalized_corrected_pressure_rms": 9.858523621294082e-07,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  2.5827149410695746e-07,
+                  2.0165095725156364e-07,
+                  1.8828642102655519e-07
+                ],
+                "velocity_component_relative_l2": [
+                  5.724696377318348e-07,
+                  6.076349785977786e-07,
+                  6.036759625315211e-07
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 1.3848594554730762e-06,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 9.623075167414854e-08,
+                "normalized_divergence_rms": 8.483706436580046e-16,
+                "normalized_divergence_gradient_rms": 1.2269205759368817e-13,
+                "normalized_momentum_rms": 5.5546006935376275e-08,
+                "normalized_momentum_gradient_rms": 5.7263003880082974e-08,
+                "normalized_corrected_pressure_rms": 1.1495269422347257e-07,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  4.832519849374986e-08,
+                  3.3426214388253215e-08,
+                  2.210239156259769e-08
+                ],
+                "velocity_component_relative_l2": [
+                  1.3252529295563726e-06,
+                  1.6334952560530989e-06,
+                  1.262318856482719e-06
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 8.132459194131768e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 7.019348302849752e-07,
+                "normalized_divergence_rms": 2.303619951186745e-14,
+                "normalized_divergence_gradient_rms": 3.4596436630767728e-12,
+                "normalized_momentum_rms": 5.820835680397067e-07,
+                "normalized_momentum_gradient_rms": 5.676682170236995e-07,
+                "normalized_corrected_pressure_rms": 1.6672008314671453e-06,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  3.093190263362448e-07,
+                  2.4116752768486485e-07,
+                  2.3633754350793696e-07
+                ],
+                "velocity_component_relative_l2": [
+                  7.249522196276366e-07,
+                  1.0355698208657148e-06,
+                  8.315546693195065e-07
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 3.3158796157873207e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 5.314721536624961e-07,
+                "normalized_divergence_rms": 4.1160710920059155e-14,
+                "normalized_divergence_gradient_rms": 5.4399398739544036e-12,
+                "normalized_momentum_rms": 4.5910257476480007e-07,
+                "normalized_momentum_gradient_rms": 4.775964433284531e-07,
+                "normalized_corrected_pressure_rms": 9.539822023668226e-07,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  2.16112912409959e-07,
+                  1.976754046066432e-07,
+                  1.8556412322829142e-07
+                ],
+                "velocity_component_relative_l2": [
+                  2.789150554911603e-07,
+                  3.971116195732393e-07,
+                  3.747481331803516e-07
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 7.320832670711025e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 6.905338727749141e-07,
+                "normalized_divergence_rms": 1.807100295371098e-14,
+                "normalized_divergence_gradient_rms": 2.776667613254196e-12,
+                "normalized_momentum_rms": 6.449465509328736e-07,
+                "normalized_momentum_gradient_rms": 6.085880793485206e-07,
+                "normalized_corrected_pressure_rms": 1.275113751475579e-06,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  2.978538356198199e-07,
+                  2.578872416625389e-07,
+                  2.1844044284363857e-07
+                ],
+                "velocity_component_relative_l2": [
+                  7.140902252122428e-07,
+                  7.257393223287519e-07,
+                  7.801153783758355e-07
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 3.2129466362412343e-07,
+            "maximum_endpoint_error": 3.2129466362412343e-07,
+            "maximum_refinement_change": 6.412442191129889e-11
+          },
+          "observation_seconds": 2970.6729176044464
+        }
+      }
+    },
+    {
+      "seed": 361902,
+      "arm": "fresh",
+      "training_state": "COMPLETE",
+      "training_seconds": 4000.272559339006,
+      "Adam_updates": 4000,
+      "SSBroyden_iterations": 14637,
+      "SSBroyden_evaluations": 23187,
+      "resets": 0,
+      "skipped_updates": 0,
+      "stop_reason": "training time guard",
+      "budget_truncated": true,
+      "continuity": null,
+      "inverse_hessian_memory": {
+        "free_bytes": 100740825088,
+        "total_bytes": 102005473280,
+        "needed_bytes": 20557430912,
+        "margin_bytes": 4000000000
+      },
+      "final_loss": 1.7092303742957338e-13,
+      "final_gradient_infinity": 3.744703804428416e-08,
+      "gradient_checks": {
+        "saved_comparisons": 78,
+        "check_points": 26,
+        "maximum_error_over_original_budget": 3.8173191698753194e-05
+      },
+      "inverse_hessian_product_checks": {
+        "count": 14,
+        "maximum_relative_difference": 1.4516980332760382e-10
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0048870909959077835
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 146.14357994300372
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 282.19617753299826
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 414.7389282609947
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 550.7470343760069
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 597.077990343998
+        },
+        {
+          "tag": "SSBroyden-iteration1000",
+          "training_seconds": 762.180255831001
+        },
+        {
+          "tag": "SSBroyden-iteration2000",
+          "training_seconds": 977.9524399219954
+        },
+        {
+          "tag": "SSBroyden-iteration5000",
+          "training_seconds": 1662.4078671710013
+        },
+        {
+          "tag": "SSBroyden-iteration10000",
+          "training_seconds": 2890.063148511006
+        },
+        {
+          "tag": "final",
+          "training_seconds": 4000.407750209997
+        }
+      ],
+      "events_sealed": true,
+      "optimizer": {
+        "iterations": 14637,
+        "line_search_evaluations_mean": 1.584136093461775,
+        "seconds_per_iteration_mean": 0.23213427533657827,
+        "tau_range": [
+          0.35094298865128404,
+          0.9999997755472517
+        ],
+        "phi_range": [
+          0.0,
+          3.2538734891912275
+        ],
+        "resets": 0,
+        "skipped_updates": 0,
+        "step_length_median": 0.5042111308249271
+      },
+      "training_gate_first": {
+        "phase": "SSBroyden",
+        "iteration": 214,
+        "evaluation": 310,
+        "loss": 9.213076311431498e-05,
+        "gradient_infinity": 0.0008465501173284028,
+        "training_seconds": 597.075126923999
+      },
+      "loss_curve": {
+        "evaluations": 27187,
+        "initial": 5.419907373709556,
+        "after_Adam": 0.0010871247302563043,
+        "first_SSBroyden": 0.0010875500689663238,
+        "minimum": 1.7092303742957338e-13,
+        "final_reported": 1.7092303742957338e-13,
+        "first_evaluation_at_or_below": {
+          "0.001": {
+            "evaluation": 4036,
+            "training_seconds": 556.4032138740004
+          },
+          "0.0003": {
+            "evaluation": 4202,
+            "training_seconds": 581.0149346310063
+          },
+          "0.0001": {
+            "evaluation": 4304,
+            "training_seconds": 596.1694943449984
+          },
+          "3e-05": {
+            "evaluation": 4456,
+            "training_seconds": 618.6536109440058
+          },
+          "1e-05": {
+            "evaluation": 4661,
+            "training_seconds": 648.9006534149958
+          },
+          "3e-06": {
+            "evaluation": 4887,
+            "training_seconds": 682.2706870109978
+          },
+          "1e-06": {
+            "evaluation": 5090,
+            "training_seconds": 712.3917625169997
+          },
+          "3e-07": {
+            "evaluation": 5340,
+            "training_seconds": 749.6745627400087
+          },
+          "1e-07": {
+            "evaluation": 5684,
+            "training_seconds": 804.0853087440046
+          }
+        },
+        "mean_seconds_per_evaluation": 0.14713098724964166
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": true,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 4.55816582910622e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 4.479076716557003e-07,
+                "normalized_divergence_rms": 2.0873512632760477e-14,
+                "normalized_divergence_gradient_rms": 3.031675593240164e-12,
+                "normalized_momentum_rms": 4.1027429703189296e-07,
+                "normalized_momentum_gradient_rms": 4.1848999763530475e-07,
+                "normalized_corrected_pressure_rms": 9.463357856770737e-07,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  1.8324052923516954e-07,
+                  1.607616551623097e-07,
+                  1.6112667831298945e-07
+                ],
+                "velocity_component_relative_l2": [
+                  4.061603459249952e-07,
+                  4.844232143764648e-07,
+                  5.165975437303699e-07
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 8.708882621147456e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 6.051605580355889e-08,
+                "normalized_divergence_rms": 1.1607289205473139e-15,
+                "normalized_divergence_gradient_rms": 1.6254444302987114e-13,
+                "normalized_momentum_rms": 3.832599447424008e-08,
+                "normalized_momentum_gradient_rms": 3.013514979935559e-08,
+                "normalized_corrected_pressure_rms": 1.33104241866316e-07,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  2.446393642122079e-08,
+                  2.4995371966870615e-08,
+                  1.8312685575274505e-08
+                ],
+                "velocity_component_relative_l2": [
+                  6.708902274844635e-07,
+                  1.2214910446309576e-06,
+                  1.0458799559784482e-06
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 5.977335075089791e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 5.159201640405552e-07,
+                "normalized_divergence_rms": 1.8659789746929994e-14,
+                "normalized_divergence_gradient_rms": 3.258116533776145e-12,
+                "normalized_momentum_rms": 4.975805265887265e-07,
+                "normalized_momentum_gradient_rms": 4.889959735432047e-07,
+                "normalized_corrected_pressure_rms": 1.2353564998041211e-06,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  1.9692659155174167e-07,
+                  1.7032504142755968e-07,
+                  2.1328662242548715e-07
+                ],
+                "velocity_component_relative_l2": [
+                  4.615376278016293e-07,
+                  7.313732256299647e-07,
+                  7.504499037637841e-07
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 2.4357328577171484e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 3.904014432472296e-07,
+                "normalized_divergence_rms": 3.5438409817728356e-14,
+                "normalized_divergence_gradient_rms": 6.004510488584509e-12,
+                "normalized_momentum_rms": 3.2143598975507906e-07,
+                "normalized_momentum_gradient_rms": 3.575018914842911e-07,
+                "normalized_corrected_pressure_rms": 9.295923184966643e-07,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  1.6024519960702563e-07,
+                  1.4234960456370878e-07,
+                  1.375654090307937e-07
+                ],
+                "velocity_component_relative_l2": [
+                  2.0681225495587727e-07,
+                  2.859672002512994e-07,
+                  2.7781437126754716e-07
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 5.805475170013125e-07,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 5.475985359543001e-07,
+                "normalized_divergence_rms": 1.972904013217666e-14,
+                "normalized_divergence_gradient_rms": 2.8509988591175838e-12,
+                "normalized_momentum_rms": 5.566021365528523e-07,
+                "normalized_momentum_gradient_rms": 4.62406993359751e-07,
+                "normalized_corrected_pressure_rms": 1.5455330133693238e-06,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  2.644110884328695e-07,
+                  1.9873127974230808e-07,
+                  1.3495566416833875e-07
+                ],
+                "velocity_component_relative_l2": [
+                  6.339128495516273e-07,
+                  5.592642092563781e-07,
+                  4.819665609815979e-07
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 2.0959957907137778e-07,
+            "maximum_endpoint_error": 2.0959957907137778e-07,
+            "maximum_refinement_change": 6.410843967458503e-11
+          },
+          "observation_seconds": 3291.509606361389
+        }
+      }
+    }
+  ],
+  "any_training_gate": true,
+  "any_physical_acceptance": true,
+  "formal_claim": false
+}

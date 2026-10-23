@@ -1,0 +1,499 @@
+{
+ "scope": "Post-hoc structure of the stratified corrected-pressure error in saved C36 observations.",
+ "holdout_seed": 794701,
+ "eta": 0.03125,
+ "pressure_scale": 0.141864656295504,
+ "time_bins": [
+  0.25,
+  0.3,
+  0.35,
+  0.4,
+  0.45,
+  0.5,
+  0.55,
+  0.6000000000000001,
+  0.65,
+  0.7,
+  0.75
+ ],
+ "observations": {
+  "seed361901-analytic__LBFGS-call800": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.005015781283727958,
+     "signed_mean_normalized": -0.00074577330831182,
+     "per_time_offset_R2": 0.2799902807035519,
+     "normalized_rms_after_offset": 0.004256060276443747,
+     "offset_plus_linear_R2": 0.6953116533846245,
+     "normalized_rms_after_offset_and_linear": 0.0027686401499928187,
+     "gradient_times_half_width_normalized_rms": 0.009879500730661014
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.0027302013520522704,
+     "signed_mean_normalized": -8.972612759856892e-05,
+     "per_time_offset_R2": 0.10615945896829226,
+     "normalized_rms_after_offset": 0.0025812180994404846
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0020889055375543047,
+     "signed_mean_normalized": 0.00011281816932933644,
+     "per_time_offset_R2": 0.056642105894220696,
+     "normalized_rms_after_offset": 0.002028883196127672
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.001325684275589055,
+     "signed_mean_normalized": 0.0001831876356831539,
+     "per_time_offset_R2": 0.09001816080964153,
+     "normalized_rms_after_offset": 0.001264609580132791
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.002394568925624592,
+   "layers_only_floor_normalized_rms": 0.0016477235548548281,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    -2.1892570327989367e-05,
+    -0.0018559815140287309,
+    -0.0015346594043686521,
+    0.0034910367732975387,
+    0.003162677352873852,
+    -0.0014210702692442065,
+    -0.005229098873524149,
+    -0.0029662367039821136,
+    -0.0007257977966400724,
+    -1.947317066454579e-06
+   ]
+  },
+  "seed361901-analytic__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.004801047338504205,
+     "signed_mean_normalized": -0.0013046167508476774,
+     "per_time_offset_R2": 0.39821880433669865,
+     "normalized_rms_after_offset": 0.003724391223665066,
+     "offset_plus_linear_R2": 0.6914403268398951,
+     "normalized_rms_after_offset_and_linear": 0.002666892874820489,
+     "gradient_times_half_width_normalized_rms": 0.009180422112920344
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.002782939191115861,
+     "signed_mean_normalized": -0.0004205493730037019,
+     "per_time_offset_R2": 0.11836306559901821,
+     "normalized_rms_after_offset": 0.0026130553237662404
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0021103501571437117,
+     "signed_mean_normalized": -8.532655289233668e-05,
+     "per_time_offset_R2": 0.04311148839447443,
+     "normalized_rms_after_offset": 0.002064358839623567
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.001348851536261167,
+     "signed_mean_normalized": 8.10447272946947e-05,
+     "per_time_offset_R2": 0.06174248705660956,
+     "normalized_rms_after_offset": 0.001306547418617995
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.0023599899204028046,
+   "layers_only_floor_normalized_rms": 0.0016743792159531362,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    -2.208787595827238e-05,
+    -0.0018622342090931347,
+    -0.00190963790129363,
+    0.002596130594890031,
+    0.002573252448393845,
+    -0.0027486278275337625,
+    -0.006686567637738472,
+    -0.0034462918194278496,
+    -0.0009308162363317762,
+    -1.9135869707828572e-06
+   ]
+  },
+  "seed361901-parameter_ad__LBFGS-call800": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.0044927565663839914,
+     "signed_mean_normalized": 6.459409481851194e-05,
+     "per_time_offset_R2": 0.2999054729387256,
+     "normalized_rms_after_offset": 0.003759163618545552,
+     "offset_plus_linear_R2": 0.6391488142584628,
+     "normalized_rms_after_offset_and_linear": 0.002698838866935553,
+     "gradient_times_half_width_normalized_rms": 0.009985076033968364
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.002661267716990199,
+     "signed_mean_normalized": -0.000218457253595402,
+     "per_time_offset_R2": 0.08308644130259835,
+     "normalized_rms_after_offset": 0.0025483129611153506
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0021307997768916925,
+     "signed_mean_normalized": -0.00019354056758723716,
+     "per_time_offset_R2": 0.021777816483132595,
+     "normalized_rms_after_offset": 0.0021074699764336616
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0013229086444851562,
+     "signed_mean_normalized": -4.516362715511371e-05,
+     "per_time_offset_R2": 0.030562829938847624,
+     "normalized_rms_after_offset": 0.0013025358581191676
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.0022575941960955408,
+   "layers_only_floor_normalized_rms": 0.0016354045880056388,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    -1.499044570686661e-05,
+    -0.0011222217528430618,
+    5.6972410962682385e-05,
+    0.00471325468706525,
+    0.0038737034803258837,
+    0.0003286472914988757,
+    -0.003584534083454053,
+    -0.0024566882578265555,
+    -0.000990885356939178,
+    -3.67986076902497e-06
+   ]
+  },
+  "seed361901-parameter_ad__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.0044308600265235325,
+     "signed_mean_normalized": 0.00025538357875494894,
+     "per_time_offset_R2": 0.27489851894962924,
+     "normalized_rms_after_offset": 0.0037730053996020627,
+     "offset_plus_linear_R2": 0.6355300924440203,
+     "normalized_rms_after_offset_and_linear": 0.0026749697117783248,
+     "gradient_times_half_width_normalized_rms": 0.00981689958606119
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.002542579646578784,
+     "signed_mean_normalized": -0.00017598881639858044,
+     "per_time_offset_R2": 0.06777757895116487,
+     "normalized_rms_after_offset": 0.002454903008558588
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0020016883956335647,
+     "signed_mean_normalized": -0.0001603984069541704,
+     "per_time_offset_R2": 0.02084352044085136,
+     "normalized_rms_after_offset": 0.0019807174264889135
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0011524898549355304,
+     "signed_mean_normalized": -1.4249270114046744e-05,
+     "per_time_offset_R2": 0.03527115636204392,
+     "normalized_rms_after_offset": 0.0011319825778857975
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.002171599083759549,
+   "layers_only_floor_normalized_rms": 0.0015362096574452388,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    -1.5565994974278346e-05,
+    -0.0011663687720464646,
+    -6.701676854372548e-05,
+    0.004607921845611398,
+    0.004044688018616964,
+    0.0008340497128736188,
+    -0.002890507834714625,
+    -0.001917090697056059,
+    -0.0008211667676740344,
+    -2.7355180295667645e-06
+   ]
+  },
+  "seed361902-analytic__LBFGS-call800": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.005131703496722239,
+     "signed_mean_normalized": 0.0003842127877631875,
+     "per_time_offset_R2": 0.6296169233136995,
+     "normalized_rms_after_offset": 0.003123108863822182,
+     "offset_plus_linear_R2": 0.7030503719326113,
+     "normalized_rms_after_offset_and_linear": 0.002796423533281866,
+     "gradient_times_half_width_normalized_rms": 0.01027656970413405
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.0030952426255356456,
+     "signed_mean_normalized": 0.00043399315417142197,
+     "per_time_offset_R2": 0.2316725952963351,
+     "normalized_rms_after_offset": 0.0027131128574334343
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0021766809020057065,
+     "signed_mean_normalized": 0.00010571039013479439,
+     "per_time_offset_R2": 0.1580599918992649,
+     "normalized_rms_after_offset": 0.0019972633854315543
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0017133565318258003,
+     "signed_mean_normalized": 0.0001830915231854482,
+     "per_time_offset_R2": 0.1157217192998955,
+     "normalized_rms_after_offset": 0.001611173179134242
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.002571174273836842,
+   "layers_only_floor_normalized_rms": 0.001857635985075618,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    3.778084518587616e-05,
+    0.004379028985766297,
+    0.009623921179670323,
+    0.003120293964328774,
+    -0.005814417329444849,
+    -0.0037852792556757864,
+    -0.00014051268757889532,
+    -0.001332012576507944,
+    -0.0011726571956975301,
+    -7.407893669610327e-06
+   ]
+  },
+  "seed361902-analytic__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.005055155721629825,
+     "signed_mean_normalized": 0.00048646024639522006,
+     "per_time_offset_R2": 0.6362104692845925,
+     "normalized_rms_after_offset": 0.0030490155316767256,
+     "offset_plus_linear_R2": 0.702632329275239,
+     "normalized_rms_after_offset_and_linear": 0.0027566486339284453,
+     "gradient_times_half_width_normalized_rms": 0.010106156281683392
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.0030170952432377945,
+     "signed_mean_normalized": 0.000468395688013354,
+     "per_time_offset_R2": 0.23388924074895778,
+     "normalized_rms_after_offset": 0.002640795680424915
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0021344956414655458,
+     "signed_mean_normalized": 0.00011770999186293873,
+     "per_time_offset_R2": 0.155843361676126,
+     "normalized_rms_after_offset": 0.0019611318472976683
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.00167833345120262,
+     "signed_mean_normalized": 0.00018433624973940473,
+     "per_time_offset_R2": 0.1150840195349706,
+     "normalized_rms_after_offset": 0.0015788078230072865
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.0025222409934653463,
+   "layers_only_floor_normalized_rms": 0.001815254170832792,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    3.7426219336933406e-05,
+    0.0043576235188991595,
+    0.009677599728652526,
+    0.0034058923847010776,
+    -0.0054911475900716565,
+    -0.0034843498368330875,
+    -3.54287638688714e-05,
+    -0.0013742657135224201,
+    -0.0011982231594533765,
+    -7.781411707991213e-06
+   ]
+  },
+  "seed361902-parameter_ad__LBFGS-call800": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.006651411218254756,
+     "signed_mean_normalized": 0.00030841601702913884,
+     "per_time_offset_R2": 0.6925748148888462,
+     "normalized_rms_after_offset": 0.0036879372264815168,
+     "offset_plus_linear_R2": 0.7623797837215092,
+     "normalized_rms_after_offset_and_linear": 0.0032423171389657315,
+     "gradient_times_half_width_normalized_rms": 0.010960223734111253
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.0034161483673206,
+     "signed_mean_normalized": 0.0004134398437556657,
+     "per_time_offset_R2": 0.2955569298513765,
+     "normalized_rms_after_offset": 0.0028672111372299177
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.002288075470722065,
+     "signed_mean_normalized": 5.179845040503033e-05,
+     "per_time_offset_R2": 0.12536941050712858,
+     "normalized_rms_after_offset": 0.002139846774621412
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0015156978427619742,
+     "signed_mean_normalized": 7.20866865989199e-05,
+     "per_time_offset_R2": 0.11137647391736549,
+     "normalized_rms_after_offset": 0.001428800310565189
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.003024812777492704,
+   "layers_only_floor_normalized_rms": 0.00195972952102174,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    4.788057597962398e-05,
+    0.005523549332751622,
+    0.012523785158593094,
+    0.0050099371062925875,
+    -0.007620933220949827,
+    -0.006233342109211764,
+    -0.0020313089195004522,
+    -0.0015229881899975531,
+    -0.0008360239844670703,
+    -4.7281893979489e-06
+   ]
+  },
+  "seed361902-parameter_ad__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.00658087267984439,
+     "signed_mean_normalized": 0.0006770353581563473,
+     "per_time_offset_R2": 0.7029824652467255,
+     "normalized_rms_after_offset": 0.0035865305388207754,
+     "offset_plus_linear_R2": 0.763074294417751,
+     "normalized_rms_after_offset_and_linear": 0.0032032407441519783,
+     "gradient_times_half_width_normalized_rms": 0.01068361518382853
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.0033621156554613733,
+     "signed_mean_normalized": 0.0005820325716341088,
+     "per_time_offset_R2": 0.30371383352562564,
+     "normalized_rms_after_offset": 0.002805475835676267
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0021494874420784765,
+     "signed_mean_normalized": 0.0001356069927910141,
+     "per_time_offset_R2": 0.12765224579122292,
+     "normalized_rms_after_offset": 0.0020076117825358975
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0014842190360126264,
+     "signed_mean_normalized": 0.00012418122266375184,
+     "per_time_offset_R2": 0.11210767635400476,
+     "normalized_rms_after_offset": 0.0013985504844343552
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.002970244273732622,
+   "layers_only_floor_normalized_rms": 0.0019040495839769394,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    4.809822365890899e-05,
+    0.005614045148801788,
+    0.013070647574436947,
+    0.005892654810430004,
+    -0.006467033171454559,
+    -0.005630839868395257,
+    -0.0016450411793609246,
+    -0.001600795274697676,
+    -0.0008210020387448187,
+    -4.744666163198509e-06
+   ]
+  }
+ },
+ "eta_comparison": {
+  "0.03125": {
+   "plateau": {
+    "force_component_rms": 2.026950499355157,
+    "force_gradient_component_rms": 10.592555261085534,
+    "velocity_component_rms": 0.24474716134034272
+   },
+   "face": {
+    "force_component_rms": 195.55809095019825,
+    "force_gradient_component_rms": 69870.74470007508,
+    "velocity_component_rms": 0.4385791348741524
+   },
+   "edge": {
+    "force_component_rms": 234.32181949942114,
+    "force_gradient_component_rms": 69598.02397790302,
+    "velocity_component_rms": 0.4982476177497907
+   },
+   "corner": {
+    "force_component_rms": 227.121887116393,
+    "force_gradient_component_rms": 72057.74510182982,
+    "velocity_component_rms": 0.4564851876458894
+   }
+  },
+  "0.0625": {
+   "plateau": {
+    "force_component_rms": 2.186268398230708,
+    "force_gradient_component_rms": 10.592555261085534,
+    "velocity_component_rms": 0.2634625634782281
+   },
+   "face": {
+    "force_component_rms": 38.49786415370884,
+    "force_gradient_component_rms": 6579.389556081224,
+    "velocity_component_rms": 0.34050938490838517
+   },
+   "edge": {
+    "force_component_rms": 53.48710369298791,
+    "force_gradient_component_rms": 7247.95062403139,
+    "velocity_component_rms": 0.38963862968828067
+   },
+   "corner": {
+    "force_component_rms": 57.28798270977845,
+    "force_gradient_component_rms": 8020.348360052079,
+    "velocity_component_rms": 0.3708657581858792
+   }
+  }
+ }
+}

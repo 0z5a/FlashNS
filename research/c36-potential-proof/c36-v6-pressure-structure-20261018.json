@@ -1,0 +1,453 @@
+{
+ "scope": "Post-hoc structure of the stratified corrected-pressure error in saved C36 observations.",
+ "holdout_seed": 794701,
+ "eta": 0.0625,
+ "pressure_scale": 0.09204575627077885,
+ "time_bins": [
+  0.25,
+  0.3,
+  0.35,
+  0.4,
+  0.45,
+  0.5,
+  0.55,
+  0.6000000000000001,
+  0.65,
+  0.7,
+  0.75
+ ],
+ "observations": {
+  "seed361901-analytic__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.0054070042742295635,
+     "signed_mean_normalized": -0.002308482572275482,
+     "per_time_offset_R2": 0.3231462104066868,
+     "normalized_rms_after_offset": 0.004448403208128989,
+     "offset_plus_linear_R2": 0.7098803517740375,
+     "normalized_rms_after_offset_and_linear": 0.002912361518306699,
+     "gradient_times_half_width_normalized_rms": 0.011429214119893097
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.003576337421931094,
+     "signed_mean_normalized": -0.00022459328343185558,
+     "per_time_offset_R2": 0.08678797323992093,
+     "normalized_rms_after_offset": 0.0034176241373190344
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0028219377143759794,
+     "signed_mean_normalized": -5.484202387585721e-05,
+     "per_time_offset_R2": 0.02228209587580421,
+     "normalized_rms_after_offset": 0.0027903212586309553
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0018649239611865799,
+     "signed_mean_normalized": -0.0001241767625127551,
+     "per_time_offset_R2": 0.03997939589798882,
+     "normalized_rms_after_offset": 0.0018272644542119602
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.0028904283534885336,
+   "layers_only_floor_normalized_rms": 0.002201429680926925,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    -2.3773613283374105e-05,
+    -0.002460968122214329,
+    -0.00595060190943457,
+    -0.005443916989519771,
+    -0.0006287175473110066,
+    -0.0004402200358396396,
+    -0.003343160121918662,
+    -0.003171470753096919,
+    -0.0018405260792029546,
+    -1.1413994869326605e-05
+   ]
+  },
+  "seed361901-analytic__gate-first": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.02030325226214167,
+     "signed_mean_normalized": 0.005421770137633508,
+     "per_time_offset_R2": 0.39257862169341895,
+     "normalized_rms_after_offset": 0.015823794969899663,
+     "offset_plus_linear_R2": 0.6713424211038002,
+     "normalized_rms_after_offset_and_linear": 0.01163958339959092,
+     "gradient_times_half_width_normalized_rms": 0.04976938471208278
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.015051160667245137,
+     "signed_mean_normalized": 0.0029003923606450654,
+     "per_time_offset_R2": 0.2306325500671227,
+     "normalized_rms_after_offset": 0.01320191389726474
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.010410930617092088,
+     "signed_mean_normalized": 0.0002353510517038984,
+     "per_time_offset_R2": 0.07677767390345347,
+     "normalized_rms_after_offset": 0.010003286360104769
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.008733990516212287,
+     "signed_mean_normalized": 0.00022636704394535034,
+     "per_time_offset_R2": 0.056068983365300085,
+     "normalized_rms_after_offset": 0.008485605638291404
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.011476416997778665,
+   "layers_only_floor_normalized_rms": 0.009068709986347767,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    4.957715996080413e-05,
+    0.006423572853099386,
+    0.02203949058669445,
+    0.026463473049278048,
+    0.017354976531789277,
+    -0.003060861480063716,
+    -0.0008907813879703266,
+    -0.010169107241279722,
+    -0.0032905857624578186,
+    -1.0674981969276756e-05
+   ]
+  },
+  "seed361901-parameter_ad__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.004581695595605836,
+     "signed_mean_normalized": -0.0022630992099712485,
+     "per_time_offset_R2": 0.43773253649191246,
+     "normalized_rms_after_offset": 0.003435561349002129,
+     "offset_plus_linear_R2": 0.6812465539815205,
+     "normalized_rms_after_offset_and_linear": 0.0025867453431454887,
+     "gradient_times_half_width_normalized_rms": 0.009776489224774459
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.003204301814312302,
+     "signed_mean_normalized": -0.00039831256512207186,
+     "per_time_offset_R2": 0.1535236239605139,
+     "normalized_rms_after_offset": 0.002948090672624501
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0025805281837982625,
+     "signed_mean_normalized": 6.934995991518471e-05,
+     "per_time_offset_R2": 0.0571632795584156,
+     "normalized_rms_after_offset": 0.0025056871797875585
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0019672585482174935,
+     "signed_mean_normalized": 6.010367162679253e-05,
+     "per_time_offset_R2": 0.07157111112695758,
+     "normalized_rms_after_offset": 0.0018955522664756707
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.00258425783305743,
+   "layers_only_floor_normalized_rms": 0.0020394500248899,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    -2.829584129106049e-05,
+    -0.0025976114010864853,
+    -0.005636244076522447,
+    -0.00463183175544485,
+    -4.1580284956544524e-05,
+    -0.00036852369135915937,
+    -0.003444435653613494,
+    -0.004339021611542622,
+    -0.0018492220087014677,
+    -1.1242412379498601e-05
+   ]
+  },
+  "seed361901-parameter_ad__gate-first": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.016148617081415077,
+     "signed_mean_normalized": -0.00019145786062918735,
+     "per_time_offset_R2": 0.34339175860439,
+     "normalized_rms_after_offset": 0.013085445148818693,
+     "offset_plus_linear_R2": 0.6181912124782725,
+     "normalized_rms_after_offset_and_linear": 0.00997833996591918,
+     "gradient_times_half_width_normalized_rms": 0.04342848173696796
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.011152466471582603,
+     "signed_mean_normalized": 0.00040568182228902574,
+     "per_time_offset_R2": 0.21036918680016758,
+     "normalized_rms_after_offset": 0.00991021256590809
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.008801739130071835,
+     "signed_mean_normalized": -0.000829367913453929,
+     "per_time_offset_R2": 0.10219113073075559,
+     "normalized_rms_after_offset": 0.008339892223787865
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0074903324254094565,
+     "signed_mean_normalized": -0.0005342652251442459,
+     "per_time_offset_R2": 0.061988423865888875,
+     "normalized_rms_after_offset": 0.007254461687320031
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.009104063929279654,
+   "layers_only_floor_normalized_rms": 0.007182662458402902,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    3.84666262477137e-05,
+    0.004569052075945329,
+    0.014203161069259992,
+    0.014721276960495374,
+    0.005865116539074639,
+    -0.0117637340762548,
+    -0.010647623467530395,
+    -0.01233915310690835,
+    -0.004360385833419143,
+    -1.5061745809472123e-05
+   ]
+  },
+  "seed361902-analytic__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.0037635548772091236,
+     "signed_mean_normalized": 0.0003085767375837205,
+     "per_time_offset_R2": 0.29604727008848164,
+     "normalized_rms_after_offset": 0.003157693707602749,
+     "offset_plus_linear_R2": 0.5817755759694553,
+     "normalized_rms_after_offset_and_linear": 0.0024339012224449323,
+     "gradient_times_half_width_normalized_rms": 0.008798376663241004
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.0027640215409299993,
+     "signed_mean_normalized": 7.660268838013468e-05,
+     "per_time_offset_R2": 0.12417996099866668,
+     "normalized_rms_after_offset": 0.002586716671808481
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0019909495482610647,
+     "signed_mean_normalized": 0.00019637680760124386,
+     "per_time_offset_R2": 0.1353352831214254,
+     "normalized_rms_after_offset": 0.001851331214997597
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0018169808263499545,
+     "signed_mean_normalized": 0.00017951163113727087,
+     "per_time_offset_R2": 0.09072084267630187,
+     "normalized_rms_after_offset": 0.0017326026031042553
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.002163502793805827,
+   "layers_only_floor_normalized_rms": 0.0017265639001073402,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    1.0714483107143937e-05,
+    0.0004422293503699979,
+    -0.0011371159867441017,
+    -0.0020348732271772744,
+    0.000203491571106425,
+    0.004244483090212571,
+    0.00335157552881049,
+    -0.0016708193281986077,
+    -0.0013205252688143342,
+    -8.18125608778194e-06
+   ]
+  },
+  "seed361902-analytic__gate-first": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.016813096358965048,
+     "signed_mean_normalized": 0.005221393008750967,
+     "per_time_offset_R2": 0.18137330051443967,
+     "normalized_rms_after_offset": 0.015212151940061236,
+     "offset_plus_linear_R2": 0.47894265266428926,
+     "normalized_rms_after_offset_and_linear": 0.01213641627242033,
+     "gradient_times_half_width_normalized_rms": 0.04414810312460657
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.012610162027281234,
+     "signed_mean_normalized": 0.0024775838075480543,
+     "per_time_offset_R2": 0.0772843219474979,
+     "normalized_rms_after_offset": 0.012113080872066263
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.00826504986062917,
+     "signed_mean_normalized": 0.0004277112458847189,
+     "per_time_offset_R2": 0.012271233536395698,
+     "normalized_rms_after_offset": 0.008214182148020154
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.005846638088487306,
+     "signed_mean_normalized": -0.0005618408735429207,
+     "per_time_offset_R2": 0.02478704929527653,
+     "normalized_rms_after_offset": 0.005773722962346334
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.009285672167336391,
+   "layers_only_floor_normalized_rms": 0.007232017871807594,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    3.7595388150073865e-05,
+    0.0026869869466179985,
+    0.009080047672137754,
+    0.014262851394670524,
+    0.008882537344052116,
+    0.010342463586201063,
+    0.005039642672131009,
+    0.0009631463516084706,
+    7.804693541313842e-05,
+    9.16122592414873e-07
+   ]
+  },
+  "seed361902-parameter_ad__final": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.003380248429550167,
+     "signed_mean_normalized": 0.0009700773591833227,
+     "per_time_offset_R2": 0.181784696146993,
+     "normalized_rms_after_offset": 0.0030576123144259227,
+     "offset_plus_linear_R2": 0.5249238521207062,
+     "normalized_rms_after_offset_and_linear": 0.0023298621865508896,
+     "gradient_times_half_width_normalized_rms": 0.009100576988636219
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.0026528798755109722,
+     "signed_mean_normalized": 0.00039019661927854196,
+     "per_time_offset_R2": 0.07086398906359959,
+     "normalized_rms_after_offset": 0.002557156049558755
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.0021222929429436407,
+     "signed_mean_normalized": 0.0002485765820892321,
+     "per_time_offset_R2": 0.0861589058961495,
+     "normalized_rms_after_offset": 0.002028806706517467
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.0015718232199788114,
+     "signed_mean_normalized": 7.734073516677873e-05,
+     "per_time_offset_R2": 0.07461044094227287,
+     "normalized_rms_after_offset": 0.0015120494611145778
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.002042947619089137,
+   "layers_only_floor_normalized_rms": 0.001674068529327521,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    2.0850306942642796e-05,
+    0.001646208940127546,
+    0.002286245747847609,
+    0.0006717255746306453,
+    0.00040863988530635305,
+    0.003048592165195823,
+    0.0015642926426732138,
+    8.561723992471846e-05,
+    -0.00023318555063813728,
+    -7.054892253089595e-07
+   ]
+  },
+  "seed361902-parameter_ad__gate-first": {
+   "regions": {
+    "plateau": {
+     "points": 492,
+     "normalized_rms": 0.01695614962050802,
+     "signed_mean_normalized": 0.006046174624406253,
+     "per_time_offset_R2": 0.2930807895795441,
+     "normalized_rms_after_offset": 0.01425647418344385,
+     "offset_plus_linear_R2": 0.4890458170008706,
+     "normalized_rms_after_offset_and_linear": 0.01212043535496219,
+     "gradient_times_half_width_normalized_rms": 0.043962785583467744
+    },
+    "face": {
+     "points": 820,
+     "normalized_rms": 0.012793166885628275,
+     "signed_mean_normalized": 0.0030590707678187254,
+     "per_time_offset_R2": 0.12318488305787689,
+     "normalized_rms_after_offset": 0.011979317610922552
+    },
+    "edge": {
+     "points": 820,
+     "normalized_rms": 0.008336565365077367,
+     "signed_mean_normalized": 0.000894581365111198,
+     "per_time_offset_R2": 0.02467690021725477,
+     "normalized_rms_after_offset": 0.008233062548457867
+    },
+    "corner": {
+     "points": 820,
+     "normalized_rms": 0.005366580550661567,
+     "signed_mean_normalized": -0.00029113890372848737,
+     "per_time_offset_R2": 0.013572383471558536,
+     "normalized_rms_after_offset": 0.005330037488362106
+    }
+   },
+   "reproduction": {
+    "max_relative_difference": 0.0,
+    "zero_regions_match": true
+   },
+   "global_normalized_rms": 0.009321697633245942,
+   "layers_only_floor_normalized_rms": 0.007238281948867181,
+   "flat_time_normalized_rms": 0.0,
+   "per_bin_plateau_mean_normalized": [
+    5.155606038734024e-05,
+    0.00438771290375853,
+    0.014298048527977678,
+    0.019489946267110436,
+    0.01266625715384124,
+    0.008620023841876176,
+    0.0024881937080571855,
+    -0.0014851330988816327,
+    -0.0002698968184936271,
+    5.381617461303598e-07
+   ]
+  }
+ }
+}

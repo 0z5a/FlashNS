@@ -1,0 +1,28 @@
+{
+ "protocol_sha256": "ce2af6f91c7237161783a3133d1a07e5ea3fc012aabc4969e1753f685d2dff5b",
+ "metric": "weighted RMS of (U_w - U_1/2) over weighted RMS of U_1/2 on each holdout",
+ "widths": {
+  "0.75": {
+   "stratified": 0.8121816861228253,
+   "uniform": 0.6910811426327476,
+   "time-0": null,
+   "time-0.25": null,
+   "time-0.375": 0.9940867579209872,
+   "time-0.5": 0.3333333333333333,
+   "time-0.625": 0.9705730575899615,
+   "time-0.75": null,
+   "time-1": null
+  },
+  "1": {
+   "stratified": 0.9103885294440601,
+   "uniform": 0.9283083805492296,
+   "time-0": null,
+   "time-0.25": null,
+   "time-0.375": 1.0487943844355887,
+   "time-0.5": 0.5,
+   "time-0.625": 0.9977119655035463,
+   "time-0.75": null,
+   "time-1": null
+  }
+ }
+}

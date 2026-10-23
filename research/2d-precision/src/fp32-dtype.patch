@@ -1,0 +1,217 @@
+diff --git a/src/flashns/contracted_ns_seed.py b/src/flashns/contracted_ns_seed.py
+index 194d1af..607336b 100644
+--- a/src/flashns/contracted_ns_seed.py
++++ b/src/flashns/contracted_ns_seed.py
+@@ -65,7 +65,7 @@ def per_point_loss(state, loss=NSLoss(), *, spec=ContractedSpec()):
+ def explicit_seed(state, weights, loss=NSLoss(), *, spec=ContractedSpec(), validate=True,
+                   reduce_per_point=False):
+     if validate:
+-        validate_weights(weights, (len(state),), device=state.device)
++        validate_weights(weights, (len(state),), device=state.device, dtype=state.dtype)
+     r = residuals(state, loss, spec=spec)
+     z = state.reshape(len(state), 24)
+     adjoint = [torch.zeros_like(z[:, 0]) for _ in range(24)]
+diff --git a/src/flashns/contracted_reference.py b/src/flashns/contracted_reference.py
+index 212c02a..a0a3483 100644
+--- a/src/flashns/contracted_reference.py
++++ b/src/flashns/contracted_reference.py
+@@ -41,18 +41,18 @@ def _pack(value, gradient, hessian, third, spec):
+ 
+ 
+ @lru_cache(maxsize=None)
+-def _contraction_tensor(spec, device):
++def _contraction_tensor(spec, device, dtype=torch.float64):
+     # Fixed read-only constants only. The concrete device is part of the key;
+     # prepare before Graph capture, retain storage for the graph's lifetime.
+-    return torch.tensor(spec.contraction, dtype=torch.float64, device=device)
++    return torch.tensor(spec.contraction, dtype=dtype, device=device)
+ 
+ 
+-def prepare_constants(spec, device):
++def prepare_constants(spec, device, dtype=torch.float64):
+     """Prepare fixed contraction storage outside CUDA Graph capture."""
+     device = torch.device(device)
+     if device.type == "cuda" and device.index is None:
+         device = torch.device("cuda", torch.cuda.current_device())
+-    _contraction_tensor(spec, device)
++    _contraction_tensor(spec, device, dtype)
+ 
+ 
+ def _small_matvec(matrix, vector):
+@@ -69,7 +69,7 @@ def _small_matvec(matrix, vector):
+ 
+ 
+ def _contractions(g, h, spec):
+-    a = _contraction_tensor(spec, g.device)
++    a = _contraction_tensor(spec, g.device, g.dtype)
+     ag = _small_matvec(a, g)
+     ell = (a * h).sum((-2, -1))
+     c = (g * ag).sum(-1)
+@@ -119,7 +119,7 @@ def activate_vjp(state, cotangent, spec=ContractedSpec()):
+ 
+ 
+ def coordinate_state(x, spec=ContractedSpec()):
+-    if x.ndim != 2 or x.shape[1] != spec.dimension or x.dtype != torch.float64:
++    if x.ndim != 2 or x.shape[1] != spec.dimension or x.dtype not in (torch.float32, torch.float64):
+         raise ValueError("FP64 coordinates must match the contracted axes")
+     n, d = x.shape
+     gradient = torch.eye(d, dtype=x.dtype, device=x.device).expand(n, d, d)
+@@ -134,7 +134,7 @@ def validate_parameters(weights, biases, *, input_channels, device):
+         if (weight.ndim != 2 or weight.shape[1] != channels or weight.shape[0] < 1
+                 or bias.shape != (weight.shape[0],)):
+             raise ValueError("incompatible affine layer shapes")
+-        if any(t.dtype != torch.float64 or t.device != device for t in (weight, bias)):
++        if any(t.dtype not in (torch.float32, torch.float64) or t.dtype != weights[0].dtype or t.device != device for t in (weight, bias)):
+             raise ValueError("FP64 parameters on the state device required")
+         channels = weight.shape[0]
+ 
+diff --git a/src/flashns/contracted_spec.py b/src/flashns/contracted_spec.py
+index 230345a..08a80ea 100644
+--- a/src/flashns/contracted_spec.py
++++ b/src/flashns/contracted_spec.py
+@@ -71,7 +71,7 @@ class ContractedSpec:
+         return self.raw_multi_indices.index(alpha)
+ 
+     def check(self, state):
+-        if state.ndim != 3 or state.shape[1] != self.q or state.shape[2] < 1 or state.dtype != torch.float64:
++        if state.ndim != 3 or state.shape[1] != self.q or state.shape[2] < 1 or state.dtype not in (torch.float32, torch.float64):
+             raise ValueError(f"expected FP64 [N,{self.q},C] contracted states")
+ 
+     def projection(self, *, device="cpu"):
+diff --git a/src/flashns/jet_packed.py b/src/flashns/jet_packed.py
+index d666f22..d3d22f2 100644
+--- a/src/flashns/jet_packed.py
++++ b/src/flashns/jet_packed.py
+@@ -41,7 +41,7 @@ class PackedLayout:
+                           torch.arange(self.full_rows, self.rows, device=device))).long()
+ 
+     def coordinates(self, x):
+-        if x.shape != (self.points, self.dimension) or x.dtype != torch.float64:
++        if x.shape != (self.points, self.dimension) or x.dtype not in (torch.float32, torch.float64):
+             raise ValueError("FP64 coordinates must match the layout")
+         result = x.new_zeros((self.rows, self.dimension))
+         result[self.zero_rows(x.device)] = x
+@@ -55,7 +55,7 @@ class PackedLayout:
+     def check(self, tensor):
+         if tensor.ndim != 2 or tensor.shape[0] != self.rows or tensor.shape[1] < 1:
+             raise ValueError("packed row/channel shape mismatch")
+-        if tensor.dtype != torch.float64 or not tensor.is_contiguous():
++        if tensor.dtype not in (torch.float32, torch.float64) or not tensor.is_contiguous():
+             raise ValueError("contiguous FP64 packed storage required")
+ 
+ 
+diff --git a/src/flashns/ns_seed.py b/src/flashns/ns_seed.py
+index 6bacef4..b58b77c 100644
+--- a/src/flashns/ns_seed.py
++++ b/src/flashns/ns_seed.py
+@@ -43,16 +43,16 @@ def residual_terms(viscosity=0.07):
+     )
+ 
+ 
+-def validate_weights(weights, shape, *, device):
++def validate_weights(weights, shape, *, device, dtype=torch.float64):
+     """Call during preparation, outside CUDA Graph capture and timed replay."""
+-    if weights.shape != shape or weights.dtype != torch.float64 or weights.device != device:
++    if weights.shape != shape or weights.dtype != dtype or weights.device != device:
+         raise ValueError("FP64 weights with the expected shape/device required")
+     if not bool(torch.isfinite(weights).all()) or bool((weights < 0).any()):
+         raise ValueError("finite nonnegative globally normalized weights required")
+ 
+ 
+ def residuals(jets, loss=NSLoss()):
+-    if jets.ndim != 3 or jets.shape[1:] != (10, 3) or jets.dtype != torch.float64:
++    if jets.ndim != 3 or jets.shape[1:] != (10, 3) or jets.dtype not in (torch.float32, torch.float64):
+         raise ValueError("expected FP64 [N,10,3] jets of u,v,p")
+     z = jets.reshape(jets.shape[0], 30)
+     outputs = []
+@@ -89,7 +89,7 @@ def _explicit(jets, weights, loss):
+ 
+ def explicit_seed(jets, weights, loss=NSLoss(), *, validate=True):
+     if validate:
+-        validate_weights(weights, (len(jets),), device=jets.device)
++        validate_weights(weights, (len(jets),), device=jets.device, dtype=jets.dtype)
+     return _explicit(jets, weights, loss)
+ 
+ 
+diff --git a/src/flashns/pinn_contracted_packed.py b/src/flashns/pinn_contracted_packed.py
+index 6528d8c..d4e32a7 100644
+--- a/src/flashns/pinn_contracted_packed.py
++++ b/src/flashns/pinn_contracted_packed.py
+@@ -89,8 +89,8 @@ class ContractedPackedPINN:
+     def __init__(self, x, interior_count, pde_weights, boundary_weights, target, *,
+                  loss=NSLoss(), vjp='reference'):
+         self.spec = ContractedSpec()
+-        if x.ndim != 2 or x.shape[1] != 2 or x.dtype != torch.float64:
+-            raise ValueError('the fixed NS layout requires FP64 2-D coordinates')
++        if x.ndim != 2 or x.shape[1] != 2 or x.dtype not in (torch.float32, torch.float64):
++            raise ValueError('the fixed NS layout requires FP64 or FP32 2-D coordinates')
+         if type(interior_count) is not int or not 0 <= interior_count <= len(x):
+             raise ValueError('invalid interior split')
+         if vjp not in ('reference', 'output'):
+@@ -99,13 +99,13 @@ class ContractedPackedPINN:
+         self.full_rows = self.ni*8
+         self.rows = self.full_rows+self.nb
+         self.loss, self.vjp = loss, vjp
+-        validate_weights(pde_weights, (self.ni,), device=x.device)
+-        validate_weights(boundary_weights, (self.nb, 3), device=x.device)
++        validate_weights(pde_weights, (self.ni,), device=x.device, dtype=x.dtype)
++        validate_weights(boundary_weights, (self.nb, 3), device=x.device, dtype=x.dtype)
+         if target.shape != (self.nb, 3) or target.dtype != x.dtype or target.device != x.device:
+             raise ValueError('boundary target shape/dtype/device mismatch')
+         if not bool(torch.isfinite(x).all()) or not bool(torch.isfinite(target).all()):
+             raise ValueError('finite coordinates and targets required')
+-        prepare_constants(self.spec, x.device)
++        prepare_constants(self.spec, x.device, x.dtype)
+         self.initial = torch.cat((coordinate_state(x[:self.ni]).reshape(self.full_rows, 2),
+                                   x[self.ni:]), dim=0).detach()
+         self.zero_rows = torch.cat((torch.arange(0, self.full_rows, 8, device=x.device),
+diff --git a/src/flashns/pinn_packed.py b/src/flashns/pinn_packed.py
+index 0d00499..b383469 100644
+--- a/src/flashns/pinn_packed.py
++++ b/src/flashns/pinn_packed.py
+@@ -18,16 +18,16 @@ class PackedPINN:
+                  cuda_seed=None, residual_reference=None, loss=NSLoss(), compiled_options=None,
+                  trace=False, tail_dgrad_vjp=None, coordinate_affine=None,
+                  first_affine_activation=None, coordinate_wgrad=None, first_activation_wgrad=None):
+-        if x.ndim != 2 or x.shape[1] != 2 or x.dtype != torch.float64:
+-            raise ValueError("the fixed NS residual requires FP64 2-D coordinates")
++        if x.ndim != 2 or x.shape[1] != 2 or x.dtype not in (torch.float32, torch.float64):
++            raise ValueError("the fixed NS residual requires FP64 or FP32 2-D coordinates")
+         if type(interior_count) is not int or not 0 <= interior_count <= len(x):
+             raise ValueError("invalid interior split")
+         if layout not in ("dense", "split", "compact") or seed not in ("autograd", "explicit", "compiled", "cuda"):
+             raise ValueError("unsupported layout or seed mode")
+         self.ni, self.nb = interior_count, len(x) - interior_count
+-        validate_weights(pde_weights, (self.ni,), device=x.device)
+-        validate_weights(boundary_weights, (self.nb, 3), device=x.device)
+-        if target.shape != (self.nb, 3) or target.dtype != torch.float64 or target.device != x.device:
++        validate_weights(pde_weights, (self.ni,), device=x.device, dtype=x.dtype)
++        validate_weights(boundary_weights, (self.nb, 3), device=x.device, dtype=x.dtype)
++        if target.shape != (self.nb, 3) or target.dtype != x.dtype or target.device != x.device:
+             raise ValueError("boundary target shape/dtype/device mismatch")
+         if not bool(torch.isfinite(x).all()) or not bool(torch.isfinite(target).all()):
+             raise ValueError("finite coordinates and targets required")
+@@ -97,8 +97,8 @@ class PackedPINN:
+         for weight, bias in zip(weights, biases):
+             if weight.ndim != 2 or weight.shape[1] != cin or bias.shape != (weight.shape[0],):
+                 raise ValueError("incompatible affine layer")
+-            if any(t.dtype != torch.float64 or t.device != self.inputs[0].device for t in (weight, bias)):
+-                raise ValueError("all parameters must be FP64 on the data device")
++            if any(t.dtype != self.inputs[0].dtype or t.device != self.inputs[0].device for t in (weight, bias)):
++                raise ValueError("all parameters must match the data dtype on the data device")
+             cin = weight.shape[0]
+         checkpoints, auxiliaries = [], []
+         with torch.no_grad():
+diff --git a/src/flashns/vnext/cuda.py b/src/flashns/vnext/cuda.py
+index 5cf069c..b59f2ec 100644
+--- a/src/flashns/vnext/cuda.py
++++ b/src/flashns/vnext/cuda.py
+@@ -67,7 +67,7 @@ class ContractedCUDAPINN:
+         self.prepared = ContractedPackedPINN(*args,vjp="output",**kwargs)
+         if self.prepared.initial.device.type != "cuda":
+             raise ValueError("CUDA data required")
+-        self.extension = load_extension()
++        self.extension = load_extension(self.prepared.initial.dtype)
+         self.metadata = {**self.prepared.metadata,**binary_evidence(self.extension),"backend":"contracted_native_cuda_islands",
+                          "generated_source_sha256":self.extension.source_hash,
+                          "gemm":"PyTorch library mm","global_reduction":"PyTorch sum",

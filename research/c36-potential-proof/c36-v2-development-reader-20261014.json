@@ -1,0 +1,1017 @@
+{
+  "state": "C36_V2_DEVELOPMENT_READ",
+  "protocol_version": "C36-potential-20261014-v2-development",
+  "protocol_sha256": "00d5db987788d2dfbca6f12ac6835a84a743fd447f93cadcee15845c95bc1aa7",
+  "runs": [
+    {
+      "seed": 361901,
+      "engine": "analytic",
+      "training_state": "COMPLETE",
+      "training_seconds": 3718.9497123470064,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18085,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 84,
+        "check_points": 28,
+        "maximum_error_over_original_budget": 9.266501195510147e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0019484719960018992
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 171.92390493897256
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 338.5436206009472
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 503.3933026329614
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 670.0135546029778
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 745.1983369789086
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 856.1777373099467
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1014.0824745598948
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1044.7640263629146
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1423.7207226369064
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2183.68604363699
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3717.2078136259224
+        },
+        {
+          "tag": "final",
+          "training_seconds": 3719.091290343902
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 92,
+        "closure": 2038,
+        "loss": 9.991364528658995e-05,
+        "gradient_infinity": 0.0003972452209165221,
+        "training_seconds": 1014.079515425954
+      },
+      "loss_curve": {
+        "evaluations": 22085,
+        "initial": 5.510437156722028,
+        "after_Adam": 0.0011217050303855035,
+        "minimum": 1.8375584223818301e-06,
+        "final_reported": 1.8375584223818301e-06,
+        "final_gradient_infinity": 2.9079011590260256e-05,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 552,
+            "training_seconds": 96.28867595689371
+          },
+          "0.001": {
+            "evaluation": 4042,
+            "training_seconds": 677.0372978379019
+          },
+          "0.0003": {
+            "evaluation": 5144,
+            "training_seconds": 863.8201440379489
+          },
+          "0.0001": {
+            "evaluation": 6039,
+            "training_seconds": 1014.079515425954
+          },
+          "3e-05": {
+            "evaluation": 8077,
+            "training_seconds": 1359.1749666389078
+          },
+          "1e-05": {
+            "evaluation": 12129,
+            "training_seconds": 2045.3939803940011
+          }
+        },
+        "mean_seconds_per_evaluation": 0.16831352093579294,
+        "per_LBFGS_call_end": {
+          "1": 0.0010739466748610049,
+          "20": 0.0005453223117549991,
+          "50": 0.0003089400735385365,
+          "100": 8.26520082596083e-05,
+          "200": 2.6261674644586068e-05,
+          "400": 8.421204995487846e-06,
+          "800": 1.8375584223818301e-06
+        }
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.001296130612172602,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.001273641342648877,
+                "normalized_divergence_rms": 1.8210486094580655e-14,
+                "normalized_divergence_gradient_rms": 2.9281599395486464e-12,
+                "normalized_momentum_rms": 0.0010002251697022392,
+                "normalized_momentum_gradient_rms": 0.0010044670071079071,
+                "normalized_corrected_pressure_rms": 0.0024919160189368792,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0004974184048374332,
+                  0.0005134284340480372,
+                  0.00042349575225901145
+                ],
+                "velocity_component_relative_l2": [
+                  0.0011025488314266177,
+                  0.0015471142799737493,
+                  0.001357794175910927
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 0.0022408887429268966,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.00015571429093238072,
+                "normalized_divergence_rms": 7.372659695214041e-16,
+                "normalized_divergence_gradient_rms": 1.2601655825476413e-13,
+                "normalized_momentum_rms": 9.286086915495298e-05,
+                "normalized_momentum_gradient_rms": 0.00014987961113924002,
+                "normalized_corrected_pressure_rms": 0.0004118418075428115,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  6.870358141376386e-05,
+                  6.392405049667796e-05,
+                  3.88958258358854e-05
+                ],
+                "velocity_component_relative_l2": [
+                  0.0018841024015945071,
+                  0.0031238845063686865,
+                  0.0022214308461620284
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0020050200147003015,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0017305876981862794,
+                "normalized_divergence_rms": 2.1445588015025956e-14,
+                "normalized_divergence_gradient_rms": 3.3562231700105336e-12,
+                "normalized_momentum_rms": 0.0013894561072172588,
+                "normalized_momentum_gradient_rms": 0.0012823548734409182,
+                "normalized_corrected_pressure_rms": 0.0022892544584086796,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006430493449827192,
+                  0.0006332718345853669,
+                  0.0006782920299506994
+                ],
+                "velocity_component_relative_l2": [
+                  0.0015071172811353672,
+                  0.002719259954258043,
+                  0.0023865734419329316
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0011161608076370928,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0017889925359298837,
+                "normalized_divergence_rms": 3.224989440617268e-14,
+                "normalized_divergence_gradient_rms": 5.024640894910821e-12,
+                "normalized_momentum_rms": 0.0013029100065434934,
+                "normalized_momentum_gradient_rms": 0.0012770586435460025,
+                "normalized_corrected_pressure_rms": 0.0032913109142162274,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0008063461189217443,
+                  0.0006074832184303513,
+                  0.0005855605388366454
+                ],
+                "velocity_component_relative_l2": [
+                  0.0010406692964162565,
+                  0.0012203776449300032,
+                  0.0011825438828126761
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0018307671961943054,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.001726861982783907,
+                "normalized_divergence_rms": 1.6324162686117482e-14,
+                "normalized_divergence_gradient_rms": 2.3305377075356632e-12,
+                "normalized_momentum_rms": 0.0014340572558264146,
+                "normalized_momentum_gradient_rms": 0.0016791918275822675,
+                "normalized_corrected_pressure_rms": 0.003487140365464167,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0007453899583555106,
+                  0.000729344462636005,
+                  0.00042613840687853895
+                ],
+                "velocity_component_relative_l2": [
+                  0.0017870365245604108,
+                  0.002052501522158748,
+                  0.001521866190138098
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.0010666329862029532,
+            "maximum_endpoint_error": 0.0010666327770903225,
+            "maximum_refinement_change": 6.432143270683646e-11
+          },
+          "observation_seconds": 5955.232659339905
+        }
+      }
+    },
+    {
+      "seed": 361901,
+      "engine": "parameter_ad",
+      "training_state": "COMPLETE",
+      "training_seconds": 4665.92216756905,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18073,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 84,
+        "check_points": 28,
+        "maximum_error_over_original_budget": 2.5420725835673985e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.003275026101619005
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 224.19024489307776
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 443.06084897508845
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 660.1800275680143
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 879.0435204370879
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 977.8336470440263
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 1123.5583034590818
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1318.95750366
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1371.7140580191044
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1867.3470266190125
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2861.3354069800116
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 4664.2123774200445
+        },
+        {
+          "tag": "final",
+          "training_seconds": 4666.101863683085
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 90,
+        "closure": 1990,
+        "loss": 9.993031167556344e-05,
+        "gradient_infinity": 0.00026668019136384793,
+        "training_seconds": 1318.9539418980712
+      },
+      "loss_curve": {
+        "evaluations": 22073,
+        "initial": 5.510437156722028,
+        "after_Adam": 0.0011217278395833537,
+        "minimum": 1.626615838014678e-06,
+        "final_reported": 1.626615838014678e-06,
+        "final_gradient_infinity": 4.422441587511042e-05,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 552,
+            "training_seconds": 125.15376282506622
+          },
+          "0.001": {
+            "evaluation": 4042,
+            "training_seconds": 888.2599390191026
+          },
+          "0.0003": {
+            "evaluation": 5118,
+            "training_seconds": 1126.8476326870732
+          },
+          "0.0001": {
+            "evaluation": 5991,
+            "training_seconds": 1318.9539418980712
+          },
+          "3e-05": {
+            "evaluation": 8071,
+            "training_seconds": 1779.6424804790877
+          },
+          "1e-05": {
+            "evaluation": 12043,
+            "training_seconds": 2659.5935168151045
+          }
+        },
+        "mean_seconds_per_evaluation": 0.21130834743727794,
+        "per_LBFGS_call_end": {
+          "1": 0.0010739630288316142,
+          "20": 0.000543488427438602,
+          "50": 0.00030124254596686516,
+          "100": 7.785638154692911e-05,
+          "200": 2.6228066583496082e-05,
+          "400": 8.094160357999178e-06,
+          "800": 1.626615838014678e-06
+        }
+      },
+      "physical": {
+        "final": {
+          "state": "RUNNING",
+          "physical_acceptance_pass": false
+        }
+      }
+    },
+    {
+      "seed": 361902,
+      "engine": "analytic",
+      "training_state": "COMPLETE",
+      "training_seconds": 3650.412388049066,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 17918,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 84,
+        "check_points": 28,
+        "maximum_error_over_original_budget": 1.1573979881270457e-05
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0014619140420109034
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 169.38800903805532
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 333.6951179889729
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 496.31503384397365
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 660.6461958719883
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 733.7953813649947
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 843.4444609719794
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 975.4624231280759
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1029.553502815077
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1398.620107861003
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2136.435954081011
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 3648.7043412150815
+        },
+        {
+          "tag": "final",
+          "training_seconds": 3650.5760049340315
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 86,
+        "closure": 1890,
+        "loss": 9.997105058299071e-05,
+        "gradient_infinity": 0.0005647791249764362,
+        "training_seconds": 975.4607267720858
+      },
+      "loss_curve": {
+        "evaluations": 21918,
+        "initial": 5.419907373709556,
+        "after_Adam": 0.0010896046410125242,
+        "minimum": 1.3460146575228013e-06,
+        "final_reported": 1.3460146575228013e-06,
+        "final_gradient_infinity": 1.8534086756870475e-05,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 564,
+            "training_seconds": 96.8132288340712
+          },
+          "0.001": {
+            "evaluation": 4030,
+            "training_seconds": 665.5840051369742
+          },
+          "0.0003": {
+            "evaluation": 5048,
+            "training_seconds": 834.1690837830538
+          },
+          "0.0001": {
+            "evaluation": 5891,
+            "training_seconds": 975.4607267720858
+          },
+          "3e-05": {
+            "evaluation": 7600,
+            "training_seconds": 1261.5579537280137
+          },
+          "1e-05": {
+            "evaluation": 10955,
+            "training_seconds": 1821.3743630730314
+          }
+        },
+        "mean_seconds_per_evaluation": 0.1664705341966423,
+        "per_LBFGS_call_end": {
+          "1": 0.0010290151127745387,
+          "20": 0.0005187031249450792,
+          "50": 0.0002810410323320225,
+          "100": 6.771463856546339e-05,
+          "200": 2.3574042793765237e-05,
+          "400": 6.404724625338204e-06,
+          "800": 1.3460146575228013e-06
+        }
+      },
+      "physical": {
+        "final": {
+          "state": "COMPLETE",
+          "physical_acceptance_pass": false,
+          "datasets": {
+            "stratified": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0011591762662345982,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0011390633029020234,
+                "normalized_divergence_rms": 1.8402209521580283e-14,
+                "normalized_divergence_gradient_rms": 2.8288843147945865e-12,
+                "normalized_momentum_rms": 0.0008749663457167014,
+                "normalized_momentum_gradient_rms": 0.0008858848739613238,
+                "normalized_corrected_pressure_rms": 0.002487031711327192,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0004627047299285129,
+                  0.000400544141336951,
+                  0.00042149981152427517
+                ],
+                "velocity_component_relative_l2": [
+                  0.001025604509839116,
+                  0.0012069599572746717,
+                  0.0013513948751136173
+                ]
+              }
+            },
+            "uniform": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": 0.002338866958395196,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.00016252257554562712,
+                "normalized_divergence_rms": 1.6883528791780182e-15,
+                "normalized_divergence_gradient_rms": 1.2864989023709988e-13,
+                "normalized_momentum_rms": 8.382815132802864e-05,
+                "normalized_momentum_gradient_rms": 9.713333453436965e-05,
+                "normalized_corrected_pressure_rms": 0.00033257161014269406,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  8.417891525171271e-05,
+                  5.742349143724369e-05,
+                  2.9290210331064135e-05
+                ],
+                "velocity_component_relative_l2": [
+                  0.0023084924122688984,
+                  0.0028062107111269936,
+                  0.0016728318610468823
+                ]
+              }
+            },
+            "time-0": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.25": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-0.375": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0017568810240421134,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0015164121380796594,
+                "normalized_divergence_rms": 1.9905274444859947e-14,
+                "normalized_divergence_gradient_rms": 3.2330264764723572e-12,
+                "normalized_momentum_rms": 0.001018535116628226,
+                "normalized_momentum_gradient_rms": 0.0009899892432622534,
+                "normalized_corrected_pressure_rms": 0.004256599356264117,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0005977902425685759,
+                  0.0003854602955692964,
+                  0.0006875485252923429
+                ],
+                "velocity_component_relative_l2": [
+                  0.0014010433446494139,
+                  0.0016551608463438788,
+                  0.002419142460839652
+                ]
+              }
+            },
+            "time-0.5": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0010016125472642392,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.0016053935586063425,
+                "normalized_divergence_rms": 2.7951672092494587e-14,
+                "normalized_divergence_gradient_rms": 5.899322642770935e-12,
+                "normalized_momentum_rms": 0.0009767289538439193,
+                "normalized_momentum_gradient_rms": 0.0011637166265668283,
+                "normalized_corrected_pressure_rms": 0.00317426185276237,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0007180370479100432,
+                  0.00044428480471227954,
+                  0.0006196065222818197
+                ],
+                "velocity_component_relative_l2": [
+                  0.0009266977193969352,
+                  0.0008925271138417817,
+                  0.0012513000007324734
+                ]
+              }
+            },
+            "time-0.625": {
+              "field_gate_pass": false,
+              "global": {
+                "velocity_relative_l2": 0.0015349605212717085,
+                "velocity_reference_is_zero": false,
+                "normalized_velocity_error_rms": 0.001447843819120385,
+                "normalized_divergence_rms": 1.9489704587616295e-14,
+                "normalized_divergence_gradient_rms": 2.4323970338984196e-12,
+                "normalized_momentum_rms": 0.0013459804899870432,
+                "normalized_momentum_gradient_rms": 0.0014560017869761444,
+                "normalized_corrected_pressure_rms": 0.0027677226357759846,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0006633714976349989,
+                  0.0005821381875619743,
+                  0.00033646021748553735
+                ],
+                "velocity_component_relative_l2": [
+                  0.0015904012152799607,
+                  0.0016382375918222297,
+                  0.0012015988726960677
+                ]
+              }
+            },
+            "time-0.75": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            },
+            "time-1": {
+              "field_gate_pass": true,
+              "global": {
+                "velocity_relative_l2": null,
+                "velocity_reference_is_zero": true,
+                "normalized_velocity_error_rms": 0.0,
+                "normalized_divergence_rms": 0.0,
+                "normalized_divergence_gradient_rms": 0.0,
+                "normalized_momentum_rms": 0.0,
+                "normalized_momentum_gradient_rms": 0.0,
+                "normalized_corrected_pressure_rms": 0.0,
+                "normalized_pressure_gauge_rms": 0.0,
+                "velocity_component_error_rms": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "velocity_component_relative_l2": [
+                  null,
+                  null,
+                  null
+                ]
+              }
+            }
+          },
+          "initial_boundary_normalized_velocity_rms": [
+            0.0,
+            0.0
+          ],
+          "trajectory": {
+            "rtol": 1e-11,
+            "atol": 1e-13,
+            "max_step": 0.0078125,
+            "nfev": 1982,
+            "maximum_path_error": 0.000969908438949665,
+            "maximum_endpoint_error": 0.0009690527043195745,
+            "maximum_refinement_change": 6.32687323656397e-11
+          },
+          "observation_seconds": 5822.44860458374
+        }
+      }
+    },
+    {
+      "seed": 361902,
+      "engine": "parameter_ad",
+      "training_state": "COMPLETE",
+      "training_seconds": 4680.744000944076,
+      "Adam_updates": 4000,
+      "LBFGS_calls": 800,
+      "LBFGS_closures": 18421,
+      "budget_truncated": false,
+      "initialize_matches_stored_bytes": true,
+      "gradient_checks": {
+        "saved_comparisons": 84,
+        "check_points": 28,
+        "maximum_error_over_original_budget": 2.351859177519258e-06
+      },
+      "checkpoints": [
+        {
+          "tag": "initial",
+          "training_seconds": 0.0019172180909663439
+        },
+        {
+          "tag": "Adam1000",
+          "training_seconds": 221.84736052306835
+        },
+        {
+          "tag": "Adam2000",
+          "training_seconds": 438.2867929780623
+        },
+        {
+          "tag": "Adam3000",
+          "training_seconds": 652.8407749780454
+        },
+        {
+          "tag": "Adam4000",
+          "training_seconds": 869.198792655021
+        },
+        {
+          "tag": "LBFGS-call20",
+          "training_seconds": 965.1447513680905
+        },
+        {
+          "tag": "LBFGS-call50",
+          "training_seconds": 1109.871443072101
+        },
+        {
+          "tag": "gate-first",
+          "training_seconds": 1275.599716583034
+        },
+        {
+          "tag": "LBFGS-call100",
+          "training_seconds": 1351.849228147068
+        },
+        {
+          "tag": "LBFGS-call200",
+          "training_seconds": 1833.1867102950346
+        },
+        {
+          "tag": "LBFGS-call400",
+          "training_seconds": 2804.9838729390176
+        },
+        {
+          "tag": "LBFGS-call800",
+          "training_seconds": 4678.971843380015
+        },
+        {
+          "tag": "final",
+          "training_seconds": 4680.921874685097
+        }
+      ],
+      "events_sealed": true,
+      "training_gate_first": {
+        "phase": "LBFGS",
+        "call": 85,
+        "closure": 1858,
+        "loss": 9.991832351576907e-05,
+        "gradient_infinity": 0.00026726387150928337,
+        "training_seconds": 1275.5978755820543
+      },
+      "loss_curve": {
+        "evaluations": 22421,
+        "initial": 5.419907373709556,
+        "after_Adam": 0.001100672143986476,
+        "minimum": 2.3432190799127226e-06,
+        "final_reported": 2.3432190799127226e-06,
+        "final_gradient_infinity": 1.7394085533282865e-06,
+        "first_evaluation_at_or_below": {
+          "0.01": {
+            "evaluation": 564,
+            "training_seconds": 126.4850696780486
+          },
+          "0.001": {
+            "evaluation": 4032,
+            "training_seconds": 876.1291441380745
+          },
+          "0.0003": {
+            "evaluation": 5033,
+            "training_seconds": 1093.9868438540725
+          },
+          "0.0001": {
+            "evaluation": 5859,
+            "training_seconds": 1275.5978755820543
+          },
+          "3e-05": {
+            "evaluation": 7690,
+            "training_seconds": 1677.1034555850783
+          },
+          "1e-05": {
+            "evaluation": 11095,
+            "training_seconds": 2422.587225654046
+          }
+        },
+        "mean_seconds_per_evaluation": 0.20868686056888988,
+        "per_LBFGS_call_end": {
+          "1": 0.0010301553235019017,
+          "20": 0.0005186441439828037,
+          "50": 0.00028215951163858597,
+          "100": 6.635827990664852e-05,
+          "200": 2.276485910138665e-05,
+          "400": 6.33614032871469e-06,
+          "800": 2.3432190799127226e-06
+        }
+      },
+      "physical": {
+        "final": {
+          "state": "RUNNING",
+          "physical_acceptance_pass": false
+        }
+      }
+    }
+  ],
+  "paired_development_parameter_ad_over_analytic": {
+    "361901": {
+      "per_evaluation_seconds_ratio": 1.2554448761005146,
+      "time_to_loss_ratio": {
+        "0.01": 1.2997765477748886,
+        "0.001": 1.3119808049803665,
+        "0.0003": 1.3044933490663875,
+        "0.0001": 1.3006415392821122,
+        "3e-05": 1.3093549573532468,
+        "1e-05": 1.3002842202081728
+      }
+    },
+    "361902": {
+      "per_evaluation_seconds_ratio": 1.2535963891506459,
+      "time_to_loss_ratio": {
+        "0.01": 1.3064853966892496,
+        "0.001": 1.3163314283037362,
+        "0.0003": 1.311468939717491,
+        "0.0001": 1.307687578364285,
+        "3e-05": 1.3293907351850873,
+        "1e-05": 1.3300874739263626
+      }
+    }
+  },
+  "any_training_gate": true,
+  "all_training_gate": true,
+  "any_physical_acceptance": false,
+  "decision_rule_branch_mechanical": "b",
+  "decision_note": "Mechanical branch from the pre-registered rule; branch b additionally requires reading the physical-error trend across checkpoints.",
+  "formal_claim": false
+}

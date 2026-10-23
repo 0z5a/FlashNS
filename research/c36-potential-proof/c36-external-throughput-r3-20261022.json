@@ -1,0 +1,391 @@
+{
+ "state": "COMPLETE",
+ "protocol_version": "C36-external-throughput-20261022-v1-r3-posthoc",
+ "gpu": "NVIDIA GH200 120GB",
+ "torch": "2.14.1+cu130",
+ "selection": {
+  "analytic": {
+   "eager": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 56.869389441999374,
+    "error_over_budget": 8.511194005216778e-07,
+    "peak_bytes": 203260928,
+    "state": "PASS",
+    "seconds_per_evaluation": 1.732869010331342,
+    "repeats": 3
+   },
+   "compiled": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 123.39547784399474,
+    "error_over_budget": 8.511194005216778e-07,
+    "changed_error_over_budget": 1.1818040894266748e-06,
+    "peak_bytes": 306322944,
+    "state": "PASS",
+    "seconds_per_evaluation": 0.9946653719816823,
+    "repeats": 1
+   },
+   "graph": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 58.30146384501131,
+    "error_over_budget": 8.511194005216778e-07,
+    "changed_error_over_budget": 1.1818040894266748e-06,
+    "peak_bytes": 373024768,
+    "state": "PASS",
+    "seconds_per_evaluation": 0.13329177533159964,
+    "repeats": 3
+   }
+  },
+  "func_jacfwd": {
+   "eager": {
+    "oom_chunks": [],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 53.169903279980645,
+    "error_over_budget": 1.840829585736898e-06,
+    "peak_bytes": 38769773568,
+    "state": "PASS",
+    "seconds_per_evaluation": 1.7120249233266804,
+    "repeats": 3
+   },
+   "traced": {
+    "oom_chunks": [
+     4096,
+     1024,
+     512,
+     256
+    ],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 124.02582108299248,
+    "error_over_budget": 1.840829585736898e-06,
+    "state": "OUT_OF_MEMORY"
+   },
+   "graph": {
+    "oom_chunks": [],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 135.09700587700354,
+    "error_over_budget": 1.840829585736898e-06,
+    "changed_error_over_budget": 1.1993772543587345e-06,
+    "peak_bytes": 92531636736,
+    "state": "PASS",
+    "seconds_per_evaluation": 0.49424418102717027,
+    "repeats": 1
+   }
+  },
+  "jet_collapsed": {
+   "eager": {
+    "oom_chunks": [
+     512
+    ],
+    "chunk": 256,
+    "build_and_first_call_seconds": 118.02315322399954,
+    "error_over_budget": 1.148240236647768e-06,
+    "peak_bytes": 98516717056,
+    "state": "PASS",
+    "seconds_per_evaluation": 64.73135801198077,
+    "repeats": 1
+   }
+  },
+  "nested_ad": {
+   "eager": {
+    "oom_chunks": [],
+    "chunk": 512,
+    "build_and_first_call_seconds": 495.14204834902193,
+    "error_over_budget": 1.749813601656711e-06,
+    "peak_bytes": 95942897664,
+    "state": "PASS",
+    "seconds_per_evaluation": 452.87973013398005,
+    "repeats": 1
+   }
+  }
+ },
+ "selected": {
+  "analytic": "graph",
+  "func_jacfwd": "graph",
+  "jet_collapsed": "eager",
+  "nested_ad": "eager"
+ },
+ "timing": {
+  "361901": {
+   "analytic:eager": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 55.424651354027446,
+    "error_over_budget": 1.1335690554980574e-06,
+    "peak_bytes": 238192128,
+    "state": "PASS",
+    "evaluations_per_window": 6,
+    "windows": [
+     1.6985554389975732,
+     1.7419595001653458,
+     1.7424675011667812,
+     1.7432513428357197,
+     1.7237867168344867
+    ],
+    "median_seconds_per_evaluation": 1.7419595001653458
+   },
+   "analytic:graph": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 57.88240570999915,
+    "error_over_budget": 1.1335690554980574e-06,
+    "peak_bytes": 268643840,
+    "state": "PASS",
+    "evaluations_per_window": 76,
+    "windows": [
+     0.13358522343447762,
+     0.13358262855265485,
+     0.13403426327606308,
+     0.13359091675030008,
+     0.1335805953552297
+    ],
+    "median_seconds_per_evaluation": 0.13358522343447762
+   },
+   "func_jacfwd:eager": {
+    "oom_chunks": [],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 53.3530110050051,
+    "error_over_budget": 1.4433627697159167e-06,
+    "peak_bytes": 38803766272,
+    "state": "PASS",
+    "evaluations_per_window": 6,
+    "windows": [
+     1.6965626179977942,
+     1.7231980919993173,
+     1.7064445998354738,
+     1.70425946849961,
+     1.7537722458315936
+    ],
+    "median_seconds_per_evaluation": 1.7064445998354738
+   },
+   "func_jacfwd:graph": {
+    "oom_chunks": [],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 137.2359426280018,
+    "error_over_budget": 1.4433627697159167e-06,
+    "peak_bytes": 92326264320,
+    "state": "PASS",
+    "evaluations_per_window": 21,
+    "windows": [
+     0.4961254106670995,
+     0.49615690461914275,
+     0.49627565933457973,
+     0.49624944752265165,
+     0.4962189477616145
+    ],
+    "median_seconds_per_evaluation": 0.4962189477616145
+   },
+   "jet_collapsed:eager": {
+    "oom_chunks": [],
+    "chunk": 256,
+    "build_and_first_call_seconds": 116.4493752180133,
+    "error_over_budget": 1.8171898576905107e-06,
+    "peak_bytes": 6351690240,
+    "state": "PASS",
+    "evaluations_per_window": 1,
+    "windows": [
+     65.77289445701172,
+     64.85737161300494,
+     65.50617085798876,
+     64.7292307059979,
+     64.96109659402282
+    ],
+    "median_seconds_per_evaluation": 64.96109659402282
+   },
+   "nested_ad:eager": {
+    "oom_chunks": [],
+    "chunk": 512,
+    "build_and_first_call_seconds": 491.73662073301966,
+    "error_over_budget": 2.351657462893602e-06,
+    "peak_bytes": 95954825728,
+    "state": "PASS",
+    "evaluations_per_window": 1,
+    "windows": [
+     431.8375815489853,
+     429.162090879021
+    ],
+    "median_seconds_per_evaluation": 430.49983621400315
+   }
+  },
+  "361902": {
+   "analytic:eager": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 55.17881209499319,
+    "error_over_budget": 7.907998107815856e-07,
+    "peak_bytes": 249714176,
+    "state": "PASS",
+    "evaluations_per_window": 6,
+    "windows": [
+     1.7129886793312228,
+     1.7041415473358938,
+     1.7117046111670788,
+     1.7119361616690487,
+     1.6893576820002636
+    ],
+    "median_seconds_per_evaluation": 1.7117046111670788
+   },
+   "analytic:graph": {
+    "oom_chunks": [],
+    "chunk": 128,
+    "build_and_first_call_seconds": 58.48006973901647,
+    "error_over_budget": 7.907998107815856e-07,
+    "peak_bytes": 280165888,
+    "state": "PASS",
+    "evaluations_per_window": 76,
+    "windows": [
+     0.13347703963135196,
+     0.1334774497763168,
+     0.1334830045131017,
+     0.13347834276340254,
+     0.13347844002648918
+    ],
+    "median_seconds_per_evaluation": 0.13347834276340254
+   },
+   "func_jacfwd:eager": {
+    "oom_chunks": [],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 54.757742907997454,
+    "error_over_budget": 1.1476874145742548e-06,
+    "peak_bytes": 38816336896,
+    "state": "PASS",
+    "evaluations_per_window": 6,
+    "windows": [
+     1.7282334974976645,
+     1.7281111931661144,
+     1.6836069090010521,
+     1.718405694332129,
+     1.720106130669592
+    ],
+    "median_seconds_per_evaluation": 1.720106130669592
+   },
+   "func_jacfwd:graph": {
+    "oom_chunks": [],
+    "chunk": 4096,
+    "build_and_first_call_seconds": 137.05190607500845,
+    "error_over_budget": 1.1476874145742548e-06,
+    "peak_bytes": 92337786368,
+    "state": "PASS",
+    "evaluations_per_window": 21,
+    "windows": [
+     0.4961562209521487,
+     0.4962521178573037,
+     0.4963144334767657,
+     0.49643917495268397,
+     0.4960950799521968
+    ],
+    "median_seconds_per_evaluation": 0.4962521178573037
+   },
+   "jet_collapsed:eager": {
+    "oom_chunks": [],
+    "chunk": 256,
+    "build_and_first_call_seconds": 120.00315177199082,
+    "error_over_budget": 1.4322339455896783e-06,
+    "peak_bytes": 6363212288,
+    "state": "PASS",
+    "evaluations_per_window": 1,
+    "windows": [
+     66.50995062699076,
+     66.17156811599853,
+     66.39979989698622,
+     66.24103556899354,
+     65.6987011989986
+    ],
+    "median_seconds_per_evaluation": 66.24103556899354
+   },
+   "nested_ad:eager": {
+    "oom_chunks": [],
+    "chunk": 512,
+    "build_and_first_call_seconds": 488.481303218985,
+    "error_over_budget": 1.3732643477408032e-06,
+    "peak_bytes": 95966347776,
+    "state": "PASS",
+    "evaluations_per_window": 1,
+    "windows": [
+     424.63622079000925,
+     445.8610276870022
+    ],
+    "median_seconds_per_evaluation": 435.2486242385057
+   }
+  }
+ },
+ "ratios": {
+  "func_jacfwd:matched_eager": {
+   "variant": "eager",
+   "analytic_variant": "eager",
+   "per_seed": {
+    "361901": 0.9796120975679968,
+    "361902": 1.0049082764909916
+   },
+   "geometric_mean": 0.9921795727572609
+  },
+  "func_jacfwd:best_vs_best": {
+   "variant": "graph",
+   "analytic_variant": "graph",
+   "per_seed": {
+    "361901": 3.7146245295985567,
+    "361902": 3.717847461868305
+   },
+   "geometric_mean": 3.716235646344529
+  },
+  "jet_collapsed:matched_eager": {
+   "variant": "eager",
+   "analytic_variant": "eager",
+   "per_seed": {
+    "361901": 37.29196722877699,
+    "361902": 38.69887078462031
+   },
+   "geometric_mean": 37.9889065529759
+  },
+  "jet_collapsed:best_vs_best": {
+   "variant": "eager",
+   "analytic_variant": "graph",
+   "per_seed": {
+    "361901": 486.2895380482383,
+    "361902": 496.2680401749466
+   },
+   "geometric_mean": 491.25345393674286
+  },
+  "nested_ad:matched_eager": {
+   "variant": "eager",
+   "analytic_variant": "eager",
+   "per_seed": {
+    "361901": 247.13538757539445,
+    "361902": 254.27788264339802
+   },
+   "geometric_mean": 250.68119809616118
+  },
+  "nested_ad:best_vs_best": {
+   "variant": "eager",
+   "analytic_variant": "graph",
+   "per_seed": {
+    "361901": 3222.6605993226453,
+    "361902": 3260.818311252239
+   },
+   "geometric_mean": 3241.6833116796624
+  }
+ },
+ "feasibility": {
+  "analytic": {
+   "variant": "graph",
+   "projected_solve_seconds": 8735.096564041343,
+   "fits_one_job": true
+  },
+  "func_jacfwd": {
+   "variant": "graph",
+   "projected_solve_seconds": 11273.764825001126,
+   "fits_one_job": true
+  },
+  "jet_collapsed": {
+   "variant": "eager",
+   "projected_solve_seconds": 471487.24898295477,
+   "fits_one_job": false
+  },
+  "nested_ad": {
+   "variant": "eager",
+   "projected_solve_seconds": 3054540.36966954,
+   "fits_one_job": false
+  }
+ }
+}

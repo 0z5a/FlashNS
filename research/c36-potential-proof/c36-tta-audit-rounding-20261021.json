@@ -1,0 +1,818 @@
+{
+ "state": "POSTHOC_DIAGNOSTIC_NOT_AUDIT_PASS",
+ "time_utc": "2026-10-21T17:53:02.640240+00:00",
+ "machine": "x86_64",
+ "numpy": "2.5.4",
+ "gamma_n": 1.1102230246251577e-15,
+ "roundings": 10,
+ "frozen_tolerance": {
+  "rtol": 1e-10,
+  "atol": 1e-13
+ },
+ "seeds": {
+  "1212382065": {
+   "archive_sha256": "89029d615f9dbe88687d8ad02cb645699aa0c6dd265666618c90c4d8f52b702b",
+   "observations": {
+    "physical-tta-first": {
+     "state": "COMPLETE",
+     "datasets": {
+      "stratified": {
+       "elements": 36864,
+       "frozen_tolerance_failures": 5,
+       "max_abs_error": 2.9103830456733704e-11,
+       "max_abs_value": 92.53482973750215,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.10508749026669825,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.010908715528785251,
+        "error": 7.275957614183426e-12,
+        "summands": {
+         "time_gradient": 1307.3276303606297,
+         "velocity_gradient_squared": 8406.662446577186,
+         "velocity_times_hessian": 15011.431322558667,
+         "viscous": 37778.25655748582,
+         "pressure_hessian": 0.029119108775387995,
+         "force_gradient": 46261.646950046204
+        }
+       }
+      },
+      "uniform": {
+       "elements": 36864,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 3.552713678800501e-15,
+       "max_abs_value": 21.14278233097866,
+       "max_error_over_spacing_of_largest_summand": 2.0,
+       "max_error_over_2gamma_S": 0.07685798135209931,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.013592690969314591,
+        "error": 1.7763568394002505e-15,
+        "summands": {
+         "time_gradient": 16.33997409078796,
+         "velocity_gradient_squared": 15.418534501988535,
+         "velocity_times_hessian": 0.020260154618074615,
+         "viscous": 0.016405246987095876,
+         "pressure_hessian": 0.02561998812323468,
+         "force_gradient": 0.9239905131410744
+        }
+       }
+      },
+      "time-0": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 1.4551915228366852e-11,
+       "max_abs_value": 93.21796711150091,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.10533024879717465,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.35015399542680825,
+        "error": 3.637978807091713e-12,
+        "summands": {
+         "time_gradient": 6658.044916787636,
+         "velocity_gradient_squared": 8191.554599444271,
+         "velocity_times_hessian": 5992.544669866324,
+         "viscous": 14867.180470252968,
+         "pressure_hessian": 0.3620024678435073,
+         "force_gradient": 28507.487411709786
+        }
+       }
+      },
+      "time-0.5": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 4,
+       "max_abs_error": 5.820766091346741e-11,
+       "max_abs_value": 51.690643012087094,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.08270309739236385,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.01467021831922466,
+        "error": 7.275957614183426e-12,
+        "summands": {
+         "time_gradient": 842.6298224323285,
+         "velocity_gradient_squared": 22652.457141795112,
+         "velocity_times_hessian": 856.7735073229911,
+         "viscous": 19547.03087808877,
+         "pressure_hessian": 0.0254993181296753,
+         "force_gradient": 43750.58838393178
+        }
+       }
+      },
+      "time-0.625": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 2.9103830456733704e-11,
+       "max_abs_value": 67.31666090211365,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.08123172396801363,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": -0.06172432920357096,
+        "error": 3.637978807091713e-12,
+        "summands": {
+         "time_gradient": 2350.3103562091587,
+         "velocity_gradient_squared": 8717.280351802903,
+         "velocity_times_hessian": 15478.52917156101,
+         "viscous": 20401.30906891065,
+         "pressure_hessian": 0.44470308746542825,
+         "force_gradient": 28297.881390009294
+        }
+       }
+      },
+      "time-0.75": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "392322075": {
+   "archive_sha256": "59806f0aed869255961c2e038ba0141e66760e9132fe404726afbc6446248bf6",
+   "observations": {
+    "physical-tta-first": {
+     "state": "COMPLETE",
+     "datasets": {
+      "stratified": {
+       "elements": 36864,
+       "frozen_tolerance_failures": 2,
+       "max_abs_error": 5.820766091346741e-11,
+       "max_abs_value": 84.84887676779181,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.12755935508122593,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0036997176030126866,
+        "error": 3.637978807091713e-12,
+        "summands": {
+         "time_gradient": 16329.126065317263,
+         "velocity_gradient_squared": 7171.460801758291,
+         "velocity_times_hessian": 23291.24216124088,
+         "viscous": 27327.734698058524,
+         "pressure_hessian": 0.07144323908925246,
+         "force_gradient": 21907.69948352456
+        }
+       }
+      },
+      "uniform": {
+       "elements": 36864,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 1.7763568394002505e-15,
+       "max_abs_value": 10.783113595141913,
+       "max_error_over_spacing_of_largest_summand": 2.0,
+       "max_error_over_2gamma_S": 0.05598164445115364,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": -0.05075151489294738,
+        "error": 1.7763568394002505e-15,
+        "summands": {
+         "time_gradient": 16.01806464619097,
+         "velocity_gradient_squared": 15.517742989405273,
+         "velocity_times_hessian": 0.02306995616222219,
+         "viscous": 0.018095926484746866,
+         "pressure_hessian": 0.05865919286947517,
+         "force_gradient": 0.4806183916485125
+        }
+       }
+      },
+      "time-0": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 2.9103830456733704e-11,
+       "max_abs_value": 55.94421120628249,
+       "max_error_over_spacing_of_largest_summand": 2.0,
+       "max_error_over_2gamma_S": 0.09041529075458092,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.02493447855795239,
+        "error": 9.094947017729282e-13,
+        "summands": {
+         "time_gradient": 373.1086621849373,
+         "velocity_gradient_squared": 1617.0001674419627,
+         "velocity_times_hessian": 4422.256979362828,
+         "viscous": 4567.895817046009,
+         "pressure_hessian": 0.20621250354339798,
+         "force_gradient": 7211.318842503667
+        }
+       }
+      },
+      "time-0.5": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 2.9103830456733704e-11,
+       "max_abs_value": 54.739763833233155,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.08280606848870761,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.1249171332019614,
+        "error": 1.0913936421275139e-11,
+        "summands": {
+         "time_gradient": 8585.671440922064,
+         "velocity_gradient_squared": 15989.825489384195,
+         "velocity_times_hessian": 36784.9088507306,
+         "viscous": 54185.658301391064,
+         "pressure_hessian": 0.18421625311333523,
+         "force_gradient": 24804.98729291204
+        }
+       }
+      },
+      "time-0.625": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 1.4551915228366852e-11,
+       "max_abs_value": 74.98098923807265,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.08322683262758687,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": -0.7765988473547623,
+        "error": 7.275957614183426e-12,
+        "summands": {
+         "time_gradient": 4001.722958631175,
+         "velocity_gradient_squared": 1720.0242102466736,
+         "velocity_times_hessian": 21479.880508768925,
+         "viscous": 8768.355444225142,
+         "pressure_hessian": 0.019105790474108434,
+         "force_gradient": 18433.82886342368
+        }
+       }
+      },
+      "time-0.75": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "422010988": {
+   "archive_sha256": "be5d180f6031d8f17f48b15da8bc17803405bfeece78f05300fd74409e8c8327",
+   "observations": {
+    "physical-tta-first": {
+     "state": "RUNNING"
+    }
+   }
+  },
+  "1127789372": {
+   "archive_sha256": "3bc2a02571041c4117994513cfe58bdc3ce42d8c5e908d3271c1e91632b25880",
+   "observations": {
+    "physical-tta-first": {
+     "state": "COMPLETE",
+     "datasets": {
+      "stratified": {
+       "elements": 36864,
+       "frozen_tolerance_failures": 5,
+       "max_abs_error": 1.1641532182693481e-10,
+       "max_abs_value": 73.27868214756018,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.1122216557605674,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": -0.03904074861202389,
+        "error": 2.9103830456733704e-11,
+        "summands": {
+         "time_gradient": 10982.529401490887,
+         "velocity_gradient_squared": 21359.208282291533,
+         "velocity_times_hessian": 105208.83536937431,
+         "viscous": 71520.08876793578,
+         "pressure_hessian": 0.04320297792525379,
+         "force_gradient": 143437.46163640163
+        }
+       }
+      },
+      "uniform": {
+       "elements": 36864,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 4.440892098500626e-16,
+       "max_abs_value": 18.57788987107051,
+       "max_error_over_spacing_of_largest_summand": 2.0,
+       "max_error_over_2gamma_S": 0.07984561318112575,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": -0.028482279764966867,
+        "error": 4.440892098500626e-16,
+        "summands": {
+         "time_gradient": 1.083180653177232,
+         "velocity_gradient_squared": 2.5972543969404422,
+         "velocity_times_hessian": 0.011302341275514204,
+         "viscous": 1.1469412618307917e-05,
+         "pressure_hessian": 0.006410791725176087,
+         "force_gradient": 1.5263956873703037
+        }
+       }
+      },
+      "time-0": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 7.275957614183426e-12,
+       "max_abs_value": 88.9724204983213,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.08408523569941592,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": -0.0033897502366926346,
+        "error": 2.2737367544323206e-13,
+        "summands": {
+         "time_gradient": 108.0229238970789,
+         "velocity_gradient_squared": 49.88996183095587,
+         "velocity_times_hessian": 83.6561071972605,
+         "viscous": 1418.5612838815512,
+         "pressure_hessian": 0.0043517912600471095,
+         "force_gradient": 1561.119789922484
+        }
+       }
+      },
+      "time-0.5": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 1,
+       "max_abs_error": 5.820766091346741e-11,
+       "max_abs_value": 62.31830156955402,
+       "max_error_over_spacing_of_largest_summand": 2.0,
+       "max_error_over_2gamma_S": 0.08272690716642989,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.03201969623478362,
+        "error": 7.275957614183426e-12,
+        "summands": {
+         "time_gradient": 5742.531782382439,
+         "velocity_gradient_squared": 17298.923896121694,
+         "velocity_times_hessian": 67044.60895513938,
+         "viscous": 22464.900997076445,
+         "pressure_hessian": 0.16565942493031552,
+         "force_gradient": 18869.294620182707
+        }
+       }
+      },
+      "time-0.625": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 7.275957614183426e-12,
+       "max_abs_value": 71.14423879043898,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.08582848756902389,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.041662822284706635,
+        "error": 1.8189894035458565e-12,
+        "summands": {
+         "time_gradient": 5127.2390452923355,
+         "velocity_gradient_squared": 5057.050018596507,
+         "velocity_times_hessian": 3845.4461506176867,
+         "viscous": 19079.063024144267,
+         "pressure_hessian": 0.24739029645590466,
+         "force_gradient": 10237.716682864579
+        }
+       }
+      },
+      "time-0.75": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "949592700": {
+   "archive_sha256": "4a8c8baa81039df49afdb82505d75015aeb8a828c41df0f167e4699a203239c6",
+   "observations": {
+    "physical-tta-first": {
+     "state": "COMPLETE",
+     "datasets": {
+      "stratified": {
+       "elements": 36864,
+       "frozen_tolerance_failures": 3,
+       "max_abs_error": 1.1641532182693481e-10,
+       "max_abs_value": 113.76918791679782,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.09850575167661231,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.025458861695369706,
+        "error": 7.275957614183426e-12,
+        "summands": {
+         "time_gradient": 8042.581998646196,
+         "velocity_gradient_squared": 21071.208422100648,
+         "velocity_times_hessian": 18309.79338896986,
+         "viscous": 31455.69769351569,
+         "pressure_hessian": 0.10520272609570833,
+         "force_gradient": 35892.18708721442
+        }
+       }
+      },
+      "uniform": {
+       "elements": 36864,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 7.105427357601002e-15,
+       "max_abs_value": 21.209188457840355,
+       "max_error_over_spacing_of_largest_summand": 1.0,
+       "max_error_over_2gamma_S": 0.051811019363835885,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.04342343016273986,
+        "error": 7.105427357601002e-15,
+        "summands": {
+         "time_gradient": 42.879332630088655,
+         "velocity_gradient_squared": 3.765960100290143,
+         "velocity_times_hessian": 0.006921715988206366,
+         "viscous": 0.06571499401470557,
+         "pressure_hessian": 0.019864177650736163,
+         "force_gradient": 46.64330506172145
+        }
+       }
+      },
+      "time-0": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 1.4551915228366852e-11,
+       "max_abs_value": 78.38028982840478,
+       "max_error_over_spacing_of_largest_summand": 2.0,
+       "max_error_over_2gamma_S": 0.09496228660917169,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": -0.48505442596797366,
+        "error": 7.275957614183426e-12,
+        "summands": {
+         "time_gradient": 6504.198089455264,
+         "velocity_gradient_squared": 604.9882948599944,
+         "velocity_times_hessian": 3357.010090492211,
+         "viscous": 34792.80898547318,
+         "pressure_hessian": 0.5071931999924849,
+         "force_gradient": 38109.80444745124
+        }
+       }
+      },
+      "time-0.5": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 1.1641532182693481e-10,
+       "max_abs_value": 69.14415550653939,
+       "max_error_over_spacing_of_largest_summand": 4.0,
+       "max_error_over_2gamma_S": 0.08281457112876342,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.09587683039444528,
+        "error": 3.637978807091713e-12,
+        "summands": {
+         "time_gradient": 7883.612393727278,
+         "velocity_gradient_squared": 3720.759109172028,
+         "velocity_times_hessian": 22682.905060145284,
+         "viscous": 30201.602240521024,
+         "pressure_hessian": 0.4967458478792574,
+         "force_gradient": 4696.89587237388
+        }
+       }
+      },
+      "time-0.625": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 1.4551915228366852e-11,
+       "max_abs_value": 46.779229394102,
+       "max_error_over_spacing_of_largest_summand": 2.0,
+       "max_error_over_2gamma_S": 0.06241702972734213,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": -0.5562661379517522,
+        "error": 1.4551915228366852e-11,
+        "summands": {
+         "time_gradient": 4124.546130321587,
+         "velocity_gradient_squared": 14233.59057026864,
+         "velocity_times_hessian": 12173.949557696902,
+         "viscous": 43750.14556280453,
+         "pressure_hessian": 0.33322264900682325,
+         "force_gradient": 74261.2283508863
+        }
+       }
+      },
+      "time-0.75": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "elements": 2304,
+       "frozen_tolerance_failures": 0,
+       "max_abs_error": 0.0,
+       "max_abs_value": 0.0,
+       "max_error_over_spacing_of_largest_summand": 0.0,
+       "max_error_over_2gamma_S": 0.0,
+       "elements_over_2gamma_S": 0,
+       "worst_frozen_element": {
+        "value": 0.0,
+        "error": 0.0,
+        "summands": {
+         "time_gradient": 0.0,
+         "velocity_gradient_squared": 0.0,
+         "velocity_times_hessian": 0.0,
+         "viscous": 0.0,
+         "pressure_hessian": 0.0,
+         "force_gradient": 0.0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

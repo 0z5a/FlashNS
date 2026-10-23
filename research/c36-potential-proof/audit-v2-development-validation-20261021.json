@@ -1,0 +1,62 @@
+{
+ "state": "AUDITOR_V2_DEVELOPMENT_VALIDATION",
+ "kind": "development check of the revised auditor on existing archives; not a result and no change to the v1 cohort outcome (not qualified)",
+ "auditor": "src/box376/audit_c36_tta_v2.py",
+ "auditor_sha256": "f72507a5d724d29ea60cbe3cd12e0174f4691c5cd77e9d71785d55661e73460b",
+ "archives": "the four complete v1 cohort archives (protocol-formal-tta-20261021.json); the fifth v1 run has no complete observation",
+ "host": "x86_64 CPU, Python 3.13.5, NumPy 2.5.4; archives produced on the ARM GPU host",
+ "bound": "raw arrays |difference| <= 2*gamma_16*S elementwise; scalar metrics from them within wrms(2*gamma_16*S)/scale + 1e-12*|value|",
+ "runs": {
+  "1127789372": {
+   "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+   "output_sha256": "d57d84d1d3cad772881ff7950085bbca0dfbc8c629de87a642b8e90111d3e0c1",
+   "archive_sha256": "3bc2a02571041c4117994513cfe58bdc3ce42d8c5e908d3271c1e91632b25880",
+   "members_read": 180,
+   "physical_acceptance_pass": true,
+   "gate_ratio_max": 0.21538666067999182,
+   "raw_array_error_over_bound_max": 0.07013853485035458,
+   "metric_difference_over_bound_max": 0.0005520199114074435,
+   "candidate_tta_s": 5228.254405994001
+  },
+  "1212382065": {
+   "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+   "output_sha256": "c928a3e16f4feb9c17c19951d52d6b4bb8a3c47eca9acbed007b3b61e6b1cf5b",
+   "archive_sha256": "89029d615f9dbe88687d8ad02cb645699aa0c6dd265666618c90c4d8f52b702b",
+   "members_read": 180,
+   "physical_acceptance_pass": true,
+   "gate_ratio_max": 0.2672912497362033,
+   "raw_array_error_over_bound_max": 0.06583140549823412,
+   "metric_difference_over_bound_max": 0.0007328464637704106,
+   "candidate_tta_s": 5491.3506320060005
+  },
+  "392322075": {
+   "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+   "output_sha256": "174e9a057b49bfec1dd25c21ccc970e1311ba0d840415ac867df142db74a3bae",
+   "archive_sha256": "59806f0aed869255961c2e038ba0141e66760e9132fe404726afbc6446248bf6",
+   "members_read": 180,
+   "physical_acceptance_pass": true,
+   "gate_ratio_max": 0.22885918407934003,
+   "raw_array_error_over_bound_max": 0.07972459692576614,
+   "metric_difference_over_bound_max": 0.0009964953434503149,
+   "candidate_tta_s": 5581.144290429002
+  },
+  "949592700": {
+   "state": "PASS_INDEPENDENT_ARCHIVE_READBACK",
+   "output_sha256": "888b535d3575ff0fecacdc3a6ba1eeb916ebb714c9de463018802aa619127214",
+   "archive_sha256": "4a8c8baa81039df49afdb82505d75015aeb8a828c41df0f167e4699a203239c6",
+   "members_read": 182,
+   "physical_acceptance_pass": true,
+   "gate_ratio_max": 0.2062458993819476,
+   "raw_array_error_over_bound_max": 0.06156609479788265,
+   "metric_difference_over_bound_max": 0.0014123863591266326,
+   "candidate_tta_s": 5318.665211621999
+  }
+ },
+ "summary": {
+  "passes": 4,
+  "of": 4,
+  "largest_raw_array_error_over_bound": 0.07972459692576614,
+  "largest_metric_difference_over_bound": 0.0014123863591266326
+ },
+ "note": "Every check after the v1 failure point (regional metrics, all nine datasets, initial and boundary values, holdout regeneration, trajectory re-integration, observation order and TTA timestamps) ran on ARM-produced data for the first time here and passed."
+}

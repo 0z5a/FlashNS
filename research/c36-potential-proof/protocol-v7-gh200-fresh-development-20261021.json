@@ -1,0 +1,284 @@
+{
+ "version": "C36-potential-20261021-v7-gh200-fresh-development",
+ "scope": "Independent fresh-arm development continuation of C36 v7 on GH200/aarch64 after retiring the MN5 route. Two previously observed seeds, one fresh run each. The two original continue arms cannot be restored because their exact v5 checkpoints are unavailable; they remain unexecuted here. This batch does not complete or replace the four-arm MN5 protocol, and its results are never pooled with unknown old-job outcomes. Data, initialization bytes, FP64 equations, optimizer, training budget and physical limits are unchanged from the amended v7 protocol.",
+ "source_sha256": "d378c28991dd9a852297f22c94f0727d4c0c1e5d4140fe718324859c09b78bc2",
+ "calibration_sha256": "5aea51c47816fa006ab0124874ea12d1111fd3a436d70f9d05f29bc242316063",
+ "topology": [
+  4,
+  128,
+  128,
+  128,
+  128,
+  4
+ ],
+ "seeds": [
+  361901,
+  361902
+ ],
+ "dtype": "float64",
+ "TF32": false,
+ "potential_scale": 0.01,
+ "pressure_scale": 0.1,
+ "family_counts": [
+  4096,
+  512,
+  384,
+  7
+ ],
+ "parameter_count": 50692,
+ "explicit_chunk": 128,
+ "taylor_ad_chunk": 128,
+ "coordinate_ad_chunk": 256,
+ "geometry_chunk": 256,
+ "atol": 1e-11,
+ "rtol": 1e-09,
+ "instance": {
+  "eta": 0.03125,
+  "nu": 0.01,
+  "note": "the original instance of v1-v5; inputs are data/ unchanged"
+ },
+ "training": {
+  "Adam_updates_per_seed": 4000,
+  "Adam_lr": "0.001 * 0.5**floor((update-1)/1000)",
+  "Adam_betas": [
+   0.9,
+   0.999
+  ],
+  "Adam_eps": 1e-08,
+  "Adam_weight_decay": 0,
+  "Adam_foreach": false,
+  "gradient_clipping": false,
+  "loss_convergence_limit": 0.0001,
+  "gradient_infinity_convergence_limit": 0.001,
+  "complete_gradient_check_Adam_updates": [
+   100,
+   500,
+   1000,
+   2000,
+   4000
+  ],
+  "supervised_interior_velocity_term": false,
+  "arms": {
+   "fresh": "the unchanged 4,000 Adam updates from the stored initial parameters, then SSBroyden"
+  },
+  "engine": "compiled packed activation with analytic transpose, CUDA Graph replay (as v2 and v5)",
+  "optimizer": {
+   "method": "self-scaled Broyden (SSBroyden), dense inverse Hessian in FP64 on the GPU",
+   "mode": "ssbroyden",
+   "update": "Urban, Stefanou and Pons, J. Comput. Phys. 523 (2025) 113656, Eqs. (10), (13)-(23); identical to Kiyani et al., arXiv:2501.16371, Eq. (15) and its definitions; box376.ssbroyden",
+   "H0": "identity (as Kiyani et al.; the update scaling tau adapts it)",
+   "line_search": "torch.optim.lbfgs._strong_wolfe from a unit step",
+   "c1": 0.0001,
+   "c2": 0.9,
+   "max_line_search_evaluations": 25,
+   "tolerance_change": 0.0,
+   "safeguards": "update skipped when y.s <= 1e-12 |y||s|; H reset to I when a direction is not a descent direction or the line search gives no decrease; two consecutive resets end the optimizer phase",
+   "one_matvec_per_iteration": "H y = H g_{k+1} + d_k; H_{k+1} g_{k+1} carried in O(n) and checked against an explicit product at every complete-gradient check",
+   "memory_margin_bytes": 4000000000,
+   "inverse_hessian_bytes": 20557430912
+  },
+  "maximum_training_seconds": 4000,
+  "maximum_training_seconds_reason": "Preserve the previously amended v7 budget of 4,000 training seconds per seed. A 3 h allocation provides additional setup and complete physical-observation time on the new platform; it does not increase this training budget.",
+  "SSBroyden_iteration_cap": 100000,
+  "checkpoint_SSBroyden_iterations": [
+   1000,
+   2000,
+   5000,
+   10000,
+   15000,
+   20000,
+   30000,
+   40000
+  ],
+  "complete_gradient_check_every_SSBroyden_iterations": 1000,
+  "loss_thresholds": [
+   0.001,
+   0.0003,
+   0.0001,
+   3e-05,
+   1e-05,
+   3e-06,
+   1e-06,
+   3e-07,
+   1e-07
+  ],
+  "trainer": "box376.potential_train_v7 (potential_train_v2 with the L-BFGS phase replaced and the continue arm)",
+  "gradient_reference": "preserved full native reference at the stored initial parameters (eager, compiled, graph); dense eager parameter AD after a change, at the continue start and every 1,000 iterations"
+ },
+ "physical": {
+  "holdout_seed": 794701,
+  "state_observer": "native coordinate AD of the trained curl-potential network",
+  "independent_consumer": "NumPy physical equations",
+  "stratified_points": 4096,
+  "uniform_volume_points": 4096,
+  "time_slices": [
+   0,
+   0.25,
+   0.375,
+   0.5,
+   0.625,
+   0.75,
+   1
+  ],
+  "time_slice_points": 256,
+  "initial_points": 512,
+  "boundary_points": 384,
+  "particles": 27,
+  "gated_datasets": [
+   "stratified",
+   "uniform"
+  ],
+  "velocity_relative_l2_limit": 0.01,
+  "zero_reference_velocity_normalized_rms_limit": 0.001,
+  "normalized_divergence_rms_limit": 0.001,
+  "normalized_momentum_rms_limit": 0.01,
+  "normalized_momentum_gradient_rms_limit": 0.02,
+  "normalized_divergence_gradient_rms_limit": 0.02,
+  "normalized_corrected_pressure_rms_limit": 0.001,
+  "normalized_pressure_gauge_rms_limit": 0.001,
+  "initial_boundary_velocity_normalized_rms_limit": 0.001,
+  "trajectory_method": "DOP853 using observed trained velocity",
+  "trajectory_refinements": [
+   [
+    1e-09,
+    1e-11,
+    0.015625
+   ],
+   [
+    1e-11,
+    1e-13,
+    0.0078125
+   ]
+  ],
+  "maximum_trajectory_refinement_change": 1e-07,
+  "maximum_trajectory_endpoint_error": 0.001,
+  "exact_velocity_inserted_into_model_or_trajectory_rhs": false
+ },
+ "physical_observation": {
+  "observer": "box376.potential_physical_eta at eta 1/32, which binds nothing new: the unchanged box376.potential_physical",
+  "observer_chunk": 512,
+  "priority": [
+   "final",
+   "gate-first"
+  ],
+  "per_seed_observation_budget_seconds": 2500,
+  "first_observation_estimate_seconds": 2000,
+  "note": "Per lane, final first; an observation starts only if the lane budget and the allocation deadline allow its estimate."
+ },
+ "starts": {},
+ "arms": [
+  {
+   "arm": "fresh",
+   "seeds": [
+    361901,
+    361902
+   ]
+  }
+ ],
+ "decision_rule": {
+  "runs": {
+   "fresh:361901": "seed361901-fresh",
+   "fresh:361902": "seed361902-fresh"
+  },
+  "near_miss_factor": 1.5,
+  "outcomes_in_order": {
+   "F1_pass": "at least one run passes physical acceptance at an observed checkpoint",
+   "F2_near_miss": "no run passes, and some run's complete final observation exceeds no acceptance limit by more than 1.5 times",
+   "F0_incomplete": "no pass and no near miss, and at least one of the two registered fresh runs lacks a complete final observation; no scientific reading",
+   "F3_fail": "no pass and no near miss, with complete final observations of both registered fresh runs; applies only to this two-run GH200 batch"
+  },
+  "order": [
+   "F1_pass",
+   "F2_near_miss",
+   "F0_incomplete",
+   "F3_fail"
+  ],
+  "follow_up": {
+   "F1_pass": "register a formal fresh-seed time-to-accuracy protocol on the original instance with this optimizer",
+   "F2_near_miss": "no formal claim; a longer optimizer budget would need a new protocol",
+   "F0_incomplete": "no scientific reading; find and repair the cause before a new attempt",
+   "F3_fail": "no formal claim at this 4,000 s per-run training budget; do not infer completion of or failure across the unavailable original continue arms"
+  },
+  "v5_analytic_first_evaluation_at_or_below": {
+   "361901": {
+    "0.001": 4042,
+    "0.0003": 5153,
+    "0.0001": 6050,
+    "3e-05": 8176,
+    "1e-05": 12487,
+    "3e-06": 18924,
+    "1e-06": null,
+    "3e-07": null,
+    "1e-07": null
+   },
+   "361902": {
+    "0.001": 4030,
+    "0.0003": 5017,
+    "0.0001": 5870,
+    "3e-05": 7693,
+    "1e-05": 10863,
+    "3e-06": 16211,
+    "1e-06": null,
+    "3e-07": null,
+    "1e-07": null
+   }
+  },
+  "secondary_readouts": [
+   "fresh runs: first evaluation at or below each loss threshold against the v5 analytic L-BFGS run of the same seed",
+   "post hoc (CPU, tools/c36_pressure_attribution.py on the final states): the pressure fraction of the residual energy and the cosine with the velocity inertia error, i.e. whether the optimizer removed the about-one-percent pressure component"
+  ],
+  "caveats": [
+   "Independent GH200/aarch64 execution with Torch 2.14.1+cu130, Triton 3.8.0, NumPy 2.5.4 and SciPy 1.18.1. H100/MN5 timing and convergence outcomes are not pooled with it.",
+   "Denominator is two registered fresh runs. The original two v5 continuation checkpoints are unavailable; those original tasks remain unexecuted here. Old MN5 job state is unknown after the user retired that access route.",
+   "Seeds 361901 and 361902 have been observed before; this is development evidence only, not a fresh-seed formal claim.",
+   "The amended v7 4,000 s training cap is retained. A negative outcome does not reject SSBroyden at a larger budget.",
+   "The dense inverse-Hessian approximation has 50,692 parameters; bounded rank-two updates cannot establish full convergence."
+  ],
+  "implementation": "box376.decide_c36_v7 on box376.read_c36_v7; synthetic tests box376.test_decide_c36_v7"
+ },
+ "execution": {
+  "allocation": "one Arrhenius node, two GH200 GPUs, 3 h; one exclusive allocated GPU per fresh seed; both concurrent",
+  "node_count_reason": "two independent 50,692-parameter FP64 runs; two GPUs are the smallest concurrent allocation for the preserved training and physical-observer budgets",
+  "maximum_requested_GPU_hours": 6,
+  "cpus": 32,
+  "host_memory_GiB": 128,
+  "legacy_triton_target_compat": false,
+  "runtime": {
+   "python": "3.13.5",
+   "torch": "2.14.1+cu130",
+   "triton": "3.8.0",
+   "numpy": "2.5.4",
+   "scipy": "1.18.1",
+   "cuda": "13.0",
+   "architecture": "aarch64"
+  },
+  "qualification": "gh200-platform-qualification-20261021.json",
+  "deadline_reserve_seconds": 900,
+  "start_command": "embedded cluster-side entry runs source/runtime preflight, compiler smoke, both fresh lanes, physical observers, reader, registered decision and checked archive",
+  "startup_and_setup_budget_seconds": 900,
+  "training_seconds_per_lane": 4000,
+  "physical_observation_estimate_seconds": 2000,
+  "driver": "box376.run_c36_v7_gh200; inherited scientific child commands, with the obsolete legacy Torch target shim disabled by the frozen execution field",
+  "failure_archive": "outer finite process-group timeout and finalizer preserve negative and partial outputs even if the inner driver fails",
+  "protocol_changes": "platform, two fresh runs, 3 h allocation and 900 s finalizer reserve only; mathematical objective, numerical/physical gates and 4,000 s training cap unchanged"
+ },
+ "parent_protocols": {
+  "protocol-v2-development-20261014.json": "00d5db987788d2dfbca6f12ac6835a84a743fd447f93cadcee15845c95bc1aa7",
+  "protocol-v5-budget-development-20261015.json": "135aae3d7f49d77122c4a834463485ef93c422f40f52488afb04f0a0a1a2810e",
+  "protocol-v7-ssbroyden-development-20261019.json": "f9bddbb1448d627ea0770516dc6a8f5e24e21e5cba6e2e8a003220c69b0c20a9"
+ },
+ "amendments": [
+  {
+   "date": "2026-10-19",
+   "before_any_run": true,
+   "change": "allocation 3 h -> 2 h on QoS acc_interactive; maximum_training_seconds 6,600 -> 4,000; deadline reserve 900 -> 400 s",
+   "reason": "the regular QoS is unavailable (allocation exhausted); user instruction to use acc_interactive, whose maximum wall time is 2 h"
+  },
+  {
+   "date": "2026-10-21",
+   "before_this_batch": true,
+   "change": "independent two-seed fresh-arm GH200 batch; retain the 4,000 s training cap and all mathematical gates",
+   "reason": "MN5 access retired at user request; exact v5 continuation checkpoints unavailable; GH200 full-gradient compatibility qualified"
+  }
+ ]
+}

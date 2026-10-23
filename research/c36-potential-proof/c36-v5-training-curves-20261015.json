@@ -1,0 +1,329 @@
+{
+ "definition": "box376.read_c36_v4.read_seed with the v5 protocol thresholds, applied to the v5 training outputs",
+ "runs": {
+  "seed361901-analytic": {
+   "seed": 361901,
+   "engine": "analytic",
+   "training_seconds": 20418.12144293601,
+   "Adam_updates": 4000,
+   "LBFGS_calls": 4800,
+   "LBFGS_closures": 117986,
+   "budget_truncated": false,
+   "gradient_checks": {
+    "saved_comparisons": 180,
+    "check_points": 60,
+    "maximum_error_over_original_budget": 1.0889039431009319e-05
+   },
+   "events_sealed": true,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 92,
+    "closure": 2049,
+    "loss": 9.991019259862346e-05,
+    "gradient_infinity": 0.0005337839427592701,
+    "training_seconds": 1009.6125211809995
+   },
+   "loss_curve": {
+    "evaluations": 121986,
+    "first_original_problem_evaluation": 1,
+    "initial": 5.510437156722028,
+    "after_Adam": 0.0011217401536377596,
+    "minimum": 1.6066715658523605e-06,
+    "final_reported": 1.6066715658523605e-06,
+    "final_gradient_infinity": 4.1505260912113536e-06,
+    "first_evaluation_at_or_below": {
+     "0.001": {
+      "evaluation": 4042,
+      "training_seconds": 673.7757030320354
+     },
+     "0.0003": {
+      "evaluation": 5153,
+      "training_seconds": 859.5987970560091
+     },
+     "0.0001": {
+      "evaluation": 6050,
+      "training_seconds": 1009.6125211809995
+     },
+     "3e-05": {
+      "evaluation": 8176,
+      "training_seconds": 1366.055910728057
+     },
+     "1e-05": {
+      "evaluation": 12487,
+      "training_seconds": 2130.443078086013
+     },
+     "3e-06": {
+      "evaluation": 18924,
+      "training_seconds": 3208.6424465270247
+     },
+     "1e-06": null,
+     "3e-07": null,
+     "1e-07": null
+    },
+    "mean_seconds_per_evaluation": 0.16736687875913667,
+    "per_LBFGS_call_end": {
+     "1": 0.0010739718769052632,
+     "20": 0.000545271914698979,
+     "50": 0.0003104900428027119,
+     "100": 8.49377637939093e-05,
+     "200": 2.763209457453398e-05,
+     "400": 8.873807696138895e-06,
+     "800": 1.8303176538637935e-06,
+     "1200": 1.6476828662964575e-06,
+     "1600": 1.639734037356248e-06,
+     "2000": 1.6336955934062075e-06,
+     "2400": 1.628615022218421e-06,
+     "2800": 1.624144407269235e-06,
+     "3200": 1.620107950388273e-06,
+     "3600": 1.6164013193239822e-06,
+     "4000": 1.6129561342507486e-06,
+     "4400": 1.609724553667077e-06,
+     "4800": 1.6066715658523605e-06
+    }
+   }
+  },
+  "seed361901-parameter_ad": {
+   "seed": 361901,
+   "engine": "parameter_ad",
+   "training_seconds": 25724.986763221095,
+   "Adam_updates": 4000,
+   "LBFGS_calls": 4800,
+   "LBFGS_closures": 118124,
+   "budget_truncated": false,
+   "gradient_checks": {
+    "saved_comparisons": 180,
+    "check_points": 60,
+    "maximum_error_over_original_budget": 3.010496264271918e-06
+   },
+   "events_sealed": true,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 93,
+    "closure": 2058,
+    "loss": 9.987075280023207e-05,
+    "gradient_infinity": 0.0005973869528114514,
+    "training_seconds": 1332.0361442620633
+   },
+   "loss_curve": {
+    "evaluations": 122124,
+    "first_original_problem_evaluation": 1,
+    "initial": 5.510437156722028,
+    "after_Adam": 0.001121686042759257,
+    "minimum": 1.62835695351901e-06,
+    "final_reported": 1.62835695351901e-06,
+    "final_gradient_infinity": 2.5364475103058854e-06,
+    "first_evaluation_at_or_below": {
+     "0.001": {
+      "evaluation": 4042,
+      "training_seconds": 888.2101248340914
+     },
+     "0.0003": {
+      "evaluation": 5165,
+      "training_seconds": 1135.337162775104
+     },
+     "0.0001": {
+      "evaluation": 6059,
+      "training_seconds": 1332.0361442620633
+     },
+     "3e-05": {
+      "evaluation": 8156,
+      "training_seconds": 1805.2899248400936
+     },
+     "1e-05": {
+      "evaluation": 12209,
+      "training_seconds": 2733.2003543270985
+     },
+     "3e-06": {
+      "evaluation": 18531,
+      "training_seconds": 4127.706357526011
+     },
+     "1e-06": null,
+     "3e-07": null,
+     "1e-07": null
+    },
+    "mean_seconds_per_evaluation": 0.21063256170852598,
+    "per_LBFGS_call_end": {
+     "1": 0.0010739330938910319,
+     "20": 0.000546876441065366,
+     "50": 0.0003148583128420291,
+     "100": 8.431210980676511e-05,
+     "200": 2.69928372184643e-05,
+     "400": 8.430233508993236e-06,
+     "800": 1.7489278343533437e-06,
+     "1200": 1.6563383991506139e-06,
+     "1600": 1.6507636792518968e-06,
+     "2000": 1.646598385623407e-06,
+     "2400": 1.6431414531331918e-06,
+     "2800": 1.6401290080823104e-06,
+     "3200": 1.6374221933619439e-06,
+     "3600": 1.6349374380764924e-06,
+     "4000": 1.6326207909155523e-06,
+     "4400": 1.6304357985450925e-06,
+     "4800": 1.62835695351901e-06
+    }
+   }
+  },
+  "seed361902-analytic": {
+   "seed": 361902,
+   "engine": "analytic",
+   "training_seconds": 20463.71053945308,
+   "Adam_updates": 4000,
+   "LBFGS_calls": 4800,
+   "LBFGS_closures": 118088,
+   "budget_truncated": false,
+   "gradient_checks": {
+    "saved_comparisons": 180,
+    "check_points": 60,
+    "maximum_error_over_original_budget": 8.306584395017717e-06
+   },
+   "events_sealed": true,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 85,
+    "closure": 1869,
+    "loss": 9.996543036791688e-05,
+    "gradient_infinity": 0.0006110576915853136,
+    "training_seconds": 982.6640457001049
+   },
+   "loss_curve": {
+    "evaluations": 122088,
+    "first_original_problem_evaluation": 1,
+    "initial": 5.419907373709556,
+    "after_Adam": 0.0010975792511033768,
+    "minimum": 1.3378628296194728e-06,
+    "final_reported": 1.3378628296194728e-06,
+    "final_gradient_infinity": 4.588099533870463e-06,
+    "first_evaluation_at_or_below": {
+     "0.001": {
+      "evaluation": 4030,
+      "training_seconds": 673.8964167380473
+     },
+     "0.0003": {
+      "evaluation": 5017,
+      "training_seconds": 839.3587678150507
+     },
+     "0.0001": {
+      "evaluation": 5870,
+      "training_seconds": 982.6640457001049
+     },
+     "3e-05": {
+      "evaluation": 7693,
+      "training_seconds": 1289.5345983890584
+     },
+     "1e-05": {
+      "evaluation": 10863,
+      "training_seconds": 1823.5047946880804
+     },
+     "3e-06": {
+      "evaluation": 16211,
+      "training_seconds": 2800.145401107031
+     },
+     "1e-06": null,
+     "3e-07": null,
+     "1e-07": null
+    },
+    "mean_seconds_per_evaluation": 0.1676004104234816,
+    "per_LBFGS_call_end": {
+     "1": 0.001032082021213433,
+     "20": 0.0005185781200630051,
+     "50": 0.00027172983541693486,
+     "100": 6.706825037497747e-05,
+     "200": 2.37227335933392e-05,
+     "400": 6.010053985196727e-06,
+     "800": 1.3825307910321545e-06,
+     "1200": 1.3712189395186284e-06,
+     "1600": 1.3648644567616684e-06,
+     "2000": 1.359951148379913e-06,
+     "2400": 1.3558122900562296e-06,
+     "2800": 1.3521697508884892e-06,
+     "3200": 1.34887755021313e-06,
+     "3600": 1.3458488724922953e-06,
+     "4000": 1.3430275242079171e-06,
+     "4400": 1.3403748162463367e-06,
+     "4800": 1.3378628296194728e-06
+    }
+   }
+  },
+  "seed361902-parameter_ad": {
+   "seed": 361902,
+   "engine": "parameter_ad",
+   "training_seconds": 26652.202944632038,
+   "Adam_updates": 4000,
+   "LBFGS_calls": 4800,
+   "LBFGS_closures": 118095,
+   "budget_truncated": false,
+   "gradient_checks": {
+    "saved_comparisons": 180,
+    "check_points": 60,
+    "maximum_error_over_original_budget": 2.351859177519258e-06
+   },
+   "events_sealed": true,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 83,
+    "closure": 1810,
+    "loss": 9.993383911544992e-05,
+    "gradient_infinity": 0.0007251853647390024,
+    "training_seconds": 1266.9290754860267
+   },
+   "loss_curve": {
+    "evaluations": 122095,
+    "first_original_problem_evaluation": 1,
+    "initial": 5.419907373709556,
+    "after_Adam": 0.0010872026185219613,
+    "minimum": 1.4322708840721802e-06,
+    "final_reported": 1.4322708840721802e-06,
+    "final_gradient_infinity": 1.244143240344455e-06,
+    "first_evaluation_at_or_below": {
+     "0.001": {
+      "evaluation": 4030,
+      "training_seconds": 877.6036540480563
+     },
+     "0.0003": {
+      "evaluation": 5017,
+      "training_seconds": 1092.8910298120463
+     },
+     "0.0001": {
+      "evaluation": 5811,
+      "training_seconds": 1266.9290754860267
+     },
+     "3e-05": {
+      "evaluation": 7561,
+      "training_seconds": 1650.2407041160623
+     },
+     "1e-05": {
+      "evaluation": 10980,
+      "training_seconds": 2470.3693906370318
+     },
+     "3e-06": {
+      "evaluation": 16077,
+      "training_seconds": 3583.954521129024
+     },
+     "1e-06": null,
+     "3e-07": null,
+     "1e-07": null
+    },
+    "mean_seconds_per_evaluation": 0.21827598103257387,
+    "per_LBFGS_call_end": {
+     "1": 0.0010273112500180444,
+     "20": 0.0005123527878737554,
+     "50": 0.00027218968994208284,
+     "100": 6.211467590876586e-05,
+     "200": 2.174203382563784e-05,
+     "400": 6.145758109443841e-06,
+     "800": 1.4992629897029652e-06,
+     "1200": 1.4849360619829832e-06,
+     "1600": 1.4758148626455874e-06,
+     "2000": 1.4683597919314264e-06,
+     "2400": 1.4618497070788718e-06,
+     "2800": 1.4559827809869303e-06,
+     "3200": 1.450597423384214e-06,
+     "3600": 1.44559335515023e-06,
+     "4000": 1.4409020799953104e-06,
+     "4400": 1.4364738228800366e-06,
+     "4800": 1.4322708840721802e-06
+    }
+   }
+  }
+ }
+}

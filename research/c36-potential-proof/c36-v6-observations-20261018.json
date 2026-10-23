@@ -1,0 +1,3933 @@
+{
+ "protocol_version": "C36-potential-20261018-v6-eta16-development",
+ "eta": 0.0625,
+ "runs": {
+  "seed361901-analytic": {
+   "engine": "analytic",
+   "seed": 361901,
+   "training_state": "COMPLETE",
+   "Adam_updates": 4000,
+   "LBFGS_calls": 800,
+   "LBFGS_closures": 18250,
+   "training_seconds": 3715.9065583939664,
+   "budget_truncated": false,
+   "final_loss": 4.226977758338717e-06,
+   "final_gradient_infinity": 6.696215471576052e-05,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 149,
+    "closure": 3387,
+    "loss": 9.985576565230666e-05,
+    "gradient_infinity": 0.0004682053760660694,
+    "training_seconds": 1229.6427997059654
+   },
+   "setup_seconds": {
+    "eager_and_dense_AD": 55.2673113780329,
+    "subset_native": 335.99824807897676,
+    "compile_and_warmup": 97.7313157080207,
+    "graph_capture": 3.6851331789512187
+   },
+   "checks": {
+    "eager-subset-native": 2.679300113905232e-07,
+    "eager-original-denseAD": 9.745652529182605e-07,
+    "eager-changed-denseAD": 9.59391507174308e-07,
+    "compiled-original-denseAD": 9.745652529182605e-07,
+    "graph-original-denseAD": 9.745652529182605e-07,
+    "graph-changed-denseAD": 8.777411661381967e-07,
+    "Adam0": 9.745652529182605e-07,
+    "Adam100": 3.0571999160936876e-06,
+    "Adam500": 1.6333014800389948e-06,
+    "Adam1000": 3.5644583385553146e-06,
+    "Adam2000": 4.003091640586498e-06,
+    "Adam4000": 8.838150931928968e-06,
+    "LBFGS-call50": 5.171764636735833e-06,
+    "LBFGS-call100": 1.2754077570837523e-05,
+    "LBFGS-call150": 6.000268347868835e-06,
+    "LBFGS-call200": 6.007898271450537e-06,
+    "LBFGS-call250": 5.396574106810717e-06,
+    "LBFGS-call300": 4.9217796050463815e-06,
+    "LBFGS-call350": 3.7286961560684636e-06,
+    "LBFGS-call400": 4.752389811333295e-06,
+    "LBFGS-call450": 8.710942787810451e-06,
+    "LBFGS-call500": 3.736154195613235e-06,
+    "LBFGS-call550": 6.146771573512129e-06,
+    "LBFGS-call600": 3.0806610538485357e-06,
+    "LBFGS-call650": 7.164024117435554e-06,
+    "LBFGS-call700": 4.779956410193319e-06,
+    "LBFGS-call750": 4.367761015860519e-06,
+    "LBFGS-call800": 8.147047842679945e-06,
+    "final": 8.147047842679945e-06
+   },
+   "observations": {
+    "final": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": false,
+     "seconds": 1817.2366893291473,
+     "observer_chunk": 512,
+     "holdout_eta": 0.0625,
+     "worst_over_limit": 2.8904283534885336,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {
+      "stratified:normalized_corrected_pressure_rms": 2.8904283534885336
+     },
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0018109113564671805,
+        "normalized_corrected_pressure_rms": 0.0028904283534885336,
+        "normalized_momentum_rms": 0.001508524395007885,
+        "normalized_momentum_gradient_rms": 0.0015296161016050192,
+        "normalized_divergence_rms": 1.1837098209876856e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0034944494712243032,
+         "normalized_corrected_pressure_rms": 0.004836171644723689,
+         "normalized_momentum_rms": 0.0006207838038775836,
+         "normalized_momentum_gradient_rms": 0.0001421706318813817,
+         "normalized_divergence_rms": 3.732346225547634e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0021377767572356536,
+         "normalized_corrected_pressure_rms": 0.003198773434365709,
+         "normalized_momentum_rms": 0.0017848894230728292,
+         "normalized_momentum_gradient_rms": 0.001904355833395799,
+         "normalized_divergence_rms": 1.2189429247630864e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0013719731790972228,
+         "normalized_corrected_pressure_rms": 0.00252401782304603,
+         "normalized_momentum_rms": 0.0018244615934595203,
+         "normalized_momentum_gradient_rms": 0.001752630686187598,
+         "normalized_divergence_rms": 1.5512115348621855e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0010143586100948474,
+         "normalized_corrected_pressure_rms": 0.0016680387000325488,
+         "normalized_momentum_rms": 0.001535209928327545,
+         "normalized_momentum_gradient_rms": 0.0016274178067296047,
+         "normalized_divergence_rms": 1.2763284183184008e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "uniform": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.001971991539617802,
+        "normalized_corrected_pressure_rms": 0.000591600591523234,
+        "normalized_momentum_rms": 0.0003373105446987221,
+        "normalized_momentum_gradient_rms": 0.0002813164827252144,
+        "normalized_divergence_rms": 1.794341066846681e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.005210078935316808,
+         "normalized_corrected_pressure_rms": 0.0029284305653940186,
+         "normalized_momentum_rms": 0.00040233901781555604,
+         "normalized_momentum_gradient_rms": 7.635739729205365e-05,
+         "normalized_divergence_rms": 1.473946485351233e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0017613518430833425,
+         "normalized_corrected_pressure_rms": 0.002837537670354217,
+         "normalized_momentum_rms": 0.001628479464465347,
+         "normalized_momentum_gradient_rms": 0.001367357331293063,
+         "normalized_divergence_rms": 8.023291098394835e-15
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0015854014803546224,
+         "normalized_corrected_pressure_rms": 0.0010316281358463757,
+         "normalized_momentum_rms": 0.001589348902265453,
+         "normalized_momentum_gradient_rms": 0.0013570858679790396,
+         "normalized_divergence_rms": 8.994456255907829e-15
+        },
+        "corner": {
+         "velocity_relative_l2": 0.00038970418019390667,
+         "normalized_corrected_pressure_rms": 0.00031808077130129057,
+         "normalized_momentum_rms": 0.0011077331850667678,
+         "normalized_momentum_gradient_rms": 0.0007669872121416014,
+         "normalized_divergence_rms": 1.1078768876095974e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0026025765190435582,
+        "normalized_corrected_pressure_rms": 0.004505113989649083,
+        "normalized_momentum_rms": 0.00157052741457286,
+        "normalized_momentum_gradient_rms": 0.0014989187167515749,
+        "normalized_divergence_rms": 9.632763281612874e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.006328067659402763,
+         "normalized_corrected_pressure_rms": 0.006795818085366148,
+         "normalized_momentum_rms": 0.0007387558088770992,
+         "normalized_momentum_gradient_rms": 8.633243250182144e-05,
+         "normalized_divergence_rms": 4.2675419489458795e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.003181270202075847,
+         "normalized_corrected_pressure_rms": 0.004833679682559788,
+         "normalized_momentum_rms": 0.002159734790903855,
+         "normalized_momentum_gradient_rms": 0.0019151590799354442,
+         "normalized_divergence_rms": 1.1890060995281247e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0017948541141521162,
+         "normalized_corrected_pressure_rms": 0.004646972269044539,
+         "normalized_momentum_rms": 0.0018315876508631786,
+         "normalized_momentum_gradient_rms": 0.0018600420429714833,
+         "normalized_divergence_rms": 8.370736945646942e-15
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0009008526622686778,
+         "normalized_corrected_pressure_rms": 0.002918134956857459,
+         "normalized_momentum_rms": 0.001232721242931591,
+         "normalized_momentum_gradient_rms": 0.0013619715860806474,
+         "normalized_divergence_rms": 1.2197974327814517e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0012313544642170906,
+        "normalized_corrected_pressure_rms": 0.003397708606489344,
+        "normalized_momentum_rms": 0.0016496716081297927,
+        "normalized_momentum_gradient_rms": 0.0018869958722957942,
+        "normalized_divergence_rms": 1.8402668483935812e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0025631043336343615,
+         "normalized_corrected_pressure_rms": 0.004870213251593209,
+         "normalized_momentum_rms": 0.0006475070635907577,
+         "normalized_momentum_gradient_rms": 0.0001458730039071602,
+         "normalized_divergence_rms": 5.969460417339229e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0013244772928027824,
+         "normalized_corrected_pressure_rms": 0.0036919451754164386,
+         "normalized_momentum_rms": 0.002092459939882939,
+         "normalized_momentum_gradient_rms": 0.002511045529841604,
+         "normalized_divergence_rms": 2.2672708601275302e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0009847270208297708,
+         "normalized_corrected_pressure_rms": 0.003340255161517288,
+         "normalized_momentum_rms": 0.0022479904114633296,
+         "normalized_momentum_gradient_rms": 0.0022100891997419163,
+         "normalized_divergence_rms": 2.1703947983165043e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.00046665942559080795,
+         "normalized_corrected_pressure_rms": 0.002675545758630742,
+         "normalized_momentum_rms": 0.0010964747740792834,
+         "normalized_momentum_gradient_rms": 0.0017436749710111545,
+         "normalized_divergence_rms": 1.8658485504986526e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.002629439484341382,
+        "normalized_corrected_pressure_rms": 0.003969878394930757,
+        "normalized_momentum_rms": 0.0018593435529888898,
+        "normalized_momentum_gradient_rms": 0.00188431469242788,
+        "normalized_divergence_rms": 1.1758503880483743e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.00488653065889315,
+         "normalized_corrected_pressure_rms": 0.005578353670543576,
+         "normalized_momentum_rms": 0.0009917037397361834,
+         "normalized_momentum_gradient_rms": 0.00032826254231853725,
+         "normalized_divergence_rms": 3.640076147101406e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.00323038349975026,
+         "normalized_corrected_pressure_rms": 0.004169725183538518,
+         "normalized_momentum_rms": 0.0022226783025525655,
+         "normalized_momentum_gradient_rms": 0.0017087923882248316,
+         "normalized_divergence_rms": 1.3202233774059403e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0019935300524686803,
+         "normalized_corrected_pressure_rms": 0.004679210358903555,
+         "normalized_momentum_rms": 0.002143987621236579,
+         "normalized_momentum_gradient_rms": 0.002588760103775816,
+         "normalized_divergence_rms": 1.2776226830881941e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0014644670421989354,
+         "normalized_corrected_pressure_rms": 0.0022555049077415345,
+         "normalized_momentum_rms": 0.0019239454906695502,
+         "normalized_momentum_gradient_rms": 0.002125150197380917,
+         "normalized_divergence_rms": 1.440724167758439e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 0.0007950642140143639,
+       "maximum_endpoint_error": 0.000795064191061408
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 0.0007950642034782655,
+       "maximum_endpoint_error": 0.0007950642034782655,
+       "maximum_refinement_change": 6.325014848361928e-11
+      }
+     ]
+    },
+    "gate-first": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": false,
+     "seconds": 1823.0127396583557,
+     "observer_chunk": 512,
+     "holdout_eta": 0.0625,
+     "worst_over_limit": 11.476416997778665,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {
+      "stratified:normalized_corrected_pressure_rms": 11.476416997778665,
+      "uniform:normalized_corrected_pressure_rms": 2.3297205425897167,
+      "trajectory:maximum_endpoint_error": 8.44960927549435
+     },
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.008653759512321451,
+        "normalized_corrected_pressure_rms": 0.011476416997778665,
+        "normalized_momentum_rms": 0.006241356699837369,
+        "normalized_momentum_gradient_rms": 0.006340267625991666,
+        "normalized_divergence_rms": 1.1908504700997307e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.01912895057595039,
+         "normalized_corrected_pressure_rms": 0.018159780888990066,
+         "normalized_momentum_rms": 0.0029121468901641715,
+         "normalized_momentum_gradient_rms": 0.0007723426328385917,
+         "normalized_divergence_rms": 4.210060024175025e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.00942253304510899,
+         "normalized_corrected_pressure_rms": 0.013462167356892485,
+         "normalized_momentum_rms": 0.0077198706492233775,
+         "normalized_momentum_gradient_rms": 0.008576222316809476,
+         "normalized_divergence_rms": 1.1904884902145365e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.006103478178756837,
+         "normalized_corrected_pressure_rms": 0.009311819427540696,
+         "normalized_momentum_rms": 0.007474473547538393,
+         "normalized_momentum_gradient_rms": 0.00723376145081213,
+         "normalized_divergence_rms": 1.581928327538434e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.004073190209719335,
+         "normalized_corrected_pressure_rms": 0.007811918603635662,
+         "normalized_momentum_rms": 0.005938486040978102,
+         "normalized_momentum_gradient_rms": 0.00587870499656986,
+         "normalized_divergence_rms": 1.283117943644397e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "uniform": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.009451655648640278,
+        "normalized_corrected_pressure_rms": 0.0023297205425897166,
+        "normalized_momentum_rms": 0.001231964608750268,
+        "normalized_momentum_gradient_rms": 0.0013931085379896265,
+        "normalized_divergence_rms": 2.0664160703000603e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.02477820781761257,
+         "normalized_corrected_pressure_rms": 0.011384942222215724,
+         "normalized_momentum_rms": 0.0012370174204550971,
+         "normalized_momentum_gradient_rms": 0.0004459992328744117,
+         "normalized_divergence_rms": 3.604656602581921e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.008746859271283486,
+         "normalized_corrected_pressure_rms": 0.010911325915126956,
+         "normalized_momentum_rms": 0.005873057546006767,
+         "normalized_momentum_gradient_rms": 0.007534511528875991,
+         "normalized_divergence_rms": 1.035232458361355e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.00638592190771553,
+         "normalized_corrected_pressure_rms": 0.005137354377376814,
+         "normalized_momentum_rms": 0.005767301202320932,
+         "normalized_momentum_gradient_rms": 0.005357544621432209,
+         "normalized_divergence_rms": 8.30914277605448e-15
+        },
+        "corner": {
+         "velocity_relative_l2": 0.004041473463972233,
+         "normalized_corrected_pressure_rms": 0.0046011459234459725,
+         "normalized_momentum_rms": 0.006259340163613699,
+         "normalized_momentum_gradient_rms": 0.003410041966472971,
+         "normalized_divergence_rms": 1.1064946326887926e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.010648976044316206,
+        "normalized_corrected_pressure_rms": 0.014882159458370379,
+        "normalized_momentum_rms": 0.0075094080788906635,
+        "normalized_momentum_gradient_rms": 0.006471260266001472,
+        "normalized_divergence_rms": 1.2142952023044182e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.02537745886082095,
+         "normalized_corrected_pressure_rms": 0.026991073099404496,
+         "normalized_momentum_rms": 0.004130766904250483,
+         "normalized_momentum_gradient_rms": 0.000498896530191367,
+         "normalized_divergence_rms": 3.821434496383065e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.012196776289925394,
+         "normalized_corrected_pressure_rms": 0.014440482417871941,
+         "normalized_momentum_rms": 0.008540937152473976,
+         "normalized_momentum_gradient_rms": 0.008042228231077244,
+         "normalized_divergence_rms": 1.3114587903863138e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.006757665231907018,
+         "normalized_corrected_pressure_rms": 0.011384168789008478,
+         "normalized_momentum_rms": 0.008454288011297377,
+         "normalized_momentum_gradient_rms": 0.007465945709312449,
+         "normalized_divergence_rms": 1.0534366904836397e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.006568398520722912,
+         "normalized_corrected_pressure_rms": 0.010520315245538503,
+         "normalized_momentum_rms": 0.008420469371145881,
+         "normalized_momentum_gradient_rms": 0.006851402689776657,
+         "normalized_divergence_rms": 1.726493024590188e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.007395440655611524,
+        "normalized_corrected_pressure_rms": 0.016403017111983283,
+        "normalized_momentum_rms": 0.007957152855300059,
+        "normalized_momentum_gradient_rms": 0.010682880417735099,
+        "normalized_divergence_rms": 2.0740802236908867e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.01744076540531281,
+         "normalized_corrected_pressure_rms": 0.02484448488484635,
+         "normalized_momentum_rms": 0.0028902893502633555,
+         "normalized_momentum_gradient_rms": 0.0008405564415122784,
+         "normalized_divergence_rms": 6.528861193475537e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.007953813487144721,
+         "normalized_corrected_pressure_rms": 0.01976052443200817,
+         "normalized_momentum_rms": 0.010521971431964141,
+         "normalized_momentum_gradient_rms": 0.014143395586864243,
+         "normalized_divergence_rms": 2.3283577616226044e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0044735885514434965,
+         "normalized_corrected_pressure_rms": 0.012532542465530355,
+         "normalized_momentum_rms": 0.010061043814417898,
+         "normalized_momentum_gradient_rms": 0.013997556094508489,
+         "normalized_divergence_rms": 2.6470137093612944e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.002079598426949019,
+         "normalized_corrected_pressure_rms": 0.012583476368227374,
+         "normalized_momentum_rms": 0.006026307101599254,
+         "normalized_momentum_gradient_rms": 0.007752715630941764,
+         "normalized_divergence_rms": 2.1268632966567615e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.010004374677663956,
+        "normalized_corrected_pressure_rms": 0.011192409494133543,
+        "normalized_momentum_rms": 0.007823669279204894,
+        "normalized_momentum_gradient_rms": 0.008368365808069576,
+        "normalized_divergence_rms": 1.0685146868741427e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.01917576159973059,
+         "normalized_corrected_pressure_rms": 0.01229816996407549,
+         "normalized_momentum_rms": 0.0045766244694882,
+         "normalized_momentum_gradient_rms": 0.002083106573085888,
+         "normalized_divergence_rms": 4.140123815825438e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.011031933861205401,
+         "normalized_corrected_pressure_rms": 0.01543149227463437,
+         "normalized_momentum_rms": 0.009004672418597391,
+         "normalized_momentum_gradient_rms": 0.009385896254687703,
+         "normalized_divergence_rms": 8.872571157274983e-15
+        },
+        "edge": {
+         "velocity_relative_l2": 0.00879891698535381,
+         "normalized_corrected_pressure_rms": 0.008553578729340752,
+         "normalized_momentum_rms": 0.009493537116245381,
+         "normalized_momentum_gradient_rms": 0.010494687926878275,
+         "normalized_divergence_rms": 1.3080134530385523e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0053075071624020835,
+         "normalized_corrected_pressure_rms": 0.009951807250805189,
+         "normalized_momentum_rms": 0.007814124179771492,
+         "normalized_momentum_gradient_rms": 0.008903991363846123,
+         "normalized_divergence_rms": 1.402114977547092e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 0.008449609295572804,
+       "maximum_endpoint_error": 0.008449609294579219
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 0.008449609275552604,
+       "maximum_endpoint_error": 0.00844960927549435,
+       "maximum_refinement_change": 6.641951841143268e-11
+      }
+     ]
+    }
+   }
+  },
+  "seed361901-parameter_ad": {
+   "engine": "parameter_ad",
+   "seed": 361901,
+   "training_state": "COMPLETE",
+   "Adam_updates": 4000,
+   "LBFGS_calls": 800,
+   "LBFGS_closures": 18223,
+   "training_seconds": 4725.197844692972,
+   "budget_truncated": false,
+   "final_loss": 3.4895418921648687e-06,
+   "final_gradient_infinity": 3.60243150261152e-05,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 152,
+    "closure": 3418,
+    "loss": 9.991848008778721e-05,
+    "gradient_infinity": 0.0008290699738767842,
+    "training_seconds": 1646.1429622200085
+   },
+   "setup_seconds": {
+    "eager_and_dense_AD": 53.41841163893696,
+    "subset_native": 329.1424411620246,
+    "compile_and_warmup": 95.79192400793545,
+    "graph_capture": 4.841500575072132
+   },
+   "checks": {
+    "eager-subset-native": 2.0151339226342024e-07,
+    "eager-original-denseAD": 2.670007898689703e-07,
+    "eager-changed-denseAD": 2.6270751105959155e-07,
+    "compiled-original-denseAD": 5.057206049294247e-07,
+    "graph-original-denseAD": 5.057206049294247e-07,
+    "graph-changed-denseAD": 3.682496320186907e-07,
+    "Adam0": 5.057206049294247e-07,
+    "Adam100": 1.578096870981888e-06,
+    "Adam500": 4.689641985754432e-07,
+    "Adam1000": 1.4742536680747173e-06,
+    "Adam2000": 1.2103229321796206e-06,
+    "Adam4000": 2.104853859540134e-06,
+    "LBFGS-call50": 2.7332661419129584e-06,
+    "LBFGS-call100": 2.0994872211720986e-06,
+    "LBFGS-call150": 1.6085891522285297e-06,
+    "LBFGS-call200": 2.5051691607914444e-06,
+    "LBFGS-call250": 1.2905156329378441e-06,
+    "LBFGS-call300": 1.0390424679868903e-06,
+    "LBFGS-call350": 3.1602179535937553e-06,
+    "LBFGS-call400": 1.8131107797080985e-06,
+    "LBFGS-call450": 5.590360352438247e-07,
+    "LBFGS-call500": 1.8151624011733068e-06,
+    "LBFGS-call550": 2.713654540608659e-06,
+    "LBFGS-call600": 2.154495150041545e-06,
+    "LBFGS-call650": 2.693165043186515e-06,
+    "LBFGS-call700": 2.929264861232187e-06,
+    "LBFGS-call750": 2.6523594249577588e-06,
+    "LBFGS-call800": 1.694117601231909e-06,
+    "final": 1.694117601231909e-06
+   },
+   "observations": {
+    "final": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": false,
+     "seconds": 1848.4000301361084,
+     "observer_chunk": 512,
+     "holdout_eta": 0.0625,
+     "worst_over_limit": 2.5842578330574297,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {
+      "stratified:normalized_corrected_pressure_rms": 2.5842578330574297
+     },
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0015887693417513174,
+        "normalized_corrected_pressure_rms": 0.00258425783305743,
+        "normalized_momentum_rms": 0.001350250186666888,
+        "normalized_momentum_gradient_rms": 0.0014037392478516658,
+        "normalized_divergence_rms": 1.1891269815824206e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0029437773972410463,
+         "normalized_corrected_pressure_rms": 0.004097993121594415,
+         "normalized_momentum_rms": 0.0005296212525936715,
+         "normalized_momentum_gradient_rms": 0.0001083842567272398,
+         "normalized_divergence_rms": 3.946556427236103e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0018635822814195373,
+         "normalized_corrected_pressure_rms": 0.002866014670891286,
+         "normalized_momentum_rms": 0.0015826161689046457,
+         "normalized_momentum_gradient_rms": 0.0017423006075407324,
+         "normalized_divergence_rms": 1.1444294936662859e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0012720732232056253,
+         "normalized_corrected_pressure_rms": 0.0023080945747307943,
+         "normalized_momentum_rms": 0.0016284443342163592,
+         "normalized_momentum_gradient_rms": 0.0016446566404634355,
+         "normalized_divergence_rms": 1.483818757443291e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0009299313933025804,
+         "normalized_corrected_pressure_rms": 0.001759569537252745,
+         "normalized_momentum_rms": 0.0014028179411230668,
+         "normalized_momentum_gradient_rms": 0.0014609518621486381,
+         "normalized_divergence_rms": 1.432202184258668e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "uniform": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.001697873740976349,
+        "normalized_corrected_pressure_rms": 0.0004923270321696137,
+        "normalized_momentum_rms": 0.00030513790134149355,
+        "normalized_momentum_gradient_rms": 0.00025678017020316966,
+        "normalized_divergence_rms": 2.3034809993220915e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.004185808992462577,
+         "normalized_corrected_pressure_rms": 0.0026425531358253065,
+         "normalized_momentum_rms": 0.00034739358278696803,
+         "normalized_momentum_gradient_rms": 4.589805385284553e-05,
+         "normalized_divergence_rms": 2.3758417080557455e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0015026633965343973,
+         "normalized_corrected_pressure_rms": 0.001988858197522,
+         "normalized_momentum_rms": 0.0014622998846822032,
+         "normalized_momentum_gradient_rms": 0.0012839995926607617,
+         "normalized_divergence_rms": 1.0541061093612865e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0015781997534053502,
+         "normalized_corrected_pressure_rms": 0.0012572470148453656,
+         "normalized_momentum_rms": 0.0014688387478369567,
+         "normalized_momentum_gradient_rms": 0.0011974457692320068,
+         "normalized_divergence_rms": 1.2004301405627743e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0004471878846732211,
+         "normalized_corrected_pressure_rms": 0.00261809301655015,
+         "normalized_momentum_rms": 0.0008382719499358254,
+         "normalized_momentum_gradient_rms": 0.0003745228765803732,
+         "normalized_divergence_rms": 2.21298926538145e-15
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0022646922612613424,
+        "normalized_corrected_pressure_rms": 0.0043399462380074765,
+        "normalized_momentum_rms": 0.0013977671968568792,
+        "normalized_momentum_gradient_rms": 0.0014024578237029244,
+        "normalized_divergence_rms": 1.2572632101609913e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.005509220089849745,
+         "normalized_corrected_pressure_rms": 0.00656395118921072,
+         "normalized_momentum_rms": 0.0005829259407199186,
+         "normalized_momentum_gradient_rms": 7.187735700323647e-05,
+         "normalized_divergence_rms": 4.653097468912282e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.002778065284080932,
+         "normalized_corrected_pressure_rms": 0.004772700471699793,
+         "normalized_momentum_rms": 0.001918274063968326,
+         "normalized_momentum_gradient_rms": 0.0016985330144249373,
+         "normalized_divergence_rms": 8.799652657349541e-15
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0015308920591094188,
+         "normalized_corrected_pressure_rms": 0.004467469175830762,
+         "normalized_momentum_rms": 0.0016517782629714174,
+         "normalized_momentum_gradient_rms": 0.0016317856119861982,
+         "normalized_divergence_rms": 1.3156888039255447e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0008196289207797789,
+         "normalized_corrected_pressure_rms": 0.0025985206631880154,
+         "normalized_momentum_rms": 0.0010968063368250573,
+         "normalized_momentum_gradient_rms": 0.0015220753239625403,
+         "normalized_divergence_rms": 1.920301883686802e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0010676954606595732,
+        "normalized_corrected_pressure_rms": 0.002853965116008338,
+        "normalized_momentum_rms": 0.0014859217388602107,
+        "normalized_momentum_gradient_rms": 0.0017779975404107135,
+        "normalized_divergence_rms": 2.2702854071944024e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0017686060120204587,
+         "normalized_corrected_pressure_rms": 0.004029094511332768,
+         "normalized_momentum_rms": 0.000533693531298624,
+         "normalized_momentum_gradient_rms": 0.00010999312820281502,
+         "normalized_divergence_rms": 8.482070441530453e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0012370747134025706,
+         "normalized_corrected_pressure_rms": 0.003338829640143189,
+         "normalized_momentum_rms": 0.0018450898869703319,
+         "normalized_momentum_gradient_rms": 0.002552673891845774,
+         "normalized_divergence_rms": 2.3462909638460798e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0009834449311784234,
+         "normalized_corrected_pressure_rms": 0.0033104788434412478,
+         "normalized_momentum_rms": 0.002042621181106887,
+         "normalized_momentum_gradient_rms": 0.002030881730898719,
+         "normalized_divergence_rms": 2.6851113983375418e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0004548639130090019,
+         "normalized_corrected_pressure_rms": 0.0008563016092756289,
+         "normalized_momentum_rms": 0.0010412965016520083,
+         "normalized_momentum_gradient_rms": 0.0014132293935755276,
+         "normalized_divergence_rms": 2.733167703987619e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0022316204540560004,
+        "normalized_corrected_pressure_rms": 0.003994051739787907,
+        "normalized_momentum_rms": 0.0017315263214152565,
+        "normalized_momentum_gradient_rms": 0.0017516596529524996,
+        "normalized_divergence_rms": 1.2107658713259466e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.003962451722588989,
+         "normalized_corrected_pressure_rms": 0.0060185261416129746,
+         "normalized_momentum_rms": 0.0008914854129906471,
+         "normalized_momentum_gradient_rms": 0.0002389654193626815,
+         "normalized_divergence_rms": 3.176896404561155e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0028363760003978036,
+         "normalized_corrected_pressure_rms": 0.0036256008678581778,
+         "normalized_momentum_rms": 0.0020030529166936745,
+         "normalized_momentum_gradient_rms": 0.0016698569595875019,
+         "normalized_divergence_rms": 1.1279646657228146e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.001686256628649083,
+         "normalized_corrected_pressure_rms": 0.00458899756303434,
+         "normalized_momentum_rms": 0.002130894308679616,
+         "normalized_momentum_gradient_rms": 0.0023168824140351748,
+         "normalized_divergence_rms": 1.5258074905481576e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0012423630111877255,
+         "normalized_corrected_pressure_rms": 0.0028057659851625015,
+         "normalized_momentum_rms": 0.0017213234211594648,
+         "normalized_momentum_gradient_rms": 0.0020205487101744675,
+         "normalized_divergence_rms": 1.4842059057781668e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 0.0006199783139143461,
+       "maximum_endpoint_error": 0.0006199783137717517
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 0.0006199783153695244,
+       "maximum_endpoint_error": 0.0006199783153694951,
+       "maximum_refinement_change": 6.358225947939837e-11
+      }
+     ]
+    },
+    "gate-first": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": false,
+     "seconds": 1878.3967254161835,
+     "observer_chunk": 512,
+     "holdout_eta": 0.0625,
+     "worst_over_limit": 9.104063929279654,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {
+      "stratified:normalized_corrected_pressure_rms": 9.104063929279654,
+      "uniform:normalized_corrected_pressure_rms": 1.5852490532031185,
+      "trajectory:maximum_endpoint_error": 9.031289432273931
+     },
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.008483711922626841,
+        "normalized_corrected_pressure_rms": 0.009104063929279654,
+        "normalized_momentum_rms": 0.006502429130888166,
+        "normalized_momentum_gradient_rms": 0.006526164448971269,
+        "normalized_divergence_rms": 1.1940568005036097e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.018226518296649685,
+         "normalized_corrected_pressure_rms": 0.01444376221466335,
+         "normalized_momentum_rms": 0.002859515540914973,
+         "normalized_momentum_gradient_rms": 0.0008145957368965155,
+         "normalized_divergence_rms": 4.2828002500272055e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.00939813706916528,
+         "normalized_corrected_pressure_rms": 0.00997506925889837,
+         "normalized_momentum_rms": 0.008253715855905421,
+         "normalized_momentum_gradient_rms": 0.008933793811956867,
+         "normalized_divergence_rms": 1.2747141504705538e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.006158647240781476,
+         "normalized_corrected_pressure_rms": 0.007872514806024194,
+         "normalized_momentum_rms": 0.007597081314633865,
+         "normalized_momentum_gradient_rms": 0.007443284164497698,
+         "normalized_divergence_rms": 1.4741921280091546e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.004119335419729384,
+         "normalized_corrected_pressure_rms": 0.006699556990914565,
+         "normalized_momentum_rms": 0.006195221626420482,
+         "normalized_momentum_gradient_rms": 0.005894912968255157,
+         "normalized_divergence_rms": 1.3397364321880052e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "uniform": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.009266740812345211,
+        "normalized_corrected_pressure_rms": 0.0015852490532031185,
+        "normalized_momentum_rms": 0.0013053668424573858,
+        "normalized_momentum_gradient_rms": 0.0013134667692081933,
+        "normalized_divergence_rms": 1.7756632685056631e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.026035256438725122,
+         "normalized_corrected_pressure_rms": 0.0065096737875968225,
+         "normalized_momentum_rms": 0.0014112372325186526,
+         "normalized_momentum_gradient_rms": 0.00042017028976444024,
+         "normalized_divergence_rms": 1.9709302938264923e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.007857061075107289,
+         "normalized_corrected_pressure_rms": 0.007982687865218215,
+         "normalized_momentum_rms": 0.005733823836257931,
+         "normalized_momentum_gradient_rms": 0.0064660345570712804,
+         "normalized_divergence_rms": 9.1112591485388e-15
+        },
+        "edge": {
+         "velocity_relative_l2": 0.006886356572012344,
+         "normalized_corrected_pressure_rms": 0.003890649205537011,
+         "normalized_momentum_rms": 0.0064248571839446945,
+         "normalized_momentum_gradient_rms": 0.006077412244819304,
+         "normalized_divergence_rms": 6.8368397020845146e-15
+        },
+        "corner": {
+         "velocity_relative_l2": 0.006082777153444832,
+         "normalized_corrected_pressure_rms": 0.0027210963271965065,
+         "normalized_momentum_rms": 0.009501033402574235,
+         "normalized_momentum_gradient_rms": 0.0052895423803277835,
+         "normalized_divergence_rms": 1.1120133433959402e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.010262295320552227,
+        "normalized_corrected_pressure_rms": 0.0112774427647804,
+        "normalized_momentum_rms": 0.007628302386526576,
+        "normalized_momentum_gradient_rms": 0.00680255673066473,
+        "normalized_divergence_rms": 1.0640441405632235e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.022035151710244515,
+         "normalized_corrected_pressure_rms": 0.018523983585542993,
+         "normalized_momentum_rms": 0.0038736491366008216,
+         "normalized_momentum_gradient_rms": 0.0005450528563761477,
+         "normalized_divergence_rms": 3.9591224641066985e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.01321779242985606,
+         "normalized_corrected_pressure_rms": 0.011440334913713776,
+         "normalized_momentum_rms": 0.00913218400379129,
+         "normalized_momentum_gradient_rms": 0.009310249971718258,
+         "normalized_divergence_rms": 1.1924146322888936e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.007091170060569464,
+         "normalized_corrected_pressure_rms": 0.010167632119740653,
+         "normalized_momentum_rms": 0.008478508794781715,
+         "normalized_momentum_gradient_rms": 0.007172950913183492,
+         "normalized_divergence_rms": 1.2538505327041176e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0055133283018153866,
+         "normalized_corrected_pressure_rms": 0.008281187998396802,
+         "normalized_momentum_rms": 0.008275203837898058,
+         "normalized_momentum_gradient_rms": 0.00684024000946473,
+         "normalized_divergence_rms": 1.200299135421622e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.006908259712122798,
+        "normalized_corrected_pressure_rms": 0.011957077344250307,
+        "normalized_momentum_rms": 0.008086834062072142,
+        "normalized_momentum_gradient_rms": 0.011801718897247437,
+        "normalized_divergence_rms": 1.7155460911951936e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.01570189584062784,
+         "normalized_corrected_pressure_rms": 0.018147569610136586,
+         "normalized_momentum_rms": 0.0032163849961987802,
+         "normalized_momentum_gradient_rms": 0.0008737385566644889,
+         "normalized_divergence_rms": 6.511566166555414e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0077034250437150245,
+         "normalized_corrected_pressure_rms": 0.01454333496124209,
+         "normalized_momentum_rms": 0.011110957006565269,
+         "normalized_momentum_gradient_rms": 0.01621591334384359,
+         "normalized_divergence_rms": 2.045114291957952e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.004248493002936893,
+         "normalized_corrected_pressure_rms": 0.009553190838518745,
+         "normalized_momentum_rms": 0.009853016121214975,
+         "normalized_momentum_gradient_rms": 0.0150673718006711,
+         "normalized_divergence_rms": 2.095120186354043e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.00205625117982031,
+         "normalized_corrected_pressure_rms": 0.00845660557319774,
+         "normalized_momentum_rms": 0.005902979657514766,
+         "normalized_momentum_gradient_rms": 0.008165946713311592,
+         "normalized_divergence_rms": 1.7163826898372578e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.010039383926021016,
+        "normalized_corrected_pressure_rms": 0.010299008756084013,
+        "normalized_momentum_rms": 0.007794750091720348,
+        "normalized_momentum_gradient_rms": 0.008833829921944278,
+        "normalized_divergence_rms": 1.277260038120126e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.02047781179651869,
+         "normalized_corrected_pressure_rms": 0.013099956129000757,
+         "normalized_momentum_rms": 0.004962274715330431,
+         "normalized_momentum_gradient_rms": 0.0019505277692789917,
+         "normalized_divergence_rms": 4.499080480074523e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.01040125253313945,
+         "normalized_corrected_pressure_rms": 0.014152247490465692,
+         "normalized_momentum_rms": 0.008495378555788146,
+         "normalized_momentum_gradient_rms": 0.01025264347110168,
+         "normalized_divergence_rms": 1.16662976207183e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.00872587683129127,
+         "normalized_corrected_pressure_rms": 0.007288195365571472,
+         "normalized_momentum_rms": 0.009599788270868622,
+         "normalized_momentum_gradient_rms": 0.0110531356629998,
+         "normalized_divergence_rms": 1.3448725428951504e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.005345254040038433,
+         "normalized_corrected_pressure_rms": 0.008240698657541365,
+         "normalized_momentum_rms": 0.007995662705967594,
+         "normalized_momentum_gradient_rms": 0.009087076707165687,
+         "normalized_divergence_rms": 1.798448028310057e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 0.009031289451905677,
+       "maximum_endpoint_error": 0.009031289450915445
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 0.009031289432331852,
+       "maximum_endpoint_error": 0.009031289432273932,
+       "maximum_refinement_change": 6.727412521044855e-11
+      }
+     ]
+    }
+   }
+  },
+  "seed361902-analytic": {
+   "engine": "analytic",
+   "seed": 361902,
+   "training_state": "COMPLETE",
+   "Adam_updates": 4000,
+   "LBFGS_calls": 800,
+   "LBFGS_closures": 18070,
+   "training_seconds": 3688.6275014539715,
+   "budget_truncated": false,
+   "final_loss": 2.7674718427807716e-06,
+   "final_gradient_infinity": 6.637047291103358e-05,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 110,
+    "closure": 2470,
+    "loss": 9.9952624366923e-05,
+    "gradient_infinity": 0.0009762969667889507,
+    "training_seconds": 1076.9142307320144
+   },
+   "setup_seconds": {
+    "eager_and_dense_AD": 54.721128638018854,
+    "subset_native": 337.6956011450384,
+    "compile_and_warmup": 97.52037693199236,
+    "graph_capture": 3.63677680992987
+   },
+   "checks": {
+    "eager-subset-native": 2.7557108705426125e-07,
+    "eager-original-denseAD": 6.802378386115259e-07,
+    "eager-changed-denseAD": 7.491214955793987e-07,
+    "compiled-original-denseAD": 6.802378386115259e-07,
+    "graph-original-denseAD": 6.802378386115259e-07,
+    "graph-changed-denseAD": 7.491214955793987e-07,
+    "Adam0": 6.802378386115259e-07,
+    "Adam100": 1.6119550889018954e-06,
+    "Adam500": 2.648863583184352e-06,
+    "Adam1000": 1.1791733247699388e-06,
+    "Adam2000": 5.225313379024483e-06,
+    "Adam4000": 6.591810285298729e-06,
+    "LBFGS-call50": 6.442576730826772e-06,
+    "LBFGS-call100": 6.3172431275020946e-06,
+    "LBFGS-call150": 6.750956619760647e-06,
+    "LBFGS-call200": 3.840126856285378e-06,
+    "LBFGS-call250": 1.003348570877546e-05,
+    "LBFGS-call300": 8.67760389676879e-06,
+    "LBFGS-call350": 3.250789397644403e-06,
+    "LBFGS-call400": 7.610066661321652e-06,
+    "LBFGS-call450": 1.4685340826530677e-05,
+    "LBFGS-call500": 8.019459972898727e-06,
+    "LBFGS-call550": 1.7175003546905873e-05,
+    "LBFGS-call600": 7.04452212605447e-06,
+    "LBFGS-call650": 6.010311667164581e-06,
+    "LBFGS-call700": 1.059173582456607e-05,
+    "LBFGS-call750": 6.011427899490022e-06,
+    "LBFGS-call800": 6.6825531945103725e-06,
+    "final": 6.6825531945103725e-06
+   },
+   "observations": {
+    "final": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": false,
+     "seconds": 1839.269095659256,
+     "observer_chunk": 512,
+     "holdout_eta": 0.0625,
+     "worst_over_limit": 2.163502793805827,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {
+      "stratified:normalized_corrected_pressure_rms": 2.163502793805827
+     },
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.001461496031551847,
+        "normalized_corrected_pressure_rms": 0.002163502793805827,
+        "normalized_momentum_rms": 0.0011969491048397609,
+        "normalized_momentum_gradient_rms": 0.0011750871503312331,
+        "normalized_divergence_rms": 1.2505506881556268e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0027468631883843515,
+         "normalized_corrected_pressure_rms": 0.00336622581699619,
+         "normalized_momentum_rms": 0.0004905801406744225,
+         "normalized_momentum_gradient_rms": 9.907525618530727e-05,
+         "normalized_divergence_rms": 3.8301917150712654e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.001835220416526812,
+         "normalized_corrected_pressure_rms": 0.002472216022717278,
+         "normalized_momentum_rms": 0.0014283616478185913,
+         "normalized_momentum_gradient_rms": 0.0014804466666257202,
+         "normalized_divergence_rms": 1.0729076105675439e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0010717878766301463,
+         "normalized_corrected_pressure_rms": 0.0017807594118736956,
+         "normalized_momentum_rms": 0.0014526219207378092,
+         "normalized_momentum_gradient_rms": 0.0013175008824884106,
+         "normalized_divergence_rms": 1.5182283363803872e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0007410361452994705,
+         "normalized_corrected_pressure_rms": 0.0016251570566128957,
+         "normalized_momentum_rms": 0.0011983404658465254,
+         "normalized_momentum_gradient_rms": 0.0012609118889043978,
+         "normalized_divergence_rms": 1.646614059498682e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "uniform": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.0017757800552975994,
+        "normalized_corrected_pressure_rms": 0.0003843936421762127,
+        "normalized_momentum_rms": 0.00027512706340171813,
+        "normalized_momentum_gradient_rms": 0.00017306682727406895,
+        "normalized_divergence_rms": 2.1015401972936223e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.003676692749671463,
+         "normalized_corrected_pressure_rms": 0.0016863131231205336,
+         "normalized_momentum_rms": 0.00025703863815199497,
+         "normalized_momentum_gradient_rms": 4.4290963082303324e-05,
+         "normalized_divergence_rms": 2.6607505494622737e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0018248031539266725,
+         "normalized_corrected_pressure_rms": 0.0017125253295541202,
+         "normalized_momentum_rms": 0.001460556471142341,
+         "normalized_momentum_gradient_rms": 0.000787222669717468,
+         "normalized_divergence_rms": 9.39456811605925e-15
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0010894123062658461,
+         "normalized_corrected_pressure_rms": 0.0006514336418509272,
+         "normalized_momentum_rms": 0.0008679213483139712,
+         "normalized_momentum_gradient_rms": 0.0008938170020337812,
+         "normalized_divergence_rms": 1.1074560545695713e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0010409425569193552,
+         "normalized_corrected_pressure_rms": 0.003739629218639783,
+         "normalized_momentum_rms": 0.002169171826905916,
+         "normalized_momentum_gradient_rms": 0.0007355868375656683,
+         "normalized_divergence_rms": 4.460422462923163e-15
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0018234655913394356,
+        "normalized_corrected_pressure_rms": 0.002534502525364466,
+        "normalized_momentum_rms": 0.0012743087580168423,
+        "normalized_momentum_gradient_rms": 0.001229036205970059,
+        "normalized_divergence_rms": 1.1615027494916572e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0037059803709930494,
+         "normalized_corrected_pressure_rms": 0.0035758244191803693,
+         "normalized_momentum_rms": 0.0005274056706893038,
+         "normalized_momentum_gradient_rms": 8.139007844030203e-05,
+         "normalized_divergence_rms": 3.59330663085328e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0024520846718668102,
+         "normalized_corrected_pressure_rms": 0.0025891258679119973,
+         "normalized_momentum_rms": 0.0014439160722088938,
+         "normalized_momentum_gradient_rms": 0.0014331571358289644,
+         "normalized_divergence_rms": 9.815236614098751e-15
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0013221014090590737,
+         "normalized_corrected_pressure_rms": 0.0027486771678059967,
+         "normalized_momentum_rms": 0.0015243212603069903,
+         "normalized_momentum_gradient_rms": 0.0015179886004768688,
+         "normalized_divergence_rms": 1.435433903670128e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0008863718252064849,
+         "normalized_corrected_pressure_rms": 0.0019401291466091624,
+         "normalized_momentum_rms": 0.0013856797140542492,
+         "normalized_momentum_gradient_rms": 0.0012961159702221067,
+         "normalized_divergence_rms": 1.514933742225581e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.001200140509815812,
+        "normalized_corrected_pressure_rms": 0.0029700036916393995,
+        "normalized_momentum_rms": 0.001383570694861223,
+        "normalized_momentum_gradient_rms": 0.0014158649033365342,
+        "normalized_divergence_rms": 1.5678419568677994e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0025842807325009397,
+         "normalized_corrected_pressure_rms": 0.005289207969626574,
+         "normalized_momentum_rms": 0.0006158165434845575,
+         "normalized_momentum_gradient_rms": 0.00010048817824988517,
+         "normalized_divergence_rms": 9.023190663464542e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0013741783606276274,
+         "normalized_corrected_pressure_rms": 0.003153281605379931,
+         "normalized_momentum_rms": 0.0018421853327411607,
+         "normalized_momentum_gradient_rms": 0.0018374370426735482,
+         "normalized_divergence_rms": 1.563062653136298e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0007577314404998795,
+         "normalized_corrected_pressure_rms": 0.0025655132077745096,
+         "normalized_momentum_rms": 0.0016599730747330615,
+         "normalized_momentum_gradient_rms": 0.0017789399484194988,
+         "normalized_divergence_rms": 1.97727883903687e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.00047486289245875663,
+         "normalized_corrected_pressure_rms": 0.0014047107331180307,
+         "normalized_momentum_rms": 0.0011315370310211038,
+         "normalized_momentum_gradient_rms": 0.001213191142297133,
+         "normalized_divergence_rms": 1.7295112961274126e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0020949110033749107,
+        "normalized_corrected_pressure_rms": 0.002495539752801952,
+        "normalized_momentum_rms": 0.001469136015037499,
+        "normalized_momentum_gradient_rms": 0.0014566335422209864,
+        "normalized_divergence_rms": 1.1986543560915934e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0038805187578618444,
+         "normalized_corrected_pressure_rms": 0.0035909446079785846,
+         "normalized_momentum_rms": 0.0008217279460756233,
+         "normalized_momentum_gradient_rms": 0.0001802256574017984,
+         "normalized_divergence_rms": 4.5798157635949665e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0026467883712353976,
+         "normalized_corrected_pressure_rms": 0.003203139657281197,
+         "normalized_momentum_rms": 0.0016346715504393353,
+         "normalized_momentum_gradient_rms": 0.0017514182993005156,
+         "normalized_divergence_rms": 9.79031982589021e-15
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0016446206770371569,
+         "normalized_corrected_pressure_rms": 0.0019539616316863848,
+         "normalized_momentum_rms": 0.001908143949004082,
+         "normalized_momentum_gradient_rms": 0.0017906047949771404,
+         "normalized_divergence_rms": 1.5367128398592717e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0009252763264769535,
+         "normalized_corrected_pressure_rms": 0.0017595098756662316,
+         "normalized_momentum_rms": 0.0013838843970387948,
+         "normalized_momentum_gradient_rms": 0.0014811835611502195,
+         "normalized_divergence_rms": 1.5169874132035614e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 0.000802459249206576,
+       "maximum_endpoint_error": 0.0008024079918571563
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 0.0008024592741839852,
+       "maximum_endpoint_error": 0.00080240801425485,
+       "maximum_refinement_change": 6.297482391650387e-11
+      }
+     ]
+    },
+    "gate-first": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": false,
+     "seconds": 1849.9382872581482,
+     "observer_chunk": 512,
+     "holdout_eta": 0.0625,
+     "worst_over_limit": 9.285672167336392,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {
+      "stratified:normalized_corrected_pressure_rms": 9.285672167336392,
+      "uniform:velocity_relative_l2": 1.0424703062460068,
+      "uniform:normalized_corrected_pressure_rms": 2.2421410724243267,
+      "trajectory:maximum_endpoint_error": 5.19347979483903
+     },
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.008373721013866142,
+        "normalized_corrected_pressure_rms": 0.009285672167336391,
+        "normalized_momentum_rms": 0.006362729592640542,
+        "normalized_momentum_gradient_rms": 0.006612211546208531,
+        "normalized_divergence_rms": 1.1846456758407593e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.017532341946591506,
+         "normalized_corrected_pressure_rms": 0.015038090548360026,
+         "normalized_momentum_rms": 0.002878477923879524,
+         "normalized_momentum_gradient_rms": 0.0008525469541061488,
+         "normalized_divergence_rms": 3.742160836458254e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.009628161176442381,
+         "normalized_corrected_pressure_rms": 0.011278871800114958,
+         "normalized_momentum_rms": 0.008201071889784549,
+         "normalized_momentum_gradient_rms": 0.00927923800713546,
+         "normalized_divergence_rms": 1.051203295498828e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.006146069447245442,
+         "normalized_corrected_pressure_rms": 0.0073924853303167955,
+         "normalized_momentum_rms": 0.007379677302084722,
+         "normalized_momentum_gradient_rms": 0.007366980143825211,
+         "normalized_divergence_rms": 1.5905490613842987e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0038654220596963185,
+         "normalized_corrected_pressure_rms": 0.0052293920822788185,
+         "normalized_momentum_rms": 0.005937062670797645,
+         "normalized_momentum_gradient_rms": 0.005837174822574535,
+         "normalized_divergence_rms": 1.3764607577621799e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "uniform": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.010424703062460069,
+        "normalized_corrected_pressure_rms": 0.002242141072424327,
+        "normalized_momentum_rms": 0.0015705688095526383,
+        "normalized_momentum_gradient_rms": 0.0015920087884805302,
+        "normalized_divergence_rms": 2.6917255425379356e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.027421244222832302,
+         "normalized_corrected_pressure_rms": 0.009545428033117502,
+         "normalized_momentum_rms": 0.0017923697472210886,
+         "normalized_momentum_gradient_rms": 0.0006661862878904625,
+         "normalized_divergence_rms": 1.5740824554809676e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.009900925420195468,
+         "normalized_corrected_pressure_rms": 0.010965911984894688,
+         "normalized_momentum_rms": 0.007647004930173885,
+         "normalized_momentum_gradient_rms": 0.008557112598011651,
+         "normalized_divergence_rms": 1.2945670265560833e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.005679229145595651,
+         "normalized_corrected_pressure_rms": 0.004908150426679023,
+         "normalized_momentum_rms": 0.005999664262312666,
+         "normalized_momentum_gradient_rms": 0.006112525875460843,
+         "normalized_divergence_rms": 1.3031368140131908e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.005201310885832236,
+         "normalized_corrected_pressure_rms": 0.011270231461869104,
+         "normalized_momentum_rms": 0.01403199539666065,
+         "normalized_momentum_gradient_rms": 0.005321260128211408,
+         "normalized_divergence_rms": 8.856278251448064e-15
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.010936394118921144,
+        "normalized_corrected_pressure_rms": 0.011952917374505956,
+        "normalized_momentum_rms": 0.006968320646627827,
+        "normalized_momentum_gradient_rms": 0.00604072889761335,
+        "normalized_divergence_rms": 1.30160244288905e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.025879680847145047,
+         "normalized_corrected_pressure_rms": 0.021435851819757153,
+         "normalized_momentum_rms": 0.003439834088355777,
+         "normalized_momentum_gradient_rms": 0.0005049131666266196,
+         "normalized_divergence_rms": 4.6166020233322484e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.01293004905424728,
+         "normalized_corrected_pressure_rms": 0.013352212577695768,
+         "normalized_momentum_rms": 0.008263122365676029,
+         "normalized_momentum_gradient_rms": 0.007626653400608817,
+         "normalized_divergence_rms": 1.2903086298211814e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.007768151077809812,
+         "normalized_corrected_pressure_rms": 0.00804431714446432,
+         "normalized_momentum_rms": 0.008325927602275263,
+         "normalized_momentum_gradient_rms": 0.007434497837032401,
+         "normalized_divergence_rms": 1.659516059472385e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.005210594235569395,
+         "normalized_corrected_pressure_rms": 0.0072662830982018565,
+         "normalized_momentum_rms": 0.00703777192974917,
+         "normalized_momentum_gradient_rms": 0.00568955709106489,
+         "normalized_divergence_rms": 1.4932875409813716e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.006507624288543328,
+        "normalized_corrected_pressure_rms": 0.01505563376529769,
+        "normalized_momentum_rms": 0.008276154832595816,
+        "normalized_momentum_gradient_rms": 0.013277252404534753,
+        "normalized_divergence_rms": 2.1226308252106882e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.014336084317855737,
+         "normalized_corrected_pressure_rms": 0.026039307081628472,
+         "normalized_momentum_rms": 0.0029260731392563425,
+         "normalized_momentum_gradient_rms": 0.0007638759323980441,
+         "normalized_divergence_rms": 6.699356230720027e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0073486769225336885,
+         "normalized_corrected_pressure_rms": 0.018535795469731896,
+         "normalized_momentum_rms": 0.01198086135259405,
+         "normalized_momentum_gradient_rms": 0.021233940904943665,
+         "normalized_divergence_rms": 1.9020258985814812e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.004143725664816004,
+         "normalized_corrected_pressure_rms": 0.010622357824494989,
+         "normalized_momentum_rms": 0.009453864174244101,
+         "normalized_momentum_gradient_rms": 0.01344006951475844,
+         "normalized_divergence_rms": 3.0879807417190724e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0022519159269190083,
+         "normalized_corrected_pressure_rms": 0.006591731553767644,
+         "normalized_momentum_rms": 0.0059937656166630555,
+         "normalized_momentum_gradient_rms": 0.008560134746290995,
+         "normalized_divergence_rms": 2.1446749536932973e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.009678790947918426,
+        "normalized_corrected_pressure_rms": 0.0073803598419545455,
+        "normalized_momentum_rms": 0.007220905288610864,
+        "normalized_momentum_gradient_rms": 0.007497862268975902,
+        "normalized_divergence_rms": 1.0667983925434578e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.019684665802462767,
+         "normalized_corrected_pressure_rms": 0.011344607615257617,
+         "normalized_momentum_rms": 0.004670351018462479,
+         "normalized_momentum_gradient_rms": 0.001912780710878644,
+         "normalized_divergence_rms": 2.6334743541433185e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.011764925562842954,
+         "normalized_corrected_pressure_rms": 0.009929512254600405,
+         "normalized_momentum_rms": 0.008683022128851374,
+         "normalized_momentum_gradient_rms": 0.009709278274226477,
+         "normalized_divergence_rms": 1.2487928313786592e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0069664043234191,
+         "normalized_corrected_pressure_rms": 0.00479697274256046,
+         "normalized_momentum_rms": 0.007946628282487964,
+         "normalized_momentum_gradient_rms": 0.00800950602211747,
+         "normalized_divergence_rms": 1.2779511822414766e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.004342108040792326,
+         "normalized_corrected_pressure_rms": 0.004364929703135778,
+         "normalized_momentum_rms": 0.007545515967566508,
+         "normalized_momentum_gradient_rms": 0.008015874566426419,
+         "normalized_divergence_rms": 1.1480336921861319e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 0.005226441292020524,
+       "maximum_endpoint_error": 0.0051934798091894845
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 0.005226441321844632,
+       "maximum_endpoint_error": 0.0051934797948390305,
+       "maximum_refinement_change": 6.545506939284607e-11
+      }
+     ]
+    }
+   }
+  },
+  "seed361902-parameter_ad": {
+   "engine": "parameter_ad",
+   "seed": 361902,
+   "training_state": "COMPLETE",
+   "Adam_updates": 4000,
+   "LBFGS_calls": 800,
+   "LBFGS_closures": 18043,
+   "training_seconds": 4633.977347205044,
+   "budget_truncated": false,
+   "final_loss": 3.0015070611350023e-06,
+   "final_gradient_infinity": 5.7273423310221435e-05,
+   "training_gate_first": {
+    "phase": "LBFGS",
+    "call": 111,
+    "closure": 2460,
+    "loss": 9.98937354867056e-05,
+    "gradient_infinity": 0.0005791045354741912,
+    "training_seconds": 1413.5266292730812
+   },
+   "setup_seconds": {
+    "eager_and_dense_AD": 56.679989887052216,
+    "subset_native": 334.6738465600647,
+    "compile_and_warmup": 97.72754304797854,
+    "graph_capture": 4.896546103991568
+   },
+   "checks": {
+    "eager-subset-native": 2.3555201454679718e-07,
+    "eager-original-denseAD": 2.750917273214674e-07,
+    "eager-changed-denseAD": 2.959736187029542e-07,
+    "compiled-original-denseAD": 4.3295203769918875e-07,
+    "graph-original-denseAD": 4.3295203769918875e-07,
+    "graph-changed-denseAD": 3.501465352830721e-07,
+    "Adam0": 4.3295203769918875e-07,
+    "Adam100": 7.669557152699836e-07,
+    "Adam500": 1.170150989922458e-06,
+    "Adam1000": 1.0123588487598504e-06,
+    "Adam2000": 4.322929133729666e-06,
+    "Adam4000": 1.09495385739557e-06,
+    "LBFGS-call50": 1.1923420372754303e-06,
+    "LBFGS-call100": 1.1910267580632892e-06,
+    "LBFGS-call150": 1.1646391922906387e-06,
+    "LBFGS-call200": 1.4499623423229555e-06,
+    "LBFGS-call250": 1.6222474547922849e-06,
+    "LBFGS-call300": 3.181173146973034e-06,
+    "LBFGS-call350": 7.928930433769318e-07,
+    "LBFGS-call400": 3.2285773096072096e-06,
+    "LBFGS-call450": 1.334429085709172e-06,
+    "LBFGS-call500": 1.7195919385838617e-06,
+    "LBFGS-call550": 1.7156766808700933e-06,
+    "LBFGS-call600": 1.3502920572073965e-06,
+    "LBFGS-call650": 3.825461274301609e-06,
+    "LBFGS-call700": 1.533592427751276e-06,
+    "LBFGS-call750": 8.670432676382464e-07,
+    "LBFGS-call800": 3.181388478140269e-06,
+    "final": 3.184097195448179e-06
+   },
+   "observations": {
+    "final": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": false,
+     "seconds": 1802.1377935409546,
+     "observer_chunk": 512,
+     "holdout_eta": 0.0625,
+     "worst_over_limit": 2.042947619089137,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {
+      "stratified:normalized_corrected_pressure_rms": 2.042947619089137,
+      "trajectory:maximum_endpoint_error": 1.0926666186245242
+     },
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0015572624066229322,
+        "normalized_corrected_pressure_rms": 0.002042947619089137,
+        "normalized_momentum_rms": 0.0012855910703190136,
+        "normalized_momentum_gradient_rms": 0.001267286393416793,
+        "normalized_divergence_rms": 1.1745666907852578e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.003031355733632706,
+         "normalized_corrected_pressure_rms": 0.003023386107724434,
+         "normalized_momentum_rms": 0.000495985236150498,
+         "normalized_momentum_gradient_rms": 0.00010557485786562189,
+         "normalized_divergence_rms": 3.726776291890526e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.001860538702612626,
+         "normalized_corrected_pressure_rms": 0.0023728078951134853,
+         "normalized_momentum_rms": 0.0014763414696098653,
+         "normalized_momentum_gradient_rms": 0.0015792147701184109,
+         "normalized_divergence_rms": 1.1242412788492988e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.001161113136120889,
+         "normalized_corrected_pressure_rms": 0.001898236515436025,
+         "normalized_momentum_rms": 0.001593743867994148,
+         "normalized_momentum_gradient_rms": 0.0013807040480580735,
+         "normalized_divergence_rms": 1.4420016883351643e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0008317332594528818,
+         "normalized_corrected_pressure_rms": 0.0014058814273940911,
+         "normalized_momentum_rms": 0.0013205200248347746,
+         "normalized_momentum_gradient_rms": 0.0014202494931895833,
+         "normalized_divergence_rms": 1.4463081113649228e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "uniform": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": 0.0019869395476042983,
+        "normalized_corrected_pressure_rms": 0.0003490286784711471,
+        "normalized_momentum_rms": 0.00029608433225988216,
+        "normalized_momentum_gradient_rms": 0.00019895772347333125,
+        "normalized_divergence_rms": 2.168005611565447e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.004268351477766033,
+         "normalized_corrected_pressure_rms": 0.0013406020965281132,
+         "normalized_momentum_rms": 0.00030648186262112047,
+         "normalized_momentum_gradient_rms": 5.7876877938077305e-05,
+         "normalized_divergence_rms": 2.006215931578993e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0019836145078893537,
+         "normalized_corrected_pressure_rms": 0.0017295590467471373,
+         "normalized_momentum_rms": 0.001450803542324151,
+         "normalized_momentum_gradient_rms": 0.0009719422405774929,
+         "normalized_divergence_rms": 1.0683033024277139e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0012952228083906818,
+         "normalized_corrected_pressure_rms": 0.0006960827407052959,
+         "normalized_momentum_rms": 0.0010567512723401473,
+         "normalized_momentum_gradient_rms": 0.000919663203919957,
+         "normalized_divergence_rms": 9.61037936454121e-15
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0014044377382263537,
+         "normalized_corrected_pressure_rms": 0.0025438376666565795,
+         "normalized_momentum_rms": 0.002891125856078342,
+         "normalized_momentum_gradient_rms": 0.0009391123095814936,
+         "normalized_divergence_rms": 1.1064946326888934e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.001816491007599223,
+        "normalized_corrected_pressure_rms": 0.0022159970954664385,
+        "normalized_momentum_rms": 0.0013636641879922003,
+        "normalized_momentum_gradient_rms": 0.0013309721213410207,
+        "normalized_divergence_rms": 1.0318193707596637e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.003850835908181528,
+         "normalized_corrected_pressure_rms": 0.003395154802263082,
+         "normalized_momentum_rms": 0.0006265288621487056,
+         "normalized_momentum_gradient_rms": 9.349289806162778e-05,
+         "normalized_divergence_rms": 3.449195138470241e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.00244136548949112,
+         "normalized_corrected_pressure_rms": 0.0024438967271590176,
+         "normalized_momentum_rms": 0.0016501660937609866,
+         "normalized_momentum_gradient_rms": 0.0014408639365305234,
+         "normalized_divergence_rms": 1.0613357628423188e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.001200198795758523,
+         "normalized_corrected_pressure_rms": 0.0021304965130907474,
+         "normalized_momentum_rms": 0.0014951617391277486,
+         "normalized_momentum_gradient_rms": 0.001753354536661039,
+         "normalized_divergence_rms": 1.0853200777163985e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0009134294545035845,
+         "normalized_corrected_pressure_rms": 0.0014881801720068504,
+         "normalized_momentum_rms": 0.001498078855813869,
+         "normalized_momentum_gradient_rms": 0.0013893745294668418,
+         "normalized_divergence_rms": 1.3721770659421385e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0013154895272854984,
+        "normalized_corrected_pressure_rms": 0.0025520034747224607,
+        "normalized_momentum_rms": 0.0013904691191077986,
+        "normalized_momentum_gradient_rms": 0.0015127086282407862,
+        "normalized_divergence_rms": 1.8959540930545546e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.003127964276921909,
+         "normalized_corrected_pressure_rms": 0.004601553347917301,
+         "normalized_momentum_rms": 0.0006677154565281825,
+         "normalized_momentum_gradient_rms": 0.00010763085428682284,
+         "normalized_divergence_rms": 6.749664994117279e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.0012817644222827083,
+         "normalized_corrected_pressure_rms": 0.002651809738123732,
+         "normalized_momentum_rms": 0.0018148662009493366,
+         "normalized_momentum_gradient_rms": 0.001926146687373684,
+         "normalized_divergence_rms": 1.998968443225728e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0009369605550821379,
+         "normalized_corrected_pressure_rms": 0.002294016785253072,
+         "normalized_momentum_rms": 0.0017126667193021008,
+         "normalized_momentum_gradient_rms": 0.0019143941418669447,
+         "normalized_divergence_rms": 2.3723764625243533e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.00046640777626351837,
+         "normalized_corrected_pressure_rms": 0.0010255257741831722,
+         "normalized_momentum_rms": 0.001113168678810278,
+         "normalized_momentum_gradient_rms": 0.001330884271319143,
+         "normalized_divergence_rms": 2.1168785769931504e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.0020600437103745935,
+        "normalized_corrected_pressure_rms": 0.0025743876485051806,
+        "normalized_momentum_rms": 0.0015001164108017708,
+        "normalized_momentum_gradient_rms": 0.001477632516400652,
+        "normalized_divergence_rms": 1.2448776246618867e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.0037187204310360025,
+         "normalized_corrected_pressure_rms": 0.0030431759773749192,
+         "normalized_momentum_rms": 0.0008104493140031952,
+         "normalized_momentum_gradient_rms": 0.00020395371926822237,
+         "normalized_divergence_rms": 3.746935448408789e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.002572563042317929,
+         "normalized_corrected_pressure_rms": 0.0036798718164852452,
+         "normalized_momentum_rms": 0.001679084294341144,
+         "normalized_momentum_gradient_rms": 0.0017654411682261608,
+         "normalized_divergence_rms": 1.0916695582415671e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.0016575025383245019,
+         "normalized_corrected_pressure_rms": 0.0022990545617124843,
+         "normalized_momentum_rms": 0.0019235248074047004,
+         "normalized_momentum_gradient_rms": 0.0018329490643707515,
+         "normalized_divergence_rms": 1.6858488987350935e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0010158544660582765,
+         "normalized_corrected_pressure_rms": 0.0014581586258180733,
+         "normalized_momentum_rms": 0.0014450011686091562,
+         "normalized_momentum_gradient_rms": 0.001494037600360421,
+         "normalized_divergence_rms": 1.4425030732204237e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 0.0010926666472372455,
+       "maximum_endpoint_error": 0.0010926665964146752
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 0.0010926666186245242,
+       "maximum_endpoint_error": 0.0010926666186245242,
+       "maximum_refinement_change": 6.303811339545609e-11
+      }
+     ]
+    },
+    "gate-first": {
+     "state": "COMPLETE",
+     "physical_acceptance_pass": false,
+     "seconds": 1789.238972902298,
+     "observer_chunk": 512,
+     "holdout_eta": 0.0625,
+     "worst_over_limit": 9.321697633245941,
+     "worst_test": "stratified:normalized_corrected_pressure_rms",
+     "failing_tests": {
+      "stratified:normalized_corrected_pressure_rms": 9.321697633245941,
+      "uniform:velocity_relative_l2": 1.0501367336427618,
+      "uniform:normalized_corrected_pressure_rms": 2.205769111340292,
+      "trajectory:maximum_endpoint_error": 4.76437599821755
+     },
+     "datasets": {
+      "stratified": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.008399331329379566,
+        "normalized_corrected_pressure_rms": 0.009321697633245942,
+        "normalized_momentum_rms": 0.006408661786200124,
+        "normalized_momentum_gradient_rms": 0.006660959071280622,
+        "normalized_divergence_rms": 1.1104887713699482e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.017629448000676718,
+         "normalized_corrected_pressure_rms": 0.015166041275245283,
+         "normalized_momentum_rms": 0.0028164058114351557,
+         "normalized_momentum_gradient_rms": 0.0008658741532245651,
+         "normalized_divergence_rms": 4.0537883352577905e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.009595889034168721,
+         "normalized_corrected_pressure_rms": 0.01144255632150564,
+         "normalized_momentum_rms": 0.008157364879482083,
+         "normalized_momentum_gradient_rms": 0.009281248993299872,
+         "normalized_divergence_rms": 1.0711084894872644e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.006170427870491449,
+         "normalized_corrected_pressure_rms": 0.007456450742073337,
+         "normalized_momentum_rms": 0.007525246767116472,
+         "normalized_momentum_gradient_rms": 0.007483719425477439,
+         "normalized_divergence_rms": 1.445059291252123e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0039364133998177585,
+         "normalized_corrected_pressure_rms": 0.004800015567203007,
+         "normalized_momentum_rms": 0.006029308240568814,
+         "normalized_momentum_gradient_rms": 0.005905592337155581,
+         "normalized_divergence_rms": 1.2643861335315008e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "uniform": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.010501367336427618,
+        "normalized_corrected_pressure_rms": 0.0022057691113402922,
+        "normalized_momentum_rms": 0.001588140139075105,
+        "normalized_momentum_gradient_rms": 0.0015229153023227123,
+        "normalized_divergence_rms": 2.0163749975058845e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.02858025502570083,
+         "normalized_corrected_pressure_rms": 0.00850239501442938,
+         "normalized_momentum_rms": 0.0017551460621661658,
+         "normalized_momentum_gradient_rms": 0.0005978824089756094,
+         "normalized_divergence_rms": 1.9100726132522686e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.00974263188975239,
+         "normalized_corrected_pressure_rms": 0.011253805371870408,
+         "normalized_momentum_rms": 0.007903752666182252,
+         "normalized_momentum_gradient_rms": 0.008194734044070222,
+         "normalized_divergence_rms": 1.034334286502548e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.005742004687325898,
+         "normalized_corrected_pressure_rms": 0.004986551861398447,
+         "normalized_momentum_rms": 0.005861684552973287,
+         "normalized_momentum_gradient_rms": 0.00582780744713731,
+         "normalized_divergence_rms": 8.085251891951941e-15
+        },
+        "corner": {
+         "velocity_relative_l2": 0.005655495267174098,
+         "normalized_corrected_pressure_rms": 0.009686086768208814,
+         "normalized_momentum_rms": 0.013678608949061694,
+         "normalized_momentum_gradient_rms": 0.00513309234222044,
+         "normalized_divergence_rms": 1.1078768876095974e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.25": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.375": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.011417578412735172,
+        "normalized_corrected_pressure_rms": 0.012575034142723313,
+        "normalized_momentum_rms": 0.00697977568621775,
+        "normalized_momentum_gradient_rms": 0.006110051468874428,
+        "normalized_divergence_rms": 1.2499662891556037e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.02771561767739577,
+         "normalized_corrected_pressure_rms": 0.02393306121346784,
+         "normalized_momentum_rms": 0.003510037029926237,
+         "normalized_momentum_gradient_rms": 0.0004965868992215896,
+         "normalized_divergence_rms": 3.54592029379845e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.013875488831261997,
+         "normalized_corrected_pressure_rms": 0.013940692912457224,
+         "normalized_momentum_rms": 0.008652948444659901,
+         "normalized_momentum_gradient_rms": 0.007383233198708312,
+         "normalized_divergence_rms": 1.0035231422041792e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.007430984903057466,
+         "normalized_corrected_pressure_rms": 0.007398369935829423,
+         "normalized_momentum_rms": 0.008068950033228649,
+         "normalized_momentum_gradient_rms": 0.0077323995001569,
+         "normalized_divergence_rms": 1.2535823817085396e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.005008402109903269,
+         "normalized_corrected_pressure_rms": 0.006306527312812421,
+         "normalized_momentum_rms": 0.006891689714729684,
+         "normalized_momentum_gradient_rms": 0.005905998830304309,
+         "normalized_divergence_rms": 1.8962315541759367e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.5": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.006574014733629091,
+        "normalized_corrected_pressure_rms": 0.014414269248001524,
+        "normalized_momentum_rms": 0.008731956976956091,
+        "normalized_momentum_gradient_rms": 0.014168496033025647,
+        "normalized_divergence_rms": 1.9371557747503125e-14
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.013570460705496303,
+         "normalized_corrected_pressure_rms": 0.02452389715796613,
+         "normalized_momentum_rms": 0.0029670280273690936,
+         "normalized_momentum_gradient_rms": 0.000747409280192328,
+         "normalized_divergence_rms": 7.687005273011779e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.007682558338188133,
+         "normalized_corrected_pressure_rms": 0.017324511838636796,
+         "normalized_momentum_rms": 0.012453771267766233,
+         "normalized_momentum_gradient_rms": 0.0225218104937994,
+         "normalized_divergence_rms": 1.8664816273513822e-14
+        },
+        "edge": {
+         "velocity_relative_l2": 0.004512939935050121,
+         "normalized_corrected_pressure_rms": 0.011961981309546663,
+         "normalized_momentum_rms": 0.010127274755946306,
+         "normalized_momentum_gradient_rms": 0.014579826323686384,
+         "normalized_divergence_rms": 2.6997622849767733e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.0023012739516171292,
+         "normalized_corrected_pressure_rms": 0.005196537831077503,
+         "normalized_momentum_rms": 0.006484460241860184,
+         "normalized_momentum_gradient_rms": 0.009102014250961835,
+         "normalized_divergence_rms": 1.970603872310921e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.625": {
+       "field_gate_pass": false,
+       "global": {
+        "velocity_relative_l2": 0.009851899983451115,
+        "normalized_corrected_pressure_rms": 0.00734305797692521,
+        "normalized_momentum_rms": 0.007455505102907579,
+        "normalized_momentum_gradient_rms": 0.007962872946836922,
+        "normalized_divergence_rms": 9.90638061414675e-15
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": 0.020423290113523528,
+         "normalized_corrected_pressure_rms": 0.01037082113189731,
+         "normalized_momentum_rms": 0.004471752885133096,
+         "normalized_momentum_gradient_rms": 0.001752380868958766,
+         "normalized_divergence_rms": 3.529983492716483e-15
+        },
+        "face": {
+         "velocity_relative_l2": 0.011644127114808403,
+         "normalized_corrected_pressure_rms": 0.01034905845640008,
+         "normalized_momentum_rms": 0.009074998959901708,
+         "normalized_momentum_gradient_rms": 0.010370463639631032,
+         "normalized_divergence_rms": 9.700386332475094e-15
+        },
+        "edge": {
+         "velocity_relative_l2": 0.007131038972398917,
+         "normalized_corrected_pressure_rms": 0.005091198436765147,
+         "normalized_momentum_rms": 0.008044490791895141,
+         "normalized_momentum_gradient_rms": 0.008258805591829756,
+         "normalized_divergence_rms": 1.3617337939432734e-14
+        },
+        "corner": {
+         "velocity_relative_l2": 0.004598840473705199,
+         "normalized_corrected_pressure_rms": 0.004257502881214437,
+         "normalized_momentum_rms": 0.007954297128936225,
+         "normalized_momentum_gradient_rms": 0.00871966129728592,
+         "normalized_divergence_rms": 1.0273249235664243e-14
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-0.75": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      },
+      "time-1": {
+       "field_gate_pass": true,
+       "global": {
+        "velocity_relative_l2": null,
+        "normalized_corrected_pressure_rms": 0.0,
+        "normalized_momentum_rms": 0.0,
+        "normalized_momentum_gradient_rms": 0.0,
+        "normalized_divergence_rms": 0.0
+       },
+       "regions": {
+        "plateau": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "face": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "edge": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "corner": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        },
+        "outside": {
+         "velocity_relative_l2": null,
+         "normalized_corrected_pressure_rms": 0.0,
+         "normalized_momentum_rms": 0.0,
+         "normalized_momentum_gradient_rms": 0.0,
+         "normalized_divergence_rms": 0.0
+        }
+       }
+      }
+     },
+     "initial_boundary_normalized_velocity_rms": [
+      0.0,
+      0.0
+     ],
+     "trajectories": [
+      {
+       "rtol": 1e-09,
+       "atol": 1e-11,
+       "max_step": 0.015625,
+       "nfev": 1037,
+       "maximum_path_error": 0.004764376841784699,
+       "maximum_endpoint_error": 0.004764375979683614
+      },
+      {
+       "rtol": 1e-11,
+       "atol": 1e-13,
+       "max_step": 0.0078125,
+       "nfev": 1982,
+       "maximum_path_error": 0.00476437688631095,
+       "maximum_endpoint_error": 0.00476437599821755,
+       "maximum_refinement_change": 6.542922991887793e-11
+      }
+     ]
+    }
+   }
+  }
+ }
+}

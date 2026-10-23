@@ -1,0 +1,93 @@
+{
+ "scope": "2D H100 precision study (FP64/FP32/TF32). Replays and solves ran in the pinned two-dimensional source tree (commit 286d7e394c8bd39f9aa409715afe9f1bac915cec, not published here) with src/fp32-dtype.patch applied and src/precision_run.py added; post-hoc scripts ran in a separate directory against the executed results.",
+ "executed_packet": {
+  "manifest_sha256": "703562000891e74308dd8c7b236f6e0c0ce4cc5ea409d207288c50f93f8367fa",
+  "files": 274,
+  "source_commit": "286d7e394c8bd39f9aa409715afe9f1bac915cec",
+  "patch_sha256": "6625052647da21bfd322d34a64ac15d4f032ac35a8cc158a515c83a68390ba17",
+  "start_script_sha256": "a0f12d229283557d9c0b8f8f4908ac36272e18fcf563e4080fa1c171e23438f3",
+  "pre_registration_commit": "dbb6d33"
+ },
+ "archive": {
+  "name": "2d-precision-complete.tar.gz",
+  "sha256": "70e53723c01294c60a02aa9bf786b3d903ed3a9093e64a9021e4b215b6127e00",
+  "members": 411,
+  "bytes": 4680629,
+  "persistent_tape_copy": false
+ },
+ "files": {
+  "research/2d-precision/protocol-2d-precision-20261016.json": {
+   "public_sha256": "80bf2e147a83c4e068b3091cd66dbc3cfc62400f83a59952b0a89b9acb366d4c",
+   "executed_path": "precision/protocol-2d-precision-20261016.json",
+   "executed_sha256": "80bf2e147a83c4e068b3091cd66dbc3cfc62400f83a59952b0a89b9acb366d4c",
+   "byte_identical": true
+  },
+  "research/2d-precision/plan-2d-precision-20261016.json": {
+   "public_sha256": "42c6954581c0d9022ee7daae95e3a8363db9a627ed3752673ce8b4e7c8199b8b",
+   "executed_path": "precision/plan-2d-precision-20261016.json",
+   "executed_sha256": "42c6954581c0d9022ee7daae95e3a8363db9a627ed3752673ce8b4e7c8199b8b",
+   "byte_identical": true
+  },
+  "research/2d-precision/make_precision_plan.py": {
+   "public_sha256": "90bb4293867c6d1abd75acc9351bc2ab3a5153576bc709b45657f1b6e96cba8f",
+   "executed_path": "precision/make_precision_plan.py",
+   "executed_sha256": "90bb4293867c6d1abd75acc9351bc2ab3a5153576bc709b45657f1b6e96cba8f",
+   "byte_identical": true
+  },
+  "research/2d-precision/run_precision.py": {
+   "public_sha256": "e932ce9b94acad55025927e8602879387973d9def90919c308b0a5dca51df0c2",
+   "executed_path": "precision/run_precision.py",
+   "executed_sha256": "e932ce9b94acad55025927e8602879387973d9def90919c308b0a5dca51df0c2",
+   "byte_identical": true
+  },
+  "research/2d-precision/read_precision.py": {
+   "public_sha256": "abf5cd79784fc73a5f3c273775ff957111cb3ae97d2155f194f577260de46bb4",
+   "executed_path": "precision/read_precision.py",
+   "executed_sha256": "abf5cd79784fc73a5f3c273775ff957111cb3ae97d2155f194f577260de46bb4",
+   "byte_identical": true
+  },
+  "research/2d-precision/entry_precision.sh": {
+   "public_sha256": "478ecbe7408c270380296e1d7ca348662028a3fecb05c6c2b14a1082fb04186d",
+   "executed_path": "precision/entry_precision.sh",
+   "executed_sha256": "478ecbe7408c270380296e1d7ca348662028a3fecb05c6c2b14a1082fb04186d",
+   "byte_identical": true
+  },
+  "research/2d-precision/src/fp32-dtype.patch": {
+   "public_sha256": "6625052647da21bfd322d34a64ac15d4f032ac35a8cc158a515c83a68390ba17",
+   "executed_path": "precision/src/fp32-dtype.patch",
+   "executed_sha256": "6625052647da21bfd322d34a64ac15d4f032ac35a8cc158a515c83a68390ba17",
+   "byte_identical": true
+  },
+  "research/2d-precision/src/precision_run.py": {
+   "public_sha256": "ef2dd1ba3d0c453be55cb043d5d60a1e109a208bede95a37950b5f1c0b9266ff",
+   "executed_path": "source/experiments/contracted_jets/precision_run.py",
+   "executed_sha256": "ef2dd1ba3d0c453be55cb043d5d60a1e109a208bede95a37950b5f1c0b9266ff",
+   "byte_identical": true
+  },
+  "research/2d-precision/src/test_precision_cpu.py": {
+   "public_sha256": "07a2cc6c9c2cb4e07d2ec802ccb22834ca74341501bbe197768aacb0e656faa3",
+   "executed_path": "precision/src/test_precision_cpu.py",
+   "executed_sha256": "07a2cc6c9c2cb4e07d2ec802ccb22834ca74341501bbe197768aacb0e656faa3",
+   "byte_identical": true
+  },
+  "research/2d-precision/precision-result-20261016.json": {
+   "public_sha256": "4c88fe317404a6905a584380447251628049cfc973f13b5db50e8f7b97ee0577",
+   "executed_path": "precision/precision-result.json",
+   "executed_sha256": "5d2512649ef7ba422c181c380cf92f628bc225aea8e71cf9cc66c40eb5492d94",
+   "byte_identical": false,
+   "normalization": "the batch work-directory prefix in 24 failure tracebacks is replaced by <batch>/; no other change"
+  },
+  "research/2d-precision/posthoc_precision.py": {
+   "public_sha256": "d8f156302f82eae39a212d97e8b1422b533fb1aeac0efeafa51dbade75569ecf",
+   "executed_path": "posthoc/posthoc_precision.py",
+   "executed_sha256": "d8f156302f82eae39a212d97e8b1422b533fb1aeac0efeafa51dbade75569ecf",
+   "byte_identical": true
+  },
+  "research/2d-precision/precision-posthoc-20261016.json": {
+   "public_sha256": "521256fdadc00bb5bd34ed4ec1280096b7f7ff4a073d49b2dece90b2aaf9a4de",
+   "executed_path": "posthoc/precision-posthoc-20261016.json",
+   "executed_sha256": "521256fdadc00bb5bd34ed4ec1280096b7f7ff4a073d49b2dece90b2aaf9a4de",
+   "byte_identical": true
+  }
+ }
+}

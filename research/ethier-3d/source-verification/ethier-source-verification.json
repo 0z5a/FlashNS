@@ -1,0 +1,180 @@
+{
+  "state": "ETHIER_PHYSICAL_16_OBSERVATIONS_HIGH_PRECISION_PASS",
+  "parameters": {
+    "a": 0.5,
+    "d": 1.0,
+    "nu": 1.0
+  },
+  "coordinates": [
+    "x",
+    "y",
+    "z",
+    "t"
+  ],
+  "pressure_gauge": "p(x,t)-p(0,0,0,t)",
+  "force": "ZERO",
+  "precision_dps": [
+    80,
+    160
+  ],
+  "checks": [
+    {
+      "precision_dps": 80,
+      "point": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "max_16_observation_residual": "0.0",
+      "momentum": [
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "divergence": "0.0"
+    },
+    {
+      "precision_dps": 80,
+      "point": [
+        "-.3",
+        ".2",
+        "-.1",
+        ".15"
+      ],
+      "max_16_observation_residual": "1.05421979432e-81",
+      "momentum": [
+        "0.0",
+        "-1.05421979432e-81",
+        "0.0"
+      ],
+      "divergence": "0.0"
+    },
+    {
+      "precision_dps": 80,
+      "point": [
+        ".5",
+        "-.5",
+        ".5",
+        ".25"
+      ],
+      "max_16_observation_residual": "1.58132969148e-81",
+      "momentum": [
+        "1.05421979432e-81",
+        "-1.58132969148e-81",
+        "-5.27109897162e-82"
+      ],
+      "divergence": "-2.63554948581e-82"
+    },
+    {
+      "precision_dps": 80,
+      "point": [
+        ".07",
+        "-.12",
+        ".21",
+        ".05"
+      ],
+      "max_16_observation_residual": "1.05421979432e-81",
+      "momentum": [
+        "5.27109897162e-82",
+        "0.0",
+        "-1.05421979432e-81"
+      ],
+      "divergence": "0.0"
+    },
+    {
+      "precision_dps": 160,
+      "point": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "max_16_observation_residual": "0.0",
+      "momentum": [
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "divergence": "0.0"
+    },
+    {
+      "precision_dps": 160,
+      "point": [
+        "-.3",
+        ".2",
+        "-.1",
+        ".15"
+      ],
+      "max_16_observation_residual": "8.89103499794e-162",
+      "momentum": [
+        "8.89103499794e-162",
+        "-4.44551749897e-162",
+        "-8.89103499794e-162"
+      ],
+      "divergence": "1.11137937474e-162"
+    },
+    {
+      "precision_dps": 160,
+      "point": [
+        ".5",
+        "-.5",
+        ".5",
+        ".25"
+      ],
+      "max_16_observation_residual": "1.33365524969e-161",
+      "momentum": [
+        "-1.33365524969e-161",
+        "4.44551749897e-162",
+        "4.44551749897e-162"
+      ],
+      "divergence": "-2.22275874949e-162"
+    },
+    {
+      "precision_dps": 160,
+      "point": [
+        ".07",
+        "-.12",
+        ".21",
+        ".05"
+      ],
+      "max_16_observation_residual": "8.89103499794e-162",
+      "momentum": [
+        "-8.89103499794e-162",
+        "4.44551749897e-162",
+        "0.0"
+      ],
+      "divergence": "0.0"
+    }
+  ],
+  "reference_values_160dps": [
+    [
+      -0.5,
+      -0.5,
+      -0.5,
+      0.0
+    ],
+    [
+      -0.4088537764150006,
+      -0.2073218683166561,
+      -0.4672392239643406,
+      0.0635787027646865
+    ],
+    [
+      -0.6081581904825839,
+      -0.6911736142566496,
+      -0.0981938865439531,
+      -0.2011606971328911
+    ],
+    [
+      -0.5999697238433462,
+      -0.5650111036491168,
+      -0.3962268987554272,
+      -0.078784454272914
+    ]
+  ],
+  "wall_seconds": 3.142400026321411,
+  "source_sha256": "613948acb61bb5c945eb4222c98d2fea215aa71d39e9447b413ce30b9bb987d0",
+  "primary_reference": "Ethier and Steinman (1994), Exact fully 3D Navier-Stokes solutions for benchmarking, Eq.15",
+  "training_convergence": "NOT_RUN"
+}

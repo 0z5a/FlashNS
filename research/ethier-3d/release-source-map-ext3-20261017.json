@@ -1,0 +1,91 @@
+{
+ "scope": "Compiled Ethier batch, attempt 2 (protocol-ext3-20261017). The executed packet holds the public src/ files below, the unchanged v4 data and other source files, the pinned jet snapshot and a runtime environment script.",
+ "executed_packet": {
+  "manifest_sha256": "9cd4c6589226a51eda85efbf05857738015eb4873bec4474d33a1f6d7276bb71",
+  "files": 54,
+  "start_script_sha256": "d2de555d68f6d8d3d94e084e84ee5bac1dacf741eb351999b51402b4a5a31b28",
+  "pre_registration_commit": "b391841"
+ },
+ "archive": {
+  "name": "ethier-ext3-complete.tar.gz",
+  "sha256": "5b4833b8178921ffd79ef96d226764480a908d6265630d244133e5fa1b717bd3",
+  "members": 316,
+  "bytes": 55311171,
+  "excluded": "per-lane compiler caches",
+  "persistent_tape_copy": false
+ },
+ "files": {
+  "research/ethier-3d/src/protocol-ext3-20261017.json": {
+   "public_sha256": "966f0d9e1eb75b9cc284efc948bcc0e0cb4ade756d54ab51260abbd728295c02",
+   "executed_path": "protocol-ext3-20261017.json",
+   "executed_sha256": "966f0d9e1eb75b9cc284efc948bcc0e0cb4ade756d54ab51260abbd728295c02",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/external.py": {
+   "public_sha256": "1c32f1a676773315d6ad2a5ffddd6771af07621fd915a736f9fb43236a731722",
+   "executed_path": "external.py",
+   "executed_sha256": "1c32f1a676773315d6ad2a5ffddd6771af07621fd915a736f9fb43236a731722",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/external2.py": {
+   "public_sha256": "13b3fe8c3e1ec312c46a40de544ac3e57b5e58e0a47dc6adca3175dbcd167f30",
+   "executed_path": "external2.py",
+   "executed_sha256": "13b3fe8c3e1ec312c46a40de544ac3e57b5e58e0a47dc6adca3175dbcd167f30",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/solve_ext3.py": {
+   "public_sha256": "a7c428260f4f1909a8bef6bce423deefc83d6656843d1af4cc6a01712e635c4e",
+   "executed_path": "solve_ext3.py",
+   "executed_sha256": "a7c428260f4f1909a8bef6bce423deefc83d6656843d1af4cc6a01712e635c4e",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/run_ext3.py": {
+   "public_sha256": "6c52c217bfcbc7ba2eca97a4d6b8122e6bb58caed273759af7eb1ed9d31b7be5",
+   "executed_path": "run_ext3.py",
+   "executed_sha256": "6c52c217bfcbc7ba2eca97a4d6b8122e6bb58caed273759af7eb1ed9d31b7be5",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/audit_ext3.py": {
+   "public_sha256": "98db383e0acf1777124639a1c6b4cbdf2315163b5cd7ea0d7cb34e6dd5e74bca",
+   "executed_path": "audit_ext3.py",
+   "executed_sha256": "98db383e0acf1777124639a1c6b4cbdf2315163b5cd7ea0d7cb34e6dd5e74bca",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/read_ext3.py": {
+   "public_sha256": "5068e537a0871ed2e72dbf8f5aecd987beef117c93d6686058aab0123ca789e8",
+   "executed_path": "read_ext3.py",
+   "executed_sha256": "5068e537a0871ed2e72dbf8f5aecd987beef117c93d6686058aab0123ca789e8",
+   "byte_identical": true
+  },
+  "research/ethier-3d/src/entry_ext3.sh": {
+   "public_sha256": "34eb98c3be34276e2363901558d2ae30dc913d42c1b8d35b2e5b9fa972a3679e",
+   "executed_path": "entry_ext3.sh",
+   "executed_sha256": "34eb98c3be34276e2363901558d2ae30dc913d42c1b8d35b2e5b9fa972a3679e",
+   "byte_identical": true
+  },
+  "research/ethier-3d/audit-ext3-20261017.json": {
+   "public_sha256": "fb172a904d06d42d5379db78a9cddb8dc1fd861fb333109c5fcb208402c10717",
+   "executed_path": "audit-ext3.json",
+   "executed_sha256": "fb172a904d06d42d5379db78a9cddb8dc1fd861fb333109c5fcb208402c10717",
+   "byte_identical": true
+  },
+  "research/ethier-3d/read-ext3-20261017.json": {
+   "public_sha256": "bd6678c6c2d05f0cd88045b27647fd202803d9594634c12b87802a4ed56676f8",
+   "executed_path": "read-ext3.json",
+   "executed_sha256": "bd6678c6c2d05f0cd88045b27647fd202803d9594634c12b87802a4ed56676f8",
+   "byte_identical": true
+  },
+  "research/ethier-3d/posthoc_ext2_phase_split.py": {
+   "public_sha256": "3d27fc4d3c7faa786e160c25de03828c22f664533bf7d471a1daf059654ddaff",
+   "executed_path": "posthoc/posthoc_ext2_phase_split.py",
+   "executed_sha256": "3d27fc4d3c7faa786e160c25de03828c22f664533bf7d471a1daf059654ddaff",
+   "byte_identical": true
+  },
+  "research/ethier-3d/ext3-phase-split-20261017.json": {
+   "public_sha256": "17c32a80ba60f4a3221b92365bea631cd8415d1c559f3455a8b6a4927edf47ed",
+   "executed_path": "posthoc/ext3-phase-split-20261017.json",
+   "executed_sha256": "17c32a80ba60f4a3221b92365bea631cd8415d1c559f3455a8b6a4927edf47ed",
+   "byte_identical": true
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "kind": "development diagnostic, not a result",
+ "cases": {
+  "builder_graph_only": {
+   "initial_error": 2.4446297314783265e-07,
+   "changed_error": 1.8036614392774942e-07,
+   "changed_vs_initial_values": 274423836.18021363,
+   "loss_after_change": 5.413453514205929,
+   "loss_expected": 5.413453514205929,
+   "loss_initial": 5.4113595314771175
+  },
+  "trainer_construction": {
+   "initial_error": 2.4446297314783265e-07,
+   "changed_error": 1.8388084358966288e-07,
+   "changed_vs_initial_values": 274423836.18021363,
+   "loss_after_change": 5.413453514205929,
+   "loss_expected": 5.413453514205929,
+   "loss_initial": 5.4113595314771175
+  },
+  "builder_graph_after_compiled": {
+   "initial_error": 1.4663853421702363e-07,
+   "changed_error": 1.8036614392774942e-07,
+   "changed_vs_initial_values": 274423836.18021363,
+   "loss_after_change": 5.413453514205929,
+   "loss_expected": 5.413453514205929,
+   "loss_initial": 5.4113595314771175
+  },
+  "builder_graph_eager_in_between": {
+   "initial_error": 998155444.2309278,
+   "changed_error": 998156156.4096001,
+   "changed_vs_initial_values": 998155444.2309278,
+   "loss_after_change": NaN,
+   "loss_expected": 5.413453514205929,
+   "loss_initial": 5.4113595314771175
+  }
+ }
+}

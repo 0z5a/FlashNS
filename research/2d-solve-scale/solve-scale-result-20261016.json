@@ -1,0 +1,1183 @@
+{
+ "protocol_version": "FlashNS-2D-solve-scale-20261016-v1",
+ "plan_sha256": "a43c2230538df4bec0877ad2ee38d0216427be5037b1f39915c24f5db6cb297a",
+ "tasks": 36,
+ "driver_counts": {
+  "COMPLETE": 36
+ },
+ "rows": [
+  {
+   "id": "B-n16384-s862106",
+   "cell": "B",
+   "interior": 16384,
+   "seed": 862106,
+   "lane": 0,
+   "driver_state": "COMPLETE",
+   "process_seconds": 101.09080648422241,
+   "status": "passed",
+   "result_sha256": "878a8b3a7c6f5f525887e2918fc66a92dbbc0953fb31f7215677676bb9516b5f",
+   "converged": true,
+   "setup_seconds": 47.38001567590982,
+   "optimization_seconds": 46.645692663034424,
+   "setup_plus_optimization_seconds": 94.02570833894424,
+   "evaluations": 8977,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 4400,
+   "adam_ms_per_evaluation": 1.869813819997944,
+   "lbfgs_ms_per_evaluation": 7.846136801486533,
+   "lbfgs_evaluations": 4977,
+   "optimization_ms_per_evaluation": 5.19613374880633
+  },
+  {
+   "id": "C-n16384-s862105",
+   "cell": "C",
+   "interior": 16384,
+   "seed": 862105,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 91.97325110435486,
+   "status": "passed",
+   "result_sha256": "16851e673f9e79e46ac3c28ac1fbf5bb20af3244c6b9218b1233998da1cdfe86",
+   "converged": true,
+   "setup_seconds": 65.01651826302987,
+   "optimization_seconds": 21.22167290293146,
+   "setup_plus_optimization_seconds": 86.23819116596133,
+   "evaluations": 6065,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 1840,
+   "adam_ms_per_evaluation": 1.2545104927266948,
+   "lbfgs_ms_per_evaluation": 7.8268387854960695,
+   "lbfgs_evaluations": 2065,
+   "optimization_ms_per_evaluation": 3.4990392255451703
+  },
+  {
+   "id": "C-n16384-s862104",
+   "cell": "C",
+   "interior": 16384,
+   "seed": 862104,
+   "lane": 2,
+   "driver_state": "COMPLETE",
+   "process_seconds": 93.22554588317871,
+   "status": "passed",
+   "result_sha256": "f84abe66e7e7ecdfb8e27ef76fb6a6d3585098c87912a7c15e6a19550dd211a1",
+   "converged": true,
+   "setup_seconds": 64.958776296,
+   "optimization_seconds": 22.48475885100197,
+   "setup_plus_optimization_seconds": 87.44353514700197,
+   "evaluations": 6276,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2020,
+   "adam_ms_per_evaluation": 1.2538329167291522,
+   "lbfgs_ms_per_evaluation": 7.656751275490167,
+   "lbfgs_evaluations": 2276,
+   "optimization_ms_per_evaluation": 3.582657560707771
+  },
+  {
+   "id": "B-n16384-s862101",
+   "cell": "B",
+   "interior": 16384,
+   "seed": 862101,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 82.90811610221863,
+   "status": "passed",
+   "result_sha256": "81e70f00d53f6c6a49f6b83955b208e12a2ff8b88482555d8c841249d5a1aefe",
+   "converged": true,
+   "setup_seconds": 47.382103779003955,
+   "optimization_seconds": 28.58459996804595,
+   "setup_plus_optimization_seconds": 75.9667037470499,
+   "evaluations": 6639,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2360,
+   "adam_ms_per_evaluation": 1.8755221260071266,
+   "lbfgs_ms_per_evaluation": 7.945137930675415,
+   "lbfgs_evaluations": 2639,
+   "optimization_ms_per_evaluation": 4.30555806116071
+  },
+  {
+   "id": "A-n16384-s862104",
+   "cell": "A",
+   "interior": 16384,
+   "seed": 862104,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 67.98069739341736,
+   "status": "passed",
+   "result_sha256": "8cdf4a564799f55607ad8bbb08d8b6053aa347aa9a8e956436c32f7fb8703d2f",
+   "converged": true,
+   "setup_seconds": 22.467529369983822,
+   "optimization_seconds": 40.50168249208946,
+   "setup_plus_optimization_seconds": 62.96921186207328,
+   "evaluations": 7187,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2820,
+   "adam_ms_per_evaluation": 3.027959113504039,
+   "lbfgs_ms_per_evaluation": 8.889772809840562,
+   "lbfgs_evaluations": 3187,
+   "optimization_ms_per_evaluation": 5.63540872298448
+  },
+  {
+   "id": "C-n16384-s862101",
+   "cell": "C",
+   "interior": 16384,
+   "seed": 862101,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 31.119277238845825,
+   "status": "passed",
+   "result_sha256": "49dc7fbb0f8d91a6d504e2c88ea7e1506685353ce93b4816e83049c66e7eabf1",
+   "converged": true,
+   "setup_seconds": 1.3580501929391176,
+   "optimization_seconds": 26.73637515900191,
+   "setup_plus_optimization_seconds": 28.094425351941027,
+   "evaluations": 6826,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2520,
+   "adam_ms_per_evaluation": 1.2552000129944645,
+   "lbfgs_ms_per_evaluation": 7.669598404827257,
+   "lbfgs_evaluations": 2826,
+   "optimization_ms_per_evaluation": 3.9168437092003967
+  },
+  {
+   "id": "A-n16384-s862105",
+   "cell": "A",
+   "interior": 16384,
+   "seed": 862105,
+   "lane": 2,
+   "driver_state": "COMPLETE",
+   "process_seconds": 58.315513372421265,
+   "status": "passed",
+   "result_sha256": "e9c6bc19a36822c95b8c4d44371480e1df86ca0537efec46b33a97a2aba01e31",
+   "converged": true,
+   "setup_seconds": 23.371926799067296,
+   "optimization_seconds": 30.392913021030836,
+   "setup_plus_optimization_seconds": 53.76483982009813,
+   "evaluations": 5972,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 1780,
+   "adam_ms_per_evaluation": 3.013099897245411,
+   "lbfgs_ms_per_evaluation": 9.269727087184375,
+   "lbfgs_evaluations": 1972,
+   "optimization_ms_per_evaluation": 5.089235268089557
+  },
+  {
+   "id": "A-n16384-s862106",
+   "cell": "A",
+   "interior": 16384,
+   "seed": 862106,
+   "lane": 0,
+   "driver_state": "COMPLETE",
+   "process_seconds": 84.05686402320862,
+   "status": "passed",
+   "result_sha256": "11b96175f574b0804eba177eecc9ee1bbe12854fefa1e74c1b66613c169833bf",
+   "converged": true,
+   "setup_seconds": 22.59093054907862,
+   "optimization_seconds": 56.96851894201245,
+   "setup_plus_optimization_seconds": 79.55944949109107,
+   "evaluations": 8924,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 4360,
+   "adam_ms_per_evaluation": 3.0251354812353384,
+   "lbfgs_ms_per_evaluation": 9.10042957860956,
+   "lbfgs_evaluations": 4924,
+   "optimization_ms_per_evaluation": 6.3837425977154245
+  },
+  {
+   "id": "B-n16384-s862104",
+   "cell": "B",
+   "interior": 16384,
+   "seed": 862104,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 44.892388105392456,
+   "status": "passed",
+   "result_sha256": "96b89d68b3b2a94af41b1139d13d6945421fe3d74e83c0db0d448bc06634eb47",
+   "converged": true,
+   "setup_seconds": 12.127200863906182,
+   "optimization_seconds": 28.25807339302264,
+   "setup_plus_optimization_seconds": 40.385274256928824,
+   "evaluations": 6643,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2360,
+   "adam_ms_per_evaluation": 1.8741308099997696,
+   "lbfgs_ms_per_evaluation": 7.836871390465987,
+   "lbfgs_evaluations": 2643,
+   "optimization_ms_per_evaluation": 4.253812041701436
+  },
+  {
+   "id": "C-n16384-s862102",
+   "cell": "C",
+   "interior": 16384,
+   "seed": 862102,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 38.42434763908386,
+   "status": "passed",
+   "result_sha256": "f06a32116a89ee00932b04667823fe96340a952f3ecb43a341f519378727df47",
+   "converged": true,
+   "setup_seconds": 0.8389881649054587,
+   "optimization_seconds": 32.95352936803829,
+   "setup_plus_optimization_seconds": 33.79251753294375,
+   "evaluations": 7722,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3300,
+   "adam_ms_per_evaluation": 1.2525982742372435,
+   "lbfgs_ms_per_evaluation": 7.495944777273156,
+   "lbfgs_evaluations": 3722,
+   "optimization_ms_per_evaluation": 4.267486320647279
+  },
+  {
+   "id": "C-n16384-s862106",
+   "cell": "C",
+   "interior": 16384,
+   "seed": 862106,
+   "lane": 2,
+   "driver_state": "COMPLETE",
+   "process_seconds": 41.184494495391846,
+   "status": "passed",
+   "result_sha256": "9b36d110c5ac022342b85fe9ed8146972b18b543c96e5e3e9fbdf617a116a781",
+   "converged": true,
+   "setup_seconds": 0.8631294670049101,
+   "optimization_seconds": 36.3641993770143,
+   "setup_plus_optimization_seconds": 37.22732884401921,
+   "evaluations": 8213,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3740,
+   "adam_ms_per_evaluation": 1.2541670702339616,
+   "lbfgs_ms_per_evaluation": 7.430507544022024,
+   "lbfgs_evaluations": 4213,
+   "optimization_ms_per_evaluation": 4.427639032876452
+  },
+  {
+   "id": "B-n16384-s862102",
+   "cell": "B",
+   "interior": 16384,
+   "seed": 862102,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 46.84470772743225,
+   "status": "passed",
+   "result_sha256": "1a60d80da91d1f15333157eb586f530a36749265fb33a714ac9dc6251c038ab2",
+   "converged": true,
+   "setup_seconds": 3.6228104529436678,
+   "optimization_seconds": 39.266196622978896,
+   "setup_plus_optimization_seconds": 42.889007075922564,
+   "evaluations": 8048,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3600,
+   "adam_ms_per_evaluation": 1.875902463478269,
+   "lbfgs_ms_per_evaluation": 7.833213543742776,
+   "lbfgs_evaluations": 4048,
+   "optimization_ms_per_evaluation": 4.879000574425807
+  },
+  {
+   "id": "A-n16384-s862102",
+   "cell": "A",
+   "interior": 16384,
+   "seed": 862102,
+   "lane": 0,
+   "driver_state": "COMPLETE",
+   "process_seconds": 59.065091371536255,
+   "status": "passed",
+   "result_sha256": "f3e84f5f10b1a78c8bef6d512c4a703717f91924878ab52698ce4f8a95597dfe",
+   "converged": true,
+   "setup_seconds": 4.7885745000094175,
+   "optimization_seconds": 50.295973074040376,
+   "setup_plus_optimization_seconds": 55.08454757404979,
+   "evaluations": 8277,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3800,
+   "adam_ms_per_evaluation": 2.9995282664895058,
+   "lbfgs_ms_per_evaluation": 8.940937096555276,
+   "lbfgs_evaluations": 4277,
+   "optimization_ms_per_evaluation": 6.076594548029525
+  },
+  {
+   "id": "B-n16384-s862105",
+   "cell": "B",
+   "interior": 16384,
+   "seed": 862105,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 34.92050242424011,
+   "status": "passed",
+   "result_sha256": "ef7f9ac819fcc1826b7584f819622ea34da55fe6d9fa1b22ae40740ec839e2fb",
+   "converged": true,
+   "setup_seconds": 4.044287972035818,
+   "optimization_seconds": 27.085629209992476,
+   "setup_plus_optimization_seconds": 31.129917182028294,
+   "evaluations": 6437,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2180,
+   "adam_ms_per_evaluation": 1.8786907339817844,
+   "lbfgs_ms_per_evaluation": 8.010377971714178,
+   "lbfgs_evaluations": 2437,
+   "optimization_ms_per_evaluation": 4.207803201800913
+  },
+  {
+   "id": "A-n16384-s862103",
+   "cell": "A",
+   "interior": 16384,
+   "seed": 862103,
+   "lane": 2,
+   "driver_state": "COMPLETE",
+   "process_seconds": 52.554359912872314,
+   "status": "passed",
+   "result_sha256": "4486f776c0012a6ea68267997d23e6fb951683ddea5e37cd90bf6c6855eaa03e",
+   "converged": true,
+   "setup_seconds": 4.804861953947693,
+   "optimization_seconds": 43.31703868205659,
+   "setup_plus_optimization_seconds": 48.121900636004284,
+   "evaluations": 7494,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3100,
+   "adam_ms_per_evaluation": 3.0325104004878085,
+   "lbfgs_ms_per_evaluation": 8.908535132537002,
+   "lbfgs_evaluations": 3494,
+   "optimization_ms_per_evaluation": 5.7802293410804095
+  },
+  {
+   "id": "C-n16384-s862103",
+   "cell": "C",
+   "interior": 16384,
+   "seed": 862103,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 37.27837061882019,
+   "status": "passed",
+   "result_sha256": "3b3a8a7050e6c4532640582a7ac8cdcece0e4aa62c3504afe57e306293f156e5",
+   "converged": true,
+   "setup_seconds": 0.843677481985651,
+   "optimization_seconds": 32.95788260700647,
+   "setup_plus_optimization_seconds": 33.80156008899212,
+   "evaluations": 7641,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3220,
+   "adam_ms_per_evaluation": 1.2571212097536772,
+   "lbfgs_ms_per_evaluation": 7.6594142235528535,
+   "lbfgs_evaluations": 3641,
+   "optimization_ms_per_evaluation": 4.313294412643171
+  },
+  {
+   "id": "A-n16384-s862101",
+   "cell": "A",
+   "interior": 16384,
+   "seed": 862101,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 43.73787307739258,
+   "status": "passed",
+   "result_sha256": "09a2f400615bc0b1d1767c06d9e2d0f22570ac6b7a37ab109a166504dcf36538",
+   "converged": true,
+   "setup_seconds": 4.743225676938891,
+   "optimization_seconds": 35.15419280005153,
+   "setup_plus_optimization_seconds": 39.897418476990424,
+   "evaluations": 6523,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2260,
+   "adam_ms_per_evaluation": 3.0284058559918776,
+   "lbfgs_ms_per_evaluation": 9.108797187073096,
+   "lbfgs_evaluations": 2523,
+   "optimization_ms_per_evaluation": 5.389267637597966
+  },
+  {
+   "id": "B-n16384-s862103",
+   "cell": "B",
+   "interior": 16384,
+   "seed": 862103,
+   "lane": 0,
+   "driver_state": "COMPLETE",
+   "process_seconds": 41.98638725280762,
+   "status": "passed",
+   "result_sha256": "43fe95b5e4311e824dad9b89235afbbea288c5d824a2d4fa33324f98eaff061e",
+   "converged": true,
+   "setup_seconds": 4.285996574093588,
+   "optimization_seconds": 33.523219326045364,
+   "setup_plus_optimization_seconds": 37.80921590013895,
+   "evaluations": 7336,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2980,
+   "adam_ms_per_evaluation": 1.8585372244997416,
+   "lbfgs_ms_per_evaluation": 7.805496197259746,
+   "lbfgs_evaluations": 3336,
+   "optimization_ms_per_evaluation": 4.569686385774995
+  },
+  {
+   "id": "A-n65536-s862104",
+   "cell": "A",
+   "interior": 65536,
+   "seed": 862104,
+   "lane": 2,
+   "driver_state": "COMPLETE",
+   "process_seconds": 125.58110857009888,
+   "status": "passed",
+   "result_sha256": "f23d51e1868b7dc92c576eee22607de93b4147a9c1af2ecdd786c152a775cb0a",
+   "converged": true,
+   "setup_seconds": 23.169236634974368,
+   "optimization_seconds": 98.0229113859823,
+   "setup_plus_optimization_seconds": 121.19214802095667,
+   "evaluations": 6941,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2640,
+   "adam_ms_per_evaluation": 11.519141424505506,
+   "lbfgs_ms_per_evaluation": 17.642043867401476,
+   "lbfgs_evaluations": 2941,
+   "optimization_ms_per_evaluation": 14.122303902317
+  },
+  {
+   "id": "C-n65536-s862101",
+   "cell": "C",
+   "interior": 65536,
+   "seed": 862101,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 53.50742149353027,
+   "status": "passed",
+   "result_sha256": "d1d2b4a487fa0282684b54dff9f3c8c4a3c11ac958a8a00daefe1b4bcfb6bec3",
+   "converged": true,
+   "setup_seconds": 0.3049403269542381,
+   "optimization_seconds": 49.28887125093024,
+   "setup_plus_optimization_seconds": 49.59381157788448,
+   "evaluations": 6892,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2600,
+   "adam_ms_per_evaluation": 4.426600582752144,
+   "lbfgs_ms_per_evaluation": 10.90556687274001,
+   "lbfgs_evaluations": 2892,
+   "optimization_ms_per_evaluation": 7.151606391603344
+  },
+  {
+   "id": "A-n65536-s862102",
+   "cell": "A",
+   "interior": 65536,
+   "seed": 862102,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 134.94166707992554,
+   "status": "passed",
+   "result_sha256": "6398c6976dccbcde8ebc7bc5ed7ee40ab18c407cc63b20d3450e37ba50c49fae",
+   "converged": true,
+   "setup_seconds": 22.805781319970265,
+   "optimization_seconds": 107.59608665294945,
+   "setup_plus_optimization_seconds": 130.40186797291972,
+   "evaluations": 7484,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3100,
+   "adam_ms_per_evaluation": 11.50922680873191,
+   "lbfgs_ms_per_evaluation": 17.652367743696637,
+   "lbfgs_evaluations": 3484,
+   "optimization_ms_per_evaluation": 14.376815426636751
+  },
+  {
+   "id": "B-n65536-s862103",
+   "cell": "B",
+   "interior": 65536,
+   "seed": 862103,
+   "lane": 0,
+   "driver_state": "COMPLETE",
+   "process_seconds": 92.12073230743408,
+   "status": "passed",
+   "result_sha256": "3b2279cae76af35327d11ac693715dc82cf01666d1991ed5fb17ce00c2366f3d",
+   "converged": true,
+   "setup_seconds": 12.421029889956117,
+   "optimization_seconds": 75.16378253302537,
+   "setup_plus_optimization_seconds": 87.58481242298149,
+   "evaluations": 7616,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3200,
+   "adam_ms_per_evaluation": 6.996133586973883,
+   "lbfgs_ms_per_evaluation": 13.03347394526349,
+   "lbfgs_evaluations": 3616,
+   "optimization_ms_per_evaluation": 9.869194135113625
+  },
+  {
+   "id": "C-n65536-s862103",
+   "cell": "C",
+   "interior": 65536,
+   "seed": 862103,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 65.17542219161987,
+   "status": "passed",
+   "result_sha256": "2190690d4cb785a402e858853e694c27f47aede1ff4f2020a7bd3e2553c339e8",
+   "converged": true,
+   "setup_seconds": 0.898559223045595,
+   "optimization_seconds": 60.379106216016226,
+   "setup_plus_optimization_seconds": 61.27766543906182,
+   "evaluations": 8025,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3580,
+   "adam_ms_per_evaluation": 4.428087035252247,
+   "lbfgs_ms_per_evaluation": 10.589808572679527,
+   "lbfgs_evaluations": 4025,
+   "optimization_ms_per_evaluation": 7.523876163989561
+  },
+  {
+   "id": "B-n65536-s862106",
+   "cell": "B",
+   "interior": 65536,
+   "seed": 862106,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 109.30194973945618,
+   "status": "passed",
+   "result_sha256": "37bb794502cafa6c5a86c6d9d4c8ff9d88c7790dbfcaf01d455fed718a648d15",
+   "converged": true,
+   "setup_seconds": 13.618540860014036,
+   "optimization_seconds": 89.75616547500249,
+   "setup_plus_optimization_seconds": 103.37470633501653,
+   "evaluations": 8721,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 4180,
+   "adam_ms_per_evaluation": 7.024615263479063,
+   "lbfgs_ms_per_evaluation": 13.048223961457165,
+   "lbfgs_evaluations": 4721,
+   "optimization_ms_per_evaluation": 10.291957972136508
+  },
+  {
+   "id": "B-n65536-s862101",
+   "cell": "B",
+   "interior": 65536,
+   "seed": 862101,
+   "lane": 2,
+   "driver_state": "COMPLETE",
+   "process_seconds": 84.40807580947876,
+   "status": "passed",
+   "result_sha256": "6ee4570cfe75358251817c8a3c1a4f8ca80b0ea0cacb6bb07ffe6a65f981836e",
+   "converged": true,
+   "setup_seconds": 13.61555656103883,
+   "optimization_seconds": 64.91018104203977,
+   "setup_plus_optimization_seconds": 78.5257376030786,
+   "evaluations": 6835,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2520,
+   "adam_ms_per_evaluation": 7.03368681675056,
+   "lbfgs_ms_per_evaluation": 12.953382753438564,
+   "lbfgs_evaluations": 2835,
+   "optimization_ms_per_evaluation": 9.496734607467413
+  },
+  {
+   "id": "B-n65536-s862105",
+   "cell": "B",
+   "interior": 65536,
+   "seed": 862105,
+   "lane": 0,
+   "driver_state": "COMPLETE",
+   "process_seconds": 66.47959756851196,
+   "status": "passed",
+   "result_sha256": "e6f369892e0b546e7c7509b5d51e1079d3d2f5fdd00d3f6ed099ceeb728405d8",
+   "converged": true,
+   "setup_seconds": 3.407812031917274,
+   "optimization_seconds": 58.334716149023734,
+   "setup_plus_optimization_seconds": 61.74252818094101,
+   "evaluations": 6341,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2100,
+   "adam_ms_per_evaluation": 7.004454677487956,
+   "lbfgs_ms_per_evaluation": 12.926314478003711,
+   "lbfgs_evaluations": 2341,
+   "optimization_ms_per_evaluation": 9.199608287182421
+  },
+  {
+   "id": "C-n65536-s862102",
+   "cell": "C",
+   "interior": 65536,
+   "seed": 862102,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 61.61975884437561,
+   "status": "passed",
+   "result_sha256": "e594206cfdf03c89f567a4f3789cb386e8132aa59d5c2e2b73ac2c6e9894c691",
+   "converged": true,
+   "setup_seconds": 0.8527029750403017,
+   "optimization_seconds": 56.364793312037364,
+   "setup_plus_optimization_seconds": 57.217496287077665,
+   "evaluations": 7651,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3240,
+   "adam_ms_per_evaluation": 4.431907302263426,
+   "lbfgs_ms_per_evaluation": 10.571620106810341,
+   "lbfgs_evaluations": 3651,
+   "optimization_ms_per_evaluation": 7.366983833752106
+  },
+  {
+   "id": "A-n65536-s862101",
+   "cell": "A",
+   "interior": 65536,
+   "seed": 862101,
+   "lane": 0,
+   "driver_state": "COMPLETE",
+   "process_seconds": 119.06817054748535,
+   "status": "passed",
+   "result_sha256": "63da30f0f0c4a6a03d71f0b07a877aecdacdd5f4f1b02b693dda24faa867aabc",
+   "converged": true,
+   "setup_seconds": 23.33006192103494,
+   "optimization_seconds": 90.82548631797545,
+   "setup_plus_optimization_seconds": 114.15554823901039,
+   "evaluations": 6564,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2280,
+   "adam_ms_per_evaluation": 11.484638702240773,
+   "lbfgs_ms_per_evaluation": 17.48389740716615,
+   "lbfgs_evaluations": 2564,
+   "optimization_ms_per_evaluation": 13.836911382994431
+  },
+  {
+   "id": "A-n65536-s862103",
+   "cell": "A",
+   "interior": 65536,
+   "seed": 862103,
+   "lane": 2,
+   "driver_state": "COMPLETE",
+   "process_seconds": 114.45846676826477,
+   "status": "passed",
+   "result_sha256": "240dd4e24e281b91c42cc13d8b92df7f9de676c05cce4a3e0b1ecddeb055b7c0",
+   "converged": true,
+   "setup_seconds": 4.806296159047633,
+   "optimization_seconds": 105.7785145889502,
+   "setup_plus_optimization_seconds": 110.58481074799784,
+   "evaluations": 7397,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3019,
+   "adam_ms_per_evaluation": 11.507602768484503,
+   "lbfgs_ms_per_evaluation": 17.569497008854565,
+   "lbfgs_evaluations": 3397,
+   "optimization_ms_per_evaluation": 14.300191238197945
+  },
+  {
+   "id": "B-n65536-s862104",
+   "cell": "B",
+   "interior": 65536,
+   "seed": 862104,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 80.0484504699707,
+   "status": "passed",
+   "result_sha256": "842bd8000d8c5a3a17a96618ca5f5fa7b8300207a885f7d619f03cecf358d21d",
+   "converged": true,
+   "setup_seconds": 12.08074652904179,
+   "optimization_seconds": 63.43284493708052,
+   "setup_plus_optimization_seconds": 75.5135914661223,
+   "evaluations": 6749,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2440,
+   "adam_ms_per_evaluation": 7.015623626502929,
+   "lbfgs_ms_per_evaluation": 12.846924584227143,
+   "lbfgs_evaluations": 2749,
+   "optimization_ms_per_evaluation": 9.398850931557345
+  },
+  {
+   "id": "B-n65536-s862102",
+   "cell": "B",
+   "interior": 65536,
+   "seed": 862102,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 90.16913199424744,
+   "status": "passed",
+   "result_sha256": "56472e8aa0ad19e69ef3655a7e433f588a66383f0408dc45f659ecb56950726e",
+   "converged": true,
+   "setup_seconds": 3.336888374062255,
+   "optimization_seconds": 82.41499791899696,
+   "setup_plus_optimization_seconds": 85.75188629305921,
+   "evaluations": 8142,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 3659,
+   "adam_ms_per_evaluation": 7.0386854500102345,
+   "lbfgs_ms_per_evaluation": 13.08752008039686,
+   "lbfgs_evaluations": 4142,
+   "optimization_ms_per_evaluation": 10.122205590640746
+  },
+  {
+   "id": "C-n65536-s862104",
+   "cell": "C",
+   "interior": 65536,
+   "seed": 862104,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 52.40015363693237,
+   "status": "passed",
+   "result_sha256": "848e1f817b0e58e662c314008c0f60444d51cd4831f12537105ff73b776f3d7c",
+   "converged": true,
+   "setup_seconds": 0.8721959319664165,
+   "optimization_seconds": 47.78961020207498,
+   "setup_plus_optimization_seconds": 48.6618061340414,
+   "evaluations": 6794,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2480,
+   "adam_ms_per_evaluation": 4.427007000747835,
+   "lbfgs_ms_per_evaluation": 10.750984112047453,
+   "lbfgs_evaluations": 2794,
+   "optimization_ms_per_evaluation": 7.03409040360244
+  },
+  {
+   "id": "A-n65536-s862105",
+   "cell": "A",
+   "interior": 65536,
+   "seed": 862105,
+   "lane": 0,
+   "driver_state": "COMPLETE",
+   "process_seconds": 90.31782937049866,
+   "status": "passed",
+   "result_sha256": "78973c5350871dba4a9480c9369921b741cc631facfc6b946ac1c3adda774be3",
+   "converged": true,
+   "setup_seconds": 5.881296699983068,
+   "optimization_seconds": 80.23123246105388,
+   "setup_plus_optimization_seconds": 86.11252916103695,
+   "evaluations": 5918,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 1720,
+   "adam_ms_per_evaluation": 11.474585211253725,
+   "lbfgs_ms_per_evaluation": 17.533913701279836,
+   "lbfgs_evaluations": 1918,
+   "optimization_ms_per_evaluation": 13.557153170167942
+  },
+  {
+   "id": "C-n65536-s862105",
+   "cell": "C",
+   "interior": 65536,
+   "seed": 862105,
+   "lane": 2,
+   "driver_state": "COMPLETE",
+   "process_seconds": 47.244131565093994,
+   "status": "passed",
+   "result_sha256": "66aa461747469d783d7a696bbc44d75fb3af8238cab7bbd24b2d30a3086db958",
+   "converged": true,
+   "setup_seconds": 0.6873782009351999,
+   "optimization_seconds": 42.29554306110367,
+   "setup_plus_optimization_seconds": 42.98292126203887,
+   "evaluations": 6260,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 2020,
+   "adam_ms_per_evaluation": 4.427243239275413,
+   "lbfgs_ms_per_evaluation": 10.861041285386062,
+   "lbfgs_evaluations": 2260,
+   "optimization_ms_per_evaluation": 6.756476527332855
+  },
+  {
+   "id": "C-n65536-s862106",
+   "cell": "C",
+   "interior": 65536,
+   "seed": 862106,
+   "lane": 1,
+   "driver_state": "COMPLETE",
+   "process_seconds": 72.5885636806488,
+   "status": "passed",
+   "result_sha256": "5812dc672d0c07a43cab619280fc4eacb7458586646c85f72e38595974a81b0d",
+   "converged": true,
+   "setup_seconds": 0.29911007499322295,
+   "optimization_seconds": 68.10049969004467,
+   "setup_plus_optimization_seconds": 68.3996097650379,
+   "evaluations": 8811,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 4260,
+   "adam_ms_per_evaluation": 4.4290027247334365,
+   "lbfgs_ms_per_evaluation": 10.463705039905461,
+   "lbfgs_evaluations": 4811,
+   "optimization_ms_per_evaluation": 7.729031856775016
+  },
+  {
+   "id": "A-n65536-s862106",
+   "cell": "A",
+   "interior": 65536,
+   "seed": 862106,
+   "lane": 3,
+   "driver_state": "COMPLETE",
+   "process_seconds": 135.49158000946045,
+   "status": "passed",
+   "result_sha256": "d38aa7d3a96f664c439cc345671c2a4b3746e6f7f0901ac86324525337d4eae5",
+   "converged": true,
+   "setup_seconds": 4.708532510092482,
+   "optimization_seconds": 126.71563003002666,
+   "setup_plus_optimization_seconds": 131.42416254011914,
+   "evaluations": 8573,
+   "adam_updates": 4000,
+   "lbfgs_iterations": 4060,
+   "adam_ms_per_evaluation": 11.524581029254477,
+   "lbfgs_ms_per_evaluation": 17.616579728842552,
+   "lbfgs_evaluations": 4573,
+   "optimization_ms_per_evaluation": 14.78078036043703
+  }
+ ],
+ "sizes": {
+  "16384": {
+   "cells": {
+    "A": {
+     "accepted": 6,
+     "evaluations": [
+      5972,
+      6523,
+      7187,
+      7494,
+      8277,
+      8924
+     ],
+     "setup_seconds": [
+      4.743,
+      4.789,
+      4.805,
+      22.468,
+      22.591,
+      23.372
+     ],
+     "adam_ms_per_evaluation": [
+      2.9995,
+      3.0131,
+      3.0251,
+      3.028,
+      3.0284,
+      3.0325
+     ],
+     "lbfgs_ms_per_evaluation": [
+      8.8898,
+      8.9085,
+      8.9409,
+      9.1004,
+      9.1088,
+      9.2697
+     ]
+    },
+    "B": {
+     "accepted": 6,
+     "evaluations": [
+      6437,
+      6639,
+      6643,
+      7336,
+      8048,
+      8977
+     ],
+     "setup_seconds": [
+      3.623,
+      4.044,
+      4.286,
+      12.127,
+      47.38,
+      47.382
+     ],
+     "adam_ms_per_evaluation": [
+      1.8585,
+      1.8698,
+      1.8741,
+      1.8755,
+      1.8759,
+      1.8787
+     ],
+     "lbfgs_ms_per_evaluation": [
+      7.8055,
+      7.8332,
+      7.8369,
+      7.8461,
+      7.9451,
+      8.0104
+     ]
+    },
+    "C": {
+     "accepted": 6,
+     "evaluations": [
+      6065,
+      6276,
+      6826,
+      7641,
+      7722,
+      8213
+     ],
+     "setup_seconds": [
+      0.839,
+      0.844,
+      0.863,
+      1.358,
+      64.959,
+      65.017
+     ],
+     "adam_ms_per_evaluation": [
+      1.2526,
+      1.2538,
+      1.2542,
+      1.2545,
+      1.2552,
+      1.2571
+     ],
+     "lbfgs_ms_per_evaluation": [
+      7.4305,
+      7.4959,
+      7.6568,
+      7.6594,
+      7.6696,
+      7.8268
+     ]
+    }
+   },
+   "pairs": {
+    "A/C": {
+     "jointly_accepted": 6,
+     "favour_second": 6,
+     "setup_plus_optimization": {
+      "geometric_mean": 1.211513278289693,
+      "range": [
+       0.62344582015444,
+       2.1371248478353495
+      ]
+     },
+     "optimization_only": {
+      "geometric_mean": 1.4835105188606958,
+      "range": [
+       1.3143149758306343,
+       1.8012949465226136
+      ]
+     },
+     "optimization_per_evaluation": {
+      "geometric_mean": 1.4330370955672347,
+      "range": [
+       1.3400961743157027,
+       1.5729688443545182
+      ]
+     },
+     "decision": "solve-level gain of C over A"
+    },
+    "A/B": {
+     "jointly_accepted": 6,
+     "favour_second": 6,
+     "setup_plus_optimization": {
+      "geometric_mean": 1.1183305687215326,
+      "range": [
+       0.5251961255267681,
+       1.7271115597807396
+      ]
+     },
+     "optimization_only": {
+      "geometric_mean": 1.2598242230780512,
+      "range": [
+       1.122104743640891,
+       1.4332782680821388
+      ]
+     },
+     "optimization_per_evaluation": {
+      "geometric_mean": 1.2536354775542293,
+      "range": [
+       1.209475591898261,
+       1.324790251129769
+      ]
+     },
+     "decision": "solve-level gain of B over A"
+    },
+    "B/C": {
+     "jointly_accepted": 6,
+     "favour_second": 6,
+     "setup_plus_optimization": {
+      "geometric_mean": 1.0833230461317769,
+      "range": [
+       0.36097599869784186,
+       2.703977845975106
+      ]
+     },
+     "optimization_only": {
+      "geometric_mean": 1.1775535758759468,
+      "range": [
+       1.0171533082322075,
+       1.2827366877907678
+      ]
+     },
+     "optimization_per_evaluation": {
+      "geometric_mean": 1.143105090135936,
+      "range": [
+       1.0594422612053296,
+       1.202559597240672
+      ]
+     },
+     "decision": "solve-level gain of C over B"
+    }
+   }
+  },
+  "65536": {
+   "cells": {
+    "A": {
+     "accepted": 6,
+     "evaluations": [
+      5918,
+      6564,
+      6941,
+      7397,
+      7484,
+      8573
+     ],
+     "setup_seconds": [
+      4.709,
+      4.806,
+      5.881,
+      22.806,
+      23.169,
+      23.33
+     ],
+     "adam_ms_per_evaluation": [
+      11.4746,
+      11.4846,
+      11.5076,
+      11.5092,
+      11.5191,
+      11.5246
+     ],
+     "lbfgs_ms_per_evaluation": [
+      17.4839,
+      17.5339,
+      17.5695,
+      17.6166,
+      17.642,
+      17.6524
+     ]
+    },
+    "B": {
+     "accepted": 6,
+     "evaluations": [
+      6341,
+      6749,
+      6835,
+      7616,
+      8142,
+      8721
+     ],
+     "setup_seconds": [
+      3.337,
+      3.408,
+      12.081,
+      12.421,
+      13.616,
+      13.619
+     ],
+     "adam_ms_per_evaluation": [
+      6.9961,
+      7.0045,
+      7.0156,
+      7.0246,
+      7.0337,
+      7.0387
+     ],
+     "lbfgs_ms_per_evaluation": [
+      12.8469,
+      12.9263,
+      12.9534,
+      13.0335,
+      13.0482,
+      13.0875
+     ]
+    },
+    "C": {
+     "accepted": 6,
+     "evaluations": [
+      6260,
+      6794,
+      6892,
+      7651,
+      8025,
+      8811
+     ],
+     "setup_seconds": [
+      0.299,
+      0.305,
+      0.687,
+      0.853,
+      0.872,
+      0.899
+     ],
+     "adam_ms_per_evaluation": [
+      4.4266,
+      4.427,
+      4.4272,
+      4.4281,
+      4.429,
+      4.4319
+     ],
+     "lbfgs_ms_per_evaluation": [
+      10.4637,
+      10.5716,
+      10.5898,
+      10.751,
+      10.861,
+      10.9056
+     ]
+    }
+   },
+   "pairs": {
+    "A/C": {
+     "jointly_accepted": 6,
+     "favour_second": 6,
+     "setup_plus_optimization": {
+      "geometric_mean": 2.1199030811967403,
+      "range": [
+       1.8046511719342506,
+       2.490498352796992
+      ]
+     },
+     "optimization_only": {
+      "geometric_mean": 1.8832739945672496,
+      "range": [
+       1.75190593597908,
+       2.051134356850775
+      ]
+     },
+     "optimization_per_evaluation": {
+      "geometric_mean": 1.9518112089412332,
+      "range": [
+       1.9006414946913772,
+       2.0076943985656484
+      ]
+     },
+     "decision": "solve-level gain of C over A"
+    },
+    "A/B": {
+     "jointly_accepted": 6,
+     "favour_second": 6,
+     "setup_plus_optimization": {
+      "geometric_mean": 1.4125288863516203,
+      "range": [
+       1.2626025870094957,
+       1.6049050994393128
+      ]
+     },
+     "optimization_only": {
+      "geometric_mean": 1.4056534899310602,
+      "range": [
+       1.3055401246105978,
+       1.5453021456504419
+      ]
+     },
+     "optimization_per_evaluation": {
+      "geometric_mean": 1.4562087805644972,
+      "range": [
+       1.4203243846311449,
+       1.502556430052562
+      ]
+     },
+     "decision": "solve-level gain of B over A"
+    },
+    "B/C": {
+     "jointly_accepted": 6,
+     "favour_second": 6,
+     "setup_plus_optimization": {
+      "geometric_mean": 1.5007856488317037,
+      "range": [
+       1.429310529300126,
+       1.5833777462286407
+      ]
+     },
+     "optimization_only": {
+      "geometric_mean": 1.3397853795814316,
+      "range": [
+       1.244864113491752,
+       1.4621715627119363
+      ]
+     },
+     "optimization_per_evaluation": {
+      "geometric_mean": 1.340337481130018,
+      "range": [
+       1.3117167162252246,
+       1.3739959010450777
+      ]
+     },
+     "decision": "solve-level gain of C over B"
+    }
+   }
+  }
+ },
+ "failures": []
+}
