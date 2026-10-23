@@ -1,9 +1,9 @@
 {
  "revision": "2026-10-23",
  "derived_from_H20_release_sha256": "60bff9554fe7d89d917b539441f7ee1857f6135aed85d41c0aadab19c75ad0a5",
- "evidence_snapshot_commit": "3dca6ac1cc222dad0e4797653992e53eabc8aef2",
- "manuscript_sha256": "83bf08fcb3c8dea67956d9d8ddac686b3fdc83ed2e905e63c6c4b69e44f0478d",
- "previous_manuscript_sha256": "5a3d29047184e4f02c5640f20a95581aa48b3a345ca5fd2c738c57fa8834a10a",
+ "evidence_snapshot_commit": "ac4253cf3577586f0d788f60c783d23d7e85b398",
+ "manuscript_sha256": "3bb5359742592f9499f3d32357f30634519907275c38fe2a56a041333ad7d580",
+ "previous_manuscript_sha256": "3bb5359742592f9499f3d32357f30634519907275c38fe2a56a041333ad7d580",
  "evidence_sha256": {
   "../c36-potential-proof/protocol-20261012.json": "79dc8bfb5248d0b2ae4069572075f94fc5e888396fdab5c306f4323455ce40c6",
   "../c36-potential-proof/gpu-objective-full-native-result.json": "a2bd6c3b02e88c6821138c9f7617f31c69ab9d4c164c82c603a2ef6133611e1a",
@@ -191,7 +191,7 @@
   "../c36-potential-proof/tools/c36_graph_diagnostic.py": "bc32d7282bb381afc06763233326a50f00e08c4bf3d15f3d5f068552365c9758",
   "../c36-potential-proof/protocol-formal-pair-func-20261022.json": "8678bda7a97ab5a2dadb4253ac97d0be2fa8a4aa07aa416d91d94e6a0b71ce06",
   "../c36-potential-proof/protocol-pair-func-qualification-20261022.json": "58628032285ad7653db338aee535f3e36877ea494e411e750b843122524bfe59",
-  "../c36-potential-proof/FORMAL-PAIR-FUNC-20261022.md": "90ebe93423e98aaffe4162751b878707fee09f4755a3f1a54684c50a72fe123f",
+  "../c36-potential-proof/FORMAL-PAIR-FUNC-20261022.md": "35659538f8622981908ec8753fb94b3dd0263b84adc030bd4321ab01a6f7f490",
   "../c36-potential-proof/pair-func-gh200-qualification-20261022.json": "de076e1d06fd1ea531a685eec16958a7ef74db5e37bbb65f4e15dff56a34fd40",
   "../c36-potential-proof/src/box376/potential_train_pair_func.py": "aade981743fb9736d3028e2d9f18af3f14e6f77f75edca9d934b2d545532095c",
   "../c36-potential-proof/src/box376/run_c36_pair_func.py": "ae399e395963b7cad18803b3e4f8e556581f77bae2f7c49531927157a36b76de",
@@ -212,7 +212,13 @@
   "../2d-lbfgs-gh200/src/light_solve.py": "9a4bd4f75995f84e7ba47343dd1eef17c3aba6b6c6d5f56611ae5489268060e3",
   "../2d-lbfgs-gh200/entry_lbfgs_study.sh": "23a4a0ddbc5fa00a48abc4f032ed847b3498e5eb5fbc3f6dd8faea6532894fc6",
   "../2d-lbfgs-gh200/start_lbfgs_study.sbatch": "7d3080d10c55713613a0fdbc00d3ea9c0b37eb0dd9f7a36cfb3b91f3424c0549",
-  "../2d-lbfgs-gh200/test_lbfgs_study.py": "3ea4b10cce3e579ce0be189d327837807520d4abb0f39c347aebff6a59fc36d9"
+  "../2d-lbfgs-gh200/test_lbfgs_study.py": "3ea4b10cce3e579ce0be189d327837807520d4abb0f39c347aebff6a59fc36d9",
+  "../c36-potential-proof/c36-pair-func-cohort-20261022.json": "f1fcaddc8b9cdf0595ee15e411366fefdf82162dd4da0d3198a5717fad952a77",
+  "../c36-potential-proof/c36-engine-profile-20261022.json": "8fd6876e49007d03823aea5ab912c575cf9a5fa2bdcbf9af43e14d466629fa89",
+  "../c36-potential-proof/tools/c36_engine_profile.py": "3e1fe28c85921ecd302d82fff1ae65215bc32fb4d873f1891c7ccae3ff9d0828",
+  "../c36-potential-proof/tools/c36_pair_func_publish.py": "8f37aca5670890de4c91aa9dd5016e2a2b40168a7445cbc15cec21592c345a2e",
+  "../c36-potential-proof/src/box376/test_decide_c36_pair_func.py": "40e2b4b9dc5bddb14cdc25b74030480b1f14a5ccd32bd86f1d525bfd3b912091",
+  "../c36-potential-proof/src/box376/test_pair_func_control.py": "a884acb3177dd7f6487dcac46ba92a8bcf1c382437c981ff4bf4940c9f9cfe2d"
  },
  "performance_scopes": {
   "H20_2D": "accepted solve comparisons retained from October 6",
@@ -226,11 +232,11 @@
  "C36_physical_acceptance_pass": false,
  "new_CPU_variant_GPU_qualified": true,
  "C36_complete_solver_speedup": null,
- "pdf_sha256": "72a50bfc4ca21cd2a2cb6c8d3746392a811e38a65ffcbe075de9640e6b578db9",
- "previous_pdf_sha256": "0d4f642b2b6d5ca512b52ce774c77ae3bcd5471470c8e9b4f06ec9ec34f5870f",
- "pages": 51,
+ "pdf_sha256": "0053ec56151603d4ab680912526b1be1abe18fdf620eeaced20dfeb27ef192cc",
+ "previous_pdf_sha256": "0053ec56151603d4ab680912526b1be1abe18fdf620eeaced20dfeb27ef192cc",
+ "pages": 52,
  "latex_compilation": "SUCCESS: pdfLaTeX (TeX Live 2026 via TinyTeX v2026.10, with microtype), three passes with BibTeX, no errors, undefined references or overfull boxes",
- "pdf_visual_review": "PASS (2026-10-23): rendered pages 1 (abstract) and 18 (Table 13, Section 5.9) read after the build; no overfull boxes or undefined references.",
+ "pdf_visual_review": "PASS (2026-10-23): rendered pages 1, 18 (Table 13) and 37 (Table 29, Section 6.17) read after the builds; no overfull boxes or undefined references.",
  "pdf_export": "pdfLaTeX directly from the standalone source with Latin Modern fonts; plots are plain TikZ (no pgfplots dependency)",
  "eager_analytic_variant_GPU_qualified": true,
  "compiled_analytic_variant_GPU_qualified": true,
@@ -629,5 +635,17 @@
   "registered_decision": "EXECUTION_GAIN_IDENTICAL at every size with timing NOT_VALID (one drift repeat 0.943)",
   "archive_sha256": "321d7f77ff5545fc39b825dc130a85ca7c040813156a28a6e975f857b0c7fa44",
   "earlier_attempts": "admission refused (x86 initialization hashes); prebuild failed (wrapper import); no scored task in either"
+ },
+ "revision_note_20261023_pair_func": "Adds Section 6.17 and Table 29 (registered paired C36 cohort against torch.func: analytic faster in all five pairs, geometric mean 3.92 (3.87-3.96), inside the predicted 3.6-4.1; evaluation counts equal, gain per evaluation), a post-hoc development profile (analytic graph replay 3.17x faster at chunk 2048 than at the protocol's chunk 128), and the generalized publish tool; abstract, discussion and conclusion updated; Ethier tables now 30-33. 52 pages.",
+ "C36_pair_func_cohort": {
+  "protocol": "protocol-formal-pair-func-20261022.json",
+  "pre_registration_commit": "0062255",
+  "registered_outcome": "ANALYTIC_FASTER (5/5 jointly accepted pairs)",
+  "geometric_mean_ratio": "3.9238",
+  "range": "3.8731-3.9625",
+  "prediction": "3.83 (3.6-4.1)",
+  "evaluation_count_ratio": "0.989-1.001",
+  "allocated_gpu_hours": "17.76",
+  "scope": "torch.func/analytic active training seconds to a verified loss of 1e-8 on one GH200 per seed; observation excluded; analytic arm at the protocol chunk 128 (post hoc: 3.17x faster at chunk 2048)"
  }
 }

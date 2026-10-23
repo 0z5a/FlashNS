@@ -32,6 +32,11 @@ The October 15 revision adds Sections 6.8 and 6.9, which come from new run-once 
   - An unfolded repeat gives 1.325× (1.324× before).
   - Folding itself shortens an evaluation by 1.68× (analytic) and 1.59× (parameter AD), against 1.70 for cost proportional to rows.
   - Table 13 (the C36 timing table) gains two rows, and the abstract, the limitation and the conclusion are updated; the limitation no longer says the folding is qualified on CPU only.
+- **Section 6.17: paired C36 cohort against torch.func (October 23).** The registered second paired cohort (five new seeds, both arms on one GH200 per seed, verified loss threshold 1e-8).
+  - All ten arms reach the threshold and pass physical acceptance; all five audits pass.
+  - Analytic faster in all five pairs: geometric mean 3.92 (3.87–3.96), inside the predicted 3.83 (3.6–4.1); evaluation counts equal, so the gain is per evaluation (4.0–4.1× Adam, 3.7–3.8× SSBroyden).
+  - A post-hoc development profile shows the analytic graph replay 3.17× faster at chunk 2,048 than at the protocol's chunk 128, so the registered ratio is a lower bound at the analytic engine's best chunk.
+  - Table 29 is new; the Ethier tables are now 30–33. The abstract, discussion and conclusion state the solve-level result.
 - **Section 5.9: optimizer execution on GH200 (October 23).** A pre-registered GH200 study replaces only the two-loop recursion of `torch.optim.LBFGS` by a device-side version (Triton kernels, CUDA Graph replay) and runs 36 native-GL8 FP64 solves plus four drift repeats.
   - All 36 stock/light pairs are bitwise identical in final parameters, evaluation and iteration counts and acceptance.
   - Optimization is 2.21× (1.96–2.38) shorter at 2,048 points, 1.82× at 16,384 and 1.48× at 65,536, all six pairs favourable at every size; the L-BFGS phase falls from 6.6–8.5 to 2.9–4.9 ms per evaluation.

@@ -196,6 +196,16 @@ FlashNS 学习向量势和压力，再从学习到的向量势取 curl 得到速
 
 记录：[登记运行（不完整）](../c36-potential-proof/c36-external-throughput-registered-20261022.json)、[r3](../c36-potential-proof/c36-external-throughput-r3-20261022.json)、[r2 部分结果](../c36-potential-proof/c36-external-throughput-r2-partial-20261022.json)、[图回放诊断](../c36-potential-proof/c36-graph-diagnostic-20261022.json)、[协议](../c36-potential-proof/protocol-external-throughput-20261022.json)、[r3 修订](../c36-potential-proof/protocol-external-throughput-20261022-r3.json)。
 
+## 2026-10-23 新增：解析引擎与 torch.func 的配对队列（论文 6.17 节，表 29）
+
+外部后端吞吐对比（6.16 节）留下的问题——torch.func 做完整求解到底慢多少——由登记的第二个配对队列回答。五个新种子，每个在一张 GH200 上先后跑解析引擎和 torch.func（顺序交替），都以 CUDA Graph 回放训练到损失 1e-8，阈值检查点各观测一次，归档由独立 CPU 审计重读（为没有编译阶段的臂扩展了审计）。torch.func 臂直接捕获 eager 评估（chunk 1024）；make_fx 追踪版在图内存池占约 92 GB，登记前两次被训练器的显存检查拒绝（都有归档）。登记预测 3.83（3.6–4.1）。
+
+- 十个臂全部到阈值、全部通过物理验收、五次审计全部通过；阈值处分层压力 0.21–0.26 倍限值。
+- 解析 958–1,010 s，torch.func 3,797–3,921 s；登记结论 **解析更快**：五对全部偏向解析，几何均值 **3.92**（3.87–3.96），在预测区间内。
+- 评估次数一致（0.99–1.00），差距全在每次评估：torch.func 每次 Adam 评估 4.0–4.1 倍、每次 SSBroyden 评估 3.7–3.8 倍（后者含共享的稠密更新）。两臂峰值显存都是 20.9 GB。
+- 事后（非登记）：解析臂按协议用 chunk 128；登记后的开发剖析发现其图回放在 chunk 2048 快 3.17 倍（0.132 → 0.042 s/评估），而 torch.func 臂已在它的最佳 chunk 附近，所以登记比值低估了解析引擎在最佳 chunk 下的优势。
+- 五个作业合计 17.76 GPU 小时；观测（每臂 2,661–4,048 s）照旧不计入比值。
+
 ## 2026-10-23 新增：GH200 上的优化器执行研究（论文 5.9 节，表 13）
 
 二维的相位拆分一直显示：2,048 点时一次求解的大部分时间不在梯度里，而在 L-BFGS 阶段（H100 上每次评估 5.9–7.1 ms，事后占优化时间 93%）。原因在优化器的执行方式：`torch.optim.LBFGS` 的双循环把每个系数作为张量传给 `alpha=`，每一步都拷回主机，history 50 时每次迭代约 109 次设备同步、555 个小算子。

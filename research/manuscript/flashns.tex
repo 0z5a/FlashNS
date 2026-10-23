@@ -44,8 +44,9 @@ a stratified pressure test. With a dense self-scaled Broyden optimizer, all
 five new seeds of a second registered cohort on GH200 pass every test and an
 independent audit (median 5,074 seconds to verified accuracy). In five
 paired seeds, the analytic engine reaches a verified training loss
-1.26$\times$ sooner than parameter AD, and its graph replay evaluates
-3.7$\times$ faster than \texttt{torch.func}, which equals it in eager mode.
+1.26$\times$ sooner than parameter AD and 3.92$\times$ sooner than
+\texttt{torch.func}, whose graph replay it evaluates 3.7$\times$ faster
+while equalling it in eager mode.
 \end{abstract}
 
 \section{Introduction}
@@ -2381,6 +2382,61 @@ feasibility rule, a full solve with \texttt{torch.func} (about 3.1 hours with
 observations) fits one job, while the jet adapter and nested autograd would
 need about 5.5 and 35 days. The three runs used 7.17 allocated GPU-hours.
 
+
+\subsection{Paired engines against \texttt{torch.func}}\label{sec:c36pairfunc}
+The feasibility rule above allowed one more registered cohort: the
+analytic engine against \texttt{torch.func} on whole solves, with the
+design of Section~\ref{sec:c36pair} unchanged. Five further new seeds run
+both arms one after the other on one GH200, in alternating order, as CUDA
+Graph replays to a training loss of $10^{-8}$; each threshold checkpoint is
+observed once and every archive is re-read by the independent CPU auditor,
+extended for an arm without a compiled stage. The \texttt{torch.func} arm
+captures its eager evaluation at chunk 1,024: its \texttt{make\_fx}-traced
+form held about 92 GB in the graph pool and twice failed the trainer's
+memory check before the registration (both failures are archived). The
+registered prediction for the ratio of \texttt{torch.func} to analytic active
+training seconds was 3.83 (3.6--4.1), from a qualification on the
+development seed: 3.98 per Adam evaluation and 3.65 per SSBroyden
+evaluation, weighted by the expected evaluation counts.
+
+\begin{table}[htbp]\centering\small
+\setlength{\tabcolsep}{4pt}
+\caption{Paired C36 cohort against \texttt{torch.func} (five new seeds, both
+arms on one GH200 per seed). Columns as in Table~\ref{tab:c36pair}; Ratio is
+\texttt{torch.func} over analytic. Every arm passes physical acceptance and
+every audit passes.}
+\label{tab:c36pairfunc}
+\begin{tabular}{rrrrrrrr}\toprule
+ & \multicolumn{3}{c}{Analytic} & \multicolumn{3}{c}{\texttt{torch.func}} & \\\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Seed & Seconds & Eval. & S press. & Seconds & Eval. & S press. & Ratio\\\midrule
+232943677 & 981 & 2,956 & 0.257 & 3,878 & 2,924 & 0.230 & 3.953\\
+1952762959 & 1,006 & 3,007 & 0.235 & 3,919 & 2,988 & 0.236 & 3.895\\
+1212253177 & 1,010 & 2,986 & 0.231 & 3,912 & 2,982 & 0.250 & 3.873\\
+190009641 & 996 & 2,998 & 0.217 & 3,921 & 3,000 & 0.217 & 3.936\\
+101379141 & 958 & 2,774 & 0.229 & 3,797 & 2,772 & 0.213 & 3.962
+\\\bottomrule\end{tabular}
+\end{table}
+
+All ten arms reach the threshold, pass physical acceptance and pass the
+audit (Table~\ref{tab:c36pairfunc}); stratified pressure is 0.21--0.26 of
+its limit at the threshold in both arms. The analytic engine needs
+958--1,010 active seconds and \texttt{torch.func} 3,797--3,921. The
+registered outcome is \emph{analytic faster}: all five ratios favour the
+analytic engine, with a geometric mean of 3.92 (range 3.87--3.96), inside
+the predicted 3.6--4.1. The evaluation counts agree (0.99--1.00), so the
+whole gain is per evaluation: \texttt{torch.func} takes 4.0--4.1 times as
+long per Adam evaluation and 3.7--3.8 times per SSBroyden evaluation, the
+latter including the shared dense update. Both arms peak at 20.9 GB. This
+is the solve-level counterpart of the 3.72 graph-replay ratio of
+Table~\ref{tab:c36external}, and it closes the comparison that section left
+open. A development profile taken after the registration, not part of the
+cohort, found that the analytic graph replay is 3.17 times faster at chunk
+2,048 than at the protocol's chunk 128 (0.042 against 0.132 seconds per
+evaluation), while the \texttt{torch.func} arm already runs near its best
+chunk, so the registered ratio understates the analytic advantage at its
+best chunk. The observation (2,661--4,048 seconds per arm) is excluded as
+before. The five jobs used 17.76 allocated GPU-hours.
+
 \section{Accepted three-dimensional solves: Ethier--Steinman}\label{sec:ethier}
 \subsection{Benchmark, contract and baselines}
 The C36 study qualifies derivatives and throughput, and its solves pass only
@@ -2769,7 +2825,9 @@ $8n^2$ bytes (20.6 GB here), so on one 96 GB GPU this optimizer does not
 reach beyond about $10^5$ parameters. Against public tools on the same
 objective, per evaluation, \texttt{torch.func} equals the analytic engine
 in eager mode and is 3.72 times slower as a CUDA Graph replay, so the C36
-advantage over it is execution rather than representation; collapsed
+advantage over it is execution rather than representation, and a second
+registered cohort carries this to whole solves: 3.92 times sooner to the
+verified threshold in all five pairs (Section~\ref{sec:c36pairfunc}); collapsed
 \texttt{jet} with autograd for the higher orders, and nested autograd, are
 38 and 251 times slower in eager mode. These are post-hoc measurements after
 a driver bug and a host-memory failure ended the registered run. The C36 throughput gains depend on compilation, the zero-gate
@@ -2828,9 +2886,10 @@ verified accuracy on one GH200. In a paired cohort the analytic engine
 reaches the verified loss threshold 1.26$\times$ sooner than the
 parameter-AD control in all five pairs. Per evaluation, \texttt{torch.func}
 equals the analytic engine in eager mode and is 3.72$\times$ slower as a CUDA
-Graph replay; a collapsed-\texttt{jet} adapter and nested autograd are 38$\times$
-and 251$\times$ slower in eager mode. A solve-level comparison with
-\texttt{torch.func} remains open.
+Graph replay, and in a second paired cohort the analytic engine reaches the
+verified threshold 3.92$\times$ sooner than \texttt{torch.func} in all five
+pairs; a collapsed-\texttt{jet} adapter and nested autograd are 38$\times$
+and 251$\times$ slower in eager mode.
 
 
 \begin{thebibliography}{99}
